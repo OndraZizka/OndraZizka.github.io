@@ -1,23 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="utf-8"/>
-    <title>JBake</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <meta name="keywords" content="">
+    <title>Ondřej Žižka</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="My personal web">
+    <meta name="author" content="Ondřej Žižka">
     <meta name="generator" content="JBake">
 
-    <!-- Le styles -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/asciidoctor.css" rel="stylesheet">
-    <link href="css/base.css" rel="stylesheet">
-    <link href="css/prettify.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/asciidoctor.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/doc-body.css">
+    <link rel="stylesheet" href="css/prettify.css">
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
-      <script src="js/html5shiv.min.js"></script>
+    <script src="js/html5shiv.min.js"></script>
     <![endif]-->
 
     <!-- Fav and touch icons -->
@@ -26,8 +26,8 @@
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">-->
     <link rel="shortcut icon" href="favicon.ico">
-  </head>
-  <body onload="prettyPrint()">
+</head>
+<body onload="prettyPrint()">
     <div id="wrap">
 
 	<!-- Fixed navbar -->
@@ -46,6 +46,7 @@
           <ul class="nav navbar-nav">
             <li><a href="index.html">Home</a></li>
             <li><a href="about.html">About Me</a></li>
+            <li><a href="archive.html">Archive</a></li>
             <li><a href="feed.xml">RSS feed</a></li>
             <!--
             <li class="dropdown">
@@ -70,32 +71,47 @@
 	<div class="page-header">
 		<h1>Recent posts</h1>
 	</div>
-  			<a href="blog/2018/second-post.html"><h1>Test Post</h1></a>
+  			<a href="blog/2018/test-post.html"><h3>Test Post</h3></a>
 
-  			<p>21 July 2018</p>
+  			<div class="date"><em>2018-07-21</em></div>
 
-  			<p><p>This is a test post. For some info, see <a href="about.html">About</a>.</p></p>
+  			<div class="doc-body"><p>This is a test post. For some info, see <a href="about.html">About</a>.</p></div>
 
 	<hr />
 
-	<p>Older posts are available in the <a href="archive.html">archive</a>.</p>
+	<!--
+	<div>Older posts are available in the <a href="archive.html">archive</a>.</div>
+	-->
 
-</div>
-<div id="push"></div>
+
+    <!-- Facebook comments -->
+    
+    </div>
+    <div id="push"></div>
+
 </div>
 
 <div id="footer">
     <div class="container">
-        <p class="muted credit">&copy; 2014 | Mixed with <a href="http://getbootstrap.com/">Bootstrap v3.1.1</a> | Baked with <a href="http://jbake.org">JBake v2.6.1</a></p>
+        <p class="muted credit">&copy; 2018 | Mixed with <a href="http://getbootstrap.com/">Bootstrap v3.3.7</a> | Baked with <a href="http://jbake.org">JBake v2.6.1</a></p>
     </div>
 </div>
 
-<!-- Le javascript
-================================================== -->
-<!-- Placed at the end of the document so the pages load faster -->
 <script src="js/jquery-1.11.1.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/prettify.js"></script>
+
+<!-- Facebook comments -->
+<div id="fb-root"></div>
+<script>
+    (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://connect.facebook.net/cs_CZ/sdk.js#xfbml=1&version=v3.0';
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+</script>
 
 </body>
 </html>

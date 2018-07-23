@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>JBake</title>
-        <link>http://localhost:8820</link>
-        <atom:link href="http://localhost:8820/feed.xml" rel="self" type="application/rss+xml"/>
+        <link>http://www.zizka.ch</link>
+        <atom:link href="http://www.zizka.ch/feed.xml" rel="self" type="application/rss+xml"/>
         <description>JBake Bootstrap Template</description>
         <language>en-gb</language>
-        <pubDate>Sat, 21 Jul 2018 13:04:06 +0200</pubDate>
-        <lastBuildDate>Sat, 21 Jul 2018 13:04:06 +0200</lastBuildDate>
+        <pubDate>Mon, 23 Jul 2018 06:05:25 +0200</pubDate>
+        <lastBuildDate>Mon, 23 Jul 2018 06:05:25 +0200</lastBuildDate>
 
         <item>
             <title>Test Post</title>
-            <link>http://localhost:8820/blog/2018/second-post.html</link>
+            <link>http://www.zizka.ch/blog/2018/test-post.html</link>
             <pubDate>Sat, 21 Jul 2018 00:00:00 +0200</pubDate>
-            <guid isPermaLink="false">blog/2018/second-post.html</guid>
+            <guid isPermaLink="false">blog/2018/test-post.html</guid>
             <description>
                  &lt;p&gt;This is a test post. For some info, see &lt;a href=&quot;about.html&quot;&gt;About&lt;/a&gt;.&lt;/p&gt; 
             </description>

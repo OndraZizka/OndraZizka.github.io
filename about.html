@@ -1,23 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="utf-8"/>
-    <title>About me</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <meta name="keywords" content="">
+    <title>About me - Ondřej Žižka</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="My personal web">
+    <meta name="author" content="Ondřej Žižka">
     <meta name="generator" content="JBake">
 
-    <!-- Le styles -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/asciidoctor.css" rel="stylesheet">
-    <link href="css/base.css" rel="stylesheet">
-    <link href="css/prettify.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/asciidoctor.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/doc-body.css">
+    <link rel="stylesheet" href="css/prettify.css">
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
-      <script src="js/html5shiv.min.js"></script>
+    <script src="js/html5shiv.min.js"></script>
     <![endif]-->
 
     <!-- Fav and touch icons -->
@@ -26,8 +26,8 @@
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">-->
     <link rel="shortcut icon" href="favicon.ico">
-  </head>
-  <body onload="prettyPrint()">
+</head>
+<body onload="prettyPrint()">
     <div id="wrap">
 
 	<!-- Fixed navbar -->
@@ -46,6 +46,7 @@
           <ul class="nav navbar-nav">
             <li><a href="index.html">Home</a></li>
             <li><a href="about.html">About Me</a></li>
+            <li><a href="archive.html">Archive</a></li>
             <li><a href="feed.xml">RSS feed</a></li>
             <!--
             <li class="dropdown">
@@ -68,22 +69,27 @@
     <div class="container">
 
 	<div class="page-header">
-		<h1>About me</h1>
+		<h1>About me - Ondřej Žižka</h1>
 	</div>
 
-	<p><em>21 July 2018</em></p>
+	<div class="date"><em>2018-07-21</em></div>
 
-	<p><p>I am. For more info, see:</p> 
+	<div class="doc-body"><p>I am. For more info, see:</p> 
 <ul> 
  <li>My <a href="https://www.linkedin.com/in/ondrazizka/">LinkedIn profile</a></li> 
  <li>My <a href="https://github.com/OndraZizka/">GitHub account</a></li> 
+ <li>My <a href="https://stackexchange.com/users/49078">StackOverflow account</a></li> 
 </ul> 
+<p><a href="https://stackexchange.com/users/49078"><img src="https://stackexchange.com/users/flair/49078.png" alt="Ondra Žižka on Stack Exchange" title="Ondra Žižka on Stack Exchange" width="208" height="58"></a><br><a target="_blank" href="https://www.openhub.net/accounts/pekarna?ref=sample"><img alt="Open Hub profile for Ondrej Zizka" src="https://www.openhub.net/accounts/pekarna/widgets/account_detailed?format=gif&amp;ref=sample" width="212" height="35" border="0"></a></p> 
 <h2>Some of my hobby projects</h2> 
 <ul> 
  <li><a href="https://github.com/OndraZizka/csv-cruncher">CSV Cruncher</a> - Use your CSV files as SQL tables.</li> 
  <li><a href="https://github.com/OndraZizka/junitdiff">JUnitDiff</a> - Create comprehensive brief comparisons of test runs.</li> 
  <li><a href="https://github.com/OndraZizka/irc-appender">IRC Appender</a> - Print Java logging messages from <code>java.util.logging</code> to IRC.</li> 
- <li><a href="https://github.com/OndraZizka/JTexy">JTexy</a> - Java port of a superior markup language <a href="http://texy.info/">Texy!</a>.</li> 
+ <li><a href="https://github.com/OndraZizka/JTexy">JTexy</a> - Java port of a superior markup language <a href="http://texy.info/">Texy!</a>. 
+  <ul> 
+   <li><a href="https://hub.docker.com/r/ondrazizka/texy-service/tags/">Texy converted service in Docker</a></li> 
+  </ul> </li> 
  <li><a href="https://github.com/OndraZizka/yaml-merge">YAML-merge</a> - A tool to merge (overlay) YAML files.</li> 
  <li><a href="https://github.com/OndraZizka/MavenHoe">MavenHoe</a> Creates a Maven repo from a dir with dependencies (e.g. <code>lib/</code>), with loose version matching.</li> 
  <li><a href="https://github.com/OndraZizka/video-scripts">video-scripts</a> - FFmpeg shorthands.</li> 
@@ -95,26 +101,40 @@
 </ul> 
 <h2>About this site</h2> 
 <p>Once I had a spectacular site, a blogging platform written in PHP, then I migrated to Java, hosted on OpenShift.<br> But I didn't have time to keep up with ever changing environment, so I migrated to <a href="https://jbake.org">JBake</a> and static files.</p> 
-<p>If you're looking for the former content, I will add it here once I add JTexy support to JBake.</p></p>
+<p>If you're looking for the former content, I will add it here once I add JTexy support to JBake.</p></div>
 
 	<hr />
 
-</div>
-<div id="push"></div>
+
+    <!-- Facebook comments -->
+        <div class="fb-comments" data-href="http://www.zizka.ch/about.html" data-width="800" data-numposts="5"></div>
+
+    </div>
+    <div id="push"></div>
+
 </div>
 
 <div id="footer">
     <div class="container">
-        <p class="muted credit">&copy; 2014 | Mixed with <a href="http://getbootstrap.com/">Bootstrap v3.1.1</a> | Baked with <a href="http://jbake.org">JBake v2.6.1</a></p>
+        <p class="muted credit">&copy; 2018 | Mixed with <a href="http://getbootstrap.com/">Bootstrap v3.3.7</a> | Baked with <a href="http://jbake.org">JBake v2.6.1</a></p>
     </div>
 </div>
 
-<!-- Le javascript
-================================================== -->
-<!-- Placed at the end of the document so the pages load faster -->
 <script src="js/jquery-1.11.1.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/prettify.js"></script>
+
+<!-- Facebook comments -->
+<div id="fb-root"></div>
+<script>
+    (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://connect.facebook.net/cs_CZ/sdk.js#xfbml=1&version=v3.0';
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+</script>
 
 </body>
 </html>
