@@ -94,14 +94,14 @@
 <p>So far, I&nbsp;gave it about two days of work and have some poor proofs-of-concept:</p> 
 <p>1) TTD-like dialogs made in HTML. Currently only layout + some DoJo code to make them move.<br> This part would need a lot of work: many dialog types + data binding.<br> See <a href="/samostatne/ttd/HtmlGUI/TTDdialog.html">the demo</a> .<br> (Note that the dialogs are not images, but only HTML+CSS&nbsp;– see the page&nbsp;code.)</p> 
 <div>
- <img src="http://localhost:8820/samostatne/ttd/HtmlGUI/screenshots/screenshot01.png" alt="WebTTD&nbsp;– dialogs">
+ <img src="http://www.zizka.ch/samostatne/ttd/HtmlGUI/screenshots/screenshot01.png" alt="WebTTD&nbsp;– dialogs">
 </div> 
 <p>2) Isometric landscape drawing and editing, plus client/server communication (AJAX).<br> I'll add URL of this drawing as soon as I&nbsp;put the database on the server.<br> Works quite fine, but there's&nbsp;one big problem: When you click somewhere,<br> it's&nbsp;almost impossible to compute which cell has been clicked, so it's&nbsp;needed to store it somewhere.<br> And since current technologies, including canvas, do not provide such functionality,<br> the only solution seems to use only flat landscape, which is kinda boring…</p> 
 <p>Or, the other option&nbsp;– create the client in .NET or Java or Flash.<br> Since I&nbsp;don't like Flash and .NET is bound to Microsoft, it would be Java's&nbsp;WebStart.</p> 
 <div>
- <img src="http://localhost:8820/samostatne/ttd/landscape/screenshots/webttd-landscape-01.png" alt="WebTTD&nbsp;– landscape">
+ <img src="http://www.zizka.ch/samostatne/ttd/landscape/screenshots/webttd-landscape-01.png" alt="WebTTD&nbsp;– landscape">
  <br> 
- <img src="http://localhost:8820/samostatne/ttd/landscape/screenshots/webttd-landscape-02.png" alt="WebTTD&nbsp;– landscape">
+ <img src="http://www.zizka.ch/samostatne/ttd/landscape/screenshots/webttd-landscape-02.png" alt="WebTTD&nbsp;– landscape">
 </div> 
 <p>Next I'd move to drawing of vehicles. That should be quite easy, provided we had waypoints of their movement together with their&nbsp;times.</p> 
 <p>These data have to be computed on the server side. So next stage would be J2EE or PL/SQL programming <del>(I'm SQL fan, so it's&nbsp;likely to be PL/SQL :)</del> //Decision changed:// Due to performance requirements, reading everything to and from the DB is not a good idea. Let it be&nbsp;Java.</p> 

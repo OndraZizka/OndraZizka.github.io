@@ -77,10 +77,10 @@
 ‚essc.#sql-4cb35‘ (errno: 150) - Ondřej Žižka</h1>
 	</div>
 
-	<div class="date"><em>2013-02-03</em></div>
+	<div class="date"><em>2018-07-25</em></div>
 
 	<div class="doc-body"><h3>MySQL: Error Code: 1005.&nbsp;Can't create table ‚essc.#sql-4cb<sub>35</sub>‘ (errno:&nbsp;150)</h3> 
-<p>This happens when you're trying to <code>ALTER</code> a table, but it hits foreign key constraints.<br> From my experience, this happens most often because the types do not match. E.g. one table has <code>id</code> INT UNSIGNED PRIMARY KEY<code>, and the other tries to create a `FOREIGN KEY</code> using a <code>BIGINT</code> column.</p> 
+<p>This happens when you're trying to <code>ALTER</code> a table, but it hits foreign key constraints.<br> From my experience, this happens most often because the types do not match. E.g. one table has <code>id INT UNSIGNED PRIMARY KEY</code>, and the other tries to create a <code>FOREIGN KEY</code> using a <code>BIGINT</code> column.</p> 
 <p>Usually, the solution is to drop all the relevant foreign keys, then align (or better, unify) the ID column types, and create the foreign keys&nbsp;again.</p> 
 <h4>Hibernate</h4> 
 <p>With Hibernate, this may happen when you're adding entities to an existing schema, and rely on <code>hbm2dd</code> to create the columns for you (for development purposes, of course).</p> 

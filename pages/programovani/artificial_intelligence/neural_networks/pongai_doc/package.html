@@ -158,7 +158,7 @@
  <li>Ulo��me si informace o t�to iteraci - jak� hodnoty jsme poskytli neuronov� s�t�, a jakou akci jsme vybrali. Tyto informace se ukl�daj� do fronty FIFO s pevnou d�lkou N. Jsou v n� tedy informace o maxim�ln� N posledn�ch iterac�ch. </li> 
 </ul> 
 <div> 
- <img src="http://localhost:8820/doc-files/rozlozeni_vah.gif" alt="" width="707" height="235"> 
+ <img src="http://www.zizka.ch/doc-files/rozlozeni_vah.gif" alt="" width="707" height="235"> 
 </div> 
 <h3>Ud�lost "trefa m��ku"</h3> 
 <p>Kdy� se m��ek dotkne plo�ky, kterou m� agent nastarosti, je zavol�na jeho metoda {@link objects.Agent#hitReceived}, ve kter� se zkop�ruje aktu�ln� obsah FIFO fronty, tedy informace o n�kolika posledn�ch iterac�ch. Tato sada se ulo�� do skladu (intern� t��da <code>cHitsStore</code>), kde se ukl�daj� takov�to sady pro celou aktu�ln� epizodu (za posledn�ch n�kolik set a� tis�c iterac�, star�� se zahazuj�). </p> 

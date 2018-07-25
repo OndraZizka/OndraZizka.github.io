@@ -112,17 +112,17 @@ GRANT ALL ON jizdnirady_cb.*  TO OndrejZizka@'%' IDENTIFIED BY 'BezpecneHeslo';<
  <li>Uložte soubor v&nbsp;kódování UTF-8&nbsp;bez signatury (na obrázku je ukázka uložení ve Visual Studiu).</li> 
 </ol> 
 <div>
- <img src="http://localhost:8820/images/navod/MSVS-Uprava_SQL_Skriptu_JR-ramecky.png" alt="">
+ <img src="http://www.zizka.ch/images/navod/MSVS-Uprava_SQL_Skriptu_JR-ramecky.png" alt="">
 </div> 
 <p>Poté upravenou verzi skriptu načtěte do MySQL místo původní&nbsp;verze.</p> 
 <div>
- <img src="http://localhost:8820/images/navod/MySQL_Administrator-01.png" alt=""> 
- <img src="http://localhost:8820/images/navod/MySQL_Administrator-02.png" alt="">
+ <img src="http://www.zizka.ch/images/navod/MySQL_Administrator-01.png" alt=""> 
+ <img src="http://www.zizka.ch/images/navod/MySQL_Administrator-02.png" alt="">
 </div> 
 <h4>Prohlížení dat</h4> 
 <p>Výše jmenovaný balík GUI nástrojů zahrnuje také MySQL Query Browser, šikovný nástroj pro práci s&nbsp;databázovým systémem&nbsp;MySQL.</p> 
 <div>
- <img src="http://localhost:8820/images/navod/MySQL_Query_Browser-01-B.png" alt="">
+ <img src="http://www.zizka.ch/images/navod/MySQL_Query_Browser-01-B.png" alt="">
 </div> 
 <p>Výčet jeho vlastností a dovedností je dlouhý. My se pro účely demonstrace kódu této diplomové práce omezíme na podstatné.</p> 
 <p>Po spuštění stiskněte <code>F11</code>&nbsp;– to zvětší konzoli pro SQL příkazy.</p> 
@@ -138,7 +138,7 @@ SELECT * FROM mhd_trasy_uzly LIMIT 100;
 SELECT * FROM mhd_zast LIMIT 100;</code></pre> 
 <p>Zde je například výpis zastávek a jejich geografických&nbsp;po­zic:</p> 
 <div>
- <img src="http://localhost:8820/images/navod/QB-Zastavky.png" alt="">
+ <img src="http://www.zizka.ch/images/navod/QB-Zastavky.png" alt="">
 </div> 
 <p>Po importu dat z&nbsp;výše uvedených souborů obsahují tabulky všechna data jízdních řádů, na kterých jsme kód testovali.</p> 
 <p>Z&nbsp;tabulek je možné vhodnými SELECTy získat jakékoliv informace, které chceme znát&nbsp;– například:</p> 
@@ -151,7 +151,7 @@ SELECT * FROM mhd_zast LIMIT 100;</code></pre>
 </ul> 
 <p>Zde je ukázka výpisu všech linek projíždějících zastávkou Žižkova:</p> 
 <div>
- <img src="http://localhost:8820/images/navod/QB-Linky_projizdejici_zastavkou_Zizkova.png" alt="">
+ <img src="http://www.zizka.ch/images/navod/QB-Linky_projizdejici_zastavkou_Zizkova.png" alt="">
 </div> 
 <p>Tabulky neuronových sítí prozkoumáte takto:</p> 
 <pre class="brush: sql"><code>SELECT * FROM neural_network.nn_networks;
@@ -171,13 +171,13 @@ CALL mhd_VyhledejSpoje(115, 465, NOW(), 3);
 SELECT * FROM mhd_VyhledejSpoje ORDER BY pos;</code></pre> 
 <p>Zde je ukázka vyhledání spojů mezi zastávkami <em>Žižkova&nbsp;– Budvar&nbsp;– U&nbsp;pily&nbsp;– Nemocnice&nbsp;– U&nbsp;chromých</em>:</p> 
 <div>
- <img src="http://localhost:8820/images/navod/QB-Spoje-Zizkova-U_Chromych.png" alt="">
+ <img src="http://www.zizka.ch/images/navod/QB-Spoje-Zizkova-U_Chromych.png" alt="">
 </div> 
 <h5>Kód pro neuronové sítě</h5> 
 <p>Se sítěmi lze provádět v&nbsp;podstatě tři operace: Vytvářet je, provést jejich výpočet, a učit&nbsp;je.</p> 
 <p>Na následujícím obrázku jsou zachycené první dva kroky.</p> 
 <div>
- <img src="http://localhost:8820/images/navod/QB-Vypocet_site_XOR_s_logem.png" alt="">
+ <img src="http://www.zizka.ch/images/navod/QB-Vypocet_site_XOR_s_logem.png" alt="">
 </div> 
 <p>Nejprve vytváříme neuronovou síť s&nbsp;architekturou <code>2,2,1</code> (vhodná pro řešení&nbsp;XOR):</p> 
 <pre class="brush: sql"><code>-- Vytvoření neuronové sítě
@@ -256,7 +256,7 @@ CALL mhd_nn_TeachStationNet(5, LAST_INSERT_ID(), 0.0001, 40000);</code></pre>
 <p>Všechny procesy se v&nbsp;naší implementaci zaznamenávají do logu. To je užitečné zejména pokud něco nepracuje podle očekávání. Většinou je chyba na straně uživatele a v&nbsp;logu je zapsán její příčina (ve sloupci <code>level</code> je hodnota <code>error</code> nebo <code>warning</code>).</p> 
 <p>Zde je ukázka záznamů z&nbsp;učení neuronové sítě zastávky s&nbsp;ID&nbsp;530:</p> 
 <div>
- <img src="http://localhost:8820/images/navod/QB-Log_uceni_neuronove_site_zastavky.png" alt="">
+ <img src="http://www.zizka.ch/images/navod/QB-Log_uceni_neuronove_site_zastavky.png" alt="">
 </div> 
 <p>Další vysvětlení najdete ve výše jmenovaných zdrojích&nbsp;– v&nbsp;diplomové prácí, ve zdrojových kódech jednotlivých procedur a na webu autora.</p> 
 <p>Případné dotazy směřujte na mail <a href="mailto:ondra@dynawest.cz">ondra@
