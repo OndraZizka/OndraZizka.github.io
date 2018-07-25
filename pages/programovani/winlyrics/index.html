@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>WinLyrics – WinAmp lyrics plugin - Ondřej Žižka</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="My personal web">
+    <meta name="author" content="Ondřej Žižka">
+    <meta name="generator" content="JBake">
+
+
+    <link rel="stylesheet" href="../../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../css/asciidoctor.css">
+    <link rel="stylesheet" href="../../../css/base.css">
+    <link rel="stylesheet" href="../../../css/doc-body.css">
+    <link rel="stylesheet" href="../../../css/prettify.css">
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+    <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+
+    <!-- Fav and touch icons -->
+    <!--<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">-->
+    <link rel="shortcut icon" href="../../../favicon.ico">
+</head>
+<body onload="prettyPrint()">
+    <div id="wrap">
+
+	<!-- Fixed navbar -->
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="http://www.zizka.ch/">Ondřej Žižka</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="../../../index.html">Blog</a></li>
+            <li><a href="../../../archive.html">Archive</a></li>
+            <li><a href="../../../tags">Tags</a></li>
+
+            <li><a href="../../../about.html">About Me</a></li>
+            <li><a href="../../../feed.xml">RSS feed</a></li>
+            <li><a href="../../../sitemap.xml">Sitemap</a></li>
+            <!--
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li class="divider"></li>
+                <li class="dropdown-header">Nav header</li>
+                <li><a href="#">Separated link</a></li>
+                <li><a href="#">One more separated link</a></li>
+              </ul>
+            </li>
+            -->
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+    <div class="container">
+
+	<div class="page-header">
+        <h1>WinLyrics – WinAmp lyrics plugin - Ondřej Žižka</h1>
+	</div>
+
+	<div class="date"><em>2012-12-13</em></div>
+
+	<div class="doc-body"><h3>WinLyrics&nbsp;– WinAmp lyrics plugin</h3> 
+<h4>Nový hosting?</h4> 
+<p>Máme nabídku nového hostingu… na Gigawebu to občas vypadne (mysql i&nbsp;web), a už není nijak moc pružný…</p> 
+<p><a href="vpn.texy">přístup zde</a>.</p> 
+<h4>TODO list</h4> 
+<h5>Hodnocení lyrics</h5> 
+<p><a href="doc/rating.texy">Dokumentace zde</a>.</p> 
+<ul> 
+ <li>Do interface přidat možnost ohodnotit lyrics.</li> 
+ <li>Stupnice: 
+  <ul> 
+   <li>Bez chyby, perfektní</li> 
+   <li>Dobré</li> 
+   <li>Použitelné</li> 
+   <li>Nesmysly, hodně chyb</li> 
+   <li>Totální odpad</li> 
+  </ul> </li> 
+ <li>Vliv na funkci: 
+  <ul> 
+   <li>Vyhledané lyrics se budou řadit také podle hodnocení daných lyrics. Jinak&nbsp;žádný.</li> 
+  </ul> </li> 
+ <li>Na server se pošle: ID lyrics, ID hodnotícího uživatele (případně session ID), a hodnocení.</li> 
+</ul> 
+<h5>Přihlašování</h5> 
+<p><a href="doc/login.texy">Dokumentace zde</a>.</p> 
+<ul> 
+ <li>Lyrics se budou stahovat přes login a heslo.</li> 
+ <li>Zamezí to crackům</li> 
+ <li>Provedení: Dvě možnosti. Jednodušší a složitější. 
+  <ul> 
+   <li>S&nbsp;každým požadavkem posílat i&nbsp;jméno a heslo. 
+    <ul> 
+     <li>Heslo může být md5</li> 
+     <li>Jenže jakmile někdo uvidí cizí request, může se za něj vydávat → šíření user name a hesla, a jsme kde jsme&nbsp;byli.</li> 
+    </ul> </li> 
+   <li>Druhá možnost: Autentizace a session numbers. Jak? 
+    <ul> 
+     <li>Klient se bude chtít přihlásit</li> 
+     <li>Server pošle náhodný řetězec (challenge)</li> 
+     <li>Klient jej spojí se svým heslem a pošle md5( challenge + md5(heslo)&nbsp;)</li> 
+     <li>Na serveru bude uchované md5() hesla, provede se to&nbsp;samé</li> 
+     <li>Pokud budou stejné, klientovi se pošle session ID v&nbsp;cookie. Od té doby s&nbsp;ním může po nějakou dobu pracovat.</li> 
+     <li>Tímhle způsobem se nebude nikdo moci vymlouvat, že se přes jeho ID připojuje někdo&nbsp;jiný.</li> 
+     <li>Pokud se tedy ID začne šířit, má problém :-)</li> 
+     <li>Resp. povolíme použití jednoho ID jen z&nbsp;jedné IP adresy v&nbsp;rámci jedné session.</li> 
+    </ul> </li> 
+  </ul> </li> 
+</ul> 
+<h5>Autorství lyrics (credits)</h5> 
+<ul> 
+ <li>Lidi mají tendenci do Lyrics dávat svůj podpis.</li> 
+ <li>Tomu předejdeme tak, že jim umožníme tento údaj oddělit.</li> 
+ <li>Při přidávání se také odešle jejich username, případně se použije session&nbsp;ID.</li> 
+ <li>Na serveru se k&nbsp;lyrics přidá záznam o&nbsp;tom, kdo jej poslal.</li> 
+</ul></div>
+
+	<hr />
+
+
+    <!-- Facebook comments -->
+        <div class="fb-comments" data-href="http://www.zizka.ch/pages/programovani/winlyrics/index.html" data-width="800" data-numposts="5"></div>
+
+    </div>
+    <div id="push"></div>
+
+</div>
+
+<div id="footer">
+    <div class="container">
+        <p class="muted credit">&copy; 2018 | Mixed with <a href="http://getbootstrap.com/">Bootstrap v3.3.7</a> | Baked with <a href="http://jbake.org">JBake v2.7.0-SNAPSHOT</a></p>
+    </div>
+</div>
+
+<script src="../../../js/jquery-1.11.1.min.js"></script>
+<script src="../../../js/bootstrap.min.js"></script>
+<script src="../../../js/prettify.js"></script>
+
+<!-- Facebook comments -->
+<div id="fb-root"></div>
+<script>
+    (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://connect.facebook.net/cs_CZ/sdk.js#xfbml=1&version=v3.0';
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+</script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-4584951-4"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-4584951-4');
+</script>
+
+</body>
+</html>

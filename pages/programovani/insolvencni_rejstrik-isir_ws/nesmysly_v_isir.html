@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>Nedomyšlenost webové služby Insolvenčním rejstříku - Ondřej Žižka</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="My personal web">
+    <meta name="author" content="Ondřej Žižka">
+    <meta name="generator" content="JBake">
+
+
+    <link rel="stylesheet" href="../../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../css/asciidoctor.css">
+    <link rel="stylesheet" href="../../../css/base.css">
+    <link rel="stylesheet" href="../../../css/doc-body.css">
+    <link rel="stylesheet" href="../../../css/prettify.css">
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+    <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+
+    <!-- Fav and touch icons -->
+    <!--<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">-->
+    <link rel="shortcut icon" href="../../../favicon.ico">
+</head>
+<body onload="prettyPrint()">
+    <div id="wrap">
+
+	<!-- Fixed navbar -->
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="http://www.zizka.ch/">Ondřej Žižka</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="../../../index.html">Blog</a></li>
+            <li><a href="../../../archive.html">Archive</a></li>
+            <li><a href="../../../tags">Tags</a></li>
+
+            <li><a href="../../../about.html">About Me</a></li>
+            <li><a href="../../../feed.xml">RSS feed</a></li>
+            <li><a href="../../../sitemap.xml">Sitemap</a></li>
+            <!--
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li class="divider"></li>
+                <li class="dropdown-header">Nav header</li>
+                <li><a href="#">Separated link</a></li>
+                <li><a href="#">One more separated link</a></li>
+              </ul>
+            </li>
+            -->
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+    <div class="container">
+
+	<div class="page-header">
+        <h1>Nedomyšlenost webové služby Insolvenčním rejstříku - Ondřej Žižka</h1>
+	</div>
+
+	<div class="date"><em>2012-12-16</em></div>
+
+	<div class="doc-body"><h3>Nedomyšlenost webové služby Insolvenčním rejstříku</h3> 
+<p>S&nbsp;webovou službou Insolvenčního rejstříku pracuji již asi měsíc, ale stále nevycházím z&nbsp;údivu, jak hloupá tato služba je. Již jsem psal o&nbsp;<a href="index.texy">prapodivném konceptu celé webové služby</a>, ale jak je vidět, oním článkem jsem popis jejích velice četných nedostatků ještě zdaleka nevyčerpal.</p> 
+<p>Pojďme se nyní podívat, jak vypadá samotná obsahová stránka služby&nbsp;ISIR.</p> 
+<h4>Nesmysl první: chaos v&nbsp;událostech</h4> 
+<p>Jak se dozvíte ve výše odkazovaném článku, webová služba Insolvenční rejstřík funguje jako internetový záznam událostí, které se staly během existence systému ISIR. To znamená, že nežádáte o&nbsp;konkrétní informace, ale výstup tohoto&nbsp;typu:</p> 
+<pre class="brush: xml"><code>&lt;tns:udalost ... &gt;
+  &lt;info cas="2008-01-22 00:00:00.0" id="2644" oddil="A" poradi="1" typ="6"
+         typ_text="Insolvenční návrh spojený s&nbsp;návrhem na povolení oddlužení"/&gt;
+  &lt;idOsobyPuvodce&gt;KSVYCHK&lt;/idOsobyPuvodce&gt;
+  &lt;vec&gt; &lt;druhStavRizeni&gt;NEVYRIZENA&lt;/druhStavRizeni&gt; &lt;/vec&gt;
+&lt;/tns:udalost&gt;
+&lt;tns:udalost ... &gt;
+  &lt;info cas="2008-01-22 00:00:00.0" id="2645" oddil="" poradi="-1" typ="1" typ_text="Změna osoby"/&gt;
+  &lt;idOsobyPuvodce&gt;KSVYCHK&lt;/idOsobyPuvodce&gt;
+  &lt;osoba&gt;
+    &lt;idOsoby&gt;KRUPKA ROMA050373  1&lt;/idOsoby&gt;
+    &lt;druhRoleVRizeni&gt;DLUŽNÍK&lt;/druhRoleVRizeni&gt;
+    &lt;nazevOsoby&gt;Krupka&lt;/nazevOsoby&gt;
+    &lt;druhOsoby&gt;F&lt;/druhOsoby&gt;
+    &lt;jmeno&gt;Roman&lt;/jmeno&gt;
+    &lt;rc&gt;730305/0689&lt;/rc&gt;
+    &lt;datumNarozeni&gt;1973-03-05&lt;/datumNarozeni&gt;
+  &lt;/osoba&gt;
+&lt;/tns:udalost&gt;
+&lt;tns:udalost ... &gt;
+  &lt;info cas="2008-01-22 00:00:00.0" id="2646" oddil="" poradi="-1" typ="2" typ_text="Změna adresy osoby"/&gt;
+  &lt;idOsobyPuvodce&gt;KSVYCHK&lt;/idOsobyPuvodce&gt;
+  &lt;osoba&gt; ...  &lt;/osoba&gt;
+&lt;/tns:udalost&gt;</code></pre> 
+<p>O&nbsp;kvalitě tohoto zpracování jsem již napsal dost.</p> 
+<p>„Buďiž“, řekli byste si po prvním rozčarování, „budeme si tedy tvořit lokální databázi ISIR“. Jenže ouha. To, co přichází jako obsah, má jen velmi mlhavou definici, v&nbsp;jejímž rámci se dějí skutečné&nbsp;divy.</p> 
+<h5>Pořadí událostí</h5> 
+<p>Pokud byste čekali, že události chodí pro každé řížení zhruba ve stejném pořadí, tak jste velmi na omylu. Jednou se spis zakládá událostí typu <code>185 - Vyhláška o zahájení insolvenčního řízení</code>, jindy událostí typu <code>6 - Insolvenční návrh spojený s návrhem na povolení oddlužení</code>, jindy událostí typu <code>5 - Insolvenční návrh</code>, a jindy zase typu <code>204 - Pokyn insolvenčního soudu</code>.</p> 
+<p>Dále vám přijde událost s&nbsp;osobou:</p> 
+<pre class="brush: xml"><code>&lt;tns:udalost&gt;
+  &lt;info cas="2008-02-18 00:00:00.0" id="7859" oddil="" poradi="-1" typ="1" typ_text="Změna osoby"/&gt;
+  &lt;idOsobyPuvodce&gt;KSJICCB&lt;/idOsobyPuvodce&gt;
+    &lt;osoba&gt;
+    &lt;idOsoby&gt;CBS S.R.O25165488  1&lt;/idOsoby&gt;
+    &lt;druhRoleVRizeni&gt;DLUŽNÍK&lt;/druhRoleVRizeni&gt;
+    &lt;nazevOsoby&gt;CBS s.r.o.&lt;/nazevOsoby&gt;
+    &lt;druhOsoby&gt;P&lt;/druhOsoby&gt;
+    &lt;ic&gt;25165488&lt;/ic&gt;
+  &lt;/osoba&gt;
+&lt;/tns:udalost&gt;</code></pre> 
+<p>A&nbsp;o&nbsp;chvíli později přide další událost, která se liží <em>pouze v&nbsp;ID události</em>!</p> 
+<pre class="brush: xml"><code>&lt;tns:udalost&gt;
+  &lt;info cas="2008-02-18 00:00:00.0" id="7863" oddil="" poradi="-1" typ="1" typ_text="Změna osoby"/&gt;
+  &lt;idOsobyPuvodce&gt;KSJICCB&lt;/idOsobyPuvodce&gt;
+  &lt;osoba&gt;
+    &lt;idOsoby&gt;CBS S.R.O25165488  1&lt;/idOsoby&gt;
+    &lt;druhRoleVRizeni&gt;DLUŽNÍK&lt;/druhRoleVRizeni&gt;
+    &lt;nazevOsoby&gt;CBS s.r.o.&lt;/nazevOsoby&gt;
+    &lt;druhOsoby&gt;P&lt;/druhOsoby&gt;
+    &lt;ic&gt;25165488&lt;/ic&gt;
+  &lt;/osoba&gt;
+&lt;/tns:udalost&gt;</code></pre> 
+<p>Událost je tedy úplně zbytečná. Stejné je to ovšem i&nbsp;s&nbsp;jinými událostmi&nbsp;– např. pro adresu. A&nbsp;aby toho nebylo dost, tak takováto zbytečná událost se v&nbsp;jednom spise může objevit klidně třeba pětkrát.</p> 
+<p>Následně k&nbsp;tomu přistupují lahůdky typu „Mylný zápis“, kdy zpracujete nějakou událost, a následně přijde tato, která vám říká, že ta předchozí byla chybná a soudce ji zrušil. Co kdyby raději události týkající se onoho mylného zápisu vyřadili a informace o&nbsp;mylných zápisech by byly zpracované volitelně? Kdepak, pro CCA moc složité.</p> 
+<p><em><a href="isir_typy_akci.texy">Kompletní seznam událostí k&nbsp;1.7.2008</a></em></p> 
+<h4>Nesmysl druhý: nicneříkající události</h4> 
+<p>Velká spousta (ne-li většina) události nenesou jakoukoliv použitelnou informaci. Jako příklad vezměme třeba&nbsp;tuto:</p> 
+<pre class="brush: xml"><code>&lt;tns:udalost ... &gt;
+  &lt;info cas="2008-02-18 00:00:00.0" id="7865" oddil="A" poradi="2" typ="23" typ_text="Návrh - přílohy"/&gt;
+  &lt;idOsobyPuvodce&gt;KSJICCB&lt;/idOsobyPuvodce&gt;
+  &lt;vec&gt; &lt;druhStavRizeni&gt;NEVYRIZENA&lt;/druhStavRizeni&gt; &lt;/vec&gt;
+&lt;/tns:udalost&gt;</code></pre> 
+<p>Ta nám říká, že na budějovickém krajském soudu se objevila příloha k&nbsp;návrhu. Nic víc a žádné další informace se již ve webové službě neobjeví. <em>K&nbsp;čemu je taková událost?</em></p> 
+<p>Moje naprosto nejoblíbenější událost je typ „Jiné“:</p> 
+<pre class="brush: xml"><code>&lt;tns:udalost ... &gt;
+  &lt;info cas="2008-04-04 12:14:48.0" id="29563" oddil="P19" poradi="2" typ="239" typ_text="Jiné"/&gt;
+  &lt;idOsobyPuvodce&gt;KSJICCB&lt;/idOsobyPuvodce&gt;
+  &lt;vec&gt; &lt;druhStavRizeni&gt;KONKURS&lt;/druhStavRizeni&gt; &lt;/vec&gt;
+&lt;/tns:udalost&gt;</code></pre> 
+<p>Zde opravdu netuším, co tím chtěl básník říci. Pokud by se vám zdálo, že jde o&nbsp;tu položku KONKURS, tak nikoliv&nbsp;– ta již je ve spisu od přiřazení správce konkursu.</p> 
+<p>Zde si můžete prohlédnout <a href="isir_spis.htm">typický obsah spisu Insolvenčního rejstříku</a> (zde spis <code>INS 116~2008</code>).<br> Další takovéto dokumenty dám zájemcům k&nbsp;dispozici.</p> 
+<h4>Nesmysl třetí: chaos v&nbsp;datech</h4> 
+<p>Kdybyste programovali informační systém s&nbsp;identifikací osob podle rodného čísla, nejspíše byste vybrali nějakou formu jeho reprezentace a následně zajistili, všechna uložená rodná čísla měla stejný&nbsp;tvar.</p> 
+<p>Ne tak ve webové službě Insolvenční rejstřík&nbsp;– zde je v&nbsp;rodných číslech jedno, je-li s&nbsp;lomítkem, bez lomítka, nebo není uvedené&nbsp;vůbec.</p> 
+<p>Říkáte si, „jak může chybět rodné číslo? Jak potom identifikuji osobu?“ Odpověď zní: Nijak! Pokud totiž dlužník podává žádost o&nbsp;insolvenční řízeni, může požádat o&nbsp;skrytí svých osobních údajů, tedy rodného čísla i&nbsp;data narození, a vy jej tedy můžete identifikovat jen podle jména, příjmení a adresy.</p> 
+<p>Adresu vyplňuje opět soudce, takže bydlištěm Františka Dlužníka může být jednou <code>Ostrava-hrabůvka</code>, jindy „Ostrava&nbsp;– Hrabůvka“, a jindy zase „Ostrava Hrabůvka“; no a když se soudce přepíše, tak to může být klidně i „Ostrava Harbůvka“. Proč ne, když máme událost „Mylný zápis“…</p> 
+<h4>Suma sumárum</h4> 
+<p>Když to shrnu: Chápu, že u&nbsp;komplexního informačního systému, jako je ISIR, je obtížné reflektovat často se měnící požadavky zadavatele často s&nbsp;nereálnými termíny dokončení, a webová služba zpřístupňující vybrané údaje pak podle toho může vypadat.</p> 
+<p>Je však mnoho věcí, od maličkostí po zcela zásadní, které firma CCA Group provést mohla, ale neprovedla. Jedná se o&nbsp;typickou ukázku nezdravosti státních zakázek:</p> 
+<ul> 
+ <li>Zadavateli (ministerstvo spravedlnosti) je jedno, jak kvalitní služba je, hlavně když je principiálně vůbec možné, aby byl s&nbsp;její pomocí splněn požadavek zákona.</li> 
+ <li>Zhotoviteli (CCA Group) je jedno, jak kvalitní služba je, jen když to bude stačit zadavateli.</li> 
+ <li>Programátoři, kteří musí tuto službu následně používat, mohou remcat, jak chtějí, ale dokud nebude zhotovitel nějakým způsobem motivován k&nbsp;tomu, aby byla webová služba kvalitní, do té doby mají&nbsp;smůlu.</li> 
+</ul></div>
+
+	<hr />
+
+
+    <!-- Facebook comments -->
+        <div class="fb-comments" data-href="http://www.zizka.ch/pages/programovani/insolvencni_rejstrik-isir_ws/nesmysly_v_isir.html" data-width="800" data-numposts="5"></div>
+
+    </div>
+    <div id="push"></div>
+
+</div>
+
+<div id="footer">
+    <div class="container">
+        <p class="muted credit">&copy; 2018 | Mixed with <a href="http://getbootstrap.com/">Bootstrap v3.3.7</a> | Baked with <a href="http://jbake.org">JBake v2.7.0-SNAPSHOT</a></p>
+    </div>
+</div>
+
+<script src="../../../js/jquery-1.11.1.min.js"></script>
+<script src="../../../js/bootstrap.min.js"></script>
+<script src="../../../js/prettify.js"></script>
+
+<!-- Facebook comments -->
+<div id="fb-root"></div>
+<script>
+    (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://connect.facebook.net/cs_CZ/sdk.js#xfbml=1&version=v3.0';
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+</script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-4584951-4"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-4584951-4');
+</script>
+
+</body>
+</html>

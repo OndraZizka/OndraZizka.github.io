@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>Artificial Intelligence - Ondřej Žižka</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="My personal web">
+    <meta name="author" content="Ondřej Žižka">
+    <meta name="generator" content="JBake">
+
+
+    <link rel="stylesheet" href="../../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../css/asciidoctor.css">
+    <link rel="stylesheet" href="../../../css/base.css">
+    <link rel="stylesheet" href="../../../css/doc-body.css">
+    <link rel="stylesheet" href="../../../css/prettify.css">
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+    <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+
+    <!-- Fav and touch icons -->
+    <!--<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">-->
+    <link rel="shortcut icon" href="../../../favicon.ico">
+</head>
+<body onload="prettyPrint()">
+    <div id="wrap">
+
+	<!-- Fixed navbar -->
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="http://www.zizka.ch/">Ondřej Žižka</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="../../../index.html">Blog</a></li>
+            <li><a href="../../../archive.html">Archive</a></li>
+            <li><a href="../../../tags">Tags</a></li>
+
+            <li><a href="../../../about.html">About Me</a></li>
+            <li><a href="../../../feed.xml">RSS feed</a></li>
+            <li><a href="../../../sitemap.xml">Sitemap</a></li>
+            <!--
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li class="divider"></li>
+                <li class="dropdown-header">Nav header</li>
+                <li><a href="#">Separated link</a></li>
+                <li><a href="#">One more separated link</a></li>
+              </ul>
+            </li>
+            -->
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+    <div class="container">
+
+	<div class="page-header">
+        <h1>Artificial Intelligence - Ondřej Žižka</h1>
+	</div>
+
+	<div class="date"><em>2012-12-13</em></div>
+
+	<div class="doc-body"><h3>Artificial Intelligence</h3> 
+<p>My efforts on the fields of artificial intelligence include:</p> 
+<ul> 
+ <li>Genetic algorithms</li> 
+ <li>Neural Networks with supervisor</li> 
+ <li>Ant theory</li> 
+ <li>Triples theory</li> 
+ <li>Bussines Social algorithm</li> 
+</ul> 
+<p>So far, I've made the following implementations on that subjects.</p> 
+<h4>Implementations</h4> 
+<p>Since I&nbsp;hate doing ad-hoc single-purpose implementations, I&nbsp;always try to do as much generalization as possible or reasonable. Java and JavaScript implementations are fully object-oriented. SQL implementation is currently limited to feed-forward due to optimizations, but can be easily tweaked to be generally usable for any type of network. I've implemented most of other AI's&nbsp;paradigms, but those are just proofs of concept.</p> 
+<h4>Neural Networks and Backpropagation in JavaScript</h4> 
+<p>My first implementation of neural networks. Started as a proof of concept, later it became a solid OOP model of neural networks and teaching methods.</p> 
+<p>Here you can download the files. I&nbsp;didn't write any documentation for the JavaScript implementation, but since the model is the same as in Java, you can see the concept in Javadoc documentation (see and download below).</p> 
+<p><a href="neural_networks/download/Ondra_Zizka-Neural_Networks_JavaScript_implementation.zip">DOWNLOAD</a></p> 
+<h4>Neural Networks and Backpropagation in Java</h4> 
+<p>JavaScript implementation re-written to Java. Thus, much faster. Otherwise it keeps the original idea of maximum independence of distinct parts of the model (e.g., computing versus teaching).</p> 
+<p>What's&nbsp;implemented? Not much, actually:</p> 
+<ul> 
+ <li>General neural networks stuff like Neurons, Synapses, Transfer functions&nbsp;etc.</li> 
+ <li>A&nbsp;perceptron networks generator, which creates perceptrons based on layers definition.</li> 
+ <li>A&nbsp;Teacher, or „Supervisor“, which teaches the neural net using backpropagation.</li> 
+</ul> 
+<p>I&nbsp;didn't have time to lead the project to a state when anyone could use it as easily as <a href="http://www.jooneworld.com/">Joone</a> or <a href="http://openai.sourceforge.net/">OpenAI's&nbsp;imple­mentation</a>, but this can be very appropriate when your needs are simple, as for school projects and simple web applets.</p> 
+<p>This implementation was made as a part of a school AI project.<br> It's&nbsp;description can be found <a href="neural_networks/pongai_doc/package.html">here</a>.<br> It's&nbsp;JavaDoc documentation can be found <a href="/projekty/neural/pong/doc/index.html">here</a>.</p> 
+<p><a href="neural_networks/download/Ondra_Zizka-Neural_Networks_Java_implementation.zip">DOWNLOAD</a></p> 
+<p>Anyone is welcome to implement more concepts&nbsp;– like recurent networks, Kohonen maps, Hopfield network etc. The existing model is suitable for&nbsp;this.</p> 
+<h4>Neural Networks and Backpropagation in SQL Stored Procedures</h4> 
+<p>My last work in fields of artifical intelligence is an implementation of neural networks and in SQL. Using a library of Stored Procedures, you can create neural networks, teach them using backpropagation algorithm, and then use them, all just by calling very simple Stored Procedures&nbsp;API.</p> 
+<p>Further info about <a href="../neural_networks_in_sql_stored_procedures/index.texy">SQL implementation of neural networks</a> on a dedicated&nbsp;page.</p> 
+<h4>Other stuff</h4> 
+<p>These are just some humble ideas.</p> 
+<p><a href="developement_plan_of_artificial_cognition.texy">Plan to develop artificial cognition&nbsp;– what has to be done</a><br> <a href="covering_ai_theory.texy">Covering Artificial Intelligence Theory</a><br> <a href="business_society_algorithm.texy">Business Society Algorithm</a></p></div>
+
+	<hr />
+
+
+    <!-- Facebook comments -->
+        <div class="fb-comments" data-href="http://www.zizka.ch/pages/programovani/artificial_intelligence/index.html" data-width="800" data-numposts="5"></div>
+
+    </div>
+    <div id="push"></div>
+
+</div>
+
+<div id="footer">
+    <div class="container">
+        <p class="muted credit">&copy; 2018 | Mixed with <a href="http://getbootstrap.com/">Bootstrap v3.3.7</a> | Baked with <a href="http://jbake.org">JBake v2.7.0-SNAPSHOT</a></p>
+    </div>
+</div>
+
+<script src="../../../js/jquery-1.11.1.min.js"></script>
+<script src="../../../js/bootstrap.min.js"></script>
+<script src="../../../js/prettify.js"></script>
+
+<!-- Facebook comments -->
+<div id="fb-root"></div>
+<script>
+    (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://connect.facebook.net/cs_CZ/sdk.js#xfbml=1&version=v3.0';
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+</script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-4584951-4"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-4584951-4');
+</script>
+
+</body>
+</html>

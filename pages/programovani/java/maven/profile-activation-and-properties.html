@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>Maven: Profile activation and properties - Ondřej Žižka</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="My personal web">
+    <meta name="author" content="Ondřej Žižka">
+    <meta name="generator" content="JBake">
+
+
+    <link rel="stylesheet" href="../../../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../../css/asciidoctor.css">
+    <link rel="stylesheet" href="../../../../css/base.css">
+    <link rel="stylesheet" href="../../../../css/doc-body.css">
+    <link rel="stylesheet" href="../../../../css/prettify.css">
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+    <script src="../../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+
+    <!-- Fav and touch icons -->
+    <!--<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">-->
+    <link rel="shortcut icon" href="../../../../favicon.ico">
+</head>
+<body onload="prettyPrint()">
+    <div id="wrap">
+
+	<!-- Fixed navbar -->
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="http://www.zizka.ch/">Ondřej Žižka</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="../../../../index.html">Blog</a></li>
+            <li><a href="../../../../archive.html">Archive</a></li>
+            <li><a href="../../../../tags">Tags</a></li>
+
+            <li><a href="../../../../about.html">About Me</a></li>
+            <li><a href="../../../../feed.xml">RSS feed</a></li>
+            <li><a href="../../../../sitemap.xml">Sitemap</a></li>
+            <!--
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li class="divider"></li>
+                <li class="dropdown-header">Nav header</li>
+                <li><a href="#">Separated link</a></li>
+                <li><a href="#">One more separated link</a></li>
+              </ul>
+            </li>
+            -->
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+    <div class="container">
+
+	<div class="page-header">
+        <h1>Maven: Profile activation and properties - Ondřej Žižka</h1>
+	</div>
+
+	<div class="date"><em>2012-12-13</em></div>
+
+	<div class="doc-body"><h3>Maven: Profile activation and properties</h3> 
+<p>I&nbsp;was wondering whether you can use both of these scenarios with the same property:</p> 
+<ol> 
+ <li>Activate the profile using <code>-P</code> and set the property in the profile</li> 
+ <li>Activate the profile using <code>-D</code> + <code>&lt;activation&gt;</code>.</li> 
+</ol> 
+<h4>„Transitive“ activation: Does not work.</h4> 
+<p>By transitive activation, I&nbsp;mean that one profile sets a property which activates the other profile. That does not&nbsp;work.</p> 
+<pre class="brush: xml"><code>&lt;profiles&gt;
+  &lt;profile&gt;
+    &lt;id&gt;foo&lt;/id&gt;
+
+    &lt;properties&gt;
+      &lt;foo&gt;BBBBBB&lt;/foo&gt;
+      &lt;foo2&gt;true&lt;/foo2&gt;
+    &lt;/properties&gt;
+
+    &lt;build&gt;
+      &lt;plugins&gt;
+        &lt;plugin&gt; &lt;artifactId&gt;maven-antrun-plugin&lt;/artifactId&gt;
+          &lt;executions&gt; &lt;execution&gt; &lt;id&gt;E1&lt;/id&gt; &lt;phase&gt;initialize&lt;/phase&gt;  &lt;goals&gt;&lt;goal&gt;run&lt;/goal&gt;&lt;/goals&gt; &lt;configuration&gt; &lt;tasks&gt;
+            &lt;echo&gt;  *** foo:  ${foo} ***  &lt;/echo&gt;
+          &lt;/tasks&gt; &lt;/configuration&gt; &lt;/execution&gt; &lt;/executions&gt;
+        &lt;/plugin&gt;
+      &lt;/plugins&gt;
+    &lt;/build&gt;
+
+  &lt;/profile&gt;
+
+
+  &lt;profile&gt;
+    &lt;id&gt;foo2&lt;/id&gt;
+    &lt;activation&gt;&lt;property&gt; &lt;name&gt;foo2&lt;/name&gt; &lt;/property&gt; &lt;/activation&gt;
+
+    &lt;build&gt;
+      &lt;plugins&gt;
+        &lt;plugin&gt; &lt;artifactId&gt;maven-antrun-plugin&lt;/artifactId&gt;
+          &lt;executions&gt; &lt;execution&gt; &lt;id&gt;E2&lt;/id&gt; &lt;phase&gt;initialize&lt;/phase&gt;  &lt;goals&gt;&lt;goal&gt;run&lt;/goal&gt;&lt;/goals&gt; &lt;configuration&gt; &lt;tasks&gt;
+            &lt;echo&gt;  *** FOO2 activated too! ***  &lt;/echo&gt;
+          &lt;/tasks&gt; &lt;/configuration&gt; &lt;/execution&gt; &lt;/executions&gt;
+        &lt;/plugin&gt;
+      &lt;/plugins&gt;
+    &lt;/build&gt;
+
+  &lt;/profile&gt;
+&lt;/profiles&gt;</code></pre> 
+<h4>Two-way activation: Works.</h4> 
+<p>A&nbsp;couple of details:</p> 
+<ul> 
+ <li>The <code>&lt;activation&gt;</code> by property is not triggered when the property is not set on the command line&nbsp;–</li> 
+</ul> 
+<p>thus, setting it in `&lt;properties&gt; does not activate the profile.</p> 
+<ul> 
+ <li>When you set the prop on cmdline, it activates the profile; however, it's <code>&lt;properties&gt;</code> does not override the value of the&nbsp;prop.</li> 
+</ul> 
+<pre class="brush: xml"><code>&lt;project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd"&gt;
+  &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+
+  &lt;groupId&gt;cz.dynawest.maven.playground&lt;/groupId&gt;
+  &lt;artifactId&gt;props&lt;/artifactId&gt;
+  &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;
+  &lt;packaging&gt;pom&lt;/packaging&gt;
+
+  &lt;name&gt;Maven Playground - props&lt;/name&gt;
+
+  &lt;properties&gt;
+    &lt;foo&gt;AAAAA&lt;/foo&gt;
+  &lt;/properties&gt;
+
+  &lt;profiles&gt;
+    &lt;profile&gt;
+      &lt;id&gt;foo&lt;/id&gt;
+      &lt;activation&gt;
+        &lt;property&gt;
+          &lt;name&gt;foo&lt;/name&gt;
+        &lt;/property&gt;
+      &lt;/activation&gt;
+
+      &lt;properties&gt;
+        &lt;foo&gt;BBBBBB&lt;/foo&gt;
+      &lt;/properties&gt;
+
+      &lt;build&gt;
+        &lt;plugins&gt;
+          &lt;plugin&gt; &lt;artifactId&gt;maven-antrun-plugin&lt;/artifactId&gt;
+            &lt;executions&gt; &lt;execution&gt; &lt;phase&gt;initialize&lt;/phase&gt;  &lt;goals&gt;&lt;goal&gt;run&lt;/goal&gt;&lt;/goals&gt; &lt;configuration&gt; &lt;tasks&gt;
+              &lt;echo&gt;  *** foo:  ${foo} ***  &lt;/echo&gt;
+            &lt;/tasks&gt; &lt;/configuration&gt; &lt;/execution&gt; &lt;/executions&gt;
+          &lt;/plugin&gt;
+        &lt;/plugins&gt;
+      &lt;/build&gt;
+
+    &lt;/profile&gt;
+  &lt;/profiles&gt;
+
+&lt;/project&gt;</code></pre> 
+<pre class="brush: plain"><code>ondra@ondra-redhat:~/work-unrelated/MavenPlayground/props$ mvn test -Dfoo
+[INFO] Scanning for projects...
+[INFO] ------------------------------------------------------------------------
+[INFO] Building Maven Playground - props
+[INFO]    task-segment: [test]
+[INFO] ------------------------------------------------------------------------
+[INFO] [antrun:run {execution: default}]
+[INFO] Executing tasks
+     [echo] *** foo:  true ***
+[INFO] Executed tasks</code></pre> 
+<pre class="brush: plain"><code>ondra@ondra-redhat:~/work-unrelated/MavenPlayground/props$ mvn test -Pfoo
+[INFO] Scanning for projects...
+[INFO] ------------------------------------------------------------------------
+[INFO] Building Maven Playground - props
+[INFO]    task-segment: [test]
+[INFO] ------------------------------------------------------------------------
+[INFO] [antrun:run {execution: default}]
+[INFO] Executing tasks
+     [echo] *** foo:  BBBBBB ***
+[INFO] Executed tasks</code></pre> 
+<pre class="brush: plain"><code>[INFO] Scanning for projects...
+[INFO] ------------------------------------------------------------------------
+[INFO] Building Maven Playground - props
+[INFO]    task-segment: [test]
+[INFO] ------------------------------------------------------------------------
+[INFO] No goals needed for project - skipping</code></pre></div>
+
+	<hr />
+
+
+    <!-- Facebook comments -->
+        <div class="fb-comments" data-href="http://www.zizka.ch/pages/programovani/java/maven/profile-activation-and-properties.html" data-width="800" data-numposts="5"></div>
+
+    </div>
+    <div id="push"></div>
+
+</div>
+
+<div id="footer">
+    <div class="container">
+        <p class="muted credit">&copy; 2018 | Mixed with <a href="http://getbootstrap.com/">Bootstrap v3.3.7</a> | Baked with <a href="http://jbake.org">JBake v2.7.0-SNAPSHOT</a></p>
+    </div>
+</div>
+
+<script src="../../../../js/jquery-1.11.1.min.js"></script>
+<script src="../../../../js/bootstrap.min.js"></script>
+<script src="../../../../js/prettify.js"></script>
+
+<!-- Facebook comments -->
+<div id="fb-root"></div>
+<script>
+    (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://connect.facebook.net/cs_CZ/sdk.js#xfbml=1&version=v3.0';
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+</script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-4584951-4"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-4584951-4');
+</script>
+
+</body>
+</html>

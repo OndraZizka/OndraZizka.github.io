@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>Nevýhody PHP v praktických ukázkách __aneb__
+Yet Another „Why PHP Sucks“ Page - Ondřej Žižka</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="My personal web">
+    <meta name="author" content="Ondřej Žižka">
+    <meta name="generator" content="JBake">
+
+
+    <link rel="stylesheet" href="../../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../css/asciidoctor.css">
+    <link rel="stylesheet" href="../../../css/base.css">
+    <link rel="stylesheet" href="../../../css/doc-body.css">
+    <link rel="stylesheet" href="../../../css/prettify.css">
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+    <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+
+    <!-- Fav and touch icons -->
+    <!--<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">-->
+    <link rel="shortcut icon" href="../../../favicon.ico">
+</head>
+<body onload="prettyPrint()">
+    <div id="wrap">
+
+	<!-- Fixed navbar -->
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="http://www.zizka.ch/">Ondřej Žižka</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="../../../index.html">Blog</a></li>
+            <li><a href="../../../archive.html">Archive</a></li>
+            <li><a href="../../../tags">Tags</a></li>
+
+            <li><a href="../../../about.html">About Me</a></li>
+            <li><a href="../../../feed.xml">RSS feed</a></li>
+            <li><a href="../../../sitemap.xml">Sitemap</a></li>
+            <!--
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li class="divider"></li>
+                <li class="dropdown-header">Nav header</li>
+                <li><a href="#">Separated link</a></li>
+                <li><a href="#">One more separated link</a></li>
+              </ul>
+            </li>
+            -->
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+    <div class="container">
+
+	<div class="page-header">
+        <h1>Nevýhody PHP v praktických ukázkách __aneb__
+Yet Another „Why PHP Sucks“ Page - Ondřej Žižka</h1>
+	</div>
+
+	<div class="date"><em>2012-12-16</em></div>
+
+	<div class="doc-body"><h3>Nevýhody PHP v&nbsp;praktických ukázkách __aneb__<br> Yet Another „Why PHP Sucks“&nbsp;Page</h3> 
+<p>Když jsem sestavil docela dlouhý, ale přesto neúplný <a href="vyhody_a_nevyhody_php.texy">seznam nevýhod PHP</a>, ozvalo se celkem dost lidí s&nbsp;nechápavými dotazy, proč, co a jaktože.</p> 
+<h4>„Proč pomlouváš PHP!?“</h4> 
+<p>Nevím, jestli má smysl brát PHPčkářům jejich modlu. Někdo by se skoro mohl divit, proč se vlastně do PHPka tak pouštím. Inu, není to proto, že bych ho z&nbsp;duše nenáviděl, či tak něco… Prostě a jednoduše jsem čuchnul k&nbsp;lepšímu a od té doby&nbsp;–mě PHP čim dál více– vidím na PHP čím dál více chyb. A&nbsp;proč tedy píšu tyhle „remcy“, „hemzy“ a „ranty“? Nejspíš abych si ujasnil, zda je na tom PHP opravdu tak špatně.</p> 
+<hr> 
+<p>Učit se novou technologii dá docela práci a chce to svůj čas. Jedním z&nbsp;mých oblíbených citátů z&nbsp;oblasti IT&nbsp;je:</p> 
+<blockquote> 
+ <p>Entrance to the world of Java is a cultural conversion, not a choice of one simple programming language over another.</p> 
+</blockquote> 
+<p>Vlastně se mi ten citát líbí tak moc, že jej musím uvést v&nbsp;širším kontextu (byť není pro mou oblíbenou Javu nikterak příznivý):</p> 
+<blockquote> 
+ <p>Java Server Pages (link to Jakarta project) is reminiscent in nature of the Microsoft ASP framework, but intended from the ground up for enthusiasts of Java, Enterprise Beans and the whole industry that has grown up around them. A&nbsp;detractor of the juggernaut might describe it as being for people with more money than sense but we try to remain agnostic.</p> 
+ <p>Choosing to use the panoply of tools and techniques engrossed by this world is not a tactical or pragmatic choice of how to get something built but is likely to based more on a strategic perception of how you believe the industry will develop. If all you want is an active website with a database backend, this is going to be overkill unless you already have the range of skills in-house. Entrance to this world is a cultural conversion, not a choice of one simple programming language over another.</p> 
+ <p style="text-align:right"><em>– <a href="http://training.gbdirect.co.uk/courses/php/comparison_php_versus_perl_vs_asp_jsp_vs_vbscript_web_scripting.html">Active Web Sites and Comparison of Scripting Languages</a> (autor neznámý)</em></p> 
+</blockquote> 
+<p>Já mám teď poslední prázdniny, a tak jsem se rozhodl využít poslední příležitost k&nbsp;této kulturní konverzi a dělám první vlastní komerční projekt v&nbsp;Javě a Java EE&nbsp;– a musím říci, že zatím ke vší spokojenosti a rozhodně nelituji. V&nbsp;PHP bych to už&nbsp;vzdal.</p> 
+<p>No a tím se dostáváme k&nbsp;praktickým symptomům nevýhod PHP, uvedených v&nbsp;onom článku. Mám velikou chuť rozebrat je opravdu všechny a dokázat, že k&nbsp;většině tvrzení mám pádný důvod a že se skutečně jedná o&nbsp;nevýhody; za to ale od nikoho na chleba nedostanu, leda by mě zaměstnal marketing Sunu, popřípadě RedHatu, IBM, BEA a dalších velkých hráčů na poli Javy&nbsp;:-)</p> 
+<h4>Praktické projevy nevýhod v&nbsp;PHP</h4> 
+<p>Pokud chcete rovnou na konec, tedy k&nbsp;hotovému zmrvenému produktu, čtěte <a href="vysledek_nasazeni_php_aneb_navrch_huj_uvnitr_fuj.texy">Výsledek nasazení PHP v&nbsp;praxi aneb navrch huj, uvnitř fuj</a>.</p> 
+<p>Ale vezměme to podle seznamu…</p> 
+<blockquote> 
+ <p>PHP: The work-around language</p> 
+</blockquote> 
+<h5>* PHP nemá danou politiku vývoje, místo toho nadále jen kopíruje prvky jiných jazyků.</h5> 
+<p>Tohle byl asi hlavní důvod mého postupného rozčarování z&nbsp;PHP.</p> 
+<p>Když jsem se jako mladý učil PHP z&nbsp;čerstvě vydané knihy Jiřího Koska, PHP mě samozřejmě ohromilo: Psát dynamické webové stránky bylo najednou tak jednoduché. Prostě jste zkopírovali kód z&nbsp;ukázky, poupravili, a jelo&nbsp;to!</p> 
+<blockquote> 
+ <h4>Rasmus Lerdorf o&nbsp;historii PHP</h4> 
+ <p>PHP se vyvinulo tak, že Rasmus Lerdorf ke své sadě nástrojů <em>Personal Home Page Tools</em> přidával stále další funkce, které uživatelé vyžadovali. Vypráví o&nbsp;tom&nbsp;takto:</p> 
+ <p>„Nevím jak to zastavit, nikdy jsem nezamýšlel vytvořit programovací jazyk […] Nemám ani ponětí o&nbsp;tom, jak se píší programovací jazyky. Prostě jsem vždy jen přidával další logický krok v&nbsp;pořadí.“</p> 
+ <p><em>Celý rozhovor s&nbsp;Rasmusem Lerdorfem najdete na server ITConversations: <a href="http://itc.conversationsnetwork.org/shows/detail58.html">http://itc.conversationsnetwork.org/…etail58.html</a>.</em></p> 
+ <p>A&nbsp;přesně ve stejném duchu vývoj PHP pokračuje dodnes&nbsp;– That's&nbsp;the PHP&nbsp;way.</p> 
+</blockquote> 
+<p>Jak se postupem času vyvíjíte, začnou vám některé věci dost vadit. Při psaní prvního „svého frameworku“ objevíte nepříjemné chyby v&nbsp;návrhu OOP a při použítí referencí se objevují záhadné chyby. Zejména pokud paralelně programujete v&nbsp;nějakém vyspělém jazyce s&nbsp;dobrým návrhem (Java, C#, JavaScript), časem se vám ztratí úsměv z&nbsp;tváře, čím dál častěji kroutíte hlavou a nakonec vzteky bušíte do stolu a kontrolujete blogy vývojářů PHP, jestli už se náhodou nechystají tu kterou pitomost z&nbsp;jazyka odstranit&nbsp;– a <a href="http://www.php.net/~derick/meeting-notes.html">zase vás zklamou</a>:</p> 
+<ul> 
+ <li> 
+  <ul> 
+   <li>Pojmenování funkcí zůstane stejně nekonzistentní</li> 
+   <li><a href="http://www.php.net/~derick/meeting-notes.html#make-parameter-order-consistent-over-all-functions">Logika pořadí parametrů zůstane stejně nekonzistentní</a></li> 
+   <li>Array nikdy nebude objekt (ale kdo ví?)</li> 
+   <li>Reference z&nbsp;jazyka nezmizí</li> 
+   <li>Objektový model bude pořád někde napůl cesty mezi PHP 4&nbsp;a&nbsp;Javou</li> 
+   <li><a href="http://www.php.net/~derick/meeting-notes.html#name-spaces">Funkce nadále nebudou vyhazovat výjimky, ale vracet <code>FALSE</code></a> (vypadá to na zásadní nepochopení ze strany autorů, k&nbsp;čemu jsou výjimky)</li> 
+   <li><code>integer</code> se bude chovat stále stejně pitomě</li> 
+   <li><a href="http://www.php.net/~derick/meeting-notes.html#name-spaces">Jmenné prostory budou nejspíš jednoúrovňové, <em>pokud vůbec&nbsp;budou</em></a></li> 
+   <li>atd. atd.</li> 
+  </ul> </li> 
+</ul> 
+<p>Naštěstí si ještě zachovali dost rozumu na to, aby neimplementovali <a href="http://www.php.net/~derick/meeting-notes.html#ifsetor-as-replacement-for-foo-isset-foo-foo-something-else">úplné hovadiny</a>, pravděpodobně proto, že se chystají i&nbsp;nadále jít cestou Javy a zavést deklarace.</p> 
+<blockquote> 
+ <p>If something isn't done soon, then more and more coders using PHP will move on to Ruby and Python and PHP will become the new Perl. I&nbsp;can hear it now, „What ever happen to PHP?“ or „Pfft, no one programs in PHP anymore!“ or „Man, I&nbsp;had to maintain legacy PHP application!“</p> 
+ <p style="text-align:right">-- Jacob Santos, <a href="http://www.santosj.name/programming/php-related/php-is-turning-into-the-classic-asp/">PHP is turning into the Classic&nbsp;ASP</a></p> 
+</blockquote> 
+<h5>* Některé rysy jazyka svádějí ke špatným stylům programování</h5> 
+<blockquote> 
+ <p>„That's&nbsp;the PHP way.“</p> 
+</blockquote> 
+<p>A&nbsp;co některé, rovnou si je vyjmenujme:</p> 
+<h4>Array()&nbsp;– rezignace na OOP.</h4> 
+<p>Spoustu PHP skriptařů si nemůže vynachválit, jak moc je <code>Array()</code> univerzální&nbsp;– můžete jej použít jako pole, jako hash, jako frontu, jako zásobník, můžete s&nbsp;ním vybudovat vícerozměrné pole, ale i&nbsp;strom nebo obecný&nbsp;graf.</p> 
+<p><em>Jenže k&nbsp;čemu to je?</em> Kdo potřebuje datový typ, který je zároveň fronta a zároveň strom? Kdo potřebuje indexovat v&nbsp;jedné struktuře jak podle pole, tak podle čísel? Jenom programátorská prasata. (But that's&nbsp;the PHP&nbsp;way).</p> 
+<p>Slušný programátor, který má ohled na ty, co budou kód po něm číst (včetně jeho samotného), po provedení analýzy a vytvoření návrhu pro každou třídu „entit reálného světa“ vyskytující se v&nbsp;návrhu vytvoří v&nbsp;programovém modelu odpovídající třídu a zachytí jejich vzájemné vztahy.</p> 
+<p>Ne tak programátoři v&nbsp;PHP. Zde je slušností co nejvíce poctít svátost boha <code>Array</code>e a pokud je to byť jen trochu možné, pak jej použít, nejlépe hned v&nbsp;několika významech. Co na tom, že chceme reprezentovat strom obsahující objekty, které mají identifikátor a kolekci čísel? Jednoduše uděláme schizofrenní „Array()“, který má pod indexem <code>["id"]</code> identifikátor, pod indexem <code>["numbers"]</code> další <code>Array</code> s&nbsp;čísly a pod číselnými indexy ukryjeme potomky uzlu. Nebo obráceně? To je jedno… <em>That's&nbsp;the PHP&nbsp;way!</em></p> 
+<h4><code>FALSE</code>&nbsp;– taktní, diskrétní a nevtíravé (ne)oznámení&nbsp;chyby.</h4> 
+<p>Pokud existuje sebemenší šance, že dojde k&nbsp;chybě, slušný programátor vyhodí výjimku, kterou při pozdějším volání metody prostě nelze opomenout a musíte ji ošetřit&nbsp;– jinak se vám kód nepřeloží.</p> 
+<p>PHP skriptař však po vzoru nativních PHP funkcí vrací</p> 
+<ul> 
+ <li>buď <a href="http://cz2.php.net/set_error_handler"><code>NULL</code></a>,</li> 
+ <li>nebo <a href="http://cz2.php.net/manual/en/function.stats-cdf-beta.php">jednu z&nbsp;hodnot <code>1, 2, 3, 4</code> nebo opačnou hodnotu některého parametru</a>,</li> 
+ <li>nebo <a href="http://cz2.php.net/manual/en/function.trigger-error.php"><code>FALSE</code></a>,</li> 
+ <li>nebo <a href="http://cz2.php.net/manual/en/function.feof.php"><code>TRUE</code></a>.</li> 
+</ul> 
+<p>Z&nbsp;těchto možností vybere náhodně. <em>That's&nbsp;the PHP&nbsp;way!</em></p> 
+<p>Snad nikdo nepoužívá <code>trigger_error(...)</code>&nbsp;– jednak je to víc písmenek než <code>return FALSE;</code> a jednak by se pak někde musel mořit se <code>set_error_handler()</code>, a to je kopice psaní… radši vrátíme ten <code>fóls</code>. O&nbsp;tom, že později se na kontrolu chybové návratové hodnoty vykašle, nemusíte ani chvilku pochybovat; a pokud přeci jen, tak nejspíše vyplodí nějaký bug kvůli typové konverzi.</p> 
+<h4>Reference</h4> 
+<p>Ti opravdoví PHP experti (řekněme <a href="http://cz2.php.net/fsockopen">PHP-developer senior</a>) však využijí pokročilou funkci jazyka, a to jsou reference! Jednoduše narvou návratové hodnoty do parametrů, a programátore, hledej:</p> 
+<blockquote> 
+ <p>If the value returned in errno is 0&nbsp;and the function returned FALSE, it is an indication that the error occurred before the connect() call. This is most likely due to a problem initializing the socket.</p> 
+</blockquote> 
+<p>Kde já jsem tohle viděl? Á, už vím! Einstein kdysi vymyslel takovou <a href="/stranky/osobni/einsteinova_logicka_hra.texy">logickou hru</a>:</p> 
+<blockquote> 
+ <p>Je pět pět parametrů, každý nese hodnotu nějakého typu. Když návratová hodnota boolean a v&nbsp;prostřední hodnotě je nula, potom včelař nebydlí v&nbsp;modrém domě. Nastal chybový&nbsp;stav?</p> 
+</blockquote> 
+<p>Skutečně by nebylo lepší toto?</p> 
+<pre><code>try{
+  fsockopen(...);
+}
+catch( IOException ex ){
+  ...
+}</code></pre> 
+<h4>Array()&nbsp;– univerzální návratová hodnota.</h4> 
+<p>Programátor v&nbsp;objektově orientovaném jazyce, pokud potřebuje z&nbsp;funkce více informací, než stačí pokrýt skalární hodnota jednoho typu, vytvoří si pro přenos informace třídu a vrací si objekt daného typu. Konec konců, když už se mu takový objekt odněkud vrací, pravděpodobně se jedná o&nbsp;třídu entit z&nbsp;reálného světa a tedy ji využije i&nbsp;jinde v&nbsp;modelu aplikace.</p> 
+<p>Lepič PHP kódu však má k&nbsp;dispozici mnoho úžasných vlastností jazyka PHP, jako třeba dynamickou typovost, a tak třeba jednou vrací string a jindy integer.</p> 
+<p>A&nbsp;pokud by nestačily ani všechny typy, co jich PHP má, tedy skalární hodnoty různých typů v&nbsp;kombinaci s <code>FALSE</code> a <code>null</code>, použije se prostě <code>Array</code> jako hash a do něj se pod nějaké indexy (<a href="http://cz2.php.net/manual/en/function.posix-getgrgid.php">někdy stringy</a>, <a href="http://cz2.php.net/manual/en/function.gd-info.php">někdy divoké stringy</a>, <a href="http://cz2.php.net/manual/en/function.getimagesize.php">někdy čísla</a>&nbsp;– to je fuk) narveme, co chceme.</p> 
+<p>That's&nbsp;the PHP way.</p> 
+<h5>* Oficiálně není zaručena zpětná kompatibilita</h5> 
+<p>V&nbsp;jednom nejmenovaném velkém českém portálu jedou doteď na PHP 4. „Ježiši!“, říkáte si. A&nbsp;máte pravdu! Jsou tam snad masochisti?&nbsp;Proč??</p> 
+<p>Odpověď je snadná:</p> 
+<p>Protože kdysi jakýsi manažer učinil rozhodnutí, že pojedou na PHP. Rok po tomhle rozhodnutí ho vyhodili a dodnes jeho volby litují, když při pohovoru musí uchazeče zkoušet z&nbsp;PHP 4&nbsp;a jeho chyb v&nbsp;návrhu (vlastností, chcete-li) a místo přepisu do PHP 5, který zoušeli, ale stálo by je to několik měsíců přepisování (s&nbsp;výhledem dalšího přepisu do PHP 6, 7, 8… se již raději poohlížejí po technologii, kde zpětná kompatibilita není jen prázdná&nbsp;fráze.</p> 
+<p>Takových příkladů by se jistě dalo najít víc, ale asi to nemá smysl vypočítávat, protože zase můžete kontrovat Wikipedií a dalšími úspěšnými weby, které zůstávají u&nbsp;PHP (aspoň u&nbsp;prezenční vrstvy).</p> 
+<p>Obvyklá odpověď PHPčkářů je, že pokud by člověk nepsal jako prase, tak kód bez problémů běží i&nbsp;na nové verzi. To je samozřejmě naprostý nesmysl, který může pronést jen někdo, kdo se v&nbsp;používání PHP nedostal dál než k&nbsp;lepení ukázek zkopírovaných z&nbsp;manuálu PHP. Už jen změny v&nbsp;objektovém modelu a práci s&nbsp;referencemi činí ze starého kódu odpad, který je natolik nekompatibilní, že spíš než refaktorizace se vyplatí redesign a nová implementace.</p> 
+<h5>* Programátor nemá zaručené cílové prostředí, mnoho věcí přímo ovlivňujících chování PHP lze změnit pouze mimo soubory projektu (v&nbsp;konfiguračním souboru php.ini)</h5> 
+<p>Zde je to celkem jasné, každý lepší skriptař PHP už se potýkal s&nbsp;otázkou zapnuté / vypnuté direktivy <code>magic_quotes_gpc</code>. Vstup se zpracovává ještě před spuštěním skriptu, tudíž direktivu lze ovlivnit pouze mimo kód PHP, a ne vždy tu možnost&nbsp;máte.</p> 
+<p>U&nbsp;lepších technologií je dán standardní způsob distribuce projektu, který definuje prostředí, do kterého aplikaci vkládáte, a jeho součástí je i&nbsp;možnost nastavit prakticky cokoliv v&nbsp;rámci zdrojových souborů projektu.</p> 
+<h5>* Projekty se musí šířit výhradně formou zdrojových&nbsp;kódů</h5> 
+<p>Ano, existuje sice jakási extenze „BPEL“, a přiznávám, že jsem ji nezkoušel. Ale po mých zkušenostech s&nbsp;takovýmito hračkami bych jako vždy došel zklamání, protože by to jednak nepodporovaly hostingy, a jednak bych to nerozjel na své vývojové platformě.</p> 
+<h5>* Nativně nepodporuje UNICODE (připravuje se pro verzi 6&nbsp;– už skoro tři&nbsp;roky)</h5> 
+<p>Tohle je opravdu obrovská ostuda PHP a jeden z&nbsp;bodů, který dokazuje, že PHP je několik let vývoje za ostatními technologiemi.</p> 
+<h5>* Nepodporuje jmenné prostory</h5> 
+<p>Další obrovská ostuda a důkaz zaostalosti PHP; fakt nechápu, že to nezabudovali již do verze PHP&nbsp;3.</p> 
+<h5>* Nekonzistentní pojmenování nativních funkcí a nejednotnost v&nbsp;logice pořadí parametrů</h5> 
+<p>Velice často zmiňovaná vada, vadí i&nbsp;těm nejzamilovanějším PHPčkárům (a snad i&nbsp;Jakubovi Vránovi&nbsp;:-)</p> 
+<h5>* Nedostatečná sebereflexe&nbsp;– datové typy „Třída“/„Funce“</h5> 
+<p>Zkrátka chybí objekty pro reprezentaci tříd, pokud vím. Nemůžu tedy udělat&nbsp;např.:</p> 
+<pre class="brush: java"><code>public createObjectOfClass( Class cls, HashMap params ){
+  cls.construct( params );
+}</code></pre> 
+<p>Odkazování se na třídu pomocí stringů je jen work-around („That's&nbsp;the PHP way“) a při práci v&nbsp;IDE je dost napřekážku.</p> 
+<h5>* Nemožnost odkazovat se na metody objektů jinak než konstrukcí s&nbsp;Array()</h5> 
+<p>Pokud chci předat nějaký objekt a jeho metodu (ve smyslu delegáta z&nbsp;C#), v&nbsp;PHP se to dělá&nbsp;takto:</p> 
+<pre class="brush: java"><code>...MyFunc( Array( $myObject, "thatObjectMethod" ) );</code></pre> 
+<p>Tahat do mechanismu volání metod <code>Array</code> je opravdu škaredý work-around („That's&nbsp;the PHP way“™) a ukazuje na nedospělost OOP syntaxe&nbsp;PHP.</p> 
+<ul> 
+ <li>Podivné fungování referencí&nbsp;– asi nejzrádnější askept&nbsp;PHP</li> 
+ <li>Je značně zatížené svým vlastním historickým vývojem</li> 
+</ul> 
+<hr> 
+<p>Je pravda, že oproti katastrofálnímu stavu z&nbsp;PHP 4&nbsp;je v&nbsp;PHP 5&nbsp;situace mnohem lepší; stále však zůstávají nečekané a o&nbsp;to zákeřnější seky. Asi před půl rokem jsem jeden řešil s&nbsp;kamarádem na IM, když to najdu, přidám.</p> 
+<p>Týkalo se to předávání pole. Jak jistě víte, pole není objekt, proto pokud jej chcete ve funkci měnit nebo chcete zamezit (mělkému) kopírování, je třeba jej předat referencí. Stejně tak jej musíte referencí propagovat do dalších kroků zpracování. Jenže reference stále fungují stejně jako v&nbsp;PHP 4, tedy tak, že v&nbsp;tabulce proměnných vzniká nový alias pro stejnou proměnnou. Tento alias zůstává v&nbsp;tabulce i&nbsp;po opuštění funkce, a po jejím opětovném volání a přiřazení reference proměnné se pole zpracovávané v&nbsp;předchozím volání přepíše tím, které zpracováváte&nbsp;nyní.</p> 
+<p>To je tak nechutná chyba, že tohle byl jeden z&nbsp;posledních hřebíčků do rakve PHP. Není to jediná chyba, a pokud jste někdy v&nbsp;PHP zkoušeli vyvinout něco složitějšího, jistě jste narazili na podobnou.</p> 
+<p>Vzhledem k&nbsp;tomu, že ani v&nbsp;PHP 6&nbsp;nebude <code>Array</code> normální objekt a opět budou přítomny reference, vede mě to k&nbsp;závěru, že stejné chyby budou i&nbsp;v&nbsp;této verzi („Because that's&nbsp;the PHP&nbsp;way.“)</p> 
+<h5>* Verze 5&nbsp;již podporuje OOP lépe, ale nativní knihovna funkcí nadále používá procedurální paradigma.</h5> 
+<p>Výsledkem je mimojiné toto:</p> 
+<pre class="php"><code>strtoupper(str_replace("!!",".",str_replace("ahoj","nazdar",strtolower(trim(" Ahoj lidi!! "))));</code></pre> 
+<p>oproti:</p> 
+<pre class="php"><code>" Ahoj lidi!! ".trim().toLowerCase().replaceAll("ahoj","nazdar").replaceAll("!!",".").toUpperCase();</code></pre> 
+<p>Je to asi jako v&nbsp;přirozeném jazyce říkat:</p> 
+<blockquote> 
+ <p>Chci zvětšit písmena v&nbsp;tom, co vznikne, když nahradím dva vykřičníky za tečku v&nbsp;tom, co vznikne, když nahradím „ahoj“ za „nazdar“ v&nbsp;tom, co vznikne, když převedu na malá písmena to, co vznikne, když odeberu netisknutelné znaky z&nbsp;okrajů " Ahoj lidi!! "&nbsp;'</p> 
+</blockquote> 
+<p>místo</p> 
+<blockquote> 
+ <p>Vezmu " Ahoj lidi!! „, z&nbsp;okrajů odeberu netisknutelné znaky, převedu to na malá písmena, "ahoj“ nahradím „nazdar“, dva vykřičníky nahradím tečkou a převedu to na malá písmena, a to je výsledek.</p> 
+</blockquote> 
+<p>U&nbsp;abstraktních datových typů Javy (zahrnující seznam, množinu, mapu, atd…) spatřuji hlavní výhodu v&nbsp;minimalizaci rozhraní daného abstraktního typu a v&nbsp;tom, že jsou definované jako rozhraní, nikoliv jako jediná implementace, protože to značně ulehčuje práci programátorovi různých knihoven.</p> 
+<p>Nedávno jsem si například během asi půl hodiny naprogramoval Mapu, která má jako backend tabulku v&nbsp;transakční databázi, a můžu jí používat všude, kde někdo očekává jako parametr&nbsp;Mapu.</p> 
+<p>To by v&nbsp;PHP s <code>Array</code> udělat nešlo&nbsp;– jedině na úrovni C implementace PHP. Šlo by to také naprogramovat jako třídu&nbsp;– ale potom to zas nebude kompatibilní s <code>Array</code> a nepůjde na to použít např. <code>ksort()</code>.</p> 
+<h4>Závěr</h4> 
+<p>Má vůbec cenu, abych pokračoval?</p> 
+<p>Možná stačí už jen <a href="http://www.google.cz/search?hl=cs&amp;client=firefox-a&amp;rls=org.mozilla%3Acs%3Aofficial&amp;q=%22why+php+sucks%22&amp;btnG=Hledat&amp;lr=">předat slovo</a>…</p></div>
+
+	<hr />
+
+
+    <!-- Facebook comments -->
+        <div class="fb-comments" data-href="http://www.zizka.ch/pages/programovani/php/nevyhody_php_v_praktickych_prikladech.html" data-width="800" data-numposts="5"></div>
+
+    </div>
+    <div id="push"></div>
+
+</div>
+
+<div id="footer">
+    <div class="container">
+        <p class="muted credit">&copy; 2018 | Mixed with <a href="http://getbootstrap.com/">Bootstrap v3.3.7</a> | Baked with <a href="http://jbake.org">JBake v2.7.0-SNAPSHOT</a></p>
+    </div>
+</div>
+
+<script src="../../../js/jquery-1.11.1.min.js"></script>
+<script src="../../../js/bootstrap.min.js"></script>
+<script src="../../../js/prettify.js"></script>
+
+<!-- Facebook comments -->
+<div id="fb-root"></div>
+<script>
+    (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://connect.facebook.net/cs_CZ/sdk.js#xfbml=1&version=v3.0';
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+</script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-4584951-4"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-4584951-4');
+</script>
+
+</body>
+</html>

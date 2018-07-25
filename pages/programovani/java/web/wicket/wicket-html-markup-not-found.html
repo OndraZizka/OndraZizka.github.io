@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>WicketMessage: Markup of type ‚html‘ for component not found - Ondřej Žižka</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="My personal web">
+    <meta name="author" content="Ondřej Žižka">
+    <meta name="generator" content="JBake">
+
+
+    <link rel="stylesheet" href="../../../../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../../../css/asciidoctor.css">
+    <link rel="stylesheet" href="../../../../../css/base.css">
+    <link rel="stylesheet" href="../../../../../css/doc-body.css">
+    <link rel="stylesheet" href="../../../../../css/prettify.css">
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+    <script src="../../../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+
+    <!-- Fav and touch icons -->
+    <!--<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">-->
+    <link rel="shortcut icon" href="../../../../../favicon.ico">
+</head>
+<body onload="prettyPrint()">
+    <div id="wrap">
+
+	<!-- Fixed navbar -->
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="http://www.zizka.ch/">Ondřej Žižka</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="../../../../../index.html">Blog</a></li>
+            <li><a href="../../../../../archive.html">Archive</a></li>
+            <li><a href="../../../../../tags">Tags</a></li>
+
+            <li><a href="../../../../../about.html">About Me</a></li>
+            <li><a href="../../../../../feed.xml">RSS feed</a></li>
+            <li><a href="../../../../../sitemap.xml">Sitemap</a></li>
+            <!--
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li class="divider"></li>
+                <li class="dropdown-header">Nav header</li>
+                <li><a href="#">Separated link</a></li>
+                <li><a href="#">One more separated link</a></li>
+              </ul>
+            </li>
+            -->
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+    <div class="container">
+
+	<div class="page-header">
+        <h1>WicketMessage: Markup of type ‚html‘ for component not found - Ondřej Žižka</h1>
+	</div>
+
+	<div class="date"><em>2012-12-31</em></div>
+
+	<div class="doc-body"><h3>WicketMessage: Markup of type ‚html‘ for component not&nbsp;found</h3> 
+<h4>Solution</h4> 
+<p>Let Maven pack everything into the <code>.war</code>:</p> 
+<pre class="brush: plain"><code>&lt;resources&gt;
+   &lt;!-- Web - Wicket --&gt;
+                  &lt;resource&gt;
+                          &lt;filtering&gt;false&lt;/filtering&gt;
+                          &lt;directory&gt;src/main/java&lt;/directory&gt;
+                          &lt;includes&gt;&lt;include&gt;**&lt;/include&gt;&lt;/includes&gt;
+                          &lt;excludes&gt;&lt;exclude&gt;**/*.java&lt;/exclude&gt;&lt;/excludes&gt;
+                  &lt;/resource&gt;
+&lt;/resources&gt;</code></pre> 
+<h4>Symptom</h4> 
+<pre class="brush: plain"><code>WicketMessage: Markup of type 'html' for component 'org.jboss.jawabot.web.HomePage' not found. Enable debug messages for org.apache.wicket.util.resource to get a list of all filenames tried.: [Page class = org.jboss.jawabot.web.HomePage, id = 0, version = 0]
+
+Root cause:
+
+org.apache.wicket.markup.MarkupNotFoundException: Markup of type 'html' for component 'org.jboss.jawabot.web.HomePage' not found. Enable debug messages for org.apache.wicket.util.resource to get a list of all filenames tried.: [Page class = org.jboss.jawabot.web.HomePage, id = 0, version = 0]
+at org.apache.wicket.markup.MarkupCache.getMarkupStream(MarkupCache.java:227)
+at org.apache.wicket.MarkupContainer.getAssociatedMarkupStream(MarkupContainer.java:351)
+at org.apache.wicket.Page.onRender(Page.java:1558)
+at org.apache.wicket.Component.render(Component.java:2450)
+at org.apache.wicket.Page.renderPage(Page.java:914)
+at org.apache.wicket.request.target.component.BookmarkablePageRequestTarget.respond(BookmarkablePageRequestTarget.java:261)
+at org.apache.wicket.request.AbstractRequestCycleProcessor.respond(AbstractRequestCycleProcessor.java:105)
+at org.apache.wicket.RequestCycle.processEventsAndRespond(RequestCycle.java:1258)
+at org.apache.wicket.RequestCycle.step(RequestCycle.java:1329)
+at org.apache.wicket.RequestCycle.steps(RequestCycle.java:1428)
+at org.apache.wicket.RequestCycle.request(RequestCycle.java:545)
+at org.apache.wicket.protocol.http.WicketFilter.doGet(WicketFilter.java:479)
+at org.apache.wicket.protocol.http.WicketServlet.doGet(WicketServlet.java:138)
+at javax.servlet.http.HttpServlet.service(HttpServlet.java:707)
+at javax.servlet.http.HttpServlet.service(HttpServlet.java:820)
+at org.mortbay.jetty.servlet.ServletHolder.handle(ServletHolder.java:511)
+at org.mortbay.jetty.servlet.ServletHandler.handle(ServletHandler.java:390)
+at org.mortbay.jetty.servlet.SessionHandler.handle(SessionHandler.java:182)
+at org.mortbay.jetty.handler.ContextHandler.handle(ContextHandler.java:765)
+at org.mortbay.jetty.handler.HandlerWrapper.handle(HandlerWrapper.java:152)
+at org.mortbay.jetty.Server.handle(Server.java:322)
+at org.mortbay.jetty.HttpConnection.handleRequest(HttpConnection.java:542)
+at org.mortbay.jetty.HttpConnection$RequestHandler.headerComplete(HttpConnection.java:926)
+at org.mortbay.jetty.HttpParser.parseNext(HttpParser.java:549)
+at org.mortbay.jetty.HttpParser.parseAvailable(HttpParser.java:212)
+at org.mortbay.jetty.HttpConnection.handle(HttpConnection.java:404)
+at org.mortbay.jetty.bio.SocketConnector$Connection.run(SocketConnector.java:228)
+at org.mortbay.thread.QueuedThreadPool$PoolThread.run(QueuedThreadPool.java:582)</code></pre></div>
+
+	<hr />
+
+
+    <!-- Facebook comments -->
+        <div class="fb-comments" data-href="http://www.zizka.ch/pages/programovani/java/web/wicket/wicket-html-markup-not-found.html" data-width="800" data-numposts="5"></div>
+
+    </div>
+    <div id="push"></div>
+
+</div>
+
+<div id="footer">
+    <div class="container">
+        <p class="muted credit">&copy; 2018 | Mixed with <a href="http://getbootstrap.com/">Bootstrap v3.3.7</a> | Baked with <a href="http://jbake.org">JBake v2.7.0-SNAPSHOT</a></p>
+    </div>
+</div>
+
+<script src="../../../../../js/jquery-1.11.1.min.js"></script>
+<script src="../../../../../js/bootstrap.min.js"></script>
+<script src="../../../../../js/prettify.js"></script>
+
+<!-- Facebook comments -->
+<div id="fb-root"></div>
+<script>
+    (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://connect.facebook.net/cs_CZ/sdk.js#xfbml=1&version=v3.0';
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+</script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-4584951-4"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-4584951-4');
+</script>
+
+</body>
+</html>

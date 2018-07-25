@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>Caché ObjectScript – nejhorší jazyk na světě - Ondřej Žižka</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="My personal web">
+    <meta name="author" content="Ondřej Žižka">
+    <meta name="generator" content="JBake">
+
+
+    <link rel="stylesheet" href="../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../css/asciidoctor.css">
+    <link rel="stylesheet" href="../../css/base.css">
+    <link rel="stylesheet" href="../../css/doc-body.css">
+    <link rel="stylesheet" href="../../css/prettify.css">
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+    <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+
+    <!-- Fav and touch icons -->
+    <!--<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">-->
+    <link rel="shortcut icon" href="../../favicon.ico">
+</head>
+<body onload="prettyPrint()">
+    <div id="wrap">
+
+	<!-- Fixed navbar -->
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="http://www.zizka.ch/">Ondřej Žižka</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="../../index.html">Blog</a></li>
+            <li><a href="../../archive.html">Archive</a></li>
+            <li><a href="../../tags">Tags</a></li>
+
+            <li><a href="../../about.html">About Me</a></li>
+            <li><a href="../../feed.xml">RSS feed</a></li>
+            <li><a href="../../sitemap.xml">Sitemap</a></li>
+            <!--
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li class="divider"></li>
+                <li class="dropdown-header">Nav header</li>
+                <li><a href="#">Separated link</a></li>
+                <li><a href="#">One more separated link</a></li>
+              </ul>
+            </li>
+            -->
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+    <div class="container">
+
+	<div class="page-header">
+        <h1>Caché ObjectScript – nejhorší jazyk na světě - Ondřej Žižka</h1>
+	</div>
+
+	<div class="date"><em>2012-12-13</em></div>
+
+	<div class="doc-body"><h3>Caché ObjectScript&nbsp;– nejhorší jazyk na světě</h3> 
+<p>Setkali jste se někdy s&nbsp;postrelačním databázovým systémem Caché? Pokud ano, nejspíše to bylo na škole, a nebo na nějakém školení. Pokud vás to postihlo způsobem, že jste v&nbsp;Caché opravdu museli něco vytvořit, tak vás upřímně lituji.</p> 
+<p>Česká pobočka InterSystems zvládá kolem Caché dělat poměrně slušný humbuk, takže se tu a tam objeví zmínka na leckterém českém webu typu Živě, Root, a co já vim kde&nbsp;ještě.</p> 
+<p>Asi i&nbsp;právě proto jsem se s&nbsp;Caché za svůj krátký život setkal celkem třikrát, z&nbsp;čehož dvakrát sám od sebe, potřetí již nedobrovolně, skoro by se dalo říct nátlakem.</p> 
+<h4>Moje zkušenosti s&nbsp;Caché</h4> 
+<p>Nějak se ke mě dostaly materiály o&nbsp;Caché, možná někde na Invexu… V&nbsp;podstatě se jednalo archy křídového papíru s&nbsp;velmi nevkusnými kresbami, které velkými písmeny vychvalovaly Caché do nebe. Zcela však chyběly jakékoliv věcné ukázky, například kódu bylo na cca. patnácti A4-kách asi pět řádků. A&nbsp;v&nbsp;marketingu InterSystems asi vědí proč. Já se to dozvěděl až při třetím setkání s&nbsp;Caché.</p> 
+<p>Poprvé po instalaci server vždy hned po spuštění havaroval.</p> 
+<p>Podruhé server běžel stabilně, ale nic nedělal, protože vždy havarovala aplikace, pomocí které se kompilovaly třídy objektového modelu, bez kterých je objektová databáze k&nbsp;ničemu.</p> 
+<p>Potřetí jsem se k&nbsp;Caché dostal při studiích: Měli jsme v&nbsp;tom za úkol udělat jakoukoliv smysluplnou webovou aplikaci. Zdálo by se to jako celkem jednoduchý cíl, vždyť to byste zvládli řekněme i&nbsp;pomocí CGI a jazyka&nbsp;C.</p> 
+<p>Ale ouha! Zatímco PHP zpočátku leckdo zbožňuje a k&nbsp;uvědomění si jeho značných nedostatků musí programátor vyspět, Caché je technologie, se kterou dokáží zápasit jen ti naprosto nejotrlejší programátoři, kterým Perl přišel jako příliš výřečný a srozumitelný, a hledají něco podobou bližšího zazipovanému strojovému&nbsp;kódu.</p> 
+<h4>Caché ObjectScript (čtěte nalačno)</h4> 
+<p>Myslím, že za všechno mluví následující ukázka kódu (jazyk se ironicky jmenuje ObjectScript):</p> 
+<div>
+ <img src="http://localhost:8820/images/img/cache_code_example.png" alt="">
+</div> 
+<p>Upozorňuji, že tento kód jsem nesestavil synteticky, abych dal dohromady nějakou zcela absurdní sestavu nejhorších vlastností jazyka&nbsp;– obrázek je převzatý z&nbsp;jakési prezentace přímo z&nbsp;materiálů InterSystems!</p> 
+<p>K&nbsp;tomu si ještě přimyslete chaotickou neúplnou dokumentaci bez příkladů, kde mnoho funkcí ani nemá popis (v&nbsp;podstatě jen vidíte, že existují), a která funguje jen v&nbsp;MSIE (kvůli závislosti na nestandardním JavaScriptu).</p> 
+<p>Takže jestli se vám dělá značně nevolno při pohledu na konstrukce&nbsp;typu</p> 
+<pre class="cache"><code>QUIT $Select(%sc'="":%sc,1:$$Error^%apiOBJ(5809))</code></pre> 
+<p>nebo</p> 
+<pre class="cache"><code>$ZObjVal(,1,0,3,1)&gt;1 Lock +(^Common.F.FormD(id)#"S"):ZUtil(115,4...)</code></pre> 
+<p>a při představě, že byste měli sami něco takového plodit a na tom by byl závislý váš příjem, nejste sami&nbsp;– nás bylo v&nbsp;ročníku asi&nbsp;100.</p> 
+<p>Hrůza, hrůza, běs, rychle pryč!</p> 
+<h4>CSP&nbsp;– Caché Server Pages</h4> 
+<p>K&nbsp;Caché patří ještě Caché Server Pages, což je parodie na technologie jako ASP, JSP a podobně. Už to není TAK strašné, jako ObjectScript, nicméně jedná se o&nbsp;frontend k&nbsp;backendu psaném v&nbsp;ObjectScriptu, a výrazy jsou opět v&nbsp;ObjectScriptu, takže je jen hnus zředěný HTML&nbsp;kódem.</p> 
+<p>Bohužel se nejedná jen o&nbsp;vkládání do HTML&nbsp;– CSP má jistá pravidla například i&nbsp;pro vkládání JavaScriptu, a proto nelze napsat normálně <code>&lt;script ...&gt;</code>, protože to vám Caché vezme a nějak zprasí&nbsp;– a nikdo ze sta lidí nepochopil, podle jakých pravidel. Nakonec jsme to řešili hacky typu <code>&lt;scr#("")#ipt ...&gt;</code>, kde <code>#("")#</code> je vložený kousek kódu ObjectScriptu.</p> 
+<h4>Integrované „vývojové prostředí“</h4> 
+<p>Caché rovněž disponuje čímsi, co nazývají IDE (nevím proč). Jedná se o&nbsp;chaotickou změť nástrojů chaoticky omotaných na dost mizerný textový editor. Zhruba bych to přirovnal k&nbsp;velmi ranným verzím PsPadu nebo k&nbsp;Visual Studio 1.0 (jestli jste měli možnost vidět). Je to přesně to, co mi ještě před pár lety nedokázalo bez pádu ani zkompilovat&nbsp;třídu.</p> 
+<p>Je to asi nejméně zmršená část celého molochu, se kterou programátor přijde do styku, ale pořád je to taková hrůza, že kdybych si měl vybrat mezi tímto a například editací asembleru přes braillův terminál, volil bych&nbsp;druhé.</p> 
+<h4>Nejrychlejší? No a co?</h4> 
+<p>Výrobce se pyšní, že se jedná o&nbsp;nejrychlejší databázi na světě. Budiž, já jim to neberu, možné to je&nbsp;– netestoval jsem a ani nebudu. Ale k&nbsp;čemu to je dobré, když do toho žádný programátor nebude chtít hrábnout ani pětimetrovou tyčí a při zmínce o&nbsp;Caché začne zvažovat změnu zaměstnavatele?</p> 
+<h4>Relační mapování? IBM??</h4> 
+<p>Před nějakou dobou proběhla internetem zpráva o&nbsp;tom, že IBM použilo Caché na cosi, a že jim relační mapování trvalo 15&nbsp;minut, zatímco jinak by jim trvalo několik měsíců.</p> 
+<p>No budiž, věrohodnost takového plku se sice blíží nule, ale i&nbsp;kdyby&nbsp;– co to znamená?</p> 
+<ol> 
+ <li>IBM použilo nejnižší úroveň Caché jako databázi mapovanou technologií Jalapeňo.</li> 
+ <li>Pravděpodobně v&nbsp;jazyce Caché programovali nezbytné minimum kódu&nbsp;– tolik, kolik někdo stihl napsat za 15&nbsp;minut.</li> 
+ <li>Ve chvíli, kdy se vývojáři daného projektu kousli na prvním problému a chtěli jej řešit v&nbsp;Caché, jistě již je nadšení z&nbsp;rychlosti opustilo.</li> 
+</ol> 
+<p>Ostatně, nebylo by to poprvé, co nějaká (na poměry, podle kontextu) velká společnost zcela překvapivě sáhne po technologii, o&nbsp;které když znalí uslyší, <a href="http://www.novinky.cz/clanek/67691-seznam-cz-koketuje-s-technologii-php.html">nevěřicně kroutí hlavou</a>, v&nbsp;případě Caché se otřesou odporem.</p> 
+<h4>Verdikt</h4> 
+<p>Firma InterSystems existuje již dlouhou dobu a stále zvládá pravidelně vydávat pamflety na křídovém papíře s&nbsp;nevkusnými malbami. Z&nbsp;toho usuzuji, že se jí daří (včetně české pobočky) a že přeci jen se tu a tam najde zákazník.</p> 
+<p>Já se k&nbsp;myšlenkám o&nbsp;Caché dostal opět až nyní, kdy hledám práci, a v&nbsp;personální agentuře mi položili otázku, zda existuje technologie, kterou bych ani za značně nadstandardní plat rozhodně nikdy nechtěl používat.</p> 
+<p>Je to Caché.</p> 
+<p>S&nbsp;tímto na vědomí jdu ještě rád oprášit Oracle PL/SQL.</p></div>
+
+	<hr />
+
+
+    <!-- Facebook comments -->
+        <div class="fb-comments" data-href="http://www.zizka.ch/pages/programovani/cache_objectscript_nejhorsi_jazyk_na_svete.html" data-width="800" data-numposts="5"></div>
+
+    </div>
+    <div id="push"></div>
+
+</div>
+
+<div id="footer">
+    <div class="container">
+        <p class="muted credit">&copy; 2018 | Mixed with <a href="http://getbootstrap.com/">Bootstrap v3.3.7</a> | Baked with <a href="http://jbake.org">JBake v2.7.0-SNAPSHOT</a></p>
+    </div>
+</div>
+
+<script src="../../js/jquery-1.11.1.min.js"></script>
+<script src="../../js/bootstrap.min.js"></script>
+<script src="../../js/prettify.js"></script>
+
+<!-- Facebook comments -->
+<div id="fb-root"></div>
+<script>
+    (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://connect.facebook.net/cs_CZ/sdk.js#xfbml=1&version=v3.0';
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+</script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-4584951-4"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-4584951-4');
+</script>
+
+</body>
+</html>

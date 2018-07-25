@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>Linux: Bash generic script to switch versions (like
+alternatives and Gentoo's eselect) - Ondřej Žižka</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="My personal web">
+    <meta name="author" content="Ondřej Žižka">
+    <meta name="generator" content="JBake">
+
+
+    <link rel="stylesheet" href="../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../css/asciidoctor.css">
+    <link rel="stylesheet" href="../../css/base.css">
+    <link rel="stylesheet" href="../../css/doc-body.css">
+    <link rel="stylesheet" href="../../css/prettify.css">
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+    <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+
+    <!-- Fav and touch icons -->
+    <!--<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">-->
+    <link rel="shortcut icon" href="../../favicon.ico">
+</head>
+<body onload="prettyPrint()">
+    <div id="wrap">
+
+	<!-- Fixed navbar -->
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="http://www.zizka.ch/">Ondřej Žižka</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="../../index.html">Blog</a></li>
+            <li><a href="../../archive.html">Archive</a></li>
+            <li><a href="../../tags">Tags</a></li>
+
+            <li><a href="../../about.html">About Me</a></li>
+            <li><a href="../../feed.xml">RSS feed</a></li>
+            <li><a href="../../sitemap.xml">Sitemap</a></li>
+            <!--
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li class="divider"></li>
+                <li class="dropdown-header">Nav header</li>
+                <li><a href="#">Separated link</a></li>
+                <li><a href="#">One more separated link</a></li>
+              </ul>
+            </li>
+            -->
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+    <div class="container">
+
+	<div class="page-header">
+        <h1>Linux: Bash generic script to switch versions (like
+alternatives and Gentoo's eselect) - Ondřej Žižka</h1>
+	</div>
+
+	<div class="date"><em>2012-12-13</em></div>
+
+	<div class="doc-body"><h3>Linux: Bash generic script to switch versions (like <code>alternatives</code> and Gentoo's <code>eselect</code>)</h3> 
+<p>I've made a switch script.</p> 
+<h4>Usage</h4> 
+<pre class="xbrush: bash"><code>$ switch
+$ switch maven 2.2.1
+$ mvn -version
+$ switch maven 2.1.0
+$ mvn -version</code></pre> 
+<h4>Installation</h4> 
+<p>It uses your ~/sw/tools/.links, so update your PATH.</p> 
+<pre class="xbrush: bash"><code>export PATH=~/sw/tools/.links:$PATH</code></pre> 
+<p>Then (optionally):</p> 
+<pre class="xbrush: bash"><code>$ /mnt/jqa/sw/tools/switch.sh install
+Creating ~/sw/tools/.links/switch -&gt; /mnt/jqa/sw/tools/switch.sh</code></pre> 
+<h4>Download</h4> 
+<p>Download <a href="switch.zip">here</a>.</p> 
+<h4>Script's&nbsp;code</h4> 
+<pre class="xbrush: bash"><code>#####################################################################################################
+#
+#  This script creates switches between the versions of various tools,
+#  found in /mnt/jqa/sw/tools/ (curently hard-coded).
+#
+#  Usage:
+#    $ switch maven 2.1.0
+#    $ mvn ...
+#
+#  Installation:
+#   * Set PATH to begin with ~/sw/tools/.links (in ~/.bashrc)
+#
+#  Tools directory structure:
+#   * .../&lt;tool_name&gt;/
+#     * &lt;tool_version&gt;/
+#     * &lt;tool_version2&gt;/
+#     * onSwitch.sh
+#     * onRun.sh
+#
+#  Callback scripts:
+#
+#   * onSwitch.sh - called when the version switch is performed.
+#     * Called using:   . onSwitch.sh &lt;tool_name&gt; &lt;tool_version&gt;
+#
+#   * onRun.sh - if present, all tool's runnables will be called through a script,
+#                which will be re-created each time the versions are switched:
+#
+#          TOOL_NAME=&lt;tool_name&gt;    # Few variables are set at the top of the script.
+#          TOOL_VERSION=&lt;...&gt;       # 1.2.3
+#          TOOL_HOME=&lt;...&gt;          # Tool home dir - i.e., the dir particular version.
+#          TOOL_RUNNABLE_PATH=&lt;...&gt; # Path to the runnable to be called.
+#
+#          &lt;content of onRun.sh&gt;    # The content is simply pasted here.
+#          &lt;tool_runnable&gt; $@       # Calls the current version of the tool runnable.
+#
+#  Todo:
+#   * Upon switch, remove links created with previous switch.
+#     * All that belong to the tools/&lt;tool_name&gt; dir (parse the variables at the top of the scripts)
+#
+#  History:
+#  2009-12-22:
+#   * Runnables are now searched automatically in TOOL_HOME/bin if there's no runnables.txt.
+#   * Softlinks to executable files also count as runnables.
+#   * Home dir of this script is detected automatically.
+#   * Meta-dirs now start with a dot (.links, .homes, .template).
+#
+#
+#####################################################################################################
+
+
+##
+##  @param  $1  Tool name
+##  @param  $2  Tool version
+##  @param  $3  Tool runnable path
+##  @param  $4  TOOL_HOME - path to the home dir of the selected version of the tool.
+##  @param  $5  ON_RUN - a script to execute before the runnable is run.
+##
+function createRunnableScript {
+
+        TOOL_RUNNABLE_PATH=$3
+        TOOL_HOME=$4
+        ON_RUN=$5
+
+        TOOL_RUNNABLE_NAME=`basename $TOOL_RUNNABLE_PATH`;
+        MY_LINK=~/sw/tools/.links/$TOOL_RUNNABLE_NAME
+        if [ -e "$MY_LINK" ] ; then rm $MY_LINK; fi
+        if [ -z "$ON_RUN" ] ; then
+                echo "Creating link $MY_LINK -&gt; $TOOL_RUNNABLE_PATH"
+                ln -s  $TOOL_RUNNABLE_PATH  $MY_LINK
+        else
+                echo "Creating bash script: $MY_LINK"
+                echo "TOOL_NAME=$1" &gt; $MY_LINK;
+                echo "TOOL_VERSION=$2" &gt;&gt; $MY_LINK;
+                echo "TOOL_HOME=$TOOL_HOME" &gt;&gt; $MY_LINK;
+                echo "TOOL_RUNNABLE_PATH=$TOOL_RUNNABLE_PATH" &gt;&gt; $MY_LINK;
+                cat $ON_RUN &gt;&gt; $MY_LINK;
+                echo "" &gt;&gt; $MY_LINK
+                echo "exec $TOOL_RUNNABLE_PATH \"\$@\"" &gt;&gt; $MY_LINK;
+        fi
+        chmod +x $MY_LINK
+}
+
+
+
+##  Return value.
+RET=0
+
+
+        ##  Determine this script's location ("Tools" home dir).
+
+        #TOOLS="/home/ondra/sw/tools"
+
+        #scriptPath=$(cd ${0%/*} &amp;&amp; echo $PWD/${0##*/})
+        scriptPath="$(cd "${0%/*}" 2&gt;/dev/null; echo "$PWD"/"${0##*/}")"
+        # For the case when called through a symlink (eg. sw/tools/.links/switch -&gt; ../switch.sh).
+        scriptPath=`readlink -f "$scriptPath"`
+
+        TOOLS=`dirname "$scriptPath"`
+
+
+
+##  Install - create the .links dir and a link to the switch.sh script.
+##  Assumes that user will put ~/sw/tools/.links at the beginning of his $PATH.
+if [ "$1" == "install" ] ; then
+        if [ ! -x ~/sw/tools/.links/switch ] ; then
+                echo "Creating ~/sw/tools/.links/switch -&gt; $scriptPath"
+                mkdir -p ~/sw/tools/.links
+                ln -s  $scriptPath ~/sw/tools/.links/switch
+        else
+                echo "~/sw/tools/.links/switch already exists."
+        fi
+        exit;
+fi
+
+
+
+while true; do
+
+
+        if [ "on" == "$1" ] ; then
+                ## No way to export a variable without sourcing this script :(
+                export PATH=~/sw/tools/.links:$PATH
+        fi
+
+        ##  No arguments: List available tools and versions.
+        if [ -z "$1" -o -z "$2" ] ; then
+                echo "    Usage:   switch &lt;tool&gt; &lt;ver&gt;";
+                echo "    Available tools and versions:"
+                for TOOL in `ls -1 --ignore=switch.* --ignore=.* --ignore=_* $TOOLS`; do
+                        if [ ! -d "$TOOLS/$TOOL" ] ; then continue; fi
+                        #echo "      $TOOL `ls --ignore=*.path $TOOLS/$TOOL`";
+                        echo "      "$(echo "$TOOL `find -L $TOOLS/$TOOL/ -mindepth 1 -maxdepth 1 -type d | sed 's#.*/##'`");
+                        #tree -diL 1
+                        #ls -l | grep ^d | awk '{print $9}'
+                done
+                break;
+        fi
+
+        ##  Has to be sourced for it sets variables into the environment (like M2_HOME).
+        if [ "$0" == "switch.sh" ] ; then
+                echo "This file (switch.sh) has to be source'd  ('. switch.sh').";
+                exit 666;
+        fi
+
+
+
+        ##  Tool's root dir (contains dirs with concrete versions).
+        TOOL_DIR="$TOOLS/$1"
+        if [ ! -d "$TOOL_DIR" ] ; then echo "Unknown tool: $1"; RET=1; break; fi
+
+        ##  Particular version's dir.
+        TOOL_HOME="$TOOL_DIR/$2"
+        if [ ! -d "$TOOL_HOME" ] ; then echo "$1 doesn't have a version: $2"; RET=2; break; fi
+
+
+        mkdir -p ~/sw/tools/.links
+        mkdir -p ~/sw/tools/.homes
+
+
+        ##  Commands to perform before running the tool (each time).
+        if [ -x "$TOOL_DIR/onRun.sh" ] ; then
+                ON_RUN=$TOOL_DIR/onRun.sh;
+        fi
+
+
+        ##  Create the HOME links.
+        echo "Creating link ~/sw/tools/.homes/$1 -&gt; $TOOL_HOME"
+        rm ~/sw/tools/.homes/$1
+        ln -s $TOOL_HOME ~/sw/tools/.homes/$1
+
+
+        ##  Commands to run upon version switching.
+        if [ -x "$TOOL_DIR/onSwitch.sh" ] ; then
+                echo "Running '$TOOL_DIR/onSwitch.sh $TOOL_HOME'...";
+                $TOOL_DIR/onSwitch.sh $TOOL_HOME;
+        fi
+
+
+
+
+        ##  Tool's runnable from the path.
+        ##  Check the symlink existence.
+        if [ ! -h $TOOL_DIR/runnable.path ] ; then
+                #echo "Every tool has to have an (invalid) symlink with the path from tool's HOME to the executable."; RET=3; break;
+                true;
+        else
+                TOOL_RUNNABLE_PATH=$TOOL_HOME/`readlink $TOOL_DIR/runnable.path`
+                if [ ! -e "$TOOL_RUNNABLE_PATH" ] ; then echo "Non-existent runnable: $TOOL_RUNNABLE_PATH"; RET=4; break; fi
+                if [ ! -x "$TOOL_RUNNABLE_PATH" ] ; then echo "Non-executable runnable: $TOOL_RUNNABLE_PATH"; RET=5; break; fi
+
+                ##  Create a link to the runnable in ~/sw/tools/.links/, named like the tool name.
+                createRunnableScript $1 $2 $TOOL_RUNNABLE_PATH $TOOL_HOME $ON_RUN
+        fi
+
+
+
+        if [ -x "$TOOL_DIR/runnables.txt" ] ; then
+                ##   Link runnables listed in a file /sw/tools/&lt;tool&gt;/runnables.txt .
+                ##   TODO: Find automatically all executables from the tool's dir.
+                ##         Upon creation of those, remove links pointing to the particular tool's dir.
+                for RUNNABLE_SUBPATH in `cat $TOOL_DIR/runnables.txt`; do
+                        TOOL_RUNNABLE_PATH=$TOOL_HOME/$RUNNABLE_SUBPATH;
+                        if [ ! -e "$TOOL_RUNNABLE_PATH" ] ; then echo "Non-existent runnable: $TOOL_RUNNABLE_PATH"; RET=4; break 2; fi
+                        if [ ! -x "$TOOL_RUNNABLE_PATH" ] ; then echo "Non-executable runnable: $TOOL_RUNNABLE_PATH"; RET=5; break 2; fi
+                done
+
+                for RUNNABLE_SUBPATH in `cat $TOOL_DIR/runnables.txt`; do
+                        TOOL_RUNNABLE_PATH=$TOOL_HOME/$RUNNABLE_SUBPATH;
+                        createRunnableScript $1 $2 $TOOL_RUNNABLE_PATH $TOOL_HOME $ON_RUN
+                done
+        else
+                ##   runnables.txt does not exist, scan the dir for executable files and links.
+                #for RUNNABLE_SUBPATH in `ls -l $TOOL_HOME/bin | grep -e ^[-l]..x | cut  -b47- | cut -d' ' -f1`; do
+                        #TOOL_RUNNABLE_PATH=$TOOL_HOME/bin/$RUNNABLE_SUBPATH;
+                for TOOL_RUNNABLE_PATH in $TOOL_HOME/bin/* ; do if [ -x "$TOOL_RUNNABLE_PATH" -a -f "$TOOL_RUNNABLE_PATH" ] ; then
+                        createRunnableScript $1 $2 $TOOL_RUNNABLE_PATH $TOOL_HOME $ON_RUN
+                fi ; done
+        fi
+
+break;
+done # while true
+
+##  Clear bash's cache.
+hash -r
+
+
+##  If called without `source`, return an exit code.
+if [ "$0" == "switch.sh" ] ; then exit $RET; fi</code></pre></div>
+
+	<hr />
+
+
+    <!-- Facebook comments -->
+        <div class="fb-comments" data-href="http://www.zizka.ch/pages/programovani/linux-switch-script-alternatives-eselect.html" data-width="800" data-numposts="5"></div>
+
+    </div>
+    <div id="push"></div>
+
+</div>
+
+<div id="footer">
+    <div class="container">
+        <p class="muted credit">&copy; 2018 | Mixed with <a href="http://getbootstrap.com/">Bootstrap v3.3.7</a> | Baked with <a href="http://jbake.org">JBake v2.7.0-SNAPSHOT</a></p>
+    </div>
+</div>
+
+<script src="../../js/jquery-1.11.1.min.js"></script>
+<script src="../../js/bootstrap.min.js"></script>
+<script src="../../js/prettify.js"></script>
+
+<!-- Facebook comments -->
+<div id="fb-root"></div>
+<script>
+    (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://connect.facebook.net/cs_CZ/sdk.js#xfbml=1&version=v3.0';
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+</script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-4584951-4"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-4584951-4');
+</script>
+
+</body>
+</html>

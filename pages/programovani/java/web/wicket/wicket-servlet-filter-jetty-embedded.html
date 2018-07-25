@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>Wicket servlet and filter in an embedded Jetty - Ondřej Žižka</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="My personal web">
+    <meta name="author" content="Ondřej Žižka">
+    <meta name="generator" content="JBake">
+
+
+    <link rel="stylesheet" href="../../../../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../../../css/asciidoctor.css">
+    <link rel="stylesheet" href="../../../../../css/base.css">
+    <link rel="stylesheet" href="../../../../../css/doc-body.css">
+    <link rel="stylesheet" href="../../../../../css/prettify.css">
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+    <script src="../../../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+
+    <!-- Fav and touch icons -->
+    <!--<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">-->
+    <link rel="shortcut icon" href="../../../../../favicon.ico">
+</head>
+<body onload="prettyPrint()">
+    <div id="wrap">
+
+	<!-- Fixed navbar -->
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="http://www.zizka.ch/">Ondřej Žižka</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="../../../../../index.html">Blog</a></li>
+            <li><a href="../../../../../archive.html">Archive</a></li>
+            <li><a href="../../../../../tags">Tags</a></li>
+
+            <li><a href="../../../../../about.html">About Me</a></li>
+            <li><a href="../../../../../feed.xml">RSS feed</a></li>
+            <li><a href="../../../../../sitemap.xml">Sitemap</a></li>
+            <!--
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li class="divider"></li>
+                <li class="dropdown-header">Nav header</li>
+                <li><a href="#">Separated link</a></li>
+                <li><a href="#">One more separated link</a></li>
+              </ul>
+            </li>
+            -->
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+    <div class="container">
+
+	<div class="page-header">
+        <h1>Wicket servlet and filter in an embedded Jetty - Ondřej Žižka</h1>
+	</div>
+
+	<div class="date"><em>2012-12-13</em></div>
+
+	<div class="doc-body"><h3>Wicket servlet and filter in an embedded Jetty</h3> 
+<p>To get the effect of the following (from <code>WEB-INF/web.xml</code>) in an embedded Jetty server,</p> 
+<pre class="brush: xml"><code>&lt;filter&gt;
+  &lt;filter-name&gt;wicket.wicket&lt;/filter-name&gt;
+  &lt;filter-class&gt;org.apache.wicket.protocol.http.WicketFilter&lt;/filter-class&gt;
+  &lt;init-param&gt;
+    &lt;param-name&gt;applicationClassName&lt;/param-name&gt;
+    &lt;param-value&gt;cz.dw.test.WicketApplication&lt;/param-value&gt;
+  &lt;/init-param&gt;
+&lt;/filter&gt;</code></pre> 
+<p>you can use this code:</p> 
+<pre class="brush: java"><code>public class RunInJetty {
+
+        public static void main( String[] args ){
+
+                Server server = new Server(8080);
+                Context root = new Context( server, "/", Context.SESSIONS );
+
+
+                ServletHolder servletHolder = new ServletHolder(new WicketServlet());
+                servletHolder.setInitParameter("applicationClassName", cz.dw.test.WicketApplication.class.getName() );
+                root.addServlet( servletHolder, "/*" );
+                /**/
+
+                /*/
+                FilterHolder filterHolder = new FilterHolder( new WicketFilter() );
+                filterHolder.setInitParameter("applicationClassName", cz.dw.test.WicketApplication.class.getName() );
+                root.addFilter( filterHolder, "/*" , Handler.ALL );
+                /**/
+
+                try {
+                        server.start();
+                } catch (Exception ex) {
+                        ex.printStackTrace();
+                }
+
+        }
+
+}// class</code></pre> 
+<p>The filter does not work&nbsp;– I&nbsp;don't know why. Also note that <a href="http://mirrors.ibiblio.org/pub/mirrors/eclipse/jetty/7.0.0.M2/apidocs/org/eclipse/jetty/servlet/ServletHandler.html#addFilter%28java.lang.String,%20java.lang.String,%20int%29">this way to add filters is deprecated in Jetty&nbsp;7</a>.</p></div>
+
+	<hr />
+
+
+    <!-- Facebook comments -->
+        <div class="fb-comments" data-href="http://www.zizka.ch/pages/programovani/java/web/wicket/wicket-servlet-filter-jetty-embedded.html" data-width="800" data-numposts="5"></div>
+
+    </div>
+    <div id="push"></div>
+
+</div>
+
+<div id="footer">
+    <div class="container">
+        <p class="muted credit">&copy; 2018 | Mixed with <a href="http://getbootstrap.com/">Bootstrap v3.3.7</a> | Baked with <a href="http://jbake.org">JBake v2.7.0-SNAPSHOT</a></p>
+    </div>
+</div>
+
+<script src="../../../../../js/jquery-1.11.1.min.js"></script>
+<script src="../../../../../js/bootstrap.min.js"></script>
+<script src="../../../../../js/prettify.js"></script>
+
+<!-- Facebook comments -->
+<div id="fb-root"></div>
+<script>
+    (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://connect.facebook.net/cs_CZ/sdk.js#xfbml=1&version=v3.0';
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+</script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-4584951-4"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-4584951-4');
+</script>
+
+</body>
+</html>

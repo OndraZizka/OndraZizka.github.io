@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>Pong AI dokumentace - Ondřej Žižka</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="My personal web">
+    <meta name="author" content="Ondřej Žižka">
+    <meta name="generator" content="JBake">
+
+
+    <link rel="stylesheet" href="../../../../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../../../css/asciidoctor.css">
+    <link rel="stylesheet" href="../../../../../css/base.css">
+    <link rel="stylesheet" href="../../../../../css/doc-body.css">
+    <link rel="stylesheet" href="../../../../../css/prettify.css">
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+    <script src="../../../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+
+    <!-- Fav and touch icons -->
+    <!--<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">-->
+    <link rel="shortcut icon" href="../../../../../favicon.ico">
+</head>
+<body onload="prettyPrint()">
+    <div id="wrap">
+
+	<!-- Fixed navbar -->
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="http://www.zizka.ch/">Ondřej Žižka</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="../../../../../index.html">Blog</a></li>
+            <li><a href="../../../../../archive.html">Archive</a></li>
+            <li><a href="../../../../../tags">Tags</a></li>
+
+            <li><a href="../../../../../about.html">About Me</a></li>
+            <li><a href="../../../../../feed.xml">RSS feed</a></li>
+            <li><a href="../../../../../sitemap.xml">Sitemap</a></li>
+            <!--
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li class="divider"></li>
+                <li class="dropdown-header">Nav header</li>
+                <li><a href="#">Separated link</a></li>
+                <li><a href="#">One more separated link</a></li>
+              </ul>
+            </li>
+            -->
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+    <div class="container">
+
+	<div class="page-header">
+        <h1>Pong AI dokumentace - Ondřej Žižka</h1>
+	</div>
+
+	<div class="date"><em>2012-12-31</em></div>
+
+	<div class="doc-body"><meta http-equiv="Content-Type" content="text/html; charset=windows-1250"> 
+<meta name="Author" content="Ondra �i�ka, ondra at dynawest.cz; Design by Petr Z�vesk�, petr.zavesky@seznam.cz"> 
+<meta name="Keywords" content=""> 
+<meta name="Description" content=""> 
+<script type="text/javascript" charset="windows-1250" src="fce.js"></script> 
+<style type="text/css">
+	/* * { margin: 0; padding: 0; } */
+	body { background-color: #ffffff; font-family: "Arial CE", "Helvetica CE", "Verdana CE", Arial, Helvetica, Verdana, sans-serif; }
+</style> 
+<script type="text/javascript">
+</script> 
+<title> Pong AI dokumentace </title>   
+<!--
+	<h1>
+		<p>Dokumentace k Pong AI - um�l� inteligence pro hru pong.</p>
+		<p>projekt na SIN</p>
+	</h1>
+	--> 
+<h1>Dokumentace k Pong AI - um�l� inteligence pro hru pong</h1> 
+<h2>Struktura</h2> 
+<p>Pro ovl�d�n� aktivn�ch prvk� ve h�e Pong slou�� agent s um�lou inteligenc�. Inteligence je implementov�na pomoc� zp�tnovazebn�ho u�en� (RE) s pou�it�m neuronov� s�t� pro ohodnocovac� funkci <strong>Q</strong>. </p> 
+<h2>Neuronov� s� - funkce</h2> 
+<p>Na�e s� funguje na b�n�ch principech. Jedn� se o orientovan� graf, jeho� uzly jsou neurony a jsou propojeny ohodnocen�mi hranami, kter� znamenaj� v�hu. N�kter� neurony jsou tzv. vstupn�, resp. v�stupn�; jejich seskupen� tvo�� vstupn�, resp. v�stupn� vrstvu, do kter� se vkl�d� vstup pro v�po�et, resp. ze kter� se ode��t� v�sledek. </p> 
+<p> V�po�et prob�h� klasicky - pro ka�d� neuron jsou vyn�sobeny jeho vstupy vahou na dan�m vstupu, sou�et t�chto v�sledk� je potom vstupem pro funkci neuronu, obvykle <a href="http://en.wikipedia.org/wiki/Sigmoid_function">sigmoidu</a> (funkce je ale voliteln�). V�stup z t�to funkce je pak v�stupem neuronu. </p> 
+<p>Tento v�po�et prob�h� v po�ad� takov�m, aby v�echny vstupy po��tan�ho neuronu byly ji� vypo�ten�. Pro optimalizaci rychlosti v�po�tu se nepo��t� s cyklick�m zapojen�m neuron�. </p> 
+<p>Zapojen� neuron� m��e b�t libovoln� p�i zachov�n� podm�nky neexistence cykl�. S� tedy nemus� b�t striktn� vrstven�. Tato v�hoda nevedla ke sn�en� v�konu oproti implementaci po��taj�c� pouze s vrstvenou s�t�. </p> 
+<h2>Neuronov� s� - implementace</h2> 
+<p>Pro pot�eby implementace RE byla nejprve implementov�na neuronov� s� s backpropagation. Jedn� se o obecnou neuronovou s� specializovanou pomoc� d�d�n�. </p> 
+<ul> 
+ <li><strong>{@link pongai.cNeuron cNeuron}</strong> - z�kladn� stavebn� prvek s�t�. </li> 
+ <li><strong>{@link pongai.cSynapse cSynapse}</strong> - spojen� mezi neurony. </li> 
+ <li><strong>{@link pongai.cNeuralNet cNeuralNet}</strong> - obecn� neuronov� s� s libovoln�m po�tem a zapojen�m neuron�. Metoda <code>Compute</code> po��t� s neexistenc� cykl� v s�ti. </li> 
+ <li><strong>{@link pongai.cNeuralNetIOAdapter cNeuralNetIOAdapter}</strong> - rozhran� neuronov� s�t� pro vkl�d�n� vstup� (<code>SetInputValues(double[] adValues)</code>) a pro ode�et v�sledk� (<code>double[] GetOutputValues()</code>). </li> 
+ <li><strong>{@link pongai.cNeuralNetPerceptron cNeuralNetPerceptron}</strong> - specializace <code>cNeuralNet</code>. P�et�en je jen konstruktor, kter� podle pole po�tu neuron� ve vrstv�ch vytvo�� p��slu�n� po�et neuron�, propoj� je, a neurony z prvn�, resp. posledn� vrstvy ur�� jako vstupn�, resp. v�stupn�. </li> 
+ <li><strong>{@link pongai.cNeuralNetTeacher cNeuralNetTeacher}</strong> - u�itel neuronov� s�t�; u�� metodou backpropagation. Pracuje s objektem <code>cNeuralNetIOAdapter</code> a jeho odkazem na objekt <code>cNeuralNet</code>. Obsahuje tr�novac� sadu vzor� a po�adovan�ch v�sledk�. Na z�klad� odchylky skute�n�ho v�sledku s�t� od po�adovan�ho (p��mo) upravuje jednotliv� v�hy na synaps�ch mezi neurony s�t�. </li> 
+ <li><strong>cRound</strong> - t��da s r�zn�mi statick�mi pomocn�mi funkcemi. </li> 
+</ul> 
+<!-- Agent - funkce --> 
+<h2>Agent - funkce</h2> 
+<p>Hra Pong je pops�na v p��slu�n� ��sti dokumentace. Tam jsou pops�ny pojmy jako br�na, m��ek, g�l atp.</p> 
+<p>Jeliko� jednoho agenta v modelu sv�ta p�edstavuje jedna pohybliv� hrac� plo�ka, budou se v n�sleduj�c�ch odstavc�ch tyto dva pojmy pro stru�nost m�rn� prol�nat.</p> 
+<p>Agent m� "nastarosti" jednu plo�ku, jej� pomoc� sleduje tyto c�le:</p> 
+<ul style="list-style-type: decimal;"> 
+ <li>zabr�nit tomu, aby m��ek pronikl a� do jeho br�ny (nedostat g�l) </li> 
+ <li>dostat m��ek do soupe�ovy br�ny (d�t mu g�l) </li> 
+</ul> 
+<p>Agent dost�v� od modelu prost�ed� v pravideln�ch intervalech tyto informace:</p> 
+<ul> 
+ <li>Pozice pohybliv�ch prvk� (X) - tedy pozice jeho samotn�ho a soupe�ova pozice. </li> 
+ <li>Pozice m��ku (X,Y) - normalizov�no na interval &lt;0,1&gt; </li> 
+ <li>Sm�r a rychlost pohybu m��ku jako dvouslo�kov� vektor. </li> 
+</ul> 
+<p>P�i obdr�en� t�chto informac� s nimi agent nalo�� tak, �e podle nich uprav� sv�j vnit�n� stav. Tyto informace jsou prakticky p��mo "namapov�ny" na prom�nn� v jeho stavu.</p> 
+<p>Na ��dost od agent podle sv�ho sou�asn�ho stavu "vymysl�", jak� akce by m�la b�t provedena s jeho plo�kou, a tuto informaci vr�t�. Agent je lehce nedeterministick� v z�vislosti na konstat� pravd�podobnosti v�b�ru akce, kter� podle sou�asn�ch agentov�ch zku�enost� povede ke kladn�mu ohodnocen�. M��e se tedy st�t, �e vr�t� jin� instrukce ve dvou n�sleduj�c�ch ��dostech, ani� by mezi nimi byl upraven stav. Nedeterministi�nost je zavedena za ��elem "vysko�en�" z p��padn�ho lok�ln�ho minima.</p> 
+<p>Agent se u�� na principu zp�tnovazebn�ho u�en� (reinforcement learning, RE). To znamen�, �e informaci o spr�vnosti �i �sp�nosti sv�ho kon�n� nedost�v� okam�it� po proveden� akce, ale ��dce, nepravideln�, obvykle na z�klad� n�jak� ud�losti, a v hodnocen� nen� p��li� informac�, obvykle jen kladn� �i z�porn� ��slo r�zn�ch velikost� ur�uj�c� prosp�nost a z�va�nost dan� ud�losti.</p> 
+<p>P�vodn� pl�n byl takov�, �e n� agent ze hry Pong jako ohodnocen� �innosti bude dost�vat body:</p> 
+<ul> 
+ <li>+100 bod�, pokud soupe� dostane g�l. </li> 
+ <li>-100 bod�, pokud agent s�m dostane g�l do vlastn� br�ny. </li> 
+</ul> 
+<p>Tento p��stup se v�ak v pr�b�hu v�voje uk�zal b�t jako ne zcela vhodn�, viz nad�azen� ��st dokumentace.</p> 
+<!-- Agent - implementace --> 
+<h2>Agent - implementace</h2> 
+<p>T��da Agenta byla vytvo�ena v r�mci bal��ku objects a byla prom�ch�na funk�nost agenta a plo�ky. Tato ��st pojedn�v� pouze o ��stech ��sti t�kaj�c�ch se implementace agenta jako p�edstavitele um�l� inteligence. </p> 
+<p>Metoda u�en� vznikl� kombinac� metody Monte Carlo a ukl�d�n� "eligibility", podle n�vrhu popsan�ho v {@link overview p�ehledu } byla implementov�na ve t��d� {@link objects.Agent Agent }. Tato t��da je sice v bal��ku <code>objects</code>, pat�� ale sp�e do <code>pongai</code>, proto je ideov� pops�na zde.</p> 
+<h3>Pozorov�n� a ovliv�ov�n� prost�ed�</h3> 
+<p>Agent pozoruje i ovliv�uje prost�ed� p�edev��m prost�ednictv�m metody {@link objects.Agent#doAction doAction() } V n� se d�je toto:</p> 
+<ul> 
+ <li>Ode�tou se hodnoty z modelu prost�ed�. </li> 
+ <li>Hodnoty se znormalizuj�: Rychlost se p�evede z rozsahu (-oo, +oo) na rozsah (0,1). </li> 
+ <li>Tyto hodnoty se vlo�� na vstup agentovy neuronov� s�t�. </li> 
+ <li>Provede se v�po�et neuronov� s�t�. </li> 
+ <li>Ode�tou se v�stupn� hodnoty s�t�, kter� p�edstavuj� pravd�podobnost v�beru jednotliv�ch akc�. </li> 
+ <li>Zjist� se, kter� z akc� m� nejvy��� pravd�podobnost. </li> 
+ <li>Podle metody epsilon-greedy je vybr�na akce, kter� se m� prov�st, a ta je provedena. </li> 
+</ul> 
+<p>A� sem je to postup b�n� pro Q-learning s aplikac� neurnov� s�t�. Nakonec provedeme jeden krok nav�c:</p> 
+<ul> 
+ <li>Ulo��me si informace o t�to iteraci - jak� hodnoty jsme poskytli neuronov� s�t�, a jakou akci jsme vybrali. Tyto informace se ukl�daj� do fronty FIFO s pevnou d�lkou N. Jsou v n� tedy informace o maxim�ln� N posledn�ch iterac�ch. </li> 
+</ul> 
+<div> 
+ <img src="http://localhost:8820/doc-files/rozlozeni_vah.gif" alt="" width="707" height="235"> 
+</div> 
+<h3>Ud�lost "trefa m��ku"</h3> 
+<p>Kdy� se m��ek dotkne plo�ky, kterou m� agent nastarosti, je zavol�na jeho metoda {@link objects.Agent#hitReceived}, ve kter� se zkop�ruje aktu�ln� obsah FIFO fronty, tedy informace o n�kolika posledn�ch iterac�ch. Tato sada se ulo�� do skladu (intern� t��da <code>cHitsStore</code>), kde se ukl�daj� takov�to sady pro celou aktu�ln� epizodu (za posledn�ch n�kolik set a� tis�c iterac�, star�� se zahazuj�). </p> 
+<p>T�to ud�losti na obr�zku odpov�daj� vrchol <strong>�ern�</strong> k�ivky.</p> 
+<h3>Zp�tn� vazba</h3> 
+<p>Hodnocen� chov�n� agent dost�v� prost�ednictv�m metod {@link objects.Agent#goalMaked } a {@link objects.Agent#goalReceived}. Tyto metody jsou vol�ny, kdy� agent d�, resp. dostane g�l. V nich se zavol� metoda (@link #AdaptNeuralNet} s hodnotou odm�ny +100, resp. -100. </p> 
+<p>T�to ud�losti na obr�zku odpov�daj� vrchol <strong style="color: blue;">modr�</strong> k�ivky.</p> 
+<h3>U�en�</h3> 
+<p>Samotn� u�en� prob�h� v metod� (@link #AdaptNeuralNet}. Prob�h� takto:</p> 
+<ul> 
+ <li>V objektu <code>cHitsStore</code> m�me informace o d�n� p�ed d�le�it�mi ud�lostmi: N�kolik iterac� p�ed ka�d�m z�sahem plo�ky m��kem v ned�vn� dob� b�hem t�to epizody. (V�znam pojm� "n�kolik" a "ned�vn�" z�vis� na konstant�.) </li> 
+ <li>V�em z�sah�m je ur�ena "v�ha" v rozmez� &lt;0,1&gt; podle jejich st��� - ��m star��, t�m m�n�. </li> 
+ <li>U v�ech z�sah� p�i�ad�me jednotliv�m iterac�m v�hu podobn�m zp�sobem. </li> 
+ <li>Proch�z�me iterace od nejmlad�� po nejstar��: </li> 
+ <li>Pro ka�dou iteraci nastav�me neuronov� s�ti na vstup hodnoty ulo�en� u t�to iterace a provedeme v�po�et s�t� (za ��elem spr�vn�ho nastaven� vnit�n�ch hodnot pro pou�it� back-propagation). </li> 
+ <li>Vytvo��me kopii ulo�en�ch hodnot. U v�stupu, kter� p�edstavuje akci, kter� byla v dan� iteraci provedena, nastav�me rozd�l podle v�hy dan� iterace a podle odm�ny (rozd�l tedy m��e b�t kladn� i z�porn�). </li> 
+ <li>Tyto vstupn� hodnoty a v�stupn� hodnoty s jednou z nich upravenou poskytneme u�iteli s�t� (objekt {@link pongai.cNeuralNetTeacher}) a provedeme distribuci chyby metodou back-propagation. </li> 
+</ul> 
+<p>T�m by m�lo b�t zaji�t�no, �e:</p> 
+<ul> 
+ <li>pravd�podobnost v�b�ru akce vedouc� v ur�it�m stavu (a jim bl�zk�ch) k obdr�en� g�lu se sn��, </li> 
+ <li>pravd�podobnost v�b�ru akce vedouc� v ur�it�m stavu (a jim bl�zk�ch) ke g�lu soupe�i se zv���. </li> 
+</ul> 
+<p>A jestli ne, a� m� za�l�pne ob�� p�tros.</p> 
+<h3>Response welcome</h3> 
+<p>Pokud je uveden� postup principi�ln� �patn�, dejte pros�m v�d�t autorovi, kter� se velmi r�d dozv�, pro�, a jak� postup by byl lep��. D�ky.</p></div>
+
+	<hr />
+
+
+    <!-- Facebook comments -->
+        <div class="fb-comments" data-href="http://www.zizka.ch/pages/programovani/artificial_intelligence/neural_networks/pongai_doc/package.html" data-width="800" data-numposts="5"></div>
+
+    </div>
+    <div id="push"></div>
+
+</div>
+
+<div id="footer">
+    <div class="container">
+        <p class="muted credit">&copy; 2018 | Mixed with <a href="http://getbootstrap.com/">Bootstrap v3.3.7</a> | Baked with <a href="http://jbake.org">JBake v2.7.0-SNAPSHOT</a></p>
+    </div>
+</div>
+
+<script src="../../../../../js/jquery-1.11.1.min.js"></script>
+<script src="../../../../../js/bootstrap.min.js"></script>
+<script src="../../../../../js/prettify.js"></script>
+
+<!-- Facebook comments -->
+<div id="fb-root"></div>
+<script>
+    (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://connect.facebook.net/cs_CZ/sdk.js#xfbml=1&version=v3.0';
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+</script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-4584951-4"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-4584951-4');
+</script>
+
+</body>
+</html>

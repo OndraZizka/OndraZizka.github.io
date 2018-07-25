@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>JBoss Microcontainer Sample Application – Howto - Ondřej Žižka</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="My personal web">
+    <meta name="author" content="Ondřej Žižka">
+    <meta name="generator" content="JBake">
+
+
+    <link rel="stylesheet" href="../../../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../../css/asciidoctor.css">
+    <link rel="stylesheet" href="../../../../css/base.css">
+    <link rel="stylesheet" href="../../../../css/doc-body.css">
+    <link rel="stylesheet" href="../../../../css/prettify.css">
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+    <script src="../../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+
+    <!-- Fav and touch icons -->
+    <!--<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">-->
+    <link rel="shortcut icon" href="../../../../favicon.ico">
+</head>
+<body onload="prettyPrint()">
+    <div id="wrap">
+
+	<!-- Fixed navbar -->
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="http://www.zizka.ch/">Ondřej Žižka</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="../../../../index.html">Blog</a></li>
+            <li><a href="../../../../archive.html">Archive</a></li>
+            <li><a href="../../../../tags">Tags</a></li>
+
+            <li><a href="../../../../about.html">About Me</a></li>
+            <li><a href="../../../../feed.xml">RSS feed</a></li>
+            <li><a href="../../../../sitemap.xml">Sitemap</a></li>
+            <!--
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li class="divider"></li>
+                <li class="dropdown-header">Nav header</li>
+                <li><a href="#">Separated link</a></li>
+                <li><a href="#">One more separated link</a></li>
+              </ul>
+            </li>
+            -->
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+    <div class="container">
+
+	<div class="page-header">
+        <h1>JBoss Microcontainer Sample Application – Howto - Ondřej Žižka</h1>
+	</div>
+
+	<div class="date"><em>2012-12-16</em></div>
+
+	<div class="doc-body"><h3>JBoss Microcontainer Sample Application&nbsp;– Howto</h3> 
+<p><em>A&nbsp;very brief intro to JBoss Microcontainer.</em></p> 
+<h4>Prerequisites</h4> 
+<p>This tutorial assumes you're familiar with Maven. If you're not, don't worry&nbsp;– most IDE's&nbsp;will hide it from you quite&nbsp;well.</p> 
+<p>You may also be familiar with Spring <acronym title="inversion of control">IoC</acronym>, which is not only similar to, but compatible with JBoss Microcontainer.</p> 
+<h5>Maven configuration</h5> 
+<p>You need to set up Maven to use JBoss Maven repository (all JBoss projects use this repository, by the way). Follow instalation instructions in <a href="http://www.jboss.org/file-access/default/members/jbossmc/freezone/docs/2.0.x/userGuide/ch02.html">JBoss Micontainer User Guide</a>. Here is the shortened version of the profile:</p> 
+<pre class="brush: xml"><code>&lt;profile&gt;
+  &lt;id&gt;jboss.repository&lt;/id&gt;
+    &lt;activation&gt; &lt;property&gt; &lt;name&gt;!jboss.repository.off&lt;/name&gt; &lt;/property&gt; &lt;/activation&gt;
+  &lt;repositories&gt;
+    &lt;repository&gt; &lt;id&gt;snapshots.jboss.org&lt;/id&gt; &lt;url&gt;http://snapshots.jboss.org/maven2&lt;/url&gt; &lt;snapshots&gt; &lt;enabled&gt;true&lt;/enabled&gt; &lt;/snapshots&gt; &lt;/repository&gt;
+    &lt;repository&gt; &lt;id&gt;repository.jboss.org&lt;/id&gt; &lt;url&gt;http://repository.jboss.org/maven2&lt;/url&gt; &lt;snapshots&gt;&lt;enabled&gt;false&lt;/enabled&gt;&lt;/snapshots&gt; &lt;/repository&gt;
+  &lt;/repositories&gt;
+  &lt;pluginRepositories&gt;
+    &lt;pluginRepository&gt; &lt;id&gt;repository.jboss.org&lt;/id&gt; &lt;url&gt;http://repository.jboss.org/maven2&lt;/url&gt; &lt;snapshots&gt;&lt;enabled&gt;false&lt;/enabled&gt;&lt;/snapshots&gt; &lt;/pluginRepository&gt;
+    &lt;pluginRepository&gt; &lt;id&gt;snapshots.jboss.org&lt;/id&gt; &lt;url&gt;http://snapshots.jboss.org/maven2&lt;/url&gt; &lt;snapshots&gt;&lt;enabled&gt;true&lt;/enabled&gt;&lt;/snapshots&gt; &lt;/pluginRepository&gt;
+  &lt;/pluginRepositories&gt;
+&lt;/profile&gt;</code></pre> 
+<p>Then add this dependency to your project:</p> 
+<!-- Old versions
+<dependency>
+<groupId>org.jboss.microcontainer</groupId>
+<artifactId>jboss-kernel</artifactId>
+<version>2.0.0.Beta6</version>
+</dependency>
+<dependency>
+<groupId>org.jboss.aop</groupId>
+<artifactId>jboss-aop</artifactId>
+<version>2.0.0.beta1</version>
+</dependency>
+<dependency>
+<groupId>org.jboss.microcontainer</groupId>
+<artifactId>jboss-aop-mc-int</artifactId>
+<version>2.0.0.Beta6</version>
+<scope>runtime</scope>
+</dependency>
+--> 
+<pre class="brush: xml"><code>&lt;dependency&gt;
+  &lt;groupId&gt;org.jboss.microcontainer&lt;/groupId&gt;
+  &lt;artifactId&gt;jboss-kernel&lt;/artifactId&gt;
+  &lt;version&gt;2.0.9.GA&lt;/version&gt;
+&lt;/dependency&gt;</code></pre> 
+<p>Then clean and build the project&nbsp;– that will download all the dependencies (may take a while).</p> 
+<h4>What is JBoss Microcontainer good for?</h4> 
+<p>It's&nbsp;an inversion of control (IoC) framework, like Spring or Guice. IoC frameworks let you create, configure and wire up simple Java objects (POJOs). Classes of these objects need no special coding to be usable with JBoss Microcontainer. These objects usualy represent the modules of your application.</p> 
+<h5>An example of how to use IoC in a typical web application</h5> 
+<ol> 
+ <li>Create and configure a JDBC datasource</li> 
+ <li>Create and configure a connection pool (C3P0), and attach 1) as it's&nbsp;datasource.</li> 
+ <li>Create and configure Hibernate entity manager, and attach 2) as it's&nbsp;datasource.</li> 
+ <li>Create and configure your controller, and „inject“ (== attach) 3) as it's <code>EntityManagerFactory</code>.</li> 
+</ol> 
+<h4>Creating a class to use with JBoss Microcontainer</h4> 
+<p>As written above, any class can be used.</p> 
+<pre class="brush: java"><code>package cz.zizka.ondra.jbmctest;
+
+public class Car
+{
+
+  private String name;
+  public String getName() {    return name;  }
+  public void setName( String name ) {    this.name = name;  }
+
+  public int litresOfFuel;
+  public int getLitresOfFuel() {    return litresOfFuel;  }
+  public void setLitresOfFuel( int litresOfFuel ) {    this.litresOfFuel = litresOfFuel;  }
+
+
+  public Car(){}
+
+  public Car( String name, int litres ){
+    this.name = name;
+    this.litresOfFuel = litres;
+  }
+
+  public String toString(){  return "Car \""+this.name+"\"";  }
+
+}</code></pre> 
+<h4>Instantiating a class in JBoss Microcontainer</h4> 
+<p>Create a XML file named <code>jboss-beans.xml</code> and put it to the resources dir (Maven's&nbsp;default is <code>src/main/resources</code>).</p> 
+<pre class="brush: xml"><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;deployment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xsi:schemaLocation="urn:jboss:bean-deployer:2.0 bean-deployer_2_0.xsd"
+            xmlns="urn:jboss:bean-deployer:2.0"&gt;
+
+   &lt;bean name="myCar" class="cz.zizka.ondra.jbmctest.Car"&gt;
+     &lt;property name="name"&gt;Red Devil&lt;/property&gt;
+     &lt;property name="litresOfFuel"&gt;37&lt;/property&gt;
+   &lt;/bean&gt;
+
+&lt;/deployment&gt;</code></pre> 
+<p>The example above calls a default constructor (with no arguments), and then sets the properties. If they were private and you had setters for them, those would be&nbsp;used.</p> 
+<p>An alternative way is to call the constructor:</p> 
+<pre class="brush: xml"><code>&lt;bean name="myCar" class="cz.zizka.ondra.jbmctest.Car"&gt;
+ &lt;constructor&gt;
+     &lt;parameter&gt;Red Devil&lt;/parameter&gt;
+     &lt;parameter&gt;37&lt;/parameter&gt;
+ &lt;/constructor&gt;
+&lt;/bean&gt;</code></pre> 
+<h4>Wiring up the objects</h4> 
+<p>To attach one object to the other, use <code>&lt;inject&gt;</code>:</p> 
+<pre class="brush: java"><code>package cz.zizka.ondra.jbmctest;
+
+public class Garage
+{
+  private Car carInside;
+  public Car getCarInside() {    return carInside;  }
+  public void setCarInside( Car car ) {    this.carInside = car;  }
+
+  public String toString(){
+    return "Garage with a car: "+this.getCar();
+  }
+}</code></pre> 
+<pre class="brush: xml"><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;deployment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xsi:schemaLocation="urn:jboss:bean-deployer:2.0 bean-deployer_2_0.xsd"
+            xmlns="urn:jboss:bean-deployer:2.0"&gt;
+
+   &lt;bean name="myCar" class="cz.zizka.ondra.jbmctest.Car"&gt;
+     &lt;property name="name"&gt;Red Devil&lt;/property&gt;
+     &lt;property name="litresOfFuel"&gt;37&lt;/property&gt;
+   &lt;/bean&gt;
+
+   &lt;bean name="myGarage" class="cz.zizka.ondra.jbmctest.Garage"&gt;
+     &lt;property name="myGarage"&gt;&lt;inject bean="myCar"/&gt;&lt;/property&gt;
+   &lt;/bean&gt;
+
+&lt;/deployment&gt;</code></pre> 
+<h4>Creating JBoss Microcontainer object in your application (bootstraping)</h4> 
+<pre class="brush: java"><code>public class App {
+
+  public static void main( String[] args ) throws Throwable
+  {
+
+    // Bootstrap.
+    BasicBootstrap bootstrap = new BasicBootstrap();
+    bootstrap.run();
+
+
+    // Load the bean definitions.
+    ClassLoader cl = Thread.currentThread().getContextClassLoader();
+    URL url = cl.getResource("jboss-beans.xml");
+    BasicXMLDeployer deployer = new BasicXMLDeployer( bootstrap.getKernel() );
+    deployer.deploy( url );
+
+    // Get the garage bean.
+    ControllerContext context = bootstrap.getKernel().getController().getInstalledContext("myGarage");
+    System.out.println( "I have a garage: "+context.getTarget());
+
+    // Clean up.
+    deployer.shutdown();
+
+  }// main()
+
+}// class</code></pre> 
+<h4>See also</h4> 
+<p>Unlike spring, JBoss Microcontainer is not much documented when it comes to usage in a standalone application.</p> 
+<p>You can download <a href="http://labs.jboss.com/file-access/default/members/jbossmc/downloads/userGuide-examples-13112007.zip">the examples</a> from the JBoss site, but the code which copes with microcontainer is buried deep in the testsuite harness.</p> 
+<p><a href="http://soa.dzone.com/articles/a-look-inside-jboss-microconta">A&nbsp;Look Inside the JBoss Microcontainer, Part I&nbsp;– Component Models</a><br> <a href="http://java.dzone.com/articles/a-look-inside-jboss-microconta-0">A&nbsp;Look Inside JBoss Microcontainer, Part II&nbsp;– Advanced Dependency Injection and&nbsp;IoC</a></p> 
+<p>XML schemas for the jboss-beans.xml file can be found on <a href="http://www.jboss.org/community/wiki/JBossDTDs">this JBoss Wiki page</a>, in the SVN, or inside the JBoss Microcontainer kernel&nbsp;JAR.</p> 
+<p>A&nbsp;<a href="http://docs.jboss.org/jbossas/jboss4guide/r4/html/mc.chapter.html">chapter about JBoss Microcontainer</a> in the JBoss AS 4&nbsp;guide.</p> 
+<p>//TODO:// Have look at <code>org.jboss.kernel.plugins.bootstrap.standalone.StandaloneBootstrap</code>&nbsp;– loads all <code>jboss-beans.xml</code> from the classpath.</p></div>
+
+	<hr />
+
+
+    <!-- Facebook comments -->
+        <div class="fb-comments" data-href="http://www.zizka.ch/pages/programovani/java/jboss/jboss-microcontainer-howto-example-standalone-app.html" data-width="800" data-numposts="5"></div>
+
+    </div>
+    <div id="push"></div>
+
+</div>
+
+<div id="footer">
+    <div class="container">
+        <p class="muted credit">&copy; 2018 | Mixed with <a href="http://getbootstrap.com/">Bootstrap v3.3.7</a> | Baked with <a href="http://jbake.org">JBake v2.7.0-SNAPSHOT</a></p>
+    </div>
+</div>
+
+<script src="../../../../js/jquery-1.11.1.min.js"></script>
+<script src="../../../../js/bootstrap.min.js"></script>
+<script src="../../../../js/prettify.js"></script>
+
+<!-- Facebook comments -->
+<div id="fb-root"></div>
+<script>
+    (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://connect.facebook.net/cs_CZ/sdk.js#xfbml=1&version=v3.0';
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+</script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-4584951-4"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-4584951-4');
+</script>
+
+</body>
+</html>

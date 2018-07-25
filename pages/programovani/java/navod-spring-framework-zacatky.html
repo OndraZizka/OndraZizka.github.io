@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>Úplné začátky se Spring framework - Ondřej Žižka</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="My personal web">
+    <meta name="author" content="Ondřej Žižka">
+    <meta name="generator" content="JBake">
+
+
+    <link rel="stylesheet" href="../../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../css/asciidoctor.css">
+    <link rel="stylesheet" href="../../../css/base.css">
+    <link rel="stylesheet" href="../../../css/doc-body.css">
+    <link rel="stylesheet" href="../../../css/prettify.css">
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+    <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+
+    <!-- Fav and touch icons -->
+    <!--<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">-->
+    <link rel="shortcut icon" href="../../../favicon.ico">
+</head>
+<body onload="prettyPrint()">
+    <div id="wrap">
+
+	<!-- Fixed navbar -->
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="http://www.zizka.ch/">Ondřej Žižka</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="../../../index.html">Blog</a></li>
+            <li><a href="../../../archive.html">Archive</a></li>
+            <li><a href="../../../tags">Tags</a></li>
+
+            <li><a href="../../../about.html">About Me</a></li>
+            <li><a href="../../../feed.xml">RSS feed</a></li>
+            <li><a href="../../../sitemap.xml">Sitemap</a></li>
+            <!--
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li class="divider"></li>
+                <li class="dropdown-header">Nav header</li>
+                <li><a href="#">Separated link</a></li>
+                <li><a href="#">One more separated link</a></li>
+              </ul>
+            </li>
+            -->
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+    <div class="container">
+
+	<div class="page-header">
+        <h1>Úplné začátky se Spring framework - Ondřej Žižka</h1>
+	</div>
+
+	<div class="date"><em>2012-12-16</em></div>
+
+	<div class="doc-body"><h3>Úplné začátky se Spring framework</h3> 
+<h4>K&nbsp;čemu je Spring?</h4> 
+<p>Spring má více částí, takže se dá využívat lecjak.</p> 
+<ul> 
+ <li><strong>Spring Web MVC</strong>&nbsp;– framework pro návrh webových aplikací ve stylu <em>Model, View and Controller</em></li> 
+ <li><strong>Spring JDBC</strong>&nbsp;– zjednodušení práce s&nbsp;JDBC, něco jako&nbsp;<a href="http://ibatis.apache.org/">iBatis</a></li> 
+ <li><strong>Spring AOP</strong>&nbsp;– viz článek <a href="navod-spring-aop-zacatky.texy">Začátky se Spring AOP&nbsp;–&nbsp;návod</a></li> 
+ <li><strong>Spring Inversion of Control</strong> (dependency injection, BeanFactory, ApplicationCon­text)&nbsp;– knihovna pro vnější konfiguraci</li> 
+ <li>a <a href="http://www.springframework.org/about">další</a>…</li> 
+</ul> 
+<p>Mě v&nbsp;tomto článku bude zajímat poslední položka&nbsp;– <em>IoC</em>. Je to jen zlomek toho, co Spring dokáže, ale je to také základ skoro všeho, co se ve Springu dělá. (Proto tedy název článku „Úplné začátky…“ a nikoliv „Spring&nbsp;IoC“.)</p> 
+<h4>Spring Inversion of Control (IoC)</h4> 
+<p>Inversion of Control (česky bych řekl „vyvržení střev aplikace“, ale jinak pochopitelně „převrácené řízení“) je technika, pomocí které především oddělíte konfiguraci od kódu a také oddělíte jednotlivé části aplikace navzájem.</p> 
+<p>Zprvu se vám může zdát, že stačí normální konfigurace přes <code>Properties</code> a dělat to níže popisovaným způsobem je složitější. A&nbsp;máte pravdu! Ale vtip je v&nbsp;tom, že pokud děláte J2EE aplikaci, postupem času začne váš projekt používat <acronym title="Například já teď pracuju na celkem jednoduchém projektu, ale už teď používám Hibernate přes JPA, iBatis, FreeMarker a&nbsp;další.">desítky</acronym> modulů, z&nbsp;nichž každý má vlastní způsob konfigurace.</p> 
+<p>Se Spring IoC ale dnes už spolupracuje skoro každý významný projekt, a díky tomu je všechny můžete nakonfigurovat jednotným způsobem, což je u&nbsp;větších projektů neocenitelné. Spring navíc pro nejběžnější úlohy nabízí velmi přímočará řešení s&nbsp;defaultními hodnotami, proto přidat nový modul často znamená jen přidat pár řádků do XML konfigurace Springu.</p> 
+<h4>Jak na to</h4> 
+<p>Hlavní třídou k&nbsp;tomuto je buď <code>ApplicationContext</code>, nebo <em>Bean Factory</em> neboli <em>továrna na „bíny“</em>. <code>BeanFactory</code> je jednodušší (osekaná) verze <code>ApplicationContext</code>u, proto začneme tou. <code>ApplicationContext</code> využijete u&nbsp;pokročilejších technik, jako je správa transakcí nebo&nbsp;AOP.</p> 
+<div>
+ <img src="http://localhost:8820/images/spring-beans-factory.png" alt="">
+</div> 
+<p><em>Obrázek je z&nbsp;<a href="http://static.springframework.org/spring/docs/2.5.x/reference/beans.html#beans-basics">dokumentace Springu</a>, kde najdete lepší tutoriál než je tento, ale v&nbsp;angličtině.</em></p> 
+<p>Zatímco běžně byste třeba pro databázové spojení měli třídu <code>DatabaseManager</code>, z&nbsp;ní udělali jedináčka (singleton), a tuto třídu inicializovali a vložili kamsi do hlavního objektu aplikace, se Springem přenecháte vytvoření a konfiguraci objektu na Springu a v&nbsp;kódu ostatních si o&nbsp;něj vždy jen požádáte.</p> 
+<p>Co zbývá na vás je implementace příslušné třídy a vytvoření XML souboru s&nbsp;metadaty pro jeho konfiguraci.</p> 
+<p>V&nbsp;podstatě velice jednoduché. Takže nyní ukázka. Předpokládejme obecně jakoukoliv aplikaci.</p> 
+<hr> 
+<h5>Jak inicializovat spring</h5> 
+<p>Inicializace probíhá tak, že vytvoříte továrnu na beany a do konstruktoru předáte soubor, který se má číst. U&nbsp;newebových aplikací můžete XML soubor dát kam chcete a pojmenovat jej jak chcete.</p> 
+<pre class="brush: java"><code>import org.springframework.beans.factory.xml.XmlBeanFactory;
+import org.springframework.core.io.ClassPathResource;
+
+public void init() {
+
+  XmlBeanFactory bf = new XmlBeanFactory( new ClassPathResource( "properties/SpringBeans.xml" ));
+
+}</code></pre> 
+<p>U&nbsp;webových aplikací se konfigurační soubory dávají do <code>/WEB-INF/</code>, anžto tam se webový klient nikdy nedostane (zaručeno specifikací&nbsp;J2EE).</p> 
+<pre class="brush: java"><code>import org.springframework.beans.factory.xml.XmlBeanFactory;
+import org.springframework.web.context.support.ServletContextResource;
+
+public void init() {
+
+  XmlBeanFactory bf = new XmlBeanFactory(new ServletContextResource(this.getServletContext(), "/WEB-INF/applicationContext.xml"));
+
+}</code></pre> 
+<p>Soubor <code>applicationContext.xml</code> viz dále.</p> 
+<hr> 
+<h5>Nyní jak si budete žádat o&nbsp;připravený objekt (pro ukázku třeba&nbsp;DAO):</h5> 
+<pre class="brush: java"><code>userDAO = (UserDAO) bf.getBean("userDAO");</code></pre> 
+<p><code>userDAO</code> je jméno konkrétního objektu třídy <code>UserDAO</code>&nbsp;– viz&nbsp;dále.</p> 
+<p>Krásné, že? :-)</p> 
+<p>Samozřejmě je to o&nbsp;něco složitější než to udělat přímo v&nbsp;kódu, ale zkuste to a uvidíte, že tomu přijdete na&nbsp;chuť.</p> 
+<hr> 
+<h5>Konfigurace</h5> 
+<p><strong>A&nbsp;teď co je k&nbsp;tomu potřeba:</strong></p> 
+<p>V&nbsp;konfiguračním souboru <code>/WEB-INF/applicationContext.xml</code> řeknete springu, jaké všechny objekty má připravit a jak je nastavit.</p> 
+<p><em>Poznámka: U&nbsp;newebových aplikací můžete XML soubor dát kam chcete a pojmenovat jej jak chcete.</em></p> 
+<pre class="brush: xml"><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+
+&lt;!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd"&gt;
+
+&lt;beans&gt;
+
+ &lt;bean id="propertyConfigurer"
+    class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"&gt;
+  &lt;property name="locations"&gt;
+   &lt;list&gt;
+    &lt;value&gt;settings.properties&lt;/value&gt;
+   &lt;/list&gt;
+  &lt;/property&gt;
+ &lt;/bean&gt;
+
+ &lt;import resource="spring-config/userDAOs.xml" /&gt;
+
+&lt;/beans&gt;</code></pre> 
+<p>První element <code>&lt;bean&gt;</code> je přímá definice objektu, další definice jsou obsažené v&nbsp;souborech načtených přes element <code>&lt;import&gt;</code>.</p> 
+<p>Atribut <code>id="propertyConfigurer"</code> obsahuje jméno, pod kterým Spring o&nbsp;daný objekt budete pozdeji&nbsp;žádat.</p> 
+<p>Atribut <code>class="..."</code> je jméno třídy, ze které Spring objekt vytvoří. Použije k&nbsp;tomu konstruktor bez parametrů. Mohl by použít i&nbsp;jiný, ale takto nám to&nbsp;stačí.</p> 
+<p>Element <code>&lt;property name="locations"&gt;</code> použije Spring k&nbsp;nastavení vlastnosti objektu přes setter, tedy přes <code>setLocations(...)</code>. Dokáže pracovat s&nbsp;různými typy, zde například je to seznam (stringů).</p> 
+<hr> 
+<p>Ještě se podíváme na soubor <code>userDAOs.xml</code>.</p> 
+<p>//Update 2008/09:// Momentálně trochu nedovysvětlené… časem snad připíšu.</p> 
+<pre class="brush: xml"><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+
+&lt;!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd"&gt;
+
+&lt;beans&gt;
+
+ &lt;bean id="userDAO" class="cz.dynawest.isir.dao.UserDAO"&gt;
+   &lt;property name="..." ref="..."/&gt;
+ &lt;/bean&gt;
+
+ &lt;bean id="udalostDAO" class="cz.dynawest.isir.dao.UdalostDAO"&gt;
+   &lt;property name="..." ref="..."/&gt;
+ &lt;/bean&gt;
+
+&lt;/beans&gt;</code></pre> 
+<p>A&nbsp;spring je na světě.</p> 
+<h4>Závěr</h4> 
+<p>Zatím jste se naučili jen tzv. <em>Inversion of Control</em>.</p> 
+<p>Popisy dalších částí Spring Frameworku budu postupně přidávat, najdete je v&nbsp;sekci Java +&nbsp;J2EE.</p></div>
+
+	<hr />
+
+
+    <!-- Facebook comments -->
+        <div class="fb-comments" data-href="http://www.zizka.ch/pages/programovani/java/navod-spring-framework-zacatky.html" data-width="800" data-numposts="5"></div>
+
+    </div>
+    <div id="push"></div>
+
+</div>
+
+<div id="footer">
+    <div class="container">
+        <p class="muted credit">&copy; 2018 | Mixed with <a href="http://getbootstrap.com/">Bootstrap v3.3.7</a> | Baked with <a href="http://jbake.org">JBake v2.7.0-SNAPSHOT</a></p>
+    </div>
+</div>
+
+<script src="../../../js/jquery-1.11.1.min.js"></script>
+<script src="../../../js/bootstrap.min.js"></script>
+<script src="../../../js/prettify.js"></script>
+
+<!-- Facebook comments -->
+<div id="fb-root"></div>
+<script>
+    (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://connect.facebook.net/cs_CZ/sdk.js#xfbml=1&version=v3.0';
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+</script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-4584951-4"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-4584951-4');
+</script>
+
+</body>
+</html>

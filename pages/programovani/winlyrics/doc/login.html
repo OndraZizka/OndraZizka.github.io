@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>Přihlašování – login - Ondřej Žižka</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="My personal web">
+    <meta name="author" content="Ondřej Žižka">
+    <meta name="generator" content="JBake">
+
+
+    <link rel="stylesheet" href="../../../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../../css/asciidoctor.css">
+    <link rel="stylesheet" href="../../../../css/base.css">
+    <link rel="stylesheet" href="../../../../css/doc-body.css">
+    <link rel="stylesheet" href="../../../../css/prettify.css">
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+    <script src="../../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+
+    <!-- Fav and touch icons -->
+    <!--<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">-->
+    <link rel="shortcut icon" href="../../../../favicon.ico">
+</head>
+<body onload="prettyPrint()">
+    <div id="wrap">
+
+	<!-- Fixed navbar -->
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="http://www.zizka.ch/">Ondřej Žižka</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="../../../../index.html">Blog</a></li>
+            <li><a href="../../../../archive.html">Archive</a></li>
+            <li><a href="../../../../tags">Tags</a></li>
+
+            <li><a href="../../../../about.html">About Me</a></li>
+            <li><a href="../../../../feed.xml">RSS feed</a></li>
+            <li><a href="../../../../sitemap.xml">Sitemap</a></li>
+            <!--
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li class="divider"></li>
+                <li class="dropdown-header">Nav header</li>
+                <li><a href="#">Separated link</a></li>
+                <li><a href="#">One more separated link</a></li>
+              </ul>
+            </li>
+            -->
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+    <div class="container">
+
+	<div class="page-header">
+        <h1>Přihlašování – login - Ondřej Žižka</h1>
+	</div>
+
+	<div class="date"><em>2012-12-16</em></div>
+
+	<div class="doc-body"><h3>Přihlašování&nbsp;– login</h3> 
+<h4>Identifikace</h4> 
+<p>User bude identifikovaný e-mailem.<br> U&nbsp;toho je jeden problém&nbsp;– celkem dost uživatelů má ve WinLyrics více účtů s&nbsp;jedním mailem, patrně pro více počítačů. Viz tento&nbsp;dotaz:</p> 
+<pre class="brush: sql"><code>SELECT email, COUNT(*) AS cnt FROM wl2_users GROUP BY email HAVING cnt &gt; 1 ORDER BY cnt DESC;</code></pre> 
+<p>Tak těm bychom asi vytvořili jeden účet, který by mogli používat kdekoliv,&nbsp;ne?</p> 
+<h4>Heslo</h4> 
+<p>Heslo bude uložené jako <code>MD5()</code>.</p> 
+<p><strong>To je zatím vše, co je „jisté“, ostatní záleží na chozém.</strong> Já navrhuju to udělat přes challenge&nbsp;– response metodu.</p> 
+<h4>Challenge&nbsp;– response autentization</h4> 
+<p>Pro testování…&nbsp;– nastavíme někomu heslo…</p> 
+<pre class="brush: sql"><code>UPDATE wl2_users SET pass_md5 = MD5('') WHERE email='winlyrics@dark-sun.org';</code></pre> 
+<pre><code>&gt;&gt; http://localhost:81/winlyrics/real/authentize.php?action=create_session
+
+&lt;&lt; SESSION_ID f8675g1390s7dngloohqitsd74</code></pre> 
+<p><code>sess_id == "f8675g1390s7dngloohqitsd74"</code><br> <code>user pass == md5('') == "d41d8cd98f00b204e9800998ecf8427e"</code><br> <code>hash = md5( "f8675g1390s7dngloohqitsd74" . "d41d8cd98f00b204e9800998ecf8427e" ) == "989bd8a84f9e42b314b3358bb263794e"</code></p> 
+<pre><code>&gt;&gt; http://localhost:81/winlyrics/real/authentize.php?action=verify&amp;sess_id=f8675g1390s7dngloohqitsd74&amp;user=winlyrics@dark-sun.org&amp;hash=989bd8a84f9e42b314b3358bb263794e
+
+&lt;&lt; AUTH_OK</code></pre> 
+<pre class="brush: sql"><code>SELECT id, MD5( CONCAT('f8675g1390s7dngloohqitsd74', pass_md5)) = '989bd8a84f9e42b314b3358bb263794e' FROM wl2_users WHERE email = 'winlyrics@dark-sun.org';</code></pre> 
+<table> 
+ <thead> 
+  <tr> 
+   <th>id</th> 
+   <th>matches</th> 
+  </tr> 
+ </thead> 
+ <tbody> 
+  <tr> 
+   <td>4</td> 
+   <td>1</td> 
+  </tr> 
+ </tbody> 
+</table> 
+<pre><code>&gt;&gt; http://localhost:81/winlyrics/real/authentize.php?action=get_state&amp;sess_id=f8675g1390s7dngloohqitsd74
+
+&lt;&lt; VERIFIED</code></pre> 
+<pre class="php"><code>print_r( $_SESSION );
+
+Array (
+    [valid] =&gt; 1
+    [verified] =&gt; 1
+    [user] =&gt; winlyrics@dark-sun.org
+    [user_id] =&gt; 1
+)</code></pre> 
+<h4><code>authentize.php</code></h4> 
+<p><strong>Autenthicates the user.</strong></p> 
+<p>1) User requests a session ID.<br> New session is created and ID is sent to user.<br> 2) User sends user name and MD5( sess_id . MD5( user_pass ) ).<br> Server constructs the same string and checks their equality.<br> If they match, a „valid“ flag is set to the session and from that moment,<br> session ID can be used to perform user actions.</p> 
+<h5>Actions:</h5> 
+<p><strong><code>create_session == true</code>:</strong></p> 
+<p>Creates a session.<br> Returns: <code>"SESSION_ERROR"</code> on error or <code>"SESSION_ID &lt;&lt;sess_id&gt;&gt;"</code>.</p> 
+<p><strong><code>verify == true</code>:</strong></p> 
+<p>Verifies the user for this session.<br> //Params:// sess_id,&nbsp;hash.</p> 
+<ul> 
+ <li>„sess_id“ is the ID returned by „create_session“ or „get_state“.</li> 
+ <li>„user“ is the user identifier (e-mail)</li> 
+ <li>„hash“ is MD5( sess_id . MD5( &lt;&lt;user pass&gt;&gt; ) ).</li> 
+</ul> 
+<p><em>Returns</em> one of DB_ERROR, SQL_ERROR, AUTH_FAILED or AUTH_OK.</p> 
+<p><strong><code>get_state == true</code>:</strong></p> 
+<p>//Params:// <code>sess_id</code>.<br> //Returns://</p> 
+<ul> 
+ <li><code>"VERIFIED"</code> if the current session is verified (authentization passed).</li> 
+ <li><code>"NOT_VERIFIED"</code> if the current session is not verified.</li> 
+ <li><code>"BAD_PARAM sess_id"</code> when the given sess_id is not valid session.</li> 
+</ul> 
+<h5>Session variables:</h5> 
+<ul> 
+ <li><code>valid</code>&nbsp;– set to true when this session was created using the „create_session“ action.</li> 
+ <li><code>verified</code>&nbsp;– set to true after the client succeeded in „verify“ action.</li> 
+ <li><code>user</code>&nbsp;– after successful verification, contains user identifier.</li> 
+ <li><code>user_id</code>&nbsp;– -"-, contains user ID.</li> 
+</ul></div>
+
+	<hr />
+
+
+    <!-- Facebook comments -->
+        <div class="fb-comments" data-href="http://www.zizka.ch/pages/programovani/winlyrics/doc/login.html" data-width="800" data-numposts="5"></div>
+
+    </div>
+    <div id="push"></div>
+
+</div>
+
+<div id="footer">
+    <div class="container">
+        <p class="muted credit">&copy; 2018 | Mixed with <a href="http://getbootstrap.com/">Bootstrap v3.3.7</a> | Baked with <a href="http://jbake.org">JBake v2.7.0-SNAPSHOT</a></p>
+    </div>
+</div>
+
+<script src="../../../../js/jquery-1.11.1.min.js"></script>
+<script src="../../../../js/bootstrap.min.js"></script>
+<script src="../../../../js/prettify.js"></script>
+
+<!-- Facebook comments -->
+<div id="fb-root"></div>
+<script>
+    (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://connect.facebook.net/cs_CZ/sdk.js#xfbml=1&version=v3.0';
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+</script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-4584951-4"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-4584951-4');
+</script>
+
+</body>
+</html>

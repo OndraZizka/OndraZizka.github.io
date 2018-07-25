@@ -2,22 +2,22 @@
 <html lang="en">
 <head>
     <meta charset="utf-8"/>
-    <title>Ondřej Žižka</title>
+    <title>Short code for Antrun Maven plugin - Ondřej Žižka</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="My personal web">
     <meta name="author" content="Ondřej Žižka">
     <meta name="generator" content="JBake">
 
 
-    <link rel="stylesheet" href="../css/bootstrap.min.css">
-    <link rel="stylesheet" href="../css/asciidoctor.css">
-    <link rel="stylesheet" href="../css/base.css">
-    <link rel="stylesheet" href="../css/doc-body.css">
-    <link rel="stylesheet" href="../css/prettify.css">
+    <link rel="stylesheet" href="../../../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../../css/asciidoctor.css">
+    <link rel="stylesheet" href="../../../../css/base.css">
+    <link rel="stylesheet" href="../../../../css/doc-body.css">
+    <link rel="stylesheet" href="../../../../css/prettify.css">
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
-    <script src="../js/html5shiv.min.js"></script>
+    <script src="../../../../js/html5shiv.min.js"></script>
     <![endif]-->
 
     <!-- Fav and touch icons -->
@@ -25,7 +25,7 @@
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">-->
-    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="shortcut icon" href="../../../../favicon.ico">
 </head>
 <body onload="prettyPrint()">
     <div id="wrap">
@@ -40,14 +40,17 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="../">Ondřej Žižka</a>
+          <a class="navbar-brand" href="http://www.zizka.ch/">Ondřej Žižka</a>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li><a href="../index.html">Home</a></li>
-            <li><a href="../about.html">About Me</a></li>
-            <li><a href="../archive.html">Archive</a></li>
-            <li><a href="../feed.xml">RSS feed</a></li>
+            <li><a href="../../../../index.html">Blog</a></li>
+            <li><a href="../../../../archive.html">Archive</a></li>
+            <li><a href="../../../../tags">Tags</a></li>
+
+            <li><a href="../../../../about.html">About Me</a></li>
+            <li><a href="../../../../feed.xml">RSS feed</a></li>
+            <li><a href="../../../../sitemap.xml">Sitemap</a></li>
             <!--
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
@@ -67,21 +70,30 @@
       </div>
     </div>
     <div class="container">
-	
+
 	<div class="page-header">
-		<h1>Tag: test</h1>
+        <h1>Short code for Antrun Maven plugin - Ondřej Žižka</h1>
 	</div>
-	
-	<!--<ul>-->
-			<h4>July 2018</h4>
-			<ul>
-		
-		<li>21 - <a href="../blog/2018/test-post.html">Test Post</a></li>
-	</ul>
-	
+
+	<div class="date"><em>2012-12-16</em></div>
+
+	<div class="doc-body"><h3>Short code for Antrun Maven plugin</h3> 
+<pre class="brush: xml"><code>&lt;build&gt;
+  &lt;plugins&gt;
+    &lt;plugin&gt; &lt;artifactId&gt;maven-antrun-plugin&lt;/artifactId&gt;
+      &lt;executions&gt; &lt;execution&gt; &lt;phase&gt;initialize&lt;/phase&gt;  &lt;goals&gt;&lt;goal&gt;run&lt;/goal&gt;&lt;/goals&gt; &lt;configuration&gt; &lt;tasks&gt;
+        &lt;echo&gt;  *** Hello from Ant! ***  &lt;/echo&gt;
+      &lt;/tasks&gt; &lt;/configuration&gt; &lt;/execution&gt; &lt;/executions&gt;
+    &lt;/plugin&gt;
+  &lt;/plugins&gt;
+&lt;/build&gt;</code></pre></div>
+
+	<hr />
+
 
     <!-- Facebook comments -->
-    
+        <div class="fb-comments" data-href="http://www.zizka.ch/pages/programovani/java/maven/ant-run-plugin-short.html" data-width="800" data-numposts="5"></div>
+
     </div>
     <div id="push"></div>
 
@@ -89,13 +101,13 @@
 
 <div id="footer">
     <div class="container">
-        <p class="muted credit">&copy; 2018 | Mixed with <a href="http://getbootstrap.com/">Bootstrap v3.3.7</a> | Baked with <a href="http://jbake.org">JBake v2.6.1</a></p>
+        <p class="muted credit">&copy; 2018 | Mixed with <a href="http://getbootstrap.com/">Bootstrap v3.3.7</a> | Baked with <a href="http://jbake.org">JBake v2.7.0-SNAPSHOT</a></p>
     </div>
 </div>
 
-<script src="../js/jquery-1.11.1.min.js"></script>
-<script src="../js/bootstrap.min.js"></script>
-<script src="../js/prettify.js"></script>
+<script src="../../../../js/jquery-1.11.1.min.js"></script>
+<script src="../../../../js/bootstrap.min.js"></script>
+<script src="../../../../js/prettify.js"></script>
 
 <!-- Facebook comments -->
 <div id="fb-root"></div>
@@ -107,6 +119,15 @@
         js.src = 'https://connect.facebook.net/cs_CZ/sdk.js#xfbml=1&version=v3.0';
         fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));
+</script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-4584951-4"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-4584951-4');
 </script>
 
 </body>

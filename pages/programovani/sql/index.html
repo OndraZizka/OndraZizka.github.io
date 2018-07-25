@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>SQL corner - Ondřej Žižka</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="My personal web">
+    <meta name="author" content="Ondřej Žižka">
+    <meta name="generator" content="JBake">
+
+
+    <link rel="stylesheet" href="../../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../css/asciidoctor.css">
+    <link rel="stylesheet" href="../../../css/base.css">
+    <link rel="stylesheet" href="../../../css/doc-body.css">
+    <link rel="stylesheet" href="../../../css/prettify.css">
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+    <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+
+    <!-- Fav and touch icons -->
+    <!--<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">-->
+    <link rel="shortcut icon" href="../../../favicon.ico">
+</head>
+<body onload="prettyPrint()">
+    <div id="wrap">
+
+	<!-- Fixed navbar -->
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="http://www.zizka.ch/">Ondřej Žižka</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="../../../index.html">Blog</a></li>
+            <li><a href="../../../archive.html">Archive</a></li>
+            <li><a href="../../../tags">Tags</a></li>
+
+            <li><a href="../../../about.html">About Me</a></li>
+            <li><a href="../../../feed.xml">RSS feed</a></li>
+            <li><a href="../../../sitemap.xml">Sitemap</a></li>
+            <!--
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li class="divider"></li>
+                <li class="dropdown-header">Nav header</li>
+                <li><a href="#">Separated link</a></li>
+                <li><a href="#">One more separated link</a></li>
+              </ul>
+            </li>
+            -->
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+    <div class="container">
+
+	<div class="page-header">
+        <h1>SQL corner - Ondřej Žižka</h1>
+	</div>
+
+	<div class="date"><em>2012-12-13</em></div>
+
+	<div class="doc-body"><h3>SQL corner</h3> 
+<p>One of my favorite technologies are relational databases and the SQL language. I&nbsp;like how elleganant a solution of certain programming tasks can be using SQL&nbsp;– mainly graph computation. E.g., computation of neural networks in common procedural programming languages like C# and Java involves three nested loops; in SQL, it's&nbsp;only one loop, and the other program logic is expressed using SELECTs with JOINs. More explanation comes&nbsp;later.</p> 
+<p>My favorite database system is MySQL 5.0.&nbsp;I&nbsp;intenti­onally mention the version, because it became my favourite when it allowed to write <strong>Stored Procedures</strong>.</p> 
+<p>Through the time I&nbsp;created some handy general-purpose procedures and functions, which ease the developement of other procedures for&nbsp;MySQL.</p> 
+<h4>Various SQL Implementations</h4> 
+<p>Here I&nbsp;publish some results of my efforts in SQL:</p> 
+<ul> 
+ <li><a href="mysql_stored_procedures.texy">MySQL Stored Procedures</a></li> 
+ <li><a href="../neural_networks_in_sql_stored_procedures/index.texy">SQL Implementation of Neural Networks&nbsp;– Perceptron and Backpropagation</a></li> 
+ <li><a href="../transport_schedule_search/index.texy">Transport schedule search SQL implementation</a></li> 
+</ul> 
+<h4>MySQL Wishlist&nbsp;– feature requests</h4> 
+<p>Besides that, from time to time, I&nbsp;also write down what do I&nbsp;miss in MySQL. That's&nbsp;quite a long list, but the most important features&nbsp;are:</p> 
+<ul> 
+ <li>Passing of a result set between stored procedures</li> 
+ <li><a href="mysql_wishlist/result_set_in_variable.texy">Variables should be able to keep a result set</a></li> 
+ <li><a href="mysql_wishlist/java_objects_in_stored_procedures.texy">Java objects in Stored Procedures (sci-fi)</a></li> 
+ <li><a href="mysql_wishlist/alter_table_rename_overwrite.texy"><code>ALTER TABLE ... RENAME [**OVERWRITE**] TO</code></a></li> 
+ <li><a href="mysql_wishlist/stored_procedure_call_stack_in_information_schema.texy">Stored Procedure call stack in INFORMATION_SCHEMA</a></li> 
+ <li><code>sprintf()</code> equivalent in SQL (or rather take Java's <code>String::format()</code> as an inspiration)</li> 
+</ul></div>
+
+	<hr />
+
+
+    <!-- Facebook comments -->
+        <div class="fb-comments" data-href="http://www.zizka.ch/pages/programovani/sql/index.html" data-width="800" data-numposts="5"></div>
+
+    </div>
+    <div id="push"></div>
+
+</div>
+
+<div id="footer">
+    <div class="container">
+        <p class="muted credit">&copy; 2018 | Mixed with <a href="http://getbootstrap.com/">Bootstrap v3.3.7</a> | Baked with <a href="http://jbake.org">JBake v2.7.0-SNAPSHOT</a></p>
+    </div>
+</div>
+
+<script src="../../../js/jquery-1.11.1.min.js"></script>
+<script src="../../../js/bootstrap.min.js"></script>
+<script src="../../../js/prettify.js"></script>
+
+<!-- Facebook comments -->
+<div id="fb-root"></div>
+<script>
+    (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://connect.facebook.net/cs_CZ/sdk.js#xfbml=1&version=v3.0';
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+</script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-4584951-4"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-4584951-4');
+</script>
+
+</body>
+</html>

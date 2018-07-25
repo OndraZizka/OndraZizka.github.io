@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>SQL procedury pro MySQL 5.0 - Ondřej Žižka</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="My personal web">
+    <meta name="author" content="Ondřej Žižka">
+    <meta name="generator" content="JBake">
+
+
+    <link rel="stylesheet" href="../../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../css/asciidoctor.css">
+    <link rel="stylesheet" href="../../../css/base.css">
+    <link rel="stylesheet" href="../../../css/doc-body.css">
+    <link rel="stylesheet" href="../../../css/prettify.css">
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+    <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+
+    <!-- Fav and touch icons -->
+    <!--<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">-->
+    <link rel="shortcut icon" href="../../../favicon.ico">
+</head>
+<body onload="prettyPrint()">
+    <div id="wrap">
+
+	<!-- Fixed navbar -->
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="http://www.zizka.ch/">Ondřej Žižka</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="../../../index.html">Blog</a></li>
+            <li><a href="../../../archive.html">Archive</a></li>
+            <li><a href="../../../tags">Tags</a></li>
+
+            <li><a href="../../../about.html">About Me</a></li>
+            <li><a href="../../../feed.xml">RSS feed</a></li>
+            <li><a href="../../../sitemap.xml">Sitemap</a></li>
+            <!--
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li class="divider"></li>
+                <li class="dropdown-header">Nav header</li>
+                <li><a href="#">Separated link</a></li>
+                <li><a href="#">One more separated link</a></li>
+              </ul>
+            </li>
+            -->
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+    <div class="container">
+
+	<div class="page-header">
+        <h1>SQL procedury pro MySQL 5.0 - Ondřej Žižka</h1>
+	</div>
+
+	<div class="date"><em>2012-12-16</em></div>
+
+	<div class="doc-body"><h3>SQL procedury pro MySQL 5.0</h3> 
+<p>V&nbsp;průběhu doby jsem při řešení různých projektů vytvořil užitečné procedury a funkce, které usnadňují vývoj procedur pro MySQL a mohly by se kdekomu hodit. Proto je na těchto stránkách zveřejňuji.</p> 
+<p>Nejprve něco o&nbsp;principu, jak procedury pracují. Většinou je jejich výstupem tabulka. A&nbsp;jelikož v&nbsp;MySQL 5.0&nbsp;<strong>není žádná možnost</strong>, jak výsledek selectu vraceného procedurou zpracovat v&nbsp;jiné proceduře, osvojil jsem si pravidlo, že výsledek uložím do <code>TEMPORARY TABLE</code> se stejným názvem, jako je název procedury. Tedy např.&nbsp;takto:</p> 
+<pre class="brush: sql .[brush:] sql"><code>CALL lib_Explode();
+SELECT * FROM lib_Explode;
+DROP TEMPORARY TABLE IF EXISTS lib_Explode; -- Volitelně</code></pre> 
+<p>O&nbsp;uvoňování se obvykle nemusíte starat, funkce si sama tabulku příště přepíše, a <code>TEMPORARY</code> tabulky se samy uvolní při ukončení vlákna (tedy např. po odpojení od databáze).</p> 
+<p>Procedury, které vracejí tabulku, se snažím psát tak, aby ji vracely pokaždé; při chybě vracejí prázdnou. Pokud tomu tak u&nbsp;některé není, považujte to za chybu a nahlašte.</p> 
+<p>Pro pohodlí uvádím procedury s&nbsp;určením oddělovače pro MySQL Query Browser. Proto příklady začínají a končí&nbsp;takto:</p> 
+<pre class="brush: sql .[brush:] sql"><code>DELIMITER $$
+...
+END; $$</code></pre> 
+<ul> 
+ <li><strong>Utils</strong>&nbsp;– různé užitečné procedurky, většinou na generování sekvencí a podobně.</li> 
+ <li><strong>Strings</strong>&nbsp;– pro práci s&nbsp;textem. 
+  <ul> 
+   <li><strong><code>lib_Expode()</code></strong>&nbsp;– obdoba expode() z&nbsp;PHP.</li> 
+   <li><strong><code>F1() - F6()</code></strong>&nbsp;– <code>"sprintf()"</code> s&nbsp;1&nbsp;až 6&nbsp;parametry.</li> 
+  </ul> </li> 
+ <li><strong>Logování</strong>&nbsp;– sada funkcí pro logování z&nbsp;procedur.</li> 
+ <li><strong>Geografické funkce</strong>&nbsp;– pro převod souřadnic mezi geografickými souřadnicovými systémy <p>a výpočet vzdálenosti na (země)kouli podle zadané zeměpisné polohy.</p> </li> 
+</ul> 
+<h4>Logging</h4> 
+<pre class="brush: sql .[brush:] sql"><code>CREATE TABLE lib_logg (
+  `whn` datetime NOT NULL,
+  `thread` int(10) unsigned NOT NULL,
+  `level` enum('info','warn','error') NOT NULL default 'info',
+  `str` text NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;</code></pre> 
+<pre class="brush: sql"><code>DELIMITER $$
+CREATE PROCEDURE  Logg( sStr TEXT ) BEGIN
+  INSERT DELAYED INTO lib_logg SET str = sStr, whn = NOW(), thread = CONNECTION_ID();
+END; $$
+
+CREATE PROCEDURE  Logg_warn( sStr TEXT ) BEGIN
+  INSERT DELAYED INTO lib_logg SET level = 'warn', str = sStr, whn = NOW(), thread = CONNECTION_ID();
+END; $$
+
+CREATE PROCEDURE  Logg_error( sStr TEXT ) BEGIN
+  INSERT DELAYED INTO lib_logg SET level = 'error', str = sStr, whn = NOW(), thread = CONNECTION_ID();
+END; $$
+
+CREATE PROCEDURE LoggP( sRout VARCHAR(255), sStr TEXT ) BEGIN
+  INSERT DELAYED INTO lib_logg SET rout = sRout, str = sStr, whn = NOW(), thread = CONNECTION_ID();
+END $$
+
+CREATE PROCEDURE LoggEnter(sRout VARCHAR(255)) BEGIN
+  INSERT INTO lib_logg SET rout = SUBSTRING_INDEX(sRout,'(',1),
+    level='enter', str = sRout, whn = NOW(), thread = CONNECTION_ID();
+END $$
+
+CREATE PROCEDURE LoggLeave(sRout VARCHAR(255)) BEGIN
+ INSERT INTO lib_logg SET rout = sRout, level='leave', str = NULL, whn = NOW(), thread = CONNECTION_ID();
+END $$</code></pre> 
+<h4>String funkce</h4> 
+<h5><code>lib_Explode()</code>&nbsp;– obdoba <code>Explode()</code> z&nbsp;PHP</h5> 
+<pre class="brush: sql"><code>DELIMITER $$
+
+CREATE PROCEDURE lib_Explode( sSepar VARCHAR(255), saVal TEXT )
+body:
+BEGIN
+
+  DROP TEMPORARY TABLE IF EXISTS lib_Explode;
+  CREATE TEMPORARY TABLE lib_Explode(
+    `pos` int unsigned NOT NULL auto_increment,
+    `val` VARCHAR(255) NOT NULL,
+    PRIMARY KEY  (`pos`)
+  ) ENGINE=Memory COMMENT='Explode() results.';
+
+  IF sSepar IS NULL OR saVal IS NULL THEN LEAVE body; END IF;
+
+  SET @saTail = saVal;
+  SET @iSeparLen = LENGTH( sSepar );
+
+  create_layers:
+  WHILE @saTail != '' DO
+
+    # Get the next value
+    SET @sHead = SUBSTRING_INDEX(@saTail, sSepar, 1);
+    SET @saTail = SUBSTRING( @saTail, LENGTH(@sHead) + 1 + @iSeparLen );
+    INSERT INTO lib_Explode SET val = @sHead;
+
+  END WHILE;
+
+END; $$</code></pre> 
+<p>Použití:</p> 
+<pre class="brush: sql"><code>CALL lib_Explode( ',' ,  'Ahoj, jak se máte, 212' );</code></pre> 
+<p>Výsledek:</p> 
+<table> 
+ <thead> 
+  <tr> 
+   <th>pos</th> 
+   <th>val</th> 
+  </tr> 
+ </thead> 
+ <tbody> 
+  <tr> 
+   <td>1</td> 
+   <td>Ahoj</td> 
+  </tr> 
+  <tr> 
+   <td>2</td> 
+   <td>&nbsp;jak se máte</td> 
+  </tr> 
+  <tr> 
+   <td>3</td> 
+   <td>&nbsp;212</td> 
+  </tr> 
+ </tbody> 
+</table> 
+<p>Poznámka: Pokud byste hledali něco jako <code>lib_Implode()</code>, tedy ekvivalent k <code>explode()</code>, poohlédněte se po „agregační funkci“ <code>GROUP_CONCAT()</code>:</p> 
+<pre class="brush: sql"><code>CALL lib_GenerateSequence( 5, 15, 2 );
+SELECT GROUP_CONCAT(i SEPARATOR ' a ') AS vysledek FROM lib_GenerateSequence;</code></pre> 
+<p>Výsledek:</p> 
+<table> 
+ <thead> 
+  <tr> 
+   <th>vysledek</th> 
+  </tr> 
+ </thead> 
+ <tbody> 
+  <tr> 
+   <td>5&nbsp;a 7&nbsp;a 9&nbsp;a 11&nbsp;a 13&nbsp;a 15</td> 
+  </tr> 
+ </tbody> 
+</table> 
+<h5><code>F1() - F6()</code>&nbsp;– obdoba <code>"sprintf()"</code> s&nbsp;1&nbsp;až 6&nbsp;parametry.</h5> 
+<p>Ve funkci F1() se nahrazuje string %s, v&nbsp;ostatních <code>{1}</code> až <code>{6}</code>.</p> 
+<pre class="brush: sql"><code>DELIMITER $$
+
+CREATE FUNCTION  F1 ( sFormat TEXT, sPar1 TEXT )
+    RETURNS text CHARSET utf8 BEGIN
+  RETURN REPLACE(sFormat, '%s', sPar1);
+END; $$
+
+CREATE FUNCTION  F2 ( sFormat TEXT, sPar1 TEXT, sPar2 TEXT )
+    RETURNS text CHARSET utf8 BEGIN
+  RETURN REPLACE( REPLACE(sFormat, '{1}', sPar1) , '{2}', sPar2);
+END; $$
+
+CREATE FUNCTION  F3 ( sFormat TEXT, sPar1 TEXT, sPar2 TEXT, sPar3 TEXT )
+    RETURNS text CHARSET utf8 BEGIN
+  RETURN REPLACE( REPLACE( REPLACE(sFormat, '{3}', sPar3), '{1}', sPar1), '{2}', sPar2);
+END; $$
+
+CREATE FUNCTION  F4 ( sFormat TEXT, sPar1 TEXT, sPar2 TEXT, sPar3 TEXT,
+       sPar4 TEXT ) RETURNS text CHARSET utf8 BEGIN
+  RETURN REPLACE( REPLACE( REPLACE( REPLACE( sFormat,
+    '{1}', sPar1), '{2}', sPar2), '{3}', sPar3), '{4}', sPar4);
+END; $$
+
+CREATE FUNCTION  F5 ( sFormat TEXT, sPar1 TEXT, sPar2 TEXT,  sPar3 TEXT,
+       sPar4 TEXT, sPar5 TEXT  ) RETURNS text CHARSET utf8 BEGIN
+  RETURN REPLACE( REPLACE( REPLACE( REPLACE( REPLACE( sFormat,
+    '{1}', sPar1), '{2}', sPar2), '{3}', sPar3), '{4}', sPar4), '{5}', sPar5);
+END; $$
+
+CREATE FUNCTION  F6 ( sFormat TEXT, sPar1 TEXT, sPar2 TEXT,  sPar3 TEXT,
+       sPar4 TEXT, sPar5 TEXT, sPar6 TEXT  ) RETURNS text CHARSET utf8 BEGIN
+  RETURN REPLACE( REPLACE( REPLACE( REPLACE( REPLACE( REPLACE( sFormat,
+    '{1}', sPar1), '{2}', sPar2), '{3}', sPar3), '{4}', sPar4), '{5}', sPar5), '{6}', sPar6);
+END; $$</code></pre> 
+<p>Použití:</p> 
+<pre class="brush: sql"><code>SELECT F2( 'Ve městě {1} je {2} stupňů.', 'Praha', 31.2 ) FROM DUAL;</code></pre> 
+<p>Výsledek:</p> 
+<table> 
+ <tbody> 
+  <tr> 
+   <td>Ve městě Praha je 31.2&nbsp;stupňů.</td> 
+  </tr> 
+ </tbody> 
+</table> 
+<h4>NULL-safe functions</h4> 
+<p>Somethimes you need to ensure that no parameter of a function is <code>NULL</code>, e.g. in case of calling CONCAT(), which returns <code>NULL</code> if any of parameters is <code>NULL</code>. Writing IFNULL(@param,'') every time can be tedious; so here are some convenience functions. Mainly for debugging purposes.</p> 
+<p>Funkce hlavně pro potřeby logování.</p> 
+<h5>NS()&nbsp;– NULL-safe</h5> 
+<h5>NSB()&nbsp;– NULL-safe boolean</h5> 
+<h5>NSQ()&nbsp;– NULL-safe quoted</h5> 
+<p>If the only argument is <code>NULL</code>, returns the string „NULL“. Otherwise returns:</p> 
+<ul> 
+ <li>NS(): argument.</li> 
+ <li>NSB(): String „TRUE“, if the argument evaluates as true, or „FALSE“ in the opposite&nbsp;case.</li> 
+ <li>NSQ(): argument surrounded by quotes.</li> 
+</ul> 
+<pre class="brush: sql"><code>DELIMITER $$
+
+CREATE FUNCTION NS( s VARCHAR(255) )
+RETURNS varchar(255) CHARSET utf8 BEGIN
+  RETURN IF( s IS NULL, 'NULL', CONCAT('"',s,'"') );
+END $$
+
+CREATE FUNCTION NSB(b BOOLEAN) RETURNS char(5)
+CHARSET utf8 NO SQL DETERMINISTIC BEGIN
+  RETURN IF( b IS NULL, 'NULL', IF(b,'TRUE','FALSE') );
+END $$
+
+CREATE FUNCTION NSQ(s VARCHAR(255)) RETURNS varchar(255)
+CHARSET utf8 NO SQL DETERMINISTIC BEGIN
+  RETURN IF( s IS NULL, 'NULL', CONCAT('"',s,'"') );
+END  $$
+
+DELIMITER ;</code></pre> 
+<p>Použití:</p> 
+<pre class="brush: sql"><code>CALL Logg( F1('Computing level %s.', NS(@iLevel)) )</code></pre> 
+<h4>Utilities</h4> 
+<h5>lib_GenerateSe­quence&nbsp;– generování lineární sekvence&nbsp;čísel</h5> 
+<pre class="brush: sql"><code>DELIMITER $$
+
+CREATE PROCEDURE lib_GenerateSequence(
+  iFrom INTEGER, iTo INTEGER, iStep INTEGER )
+body:
+BEGIN
+
+  DROP TEMPORARY TABLE IF EXISTS lib_GenerateSequence;
+  CREATE TEMPORARY TABLE lib_GenerateSequence (i INTEGER NOT NULL);
+
+  ##  Exit if one of arguments is NULL.
+  IF iFrom IS NULL OR iTo IS NULL OR iStep IS NULL
+    THEN LEAVE body; END IF;
+
+
+  SET @iMin = iFrom;
+  SET @iMax = iTo;
+
+  InsertLoop: LOOP
+    IF @iMin &gt; @iMax THEN LEAVE InsertLoop; END IF;
+    INSERT INTO lib_GenerateSequence SET i = @iMin;
+    SET @iMin = @iMin + iStep;
+  END LOOP;
+
+END; $$</code></pre> 
+<p>Použití:</p> 
+<pre class="brush: sql"><code>CALL lib_GenerateSequence( 5, 15, 2 )</code></pre> 
+<p>Výsledek:</p> 
+<table> 
+ <thead> 
+  <tr> 
+   <th>i</th> 
+  </tr> 
+ </thead> 
+ <tbody> 
+  <tr> 
+   <td>5</td> 
+  </tr> 
+  <tr> 
+   <td>7</td> 
+  </tr> 
+  <tr> 
+   <td>9</td> 
+  </tr> 
+  <tr> 
+   <td>11</td> 
+  </tr> 
+  <tr> 
+   <td>13</td> 
+  </tr> 
+  <tr> 
+   <td>15</td> 
+  </tr> 
+ </tbody> 
+</table></div>
+
+	<hr />
+
+
+    <!-- Facebook comments -->
+        <div class="fb-comments" data-href="http://www.zizka.ch/pages/programovani/sql/mysql_stored_procedures.cz.html" data-width="800" data-numposts="5"></div>
+
+    </div>
+    <div id="push"></div>
+
+</div>
+
+<div id="footer">
+    <div class="container">
+        <p class="muted credit">&copy; 2018 | Mixed with <a href="http://getbootstrap.com/">Bootstrap v3.3.7</a> | Baked with <a href="http://jbake.org">JBake v2.7.0-SNAPSHOT</a></p>
+    </div>
+</div>
+
+<script src="../../../js/jquery-1.11.1.min.js"></script>
+<script src="../../../js/bootstrap.min.js"></script>
+<script src="../../../js/prettify.js"></script>
+
+<!-- Facebook comments -->
+<div id="fb-root"></div>
+<script>
+    (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://connect.facebook.net/cs_CZ/sdk.js#xfbml=1&version=v3.0';
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+</script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-4584951-4"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-4584951-4');
+</script>
+
+</body>
+</html>

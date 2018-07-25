@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>Kontrola rodn�ho ��sla (R�) a identifika�n�ho
+��sla (I�) - Ondřej Žižka</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="My personal web">
+    <meta name="author" content="Ondřej Žižka">
+    <meta name="generator" content="JBake">
+
+
+    <link rel="stylesheet" href="../../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../css/asciidoctor.css">
+    <link rel="stylesheet" href="../../../css/base.css">
+    <link rel="stylesheet" href="../../../css/doc-body.css">
+    <link rel="stylesheet" href="../../../css/prettify.css">
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+    <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+
+    <!-- Fav and touch icons -->
+    <!--<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">-->
+    <link rel="shortcut icon" href="../../../favicon.ico">
+</head>
+<body onload="prettyPrint()">
+    <div id="wrap">
+
+	<!-- Fixed navbar -->
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="http://www.zizka.ch/">Ondřej Žižka</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="../../../index.html">Blog</a></li>
+            <li><a href="../../../archive.html">Archive</a></li>
+            <li><a href="../../../tags">Tags</a></li>
+
+            <li><a href="../../../about.html">About Me</a></li>
+            <li><a href="../../../feed.xml">RSS feed</a></li>
+            <li><a href="../../../sitemap.xml">Sitemap</a></li>
+            <!--
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li class="divider"></li>
+                <li class="dropdown-header">Nav header</li>
+                <li><a href="#">Separated link</a></li>
+                <li><a href="#">One more separated link</a></li>
+              </ul>
+            </li>
+            -->
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+    <div class="container">
+
+	<div class="page-header">
+        <h1>Kontrola rodn�ho ��sla (R�) a identifika�n�ho
+��sla (I�) - Ondřej Žižka</h1>
+	</div>
+
+	<div class="date"><em>2012-12-31</em></div>
+
+	<div class="doc-body"><h3>Kontrola rodn�ho ��sla (R�) a identifika�n�ho ��sla&nbsp;(I�)</h3> 
+<p>V�cuc z <a href="http://latrine.dgx.cz/jak-overit-platne-ic-a-rodne-cislo">http://latrine.dgx.cz/…-rodne-cislo</a> .</p> 
+<h4>Ov��en� rodn�ho ��sla</h4> 
+<ol> 
+ <li>spo�ti zbytek po d�len� prvn�ch dev�ti ��slic a ��sla&nbsp;11</li> 
+ <li>je-li zbytek 10, mus� b�t posledn� ��slice 0</li> 
+ <li>jinak posledn� ��slice mus� b�t rovna zbytku</li> 
+</ol> 
+<p>Tedy 780123/3540 je korektn� rodn� ��slo, a�koliv nen� d�liteln� jeden�cti.</p> 
+<h5>Implementace v&nbsp;PHP:</h5> 
+<pre class="brush: php"><code>function verifyRC($rc)
+{
+    // "be liberal in what you receive"
+    if (!preg_match('#^\s*(\d\d)(\d\d)(\d\d)[ /]*(\d\d\d)(\d?)\s*$#', $rc, $matches)) {
+        return FALSE;
+    }
+
+    list(, $year, $month, $day, $ext, $c) = $matches;
+
+    // do roku 1954 p�id�lovan� dev�tim�stn� R� nelze ov��it
+    if ($c === '') {
+        return $year &lt; 54;
+    }
+
+    // kontroln� ��slice
+    $mod = ($year . $month . $day . $ext) % 11;
+    if ($mod === 10) $mod = 0;
+    if ($mod !== (int) $c) {
+        return FALSE;
+    }
+
+    // kontrola data
+    $year += $year &lt; 54 ? 2000 : 1900;
+
+    // k m�s�ci m��e b�t p�ipo�teno 20, 50 nebo 70
+    if ($month &gt; 70 &amp;&amp; $year &gt; 2003) $month -= 70;
+    elseif ($month &gt; 50) $month -= 50;
+    elseif ($month &gt; 20 &amp;&amp; $year &gt; 2003) $month -= 20;
+
+    if (!checkdate($month, $day, $year)) {
+        return FALSE;
+    }
+
+    // cislo je OK
+    return TRUE;
+}</code></pre> 
+<h5>Rodn� ��slo&nbsp;– JavaScript:</h5> 
+<pre class="brush: js"><code>function testRC(x, age)
+{
+  if(!age) age = 0;
+  try
+  {
+    if(x.length == 0) return true;
+    if(x.length &lt; 9) throw 1;
+    var year = parseInt(x.substr(0, 2), 10);
+    var month = parseInt(x.substr(2, 2), 10);
+    var day = parseInt( x.substr(4, 2), 10);
+    var ext = parseInt(x.substr(6, 3), 10);
+    if((x.length == 9) &amp;&amp; (year &lt; 54)) return true;
+    var c = 0;
+    if(x.length == 10) c = parseInt(x.substr(9, 1));
+    var m = parseInt( x.substr(0, 9)) % 11;
+    if(m == 10) m = 0;
+    if(m != c) throw 1;
+    year += (year &lt; 54) ? 2000 : 1900;
+    if((month &gt; 70) &amp;&amp; (year &gt; 2003)) month -= 70;
+    else if (month &gt; 50) month -= 50;
+    else if ((month &gt; 20) &amp;&amp; (year &gt; 2003)) month -= 20;
+    var d = new Date();
+    if((year + age) &gt; d.getFullYear()) throw 1;
+    if(month == 0) throw 1;
+    if(month &gt; 12) throw 1;
+    if(day == 0) throw 1;
+    if(day &gt; 31) throw 1;
+  }
+  catch(e)
+  {
+    alert('Zadan� �daj nen� korektn�!');
+    return false;
+  }
+  return true;
+}</code></pre> 
+<h4>Ov��en� I�</h4> 
+<p>Tak�e, jak se ov��uje I�? Nap��klad 69663963</p> 
+<ol> 
+ <li>prvn� a� sedmou ��slici vyn�sob�me ��sly 8, 7, 6, 5, 4, 3, 2&nbsp;a sou�iny se�teme: <p><code>soucet = 6*8 + 9*7 + 6*6 + 6*5 + 3*4 + 9*3 + 6*2 = 228</code></p> </li> 
+ <li>spo��t�me zbytek po d�len� jeden�cti: <code>zbytek = soucet % 11</code></li> 
+ <li>pro posledn� osmou ��slici c mus� platit: 
+  <ul> 
+   <li>je-li zbytek 0&nbsp;nebo 10, pak <code>c = 1</code></li> 
+   <li>je-li zbytek 1, pak <code>c = 0</code></li> 
+   <li>v&nbsp;ostatn�ch p��padech je <code>c = 11 - zbytek</code></li> 
+  </ul> </li> 
+</ol> 
+<h5>Implementace v&nbsp;PHP:</h5> 
+<pre class="brush: php"><code>function verifyIC($ic)
+{
+    // "be liberal in what you receive"
+    $ic = preg_replace('#\s+#', '', $ic);
+
+    // m� po�adovan� tvar?
+    if (!preg_match('#^\d{8}$#', $ic)) {
+        return FALSE;
+    }
+
+    // kontroln� sou�et
+    $a = 0;
+    for ($i = 0; $i &lt; 7; $i++) {
+        $a += $ic[$i] * (8 - $i);
+    }
+
+    $a = $a % 11;
+
+    if ($a === 0) $c = 1;
+    elseif ($a === 10) $c = 1;
+    elseif ($a === 1) $c = 0;
+    else $c = 11 - $a;
+
+    return (int) $ic[7] === $c;
+}</code></pre> 
+<h5>I�&nbsp;– JavaScript:</h5> 
+<pre class="brush: js"><code>function testICO(x)
+{
+  try
+  {
+    var a = 0;
+    if(x.length == 0) return true;
+    if(x.length != 8) throw 1;
+    var b = x.split('');
+    var c = 0;
+    for(var i = 0; i &lt; 7; i++) a += (parseInt(b[i]) * (8 - i));
+    a = a % 11;
+    c = 11 - a;
+    if(a == 1) c = 0;
+    if(a == 0) c = 1;
+    if(a == 10) c = 1;
+    if(parseInt(b[ 7]) != c) throw(1);
+  }
+  catch(e)
+  {
+    alert('Zadan� �daj nen� korektn�!');
+    return false;
+  }
+  return true;
+}</code></pre> 
+<h5>DI�&nbsp;– JavaScript:</h5> 
+<pre class="brush: js"><code>function testDIC(x)
+{
+  try
+  {
+    if(x.length == 0) return true;
+    var id = x.substr(0, 2).toUpperCase();
+    x = x.substr(2);
+    if((id == 'CZ') || (id == 'SK'))
+    {
+      if(x.length &lt; 8) throw 1;
+      if(x.length &gt; 11) throw 1;
+      if(x.length == 8)
+      {
+        return testICO(x);
+      }
+      else
+      {
+        return testRC(x, 18);
+      }
+      throw 1;
+    }
+    alert('Nen� mo�n� zkontrolovat DI� mimo �eskou a Slovenskou republiku!');
+    return true;
+  }
+  catch(e)
+  {
+    alert('Zadan� �daj nen� korektn�!');
+    return false;
+  }
+}</code></pre></div>
+
+	<hr />
+
+
+    <!-- Facebook comments -->
+        <div class="fb-comments" data-href="http://www.zizka.ch/pages/programovani/ruzne/rodne-cislo-identifikacni-cislo-rc-ico-kontrola-validace.html" data-width="800" data-numposts="5"></div>
+
+    </div>
+    <div id="push"></div>
+
+</div>
+
+<div id="footer">
+    <div class="container">
+        <p class="muted credit">&copy; 2018 | Mixed with <a href="http://getbootstrap.com/">Bootstrap v3.3.7</a> | Baked with <a href="http://jbake.org">JBake v2.7.0-SNAPSHOT</a></p>
+    </div>
+</div>
+
+<script src="../../../js/jquery-1.11.1.min.js"></script>
+<script src="../../../js/bootstrap.min.js"></script>
+<script src="../../../js/prettify.js"></script>
+
+<!-- Facebook comments -->
+<div id="fb-root"></div>
+<script>
+    (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://connect.facebook.net/cs_CZ/sdk.js#xfbml=1&version=v3.0';
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+</script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-4584951-4"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-4584951-4');
+</script>
+
+</body>
+</html>
