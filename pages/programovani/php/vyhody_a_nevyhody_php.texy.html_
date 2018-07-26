@@ -1,83 +1,112 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8"/>
-    <title>Výhody a nevýhody PHP - Ondřej Žižka</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="My personal web">
-    <meta name="author" content="Ondřej Žižka">
-    <meta name="generator" content="JBake">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"><html><head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta name="Author" content="Ondra Žižka, ondra at dynawest.cz"/>
+	<meta name="Keywords" content="Java, J2EE, SQL, JBoss, PLSQL, AOP, Hibernate, JavaScript, insolvenční rejstřík"/>
+	<meta name="Description" content="Výhody a nevýhody PHP - osobní web Ondřeje Žižky"/>
+	<link rel="stylesheet" type="text/css" href="/css/dw_styles.css"/>
+	<link rel="stylesheet" type="text/css" href="/css/styl.css"/>
+    <script type="text/javascript" charset="windows-1250" src="/js/jquery.js.php"></script>
+  <script type="text/javascript" charset="windows-1250" src="/js/logout.js"></script>
+  <script type="text/javascript" charset="windows-1250" src="/lib/syntaxhighlighter/scripts/shCore.js"></script>
+  <script type="text/javascript" charset="windows-1250" src="/lib/syntaxhighlighter/scripts/shBrushJava.js"></script>
+  <script type="text/javascript" charset="windows-1250" src="/lib/syntaxhighlighter/scripts/shBrushGroovy.js"></script>
+  <script type="text/javascript" charset="windows-1250" src="/lib/syntaxhighlighter/scripts/shBrushXml.js"></script>
+  <script type="text/javascript" charset="windows-1250" src="/lib/syntaxhighlighter/scripts/shBrushSql.js"></script>
+  <script type="text/javascript" charset="windows-1250" src="/lib/syntaxhighlighter/scripts/shBrushPlain.js"></script>
+  <link type="text/css" rel="stylesheet" href="/lib/syntaxhighlighter/styles/shCore.css"/>
+  <link type="text/css" rel="stylesheet" href="/lib/syntaxhighlighter/styles/shThemeDefault.css"/>
+
+<script type="text/javascript">
+function ShowMenuSekce( eSekce ){
+  $("ul.level0>li").addClass("collapsed");
+  $(eSekce).removeClass("collapsed");
+}
+//window.onload = function(){ $("ul.level0>li").addClass("collapsed"); }
+
+SyntaxHighlighter.config.clipboardSwf = '/lib/syntaxhighlighter/scripts/clipboard.swf';
+SyntaxHighlighter.all(); // Will add a listener to window.onload.
+</script>
+<title>Výhody a nevýhody PHP</title></head>
+<body>
+
+<!--
+<div style="position: fixed; right: 0px; top: 0px; background-image: URL(/img/banner-20years.png); height: 233px; width: 231px;">
+</div>
+-->
+
+<!--  Header  -->
+<div class="UNIcenter">
+  <div id="header">
+    <span class="datum">Neděle 17. ledna '10</span>
+    <span class="svatek">Svátek má Drahoslav, zítra Vladislav</span>
+  </div>
+</div>
 
 
-    <link rel="stylesheet" href="../../../css/bootstrap.min.css">
-    <link rel="stylesheet" href="../../../css/asciidoctor.css">
-    <link rel="stylesheet" href="../../../css/base.css">
-    <link rel="stylesheet" href="../../../css/doc-body.css">
-    <link rel="stylesheet" href="../../../css/prettify.css">
+<!--  Nadpis hlavní  -->
+<div id="nadpis">
+<table border="0" align="center" width="736" cellspacing="0" cellpadding="0">
+	<tr><td id="title_part1" width="192" height="97">&nbsp;</td>
+	<td id="title_part2" width="387" height="97">
+		<h1 class="title">Ondra<span>.</span>Žižka<span>.</span>cz</h1>
+	</td><td id="title_part3" width="157" height="97" valign="bottom">
+		<table border="0" cellspacing="0" cellpadding="0">
+			<tr><td height="70"></td></tr>
+			<tr><td align="right" valign="top" width="82" height="27">
+				<span class="counter">Vidělo 6 lidí</span></td>
+		</tr></table>
+	</td></tr>
+</table>
+</div>
+<!-- Nadpis hlavní KONEC -->
 
-    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
-    <script src="../../../js/html5shiv.min.js"></script>
-    <![endif]-->
 
-    <!-- Fav and touch icons -->
-    <!--<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">-->
-    <link rel="shortcut icon" href="../../../favicon.ico">
-</head>
-<body onload="prettyPrint()">
-    <div id="wrap">
 
-	<!-- Fixed navbar -->
-    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="https://www.zizka.ch/">Ondřej Žižka</a>
-        </div>
-        <div class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-            <li><a href="../../../index.html">Blog</a></li>
-            <li><a href="../../../archive.html">Archive</a></li>
-            <li><a href="../../../tags">Tags</a></li>
+<div id="main">
+  <!-- MAIN TABLE -->
+  <table align="center" border="0" width="1000" cellspacing="0" cellpadding="0"><tr>
+  <!-- Menu -->
+  <td valign="top">
+    <div id="menu_container">
 
-            <li><a href="../../../about.html">About Me</a></li>
-            <li><a href="../../../feed.xml">RSS feed</a></li>
-            <li><a href="../../../sitemap.xml">Sitemap</a></li>
-            <!--
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-              <ul class="dropdown-menu">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li class="divider"></li>
-                <li class="dropdown-header">Nav header</li>
-                <li><a href="#">Separated link</a></li>
-                <li><a href="#">One more separated link</a></li>
-              </ul>
-            </li>
-            -->
-          </ul>
-        </div><!--/.nav-collapse -->
-      </div>
+
+          <!-- Login -->
+          <div class="login">
+                      <a rel="nofollow" href="/Login.php?1263712441">Přihlášení...</a>
+                    </div>
+
+          <!-- Menu -->
+          <div class="menu">
+            <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--stranky/programovani/php/vyhody_a_nevyhody_php.texy-->
+<ul xmlns:php="http://php.net/xsl" id="menu" class="flat level0">
+
+  <li onclick="ShowMenuSekce(this);" class="level0 collapsed "><span>Programování</span><ul class="flat level1"><li><a href="/stranky/programovani/index.texy">Rozcestník...</a></li><li><a href="/stranky/programovani/insolvencni_rejstrik-isir_ws/index.texy">Insolvenční rejstřík - ISIR WS</a></li><li><a href="/stranky/programovani/java/index.texy">Java + J2EE</a></li><li><a href="/stranky/programovani/sql/index.texy">(My)SQL</a></li><li><a href="/stranky/programovani/artificial_intelligence/index.texy">Neural Networks</a></li><li><a href="/stranky/programovani/web_javascript_ajax_canvas/canvas_element_selection_buffer.texy">Web, JavaScript, AJAX, Canvas</a></li><a href="/tools/">Text tools</a></ul></li>
+
+  <li onclick="ShowMenuSekce(this);" class="level0 collapsed "><span>"Realitní kancelář"</span><ul class="flat level1"><li><a href="/stranky/realitni_kancelar/chaty_a_chalupy.texy">Chaty a chalupy</a></li><li><a href="/stranky/realitni_kancelar/byty_ceske_budejovice.texy">Byty</a></li></ul></li>
+
+  <li onclick="ShowMenuSekce(this);" class="level0 collapsed "><span>Osobní</span><ul class="flat level1"><li><a href="/stranky/osobni/kontakty.texy">Kontakty</a></li><li><a href="/stranky/osobni/poznamky.texy">Poznámky a postřehy</a></li><li><a href="/stranky/osobni/prodavam_shanim.texy">Prodávám / sháním</a></li></ul></li>
+
+  <li onclick="ShowMenuSekce(this);" class="level0 collapsed "><span>Odkazy</span><ul class="flat level1"><li><a href="/stranky/odkazy/software.texy">Zajímavý software</a></li><li><a href="/stranky/odkazy/pratele.texy">Přátelé</a></li></ul></li>
+
+</ul>
+          </div>
+
+
+    	<hr class="cistic" />
     </div>
-    <div class="container">
+  </td><!-- Menu KONEC -->
 
-	<div class="page-header">
-        <h1>Výhody a nevýhody PHP - Ondřej Žižka</h1>
-	</div>
 
-	<div class="date"><em>2012-12-13</em></div>
 
-	<div class="doc-body"><h3>Výhody a nevýhody PHP</h3>
+  <!-- MAIN CELL -->
+  <td valign="top" width="850">
+
+          <!-- Obsah -->
+          <div class="obsah" id="obsah">
+                                          <div class="zaznam">
+                                                <div class="content">
+<h1>Výhody a nevýhody PHP</h1>
 
 <p><em>Update: V návaznosti na tento článek vznikl další – <a
 href="/stranky/programovani/java/je_java_jako_linux_nebo_jako_windows.texy">Je
@@ -95,7 +124,8 @@ ze seznamu nevýhod</a>.</em></p>
 <!-- "Srovnání Java a PHP":srovnani_php_a_javy.texy. -->
 <hr />
 
-<div><img src="ElePHPant_with_Tiger.jpg" alt="" style="float:right" /></div>
+<div><img src="/stranky/programovani/php/ElePHPant_with_Tiger.jpg" alt=""
+class="right" /></div>
 
 <p>Na webu je mnoho flejmů, zda je PHP lepší / horší než Java a .NET atd.
 Ostatně, nejjednodušší způsob, jak rozpoutat flejm, je zajít na hodně
@@ -109,7 +139,7 @@ pořádném OOP návrhu.</p>
 moderovanou diskusi, případně článek, o výhodách a
 nevýhodách PHP.</p>
 
-<p>//Update:// Našel jsem celkem dobrý článek na <a
+<p><em>Update:</em> Našel jsem celkem dobrý článek na <a
 href="http://spyced.blogspot.com/2005/06/why-php-sucks.html">http://spyced.blogspot.com/…p-sucks.html</a>.
 Sice je poněkud starší, ale jádro pudla zůstává. Je o dost ostřejší a
 než tento můj článek, takže PHPčkáři – bacha! :-) A všimněte si,
@@ -213,7 +243,7 @@ databází. Inu dobrá, já jim to neberu, ale během celého rozhovoru mi
 hlavou běhaly vzpomínky na nejrůznější veselé příhody (dalo by se
 přeložit jako „gay incidents“ :) s PHP:</p>
 
-<h4>Proč neprogramovat v PHP</h4>
+<h2>Proč neprogramovat v PHP</h2>
 
 <ul>
 	<li>Záhadné chyby mezi minor verzemi</li>
@@ -272,7 +302,7 @@ oponovat, že kdybych psal rovnou dobrý kód, tak jsem v pohodě. Ale
 	v PHP 7 nabeton budou anotace.</li>
 </ul>
 
-<h4>Srovnání s Javou</h4>
+<h2>Srovnání s Javou</h2>
 
 <p>Naproti tomu, když programuji v Javě, dobrý kód vzniká skoro sám (už
 se neubráním srovnání):</p>
@@ -332,7 +362,7 @@ se neubráním srovnání):</p>
 <p>Prostě při prvním komerčním projektu v Javě moje srdénko jen
 zaplesalo nad tím, jak neuvěřitelně hladce to jde od ruky.</p>
 
-<h4>Složitost programování v J2EE</h4>
+<h2>Složitost programování v J2EE</h2>
 
 <p>A ještě ke složitosti J2EE.<br />
 Když srovnám PHP a JSP, tak to jsou zhruba srovnatelné technologie:</p>
@@ -406,14 +436,13 @@ začátečníci – neprogramátoři mohou třeba takto</a> (viz část
 	šabloně. Na začátku je tedy SQL dotaz:</p>
 
 	<pre
-	class="php"><code>$result = mysql_query("SELECT nazev, titulek, text, cena FROM tabulka WHERE id='$id'");</code></pre>
+	class="php">$result = mysql_query("SELECT nazev, titulek, text, cena FROM tabulka WHERE id='$id'");</pre>
 
 	<p>Jak nyní předat data šabloně?</p>
 
 	<p>Nejjednodušší řešení je předat rovnou pole:</p>
 
-	<pre
-	class="php"><code>$smarty-&gt;assign('data',mysql_fetch_assoc($result));</code></pre>
+	<pre class="php">$smarty-&gt;assign('data',mysql_fetch_assoc($result));</pre>
 </blockquote>
 
 <hr />
@@ -440,9 +469,10 @@ Server Pages (příliš nesmyslná technologie), XML + XSLT + JavaScript
 
 <p>Takže – posuďte sami:</p>
 
-<h4>Výhody PHP</h4>
+<h2>Výhody PHP</h2>
 
-<div><img src="elePHPant_Front_Tiny.png" alt="" style="float:right" /></div>
+<div><img src="/stranky/programovani/php/elePHPant_Front_Tiny.png" alt=""
+class="right" /></div>
 
 <p>Technologie PHP má spoustu výhod, díky které se rychle stalo
 populárním. Mezi ně patří např.:</p>
@@ -459,9 +489,9 @@ populárním. Mezi ně patří např.:</p>
 
 	<li>Zpočátku strmá křivka učení</li>
 
-	<li>--Je multiplaforní– S tou multiplatformností to není tak žhavé.
-	Zkuste si třeba PHP na Novellu. Spíše bych řekl: Jede víceméně stejně na
-	Linuxu a na Windows.</li>
+	<li><del>Je multiplaforní</del> S tou multiplatformností to není tak
+	žhavé. Zkuste si třeba PHP na Novellu. Spíše bych řekl: Jede víceméně
+	stejně na Linuxu a na Windows.</li>
 
 	<li>Časem vznikla velká celosvětová komunita vývojářů a mnoho dobrých
 	svobodných projektů, zejména publikační systémy a <a
@@ -478,10 +508,10 @@ populárním. Mezi ně patří např.:</p>
 	<code>[]</code></li>
 </ul>
 
-<h4>Nevýhody PHP</h4>
+<h2>Nevýhody PHP</h2>
 
-<div><img src="elePHPant_RightFront_Tiny.png" alt="" style="float:right"
-/></div>
+<div><img src="/stranky/programovani/php/elePHPant_RightFront_Tiny.png" alt=""
+class="right" /></div>
 
 <p>Na druhou stranu, PHP má také značné nevýhody, pro které jej mnozí
 kritizují a někdy i opouštějí; mimo jiné tyto:</p>
@@ -516,8 +546,8 @@ kritizují a někdy i opouštějí; mimo jiné tyto:</p>
 	mnoha úloh (např. objektově-relační mapování)</li>
 </ul>
 
-<div><img src="elePHPant_LeftFront_Tiny_sad.png" alt="" style="float:right"
-/></div>
+<div><img src="/stranky/programovani/php/elePHPant_LeftFront_Tiny_sad.png"
+alt="" class="right" /></div>
 
 <ul>
 	<li>PHP nemá danou politiku vývoje, místo toho nadále jen kopíruje prvky
@@ -540,8 +570,9 @@ kritizují a někdy i opouštějí; mimo jiné tyto:</p>
 
 	<li>Ve standardní sadě nástrojů není nástroj pro tvorbu dokumentace</li>
 
-	<li>--Nedostatek– Nemnoho kvalitních frameworků (Pozor! Drupal, Joomla,
-	WordPress a spol. nejsou frameworky, ale publikační systémy / CMS).</li>
+	<li><del>Nedostatek</del> Nemnoho kvalitních frameworků (Pozor! Drupal,
+	Joomla, WordPress a spol. nejsou frameworky, ale publikační systémy
+	/ CMS).</li>
 
 	<li>Nelze snadno integrovat s jinými technologiemi (znovupoužití knihoven
 	napsaných v PHP v jiném jazyce)</li>
@@ -567,8 +598,9 @@ kritizují a někdy i opouštějí; mimo jiné tyto:</p>
 	nyní <code>PDO</code></li>
 </ul>
 
-<div><img src="elePHPant_RightFront_Tiny_lezi_oci_v_sloup.png" alt=""
-style="float:right" /></div>
+<div><img
+src="/stranky/programovani/php/elePHPant_RightFront_Tiny_lezi_oci_v_sloup.png"
+alt="" class="right" /></div>
 
 <ul>
 	<li>Chybí anotace a aspektově orientované programování</li>
@@ -597,27 +629,16 @@ style="float:right" /></div>
 -->
 <p>Jak je vidět, seznam výhod a nevýhod je trochu nevyvážený. Nyní
 čekám polemiku :-) <a
-href="mailto:ondra&#64;dynawest.cz">ondra&#64;<!-- -->dynawest.cz</a></p>
+href="mailto:ondra&#64;dynawest.cz">ondra&#64;<!---->dynawest.cz</a></p>
 
-<p>//PS:// Ale pořád ještě to není tak strašné, jako s Caché – kdo
-zkoušel, ví :-)</p>
+<p><em>PS:</em> Ale pořád ještě to není tak strašné, jako s Caché –
+kdo zkoušel, ví :-)</p>
 
-<h5>Další články s podobnou tématikou:</h5>
+<h3>Další články s podobnou tématikou:</h3>
 
 <ul>
 	<li><a href="http://www.abclinuxu.cz/blog/miloslavponkrac/2006/2/3/119608">Kam
 	kráčíš, PHP?</a> (2006, doporučuji přečíst i komentáře)</li>
-
-	<li><a
-	href="http://www.pestujemeweb.cz/clanky-rozhovory/text-27-david-grudl-rozhovor.html">David
-	Grudl o PHP</a>
-		<blockquote>
-			<p>4. Jaká je perspektiva PHP z Vašeho pohledu?<br />
-			Jsem PHP skeptik. PHP jakožto jazyk ztratil koncepci, rozšiřování se děje
-			chaoticky. PHP jakožto knihovna se nehodí na tvorbu webových aplikací.
-			Frameworky se to snaží suplovat.</p>
-		</blockquote>
-	</li>
 </ul>
 
 <p><em>Obrázky přejaty z <a
@@ -629,101 +650,58 @@ href="http://shop.yourphppro.com/elePHPant.html">http://shop.yourphppro.com/eleP
 Texy! ;-)</em><br />
 <em>PS pro Jana Škráška: Porty Texy? Ruby nemám rád, python neumím, .NET
 nechci a pro Javu ještě port není.</em></p>
+
+<!-- by Texy2! --></div>
+                <div class="cistic"><!--  --></div>
+              </div>
+                        <span class="konec-odrazka" style="font-size: 200%;">
+              <!-- &#x062A; &#x0643; &#xFDF2; &#x06DE; -->
+              <!-- &#x25A1; -->
+            </span>
+          </div>
+
+  </td>
+  <!-- MAIN CELL KONEC -->
+
+
+
+  </tr>
+  <tr><td colspan="2" height="1" bgcolor="#000000"></td></tr><!-- carka -->
+  </table>
+  <!-- MAIN TABLE KONEC -->
+  <!-- <hr class="cistic" size="0"/> -->
 </div>
 
-	<hr />
 
-
-        <!-- Facebook comments -->
-                <div class="fb-comments" data-href="https://www.zizka.ch/pages/programovani/php/vyhody_a_nevyhody_php.html" data-width="800" data-numposts="5"></div>
-
-    </div>
-    <div id="push"></div>
-
-    <div id="pocitadla" class="" style="position: relative; top: -64px; left: 4xp;">
-        <!--
-        <div class="pocitadlo" id="navrcholu">
-            <script src="https://c1.navrcholu.cz/code?site=116753;t=lb14" type="text/javascript"></script><noscript><div><a target="_blank" href="https://navrcholu.cz/"><img src="https://c1.navrcholu.cz/hit?site=116753;t=lb14;ref=;jss=0" width="14" height="14" alt="Statistiky NaVrcholu.cz" style="border:none" /></a></div></noscript>
-        </div><!- - Driv: code?site=79008;t=lb14" -->
-        <div class="pocitadlo" id="toplist">
-            <a target="_blank" href="https://toplist.cz/stat/117144"><script language="JavaScript" type="text/javascript">
-                document.write('<img src="https://toplist.cz/count.asp?id=117144&amp;start=806&amp;logo=2&amp;http='
-                        +escape(document.referrer)+'&amp;wi='+escape(window.screen.width)+'&he='+escape(window.screen.height)
-                        +'&amp;cd='+escape(window.screen.colorDepth)+'" width="36" height="14" border="0" alt="TOPlist statistiky" />');
-            </script><noscript><img src="https://toplist.cz/count.asp?id=117144&amp;start=1&amp;logo=2" border="0" alt="TOPlist statistiky" width="36" height="14"/></noscript></a>
-        </div>
-        <!-- ClustrMaps.com -->
-        <div class="pocitadlo" id="clustrmaps">
-            <a href="https://www4.clustrmaps.com/user/64952149"><img src="https://www4.clustrmaps.com/stats/maps-no_clusters/ondra.zizka.cz--thumb.jpg" alt="0" border="0" width="180" height="117" /></a>
-        </div>
-    </div>
+<div id="pocitadla" class="">
+	<!--
+  <div class="pocitadlo" id="moje">
+  <script language="JavaScript" type="text/javascript">
+  document.write("<img src='https://ondra.zizka.cz/log/?id=1&ref=" + escape(top.document.referrer)
+   + "&res=" + screen.width + "x" + screen.height + "&cd=" + screen.colorDepth + "' width='14' height='14' alt=''>");
+  </script><noscript><img src="https://ondra.zizka.cz/log/?id=1" width="14" height="14"/></noscript>
+  </div>
+  -->
+  <div class="pocitadlo" id="navrcholu">
+    <script src="https://c1.navrcholu.cz/code?site=116753;t=lb14" type="text/javascript"></script><noscript><div><a target="_blank" href="https://navrcholu.cz/"><img src="https://c1.navrcholu.cz/hit?site=116753;t=lb14;ref=;jss=0" width="14" height="14" alt="Statistiky NaVrcholu.cz" style="border:none" /></a></div></noscript>
+  </div>
+  <!-- Driv: code?site=79008;t=lb14" -->
+  <div class="pocitadlo" id="toplist">
+  <a target="_blank" href="https://toplist.cz/stat/117144"><script language="JavaScript" type="text/javascript"><!--
+  document.write('<img src="https://toplist.cz/count.asp?id=117144&amp;start=806&amp;logo=2&amp;http='
+  +escape(document.referrer)+'&amp;wi='+escape(window.screen.width)+'&he='+escape(window.screen.height)
+  +'&amp;cd='+escape(window.screen.colorDepth)+'" width="36" height="14" border="0" alt="TOPlist statistiky" />');
+  //--></script><noscript><img src="https://toplist.cz/count.asp?id=117144&amp;start=1&amp;logo=2" border="0" alt="TOPlist statistiky" width="36" height="14"/></noscript></a>
+  </div>
+  <!-- ClustrMaps.com -->
+  <a href="https://www4.clustrmaps.com/user/64952149"><img src="https://www4.clustrmaps.com/stats/maps-no_clusters/ondra.zizka.cz--thumb.jpg" alt="0" border="0" width="14" height="14" /></a>
+</div><!-- pocitadla -->
 
 </div>
 
-<div id="footer">
-    <div class="container">
-        <p class="muted credit">
-            &copy; 2018
-            | Content written in <a href="https://texy.info/en/">Texy!</a>
-            | Baked with <a href="http://jbake.org/">JBake v2.7.0-SNAPSHOT</a>,
-              <a href="http://freemarker.apache.org/">FreeMarker</a> and
-              <a href="http://getbootstrap.com/">Bootstrap</a>
-        </p>
-    </div>
-</div>
+<script src="https://www.google-analytics.com/urchin.js" type="text/javascript"></script>
+<script type="text/javascript">_uacct = "UA-4584951-1"; urchinTracker();</script>
 
-<script src="../../../js/jquery-1.11.1.min.js"></script>
-<script src="../../../js/bootstrap.min.js"></script>
-<script src="../../../js/prettify.js"></script>
+</body></html>
 
-<!-- Facebook comments -->
-<div id="fb-root"></div>
-<script>
-    (function(d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s); js.id = id;
-        js.src = 'https://connect.facebook.net/cs_CZ/sdk.js#xfbml=1&version=v3.0';
-        fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));
-</script>
 
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-4584951-4"></script>
-<script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'UA-4584951-4');
-</script>
-
-<!-- Syntax highlighter -->
-<script type="text/javascript" src="/syntaxhighlighter3/scripts/shCore.js"></script>
-<script type="text/javascript" src="/syntaxhighlighter3/scripts/shBrushBash.js"></script>
-<script type="text/javascript" src="/syntaxhighlighter3/scripts/shBrushCpp.js"></script>
-<script type="text/javascript" src="/syntaxhighlighter3/scripts/shBrushCSharp.js"></script>
-<script type="text/javascript" src="/syntaxhighlighter3/scripts/shBrushCss.js"></script>
-<script type="text/javascript" src="/syntaxhighlighter3/scripts/shBrushDelphi.js"></script>
-<script type="text/javascript" src="/syntaxhighlighter3/scripts/shBrushDiff.js"></script>
-<script type="text/javascript" src="/syntaxhighlighter3/scripts/shBrushGroovy.js"></script>
-<script type="text/javascript" src="/syntaxhighlighter3/scripts/shBrushJava.js"></script>
-<script type="text/javascript" src="/syntaxhighlighter3/scripts/shBrushJScript.js"></script>
-<script type="text/javascript" src="/syntaxhighlighter3/scripts/shBrushPhp.js"></script>
-<script type="text/javascript" src="/syntaxhighlighter3/scripts/shBrushPlain.js"></script>
-<script type="text/javascript" src="/syntaxhighlighter3/scripts/shBrushPython.js"></script>
-<script type="text/javascript" src="/syntaxhighlighter3/scripts/shBrushRuby.js"></script>
-<!--
-<script type="text/javascript" src="/syntaxhighlighter3/scripts/shBrushScala.js"></script>
--->
-<script type="text/javascript" src="/syntaxhighlighter3/scripts/shBrushSql.js"></script>
-<script type="text/javascript" src="/syntaxhighlighter3/scripts/shBrushVb.js"></script>
-<script type="text/javascript" src="/syntaxhighlighter3/scripts/shBrushXml.js"></script>
-<link type="text/css" rel="stylesheet" href="/syntaxhighlighter3/styles/shCore.css"/>
-<link type="text/css" rel="stylesheet" href="/syntaxhighlighter3/styles/shThemeDefault.css"/>
-<script type="text/javascript">
-    SyntaxHighlighter.config.clipboardSwf = '/syntaxhighlighter3/scripts/clipboard.swf';
-    SyntaxHighlighter.all();
-</script>
-
-</body>
-</html>

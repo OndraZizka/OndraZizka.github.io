@@ -2,22 +2,22 @@
 <html lang="en">
 <head>
     <meta charset="utf-8"/>
-    <title>JSON with JAXB – Jackson - Ondřej Žižka</title>
+    <title>Work on this site in progress - Ondřej Žižka</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="My personal web">
     <meta name="author" content="Ondřej Žižka">
     <meta name="generator" content="JBake">
 
 
-    <link rel="stylesheet" href="../../../css/bootstrap.min.css">
-    <link rel="stylesheet" href="../../../css/asciidoctor.css">
-    <link rel="stylesheet" href="../../../css/base.css">
-    <link rel="stylesheet" href="../../../css/doc-body.css">
-    <link rel="stylesheet" href="../../../css/prettify.css">
+    <link rel="stylesheet" href="../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../css/asciidoctor.css">
+    <link rel="stylesheet" href="../../css/base.css">
+    <link rel="stylesheet" href="../../css/doc-body.css">
+    <link rel="stylesheet" href="../../css/prettify.css">
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
-    <script src="../../../js/html5shiv.min.js"></script>
+    <script src="../../js/html5shiv.min.js"></script>
     <![endif]-->
 
     <!-- Fav and touch icons -->
@@ -25,7 +25,7 @@
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">-->
-    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="shortcut icon" href="../../favicon.ico">
 </head>
 <body onload="prettyPrint()">
     <div id="wrap">
@@ -44,13 +44,13 @@
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li><a href="../../../index.html">Blog</a></li>
-            <li><a href="../../../archive.html">Archive</a></li>
-            <li><a href="../../../tags">Tags</a></li>
+            <li><a href="../../index.html">Blog</a></li>
+            <li><a href="../../archive.html">Archive</a></li>
+            <li><a href="../../tags">Tags</a></li>
 
-            <li><a href="../../../about.html">About Me</a></li>
-            <li><a href="../../../feed.xml">RSS feed</a></li>
-            <li><a href="../../../sitemap.xml">Sitemap</a></li>
+            <li><a href="../../about.html">About Me</a></li>
+            <li><a href="../../feed.xml">RSS feed</a></li>
+            <li><a href="../../sitemap.xml">Sitemap</a></li>
             <!--
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
@@ -72,93 +72,31 @@
     <div class="container">
 
 	<div class="page-header">
-        <h1>JSON with JAXB – Jackson - Ondřej Žižka</h1>
+        <h1>Work on this site in progress - Ondřej Žižka</h1>
 	</div>
 
-	<div class="date"><em>2012-12-13</em></div>
+	<div class="date"><em>2050-01-01</em></div>
 
-	<div class="doc-body"><h3>JSON with JAXB – Jackson</h3>
+	<div class="doc-body"><h3>Work on this site in progress</h3>
 
-<p>I wondered how various RESTful implementations (like RESTeasy) use JAXB
-annotations to create JSON output. The Answer is Jackson – see <a
-href="http://wiki.fasterxml.com/JacksonJAXBAnnotations">Using JAXB annotations
-with Jackson</a>.</p>
+<p>After about a year offline, the site was just re-born from the former
+platform.<br />
+The current solution still has a few annoyances, but I'm fixing it :)</p>
 
-<h4>In a short:</h4>
+<p>The most important thing is so sort out the pages that I brought from the
+former site.<br />
+That needs me to implement auto-generated directory indexes in the JBake
+platform this uses.<br />
+Until then, the blog below will contain all pages.</p>
 
-<h5>Maven deps:</h5>
-
-<pre
-class="brush: xml"><code>&lt;!-- Jackson --&gt;
-&lt;dependency&gt;
-  &lt;groupId&gt;org.codehaus.jackson&lt;/groupId&gt;
-  &lt;artifactId&gt;jackson-core-lgpl&lt;/artifactId&gt;
-  &lt;version&gt;1.3.0&lt;/version&gt;
-&lt;/dependency&gt;
-&lt;dependency&gt;
-  &lt;groupId&gt;org.codehaus.jackson&lt;/groupId&gt;
-  &lt;artifactId&gt;jackson-mapper-lgpl&lt;/artifactId&gt;
-  &lt;version&gt;1.3.0&lt;/version&gt;
-&lt;/dependency&gt;
-&lt;dependency&gt;
-  &lt;groupId&gt;org.codehaus.jackson&lt;/groupId&gt;
-  &lt;artifactId&gt;jackson-xc&lt;/artifactId&gt;
-  &lt;version&gt;1.3.0&lt;/version&gt;
-&lt;/dependency&gt;</code></pre>
-
-<h5>And a simple test:</h5>
-
-<pre
-class="brush: java"><code>package cz.zizka.ondra.jacksontest;
-
-import java.io.IOException;
-import javax.xml.bind.annotation.XmlRootElement;
-import org.codehaus.jackson.map.AnnotationIntrospector;
-import org.codehaus.jackson.map.ObjectMapper;
-import org.codehaus.jackson.xc.JaxbAnnotationIntrospector;
-
-
-
-/**
- *
- * @author Ondrej Zizka
- */
-public class JacksonTest extends TtdTestBase {
-
-  public void testJackson() throws IOException
-  {
-    ObjectMapper mapper = new ObjectMapper();
-    AnnotationIntrospector introspector = new JaxbAnnotationIntrospector();
-    // make deserializer use JAXB annotations (only)
-    mapper.getDeserializationConfig().setAnnotationIntrospector(introspector);
-    // make serializer use JAXB annotations (only)
-    mapper.getSerializationConfig().setAnnotationIntrospector(introspector);
-
-
-    mapper.writeValue( System.out, new Car("Red Devil") );
-  }
-
-}// class JacksonTest
-
-
-
-@XmlRootElement
-class Car {
-  public String name;
-
-  public Car( String name ) {
-    this.name = name;
-  }
-}</code></pre>
-
-<p>Nice, simple, easy. Enjoy!</p>
+<p>Another thing is the duplicated titles. That will go away soon.</p>
 </div>
 
 	<hr />
 
 
         <!-- Facebook comments -->
-                <div class="fb-comments" data-href="https://www.zizka.ch/pages/programovani/java/jaxb-json-jackson-howto.html" data-width="800" data-numposts="5"></div>
+                <div class="fb-comments" data-href="https://www.zizka.ch/blog/2018/07-25-site-work-in-progress.html" data-width="800" data-numposts="5"></div>
 
     </div>
     <div id="push"></div>
@@ -195,9 +133,9 @@ class Car {
     </div>
 </div>
 
-<script src="../../../js/jquery-1.11.1.min.js"></script>
-<script src="../../../js/bootstrap.min.js"></script>
-<script src="../../../js/prettify.js"></script>
+<script src="../../js/jquery-1.11.1.min.js"></script>
+<script src="../../js/bootstrap.min.js"></script>
+<script src="../../js/prettify.js"></script>
 
 <!-- Facebook comments -->
 <div id="fb-root"></div>

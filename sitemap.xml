@@ -6,8 +6,29 @@
         <lastmod>2018-07-21</lastmod>
     </url>
     <url>
-        <title>Výhody a nevýhody PHP</title>
-        <loc>https://www.zizka.ch/pages/programovani/php/vyhody_a_nevyhody_php.texy.html</loc>
+        <title>Work on this site in progress</title>
+        <loc>https://www.zizka.ch/blog/2018/07-25-site-work-in-progress.html</loc>
+        <lastmod>2050-01-01</lastmod>
+    </url>
+    <url>
+        <title>Wicket</title>
+        <loc>https://www.zizka.ch/pages/programovani/java/web/wicket/index.html</loc>
+        <lastmod>2018-07-26</lastmod>
+    </url>
+    <url>
+        <title>Java + J2EE</title>
+        <loc>https://www.zizka.ch/pages/programovani/java/index.html</loc>
+        <lastmod>2018-07-26</lastmod>
+    </url>
+    <url>
+        <title>Programování</title>
+        <loc>https://www.zizka.ch/pages/programovani/index.html</loc>
+        <lastmod>2018-07-26</lastmod>
+    </url>
+    <url>
+        <title>JBoss Operation Network 2.3.0: Tomcat not supported on Windows
+2003 and 2008</title>
+        <loc>https://www.zizka.ch/pages/programovani/java/jboss/Tomcat-JON-Windows-2003-2008.html</loc>
         <lastmod>2018-07-26</lastmod>
     </url>
     <url>
@@ -83,12 +104,6 @@ applying in memory!</title>
         <lastmod>2012-12-31</lastmod>
     </url>
     <url>
-        <title>Example of Wicket's markup inheritance –
-wicket:child and wicket:extend</title>
-        <loc>https://www.zizka.ch/pages/programovani/java/web/wicket/wicket-extend-child-inheritance-include-example.html</loc>
-        <lastmod>2012-12-31</lastmod>
-    </url>
-    <url>
         <title>Wicket: How to create a component</title>
         <loc>https://www.zizka.ch/pages/programovani/java/web/wicket/wicket-howto-create-component.html</loc>
         <lastmod>2012-12-31</lastmod>
@@ -100,13 +115,9 @@ using wicket:extend</title>
         <lastmod>2012-12-31</lastmod>
     </url>
     <url>
-        <title>Wicket component</title>
-        <loc>https://www.zizka.ch/pages/programovani/java/web/wicket/tmp-paste.html</loc>
-        <lastmod>2012-12-31</lastmod>
-    </url>
-    <url>
-        <title>What's new in Wicket 1.5</title>
-        <loc>https://www.zizka.ch/pages/programovani/java/web/wicket/whats-new-in-wicket-1.5.html</loc>
+        <title>Example of Wicket's markup inheritance –
+wicket:child and wicket:extend</title>
+        <loc>https://www.zizka.ch/pages/programovani/java/web/wicket/wicket-extend-child-inheritance-include-example.html</loc>
         <lastmod>2012-12-31</lastmod>
     </url>
     <url>
@@ -126,8 +137,13 @@ org/apache/wic­ket/util/lang/Pro­pertyResolver</title>
         <lastmod>2012-12-31</lastmod>
     </url>
     <url>
-        <title>4 runs - JUnitDiff</title>
-        <loc>https://www.zizka.ch/pages/programovani/java/apps/samples/AGG-TEST.xml.html</loc>
+        <title>Wicket component</title>
+        <loc>https://www.zizka.ch/pages/programovani/java/web/wicket/tmp-paste.html</loc>
+        <lastmod>2012-12-31</lastmod>
+    </url>
+    <url>
+        <title>What's new in Wicket 1.5</title>
+        <loc>https://www.zizka.ch/pages/programovani/java/web/wicket/whats-new-in-wicket-1.5.html</loc>
         <lastmod>2012-12-31</lastmod>
     </url>
     <url>
@@ -178,12 +194,6 @@ server=default, name=farm]</title>
         <lastmod>2012-12-31</lastmod>
     </url>
     <url>
-        <title>Trying to get CDI/Weld working in embedded Jetty for a Wicket
-application.</title>
-        <loc>https://www.zizka.ch/pages/programovani/java/web/jetty-cdi-weld-seam-wicket.html</loc>
-        <lastmod>2012-12-31</lastmod>
-    </url>
-    <url>
         <title>How to stop Jetty</title>
         <loc>https://www.zizka.ch/pages/programovani/java/web/jetty-how-to-stop.html</loc>
         <lastmod>2012-12-31</lastmod>
@@ -194,8 +204,9 @@ application.</title>
         <lastmod>2012-12-31</lastmod>
     </url>
     <url>
-        <title>GZip servlet filter from the JSP book</title>
-        <loc>https://www.zizka.ch/pages/programovani/java/web/gzip-servlet-filter.html</loc>
+        <title>Trying to get CDI/Weld working in embedded Jetty for a Wicket
+application.</title>
+        <loc>https://www.zizka.ch/pages/programovani/java/web/jetty-cdi-weld-seam-wicket.html</loc>
         <lastmod>2012-12-31</lastmod>
     </url>
     <url>
@@ -206,6 +217,11 @@ application.</title>
     <url>
         <title>Web Services over SSL with JBoss WS</title>
         <loc>https://www.zizka.ch/pages/programovani/java/misc/web-services-over-ssl-jbossws.html</loc>
+        <lastmod>2012-12-31</lastmod>
+    </url>
+    <url>
+        <title>GZip servlet filter from the JSP book</title>
+        <loc>https://www.zizka.ch/pages/programovani/java/web/gzip-servlet-filter.html</loc>
         <lastmod>2012-12-31</lastmod>
     </url>
     <url>
@@ -286,6 +302,11 @@ one return</title>
         <lastmod>2012-12-31</lastmod>
     </url>
     <url>
+        <title>JUnitDiff – JUnit diff – test results reports comparison</title>
+        <loc>https://www.zizka.ch/pages/programovani/java/apps/JUnitDiff-junit-diff-test-results-report-comparison.html</loc>
+        <lastmod>2012-12-31</lastmod>
+    </url>
+    <url>
         <title>JUnitDiff – JUnit test results reports comparison</title>
         <loc>https://www.zizka.ch/pages/programovani/java/apps/JUnitDiff-junit-test-results-report-comparison.html</loc>
         <lastmod>2012-12-31</lastmod>
@@ -300,11 +321,6 @@ final method</title>
     <url>
         <title>CsvCruncher – CSV manipulation through SQL (HSQLDB)</title>
         <loc>https://www.zizka.ch/pages/programovani/java/apps/CsvCruncher-csv-manipulation-sql.html</loc>
-        <lastmod>2012-12-31</lastmod>
-    </url>
-    <url>
-        <title>JUnitDiff – JUnit diff – test results reports comparison</title>
-        <loc>https://www.zizka.ch/pages/programovani/java/apps/JUnitDiff-junit-diff-test-results-report-comparison.html</loc>
         <lastmod>2012-12-31</lastmod>
     </url>
     <url>
@@ -368,28 +384,8 @@ final method</title>
         <lastmod>2012-12-31</lastmod>
     </url>
     <url>
-        <title>Java + J2EE</title>
-        <loc>https://www.zizka.ch/pages/programovani/java/index_win1250.html</loc>
-        <lastmod>2012-12-16</lastmod>
-    </url>
-    <url>
         <title>Přihlašování – login</title>
         <loc>https://www.zizka.ch/pages/programovani/winlyrics/doc/login.html</loc>
-        <lastmod>2012-12-16</lastmod>
-    </url>
-    <url>
-        <title>Java + J2EE</title>
-        <loc>https://www.zizka.ch/pages/programovani/java/index_.html</loc>
-        <lastmod>2012-12-16</lastmod>
-    </url>
-    <url>
-        <title>Transport schedule connection search</title>
-        <loc>https://www.zizka.ch/pages/programovani/transport_schedule_search/index.html</loc>
-        <lastmod>2012-12-16</lastmod>
-    </url>
-    <url>
-        <title>User Songs Rating</title>
-        <loc>https://www.zizka.ch/pages/programovani/winlyrics/doc/rating.html</loc>
         <lastmod>2012-12-16</lastmod>
     </url>
     <url>
@@ -400,6 +396,16 @@ final method</title>
     <url>
         <title>Vyhledávání spojů v jízdních řádech</title>
         <loc>https://www.zizka.ch/pages/programovani/transport_schedule_search/index.cz.html</loc>
+        <lastmod>2012-12-16</lastmod>
+    </url>
+    <url>
+        <title>Transport schedule connection search</title>
+        <loc>https://www.zizka.ch/pages/programovani/transport_schedule_search/index.html</loc>
+        <lastmod>2012-12-16</lastmod>
+    </url>
+    <url>
+        <title>User Songs Rating</title>
+        <loc>https://www.zizka.ch/pages/programovani/winlyrics/doc/rating.html</loc>
         <lastmod>2012-12-16</lastmod>
     </url>
     <url>
@@ -428,17 +434,6 @@ final method</title>
         <lastmod>2012-12-16</lastmod>
     </url>
     <url>
-        <title>Java Concurrency, Threads and Synchronization</title>
-        <loc>https://www.zizka.ch/pages/programovani/java/modifier-and-concurent-readers.html</loc>
-        <lastmod>2012-12-16</lastmod>
-    </url>
-    <url>
-        <title>Logování v Javě – log4j a
-java.util.logging</title>
-        <loc>https://www.zizka.ch/pages/programovani/java/navod_logovani_java.util.logging.html</loc>
-        <lastmod>2012-12-16</lastmod>
-    </url>
-    <url>
         <title>Úplné začátky v Javě – kompilace</title>
         <loc>https://www.zizka.ch/pages/programovani/java/navod-java_zacatky.html</loc>
         <lastmod>2012-12-16</lastmod>
@@ -454,18 +449,29 @@ java.util.logging</title>
         <lastmod>2012-12-16</lastmod>
     </url>
     <url>
-        <title>JPA and Hibernate mapping with MySQL – common errors and exceptions</title>
-        <loc>https://www.zizka.ch/pages/programovani/java/hibernate-common-errors-and-exceptions.html</loc>
-        <lastmod>2012-12-16</lastmod>
-    </url>
-    <url>
         <title>Java tipy</title>
         <loc>https://www.zizka.ch/pages/programovani/java/tipy.html</loc>
         <lastmod>2012-12-16</lastmod>
     </url>
     <url>
+        <title>JPA and Hibernate mapping with MySQL – common errors and exceptions</title>
+        <loc>https://www.zizka.ch/pages/programovani/java/hibernate-common-errors-and-exceptions.html</loc>
+        <lastmod>2012-12-16</lastmod>
+    </url>
+    <url>
         <title>ImmutableProperties class</title>
         <loc>https://www.zizka.ch/pages/programovani/java/immutable_properties.html</loc>
+        <lastmod>2012-12-16</lastmod>
+    </url>
+    <url>
+        <title>Java Concurrency, Threads and Synchronization</title>
+        <loc>https://www.zizka.ch/pages/programovani/java/modifier-and-concurent-readers.html</loc>
+        <lastmod>2012-12-16</lastmod>
+    </url>
+    <url>
+        <title>Logování v Javě – log4j a
+java.util.logging</title>
+        <loc>https://www.zizka.ch/pages/programovani/java/navod_logovani_java.util.logging.html</loc>
         <lastmod>2012-12-16</lastmod>
     </url>
     <url>
@@ -509,6 +515,11 @@ java.util.logging</title>
         <lastmod>2012-12-16</lastmod>
     </url>
     <url>
+        <title>java.lang.Ille­galArgumentEx­ception: Unknown AOP tag: bean</title>
+        <loc>https://www.zizka.ch/pages/programovani/java/java.lang.IllegalArgumentException-Unknown-AOP-tag-bean.html</loc>
+        <lastmod>2012-12-16</lastmod>
+    </url>
+    <url>
         <title>Short code for Antrun Maven plugin</title>
         <loc>https://www.zizka.ch/pages/programovani/java/maven/ant-run-plugin-short.html</loc>
         <lastmod>2012-12-16</lastmod>
@@ -516,11 +527,6 @@ java.util.logging</title>
     <url>
         <title>How to create a JNPL file (for Java WebStart) with Maven</title>
         <loc>https://www.zizka.ch/pages/programovani/java/maven/maven-create-jnlp-file.html</loc>
-        <lastmod>2012-12-16</lastmod>
-    </url>
-    <url>
-        <title>java.lang.Ille­galArgumentEx­ception: Unknown AOP tag: bean</title>
-        <loc>https://www.zizka.ch/pages/programovani/java/java.lang.IllegalArgumentException-Unknown-AOP-tag-bean.html</loc>
         <lastmod>2012-12-16</lastmod>
     </url>
     <url>
@@ -551,11 +557,6 @@ java.util.logging</title>
     <url>
         <title>Could not find class</title>
         <loc>https://www.zizka.ch/pages/programovani/java/jboss-aop-could-not-find-class.html</loc>
-        <lastmod>2012-12-16</lastmod>
-    </url>
-    <url>
-        <title>Java + J2EE</title>
-        <loc>https://www.zizka.ch/pages/programovani/java/index.html</loc>
         <lastmod>2012-12-16</lastmod>
     </url>
     <url>
@@ -594,13 +595,13 @@ java.util.logging</title>
         <lastmod>2012-12-16</lastmod>
     </url>
     <url>
-        <title>ALTER TABLE … RENAME [OVERWRITE] [TO] to overwrite existing table</title>
-        <loc>https://www.zizka.ch/pages/programovani/sql/mysql_wishlist/alter_table_rename_overwrite.html</loc>
+        <title>Java objects in Stored Procedures (sci-fi)</title>
+        <loc>https://www.zizka.ch/pages/programovani/sql/mysql_wishlist/java_objects_in_stored_procedures.html</loc>
         <lastmod>2012-12-16</lastmod>
     </url>
     <url>
         <title>Stored Procedure call stack in INFORMATION_SCHEMA</title>
-        <loc>https://www.zizka.ch/pages/programovani/sql/mysql_wishlist/call_stack_in_information_schema.html</loc>
+        <loc>https://www.zizka.ch/pages/programovani/sql/mysql_wishlist/stored_procedure_call_stack_in_information_schema.html</loc>
         <lastmod>2012-12-16</lastmod>
     </url>
     <url>
@@ -609,13 +610,13 @@ java.util.logging</title>
         <lastmod>2012-12-16</lastmod>
     </url>
     <url>
-        <title>Java objects in Stored Procedures (sci-fi)</title>
-        <loc>https://www.zizka.ch/pages/programovani/sql/mysql_wishlist/java_objects_in_stored_procedures.html</loc>
+        <title>ALTER TABLE … RENAME [OVERWRITE] [TO] to overwrite existing table</title>
+        <loc>https://www.zizka.ch/pages/programovani/sql/mysql_wishlist/alter_table_rename_overwrite.html</loc>
         <lastmod>2012-12-16</lastmod>
     </url>
     <url>
         <title>Stored Procedure call stack in INFORMATION_SCHEMA</title>
-        <loc>https://www.zizka.ch/pages/programovani/sql/mysql_wishlist/stored_procedure_call_stack_in_information_schema.html</loc>
+        <loc>https://www.zizka.ch/pages/programovani/sql/mysql_wishlist/call_stack_in_information_schema.html</loc>
         <lastmod>2012-12-16</lastmod>
     </url>
     <url>
@@ -645,66 +646,6 @@ Yet Another „Why PHP Sucks“ Page</title>
         <lastmod>2012-12-16</lastmod>
     </url>
     <url>
-        <title>Business society algorithm</title>
-        <loc>https://www.zizka.ch/pages/programovani/artificial_intelligence/business_society_algorithm.html</loc>
-        <lastmod>2012-12-13</lastmod>
-    </url>
-    <url>
-        <title>JBoss WebServices (JBossWS) notes</title>
-        <loc>https://www.zizka.ch/pages/programovani/java/jboss/web-services.html</loc>
-        <lastmod>2012-12-13</lastmod>
-    </url>
-    <url>
-        <title>How to stop Jetty</title>
-        <loc>https://www.zizka.ch/pages/programovani/java/jetty-how-to-stop.html</loc>
-        <lastmod>2012-12-13</lastmod>
-    </url>
-    <url>
-        <title>How to create an application distribution package with Maven</title>
-        <loc>https://www.zizka.ch/pages/programovani/java/maven/maven-create-distribution-package.html</loc>
-        <lastmod>2012-12-13</lastmod>
-    </url>
-    <url>
-        <title>Zabezpečená stránka</title>
-        <loc>https://www.zizka.ch/pages/401Zabezpeceno.html</loc>
-        <lastmod>2012-12-13</lastmod>
-    </url>
-    <url>
-        <title>Zastřešující teorie umělé inteligence</title>
-        <loc>https://www.zizka.ch/pages/programovani/artificial_intelligence/covering_ai_theory.html</loc>
-        <lastmod>2012-12-13</lastmod>
-    </url>
-    <url>
-        <title>Quartz Java timer intro</title>
-        <loc>https://www.zizka.ch/pages/programovani/java/howto/quartz-howto-intro.html</loc>
-        <lastmod>2012-12-13</lastmod>
-    </url>
-    <url>
-        <title>JSON with JAXB – Jackson</title>
-        <loc>https://www.zizka.ch/pages/programovani/java/jaxb-json-jackson-howto.html</loc>
-        <lastmod>2012-12-13</lastmod>
-    </url>
-    <url>
-        <title>JBoss AS Java system variables</title>
-        <loc>https://www.zizka.ch/pages/programovani/java/jboss/jboss-as-startup-run-sh-java-system-variables.html</loc>
-        <lastmod>2012-12-13</lastmod>
-    </url>
-    <url>
-        <title>Maven: Profile activation and properties</title>
-        <loc>https://www.zizka.ch/pages/programovani/java/maven/profile-activation-and-properties.html</loc>
-        <lastmod>2012-12-13</lastmod>
-    </url>
-    <url>
-        <title>Java alternative of PHP's preg_replace_callback</title>
-        <loc>https://www.zizka.ch/pages/programovani/java/php_preg_replace_callback.html</loc>
-        <lastmod>2012-12-13</lastmod>
-    </url>
-    <url>
-        <title>Plan to develop artificial Cogitation – what has to be done</title>
-        <loc>https://www.zizka.ch/pages/programovani/artificial_intelligence/developement_plan_of_artificial_cogitation.html</loc>
-        <lastmod>2012-12-13</lastmod>
-    </url>
-    <url>
         <title>JAXB – a List with inherited classes</title>
         <loc>https://www.zizka.ch/pages/programovani/java/jaxb-list-with-inherited-classes.html</loc>
         <lastmod>2012-12-13</lastmod>
@@ -716,24 +657,23 @@ repository</title>
         <lastmod>2012-12-13</lastmod>
     </url>
     <url>
-        <title>WinLyrics – WinAmp lyrics plugin</title>
-        <loc>https://www.zizka.ch/pages/programovani/winlyrics/index.html</loc>
+        <title>Na linuxu:</title>
+        <loc>https://www.zizka.ch/pages/programovani/winlyrics/vpn.html</loc>
         <lastmod>2012-12-13</lastmod>
     </url>
     <url>
-        <title>Artificial Intelligence</title>
-        <loc>https://www.zizka.ch/pages/programovani/artificial_intelligence/index.html</loc>
+        <title>Business society algorithm</title>
+        <loc>https://www.zizka.ch/pages/programovani/artificial_intelligence/business_society_algorithm.html</loc>
+        <lastmod>2012-12-13</lastmod>
+    </url>
+    <url>
+        <title>Quartz Java timer intro</title>
+        <loc>https://www.zizka.ch/pages/programovani/java/howto/quartz-howto-intro.html</loc>
         <lastmod>2012-12-13</lastmod>
     </url>
     <url>
         <title>What I would change about the Java language</title>
         <loc>https://www.zizka.ch/pages/programovani/java/java-feature-requests.html</loc>
-        <lastmod>2012-12-13</lastmod>
-    </url>
-    <url>
-        <title>JBoss Operation Network 2.3.0: Tomcat not supported on Windows
-2003 and 2008</title>
-        <loc>https://www.zizka.ch/pages/programovani/java/jboss/Tomcat-JON-Windows-2003-2008.html</loc>
         <lastmod>2012-12-13</lastmod>
     </url>
     <url>
@@ -752,13 +692,13 @@ repository</title>
         <lastmod>2012-12-13</lastmod>
     </url>
     <url>
-        <title>Na linuxu:</title>
-        <loc>https://www.zizka.ch/pages/programovani/winlyrics/vpn.html</loc>
+        <title>Zabezpečená stránka</title>
+        <loc>https://www.zizka.ch/pages/401Zabezpeceno.html</loc>
         <lastmod>2012-12-13</lastmod>
     </url>
     <url>
-        <title>Aplikace pro kontrolu výskytů subjektů v insolvenčním rejstříku</title>
-        <loc>https://www.zizka.ch/pages/programovani/isir/isir.html</loc>
+        <title>Zastřešující teorie umělé inteligence</title>
+        <loc>https://www.zizka.ch/pages/programovani/artificial_intelligence/covering_ai_theory.html</loc>
         <lastmod>2012-12-13</lastmod>
     </url>
     <url>
@@ -772,13 +712,8 @@ repository</title>
         <lastmod>2012-12-13</lastmod>
     </url>
     <url>
-        <title>Dojmy z Ubuntu 8 – Hardy Heron</title>
-        <loc>https://www.zizka.ch/pages/linux/dojmy_z_ubuntu_8.html</loc>
-        <lastmod>2012-12-13</lastmod>
-    </url>
-    <url>
-        <title>Pohlídáme.cz</title>
-        <loc>https://www.zizka.ch/pages/programovani/isir/pohlidame.cz.html</loc>
+        <title>Plan to develop artificial Cogitation – what has to be done</title>
+        <loc>https://www.zizka.ch/pages/programovani/artificial_intelligence/developement_plan_of_artificial_cogitation.html</loc>
         <lastmod>2012-12-13</lastmod>
     </url>
     <url>
@@ -799,6 +734,11 @@ repository</title>
     <url>
         <title>XSLT transformation in Java</title>
         <loc>https://www.zizka.ch/pages/programovani/java/xslt-commandline-with-xalan.html</loc>
+        <lastmod>2012-12-13</lastmod>
+    </url>
+    <url>
+        <title>Artificial Intelligence</title>
+        <loc>https://www.zizka.ch/pages/programovani/artificial_intelligence/index.html</loc>
         <lastmod>2012-12-13</lastmod>
     </url>
     <url>
@@ -824,6 +764,11 @@ Spring?</title>
         <lastmod>2012-12-13</lastmod>
     </url>
     <url>
+        <title>Aplikace pro kontrolu výskytů subjektů v insolvenčním rejstříku</title>
+        <loc>https://www.zizka.ch/pages/programovani/isir/isir.html</loc>
+        <lastmod>2012-12-13</lastmod>
+    </url>
+    <url>
         <title>SVNbot – IRC bot announcing SVN commits, written in Java</title>
         <loc>https://www.zizka.ch/pages/programovani/java/jboss/svn-commit-irc-bot-java.html</loc>
         <lastmod>2012-12-13</lastmod>
@@ -831,6 +776,81 @@ Spring?</title>
     <url>
         <title>Je Java jako Linux nebo jako Windows?</title>
         <loc>https://www.zizka.ch/pages/programovani/java/je_java_jako_linux_nebo_jako_windows.html</loc>
+        <lastmod>2012-12-13</lastmod>
+    </url>
+    <url>
+        <title>Dojmy z Ubuntu 8 – Hardy Heron</title>
+        <loc>https://www.zizka.ch/pages/linux/dojmy_z_ubuntu_8.html</loc>
+        <lastmod>2012-12-13</lastmod>
+    </url>
+    <url>
+        <title>Pohlídáme.cz</title>
+        <loc>https://www.zizka.ch/pages/programovani/isir/pohlidame.cz.html</loc>
+        <lastmod>2012-12-13</lastmod>
+    </url>
+    <url>
+        <title>JBoss WebServices (JBossWS) notes</title>
+        <loc>https://www.zizka.ch/pages/programovani/java/jboss/web-services.html</loc>
+        <lastmod>2012-12-13</lastmod>
+    </url>
+    <url>
+        <title>How to stop Jetty</title>
+        <loc>https://www.zizka.ch/pages/programovani/java/jetty-how-to-stop.html</loc>
+        <lastmod>2012-12-13</lastmod>
+    </url>
+    <url>
+        <title>How to create an application distribution package with Maven</title>
+        <loc>https://www.zizka.ch/pages/programovani/java/maven/maven-create-distribution-package.html</loc>
+        <lastmod>2012-12-13</lastmod>
+    </url>
+    <url>
+        <title>JSON with JAXB – Jackson</title>
+        <loc>https://www.zizka.ch/pages/programovani/java/jaxb-json-jackson-howto.html</loc>
+        <lastmod>2012-12-13</lastmod>
+    </url>
+    <url>
+        <title>JBoss AS Java system variables</title>
+        <loc>https://www.zizka.ch/pages/programovani/java/jboss/jboss-as-startup-run-sh-java-system-variables.html</loc>
+        <lastmod>2012-12-13</lastmod>
+    </url>
+    <url>
+        <title>Maven: Profile activation and properties</title>
+        <loc>https://www.zizka.ch/pages/programovani/java/maven/profile-activation-and-properties.html</loc>
+        <lastmod>2012-12-13</lastmod>
+    </url>
+    <url>
+        <title>Java alternative of PHP's preg_replace_callback</title>
+        <loc>https://www.zizka.ch/pages/programovani/java/php_preg_replace_callback.html</loc>
+        <lastmod>2012-12-13</lastmod>
+    </url>
+    <url>
+        <title>WinLyrics – WinAmp lyrics plugin</title>
+        <loc>https://www.zizka.ch/pages/programovani/winlyrics/index.html</loc>
+        <lastmod>2012-12-13</lastmod>
+    </url>
+    <url>
+        <title>Einsteinova logická hra</title>
+        <loc>https://www.zizka.ch/pages/osobni/einsteinova_logicka_hra.html</loc>
+        <lastmod>2012-12-13</lastmod>
+    </url>
+    <url>
+        <title>Poznámky a postřehy</title>
+        <loc>https://www.zizka.ch/pages/osobni/poznamky.ascii.html</loc>
+        <lastmod>2012-12-13</lastmod>
+    </url>
+    <url>
+        <title>Wicket servlet and filter in an embedded Jetty</title>
+        <loc>https://www.zizka.ch/pages/programovani/java/web/wicket/wicket-servlet-filter-jetty-embedded.html</loc>
+        <lastmod>2012-12-13</lastmod>
+    </url>
+    <url>
+        <title>Společné obecné vlastnosti PHP, Javy, Linuxu a Windows</title>
+        <loc>https://www.zizka.ch/pages/programovani/spolecne_vlastnosti_php_java_linux_windows.html</loc>
+        <lastmod>2012-12-13</lastmod>
+    </url>
+    <url>
+        <title>canvas element selection buffer</title>
+        <loc>https://www.zizka.ch/pages/programovani/web_javascript_ajax_canvas/canvas_element_selection_buffer.html</loc>
         <lastmod>2012-12-13</lastmod>
     </url>
     <url>
@@ -854,23 +874,18 @@ Spring?</title>
         <lastmod>2012-12-13</lastmod>
     </url>
     <url>
-        <title>JAXB – a List with inherited classes</title>
-        <loc>https://www.zizka.ch/pages/programovani/java/jaxb/jaxb-list-with-inherited-classes.html</loc>
+        <title>Wicket and nice URLs – URL coding strategies</title>
+        <loc>https://www.zizka.ch/pages/programovani/java/web/wicket/wicket-url-coding-strategy.html</loc>
         <lastmod>2012-12-13</lastmod>
     </url>
     <url>
-        <title>Quartz Scheduler in Wicket – an example</title>
-        <loc>https://www.zizka.ch/pages/programovani/java/web/wicket/wicket-quartz-scheduler-example.html</loc>
+        <title>SQL koutek</title>
+        <loc>https://www.zizka.ch/pages/programovani/sql/index.cz.html</loc>
         <lastmod>2012-12-13</lastmod>
     </url>
     <url>
-        <title>Další nesmysl v PHP</title>
-        <loc>https://www.zizka.ch/pages/programovani/php/dalsi_nesmysl_v_php.html</loc>
-        <lastmod>2012-12-13</lastmod>
-    </url>
-    <url>
-        <title>Tento soubor nenĂ aktuĂˇlnĂ!</title>
-        <loc>https://www.zizka.ch/pages/texy/syntax.cs.html</loc>
+        <title>Web, JavaScript, AJAX, and Canvas</title>
+        <loc>https://www.zizka.ch/pages/programovani/web_javascript_ajax_canvas/index.html</loc>
         <lastmod>2012-12-13</lastmod>
     </url>
     <url>
@@ -894,23 +909,18 @@ Spring?</title>
         <lastmod>2012-12-13</lastmod>
     </url>
     <url>
-        <title>Nabídka: Levný Java/JSP/J2EE hosting</title>
-        <loc>https://www.zizka.ch/pages/programovani/java/nabidka_levny_j2ee_jsp_hosting.html</loc>
+        <title>SQL corner</title>
+        <loc>https://www.zizka.ch/pages/programovani/sql/index.html</loc>
         <lastmod>2012-12-13</lastmod>
     </url>
     <url>
-        <title>Je Java jako Linux nebo jako Windows?</title>
-        <loc>https://www.zizka.ch/pages/programovani/php/je_java_jako_linux_nebo_jako_windows.html</loc>
+        <title>JavaScript isometric libraries and „game engines“</title>
+        <loc>https://www.zizka.ch/pages/programovani/web_javascript_ajax_canvas/javascript-isometric-libraries.html</loc>
         <lastmod>2012-12-13</lastmod>
     </url>
     <url>
-        <title>Vybírám skriptovací jazyk pro systémové skripty</title>
-        <loc>https://www.zizka.ch/pages/programovani/vybiram_jazyk_pro_systemove_skriptovani.html</loc>
-        <lastmod>2012-12-13</lastmod>
-    </url>
-    <url>
-        <title>Texy! is sexxy!</title>
-        <loc>https://www.zizka.ch/pages/texy/syntax.html</loc>
+        <title>Nabídka: byt 3+1 v Českých Budějovicích</title>
+        <loc>https://www.zizka.ch/pages/realitni_kancelar/byty_ceske_budejovice.html</loc>
         <lastmod>2012-12-13</lastmod>
     </url>
     <url>
@@ -929,86 +939,6 @@ Spring?</title>
         <lastmod>2012-12-13</lastmod>
     </url>
     <url>
-        <title>Wicket servlet and filter in an embedded Jetty</title>
-        <loc>https://www.zizka.ch/pages/programovani/java/web/wicket/wicket-servlet-filter-jetty-embedded.html</loc>
-        <lastmod>2012-12-13</lastmod>
-    </url>
-    <url>
-        <title>Feature request discussion: Result sets stored in @variables</title>
-        <loc>https://www.zizka.ch/pages/programovani/sql/mysql_wishlist/forum_post.html</loc>
-        <lastmod>2012-12-13</lastmod>
-    </url>
-    <url>
-        <title>canvas element selection buffer</title>
-        <loc>https://www.zizka.ch/pages/programovani/web_javascript_ajax_canvas/canvas_element_selection_buffer.cz.html</loc>
-        <lastmod>2012-12-13</lastmod>
-    </url>
-    <url>
-        <title>Ondra Žižka – personal website</title>
-        <loc>https://www.zizka.ch/pages/index.html</loc>
-        <lastmod>2012-12-13</lastmod>
-    </url>
-    <url>
-        <title>Bydlení Brno</title>
-        <loc>https://www.zizka.ch/pages/osobni/bydleni/index.html</loc>
-        <lastmod>2012-12-13</lastmod>
-    </url>
-    <url>
-        <title>Wicket and nice URLs – URL coding strategies</title>
-        <loc>https://www.zizka.ch/pages/programovani/java/web/wicket/wicket-url-coding-strategy.html</loc>
-        <lastmod>2012-12-13</lastmod>
-    </url>
-    <url>
-        <title>Společné obecné vlastnosti PHP, Javy, Linuxu a Windows</title>
-        <loc>https://www.zizka.ch/pages/programovani/spolecne_vlastnosti_php_java_linux_windows.html</loc>
-        <lastmod>2012-12-13</lastmod>
-    </url>
-    <url>
-        <title>canvas element selection buffer</title>
-        <loc>https://www.zizka.ch/pages/programovani/web_javascript_ajax_canvas/canvas_element_selection_buffer.html</loc>
-        <lastmod>2012-12-13</lastmod>
-    </url>
-    <url>
-        <title>Informace k pronájmu Běly Pažoutové</title>
-        <loc>https://www.zizka.ch/pages/osobni/bydleni/komin.html</loc>
-        <lastmod>2012-12-13</lastmod>
-    </url>
-    <url>
-        <title>SQL koutek</title>
-        <loc>https://www.zizka.ch/pages/programovani/sql/index.cz.html</loc>
-        <lastmod>2012-12-13</lastmod>
-    </url>
-    <url>
-        <title>Web, JavaScript, AJAX, and Canvas</title>
-        <loc>https://www.zizka.ch/pages/programovani/web_javascript_ajax_canvas/index.html</loc>
-        <lastmod>2012-12-13</lastmod>
-    </url>
-    <url>
-        <title>Nové bydlení</title>
-        <loc>https://www.zizka.ch/pages/osobni/bydleni/nove.html</loc>
-        <lastmod>2012-12-13</lastmod>
-    </url>
-    <url>
-        <title>Vázání kravat</title>
-        <loc>https://www.zizka.ch/pages/osobni/vazani_kravat.html</loc>
-        <lastmod>2012-12-13</lastmod>
-    </url>
-    <url>
-        <title>Caché ObjectScript – nejhorší jazyk na světě</title>
-        <loc>https://www.zizka.ch/pages/programovani/cache_objectscript_nejhorsi_jazyk_na_svete.html</loc>
-        <lastmod>2012-12-13</lastmod>
-    </url>
-    <url>
-        <title>Enum with look-up map</title>
-        <loc>https://www.zizka.ch/pages/programovani/java/enum-with-lookup-map.html</loc>
-        <lastmod>2012-12-13</lastmod>
-    </url>
-    <url>
-        <title>Ibasis instantiation exception: Missing default constructor</title>
-        <loc>https://www.zizka.ch/pages/programovani/java/ibatis-instantiation-exception.html</loc>
-        <lastmod>2012-12-13</lastmod>
-    </url>
-    <url>
         <title>The difference between java and javaw</title>
         <loc>https://www.zizka.ch/pages/programovani/java/java_javaw_difference.html</loc>
         <lastmod>2012-12-13</lastmod>
@@ -1017,11 +947,6 @@ Spring?</title>
         <title>What to use as a base for an enterprise web application – JBoss or
 Spring?</title>
         <loc>https://www.zizka.ch/pages/programovani/java/jboss-vs-spring.html</loc>
-        <lastmod>2012-12-13</lastmod>
-    </url>
-    <url>
-        <title>Wicket</title>
-        <loc>https://www.zizka.ch/pages/programovani/java/web/wicket/index.html</loc>
         <lastmod>2012-12-13</lastmod>
     </url>
     <url>
@@ -1036,33 +961,23 @@ JBoss Cache)</title>
         <lastmod>2012-12-13</lastmod>
     </url>
     <url>
-        <title>SQL corner</title>
-        <loc>https://www.zizka.ch/pages/programovani/sql/index.html</loc>
+        <title>MSIE 8.1 drops JavaScript support in favor of VBScript</title>
+        <loc>https://www.zizka.ch/pages/programovani/web_javascript_ajax_canvas/msie-drops-javascript-support.html</loc>
         <lastmod>2012-12-13</lastmod>
     </url>
     <url>
-        <title>JavaScript isometric libraries and „game engines“</title>
-        <loc>https://www.zizka.ch/pages/programovani/web_javascript_ajax_canvas/javascript-isometric-libraries.html</loc>
+        <title>Ubytování – Jižní Čechy – Třeboňsko</title>
+        <loc>https://www.zizka.ch/pages/realitni_kancelar/chaty_a_chalupy.html</loc>
         <lastmod>2012-12-13</lastmod>
     </url>
     <url>
-        <title>Nabídka: byt 3+1 v Českých Budějovicích</title>
-        <loc>https://www.zizka.ch/pages/realitni_kancelar/byty_ceske_budejovice.html</loc>
+        <title>Ondra Žižka – personal website</title>
+        <loc>https://www.zizka.ch/pages/index.html</loc>
         <lastmod>2012-12-13</lastmod>
     </url>
     <url>
-        <title>Mnou oblíbené citáty</title>
-        <loc>https://www.zizka.ch/pages/osobni/citaty.html</loc>
-        <lastmod>2012-12-13</lastmod>
-    </url>
-    <url>
-        <title>Programming humor</title>
-        <loc>https://www.zizka.ch/pages/programovani/humor.html</loc>
-        <lastmod>2012-12-13</lastmod>
-    </url>
-    <url>
-        <title>Groovy classloader bug with DOMBuilder</title>
-        <loc>https://www.zizka.ch/pages/programovani/java/groovy-dombuilder-bug.html</loc>
+        <title>Bydlení Brno</title>
+        <loc>https://www.zizka.ch/pages/osobni/bydleni/index.html</loc>
         <lastmod>2012-12-13</lastmod>
     </url>
     <url>
@@ -1088,33 +1003,33 @@ alternatives and Gentoo's eselect)</title>
         <lastmod>2012-12-13</lastmod>
     </url>
     <url>
-        <title>MSIE 8.1 drops JavaScript support in favor of VBScript</title>
-        <loc>https://www.zizka.ch/pages/programovani/web_javascript_ajax_canvas/msie-drops-javascript-support.html</loc>
+        <title>Výsledek nasazení PHP v praxi aneb navrch huj, uvnitř fuj.</title>
+        <loc>https://www.zizka.ch/pages/programovani/php/vysledek_nasazeni_php_aneb_navrch_huj_uvnitr_fuj.html</loc>
         <lastmod>2012-12-13</lastmod>
     </url>
     <url>
-        <title>Ubytování – Jižní Čechy – Třeboňsko</title>
-        <loc>https://www.zizka.ch/pages/realitni_kancelar/chaty_a_chalupy.html</loc>
+        <title>MySQL Stored Procedures Library</title>
+        <loc>https://www.zizka.ch/pages/programovani/sql/mysql_stored_procedures.html</loc>
         <lastmod>2012-12-13</lastmod>
     </url>
     <url>
-        <title>Einsteinova logická hra</title>
-        <loc>https://www.zizka.ch/pages/osobni/einsteinova_logicka_hra.html</loc>
+        <title>WebTTD – A Browser-based Transport Tycoon Derivate</title>
+        <loc>https://www.zizka.ch/pages/programovani/web_javascript_ajax_canvas/webttd.html</loc>
         <lastmod>2012-12-13</lastmod>
     </url>
     <url>
-        <title>Poznámky a postřehy</title>
-        <loc>https://www.zizka.ch/pages/osobni/poznamky.ascii.html</loc>
+        <title>Informace k pronájmu Běly Pažoutové</title>
+        <loc>https://www.zizka.ch/pages/osobni/bydleni/komin.html</loc>
         <lastmod>2012-12-13</lastmod>
     </url>
     <url>
-        <title>Programování</title>
-        <loc>https://www.zizka.ch/pages/programovani/index.html</loc>
+        <title>Enum with look-up map</title>
+        <loc>https://www.zizka.ch/pages/programovani/java/enum-with-lookup-map.html</loc>
         <lastmod>2012-12-13</lastmod>
     </url>
     <url>
-        <title>How to get a heap dump</title>
-        <loc>https://www.zizka.ch/pages/programovani/java/heapdump-howto.html</loc>
+        <title>Ibasis instantiation exception: Missing default constructor</title>
+        <loc>https://www.zizka.ch/pages/programovani/java/ibatis-instantiation-exception.html</loc>
         <lastmod>2012-12-13</lastmod>
     </url>
     <url>
@@ -1139,18 +1054,88 @@ and wicket:extend</title>
         <lastmod>2012-12-13</lastmod>
     </url>
     <url>
-        <title>Výsledek nasazení PHP v praxi aneb navrch huj, uvnitř fuj.</title>
-        <loc>https://www.zizka.ch/pages/programovani/php/vysledek_nasazeni_php_aneb_navrch_huj_uvnitr_fuj.html</loc>
+        <title>Tento soubor nenĂ aktuĂˇlnĂ!</title>
+        <loc>https://www.zizka.ch/pages/texy/syntax.cs.html</loc>
         <lastmod>2012-12-13</lastmod>
     </url>
     <url>
-        <title>MySQL Stored Procedures Library</title>
-        <loc>https://www.zizka.ch/pages/programovani/sql/mysql_stored_procedures.html</loc>
+        <title>Nové bydlení</title>
+        <loc>https://www.zizka.ch/pages/osobni/bydleni/nove.html</loc>
         <lastmod>2012-12-13</lastmod>
     </url>
     <url>
-        <title>WebTTD – A Browser-based Transport Tycoon Derivate</title>
-        <loc>https://www.zizka.ch/pages/programovani/web_javascript_ajax_canvas/webttd.html</loc>
+        <title>Vázání kravat</title>
+        <loc>https://www.zizka.ch/pages/osobni/vazani_kravat.html</loc>
+        <lastmod>2012-12-13</lastmod>
+    </url>
+    <url>
+        <title>Caché ObjectScript – nejhorší jazyk na světě</title>
+        <loc>https://www.zizka.ch/pages/programovani/cache_objectscript_nejhorsi_jazyk_na_svete.html</loc>
+        <lastmod>2012-12-13</lastmod>
+    </url>
+    <url>
+        <title>Groovy classloader bug with DOMBuilder</title>
+        <loc>https://www.zizka.ch/pages/programovani/java/groovy-dombuilder-bug.html</loc>
+        <lastmod>2012-12-13</lastmod>
+    </url>
+    <url>
+        <title>JAXB – a List with inherited classes</title>
+        <loc>https://www.zizka.ch/pages/programovani/java/jaxb/jaxb-list-with-inherited-classes.html</loc>
+        <lastmod>2012-12-13</lastmod>
+    </url>
+    <url>
+        <title>Quartz Scheduler in Wicket – an example</title>
+        <loc>https://www.zizka.ch/pages/programovani/java/web/wicket/wicket-quartz-scheduler-example.html</loc>
+        <lastmod>2012-12-13</lastmod>
+    </url>
+    <url>
+        <title>Další nesmysl v PHP</title>
+        <loc>https://www.zizka.ch/pages/programovani/php/dalsi_nesmysl_v_php.html</loc>
+        <lastmod>2012-12-13</lastmod>
+    </url>
+    <url>
+        <title>Vybírám skriptovací jazyk pro systémové skripty</title>
+        <loc>https://www.zizka.ch/pages/programovani/vybiram_jazyk_pro_systemove_skriptovani.html</loc>
+        <lastmod>2012-12-13</lastmod>
+    </url>
+    <url>
+        <title>Texy! is sexxy!</title>
+        <loc>https://www.zizka.ch/pages/texy/syntax.html</loc>
+        <lastmod>2012-12-13</lastmod>
+    </url>
+    <url>
+        <title>Mnou oblíbené citáty</title>
+        <loc>https://www.zizka.ch/pages/osobni/citaty.html</loc>
+        <lastmod>2012-12-13</lastmod>
+    </url>
+    <url>
+        <title>Programming humor</title>
+        <loc>https://www.zizka.ch/pages/programovani/humor.html</loc>
+        <lastmod>2012-12-13</lastmod>
+    </url>
+    <url>
+        <title>How to get a heap dump</title>
+        <loc>https://www.zizka.ch/pages/programovani/java/heapdump-howto.html</loc>
+        <lastmod>2012-12-13</lastmod>
+    </url>
+    <url>
+        <title>Nabídka: Levný Java/JSP/J2EE hosting</title>
+        <loc>https://www.zizka.ch/pages/programovani/java/nabidka_levny_j2ee_jsp_hosting.html</loc>
+        <lastmod>2012-12-13</lastmod>
+    </url>
+    <url>
+        <title>Je Java jako Linux nebo jako Windows?</title>
+        <loc>https://www.zizka.ch/pages/programovani/php/je_java_jako_linux_nebo_jako_windows.html</loc>
+        <lastmod>2012-12-13</lastmod>
+    </url>
+    <url>
+        <title>Feature request discussion: Result sets stored in @variables</title>
+        <loc>https://www.zizka.ch/pages/programovani/sql/mysql_wishlist/forum_post.html</loc>
+        <lastmod>2012-12-13</lastmod>
+    </url>
+    <url>
+        <title>canvas element selection buffer</title>
+        <loc>https://www.zizka.ch/pages/programovani/web_javascript_ajax_canvas/canvas_element_selection_buffer.cz.html</loc>
         <lastmod>2012-12-13</lastmod>
     </url>
     <url>
