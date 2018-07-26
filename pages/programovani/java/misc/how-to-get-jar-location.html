@@ -79,9 +79,13 @@
 
 	<div class="date"><em>2012-12-31</em></div>
 
-	<div class="doc-body"><h3>How to get curent class'es <code>.jar</code> location (directory,&nbsp;path)</h3> 
-<p>Nice trick.</p> 
-<pre class="brush: java"><code>private String getBaseDirectory()
+	<div class="doc-body"><h3>How to get curent class'es <code>.jar</code> location
+(directory, path)</h3>
+
+<p>Nice trick.</p>
+
+<pre
+class="brush: java"><code>private String getBaseDirectory()
 {
    String name = super.getClass().getName();
    int lastdot = name.lastIndexOf('.');
@@ -91,8 +95,10 @@
 
    URL url = super.getClass().getResource(name + ".class");
    return getURLDirName(url);
-}</code></pre> 
-<p>Nowadays, however, it often leads somewhere to the Maven repository&nbsp;:)</p></div>
+}</code></pre>
+
+<p>Nowadays, however, it often leads somewhere to the Maven repository :)</p>
+</div>
 
 	<hr />
 

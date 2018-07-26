@@ -77,103 +77,203 @@
 
 	<div class="date"><em>2012-12-13</em></div>
 
-	<div class="doc-body"><h3>MySQL Stored Procedures Library</h3> 
-<p>Solution of common elementary tasks that MySQL does not solve natively.</p> 
-<h4>What's &amp; Why's</h4> 
-<p>During a developement of custom projects I've written some useful procedures and functions, which ease the developement of procedures for MySQL and somebody could find it handy. So I&nbsp;publish them&nbsp;here.</p> 
-<p>The goal of this library is not to force MySQL to be as much Perl-ish as possible (nothing against Perl itself and nothing against <a href="http://datacharmer.blogspot.com/">Giuseppe Maxia</a>'s&nbsp;<a href="http://mysql-sr-lib.sourceforge.net/">MySQL General Purpose Stored Routines Library</a>). That is, by the way, a reason why do I&nbsp;not implement any „array“ (means hash)&nbsp;stuff</p> 
-<ul> 
- <li>the <strong>best array available in MySQL is a</strong>&nbsp;– (moment of surprise)&nbsp;– <strong>table</strong>.</li> 
-</ul> 
-<p>The goal of this library is to provide the simplest and fastest possible solutions for common tasks, for which MySQL itself does not have a solution of it's&nbsp;own&nbsp;(yet).</p> 
-<p>That is:</p> 
-<ul> 
- <li>sequence generators</li> 
- <li>many string functions</li> 
- <li>geographical transformations (MySQL's&nbsp;current GIS support must be a&nbsp;joke)</li> 
- <li>checking the metadata about temporary tables (which are invisible both in <code>SHOW TABLES</code> and in <code>INFORMATION_SCHEMA</code>)</li> 
- <li>logging (MySQL does not support direct logging from Stored Procedures)</li> 
- <li><code>RaiseError()</code> to raise custom error in stored procedure</li> 
-</ul> 
-<p>There are some others which are not addressed by this library yet, because I&nbsp;didn't need to solve them since I&nbsp;develop for MySQL&nbsp;5.0.</p> 
-<h4>The Principles</h4> 
-<p>First, let's&nbsp;say something about the principles how these procedures&nbsp;work.</p> 
-<p>I&nbsp;try to <acronym title="keep it simple and stupid">KISS</acronym>. Why should anyone bother with another vast non-standard API? Thus, anything that could be done easily with existing MySQL's&nbsp;tools is left outside the scope of this library.</p> 
-<p>I&nbsp;do not use the support of <acronym title="User Defined Functions">UDFs</acronym> (not that I&nbsp;would not like to). Most hosting providers are not likely compile/install custom C code into their production MySQL server.</p> 
-<p>On the other side, I&nbsp;develop the library for the latest GA version of MySQL. That is, as soon as anything is available in GA MySQL, it can be (mis)used in this library. Like with the <code>BENCHMARK()</code> „function“: It is not a real function in MySQL 5.0, so you can not pass the number of repeats as an expression. But in MySQL 5.1, this is fixed; and I&nbsp;have already working procedure <code>lib_GenerateSequence()</code>, which is about 30% faster thanks to&nbsp;it.</p> 
-<p>Most often, their output is a table. And because MySQL does not give any support for direct passing the result set between procedures, I've got used to a custom of storing the result into a TEMPORARY TABLE named exactly like the procedure name.&nbsp;E.g:</p> 
-<pre class="brush: sql"><code>CALL lib_Explode(',', 'coma, separated, data, 3.14');
+	<div class="doc-body"><h3>MySQL Stored Procedures Library</h3>
+
+<p>Solution of common elementary tasks that MySQL does not solve natively.</p>
+
+<h4>What's &amp; Why's</h4>
+
+<p>During a developement of custom projects I've written some useful procedures
+and functions, which ease the developement of procedures for MySQL and somebody
+could find it handy. So I publish them here.</p>
+
+<p>The goal of this library is not to force MySQL to be as much Perl-ish as
+possible (nothing against Perl itself and nothing against <a
+href="http://datacharmer.blogspot.com/">Giuseppe Maxia</a>'s <a
+href="http://mysql-sr-lib.sourceforge.net/">MySQL General Purpose Stored
+Routines Library</a>). That is, by the way, a reason why do I not implement any
+„array“ (means hash) stuff</p>
+
+<ul>
+	<li>the <strong>best array available in MySQL is a</strong> – (moment of
+	surprise) – <strong>table</strong>.</li>
+</ul>
+
+<p>The goal of this library is to provide the simplest and fastest possible
+solutions for common tasks, for which MySQL itself does not have a solution of
+it's own (yet).</p>
+
+<p>That is:</p>
+
+<ul>
+	<li>sequence generators</li>
+
+	<li>many string functions</li>
+
+	<li>geographical transformations (MySQL's current GIS support must be
+	a joke)</li>
+
+	<li>checking the metadata about temporary tables (which are invisible both in
+	<code>SHOW TABLES</code> and in <code>INFORMATION_SCHEMA</code>)</li>
+
+	<li>logging (MySQL does not support direct logging from Stored Procedures)</li>
+
+	<li><code>RaiseError()</code> to raise custom error in stored procedure</li>
+</ul>
+
+<p>There are some others which are not addressed by this library yet, because
+I didn't need to solve them since I develop for MySQL 5.0.</p>
+
+<h4>The Principles</h4>
+
+<p>First, let's say something about the principles how these
+procedures work.</p>
+
+<p>I try to <acronym title="keep it simple and stupid">KISS</acronym>. Why
+should anyone bother with another vast non-standard API? Thus, anything that
+could be done easily with existing MySQL's tools is left outside the scope of
+this library.</p>
+
+<p>I do not use the support of <acronym
+title="User Defined Functions">UDFs</acronym> (not that I would not like to).
+Most hosting providers are not likely compile/install custom C code into their
+production MySQL server.</p>
+
+<p>On the other side, I develop the library for the latest GA version of MySQL.
+That is, as soon as anything is available in GA MySQL, it can be (mis)used in
+this library. Like with the <code>BENCHMARK()</code> „function“: It is not a
+real function in MySQL 5.0, so you can not pass the number of repeats as an
+expression. But in MySQL 5.1, this is fixed; and I have already working
+procedure <code>lib_GenerateSequence()</code>, which is about 30% faster thanks
+to it.</p>
+
+<p>Most often, their output is a table. And because MySQL does not give any
+support for direct passing the result set between procedures, I've got used to a
+custom of storing the result into a TEMPORARY TABLE named exactly like the
+procedure name. E.g:</p>
+
+<pre
+class="brush: sql"><code>CALL lib_Explode(',', 'coma, separated, data, 3.14');
 SELECT * FROM lib_Explode;
-DROP TEMPORARY TABLE IF EXISTS lib_Explode; -- Optional, read below.</code></pre> 
-<p><strong>Result:</strong></p> 
-<table> 
- <thead> 
-  <tr> 
-   <th>pos</th> 
-   <th>val</th> 
-  </tr> 
- </thead> 
- <tbody> 
-  <tr> 
-   <td>1</td> 
-   <td>coma</td> 
-  </tr> 
-  <tr> 
-   <td>2</td> 
-   <td>separated</td> 
-  </tr> 
-  <tr> 
-   <td>3</td> 
-   <td>values</td> 
-  </tr> 
-  <tr> 
-   <td>4</td> 
-   <td>3.14</td> 
-  </tr> 
- </tbody> 
-</table> 
-<p>You don't have to care much about releasing (<code>DROP</code>ping), unless you work with enormous data volumes&nbsp;– the procedure overwrites the table next time called, and the TEMPORARY tables are released automatically upon the thread end (i.e. after the client disconnects).</p> 
-<p>
- <strike>
-  Procedures which return a table, should return it every time; when an error occurs, the table is empty.
- </strike> (This wasn't a good&nbsp;idea.)</p> 
-<h4>About the code below</h4> 
-<p>For brevity, I&nbsp;do not „prefix“ the code with <code>DELIMITER</code>, but if you do not use the <a href="#Download">complete script</a>, be sure to use the code this&nbsp;way:</p> 
+DROP TEMPORARY TABLE IF EXISTS lib_Explode; -- Optional, read below.</code></pre>
+
+<p><strong>Result:</strong></p>
+
+<table>
+	<thead>
+		<tr>
+			<th>pos</th>
+
+			<th>val</th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<tr>
+			<td>1</td>
+
+			<td>coma</td>
+		</tr>
+
+		<tr>
+			<td>2</td>
+
+			<td>separated</td>
+		</tr>
+
+		<tr>
+			<td>3</td>
+
+			<td>values</td>
+		</tr>
+
+		<tr>
+			<td>4</td>
+
+			<td>3.14</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>You don't have to care much about releasing (<code>DROP</code>ping), unless
+you work with enormous data volumes – the procedure overwrites the table next
+time called, and the TEMPORARY tables are released automatically upon the thread
+end (i.e. after the client disconnects).</p>
+
+<p><strike>Procedures which return a table, should return it every time; when an
+error occurs, the table is empty.</strike> (This wasn't a good idea.)</p>
+
+<h4>About the code below</h4>
+
+<p>For brevity, I do not „prefix“ the code with <code>DELIMITER</code>, but
+if you do not use the <a href="#Download">complete script</a>, be sure to use
+the code this way:</p>
+
 <pre class="brush: sql"><code>DELIMITER $$
 ...
-END; $$</code></pre> 
-<p>The code may be cluttered with some debug calls commented out.<br> Generally, procedures should be bug-free, as I&nbsp;use them quite&nbsp;much.</p> 
-<h4>Stored procedures library categories</h4> 
-<p>Currently the stored procedures available divide into these categories:</p> 
-<ul> 
- <li><a href="#Logging"><strong>Logging</strong></a>&nbsp;– a set of procedures that dump info to a log table <code>lib_logg</code>. Inspired a bit with&nbsp;log4j.</li> 
- <li><a href="#String_functions"><strong>Strings</strong></a>&nbsp;– functions that work with&nbsp;text. 
-  <ul> 
-   <li><strong><code>lib_Expode()</code></strong>&nbsp;– similar to PHP's <code>expode()</code>.</li> 
-   <li><strong><code>F1() - F6()</code></strong>&nbsp;– „<code>sprintf()</code>“ with 1&nbsp;to 6&nbsp;parameters.</li> 
-  </ul> </li> 
- <li><a href="#NULL-safe_functions"><strong>NULL-safe_functions</strong></a> 
-  <ul> 
-   <li><code>NS()</code>&nbsp;– NULL-safe</li> 
-   <li><code>NSB()</code>&nbsp;– NULL-safe boolean</li> 
-   <li><code>NSQ()</code>&nbsp;– NULL-safe quoted</li> 
-  </ul> </li> 
- <li><a href="#Utilities"><strong>Utilities</strong></a>&nbsp;– custom useful procedures (sequence generator, temp table check). 
-  <ul> 
-   <li><code>lib_TemporaryTableHasColumns( sTable, saColumns, OUT BOOL bHas )</code>&nbsp;– TEMP TABLE checking</li> 
-   <li>lib_GenerateSe­quence( iFrom INTEGER, iTo INTEGER, iStep INTEGER )&nbsp;– linear number sequence generator</li> 
-  </ul> </li> 
- <li><strong>Geographic functions and procedures</strong>&nbsp;– convert coordinates between geographic coordinate systems, compute distances between places on earth. (Not available&nbsp;yet).</li> 
-</ul> 
-<a name="Logging"></a> 
-<h4>Logging</h4> 
-<pre class="brush: sql"><code>CREATE TABLE lib_logg (
+END; $$</code></pre>
+
+<p>The code may be cluttered with some debug calls commented out.<br />
+Generally, procedures should be bug-free, as I use them quite much.</p>
+
+<h4>Stored procedures library categories</h4>
+
+<p>Currently the stored procedures available divide into these categories:</p>
+
+<ul>
+	<li><a href="#Logging"><strong>Logging</strong></a> – a set of procedures
+	that dump info to a log table <code>lib_logg</code>. Inspired a bit
+	with log4j.</li>
+
+	<li><a href="#String_functions"><strong>Strings</strong></a> – functions that
+	work with text.
+		<ul>
+			<li><strong><code>lib_Expode()</code></strong> – similar to PHP's
+			<code>expode()</code>.</li>
+
+			<li><strong><code>F1() - F6()</code></strong> – „<code>sprintf()</code>“
+			with 1 to 6 parameters.</li>
+		</ul>
+	</li>
+
+	<li><a href="#NULL-safe_functions"><strong>NULL-safe_functions</strong></a>
+		<ul>
+			<li><code>NS()</code> – NULL-safe</li>
+
+			<li><code>NSB()</code> – NULL-safe boolean</li>
+
+			<li><code>NSQ()</code> – NULL-safe quoted</li>
+		</ul>
+	</li>
+
+	<li><a href="#Utilities"><strong>Utilities</strong></a> – custom useful
+	procedures (sequence generator, temp table check).
+		<ul>
+			<li><code>lib_TemporaryTableHasColumns( sTable, saColumns, OUT BOOL bHas )</code> –
+			TEMP TABLE checking</li>
+
+			<li>lib_GenerateSe­quence( iFrom INTEGER, iTo INTEGER, iStep INTEGER ) –
+			linear number sequence generator</li>
+		</ul>
+	</li>
+
+	<li><strong>Geographic functions and procedures</strong> – convert
+	coordinates between geographic coordinate systems, compute distances between
+	places on earth. (Not available yet).</li>
+</ul>
+<a name="Logging"></a>
+<h4>Logging</h4>
+
+<pre
+class="brush: sql"><code>CREATE TABLE lib_logg (
   `whn` datetime NOT NULL,
   `thread` int(10) unsigned NOT NULL,
   `level` enum('info','warn','error') NOT NULL default 'info',
   `str` text NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;</code></pre> 
-<pre class="brush: sql"><code>DELIMITER $$
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;</code></pre>
+
+<pre
+class="brush: sql"><code>DELIMITER $$
 CREATE PROCEDURE  Logg( sStr TEXT ) BEGIN
   INSERT DELAYED INTO lib_logg SET str = sStr, whn = NOW(), thread = CONNECTION_ID();
 END; $$
@@ -197,37 +297,53 @@ END $$
 
 CREATE PROCEDURE LoggLeave(sRout VARCHAR(255)) BEGIN
  INSERT INTO lib_logg SET rout = sRout, level='leave', str = NULL, whn = NOW(), thread = CONNECTION_ID();
-END $$</code></pre> 
-<a name="String_functions"></a> 
-<h4>String functions</h4> 
-<h5><code>lib_Explode()</code>&nbsp;– similar to PHP's <code>Explode()</code></h5> 
-<p><strong>Usage:</strong></p> 
-<pre class="brush: sql"><code>CALL lib_Explode( ',' ,  'Ahoj, jak se máte, 212' );</code></pre> 
-<p><strong>Result:</strong></p> 
-<table> 
- <thead> 
-  <tr> 
-   <th>pos</th> 
-   <th>val</th> 
-  </tr> 
- </thead> 
- <tbody> 
-  <tr> 
-   <td>1</td> 
-   <td>Ahoj</td> 
-  </tr> 
-  <tr> 
-   <td>2</td> 
-   <td>&nbsp;jak se máte</td> 
-  </tr> 
-  <tr> 
-   <td>3</td> 
-   <td>&nbsp;212</td> 
-  </tr> 
- </tbody> 
-</table> 
-<p><strong>Source code:</strong></p> 
-<pre class="brush: sql"><code>CREATE PROCEDURE lib_Explode( sSepar VARCHAR(255), saVal TEXT )
+END $$</code></pre>
+<a name="String_functions"></a>
+<h4>String functions</h4>
+
+<h5><code>lib_Explode()</code> – similar to PHP's <code>Explode()</code></h5>
+
+<p><strong>Usage:</strong></p>
+
+<pre
+class="brush: sql"><code>CALL lib_Explode( ',' ,  'Ahoj, jak se máte, 212' );</code></pre>
+
+<p><strong>Result:</strong></p>
+
+<table>
+	<thead>
+		<tr>
+			<th>pos</th>
+
+			<th>val</th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<tr>
+			<td>1</td>
+
+			<td>Ahoj</td>
+		</tr>
+
+		<tr>
+			<td>2</td>
+
+			<td> jak se máte</td>
+		</tr>
+
+		<tr>
+			<td>3</td>
+
+			<td> 212</td>
+		</tr>
+	</tbody>
+</table>
+
+<p><strong>Source code:</strong></p>
+
+<pre
+class="brush: sql"><code>CREATE PROCEDURE lib_Explode( sSepar VARCHAR(255), saVal TEXT )
 body:
 BEGIN
 
@@ -253,37 +369,57 @@ BEGIN
 
   END WHILE;
 
-END; $$</code></pre> 
-<p>Note: If you are looking for something like <code>lib_Implode()</code>, that is, PHP's <code>explode()</code> equivalent, see MySQL's „aggregate functioni“ <code>GROUP_CONCAT()</code>:</p> 
-<pre class="brush: sql"><code>CALL lib_GenerateSequence( 5, 15, 2 );
-SELECT GROUP_CONCAT(i SEPARATOR ' a ') AS vysledek FROM lib_GenerateSequence;</code></pre> 
-<p>Výsledek:</p> 
-<table> 
- <thead> 
-  <tr> 
-   <th>vysledek</th> 
-  </tr> 
- </thead> 
- <tbody> 
-  <tr> 
-   <td>5&nbsp;a 7&nbsp;a 9&nbsp;a 11&nbsp;a 13&nbsp;a 15</td> 
-  </tr> 
- </tbody> 
-</table> 
-<h5><code>F1() - F6()</code>&nbsp;– <code>"sprintf()"</code> with 1&nbsp;to 6&nbsp;parameters</h5> 
-<p>In the F1 function the <code>%s</code> string is replaced. Other functions replace strings <code>{1}</code> to <code>{6}</code>.</p> 
-<p><strong>Usage:</strong></p> 
-<pre class="brush: sql"><code>SELECT F2( 'Ve městě {1} je {2} stupňů.', 'Praha', 31.2 ) FROM DUAL;</code></pre> 
-<p><strong>Result:</strong></p> 
-<table> 
- <tbody> 
-  <tr> 
-   <td>Ve městě Praha je 31.2&nbsp;stupňů.</td> 
-  </tr> 
- </tbody> 
-</table> 
-<p><strong>Source code:</strong></p> 
-<pre class="brush: sql"><code>CREATE FUNCTION  F1 ( sFormat TEXT, sPar1 TEXT )
+END; $$</code></pre>
+
+<p>Note: If you are looking for something like <code>lib_Implode()</code>, that
+is, PHP's <code>explode()</code> equivalent, see MySQL's „aggregate
+functioni“ <code>GROUP_CONCAT()</code>:</p>
+
+<pre
+class="brush: sql"><code>CALL lib_GenerateSequence( 5, 15, 2 );
+SELECT GROUP_CONCAT(i SEPARATOR ' a ') AS vysledek FROM lib_GenerateSequence;</code></pre>
+
+<p>Výsledek:</p>
+
+<table>
+	<thead>
+		<tr>
+			<th>vysledek</th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<tr>
+			<td>5 a 7 a 9 a 11 a 13 a 15</td>
+		</tr>
+	</tbody>
+</table>
+
+<h5><code>F1() - F6()</code> – <code>"sprintf()"</code> with 1 to
+6 parameters</h5>
+
+<p>In the F1 function the <code>%s</code> string is replaced. Other functions
+replace strings <code>{1}</code> to <code>{6}</code>.</p>
+
+<p><strong>Usage:</strong></p>
+
+<pre
+class="brush: sql"><code>SELECT F2( 'Ve městě {1} je {2} stupňů.', 'Praha', 31.2 ) FROM DUAL;</code></pre>
+
+<p><strong>Result:</strong></p>
+
+<table>
+	<tbody>
+		<tr>
+			<td>Ve městě Praha je 31.2 stupňů.</td>
+		</tr>
+	</tbody>
+</table>
+
+<p><strong>Source code:</strong></p>
+
+<pre
+class="brush: sql"><code>CREATE FUNCTION  F1 ( sFormat TEXT, sPar1 TEXT )
     RETURNS text CHARSET utf8 BEGIN
   RETURN REPLACE(sFormat, '%s', sPar1);
 END; $$
@@ -314,24 +450,45 @@ CREATE FUNCTION  F6 ( sFormat TEXT, sPar1 TEXT, sPar2 TEXT,  sPar3 TEXT,
        sPar4 TEXT, sPar5 TEXT, sPar6 TEXT  ) RETURNS text CHARSET utf8 BEGIN
   RETURN REPLACE( REPLACE( REPLACE( REPLACE( REPLACE( REPLACE( sFormat,
     '{1}', sPar1), '{2}', sPar2), '{3}', sPar3), '{4}', sPar4), '{5}', sPar5), '{6}', sPar6);
-END; $$</code></pre> 
-<a name="NULL-safe_functions"></a> 
-<h4>NULL-safe functions</h4> 
-<p>Somethimes you need to ensure that no parameter of a function is <code>NULL</code>, e.g. in case of calling CONCAT(), which returns <code>NULL</code> if any of parameters is <code>NULL</code>. Writing IFNULL(@param,'') every time can be tedious; so here are some convenience functions. Mainly for debugging purposes.</p> 
-<p>Funkce hlavně pro potřeby logování.</p> 
-<h5>NS()&nbsp;– NULL-safe</h5> 
-<h5>NSB()&nbsp;– NULL-safe boolean</h5> 
-<h5>NSQ()&nbsp;– NULL-safe quoted</h5> 
-<p>If the only argument is <code>NULL</code>, returns the string „NULL“. Otherwise returns:</p> 
-<ul> 
- <li>NS(): argument.</li> 
- <li>NSB(): String „TRUE“, if the argument evaluates as true, or „FALSE“ in the opposite&nbsp;case.</li> 
- <li>NSQ(): argument surrounded by quotes.</li> 
-</ul> 
-<p><strong>Usage:</strong></p> 
-<pre class="brush: sql"><code>CALL Logg( F1('Computing level %s.', NS(@iLevel)) )</code></pre> 
-<p><strong>Source code:</strong></p> 
-<pre class="brush: sql"><code>CREATE FUNCTION NS( s VARCHAR(255) )
+END; $$</code></pre>
+<a name="NULL-safe_functions"></a>
+<h4>NULL-safe functions</h4>
+
+<p>Somethimes you need to ensure that no parameter of a function is
+<code>NULL</code>, e.g. in case of calling CONCAT(), which returns
+<code>NULL</code> if any of parameters is <code>NULL</code>. Writing
+IFNULL(@param,'') every time can be tedious; so here are some convenience
+functions. Mainly for debugging purposes.</p>
+
+<p>Funkce hlavně pro potřeby logování.</p>
+
+<h5>NS() – NULL-safe</h5>
+
+<h5>NSB() – NULL-safe boolean</h5>
+
+<h5>NSQ() – NULL-safe quoted</h5>
+
+<p>If the only argument is <code>NULL</code>, returns the string „NULL“.
+Otherwise returns:</p>
+
+<ul>
+	<li>NS(): argument.</li>
+
+	<li>NSB(): String „TRUE“, if the argument evaluates as true, or „FALSE“
+	in the opposite case.</li>
+
+	<li>NSQ(): argument surrounded by quotes.</li>
+</ul>
+
+<p><strong>Usage:</strong></p>
+
+<pre
+class="brush: sql"><code>CALL Logg( F1('Computing level %s.', NS(@iLevel)) )</code></pre>
+
+<p><strong>Source code:</strong></p>
+
+<pre
+class="brush: sql"><code>CREATE FUNCTION NS( s VARCHAR(255) )
 RETURNS varchar(255) CHARSET utf8 BEGIN
   RETURN IF( s IS NULL, 'NULL', CONCAT('"',s,'"') );
 END $$
@@ -344,42 +501,56 @@ END $$
 CREATE FUNCTION NSQ(s VARCHAR(255)) RETURNS varchar(255)
 CHARSET utf8 NO SQL DETERMINISTIC BEGIN
   RETURN IF( s IS NULL, 'NULL', CONCAT('"',s,'"') );
-END  $$</code></pre> 
-<a name="Utilities"></a> 
-<h4>Utilities</h4> 
-<h5>lib_GenerateSe­quence&nbsp;– linear sequence generator</h5> 
-<p><strong>Usage:</strong></p> 
-<pre class="brush: sql"><code>CALL lib_GenerateSequence( 5, 15, 2 )</code></pre> 
-<p><strong>Result:</strong></p> 
-<table> 
- <thead> 
-  <tr> 
-   <th>i</th> 
-  </tr> 
- </thead> 
- <tbody> 
-  <tr> 
-   <td>5</td> 
-  </tr> 
-  <tr> 
-   <td>7</td> 
-  </tr> 
-  <tr> 
-   <td>9</td> 
-  </tr> 
-  <tr> 
-   <td>11</td> 
-  </tr> 
-  <tr> 
-   <td>13</td> 
-  </tr> 
-  <tr> 
-   <td>15</td> 
-  </tr> 
- </tbody> 
-</table> 
-<p><strong>Source code:</strong></p> 
-<pre class="brush: sql"><code>DELIMITER $$
+END  $$</code></pre>
+<a name="Utilities"></a>
+<h4>Utilities</h4>
+
+<h5>lib_GenerateSe­quence – linear sequence generator</h5>
+
+<p><strong>Usage:</strong></p>
+
+<pre class="brush: sql"><code>CALL lib_GenerateSequence( 5, 15, 2 )</code></pre>
+
+<p><strong>Result:</strong></p>
+
+<table>
+	<thead>
+		<tr>
+			<th>i</th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<tr>
+			<td>5</td>
+		</tr>
+
+		<tr>
+			<td>7</td>
+		</tr>
+
+		<tr>
+			<td>9</td>
+		</tr>
+
+		<tr>
+			<td>11</td>
+		</tr>
+
+		<tr>
+			<td>13</td>
+		</tr>
+
+		<tr>
+			<td>15</td>
+		</tr>
+	</tbody>
+</table>
+
+<p><strong>Source code:</strong></p>
+
+<pre
+class="brush: sql"><code>DELIMITER $$
 
 CREATE PROCEDURE lib_GenerateSequence(
   iFrom INTEGER, iTo INTEGER, iStep INTEGER )
@@ -403,14 +574,23 @@ BEGIN
     SET @iMin = @iMin + iStep;
   END LOOP;
 
-END; $$</code></pre> 
-<h5>lib_Temporary­TableHasColum­ns( sTable, saColumns, OUT BOOL bHas )&nbsp;– TEMP TABLE checking</h5> 
-<p>Checks whether a TEMP TABLE exists and has the given columns.</p> 
-<p><strong>Usage:</strong></p> 
-<pre class="brush: sql"><code>CALL lib_TemporaryTableHasColumns('table', 'col1,col2,col3', @bHas);
-SELECT @bHas;</code></pre> 
-<p><strong>Source code:</strong></p> 
-<pre class="brush: sql"><code>CREATE lib_TemporaryTableHasColumns (
+END; $$</code></pre>
+
+<h5>lib_Temporary­TableHasColum­ns( sTable, saColumns, OUT BOOL bHas ) –
+TEMP TABLE checking</h5>
+
+<p>Checks whether a TEMP TABLE exists and has the given columns.</p>
+
+<p><strong>Usage:</strong></p>
+
+<pre
+class="brush: sql"><code>CALL lib_TemporaryTableHasColumns('table', 'col1,col2,col3', @bHas);
+SELECT @bHas;</code></pre>
+
+<p><strong>Source code:</strong></p>
+
+<pre
+class="brush: sql"><code>CREATE lib_TemporaryTableHasColumns (
   IN sTable VARCHAR(255), IN saColumns VARCHAR(255), OUT bHas BOOLEAN)
 BEGIN
 
@@ -441,21 +621,32 @@ BEGIN
   DEALLOCATE PREPARE stmt_name;
   SET bHas = TRUE;
 
-END $$</code></pre> 
-<h5><code>lib_RaiseError()</code>&nbsp;– Similar to <code>RaiseError()</code> in other&nbsp;DBs</h5> 
-<p>Raises an error („throws an exception“) with a message containing the given string.</p> 
-<p><strong>Usage:</strong></p> 
-<pre class="brush: sql"><code>CALL lib_RaiseError('Disaster!');
-##  Says:   PROCEDURE neural_network.error: Disaster! You're doomed, solution does not exist</code></pre> 
-<p><strong>Source code:</strong></p> 
-<pre class="brush: sql"><code>CREATE DEFINER=`root`@`localhost` PROCEDURE `lib_RaiseError`( sError VARCHAR(255) )
+END $$</code></pre>
+
+<h5><code>lib_RaiseError()</code> – Similar to <code>RaiseError()</code> in
+other DBs</h5>
+
+<p>Raises an error („throws an exception“) with a message containing the
+given string.</p>
+
+<p><strong>Usage:</strong></p>
+
+<pre
+class="brush: sql"><code>CALL lib_RaiseError('Disaster!');
+##  Says:   PROCEDURE neural_network.error: Disaster! You're doomed, solution does not exist</code></pre>
+
+<p><strong>Source code:</strong></p>
+
+<pre
+class="brush: sql"><code>CREATE DEFINER=`root`@`localhost` PROCEDURE `lib_RaiseError`( sError VARCHAR(255) )
 BEGIN
   ## PROCEDURE neural_network.Ahoj lidi does not exist
   CALL ExecuteQuery(F1('CALL `error: %s   You\'re doomed, solution`', sError));
 
   ##  Usage:
 
-END $$</code></pre></div>
+END $$</code></pre>
+</div>
 
 	<hr />
 

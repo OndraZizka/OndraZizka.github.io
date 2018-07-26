@@ -77,20 +77,37 @@
 
 	<div class="date"><em>2012-12-13</em></div>
 
-	<div class="doc-body"><h3>How to get a heap dump</h3> 
-<h4>..out of running JVM</h4> 
-<p>JDK 5:</p> 
-<pre class="brush: bash"><code>~/sw/java/jdk/jdk1.5.0_17/bin/jmap -heap:format=b 765</code></pre> 
-<p>JDK 6:</p> 
-<pre class="brush: bash"><code>~/sw/java/jdk/jdk1.6.0_19/bin/jmap -dump:file=JON-OOME.hprof 765</code></pre> 
-<h4>…automatically when OutOfMemoryEx­ception strikes</h4> 
-<p>Dump heap to file when java.lang.OutOf­MemoryError is thrown:</p> 
-<pre class="brush: bash"><code>java ... -XX:-HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=&lt;path&gt;</code></pre> 
-<p><code>-XX:HeapDumpPath</code>s&nbsp;default is <code>./java_pid&lt;pid&gt;.hprof</code></p> 
-<h4>Sources</h4> 
-<ul> 
- <li><a href="http://java.sun.com/javase/technologies/hotspot/vmoptions.jsp">JVM options</a></li> 
-</ul></div>
+	<div class="doc-body"><h3>How to get a heap dump</h3>
+
+<h4>..out of running JVM</h4>
+
+<p>JDK 5:</p>
+
+<pre
+class="brush: bash"><code>~/sw/java/jdk/jdk1.5.0_17/bin/jmap -heap:format=b 765</code></pre>
+
+<p>JDK 6:</p>
+
+<pre
+class="brush: bash"><code>~/sw/java/jdk/jdk1.6.0_19/bin/jmap -dump:file=JON-OOME.hprof 765</code></pre>
+
+<h4>…automatically when OutOfMemoryEx­ception strikes</h4>
+
+<p>Dump heap to file when java.lang.OutOf­MemoryError is thrown:</p>
+
+<pre
+class="brush: bash"><code>java ... -XX:-HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=&lt;path&gt;</code></pre>
+
+<p><code>-XX:HeapDumpPath</code>s default is
+<code>./java_pid&lt;pid&gt;.hprof</code></p>
+
+<h4>Sources</h4>
+
+<ul>
+	<li><a href="http://java.sun.com/javase/technologies/hotspot/vmoptions.jsp">JVM
+	options</a></li>
+</ul>
+</div>
 
 	<hr />
 

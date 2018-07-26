@@ -79,9 +79,13 @@ application. - Ondřej Žižka</h1>
 
 	<div class="date"><em>2012-12-31</em></div>
 
-	<div class="doc-body"><h3>Trying to get CDI/Weld working in embedded Jetty for a Wicket application.</h3> 
-<p>Why the hell does Weld need javax.el.Expres­sionFactory?</p> 
-<pre class="brush: plain"><code>WARNING: failed org.mortbay.jetty.servlet.Context@2f8b5a{/,null}: java.lang.NoClassDefFoundError: javax/el/ExpressionFactory
+	<div class="doc-body"><h3>Trying to get CDI/Weld working in embedded Jetty for a Wicket
+application.</h3>
+
+<p>Why the hell does Weld need javax.el.Expres­sionFactory?</p>
+
+<pre
+class="brush: plain"><code>WARNING: failed org.mortbay.jetty.servlet.Context@2f8b5a{/,null}: java.lang.NoClassDefFoundError: javax/el/ExpressionFactory
 13.4.2011 3:38:21 org.mortbay.log.Slf4jLog warn
 SEVERE: Error starting handlers
 java.lang.NoClassDefFoundError: javax/el/ExpressionFactory
@@ -105,14 +109,19 @@ Caused by: java.lang.ClassNotFoundException: javax.el.ExpressionFactory
         at java.lang.ClassLoader.loadClass(ClassLoader.java:307)
         at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:301)
         at java.lang.ClassLoader.loadClass(ClassLoader.java:248)
-        ... 13 more</code></pre> 
-<p>Solution:</p> 
-<pre class="brush: xml"><code>&lt;dependency&gt;
+        ... 13 more</code></pre>
+
+<p>Solution:</p>
+
+<pre
+class="brush: xml"><code>&lt;dependency&gt;
   &lt;groupId&gt;javax.el&lt;/groupId&gt;
   &lt;artifactId&gt;el-api&lt;/artifactId&gt;
   &lt;version&gt;2.2&lt;/version&gt;
-&lt;/dependency&gt;</code></pre> 
-<pre class="brush: plain"><code>WARNING: failed org.mortbay.jetty.servlet.Context@165c7f6{/,null}: java.lang.NoClassDefFoundError: javax/servlet/jsp/JspFactory
+&lt;/dependency&gt;</code></pre>
+
+<pre
+class="brush: plain"><code>WARNING: failed org.mortbay.jetty.servlet.Context@165c7f6{/,null}: java.lang.NoClassDefFoundError: javax/servlet/jsp/JspFactory
 13.4.2011 3:50:49 org.mortbay.log.Slf4jLog warn
 SEVERE: Error starting handlers
 java.lang.NoClassDefFoundError: javax/servlet/jsp/JspFactory
@@ -135,15 +144,22 @@ Caused by: java.lang.ClassNotFoundException: javax.servlet.jsp.JspFactory
         at java.lang.ClassLoader.loadClass(ClassLoader.java:307)
         at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:301)
         at java.lang.ClassLoader.loadClass(ClassLoader.java:248)
-        ... 12 more</code></pre> 
-<p>Solution:</p> 
-<pre class="brush: xml"><code>&lt;dependency&gt;
+        ... 12 more</code></pre>
+
+<p>Solution:</p>
+
+<pre
+class="brush: xml"><code>&lt;dependency&gt;
   &lt;groupId&gt;javax.servlet.jsp&lt;/groupId&gt;
   &lt;artifactId&gt;jsp-api&lt;/artifactId&gt;
   &lt;version&gt;2.2&lt;/version&gt;
-&lt;/dependency&gt;</code></pre> 
-<p>Good. That moved us to a point when Weld is happy. However, Seam Solder still can't find it's&nbsp;toys in&nbsp;JNDI:</p> 
-<pre class="brush: plain"><code>13.4.2011 3:54:16 org.jboss.weld.bootstrap.WeldBootstrap &lt;clinit&gt;
+&lt;/dependency&gt;</code></pre>
+
+<p>Good. That moved us to a point when Weld is happy. However, Seam Solder still
+can't find it's toys in JNDI:</p>
+
+<pre
+class="brush: plain"><code>13.4.2011 3:54:16 org.jboss.weld.bootstrap.WeldBootstrap &lt;clinit&gt;
 INFO: WELD-000900 1.1.0 (Final)
 13.4.2011 3:54:16 org.mortbay.log.Slf4jLog info
 INFO: jetty-6.1.26
@@ -182,8 +198,13 @@ org.jboss.seam.solder.beanManager.BeanManagerUnavailableException: Failed to loc
         at org.jboss.jawabot.web.RunInJetty.run(RunInJetty.java:193)
         at org.jboss.jawabot.mod.web.WebModuleHook.initModule(WebModuleHook.java:18)
         at org.jboss.jawabot.JawaBotApp.initAndStartModules(JawaBotApp.java:106)
-        at org.jboss.jawabot.JawaBotApp.main(JawaBotApp.java:53)</code></pre> 
-<p>JNDI does not work because when attaching the BeanManager to servlet.Context, inside it works so that the JNDI prefix is context.toString(), thus the whole name is „org.mortbay.jet­ty.servlet.Con­text@1a8dfb3{_,­null}/__/Bean­Manager“</p></div>
+        at org.jboss.jawabot.JawaBotApp.main(JawaBotApp.java:53)</code></pre>
+
+<p>JNDI does not work because when attaching the BeanManager to servlet.Context,
+inside it works so that the JNDI prefix is context.toString(), thus the whole
+name is
+„org.mortbay.jet­ty.servlet.Con­text@1a8dfb3{_,­null}/__/Bean­Manager“</p>
+</div>
 
 	<hr />
 

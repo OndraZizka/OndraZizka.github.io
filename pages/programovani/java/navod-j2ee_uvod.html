@@ -77,31 +77,89 @@
 
 	<div class="date"><em>2012-12-16</em></div>
 
-	<div class="doc-body"><h3>Úvod do J2EE</h3> 
-<h4>Komu tento úvod určen</h4> 
-<p>Úvod píšu pro lidi, kteří (stejně jako dříve já) chtějí proniknout do J2EE, ale ztrácejí se v&nbsp;záplavě pojmů a zkratek. Předpokládám znalost webových standardů typu HTML, XML, HTTP a podobně, a dále znalost technologií Java 5.0+&nbsp;– tj. jazyk, standardní knihovny J2SE, princip fungování&nbsp;tříd.</p> 
-<p>Úvod se snažím psát co nejpraktičtěji&nbsp;– popisuji tedy technologie v&nbsp;pořadí, v&nbsp;jakém jsem se s&nbsp;nimi setkal já (nebo v&nbsp;jakém by to aspoň bývalo bylo nejlepší).</p> 
-<p>Na komerčních knihách mě často štve, že jsou psané jak pro debily&nbsp;– každý detail odrbávají na dvě stránky. Já předpokládám, že jste inteligentní lidé, proto jeden fakt uvádím sice se snahou, aby bylo jeho vysvětlení srozumitelné a pochopitelné, ale uvedu ho jen jednou. Pokud moje vysvětlení nepochopíte, tak se omlouvám :-) a doporučuji Wikipedii, která pamatuje i&nbsp;na to, že člověk nemusí o&nbsp;daném tématu vědět vůbec&nbsp;nic.</p> 
-<p>Úvod je skutečně velmi povrchní a nenaučí vás žádné konkrétní postupy&nbsp;– je to zkrátka pomůcka pro zorientování se ve světě J2EE. Pokud již základní orientaci máte, potom je pro vás spíše oficiální <a href="http://java.sun.com/j2ee/1.4/docs/tutorial/doc/">J2EE tutoriál</a> (v&nbsp;angličtině, rozsahem cca jako 600-stránková kniha).</p> 
-<p>Fajn, i&nbsp;když trochu starší, je také <a href="http://www.myeclipseide.com/documentation/quickstarts/earprojects/">procvičovací tutoriál pro Eclipse IDE</a>.</p> 
-<h4>Co je J2EE</h4> 
-<p>Zkratka J2EE (nověji Java <acronym title="Enterprise Edition">EE</acronym>) označuje skupinu technologií, která se používá pro vývoj tzv. „enterprise aplikací“ (čti <em>entrprajs</em>).</p> 
-<p>Co je enterprise aplikace není zcela jasně ohraničitelné, ale dá se říci, že to je aplikace, ve které se využívají pokročilé postupy jako clusterování (běží na více serverech / systémech / databázích …), distribuované transakce (transakce napříč clustery), fail-over (při výpadku převezme funkci jiná část systému), vzdálené volání, a&nbsp;další.</p> 
-<p>Typickými představiteli enterprise aplikací jsou například rozsáhlé podnikové systémy, bankovní aplikace, webové aplikace. Nás bude zajímat podmnožina J2EE používaná pro vývoj webových aplikací.</p> 
-<p>Na tomto místě je v&nbsp;knihách obvykle podrobný teoretický rozbor J2EE technologií; Avšak jak jsem předeslal, úvod se snažím psát co nejpraktičtěji, proto uvedu jen úplně nejnutnější pojmy a zkratky; zbylé haldy si necháme na později a vrhneme se rovnou na software.</p> 
-<h5>Servlety</h5> 
-<p>V&nbsp;době rozvoje Javy si její tvůrci a příznivci řekli, že by to mohla být šikovná technologie pro tvorbu dynamických webů&nbsp;– koneckonců jde jen o&nbsp;generování HTML a dalších&nbsp;kódů.</p> 
-<p>První přístup byl ten, že se vytvoří Java programy, které budou fungovat podobně jako CGI&nbsp;– dostanou na vstup HTTP požadavek a vrátí kód stránky. Tak vznikly servlety. Je to krapet složitější&nbsp;– servlet není přímo program, ale spíše třída, která má určité metody jako <code>doGet(...)</code> a <code>doPost(...)</code>, které se pro každý požadavek volají. V&nbsp;parametrech dostanou informace o&nbsp;požadavku, o&nbsp;session, a referenci na objekt odpovědi.</p> 
-<pre class="brush: java"><code>public class HelloServlet extends HttpServlet {
+	<div class="doc-body"><h3>Úvod do J2EE</h3>
+
+<h4>Komu tento úvod určen</h4>
+
+<p>Úvod píšu pro lidi, kteří (stejně jako dříve já) chtějí proniknout
+do J2EE, ale ztrácejí se v záplavě pojmů a zkratek. Předpokládám
+znalost webových standardů typu HTML, XML, HTTP a podobně, a dále znalost
+technologií Java 5.0+ – tj. jazyk, standardní knihovny J2SE, princip
+fungování tříd.</p>
+
+<p>Úvod se snažím psát co nejpraktičtěji – popisuji tedy technologie
+v pořadí, v jakém jsem se s nimi setkal já (nebo v jakém by to aspoň
+bývalo bylo nejlepší).</p>
+
+<p>Na komerčních knihách mě často štve, že jsou psané jak pro
+debily – každý detail odrbávají na dvě stránky. Já předpokládám,
+že jste inteligentní lidé, proto jeden fakt uvádím sice se snahou, aby bylo
+jeho vysvětlení srozumitelné a pochopitelné, ale uvedu ho jen jednou. Pokud
+moje vysvětlení nepochopíte, tak se omlouvám :-) a doporučuji Wikipedii,
+která pamatuje i na to, že člověk nemusí o daném tématu vědět
+vůbec nic.</p>
+
+<p>Úvod je skutečně velmi povrchní a nenaučí vás žádné konkrétní
+postupy – je to zkrátka pomůcka pro zorientování se ve světě J2EE.
+Pokud již základní orientaci máte, potom je pro vás spíše oficiální <a
+href="http://java.sun.com/j2ee/1.4/docs/tutorial/doc/">J2EE tutoriál</a>
+(v angličtině, rozsahem cca jako 600-stránková kniha).</p>
+
+<p>Fajn, i když trochu starší, je také <a
+href="http://www.myeclipseide.com/documentation/quickstarts/earprojects/">procvičovací
+tutoriál pro Eclipse IDE</a>.</p>
+
+<h4>Co je J2EE</h4>
+
+<p>Zkratka J2EE (nověji Java <acronym title="Enterprise Edition">EE</acronym>)
+označuje skupinu technologií, která se používá pro vývoj tzv.
+„enterprise aplikací“ (čti <em>entrprajs</em>).</p>
+
+<p>Co je enterprise aplikace není zcela jasně ohraničitelné, ale dá se
+říci, že to je aplikace, ve které se využívají pokročilé postupy jako
+clusterování (běží na více serverech / systémech / databázích …),
+distribuované transakce (transakce napříč clustery), fail-over (při
+výpadku převezme funkci jiná část systému), vzdálené volání,
+a další.</p>
+
+<p>Typickými představiteli enterprise aplikací jsou například rozsáhlé
+podnikové systémy, bankovní aplikace, webové aplikace. Nás bude zajímat
+podmnožina J2EE používaná pro vývoj webových aplikací.</p>
+
+<p>Na tomto místě je v knihách obvykle podrobný teoretický rozbor J2EE
+technologií; Avšak jak jsem předeslal, úvod se snažím psát co
+nejpraktičtěji, proto uvedu jen úplně nejnutnější pojmy a zkratky; zbylé
+haldy si necháme na později a vrhneme se rovnou na software.</p>
+
+<h5>Servlety</h5>
+
+<p>V době rozvoje Javy si její tvůrci a příznivci řekli, že by to mohla
+být šikovná technologie pro tvorbu dynamických webů – koneckonců jde
+jen o generování HTML a dalších kódů.</p>
+
+<p>První přístup byl ten, že se vytvoří Java programy, které budou
+fungovat podobně jako CGI – dostanou na vstup HTTP požadavek a vrátí kód
+stránky. Tak vznikly servlety. Je to krapet složitější – servlet není
+přímo program, ale spíše třída, která má určité metody jako
+<code>doGet(...)</code> a <code>doPost(...)</code>, které se pro každý
+požadavek volají. V parametrech dostanou informace o požadavku, o session,
+a referenci na objekt odpovědi.</p>
+
+<pre
+class="brush: java"><code>public class HelloServlet extends HttpServlet {
 
   public void doGet (HttpServletRequest pozadavek, HttpServletResponse odpoved)
     throws ServletException, IOException {
 
     odpoved.getWriter().println("&lt;html&gt;&lt;body&gt;Hello, world!&lt;/body&gt;&lt;/html&gt;");
   }
-}</code></pre> 
-<p>Pak takovouto třídu zabalíte do JAR archivu spolu s&nbsp;konfigurákem <code>WEB-INF/web.xml</code>:</p> 
-<pre class="brush: xml"><code>&lt;web-app xmlns="http://java.sun.com/xml/ns/j2ee" version="2.4"
+}</code></pre>
+
+<p>Pak takovouto třídu zabalíte do JAR archivu spolu s konfigurákem
+<code>WEB-INF/web.xml</code>:</p>
+
+<pre
+class="brush: xml"><code>&lt;web-app xmlns="http://java.sun.com/xml/ns/j2ee" version="2.4"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http:/java.sun.com/dtd/web-app_2_3.dtd"&gt;
   &lt;servlet&gt;
@@ -113,96 +171,306 @@
     &lt;servlet-name&gt;hello&lt;/servlet-name&gt;
     &lt;url-pattern&gt;/hello&lt;/url-pattern&gt;
   &lt;/servlet-mapping&gt;
-&lt;/web-app&gt;</code></pre> 
-<p>Potom už jen archiv „deploynete“ a aplikace jede.</p> 
-<blockquote> 
- <p>Jak vypadá <em>deploynutí</em> se liší podle serveru. Nejlépe to má udělané JBoss AS / JBoss Web, na kterém JARko prostě nakopírujete do adresáře <code>deploy</code> a hotovo. V&nbsp;Tomcatu je třeba jít do manažera aplikací a v&nbsp;něm <code>.jar</code> nahrát přes formulář.</p> 
-</blockquote> 
-<p>Pochopitelně konfigurace každého servletu a generování HTML stránek přimo v&nbsp;Java kódu je dost otravné:</p> 
-<pre class="brush: java"><code>PrintWriter vystup = odpoved.getWriter();
+&lt;/web-app&gt;</code></pre>
+
+<p>Potom už jen archiv „deploynete“ a aplikace jede.</p>
+
+<blockquote>
+	<p>Jak vypadá <em>deploynutí</em> se liší podle serveru. Nejlépe to má
+	udělané JBoss AS / JBoss Web, na kterém JARko prostě nakopírujete do
+	adresáře <code>deploy</code> a hotovo. V Tomcatu je třeba jít do manažera
+	aplikací a v něm <code>.jar</code> nahrát přes formulář.</p>
+</blockquote>
+
+<p>Pochopitelně konfigurace každého servletu a generování HTML stránek
+přimo v Java kódu je dost otravné:</p>
+
+<pre
+class="brush: java"><code>PrintWriter vystup = odpoved.getWriter();
 vystup.write("&lt;h1&gt;Ahoj " + session.getAttribute("name") +"!&lt;/h1&gt;");
-vystup.write("&lt;p&gt;Takhle nějak se generuje stránka ze servletu.&lt;/p&gt;");</code></pre> 
-<p>Představte si takhle psát celou stránku. Proto se vývojáři poohlédli, jak se to řeší v&nbsp;jiných technologiích, například ASP nebo PHP (tehdy ještě pravěké verze), a viděli, že daleko lepší přístup je psát HTML stránku a do ní tu a tam vložit nějaký kód, kterého je obvykle spíše menšina. No a tak vznikla technologie&nbsp;JSP.</p> 
-<blockquote> 
- <p>Servlety mají dodnes svoji nezastupitelnou roli. Je třeba si uvědomit, že webové aplikace negenerují jen HTML stránky. Na generování binárních výstupů nebo XML dokumentů (např. pro webové služby) se stále používá Servlet&nbsp;API.</p> 
-</blockquote> 
-<h5>JSP&nbsp;– Java Server Pages</h5> 
-<pre class="jsp"><code>&lt;h1&gt;Ahoj &lt;%= session.getAttribute("name") %&gt;!&lt;/h1&gt;</code></pre> 
-<p>Rovnou při vzniku měla mnohem více možností, než konkureční způsoby vkládání kódu do HTML (můj názor). A&nbsp;to především díky zvláštním tagům, jejichž interpretaci mají na starosti Java třídy. Takový tag vypadá například&nbsp;takto:</p> 
-<pre class="brush: xml"><code>&lt;html:link action="/logout"&gt;Odhlásit&lt;/html:link&gt;</code></pre> 
-<p>Zrovna tento tag není úplně dobrý příklad, zrovna mi padnul pod ruku. ***Dát lepší příklad. Lepší by byl třeba tento: <em>(Poznámka pro znalé: Tento kód jsem si z&nbsp;hlavy vymyslel, neodpovídá přesně tagům JSTL knihovny.)</em></p> 
-<pre class="brush: xml"><code>&lt;cache:cache key="vypis_uzivatelu"&gt;
+vystup.write("&lt;p&gt;Takhle nějak se generuje stránka ze servletu.&lt;/p&gt;");</code></pre>
+
+<p>Představte si takhle psát celou stránku. Proto se vývojáři poohlédli,
+jak se to řeší v jiných technologiích, například ASP nebo PHP (tehdy
+ještě pravěké verze), a viděli, že daleko lepší přístup je psát HTML
+stránku a do ní tu a tam vložit nějaký kód, kterého je obvykle spíše
+menšina. No a tak vznikla technologie JSP.</p>
+
+<blockquote>
+	<p>Servlety mají dodnes svoji nezastupitelnou roli. Je třeba si uvědomit, že
+	webové aplikace negenerují jen HTML stránky. Na generování binárních
+	výstupů nebo XML dokumentů (např. pro webové služby) se stále používá
+	Servlet API.</p>
+</blockquote>
+
+<h5>JSP – Java Server Pages</h5>
+
+<pre
+class="jsp"><code>&lt;h1&gt;Ahoj &lt;%= session.getAttribute("name") %&gt;!&lt;/h1&gt;</code></pre>
+
+<p>Rovnou při vzniku měla mnohem více možností, než konkureční způsoby
+vkládání kódu do HTML (můj názor). A to především díky zvláštním
+tagům, jejichž interpretaci mají na starosti Java třídy. Takový tag
+vypadá například takto:</p>
+
+<pre
+class="brush: xml"><code>&lt;html:link action="/logout"&gt;Odhlásit&lt;/html:link&gt;</code></pre>
+
+<p>Zrovna tento tag není úplně dobrý příklad, zrovna mi padnul pod ruku.
+***Dát lepší příklad. Lepší by byl třeba tento: <em>(Poznámka pro
+znalé: Tento kód jsem si z hlavy vymyslel, neodpovídá přesně tagům JSTL
+knihovny.)</em></p>
+
+<pre
+class="brush: xml"><code>&lt;cache:cache key="vypis_uzivatelu"&gt;
   &lt;sql:query sql="SELECT * FROM users ORDER BY name" var="resultUsers" /&gt;
   &lt;table&gt;
     &lt;c:foreach from="resultUsers" var="i"&gt;
       &lt;tr&gt;&lt;td&gt;&lt;c:out value="${resultUsers[i]}"/&gt;&lt;/td&gt;&lt;/tr&gt;
     &lt;/c:foreach&gt;
   &lt;/table&gt;
-&lt;/cache:cache&gt;</code></pre> 
-<p>Ne, nelekejte se&nbsp;– neřeší se celá aplikační logika pomocí XML elementů (také to tak na mě z&nbsp;některých tutoriálů působilo). Elementy, které vidíte, jenom představují celkem pohodlné rozhraní ke knihovnám, které zajišťují jejich funkčnost. Například existuje knihovna pro cache, díky které stačí kešovaný kousek stránky obklíčit elementem <code>&lt;cache:cache&gt;</code> (může se jmenovat libovolně, jméno můžete sami upravit), a knihovna už sama zajistí buď provedení kódu vevnitř, nebo vytažení již uloženého výsledku.</p> 
-<p>V&nbsp;poznámce výše jsem zmínil knihovnu <strong>JSTL</strong> (JSP Standard Tag Library). Můžete se podívat na jeji stránky <a href="http://jakarta.apache.org/taglibs/doc/standard-doc/intro.html">http://jakarta.apache.org/…c/intro.html</a>. Ale to jsme pořád na nejnižší úrovni možností těchto elementů. Opravdu pokročilé knihovny (které už jsou obvykle součástí nějakého frameworku a spolupracují s&nbsp;jeho zbylými částmi) obvykle poskytují automatizaci vysoké úrovně typu obsluhy, vyplňování a validace formulářů, AJAXu, správy šablon,&nbsp;atd.</p> 
-<p>Další pěknou vlastostí JSP je <strong>jazyk EL</strong>&nbsp;– Expression Language, pomocí kterého můžete do stránky stručně začlenit nějakou dynamickou hodnotu (teď zrovna nevím, jestli to je zrovna takhle, píšu z&nbsp;hlavy):</p> 
-<p><code>Ahoj ${session.attributes['name']}</code></p> 
-<p>Možnosti jazyka EL samozřejmě nekončí výpisem nějaké hodnoty. Můžete vyjádřit aritmetické operace, různě formátovat, volat statické Java funkce, které si sami naprogramujete, a další. (PHPčkářům by to mohlo připomínat <em>Smarty</em>.)</p> 
-<h5>Životní cyklus J2EE aplikace</h5> 
-<p>Pro lidi, kteří znají jen PHP, je pojem „životní cyklus“ trochu novinkou. PHP má totiž životní cyklus úplně nejjednoduší možný:<br> Přijde požadavek, apache jej předá PHP, to zjistí, který skript má načíst, přeparsovat a vykonat, skriptu předá požadavek, pak se řídí instrukcemi ve skriptu, a nakonec skončí. Tento postup může být různě optimalizovaný, např. PHP může udržovat přeparsované skripty v&nbsp;paměti, použít jedno PHP vlákno vícekrát, a podobně.</p> 
-<p>Oproti tomu J2EE aplikace je opravdu aplikace v&nbsp;pravém slova smyslu:<br> Na serveru se spustí a běží, dokud ji neukončíte. Jednotlivé požadavky potom nejsou jejími jednotlivými spuštěními, ale jen voláním metod jejích tříd. Z&nbsp;toho plynou leckteré velké výhody.</p> 
-<p>Jako začátečník spatřuji jednu z&nbsp;největších výhod v&nbsp;tom, že stav aplikace nemusím někam ukládat do session či podobně, ale sám přetrvává. Pokud na serveru vytvoříte nějaký objekt a uložíte ho kamsi, tak tam přetrvá, dokud ho neodstraníte. Viditelný může být pro všechny session, pro všechny požadavky. Tuto vlastnost pochopitelně velmi hojně využívají téměř všechny frameworky, různé cache nástroje, správci zdrojů (např. spojení do databáze) atd. Samozřejmě se nejedná o&nbsp;náhradu perzistence; může ji však skvěle doplňovat.</p> 
-<h4>Servery</h4> 
-<p>Pokud chcete začít s&nbsp;vývojem webových aplikací s&nbsp;J2EE, přijdete zprvu asi do kontaktu s&nbsp;nějakým serverem, který je umí vykonávat. Takových serverů je mnoho od různých výrobců. Nazývají se <strong>kontejnery servletů</strong> (servlet containers), někdy je na ně nabaleno několik dalších „bundled“ technologií, a ty se potom honosí názvem <strong>aplikační server</strong>. U&nbsp;obyčejného kontejneru ale o&nbsp;nic nepřijdete&nbsp;– víceméně všechnu funkčnost si do něj můžete přidat sami, a profesionálové se k&nbsp;tomu u&nbsp;menších projektů dokonce přiklánějí raději.</p> 
-<p>Zde je seznam neznámějších:</p> 
-<ul> 
- <li><strong>Apache Tomcat</strong> (kontejner)&nbsp;– dost možná nejpoužívanější pro J2EE webové aplikace. Je součástí J2EE modulu pro NetBeans.</li> 
- <li><a href="http://www.mortbay.org/jetty/"><strong>Jetty</strong></a> (kontejner)&nbsp;– „lightweight“ (jak rád říkám, lehkovážný :-)&nbsp;– menší nároky na paměť, rychlejší.</li> 
- <li><a href="http://www.jboss.org/jbossas/"><strong>JBoss AS</strong></a> (aplikační server)&nbsp;– asi nejrozšířenější aplikační server; vyvíjí ho firma RedHat. Vyznačuje se vysokou modularitou na základě mikrojádra.</li> 
- <li><a href="http://www.jboss.com/products/platforms/application"><strong>JBoss EAP</strong></a> (aplikační server)&nbsp;– „ostrá“ verze JBoss AS&nbsp;– důkladně otestovaný AS + framework&nbsp;Seam.</li> 
- <li><strong>JBoss Web</strong> (kontejner)&nbsp;– odlehčená verze JBoss AS, určená pro účely, pro které se používá Tomcat. Snoubí se v&nbsp;něm jednoduchost kontejneru a výhody JBossu. Osobně jsem si jej docela oblíbil.</li> 
- <li><strong>Sun Java system Application Server</strong> (aplikační server)&nbsp;– neohrabané jméno, proto jej často na webu uvidíte pod zkratkou SJSAS; jinak docela&nbsp;dobrý.</li> 
- <li><strong>GlassFish</strong> (aplikační server)&nbsp;– komunitní verze SJSAS. Je součástí J2EE modulu pro NetBeans.</li> 
- <li><strong>IBM WebSphere</strong> (aplikační server)&nbsp;– nezkoušel&nbsp;jsem.</li> 
- <li><strong>BEA WebLogic</strong> (aplikační server)&nbsp;– nezkoušel&nbsp;jsem.</li> 
- <li><a href="http://www.caucho.com/index.xtp"><strong>Caucho Resin</strong></a> (aplikační server)&nbsp;– nezkoušel&nbsp;jsem.</li> 
-</ul> 
-<p>Více najdete na Wikipedii: <a href="http://en.wikipedia.org/wiki/Comparison_of_application_servers">Comparison of Application Servers</a>.</p> 
-<p>V&nbsp;tomto úvodu se budu zabývat asi hlavně kontejnerem <strong>Tomcat</strong>, jelikož jeho správa je nejjednodušší. Průběžně budu upozorňovat na to, co v&nbsp;Tomcatu chybí oproti aplikačním serverům.</p> 
-<p>Nainstalujte si tedy některý z&nbsp;výše uvedených, doporučuji Apache Tomcat. Zapamatujte si uživatelské jméno a heslo pro administraci a port, na kterém apache poběží&nbsp;– jejich neznalost je častou příčinou delší prodlevy v&nbsp;postupu nováčků. Po instalaci a spuštění se rovnou podívejte na úvodní stránku. Dokumentaci zatím neřešte, je pro vás zatím moc složitá. Podívejte se na administrační část&nbsp;– odkaz „Tomcat Manager“ vpravo nahoře. Zadejte jméno a heslo, které jste si zapamatovali při instalaci. Standardně je to admin / adminadmin. U&nbsp;jednotlivých aplikací (zatím jich tu moc není) vidíte odkazy „Stop, Start, Reload, Undeploy“. Nemačkejte na ně&nbsp;– zrušili byste si možnost správy Tomcatu (bohužel to není blbuvzdorné). Trochu rozvedu, k&nbsp;čemu jsou&nbsp;– čímž se dostáváme k&nbsp;tématu, jak se J2EE aplikace dostávají na server.</p> 
-<h5>Deploy = upload aplikace (zjednodušeně řečeno)</h5> 
-<p>J2EE aplikace se obvykle na server umisťují v&nbsp;jednom souboru s&nbsp;příponou <code>.war</code>&nbsp;– Web ARchive. Ten má danou strukturu souborů a adresářů&nbsp;– ta je dost důležitá a budete se s&nbsp;ní setkávat často (hlavně když něco nepůjde). Například v&nbsp;Tomcat Manageru (ona stránka, kterou máte asi stále ještě otevřenou) provedete deploy pomocí uploadu WAR souboru na server. Proces ale nezahrnuje jen zkopírování&nbsp;– kontejner rovnou aplikaci také rozbalí, prohlédne konfiguraci, podle ní upraví prostředí pro aplikaci a svoje prostředí (zejména vytvoří zdroje typu připojení do databáze atd.), aplikaci spustí a zavolá její metodu <code>init()</code>.</p> 
-<p>Aby to zas nevypadalo, že s&nbsp;Javou je svět krásný a ideální, tak musím uvést, že při tomto kroku bývají největší problémy: Na serveru kolidují verze knihoven kvůli hierarchii tzv. <em>class-loaderů</em>&nbsp;– to jsou nástroje pro načítání tříd do JVM a na serveru je jich hned několik. Když stejnou třídu (dokonce i&nbsp;ze stejného souboru) načte více classloaderů, z&nbsp;hlediska JVM jsou to jiné třídy, a pak dostanete třeba <a href="http://www.jforum.net/posts/list/4121.page">takovéto výjimky</a>.</p> 
-<p>Začátečník (jak si dobře pamatuji) s&nbsp;tím může mít velké probémy, ale není to zas až tak strašné, pokud nastudujete trochu teorie&nbsp;– např. <a href="http://www.sweb.cz/pichlik/archive/2007_02_25_archive.html">dobrý článek o&nbsp;classloaderech</a> na Dagblogu, a znáte strukturu classloaderů vašeho serveru. Je to už ale trochu pokročilé&nbsp;téma.</p> 
-<p>Nejčastější chybou je duplikátní výskyt knihoven&nbsp;– jednou ve vaší aplikaci, jednou třeba v <code>/lib</code> adresáři serveru. To se často děje proto, že se snažíte vyřešit problém nekompatibilních verzí tříd. Proto také doporučuji webové aplikace napřed zkoušet na kontejnerech, u&nbsp;kterých je toto riziko&nbsp;menší.</p> 
-<h5>Součásti Tomcatu</h5> 
-<p>Začátečníky často mate spoustu názvů, se kterými se při práci s&nbsp;Tomcatem setkají&nbsp;– bohužel zejména při výpisu chyb, ale částo také při konfiguraci. Proto zde uvedu, co představují jednotlivá jména součástí Tomcatu. Samotné zmíněné technologie probereme dále. ***Možná přesunout dále, až za představení technologií.</p> 
-<ul> 
- <li>Catalina&nbsp;– v&nbsp;podstatě Javové jádro serveru. Vykonává servlety, tedy samotný Java kód webové aplikace.</li> 
- <li>Jasper&nbsp;– ta část, která převádí JSP kód na Java servlety.</li> 
- <li>Coyote&nbsp;– stará se o&nbsp;HTTP komunikaci, zpracovává požadavky na volání servletů.</li> 
-</ul> 
-<p>Tolik tedy zatím k&nbsp;serverům, a teď se podíváme po něčem, v&nbsp;čem budeme aplikace vyvíjet.</p> 
-<h4>IDE&nbsp;– prostředí pro vývoj</h4> 
-<p>Prostředí pro vývoj J2EE aplikací je opět více. Nejznámější jsou Eclipse a NetBeans. Začátečníkům rozhodně doporučuji NetBeans&nbsp;– na rozdíl od Eclipse obvykle vše funguje „z&nbsp;fleku“.</p> 
-<p>NetBeans mají přímou podporu Sunu a mají celkem slušnou komunitu. Navíc jde o&nbsp;projekt původem od českého kdysi-studenta; časem projekt koupil Sun a udělal z&nbsp;něj svoje&nbsp;–hlavní– mainstreamové vývojové prostředí&nbsp;– podobně jako má Microsoft svoje Visual Studio.</p> 
-<p><a href="http://download.netbeans.org/netbeans/6.1/final/">Stáhněte si tedy NetBeans</a>, balíček <em>Web &amp; Java EE</em>. V&nbsp;něm je zahrnutý i&nbsp;Apache Tomcat. Proč jsem vás tedy nechal stahovat samostatný Tomcat?</p> 
-<ul> 
- <li>Tomcat zahrnutý v&nbsp;NetBeans se po zavření IDE ukončí.</li> 
- <li>U&nbsp;samostatného se lépe spravují knihovny, uživatelé a další nastavení.</li> 
- <li>Se samostatným jde z&nbsp;NetBeans pracovat stejně jako s&nbsp;tím vestavěným.</li> 
-</ul> 
-<p>K&nbsp;vývojovému prostředí se ještě dostaneme, nyní k&nbsp;samotným technologiím.</p> 
-<h4>Perzistence&nbsp;– Hibernate, Toplink a spol.</h4> 
-<p>Jednou z&nbsp;technologií, které jsou na J2EE nejlákavější, je perzistence objektů, či objektově-relační mapování. Ta slouží k&nbsp;automatickému „rozkládání“ objektů (hlavně) do relační databáze a jejich zpětné načítání. Dále je možné provádět nad objekty hromadné akce a dotazy pomocí jazyka podobného SQL. Objektům (resp. jejich třídám), se kterými v&nbsp;perzistenci pracujeme, se říká <em>entity</em>.</p> 
-<h5>Hibernate</h5> 
-<p>Nejznámějším nástrojem pro perzistenci je Hibernate. Ten používá jazyk HQL. Pro mapování, tedy k&nbsp;popisu, jak se objekty které třídy rozkládají do tabulek v&nbsp;databázi, sloužily dříve XML soubory.</p> 
-<pre class="brush: xml"><code>&lt;hibernate-mapping&gt;
+&lt;/cache:cache&gt;</code></pre>
+
+<p>Ne, nelekejte se – neřeší se celá aplikační logika pomocí XML
+elementů (také to tak na mě z některých tutoriálů působilo). Elementy,
+které vidíte, jenom představují celkem pohodlné rozhraní ke knihovnám,
+které zajišťují jejich funkčnost. Například existuje knihovna pro cache,
+díky které stačí kešovaný kousek stránky obklíčit elementem
+<code>&lt;cache:cache&gt;</code> (může se jmenovat libovolně, jméno můžete
+sami upravit), a knihovna už sama zajistí buď provedení kódu vevnitř, nebo
+vytažení již uloženého výsledku.</p>
+
+<p>V poznámce výše jsem zmínil knihovnu <strong>JSTL</strong> (JSP Standard
+Tag Library). Můžete se podívat na jeji stránky <a
+href="http://jakarta.apache.org/taglibs/doc/standard-doc/intro.html">http://jakarta.apache.org/…c/intro.html</a>.
+Ale to jsme pořád na nejnižší úrovni možností těchto elementů. Opravdu
+pokročilé knihovny (které už jsou obvykle součástí nějakého frameworku
+a spolupracují s jeho zbylými částmi) obvykle poskytují automatizaci
+vysoké úrovně typu obsluhy, vyplňování a validace formulářů, AJAXu,
+správy šablon, atd.</p>
+
+<p>Další pěknou vlastostí JSP je <strong>jazyk EL</strong> – Expression
+Language, pomocí kterého můžete do stránky stručně začlenit nějakou
+dynamickou hodnotu (teď zrovna nevím, jestli to je zrovna takhle, píšu
+z hlavy):</p>
+
+<p><code>Ahoj ${session.attributes['name']}</code></p>
+
+<p>Možnosti jazyka EL samozřejmě nekončí výpisem nějaké hodnoty.
+Můžete vyjádřit aritmetické operace, různě formátovat, volat statické
+Java funkce, které si sami naprogramujete, a další. (PHPčkářům by to
+mohlo připomínat <em>Smarty</em>.)</p>
+
+<h5>Životní cyklus J2EE aplikace</h5>
+
+<p>Pro lidi, kteří znají jen PHP, je pojem „životní cyklus“ trochu
+novinkou. PHP má totiž životní cyklus úplně nejjednoduší možný:<br />
+Přijde požadavek, apache jej předá PHP, to zjistí, který skript má
+načíst, přeparsovat a vykonat, skriptu předá požadavek, pak se řídí
+instrukcemi ve skriptu, a nakonec skončí. Tento postup může být různě
+optimalizovaný, např. PHP může udržovat přeparsované skripty v paměti,
+použít jedno PHP vlákno vícekrát, a podobně.</p>
+
+<p>Oproti tomu J2EE aplikace je opravdu aplikace v pravém slova smyslu:<br />
+Na serveru se spustí a běží, dokud ji neukončíte. Jednotlivé požadavky
+potom nejsou jejími jednotlivými spuštěními, ale jen voláním metod
+jejích tříd. Z toho plynou leckteré velké výhody.</p>
+
+<p>Jako začátečník spatřuji jednu z největších výhod v tom, že stav
+aplikace nemusím někam ukládat do session či podobně, ale sám
+přetrvává. Pokud na serveru vytvoříte nějaký objekt a uložíte ho kamsi,
+tak tam přetrvá, dokud ho neodstraníte. Viditelný může být pro všechny
+session, pro všechny požadavky. Tuto vlastnost pochopitelně velmi hojně
+využívají téměř všechny frameworky, různé cache nástroje, správci
+zdrojů (např. spojení do databáze) atd. Samozřejmě se nejedná o náhradu
+perzistence; může ji však skvěle doplňovat.</p>
+
+<h4>Servery</h4>
+
+<p>Pokud chcete začít s vývojem webových aplikací s J2EE, přijdete zprvu
+asi do kontaktu s nějakým serverem, který je umí vykonávat. Takových
+serverů je mnoho od různých výrobců. Nazývají se <strong>kontejnery
+servletů</strong> (servlet containers), někdy je na ně nabaleno několik
+dalších „bundled“ technologií, a ty se potom honosí názvem
+<strong>aplikační server</strong>. U obyčejného kontejneru ale o nic
+nepřijdete – víceméně všechnu funkčnost si do něj můžete přidat
+sami, a profesionálové se k tomu u menších projektů dokonce
+přiklánějí raději.</p>
+
+<p>Zde je seznam neznámějších:</p>
+
+<ul>
+	<li><strong>Apache Tomcat</strong> (kontejner) – dost možná
+	nejpoužívanější pro J2EE webové aplikace. Je součástí J2EE modulu pro
+	NetBeans.</li>
+
+	<li><a href="http://www.mortbay.org/jetty/"><strong>Jetty</strong></a>
+	(kontejner) – „lightweight“ (jak rád říkám, lehkovážný :-) –
+	menší nároky na paměť, rychlejší.</li>
+
+	<li><a href="http://www.jboss.org/jbossas/"><strong>JBoss AS</strong></a>
+	(aplikační server) – asi nejrozšířenější aplikační server; vyvíjí
+	ho firma RedHat. Vyznačuje se vysokou modularitou na základě
+	mikrojádra.</li>
+
+	<li><a href="http://www.jboss.com/products/platforms/application"><strong>JBoss
+	EAP</strong></a> (aplikační server) – „ostrá“ verze JBoss AS –
+	důkladně otestovaný AS + framework Seam.</li>
+
+	<li><strong>JBoss Web</strong> (kontejner) – odlehčená verze JBoss AS,
+	určená pro účely, pro které se používá Tomcat. Snoubí se v něm
+	jednoduchost kontejneru a výhody JBossu. Osobně jsem si jej docela
+	oblíbil.</li>
+
+	<li><strong>Sun Java system Application Server</strong> (aplikační
+	server) – neohrabané jméno, proto jej často na webu uvidíte pod zkratkou
+	SJSAS; jinak docela dobrý.</li>
+
+	<li><strong>GlassFish</strong> (aplikační server) – komunitní verze SJSAS.
+	Je součástí J2EE modulu pro NetBeans.</li>
+
+	<li><strong>IBM WebSphere</strong> (aplikační server) –
+	nezkoušel jsem.</li>
+
+	<li><strong>BEA WebLogic</strong> (aplikační server) –
+	nezkoušel jsem.</li>
+
+	<li><a href="http://www.caucho.com/index.xtp"><strong>Caucho Resin</strong></a>
+	(aplikační server) – nezkoušel jsem.</li>
+</ul>
+
+<p>Více najdete na Wikipedii: <a
+href="http://en.wikipedia.org/wiki/Comparison_of_application_servers">Comparison
+of Application Servers</a>.</p>
+
+<p>V tomto úvodu se budu zabývat asi hlavně kontejnerem
+<strong>Tomcat</strong>, jelikož jeho správa je nejjednodušší. Průběžně
+budu upozorňovat na to, co v Tomcatu chybí oproti aplikačním serverům.</p>
+
+<p>Nainstalujte si tedy některý z výše uvedených, doporučuji Apache
+Tomcat. Zapamatujte si uživatelské jméno a heslo pro administraci a port, na
+kterém apache poběží – jejich neznalost je častou příčinou delší
+prodlevy v postupu nováčků. Po instalaci a spuštění se rovnou podívejte
+na úvodní stránku. Dokumentaci zatím neřešte, je pro vás zatím moc
+složitá. Podívejte se na administrační část – odkaz „Tomcat
+Manager“ vpravo nahoře. Zadejte jméno a heslo, které jste si zapamatovali
+při instalaci. Standardně je to admin / adminadmin. U jednotlivých aplikací
+(zatím jich tu moc není) vidíte odkazy „Stop, Start, Reload, Undeploy“.
+Nemačkejte na ně – zrušili byste si možnost správy Tomcatu (bohužel to
+není blbuvzdorné). Trochu rozvedu, k čemu jsou – čímž se dostáváme
+k tématu, jak se J2EE aplikace dostávají na server.</p>
+
+<h5>Deploy = upload aplikace (zjednodušeně řečeno)</h5>
+
+<p>J2EE aplikace se obvykle na server umisťují v jednom souboru s příponou
+<code>.war</code> – Web ARchive. Ten má danou strukturu souborů a
+adresářů – ta je dost důležitá a budete se s ní setkávat často
+(hlavně když něco nepůjde). Například v Tomcat Manageru (ona stránka,
+kterou máte asi stále ještě otevřenou) provedete deploy pomocí uploadu WAR
+souboru na server. Proces ale nezahrnuje jen zkopírování – kontejner
+rovnou aplikaci také rozbalí, prohlédne konfiguraci, podle ní upraví
+prostředí pro aplikaci a svoje prostředí (zejména vytvoří zdroje typu
+připojení do databáze atd.), aplikaci spustí a zavolá její metodu
+<code>init()</code>.</p>
+
+<p>Aby to zas nevypadalo, že s Javou je svět krásný a ideální, tak musím
+uvést, že při tomto kroku bývají největší problémy: Na serveru
+kolidují verze knihoven kvůli hierarchii tzv. <em>class-loaderů</em> – to
+jsou nástroje pro načítání tříd do JVM a na serveru je jich hned
+několik. Když stejnou třídu (dokonce i ze stejného souboru) načte více
+classloaderů, z hlediska JVM jsou to jiné třídy, a pak dostanete třeba <a
+href="http://www.jforum.net/posts/list/4121.page">takovéto výjimky</a>.</p>
+
+<p>Začátečník (jak si dobře pamatuji) s tím může mít velké probémy,
+ale není to zas až tak strašné, pokud nastudujete trochu teorie – např.
+<a href="http://www.sweb.cz/pichlik/archive/2007_02_25_archive.html">dobrý
+článek o classloaderech</a> na Dagblogu, a znáte strukturu classloaderů
+vašeho serveru. Je to už ale trochu pokročilé téma.</p>
+
+<p>Nejčastější chybou je duplikátní výskyt knihoven – jednou ve vaší
+aplikaci, jednou třeba v <code>/lib</code> adresáři serveru. To se často
+děje proto, že se snažíte vyřešit problém nekompatibilních verzí
+tříd. Proto také doporučuji webové aplikace napřed zkoušet na
+kontejnerech, u kterých je toto riziko menší.</p>
+
+<h5>Součásti Tomcatu</h5>
+
+<p>Začátečníky často mate spoustu názvů, se kterými se při práci
+s Tomcatem setkají – bohužel zejména při výpisu chyb, ale částo také
+při konfiguraci. Proto zde uvedu, co představují jednotlivá jména
+součástí Tomcatu. Samotné zmíněné technologie probereme dále. ***Možná
+přesunout dále, až za představení technologií.</p>
+
+<ul>
+	<li>Catalina – v podstatě Javové jádro serveru. Vykonává servlety, tedy
+	samotný Java kód webové aplikace.</li>
+
+	<li>Jasper – ta část, která převádí JSP kód na Java servlety.</li>
+
+	<li>Coyote – stará se o HTTP komunikaci, zpracovává požadavky na
+	volání servletů.</li>
+</ul>
+
+<p>Tolik tedy zatím k serverům, a teď se podíváme po něčem, v čem
+budeme aplikace vyvíjet.</p>
+
+<h4>IDE – prostředí pro vývoj</h4>
+
+<p>Prostředí pro vývoj J2EE aplikací je opět více. Nejznámější jsou
+Eclipse a NetBeans. Začátečníkům rozhodně doporučuji NetBeans – na
+rozdíl od Eclipse obvykle vše funguje „z fleku“.</p>
+
+<p>NetBeans mají přímou podporu Sunu a mají celkem slušnou komunitu. Navíc
+jde o projekt původem od českého kdysi-studenta; časem projekt koupil Sun a
+udělal z něj svoje –hlavní– mainstreamové vývojové prostředí –
+podobně jako má Microsoft svoje Visual Studio.</p>
+
+<p><a href="http://download.netbeans.org/netbeans/6.1/final/">Stáhněte si tedy
+NetBeans</a>, balíček <em>Web &amp; Java EE</em>. V něm je zahrnutý
+i Apache Tomcat. Proč jsem vás tedy nechal stahovat samostatný Tomcat?</p>
+
+<ul>
+	<li>Tomcat zahrnutý v NetBeans se po zavření IDE ukončí.</li>
+
+	<li>U samostatného se lépe spravují knihovny, uživatelé a další
+	nastavení.</li>
+
+	<li>Se samostatným jde z NetBeans pracovat stejně jako s tím
+	vestavěným.</li>
+</ul>
+
+<p>K vývojovému prostředí se ještě dostaneme, nyní k samotným
+technologiím.</p>
+
+<h4>Perzistence – Hibernate, Toplink a spol.</h4>
+
+<p>Jednou z technologií, které jsou na J2EE nejlákavější, je perzistence
+objektů, či objektově-relační mapování. Ta slouží k automatickému
+„rozkládání“ objektů (hlavně) do relační databáze a jejich zpětné
+načítání. Dále je možné provádět nad objekty hromadné akce a dotazy
+pomocí jazyka podobného SQL. Objektům (resp. jejich třídám), se kterými
+v perzistenci pracujeme, se říká <em>entity</em>.</p>
+
+<h5>Hibernate</h5>
+
+<p>Nejznámějším nástrojem pro perzistenci je Hibernate. Ten používá
+jazyk HQL. Pro mapování, tedy k popisu, jak se objekty které třídy
+rozkládají do tabulek v databázi, sloužily dříve XML soubory.</p>
+
+<pre
+class="brush: xml"><code>&lt;hibernate-mapping&gt;
  &lt;class name="ModelPlane" table="model_plane"&gt;
    &lt;id name="id" column="id_model" type="java.lang.Long"&gt;
      &lt;generator class="increment"/&gt;
    &lt;/id&gt;
    &lt;property name="name" column="name" type="java.lang.String" /&gt;
  &lt;/class&gt;
-&lt;/hibernate-mapping&gt;</code></pre> 
-<p>V&nbsp;poslední době se ale rozmáhá pohodlnější způsob&nbsp;– @anotace.</p> 
-<pre class="brush: xml"><code>@Entity
+&lt;/hibernate-mapping&gt;</code></pre>
+
+<p>V poslední době se ale rozmáhá pohodlnější způsob – @anotace.</p>
+
+<pre
+class="brush: xml"><code>@Entity
 public class ModelPlane {
 
     private Long id;
@@ -216,88 +484,251 @@ public class ModelPlane {
 
     public String getName() { return name; }
     public void setName(String name) { this.name = name; }
-}</code></pre> 
-<p>Manuál k&nbsp;anotacím najdete <a href="http://www.hibernate.org/hib_docs/annotations/reference/en/html_single/">zde</a>&nbsp;– ovšem pokud skutečně zrovna začínáte, raději na to vůbec nekoukejte, nebo se rychle ztratíte. ***Odstranit? Spíše si přečtěte nadpisy, ať chytnete slinu na to vše, co Hibernate&nbsp;umí.</p> 
-<p>Hibernate lze použít i&nbsp;mimo J2EE&nbsp;– konec konců ukázkové aplikace jsou někdy obyčejné konzolové J2EE prográmky.</p> 
-<p>***Vložit ukázku SQL DML, mapovacího XML a Java kódu&nbsp;– např. faktury.</p> 
-<p>Detailní popis, jak Hibernate funguje a jak se s&nbsp;ním pracuje, vydá na mnohasetstránkovou knihu (viz Hibernate in Action). Proto vás jen odkážu na <a href="http://www.hibernate.org/">www.hibernate.org</a>, kde najdete velmi dobrý tutoriál, ze kterého cca během dne pochopíte, oč jde a jak se to programuje.</p> 
-<h5>JPA&nbsp;– Java Persistence API</h5> 
-<p>Ani perzistence neunikla tendenci ve světě Javy vše standardizovat a vymýšlet společná aplikační rozhraní. Tak vznikl standard JPA, což je v&nbsp;podstatě trochu ořezané Hibernare API, ale také přinesl možnost místo XML souborů používat @anotace, což jsou (pro ty, co neznají) meta-informace zapsané přímo v&nbsp;kódu Java tříd za zavináčem:</p> 
-<pre class="brush: java"><code>@Entity
+}</code></pre>
+
+<p>Manuál k anotacím najdete <a
+href="http://www.hibernate.org/hib_docs/annotations/reference/en/html_single/">zde</a> –
+ovšem pokud skutečně zrovna začínáte, raději na to vůbec nekoukejte,
+nebo se rychle ztratíte. ***Odstranit? Spíše si přečtěte nadpisy, ať
+chytnete slinu na to vše, co Hibernate umí.</p>
+
+<p>Hibernate lze použít i mimo J2EE – konec konců ukázkové aplikace
+jsou někdy obyčejné konzolové J2EE prográmky.</p>
+
+<p>***Vložit ukázku SQL DML, mapovacího XML a Java kódu – např.
+faktury.</p>
+
+<p>Detailní popis, jak Hibernate funguje a jak se s ním pracuje, vydá na
+mnohasetstránkovou knihu (viz Hibernate in Action). Proto vás jen odkážu na
+<a href="http://www.hibernate.org/">www.hibernate.org</a>, kde najdete velmi
+dobrý tutoriál, ze kterého cca během dne pochopíte, oč jde a jak se to
+programuje.</p>
+
+<h5>JPA – Java Persistence API</h5>
+
+<p>Ani perzistence neunikla tendenci ve světě Javy vše standardizovat a
+vymýšlet společná aplikační rozhraní. Tak vznikl standard JPA, což je
+v podstatě trochu ořezané Hibernare API, ale také přinesl možnost místo
+XML souborů používat @anotace, což jsou (pro ty, co neznají) meta-informace
+zapsané přímo v kódu Java tříd za zavináčem:</p>
+
+<pre
+class="brush: java"><code>@Entity
 @Table(name="users")
 public class User {
   @Id public int id;
   @Column( name = "jmeno" ) public String krestniJmeno;
   ...
-}</code></pre> 
-<p>Trochu kontraproduktivně to vneslo bordel do názvosloví (vzniklo mnoho „skoro-synonym“), ale na to si zvyknete&nbsp;:-)</p> 
-<h4>Frameworky</h4> 
-<p>Technologie JSP sama o&nbsp;sobě je pořád dost slabá a pro vývoj velkých aplikací nevhodná. Proto se postupem času objevily stovky frameworků, z&nbsp;nichž desítky se opravdu často používají. Slouží nejrůznějším účelům pro různé vrstvy aplikací. O&nbsp;několika z&nbsp;nich si ve stručnosti povíme.</p> 
-<p>Zpracování požadavku se ve většině frameworků rozděluje na zhruba dvě části: Na akci a renderování stránky.</p> 
-<p><em>Akce</em> je jednoduše provedení činností, které případné vyplývají z&nbsp;požadavku (např. vytvoření účtu), a dále příprava dat, které se použijí ve stránce.</p> 
-<p><em>Renderování</em> je prostě vygenerování popisného kódu obsahující výsledný dokument&nbsp;– XHTML, WAP, SOAP, ale i&nbsp;binární jako PDF dokument pro tisk či PNG obrázek. Při tomto generování se obvykle použijí data připravená v&nbsp;akci, a k&nbsp;samoznému generování se často používá některý z&nbsp;přehršle šablonovacích systémů.</p> 
-<h5>Struts</h5> 
-<p>Největší obliby (podle mého pozorování) došel framework Struts. Ten slouží právě zejména k&nbsp;rozdělení a řízení toku aplikace&nbsp;– kdy provést jakou akci, jaké jí předat parametry, kam pokračovat,&nbsp;atd…</p> 
-<p>Má dvě hlavní verze:</p> 
-<p><em>Verze 1.x.x</em>, která je ve své podstatě celkem jednoduchá a oproti verzi 2&nbsp;toho moc neumí&nbsp;– čímž ale neříkám, že to málo, co umí, nezvládá dobře nebo že to není důležité. Zejména se totiž stará o&nbsp;aplikační logiku (jakou akci obsluhuje která třída, jaká stránka se má kdy zobrazit, atd.). Dále obsahuje celkem rozsáhlou knihovnu tagů (viz JSP), které plní různé&nbsp;účely.</p> 
-<p>Později spojením <em>Struts 1</em>&nbsp;a frameworku <em>WebWorks</em> vznikla verze Struts 2, ve které původní funkčnost <em>Struts 1</em>&nbsp;tvoří asi 20&nbsp;%.</p> 
-<h5>Seam Framework</h5> 
-<p><a href="http://seamframework.org/">Seam framework</a> z&nbsp;dílny JBoss je známý především díky své části určené pro ulehčení spolupráce JSF a EJB (podle čehož ostatně nese své jméno). Obsahuje však mnohem více součástí, a dalo by se říci, že záběrem konkuruje frameworku Spring.</p> 
-<h5>JSF&nbsp;– Java Server Faces</h5> 
-<p>Sun ze všech nejvíce propaguje framework JSF. Ten do značné míry vychází ze Struts 1, má i&nbsp;podobný záběr funkcionality, ale v&nbsp;lecčems se zásadně liší, a pochopitelně s&nbsp;sebou přináší spoustu standardů a více&nbsp;XML.</p> 
-<h5>Spring Framework</h5> 
-<p>Když jsem se kamaráda&nbsp;– J2EE juniora&nbsp;– poprvé zeptal, k&nbsp;čemu je Spring, řekl: „Spring je naprosto bomba.“ A&nbsp;pokračoval tím, jak mu to ušetří spoustu psaní&nbsp;kódu.</p> 
-<p>Dnes, kdy jsem mnoho částí Springu již adoptoval a používám, mu musím dát zapravdu, i&nbsp;když on tehdy mluvil z&nbsp;pohledu vývojáře, který projekt nekonfiguruje, pouze využívá jeho efektů. Spring je však bomba i&nbsp;z&nbsp;pohledu správce projektu (seniora, chcete-li)&nbsp;– konfigurace je velmi snadná a jde jak po&nbsp;másle.</p> 
-<p>A&nbsp;nyní tedy, k&nbsp;čemuže ten spring je. Ve stručnosti se to moc popsat nedá, leda výčtem názvů jeho&nbsp;částí:</p> 
-<ul> 
- <li>Inversion of Control&nbsp;– konfiguraci aplikace velmi snadno „vytáhnete“ z&nbsp;kódu do konfiguráků.</li> 
- <li>Spring AOP&nbsp;– opakující se „začátky a konce“ (např. otevření/zavření transakce) v&nbsp;metodách přesunete do jednoho místa a do oněch metod jej vloží Spring.</li> 
- <li>Resources&nbsp;– mnoho nástrojů pro načítání souborů z&nbsp;filesystému nebo z&nbsp;archivu aplikace.</li> 
- <li>Validace, provazování dat</li> 
- <li>Testování</li> 
- <li>Správa transakcí (může být provázáno s&nbsp;AOP)</li> 
- <li>Ulehčení práce s&nbsp;ORM nástroji a iBatisem</li> 
- <li>MVC framework pro webové aplikace a pro „portlety“</li> 
- <li>Integrace s&nbsp;mnoha zobrazovacími nástroji&nbsp;– FreeMarker, Tiles, XSLT, PDF,&nbsp;Excel</li> 
- <li>Podpora vývoje webových služeb</li> 
- <li>Práce s&nbsp;mailem (odesílání mailů z&nbsp;Javy)</li> 
- <li>Podpora skriptovacích jazyků pro programování servisních objektů</li> 
- <li>a další.</li> 
-</ul> 
-<p>Lidem, kteří s&nbsp;J2EE začínají, takový výpis asi moc k&nbsp;ničemu nebude, proto vás rovnou odkáži na&nbsp;články</p> 
-<ul> 
- <li><a href="navod-spring-framework-zacatky.texy">Úplné začátky s&nbsp;frameworkem Spring</a></li> 
- <li><a href="navod-spring-aop-zacatky.texy">Začátky se Spring AOP&nbsp;– návod</a></li> 
- <li><a href="navod-spring_freemarker_in_standalone_application.texy">FreeMarker templates via Spring in non-web application</a></li> 
-</ul> 
-<h5>Další</h5> 
-<p>Pokud hledáte něco pro konkrétní účel, je obvykle dobré podívat se na projekty, které zastřešují jiné projekty&nbsp;– jako jsou <a href="http://jakarta.apache.org/"><strong>Jakarta</strong></a>, zejména v&nbsp;levé části v&nbsp;sekci „Ex-Jakarta“ jsou projekty, které se osvědčily a přesunuly pod projekt <a href="http://apache.org/">Apache</a>&nbsp;– <a href="http://projects.apache.org/indexes/language.html#Java">seznam konkrétních projektů pro Javu</a> je opravdu dlouhý. Z&nbsp;těch nejznámějších sem&nbsp;patří:</p> 
-<ul> 
- <li>Jakarta Commons (obecné pomůcky pro kdeco)</li> 
- <li>Jakarta Logging (obecný nástroj pro logování, vzniklo podle něj <code>java.util.logging</code>)</li> 
- <li>Struts (webový framework, viz výše)</li> 
-</ul> 
-<p>A&nbsp;mimojiné také server <em>Tomcat</em>, buildovací nástroj <em>Ant</em>, nástroj pro správu projektů <em>Maven</em>, práce se soubory MS Office <em>POI</em>, a&nbsp;další.</p> 
-<p>Dalším takovým hnizdem projektů je <a href="http://www.jboss.org/"><strong>JBoss</strong></a>, nyní spravovaný firmou RedHat, kde je <a href="http://www.jboss.org/projects/">projektů opravdu hodně</a>&nbsp;– asi 35.&nbsp;Mezi ně&nbsp;patří:</p> 
-<ul> 
- <li>Hibernate&nbsp;– asi nejpopulárnější pecka&nbsp;– objektově-relační mapování, viz „perzistence“&nbsp;výše</li> 
- <li>JBoss Application Server (Aplikační server, viz výše)</li> 
- <li>JBoss AOP (implementace AOP, něco jako Spring AOP&nbsp;– viz&nbsp;výše)</li> 
- <li>Seam&nbsp;– framework, který začal jako zjednodušení vývoje v&nbsp;JSF a EJB, ale má namířeno na posty Spring Frameworku</li> 
- <li>a další obecné nástroje&nbsp;– cache, vzdálené volání, správa transakcí, webové služby, messaging, a&nbsp;další.</li> 
-</ul> 
-<p>Nenechte se ale zahltit&nbsp;– pokud se zanoříte do všech projektů a budete chtít zjistit, co vše umí, bude to čtení na několik dnů. Já doporučuji tento postup: Koukněte se na nějaké Java fórum a hledejte témata s&nbsp;nadpisem typu „Jaký framework používáte pro XYZ a proč?“ V&nbsp;takových se obvykle nespustí flamewar, ale naopak věcná diskuze, kde se velmi stučně dozvíte shrnutí, k&nbsp;čemu který slouží, respektive k&nbsp;čemu jej kdo používá, a často i&nbsp;krátké a výstižné ukázky&nbsp;kódu.</p> 
-<h4>EJB</h4> 
-<p>EJB, <em>Enterprise Java Beans</em> 
- <!--, je cosi, čemu přesně ještě docela nerozumím, ale -->: v&nbsp;podstatě jde opět o&nbsp;snahu standardizovat. Rozděluje „Beany“ (java třídy s&nbsp;určitým účelem) na několik kategorií, podle účelu, ke kterému mají sloužit&nbsp;– jestli mají provádět nějaké operace, nebo poskytovat nějakou službu, nebo jestli mají představovat nějakou entitu, a podobně. S&nbsp;tím souvisí pojmy „Stateful“, „stateless“ a další. ***Doplnit</p> 
-<p>Technologie EJB se týká především aplikačních serverů a enterprise aplikací. Má více verzí, které se docela zásadně liší. V&nbsp;současnosti je aktuální verze 3.0, která je snad první jednoduše použitelná. Ovšem na webu (v&nbsp;době psaní) narazíte povětšinou na materiály o&nbsp;EJB verze 2.0, z&nbsp;nichž leckteré to s&nbsp;klidným svědomím ani neuvedou, takže vy se pak zcela marně snažíte v&nbsp;aplikačním serveru pracujícím na EJB 3.0&nbsp;aplikovat postupy pro EJB&nbsp;2.0.</p> 
-<p>Tuto sekci o&nbsp;EJB uvádím hlavně proto, že na zkratku EJB se dá narazit hodně často. Studium EJB doporučuji odložit na dobu, kdy budete mít v&nbsp;ruce JSP, Struts a Hibernate. ***Dopsat</p> 
-<h4>Závěr</h4> 
-<p>Zatím vše. Jelikož se s&nbsp;obrovským světem J2EE stále seznamuji, vyhrazuji si právo plácat tu nesmysly, ale snažím se, aby uvedená fakta odpovídala pravdě&nbsp;– konec konců, účelem tohoto dokumentu je velmi rychle seznámit nováčky s&nbsp;J2EE. Do podrobností zde zacházet nechci, těch je na webu velká spousta.</p> 
-<p>Pokud jste zkušení J2EE harcovníci, uvítám jakékoliv opravy na e-mailu <a href="mailto:ondra@dynawest.cz">ondra@
-  <!-- -->dynawest.cz</a>.</p> 
-<hr> 
-<p>Napsáno 2007–08, aktualizováno tu a tam, naposledy 2008–10.</p></div>
+}</code></pre>
+
+<p>Trochu kontraproduktivně to vneslo bordel do názvosloví (vzniklo mnoho
+„skoro-synonym“), ale na to si zvyknete :-)</p>
+
+<h4>Frameworky</h4>
+
+<p>Technologie JSP sama o sobě je pořád dost slabá a pro vývoj velkých
+aplikací nevhodná. Proto se postupem času objevily stovky frameworků,
+z nichž desítky se opravdu často používají. Slouží nejrůznějším
+účelům pro různé vrstvy aplikací. O několika z nich si ve stručnosti
+povíme.</p>
+
+<p>Zpracování požadavku se ve většině frameworků rozděluje na zhruba
+dvě části: Na akci a renderování stránky.</p>
+
+<p><em>Akce</em> je jednoduše provedení činností, které případné
+vyplývají z požadavku (např. vytvoření účtu), a dále příprava dat,
+které se použijí ve stránce.</p>
+
+<p><em>Renderování</em> je prostě vygenerování popisného kódu
+obsahující výsledný dokument – XHTML, WAP, SOAP, ale i binární jako
+PDF dokument pro tisk či PNG obrázek. Při tomto generování se obvykle
+použijí data připravená v akci, a k samoznému generování se často
+používá některý z přehršle šablonovacích systémů.</p>
+
+<h5>Struts</h5>
+
+<p>Největší obliby (podle mého pozorování) došel framework Struts. Ten
+slouží právě zejména k rozdělení a řízení toku aplikace – kdy
+provést jakou akci, jaké jí předat parametry, kam pokračovat, atd…</p>
+
+<p>Má dvě hlavní verze:</p>
+
+<p><em>Verze 1.x.x</em>, která je ve své podstatě celkem jednoduchá a oproti
+verzi 2 toho moc neumí – čímž ale neříkám, že to málo, co umí,
+nezvládá dobře nebo že to není důležité. Zejména se totiž stará
+o aplikační logiku (jakou akci obsluhuje která třída, jaká stránka se
+má kdy zobrazit, atd.). Dále obsahuje celkem rozsáhlou knihovnu tagů (viz
+JSP), které plní různé účely.</p>
+
+<p>Později spojením <em>Struts 1</em> a frameworku <em>WebWorks</em> vznikla
+verze Struts 2, ve které původní funkčnost <em>Struts 1</em> tvoří asi
+20 %.</p>
+
+<h5>Seam Framework</h5>
+
+<p><a href="http://seamframework.org/">Seam framework</a> z dílny JBoss je
+známý především díky své části určené pro ulehčení spolupráce JSF
+a EJB (podle čehož ostatně nese své jméno). Obsahuje však mnohem více
+součástí, a dalo by se říci, že záběrem konkuruje frameworku Spring.</p>
+
+<h5>JSF – Java Server Faces</h5>
+
+<p>Sun ze všech nejvíce propaguje framework JSF. Ten do značné míry
+vychází ze Struts 1, má i podobný záběr funkcionality, ale v lecčems se
+zásadně liší, a pochopitelně s sebou přináší spoustu standardů a
+více XML.</p>
+
+<h5>Spring Framework</h5>
+
+<p>Když jsem se kamaráda – J2EE juniora – poprvé zeptal, k čemu je
+Spring, řekl: „Spring je naprosto bomba.“ A pokračoval tím, jak mu to
+ušetří spoustu psaní kódu.</p>
+
+<p>Dnes, kdy jsem mnoho částí Springu již adoptoval a používám, mu musím
+dát zapravdu, i když on tehdy mluvil z pohledu vývojáře, který projekt
+nekonfiguruje, pouze využívá jeho efektů. Spring je však bomba
+i z pohledu správce projektu (seniora, chcete-li) – konfigurace je velmi
+snadná a jde jak po másle.</p>
+
+<p>A nyní tedy, k čemuže ten spring je. Ve stručnosti se to moc popsat
+nedá, leda výčtem názvů jeho částí:</p>
+
+<ul>
+	<li>Inversion of Control – konfiguraci aplikace velmi snadno „vytáhnete“
+	z kódu do konfiguráků.</li>
+
+	<li>Spring AOP – opakující se „začátky a konce“ (např.
+	otevření/zavření transakce) v metodách přesunete do jednoho místa a do
+	oněch metod jej vloží Spring.</li>
+
+	<li>Resources – mnoho nástrojů pro načítání souborů z filesystému
+	nebo z archivu aplikace.</li>
+
+	<li>Validace, provazování dat</li>
+
+	<li>Testování</li>
+
+	<li>Správa transakcí (může být provázáno s AOP)</li>
+
+	<li>Ulehčení práce s ORM nástroji a iBatisem</li>
+
+	<li>MVC framework pro webové aplikace a pro „portlety“</li>
+
+	<li>Integrace s mnoha zobrazovacími nástroji – FreeMarker, Tiles, XSLT,
+	PDF, Excel</li>
+
+	<li>Podpora vývoje webových služeb</li>
+
+	<li>Práce s mailem (odesílání mailů z Javy)</li>
+
+	<li>Podpora skriptovacích jazyků pro programování servisních objektů</li>
+
+	<li>a další.</li>
+</ul>
+
+<p>Lidem, kteří s J2EE začínají, takový výpis asi moc k ničemu nebude,
+proto vás rovnou odkáži na články</p>
+
+<ul>
+	<li><a href="navod-spring-framework-zacatky.texy">Úplné začátky
+	s frameworkem Spring</a></li>
+
+	<li><a href="navod-spring-aop-zacatky.texy">Začátky se Spring AOP –
+	návod</a></li>
+
+	<li><a href="navod-spring_freemarker_in_standalone_application.texy">FreeMarker
+	templates via Spring in non-web application</a></li>
+</ul>
+
+<h5>Další</h5>
+
+<p>Pokud hledáte něco pro konkrétní účel, je obvykle dobré podívat se na
+projekty, které zastřešují jiné projekty – jako jsou <a
+href="http://jakarta.apache.org/"><strong>Jakarta</strong></a>, zejména
+v levé části v sekci „Ex-Jakarta“ jsou projekty, které se osvědčily
+a přesunuly pod projekt <a href="http://apache.org/">Apache</a> – <a
+href="http://projects.apache.org/indexes/language.html#Java">seznam
+konkrétních projektů pro Javu</a> je opravdu dlouhý. Z těch
+nejznámějších sem patří:</p>
+
+<ul>
+	<li>Jakarta Commons (obecné pomůcky pro kdeco)</li>
+
+	<li>Jakarta Logging (obecný nástroj pro logování, vzniklo podle něj
+	<code>java.util.logging</code>)</li>
+
+	<li>Struts (webový framework, viz výše)</li>
+</ul>
+
+<p>A mimojiné také server <em>Tomcat</em>, buildovací nástroj <em>Ant</em>,
+nástroj pro správu projektů <em>Maven</em>, práce se soubory MS Office
+<em>POI</em>, a další.</p>
+
+<p>Dalším takovým hnizdem projektů je <a
+href="http://www.jboss.org/"><strong>JBoss</strong></a>, nyní spravovaný
+firmou RedHat, kde je <a href="http://www.jboss.org/projects/">projektů opravdu
+hodně</a> – asi 35. Mezi ně patří:</p>
+
+<ul>
+	<li>Hibernate – asi nejpopulárnější pecka – objektově-relační
+	mapování, viz „perzistence“ výše</li>
+
+	<li>JBoss Application Server (Aplikační server, viz výše)</li>
+
+	<li>JBoss AOP (implementace AOP, něco jako Spring AOP – viz výše)</li>
+
+	<li>Seam – framework, který začal jako zjednodušení vývoje v JSF a EJB,
+	ale má namířeno na posty Spring Frameworku</li>
+
+	<li>a další obecné nástroje – cache, vzdálené volání, správa
+	transakcí, webové služby, messaging, a další.</li>
+</ul>
+
+<p>Nenechte se ale zahltit – pokud se zanoříte do všech projektů a budete
+chtít zjistit, co vše umí, bude to čtení na několik dnů. Já doporučuji
+tento postup: Koukněte se na nějaké Java fórum a hledejte témata
+s nadpisem typu „Jaký framework používáte pro XYZ a proč?“
+V takových se obvykle nespustí flamewar, ale naopak věcná diskuze, kde se
+velmi stučně dozvíte shrnutí, k čemu který slouží, respektive k čemu
+jej kdo používá, a často i krátké a výstižné ukázky kódu.</p>
+
+<h4>EJB</h4>
+
+<p>EJB, <em>Enterprise Java Beans</em>
+<!--, je cosi, čemu přesně ještě docela nerozumím, ale -->: v podstatě
+jde opět o snahu standardizovat. Rozděluje „Beany“ (java třídy
+s určitým účelem) na několik kategorií, podle účelu, ke kterému mají
+sloužit – jestli mají provádět nějaké operace, nebo poskytovat nějakou
+službu, nebo jestli mají představovat nějakou entitu, a podobně. S tím
+souvisí pojmy „Stateful“, „stateless“ a další. ***Doplnit</p>
+
+<p>Technologie EJB se týká především aplikačních serverů a enterprise
+aplikací. Má více verzí, které se docela zásadně liší. V současnosti
+je aktuální verze 3.0, která je snad první jednoduše použitelná. Ovšem
+na webu (v době psaní) narazíte povětšinou na materiály o EJB verze 2.0,
+z nichž leckteré to s klidným svědomím ani neuvedou, takže vy se pak
+zcela marně snažíte v aplikačním serveru pracujícím na EJB
+3.0 aplikovat postupy pro EJB 2.0.</p>
+
+<p>Tuto sekci o EJB uvádím hlavně proto, že na zkratku EJB se dá narazit
+hodně často. Studium EJB doporučuji odložit na dobu, kdy budete mít v ruce
+JSP, Struts a Hibernate. ***Dopsat</p>
+
+<h4>Závěr</h4>
+
+<p>Zatím vše. Jelikož se s obrovským světem J2EE stále seznamuji,
+vyhrazuji si právo plácat tu nesmysly, ale snažím se, aby uvedená fakta
+odpovídala pravdě – konec konců, účelem tohoto dokumentu je velmi rychle
+seznámit nováčky s J2EE. Do podrobností zde zacházet nechci, těch je na
+webu velká spousta.</p>
+
+<p>Pokud jste zkušení J2EE harcovníci, uvítám jakékoliv opravy na e-mailu
+<a href="mailto:ondra&#64;dynawest.cz">ondra&#64;<!-- -->dynawest.cz</a>.</p>
+
+<hr />
+
+<p>Napsáno 2007–08, aktualizováno tu a tam, naposledy 2008–10.</p>
+</div>
 
 	<hr />
 

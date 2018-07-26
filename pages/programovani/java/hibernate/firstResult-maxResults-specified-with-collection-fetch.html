@@ -79,26 +79,42 @@ applying in memory! - Ondřej Žižka</h1>
 
 	<div class="date"><em>2013-02-03</em></div>
 
-	<div class="doc-body"><h3>HHH000104: firstResult/max­Results specified with collection fetch; applying in memory!</h3> 
-<h4>Symptoms</h4> 
-<pre><code>15:08:58,096 WARN  [org.hibernate.hql.internal.ast.QueryTranslatorImpl] (http-/127.0.0.1:8080-1) HHH000104: firstResult/maxResults specified with collection fetch; applying in memory!</code></pre> 
-<h4>Cause</h4> 
-<p>Not necessarily by <code>firstResult()</code> or <code>maxResults</code>. Can also happen with <code>getSingleResult()</code>.</p> 
-<p>The reason is that Hibernate used <code>JOIN</code> to fetch collection, so database's&nbsp;support for limits can't be used (e.g. MySQL's <code>LIMIT</code> and <code>OFFSET</code>).</p> 
-<pre class="brush java"><code>public Release getRelease( String prodName, String version, boolean withDeps ) {
+	<div class="doc-body"><h3>HHH000104: firstResult/max­Results specified with collection fetch;
+applying in memory!</h3>
+
+<h4>Symptoms</h4>
+
+<pre><code>15:08:58,096 WARN  [org.hibernate.hql.internal.ast.QueryTranslatorImpl] (http-/127.0.0.1:8080-1) HHH000104: firstResult/maxResults specified with collection fetch; applying in memory!</code></pre>
+
+<h4>Cause</h4>
+
+<p>Not necessarily by <code>firstResult()</code> or <code>maxResults</code>. Can
+also happen with <code>getSingleResult()</code>.</p>
+
+<p>The reason is that Hibernate used <code>JOIN</code> to fetch collection, so
+database's support for limits can't be used (e.g. MySQL's <code>LIMIT</code>
+and <code>OFFSET</code>).</p>
+
+<pre
+class="brush java"><code>public Release getRelease( String prodName, String version, boolean withDeps ) {
     return this.em.createQuery("SELECT rel FROM Release rel "
             + " LEFT JOIN FETCH rel.product pr "
             + " WHERE rel.product.name = ?1 AND rel.version = ?2", Release.class)
             .setParameter(1, prodName)
             .setParameter(2, version)
             .getSingleResult(); // Causes "firstResult/maxResults specified with collection fetch; applying in memory!"
-}</code></pre> 
-<h4>Solutions</h4> 
-<ol> 
- <li>Use <code>SELECT</code> JOIN strategy.</li> 
- <li>Use <code>getResultsList()</code> instead:</li> 
-</ol> 
-<pre class="brush java"><code>public Release getRelease( String prodName, String version, boolean withDeps ) {
+}</code></pre>
+
+<h4>Solutions</h4>
+
+<ol>
+	<li>Use <code>SELECT</code> JOIN strategy.</li>
+
+	<li>Use <code>getResultsList()</code> instead:</li>
+</ol>
+
+<pre
+class="brush java"><code>public Release getRelease( String prodName, String version, boolean withDeps ) {
     List result = this.em.createQuery("SELECT rel FROM Release rel "
             + " LEFT JOIN FETCH rel.product pr "
             + " WHERE rel.product.name = ?1 AND rel.version = ?2", Release.class)
@@ -109,7 +125,8 @@ applying in memory! - Ondřej Žižka</h1>
 
     if (result.isEmpty())  return null;
     return result.get(0);
-}</code></pre></div>
+}</code></pre>
+</div>
 
 	<hr />
 

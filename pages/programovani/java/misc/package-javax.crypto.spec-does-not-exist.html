@@ -77,17 +77,24 @@
 
 	<div class="date"><em>2012-12-31</em></div>
 
-	<div class="doc-body"><h3>Java <code>package javax.crypto does not exist</code> error</h3> 
-<p>Do you get this upon build?</p> 
-<pre class="brush: plain"><code>COMPILATION ERROR :
+	<div class="doc-body"><h3>Java <code>package javax.crypto does not exist</code> error</h3>
+
+<p>Do you get this upon build?</p>
+
+<pre
+class="brush: plain"><code>COMPILATION ERROR :
 -------------------------------------------------------------
 com/rapidlime/pohlidame/utils/StringEncrypter.java:[3,19] package javax.crypto does not exist
 com/rapidlime/pohlidame/utils/StringEncrypter.java:[4,24] package javax.crypto.spec does not exist
 com/rapidlime/pohlidame/utils/StringEncrypter.java:[5,24] package javax.crypto.spec does not exist
 com/rapidlime/pohlidame/utils/StringEncrypter.java:[19,6] cannot find symbol
-symbol  : class Cipher</code></pre> 
-<p>You likely use Java 1.5.0.&nbsp;If you use Maven, you may have this in your <code>pom.xml</code>:</p> 
-<pre class="brush: xml"><code>&lt;!-- Compiler plugin --&gt;
+symbol  : class Cipher</code></pre>
+
+<p>You likely use Java 1.5.0. If you use Maven, you may have this in your
+<code>pom.xml</code>:</p>
+
+<pre
+class="brush: xml"><code>&lt;!-- Compiler plugin --&gt;
 &lt;plugin&gt;
     &lt;artifactId&gt;maven-compiler-plugin&lt;/artifactId&gt;
     &lt;configuration&gt;
@@ -97,9 +104,12 @@ symbol  : class Cipher</code></pre>
         &lt;target&gt;1.5&lt;/target&gt;
         &lt;encoding&gt;utf-8&lt;/encoding&gt;
     &lt;/configuration&gt;
-&lt;/plugin&gt;</code></pre> 
-<p>You need to set this:</p> 
-<pre class="brush: xml"><code>&lt;!-- Compiler plugin --&gt;
+&lt;/plugin&gt;</code></pre>
+
+<p>You need to set this:</p>
+
+<pre
+class="brush: xml"><code>&lt;!-- Compiler plugin --&gt;
 &lt;plugin&gt;
     &lt;artifactId&gt;maven-compiler-plugin&lt;/artifactId&gt;
     &lt;configuration&gt;
@@ -109,8 +119,10 @@ symbol  : class Cipher</code></pre>
         &lt;target&gt;1.6&lt;/target&gt;
         &lt;encoding&gt;utf-8&lt;/encoding&gt;
     &lt;/configuration&gt;
-&lt;/plugin&gt;</code></pre> 
-<p>HTH.</p></div>
+&lt;/plugin&gt;</code></pre>
+
+<p>HTH.</p>
+</div>
 
 	<hr />
 

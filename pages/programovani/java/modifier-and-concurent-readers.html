@@ -77,20 +77,53 @@
 
 	<div class="date"><em>2012-12-16</em></div>
 
-	<div class="doc-body"><h3>Java Concurrency, Threads and Synchronization</h3> 
-<p>I've created a class which synchronizes many readers and writers (or better, modifier). It's&nbsp;a hybrid solution similar to a <em>thread barrier</em> and <em>producers-consumers</em>.</p> 
-<ul> 
- <li>Unlike producers-consumers, readers don't process a queue, they only access the same data storage.</li> 
- <li>Unlike barier, modifier does not wait for readers to reach the barier.</li> 
-</ul> 
-<p>There's&nbsp;an implementation of <code>ReadWriteLock</code>, <code>ReentrantReadWriteLock</code>, but that seemed too cumbersome and&nbsp;slow:</p> 
-<blockquote> 
- <p>Whether or not a read-write lock will improve performance over the use of a mutual exclusion lock depends on the frequency that the data is read compared to being modified, the duration of the read and write operations, and the contention for the data&nbsp;– that is, the number of threads that will try to read or write the data at the same time. For example, a collection that is initially populated with data and thereafter infrequently modified, while being frequently searched (such as a directory of some kind) is an ideal candidate for the use of a read-write lock. However, if updates become frequent then the data spends most of its time being exclusively locked and there is little, if any increase in concurrency. Further, if the read operations are too short the overhead of the read-write lock implementation (which is inherently more complex than a mutual exclusion lock) can dominate the execution cost, particularly as many read-write lock implementations still serialize all threads through a small section of code. Ultimately, only profiling and measurement will establish whether the use of a read-write lock is suitable for your application.</p> 
-</blockquote> 
-<p>First, there's&nbsp;a final(?) re-entrant livelock-proof implementation.<br> Then, there's&nbsp;a simple non-reentrant implementation, for one writer only.<br> On the bottom of the page, there's&nbsp;my original solution which leads to starvation of the modifier. (That will come handy later as a bad example&nbsp;:)</p> 
-<h4>Multiple modifiers, multiple readers, re-entrant, livelock-proof:</h4> 
-<p>Uses a <code>ReentrantLock</code> with two <code>Conditions</code>.<br> Also uses an adapted <code>HashMap</code> to count thread re-entries.</p> 
-<pre class="brush: java"><code>package cz.dynawest.webttd;
+	<div class="doc-body"><h3>Java Concurrency, Threads and Synchronization</h3>
+
+<p>I've created a class which synchronizes many readers and writers (or better,
+modifier). It's a hybrid solution similar to a <em>thread barrier</em> and
+<em>producers-consumers</em>.</p>
+
+<ul>
+	<li>Unlike producers-consumers, readers don't process a queue, they only access
+	the same data storage.</li>
+
+	<li>Unlike barier, modifier does not wait for readers to reach the barier.</li>
+</ul>
+
+<p>There's an implementation of <code>ReadWriteLock</code>,
+<code>ReentrantReadWriteLock</code>, but that seemed too cumbersome
+and slow:</p>
+
+<blockquote>
+	<p>Whether or not a read-write lock will improve performance over the use of a
+	mutual exclusion lock depends on the frequency that the data is read compared to
+	being modified, the duration of the read and write operations, and the
+	contention for the data – that is, the number of threads that will try to
+	read or write the data at the same time. For example, a collection that is
+	initially populated with data and thereafter infrequently modified, while being
+	frequently searched (such as a directory of some kind) is an ideal candidate for
+	the use of a read-write lock. However, if updates become frequent then the data
+	spends most of its time being exclusively locked and there is little, if any
+	increase in concurrency. Further, if the read operations are too short the
+	overhead of the read-write lock implementation (which is inherently more complex
+	than a mutual exclusion lock) can dominate the execution cost, particularly as
+	many read-write lock implementations still serialize all threads through a small
+	section of code. Ultimately, only profiling and measurement will establish
+	whether the use of a read-write lock is suitable for your application.</p>
+</blockquote>
+
+<p>First, there's a final(?) re-entrant livelock-proof implementation.<br />
+Then, there's a simple non-reentrant implementation, for one writer only.<br />
+On the bottom of the page, there's my original solution which leads to
+starvation of the modifier. (That will come handy later as a bad example :)</p>
+
+<h4>Multiple modifiers, multiple readers, re-entrant, livelock-proof:</h4>
+
+<p>Uses a <code>ReentrantLock</code> with two <code>Conditions</code>.<br />
+Also uses an adapted <code>HashMap</code> to count thread re-entries.</p>
+
+<pre
+class="brush: java"><code>package cz.dynawest.webttd;
 
 import java.util.*;
 import java.util.concurrent.locks.*;
@@ -262,9 +295,12 @@ final class CounterMap&lt;K&gt; {
     return cnt;
   }
 
-}</code></pre> 
-<h4>One modifier and many concurrent Readers, non-reentrant:</h4> 
-<pre class="brush: java"><code>import java.util.concurrent.locks.*;
+}</code></pre>
+
+<h4>One modifier and many concurrent Readers, non-reentrant:</h4>
+
+<pre
+class="brush: java"><code>import java.util.concurrent.locks.*;
 import java.util.logging.Logger;
 
 
@@ -337,8 +373,10 @@ public class ReadersAndModifierSynchronizer2 {
     finally{ lock.unlock(); }
   }
 
-}// class ReadersAndModifierSynchronizer2</code></pre> 
-<pre class="brush: java"><code>import cz.dynawest.logging.LoggingUtils;
+}// class ReadersAndModifierSynchronizer2</code></pre>
+
+<pre
+class="brush: java"><code>import cz.dynawest.logging.LoggingUtils;
 import java.util.*;
 import java.util.logging.Logger;
 import org.testng.annotations.Test;
@@ -438,9 +476,12 @@ public class ReadersAndModifierTest {
       return new Thread( cons );
   }
 
-}</code></pre> 
-<h4>Modifier and concurrent Readers, leads to modifier starvation:</h4> 
-<pre class="brush: java"><code>/**
+}</code></pre>
+
+<h4>Modifier and concurrent Readers, leads to modifier starvation:</h4>
+
+<pre
+class="brush: java"><code>/**
  * Todo: try to use Condition.
  *
  * @author Ondrej Zizka
@@ -482,8 +523,10 @@ public class ReadersAndModifierSynchronizer {
       this.notifyAll();
   }
 
-}// class ReadersAndModifierSynchronizer</code></pre> 
-<pre class="brush: java"><code>import cz.dynawest.logging.LoggingUtils;
+}// class ReadersAndModifierSynchronizer</code></pre>
+
+<pre
+class="brush: java"><code>import cz.dynawest.logging.LoggingUtils;
 import java.util.*;
 import java.util.logging.Logger;
 import org.testng.annotations.Test;
@@ -574,7 +617,8 @@ public class ReadersAndModifierTest {
       return new Thread( cons );
   }
 
-}// class TestTest</code></pre></div>
+}// class TestTest</code></pre>
+</div>
 
 	<hr />
 

@@ -79,10 +79,16 @@ repository - Ondřej Žižka</h1>
 
 	<div class="date"><em>2012-12-13</em></div>
 
-	<div class="doc-body"><h3>How to add existing project's <code>jar</code> to SVN-based Maven repository</h3> 
-<p><em>See also</em>: <a href="mavenize-quick-and-dirty.texy">Quick and dirty mavenization of an existing project</a></p> 
-<h4>Bash script for the impatient</h4> 
-<pre class="brush: bash"><code>#
+	<div class="doc-body"><h3>How to add existing project's <code>jar</code> to SVN-based Maven
+repository</h3>
+
+<p><em>See also</em>: <a href="mavenize-quick-and-dirty.texy">Quick and dirty
+mavenization of an existing project</a></p>
+
+<h4>Bash script for the impatient</h4>
+
+<pre
+class="brush: bash"><code>#
 #  Creates two files:
 #
 #    1) A bash script with mvn install:install-file commands to push the .jar's to a repository.
@@ -128,12 +134,24 @@ echo "
 
 &lt;/project&gt;" &gt;&gt; pomWithDeps.xml
 
-chmod u+x stuffTheRepo.sh</code></pre> 
-<h4>How-to for the rest</h4> 
-<p><em>Copied from Sardine project's&nbsp;READ­ME.txt.</em></p> 
-<p>This is a maven repository of the Sardine project.</p> 
-<p>To add a new version, do the following:<br> <strong>Note:</strong> This is not a copy-paste code&nbsp;– edit it according to your situation.<br> <strong>Note:</strong> The preferred way is to use the Wagon-SCM Maven plugin, as described on <a href="http://community.jboss.org/wiki/MavenReleaseRepository">JBoss wiki</a>.</p> 
-<pre class="brush: bash"><code># First, create the sources and javadoc jar's.
+chmod u+x stuffTheRepo.sh</code></pre>
+
+<h4>How-to for the rest</h4>
+
+<p><em>Copied from Sardine project's READ­ME.txt.</em></p>
+
+<p>This is a maven repository of the Sardine project.</p>
+
+<p>To add a new version, do the following:<br />
+<strong>Note:</strong> This is not a copy-paste code – edit it according to
+your situation.<br />
+<strong>Note:</strong> The preferred way is to use the Wagon-SCM Maven plugin,
+as described on <a
+href="http://community.jboss.org/wiki/MavenReleaseRepository">JBoss
+wiki</a>.</p>
+
+<pre
+class="brush: bash"><code># First, create the sources and javadoc jar's.
 zip -9 -b sardine-XX/javadoc/* &gt; sardine-XX/javadoc.jar
 zip -9 -b sardine-XX/src/* &gt; sardine-XX/sources.jar
 
@@ -153,11 +171,18 @@ mv ~/.m2/repository/com/googlecode/sardine/sardine/maven-metadata-local.xml ~/.m
 
 # Add everything new and commit.
 svn add --force *
-svn commit -m "Maven repo: Added version XX"</code></pre> 
-<ul> 
- <li><code>~/.m2/repository/</code> is your local Maven repository. <p>On windows it is usually <code>c:\Documents and Settings\user\.m2\repository\</code>.</p> </li> 
- <li>The <code>pom.xml</code> is there because it contains dependency definitions.</li> 
-</ul></div>
+svn commit -m "Maven repo: Added version XX"</code></pre>
+
+<ul>
+	<li><code>~/.m2/repository/</code> is your local Maven repository.
+		<p>On windows it is usually
+		<code>c:\Documents and Settings\user\.m2\repository\</code>.</p>
+	</li>
+
+	<li>The <code>pom.xml</code> is there because it contains dependency
+	definitions.</li>
+</ul>
+</div>
 
 	<hr />
 

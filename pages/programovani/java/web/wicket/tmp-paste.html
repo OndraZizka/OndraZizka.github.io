@@ -77,9 +77,12 @@
 
 	<div class="date"><em>2012-12-31</em></div>
 
-	<div class="doc-body"><h3>Wicket component</h3> 
-<p>Originally I&nbsp;had:</p> 
-<pre class="brush: html"><code>&lt;tr wicket:id="resources"&gt;
+	<div class="doc-body"><h3>Wicket component</h3>
+
+<p>Originally I had:</p>
+
+<pre
+class="brush: html"><code>&lt;tr wicket:id="resources"&gt;
    &lt;td&gt;
        &lt;a href="#" wicket:id="reslink"&gt;
           &lt;img wicket:id="icoType" src="ResourceMachine.gif"/&gt;
@@ -87,15 +90,20 @@
        &lt;/a&gt;
    &lt;/td&gt;
    ...
-&lt;/tr&gt;</code></pre> 
-<pre class="brush: java"><code>// Link itself. We're giving the resource as the parameter for the Resource page.
+&lt;/tr&gt;</code></pre>
+
+<pre
+class="brush: java"><code>// Link itself. We're giving the resource as the parameter for the Resource page.
 new BookmarkablePageLink("reslink", new ResourcePage( item.getModelObject().getResource() ))
 // Icon.
 .add( new Image( "icoType", "ResourceMachine.gif" ) )
 // Link's kabel
-.add( new Label("label", item.getModelObject().getResource().getName() ))</code></pre> 
-<p>I&nbsp;tried to turn it into a component:</p> 
-<pre class="brush: html"><code>&lt;!DOCTYPE html&gt;
+.add( new Label("label", item.getModelObject().getResource().getName() ))</code></pre>
+
+<p>I tried to turn it into a component:</p>
+
+<pre
+class="brush: html"><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
    &lt;head&gt;
       &lt;title&gt;JawaBot resource&lt;/title&gt;
@@ -110,8 +118,10 @@ new BookmarkablePageLink("reslink", new ResourcePage( item.getModelObject().getR
    &lt;/a&gt;
 
    &lt;/body&gt;
-&lt;/html&gt;</code></pre> 
-<pre class="brush: java"><code>package org.jboss.jawabot.web._co;
+&lt;/html&gt;</code></pre>
+
+<pre
+class="brush: java"><code>package org.jboss.jawabot.web._co;
 
 import org.apache.wicket.Page;
 import org.apache.wicket.PageParameters;
@@ -133,9 +143,12 @@ public class ResourceLink extends BookmarkablePageLink&lt;Resource&gt; {
       this.add( new Label("label", this.getModelObject().getName() ));
    }
 
-}</code></pre> 
-<h4>Using the component in a page</h4> 
-<pre class="brush: html"><code>&lt;tr wicket:id="resources"&gt;
+}</code></pre>
+
+<h4>Using the component in a page</h4>
+
+<pre
+class="brush: html"><code>&lt;tr wicket:id="resources"&gt;
    &lt;td&gt;
        &lt;a href="#" wicket:id="reslink"&gt;
           &lt;img src="ResourceMachine.gif"/&gt;
@@ -143,10 +156,14 @@ public class ResourceLink extends BookmarkablePageLink&lt;Resource&gt; {
        &lt;/a&gt;
    &lt;/td&gt;
    ...
-&lt;/tr&gt;</code></pre> 
-<pre class="brush: java"><code>// Link itself. We're giving the resource as the parameter for the Resource page.
-new ResourceLink("reslink", item.getModelObject().getResource() ))</code></pre> 
-<p>That's&nbsp;all.</p></div>
+&lt;/tr&gt;</code></pre>
+
+<pre
+class="brush: java"><code>// Link itself. We're giving the resource as the parameter for the Resource page.
+new ResourceLink("reslink", item.getModelObject().getResource() ))</code></pre>
+
+<p>That's all.</p>
+</div>
 
 	<hr />
 

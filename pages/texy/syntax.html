@@ -77,124 +77,213 @@
 
 	<div class="date"><em>2012-12-13</em></div>
 
-	<div class="doc-body"><h3>Texy! is sexxy!</h3> 
-<p>Texy! is text-to-HTML formatter and converter library. It allows you to write structured documents without knowledge or using of HTML language. You write documents in humane easy-to-read plain text format and Texy! converts it to structurally and valid (X)HTML&nbsp;code.</p> 
-<p>Texy! is one of the <strong>most complex</strong> formatters. Its possibilities covers images, links (anchors), nested lists, tables and has full support for <acronym title="Cascade Style Sheet">CSS</acronym>.</p> 
-<h4>Paragraphs</h4> 
-<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur turpis enim, placerat tincidunt, tincidunt ac, fringilla et, mauris. still the same paragraph<br> still the same paragraph, but wrapped with element <code>&lt;br&gt;</code><br> and second wrapped&nbsp;line</p> 
-<p style="text-align:center">Centered by modifier</p> 
-<p style="color:blue">Colored by modifier</p> 
-<h4>Code</h4> 
-<pre class="php"><code>function reImage($matches) {
+	<div class="doc-body"><h3>Texy! is sexxy!</h3>
+
+<p>Texy! is text-to-HTML formatter and converter library. It allows you to write
+structured documents without knowledge or using of HTML language. You write
+documents in humane easy-to-read plain text format and Texy! converts it to
+structurally and valid (X)HTML code.</p>
+
+<p>Texy! is one of the <strong>most complex</strong> formatters. Its
+possibilities covers images, links (anchors), nested lists, tables and has full
+support for <acronym title="Cascade Style Sheet">CSS</acronym>.</p>
+
+<h4>Paragraphs</h4>
+
+<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur turpis
+enim, placerat tincidunt, tincidunt ac, fringilla et, mauris. still the same
+paragraph<br />
+still the same paragraph, but wrapped with element <code>&lt;br&gt;</code><br />
+and second wrapped line</p>
+
+<p style="text-align:center">Centered by modifier</p>
+
+<p style="color:blue">Colored by modifier</p>
+
+<h4>Code</h4>
+
+<pre
+class="php"><code>function reImage($matches) {
   $content = $matches[1];
   $align = $matches[5];
   $href = $matches[6];
-}</code></pre> 
-<p>Syntax can be highlighted by third party module</p> 
-<h4>Images</h4> 
-<div>
- <img src="http://www.zizka.ch/images/image.gif" alt="">
-</div> 
-<h5>with on-mouse-over event</h5> 
-<div>
- <img src="http://www.zizka.ch/images/image.gif" alt="" onmouseover="this.src='images/image-over.gif'" onmouseout="this.src='images/image.gif'" onload="var i=new Image();i.src='images/image-over.gif';if(typeof preload=='undefined')preload=new Array();preload[preload.length]=i;this.onload=''">
-</div> 
-<h4>List</h4> 
-<ul> 
- <li>Red</li> 
- <li>Green</li> 
- <li>Blue</li> 
-</ul> 
-<p>or</p> 
-<ul> 
- <li>Red</li> 
- <li>Green</li> 
- <li>Blue</li> 
-</ul> 
-<h5>ordered</h5> 
-<ol> 
- <li>Bird</li> 
- <li>McHale</li> 
- <li>Parish</li> 
-</ol> 
-<ol style="list-style-type:lower-alpha"> 
- <li>Bird</li> 
- <li>McHale</li> 
- <li>Parish</li> 
-</ol> 
-<ol style="list-style-type:upper-roman"> 
- <li>Bird</li> 
- <li>McHale</li> 
- <li>Parish</li> 
-</ol> 
-<ol style="list-style-type:upper-alpha"> 
- <li>Bird</li> 
- <li>McHale</li> 
- <li>Parish</li> 
-</ol> 
-<h5>nested</h5> 
-<ol style="list-style-type:lower-alpha"> 
- <li>Bird 
-  <ol style="list-style-type:upper-roman"> 
-   <li>Bird 
-    <ul> 
-     <li>Red</li> 
-     <li>Green</li> 
-     <li>Blue</li> 
-    </ul> </li> 
-   <li>McHale</li> 
-   <li>Parish</li> 
-  </ol> </li> 
- <li>McHale</li> 
- <li>Parish 
-  <ol> 
-   <li>Bird</li> 
-   <li>McHale</li> 
-   <li>Parish</li> 
-  </ol> </li> 
-</ol> 
-<h4>Typography</h4> 
-<ul> 
- <li>very long words division (with respect for language rules). Example: antidisestablishmen­tarianism</li> 
- <li>clickable emails and URL <a href="http://www.davidgrudl.com">www.davidgrudl.com</a>, <a href="mailto:david@grudl.com">david@
-   <!-- -->grudl.com</a> (emails are obfuscated against spambots)</li> 
- <li>„national“ ‚typographic‘ quotes</li> 
- <li>divider vs. dash: 10–15 vs. north-west</li> 
- <li>en-dash: one&nbsp;– two</li> 
- <li>dimension sign 10&nbsp;×&nbsp;20</li> 
- <li>nonbreakable spaces in phone numbers +420&nbsp;776&nbsp;552&nbsp;046</li> 
- <li>acronym <acronym title="North Atlantic Treaty Organisation">NATO</acronym></li> 
- <li>abbr <acronym title="and others">et al.</acronym></li> 
- <li>quickCorrects like this™ this® or ©this</li> 
- <li>arrows ← and → and ↔ ;</li> 
- <li>ellipsis…</li> 
- <li>preserve HTML entities</li> 
- <li>and many others :-)</li> 
-</ul> 
-<h4>Tables</h4> 
-<table> 
- <thead> 
-  <tr> 
-   <th>First Name</th> 
-   <th>Last Name</th> 
-   <th>Age</th> 
-  </tr> 
- </thead> 
- <tbody> 
-  <tr> 
-   <td>Jesus</td> 
-   <td>Christ</td> 
-   <td>33</td> 
-  </tr> 
-  <tr> 
-   <td>Cecilie</td> 
-   <td>Svobodova</td> 
-   <td>74</td> 
-  </tr> 
- </tbody> 
-</table> 
-<h4>Copyright</h4> 
-<p>Texy! © <a href="http://www.davidgrudl.com">David Grudl (dgx)</a>, 2003–2004</p></div>
+}</code></pre>
+
+<p>Syntax can be highlighted by third party module</p>
+
+<h4>Images</h4>
+
+<div><img src="image.gif" alt="" /></div>
+
+<h5>with on-mouse-over event</h5>
+
+<div><img src="image.gif" alt="" onmouseover="this.src='image-over.gif'"
+onmouseout="this.src='image.gif'"
+onload="var i=new Image();i.src='image-over.gif';if(typeof preload=='undefined')preload=new Array();preload[preload.length]=i;this.onload=''"
+/></div>
+
+<h4>List</h4>
+
+<ul>
+	<li>Red</li>
+
+	<li>Green</li>
+
+	<li>Blue</li>
+</ul>
+
+<p>or</p>
+
+<ul>
+	<li>Red</li>
+
+	<li>Green</li>
+
+	<li>Blue</li>
+</ul>
+
+<h5>ordered</h5>
+
+<ol>
+	<li>Bird</li>
+
+	<li>McHale</li>
+
+	<li>Parish</li>
+</ol>
+
+<ol style="list-style-type:lower-alpha">
+	<li>Bird</li>
+
+	<li>McHale</li>
+
+	<li>Parish</li>
+</ol>
+
+<ol style="list-style-type:upper-roman">
+	<li>Bird</li>
+
+	<li>McHale</li>
+
+	<li>Parish</li>
+</ol>
+
+<ol style="list-style-type:upper-alpha">
+	<li>Bird</li>
+
+	<li>McHale</li>
+
+	<li>Parish</li>
+</ol>
+
+<h5>nested</h5>
+
+<ol style="list-style-type:lower-alpha">
+	<li>Bird
+		<ol style="list-style-type:upper-roman">
+			<li>Bird
+				<ul>
+					<li>Red</li>
+
+					<li>Green</li>
+
+					<li>Blue</li>
+				</ul>
+			</li>
+
+			<li>McHale</li>
+
+			<li>Parish</li>
+		</ol>
+	</li>
+
+	<li>McHale</li>
+
+	<li>Parish
+		<ol>
+			<li>Bird</li>
+
+			<li>McHale</li>
+
+			<li>Parish</li>
+		</ol>
+	</li>
+</ol>
+
+<h4>Typography</h4>
+
+<ul>
+	<li>very long words division (with respect for language rules). Example:
+	antidisestablishmen­tarianism</li>
+
+	<li>clickable emails and URL <a
+	href="http://www.davidgrudl.com">www.davidgrudl.com</a>, <a
+	href="mailto:david&#64;grudl.com">david&#64;<!-- -->grudl.com</a> (emails are
+	obfuscated against spambots)</li>
+
+	<li>„national“ ‚typographic‘ quotes</li>
+
+	<li>divider vs. dash: 10–15 vs. north-west</li>
+
+	<li>en-dash: one – two</li>
+
+	<li>dimension sign 10 × 20</li>
+
+	<li>nonbreakable spaces in phone numbers +420 776 552 046</li>
+
+	<li>acronym <acronym
+	title="North Atlantic Treaty Organisation">NATO</acronym></li>
+
+	<li>abbr <acronym title="and others">et al.</acronym></li>
+
+	<li>quickCorrects like this™ this® or ©this</li>
+
+	<li>arrows ← and → and ↔ ;</li>
+
+	<li>ellipsis…</li>
+
+	<li>preserve HTML entities</li>
+
+	<li>and many others :-)</li>
+</ul>
+
+<h4>Tables</h4>
+
+<table>
+	<thead>
+		<tr>
+			<th>First Name</th>
+
+			<th>Last Name</th>
+
+			<th>Age</th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<tr>
+			<td>Jesus</td>
+
+			<td>Christ</td>
+
+			<td>33</td>
+		</tr>
+
+		<tr>
+			<td>Cecilie</td>
+
+			<td>Svobodova</td>
+
+			<td>74</td>
+		</tr>
+	</tbody>
+</table>
+
+<h4>Copyright</h4>
+
+<p>Texy! © <a href="http://www.davidgrudl.com">David Grudl (dgx)</a>,
+2003–2004</p>
+</div>
 
 	<hr />
 

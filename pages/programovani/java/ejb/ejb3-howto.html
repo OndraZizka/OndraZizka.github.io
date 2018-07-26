@@ -77,16 +77,21 @@
 
 	<div class="date"><em>2012-12-31</em></div>
 
-	<div class="doc-body"><h3>How to create an EBJ 3&nbsp;jar</h3> 
-<p>No guarantees.</p> 
-<pre class="brush: xml"><code>&lt;!-- I used JBoss varia, 'cos I'm lazy. --&gt;
+	<div class="doc-body"><h3>How to create an EBJ 3 jar</h3>
+
+<p>No guarantees.</p>
+
+<pre
+class="brush: xml"><code>&lt;!-- I used JBoss varia, 'cos I'm lazy. --&gt;
 &lt;dependency&gt;
   &lt;groupId&gt;org.jboss.jbossas&lt;/groupId&gt;
   &lt;artifactId&gt;jboss-as-varia&lt;/artifactId&gt;
   &lt;version&gt;5.1.0.GA&lt;/version&gt;
   &lt;classifier&gt;jbossjmx-ant&lt;/classifier&gt;
-&lt;/dependency&gt;</code></pre> 
-<pre class="brush: java"><code>package org.jboss.qa.eapperf.deployers.ejb3.calc;
+&lt;/dependency&gt;</code></pre>
+
+<pre
+class="brush: java"><code>package org.jboss.qa.eapperf.deployers.ejb3.calc;
 
 import javax.ejb.Stateless;
 import javax.ejb.TransactionManagement;
@@ -106,9 +111,12 @@ public class CalculatorBean
   {
     return x - y;
   }
-}</code></pre> 
-<p>Optional XML, which can override annotations:</p> 
-<pre class="brush: xml"><code>&lt;ejb-jar xmlns="http://java.sun.com/xml/ns/javaee"
+}</code></pre>
+
+<p>Optional XML, which can override annotations:</p>
+
+<pre
+class="brush: xml"><code>&lt;ejb-jar xmlns="http://java.sun.com/xml/ns/javaee"
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
           http://java.sun.com/xml/ns/javaee/ejb-jar_3_0.xsd"
@@ -125,10 +133,15 @@ public class CalculatorBean
          &lt;transaction-type&gt;Container&lt;/transaction-type&gt;
       &lt;/session&gt;
    &lt;/enterprise-beans&gt;
-&lt;/ejb-jar&gt;</code></pre> 
-<h4>Namespaces are necessary in <code>ejb-jar.xml</code>&nbsp;– JBMETA-208</h4> 
-<p>If you only use <code>&lt;ejb-jar&gt;</code> (without the namespace), you'll&nbsp;get:</p> 
-<pre class="brush: plain"><code>java.lang.IllegalStateException: Attempt to process non-EJB3.x EJB-JAR metadata as EJB3.x for deployment ejb3-calculator-001.jar
+&lt;/ejb-jar&gt;</code></pre>
+
+<h4>Namespaces are necessary in <code>ejb-jar.xml</code> – JBMETA-208</h4>
+
+<p>If you only use <code>&lt;ejb-jar&gt;</code> (without the namespace),
+you'll get:</p>
+
+<pre
+class="brush: plain"><code>java.lang.IllegalStateException: Attempt to process non-EJB3.x EJB-JAR metadata as EJB3.x for deployment ejb3-calculator-001.jar
 
         at org.jboss.deployers.plugins.deployers.DeployersImpl.checkComplete(DeployersImpl.java:994)
         at org.jboss.deployers.plugins.deployers.DeployersImpl.checkComplete(DeployersImpl.java:940)
@@ -144,27 +157,49 @@ public class CalculatorBean
         at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:205)
         at java.util.concurrent.ThreadPoolExecutor$Worker.runTask(ThreadPoolExecutor.java:886)
         at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:908)
-        at java.lang.Thread.run(Thread.java:619)</code></pre> 
-<p>EJB 3.0&nbsp;page 497: <a href="http://java.sun.com/xml/ns/javaee">http://java.sun.com/xml/ns/javaee</a></p> 
-<blockquote> 
- <p>„All EJB deployment descriptors must indicate the ejb-jar schema by using the Java EE namespace and by indicating the version of the schema by using the version element.“</p> 
-</blockquote> 
-<h4>EJB … has defined EJB2.x home interface of … but has no remote component interface; ; Incomplete EJB2.x View [JBMETA-130]</h4> 
-<p>If you happen to see this:</p> 
-<pre class="brush: plain"><code>Caused by: org.jboss.metadata.validation.chain.ValidatorChainException: Validation has failed due to the following ValidationException(s) raised:
+        at java.lang.Thread.run(Thread.java:619)</code></pre>
+
+<p>EJB 3.0 page 497: <a
+href="http://java.sun.com/xml/ns/javaee">http://java.sun.com/xml/ns/javaee</a></p>
+
+<blockquote>
+	<p>„All EJB deployment descriptors must indicate the ejb-jar schema by using
+	the Java EE namespace and by indicating the version of the schema by using the
+	version element.“</p>
+</blockquote>
+
+<h4>EJB … has defined EJB2.x home interface of … but has no remote component
+interface; ; Incomplete EJB2.x View [JBMETA-130]</h4>
+
+<p>If you happen to see this:</p>
+
+<pre
+class="brush: plain"><code>Caused by: org.jboss.metadata.validation.chain.ValidatorChainException: Validation has failed due to the following ValidationException(s) raised:
 * EJB Calculator-003 has defined EJB2.x home interface of org.jboss.qa.eapperf.deployers.ejb3.calc.Calculator but has no remote component interface; ; Incomplete EJB2.x View [JBMETA-130]
 
         at org.jboss.metadata.validation.chain.ejb.jboss.JBossMetaDataValidatorChain.validate(JBossMetaDataValidatorChain.java:130)
         at org.jboss.metadata.process.processor.ejb.jboss.JBossMetaDataValidatorChainProcessor.process(JBossMetaDataValidatorChainProcessor.java:68)
         at org.jboss.metadata.process.chain.ejb.jboss.JBossMetaDataProcessorChain.process(JBossMetaDataProcessorChain.java:115)
         at org.jboss.ejb3.deployers.Ejb3MetadataProcessingDeployer.deploy(Ejb3MetadataProcessingDeployer.java:115)
-        at org.jboss.deployers.plugins.deployers.DeployerWrapper.deploy(DeployerWrapper.java:171)</code></pre> 
-<p>Then perhaps you have <code>&lt;home&gt;</code> and <code>&lt;remote&gt;</code> in your <code>ejb-jar.xml</code>, wishing to override a <code>@Remote</code> annotation in a session&nbsp;bean.</p> 
-<p>This comes from EJB 2.0, when the remote inteface had to be accompanied by a home interface.</p> 
-<p>In EJB 3, you need to use <code>&lt;business-remote&gt;</code> instead.</p> 
-<h4>JBoss docs has invalid examples&nbsp;– EJBTHREE-1490</h4> 
-<p>If you'll use the <a href="http://docs.jboss.com/ejb3/app-server/reference/build/reference/en/html/partial_deployment_descriptors.html">JBoss EJB 3&nbsp;docs examples</a>, you'll end up&nbsp;with:</p> 
-<pre class="brush: plain"><code>DEPLOYMENTS IN ERROR:
+        at org.jboss.deployers.plugins.deployers.DeployerWrapper.deploy(DeployerWrapper.java:171)</code></pre>
+
+<p>Then perhaps you have <code>&lt;home&gt;</code> and
+<code>&lt;remote&gt;</code> in your <code>ejb-jar.xml</code>, wishing to
+override a <code>@Remote</code> annotation in a session bean.</p>
+
+<p>This comes from EJB 2.0, when the remote inteface had to be accompanied by a
+home interface.</p>
+
+<p>In EJB 3, you need to use <code>&lt;business-remote&gt;</code> instead.</p>
+
+<h4>JBoss docs has invalid examples – EJBTHREE-1490</h4>
+
+<p>If you'll use the <a
+href="http://docs.jboss.com/ejb3/app-server/reference/build/reference/en/html/partial_deployment_descriptors.html">JBoss
+EJB 3 docs examples</a>, you'll end up with:</p>
+
+<pre
+class="brush: plain"><code>DEPLOYMENTS IN ERROR:
   Deployment "vfszip:/home/ondra/work/perf-eap/EAP-501/server/default/deploy/ejb3-calculator-001.jar/" is in error due to the following reason(s): org.jboss.metadata.validation.chain.ValidatorChainException: Validation has failed due to the following ValidationException(s) raised:
 * EJB Calculator-001 has defined EJB2.x remote component interface of org.jboss.qa.eapperf.deployers.ejb3.calc.CalculatorRemote but has no home; ; Incomplete EJB2.x View [JBMETA-130]
 
@@ -182,9 +217,13 @@ public class CalculatorBean
         at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:205)
         at java.util.concurrent.ThreadPoolExecutor$Worker.runTask(ThreadPoolExecutor.java:886)
         at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:908)
-        at java.lang.Thread.run(Thread.java:619)</code></pre> 
-<p>Remove the <code>&lt;remote&gt;</code> from <code>ejb-jar.xml</code> to fix it.</p> 
-<pre class="brush: xml"><code>&lt;enterprise-beans&gt;
+        at java.lang.Thread.run(Thread.java:619)</code></pre>
+
+<p>Remove the <code>&lt;remote&gt;</code> from <code>ejb-jar.xml</code> to fix
+it.</p>
+
+<pre
+class="brush: xml"><code>&lt;enterprise-beans&gt;
    &lt;session&gt;
       &lt;ejb-name&gt;Calculator-003&lt;/ejb-name&gt;
       &lt;!--
@@ -196,9 +235,12 @@ public class CalculatorBean
       &lt;session-type&gt;Stateless&lt;/session-type&gt;
       &lt;transaction-type&gt;Container&lt;/transaction-type&gt;
    &lt;/session&gt;
-&lt;/enterprise-beans&gt;</code></pre> 
-<hr> 
-<pre class="brush: plain"><code>Deployment "vfszip:/home/ondra/work/perf-eap/EAP-501/server/default/deploy/ejb3-calculator-008.jar/" is in error due to the following reason(s):
+&lt;/enterprise-beans&gt;</code></pre>
+
+<hr />
+
+<pre
+class="brush: plain"><code>Deployment "vfszip:/home/ondra/work/perf-eap/EAP-501/server/default/deploy/ejb3-calculator-008.jar/" is in error due to the following reason(s):
 org.jboss.xb.binding.JBossXBRuntimeException: Element {http://www.jboss.com/xml/ns/javaee}jboss is not bound as a global element.
 ...
 Caused by: org.jboss.xb.binding.JBossXBException: Failed to parse source: Element {http://www.jboss.com/xml/ns/javaee}jboss is not bound as a global element.
@@ -227,16 +269,27 @@ Caused by: org.jboss.xb.binding.JBossXBRuntimeException: Element {http://www.jbo
         at org.apache.xerces.parsers.AbstractSAXParser.parse(Unknown Source)
         at org.apache.xerces.jaxp.SAXParserImpl$JAXPSAXParser.parse(Unknown Source)
         at org.jboss.xb.binding.parser.sax.SaxJBossXBParser.parse(SaxJBossXBParser.java:199)
-        ... 37 more</code></pre> 
-<p>I&nbsp;got this when using <code>&lt;jboss version="5.1" ...&gt;</code>. The <code>version</code> stands for EJB version, not XSD or JBoss AS version. This&nbsp;works:</p> 
-<pre class="brush: xml"><code>&lt;jboss xmlns="http://www.jboss.com/xml/ns/javaee"
+        ... 37 more</code></pre>
+
+<p>I got this when using <code>&lt;jboss version="5.1" ...&gt;</code>. The
+<code>version</code> stands for EJB version, not XSD or JBoss AS version.
+This works:</p>
+
+<pre
+class="brush: xml"><code>&lt;jboss xmlns="http://www.jboss.com/xml/ns/javaee"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.jboss.com/xml/ns/javaee
                       http://www.jboss.org/j2ee/schema/jboss_5_0.xsd"
-       version="3.0"&gt;</code></pre> 
-<hr> 
-<p>This happens when you forget to state the name of the bean you're describing&nbsp;– in the <code>&lt;ejb-name&gt;...&lt;/ejb-name&gt;</code> element.</p> 
-<pre class="brush: plain"><code>Caused by: java.lang.RuntimeException: QName {http://www.jboss.com/xml/ns/javaee}session error adding org.jboss.metadata.ejb.jboss.JBoss50SessionBeanMetaData@1586a5 to collection org.jboss.metadata.ejb.jboss.JBossEnterpriseBeansMetaData@13ac6fd
+       version="3.0"&gt;</code></pre>
+
+<hr />
+
+<p>This happens when you forget to state the name of the bean you're
+describing – in the <code>&lt;ejb-name&gt;...&lt;/ejb-name&gt;</code>
+element.</p>
+
+<pre
+class="brush: plain"><code>Caused by: java.lang.RuntimeException: QName {http://www.jboss.com/xml/ns/javaee}session error adding org.jboss.metadata.ejb.jboss.JBoss50SessionBeanMetaData@1586a5 to collection org.jboss.metadata.ejb.jboss.JBossEnterpriseBeansMetaData@13ac6fd
         at org.jboss.xb.builder.runtime.CollectionPropertyHandler.handle(CollectionPropertyHandler.java:166)
         at org.jboss.xb.builder.runtime.AbstractPropertyHandler.doHandle(AbstractPropertyHandler.java:98)
         at org.jboss.xb.builder.runtime.BeanHandler.setParent(BeanHandler.java:197)
@@ -260,14 +313,18 @@ Caused by: java.lang.IllegalStateException: Null name for bean: org.jboss.metada
         at org.jboss.metadata.ejb.spec.EnterpriseBeansMap.add(EnterpriseBeansMap.java:59)
         at org.jboss.metadata.ejb.spec.EnterpriseBeansMap.add(EnterpriseBeansMap.java:40)
         at org.jboss.xb.builder.runtime.CollectionPropertyHandler.handle(CollectionPropertyHandler.java:160)
-        ... 54 more</code></pre> 
-<p>Correct:</p> 
-<pre class="brush: xml"><code>&lt;enterprise-beans&gt;
+        ... 54 more</code></pre>
+
+<p>Correct:</p>
+
+<pre
+class="brush: xml"><code>&lt;enterprise-beans&gt;
   &lt;session&gt;
     &lt;ejb-name&gt;Calculator-003&lt;/ejb-name&gt;
     &lt;jndi-name&gt;ejb/Calculator-003&lt;/jndi-name&gt;
   &lt;/session&gt;
-&lt;/enterprise-beans&gt;</code></pre></div>
+&lt;/enterprise-beans&gt;</code></pre>
+</div>
 
 	<hr />
 

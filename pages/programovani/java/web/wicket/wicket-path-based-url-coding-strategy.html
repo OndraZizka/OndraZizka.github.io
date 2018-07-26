@@ -77,31 +77,52 @@
 
 	<div class="date"><em>2012-12-13</em></div>
 
-	<div class="doc-body"><h3>Wicket and nice URLs&nbsp;– URL coding strategies</h3> 
-<p>Intro: <a href="http://www.javalobby.org/java/forums/t68753.html">http://www.javalobby.org/…/t68753.html</a></p> 
-<p><a href="https://cwiki.apache.org/WICKET/url-coding-strategies.html">Not much nice wiki page</a>&nbsp;– almost useless, just aggregated JavaDoc's</p> 
-<h4>URL coding strategies</h4> 
-<h5>BookmarkablePa­geRequestTarge­tUrlCodingStra­tegy example</h5> 
-<pre class="brush: plain"><code>http://localhost/app/mountPath/param1/value1/param2/value2
+	<div class="doc-body"><h3>Wicket and nice URLs – URL coding strategies</h3>
+
+<p>Intro: <a
+href="http://www.javalobby.org/java/forums/t68753.html">http://www.javalobby.org/…/t68753.html</a></p>
+
+<p><a href="https://cwiki.apache.org/WICKET/url-coding-strategies.html">Not much
+nice wiki page</a> – almost useless, just aggregated JavaDoc's</p>
+
+<h4>URL coding strategies</h4>
+
+<h5>BookmarkablePa­geRequestTarge­tUrlCodingStra­tegy example</h5>
+
+<pre
+class="brush: plain"><code>http://localhost/app/mountPath/param1/value1/param2/value2
 
 // [in AlohaApplication.init()]
 mountBookmarkablePage("/mountPath", MyPage.class);
 
 pageParameters.getString("param1"); // "value1"
-pageParameters.getString("param2"); // "value2"</code></pre> 
-<h5>IndexedParamUr­lCodingStrate­gy example</h5> 
-<pre class="brush: plain"><code>http://localhost/app/mountPath/value1/value2
+pageParameters.getString("param2"); // "value2"</code></pre>
+
+<h5>IndexedParamUr­lCodingStrate­gy example</h5>
+
+<pre
+class="brush: plain"><code>http://localhost/app/mountPath/value1/value2
 
 pageParameters.getString("0"); // "value1"
-pageParameters.getString("1"); // "value2"</code></pre> 
-<h5>HybridUrlCodin­gStrategy example</h5> 
-<p>„The url with HybridUrlCodin­gStrategy looks like <code>/mount/path/param1/value1.3.</code> or <code>/mount/path/param1/value1.3.2</code> where <code>3</code> is page ID and <code>2</code> is version number.“ I&nbsp;haven't tried this&nbsp;yet.</p> 
-<pre class="brush: plain"><code>http://localhost/app/mountPath/param1/value1.3.2
+pageParameters.getString("1"); // "value2"</code></pre>
+
+<h5>HybridUrlCodin­gStrategy example</h5>
+
+<p>„The url with HybridUrlCodin­gStrategy looks like
+<code>/mount/path/param1/value1.3.</code> or
+<code>/mount/path/param1/value1.3.2</code> where <code>3</code> is page ID and
+<code>2</code> is version number.“ I haven't tried this yet.</p>
+
+<pre
+class="brush: plain"><code>http://localhost/app/mountPath/param1/value1.3.2
 
 pageParameters.getString("param1"); // "value1"
-// what else?</code></pre> 
-<h5>PackageReques­tTargetUrlCodin­gStrategy example</h5> 
-<pre class="brush: plain"><code> + cz.dynawest.wicketdemo
+// what else?</code></pre>
+
+<h5>PackageReques­tTargetUrlCodin­gStrategy example</h5>
+
+<pre
+class="brush: plain"><code> + cz.dynawest.wicketdemo
  |--HomePage.class
  |--HomePage.html
  |--Contacts.class
@@ -116,10 +137,15 @@ http://localhost/app/mountPath/HomePage/param1/value1/param2/value2
 http://localhost/app/mountPath/Contacts/param1/value1/param2/value2
 
 pageParameters.getString("param1"); // "value1"
-pageParameters.getString("param2"); // "value2"</code></pre> 
-<h5>QueryStringUr­lCodingStrate­gy example</h5> 
-<p>The PHP way. <a href="http://wicket.apache.org/docs/1.4/org/apache/wicket/request/target/coding/QueryStringUrlCodingStrategy.html">JavaDoc</a></p> 
-<pre class="brush: plain"><code>http://localhost/app/mountPath?param1=value1&amp;param2=value2
+pageParameters.getString("param2"); // "value2"</code></pre>
+
+<h5>QueryStringUr­lCodingStrate­gy example</h5>
+
+<p>The PHP way. <a
+href="http://wicket.apache.org/docs/1.4/org/apache/wicket/request/target/coding/QueryStringUrlCodingStrategy.html">JavaDoc</a></p>
+
+<pre
+class="brush: plain"><code>http://localhost/app/mountPath?param1=value1&amp;param2=value2
 
 // [in AlohaApplication.init()]
 private &lt;C extends Page&gt; void mountBookmarkablePageWithUrlCoding(String path, Class&lt;C&gt; pageClass)
@@ -129,11 +155,20 @@ private &lt;C extends Page&gt; void mountBookmarkablePageWithUrlCoding(String pa
 
 
 pageParameters.getString("param1"); // "value1"
-pageParameters.getString("param2"); // "value2"</code></pre> 
-<h5>MixedParamUrlCo­dingStrategy example (<a href="http://wicket.apache.org/docs/1.4/org/apache/wicket/request/target/coding/MixedParamUrlCodingStrategy.html">JavaDoc</a>)</h5> 
-<p>Url coding strategy for bookmarkable pages that encodes a set of given parameters in the url's&nbsp;path and the rest in the query-string.</p> 
-<p>Strategy looks for path-parameters whose name is read from an array of names e.g. [„param0“, „param1“]. Found parameters will be appended to the url in the&nbsp;form</p> 
-<pre class="brush: plain"><code>http://localhost/app/mountPath/paramvalue0/valueA/valueB?param1=value1&amp;param2=value2
+pageParameters.getString("param2"); // "value2"</code></pre>
+
+<h5>MixedParamUrlCo­dingStrategy example (<a
+href="http://wicket.apache.org/docs/1.4/org/apache/wicket/request/target/coding/MixedParamUrlCodingStrategy.html">JavaDoc</a>)</h5>
+
+<p>Url coding strategy for bookmarkable pages that encodes a set of given
+parameters in the url's path and the rest in the query-string.</p>
+
+<p>Strategy looks for path-parameters whose name is read from an array of names
+e.g. [„param0“, „param1“]. Found parameters will be appended to the url
+in the form</p>
+
+<pre
+class="brush: plain"><code>http://localhost/app/mountPath/paramvalue0/valueA/valueB?param1=value1&amp;param2=value2
 
 // [in AlohaApplication.init()]
 
@@ -142,14 +177,22 @@ String[]{"paramA","paramB"}
 pageParameters.getString("paramA"); // "valueA"
 pageParameters.getString("paramB"); // "valueB"
 pageParameters.getString("param1"); // "value1"
-pageParameters.getString("param2"); // "value2"</code></pre> 
-<p>JavaDoc errata:<br> „When both "b“ and „c“ are missing on encode, the<strong>y</strong> will not get a value during decode."</p> 
-<h5>CryptedUrlWeb­RequestCodingStra­tegy example</h5> 
-<p>TBD</p> 
-<pre class="brush: plain"><code>http://localhost/app/mountPath/value1/value2
+pageParameters.getString("param2"); // "value2"</code></pre>
+
+<p>JavaDoc errata:<br />
+„When both "b“ and „c“ are missing on encode, the<strong>y</strong> will
+not get a value during decode."</p>
+
+<h5>CryptedUrlWeb­RequestCodingStra­tegy example</h5>
+
+<p>TBD</p>
+
+<pre
+class="brush: plain"><code>http://localhost/app/mountPath/value1/value2
 
 pageParameters.getString("0"); // "value1"
-pageParameters.getString("1"); // "value2"</code></pre></div>
+pageParameters.getString("1"); // "value2"</code></pre>
+</div>
 
 	<hr />
 

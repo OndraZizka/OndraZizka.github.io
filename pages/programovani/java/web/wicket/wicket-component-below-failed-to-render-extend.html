@@ -79,14 +79,21 @@ using wicket:extend - Ondřej Žižka</h1>
 
 	<div class="date"><em>2012-12-31</em></div>
 
-	<div class="doc-body"><h3>Wicket: The component(s) below failed to render when using&nbsp;<code>wicket:extend</code></h3> 
-<p>The problem in my case was that I&nbsp;forgot to call super constructor from a subpage subclass.</p> 
-<pre class="brush: java"><code>public ShowPathPage(PageParameters pageParams) {
+	<div class="doc-body"><h3>Wicket: The component(s) below failed to render when
+using <code>wicket:extend</code></h3>
+
+<p>The problem in my case was that I forgot to call super constructor from a
+subpage subclass.</p>
+
+<pre
+class="brush: java"><code>public ShowPathPage(PageParameters pageParams) {
 
   super(pageParams);  // Don't forget this.
 
-  add( new NavigationPanel("navigation") );</code></pre> 
-<pre class="brush: plain"><code>WicketMessage: The component(s) below failed to render. A common problem is that you have added a component in code but forgot to reference it in the markup (thus the component will never be rendered).
+  add( new NavigationPanel("navigation") );</code></pre>
+
+<pre
+class="brush: plain"><code>WicketMessage: The component(s) below failed to render. A common problem is that you have added a component in code but forgot to reference it in the markup (thus the component will never be rendered).
 
 1. [MarkupContainer [Component id = header]]
 2. [Component id = datum]
@@ -136,7 +143,8 @@ at org.mortbay.jetty.HttpParser.parseNext(HttpParser.java:549)
 at org.mortbay.jetty.HttpParser.parseAvailable(HttpParser.java:212)
 at org.mortbay.jetty.HttpConnection.handle(HttpConnection.java:404)
 at org.mortbay.io.nio.SelectChannelEndPoint.run(SelectChannelEndPoint.java:410)
-at org.mortbay.thread.QueuedThreadPool$PoolThread.run(QueuedThreadPool.java:582)</code></pre></div>
+at org.mortbay.thread.QueuedThreadPool$PoolThread.run(QueuedThreadPool.java:582)</code></pre>
+</div>
 
 	<hr />
 

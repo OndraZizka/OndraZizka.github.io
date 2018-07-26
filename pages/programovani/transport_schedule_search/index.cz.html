@@ -77,17 +77,22 @@
 
 	<div class="date"><em>2012-12-16</em></div>
 
-	<div class="doc-body"><h3>Vyhledávání spojů v&nbsp;jízdních řádech</h3> 
-<h4>Persistent tables</h4> 
-<pre class="brush: sql"><code>CREATE TABLE `mhd_jizdy` (
+	<div class="doc-body"><h3>Vyhledávání spojů v jízdních řádech</h3>
+
+<h4>Persistent tables</h4>
+
+<pre
+class="brush: sql"><code>CREATE TABLE `mhd_jizdy` (
   `id` smallint(5) unsigned NOT NULL default '0',
   `nazev` varchar(140) NOT NULL,
   `id_trasa` smallint(5) unsigned NOT NULL default '0',
   PRIMARY KEY  (`id`),
   KEY `id_trasa` (`id_trasa`),
   CONSTRAINT `fk_jizdy_id_trasa` FOREIGN KEY (`id_trasa`) REFERENCES `mhd_trasy` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB ROW_FORMAT=FIXED COMMENT='Jizdy - seskupení jednotlivých zastávek na dané trase pr';</code></pre> 
-<pre class="brush: sql"><code>CREATE TABLE `mhd_jizdy_stani` (
+) ENGINE=InnoDB ROW_FORMAT=FIXED COMMENT='Jizdy - seskupení jednotlivých zastávek na dané trase pr';</code></pre>
+
+<pre
+class="brush: sql"><code>CREATE TABLE `mhd_jizdy_stani` (
   `id_jizda` smallint(5) unsigned NOT NULL,
   `poradi` smallint(5) NOT NULL,
   `cas1` time default NULL,
@@ -97,15 +102,19 @@
   KEY `id_trasa_uzel` (`id_trasa_uzel`),
   CONSTRAINT `fk_jizdy_stani_id_jizda` FOREIGN KEY (`id_jizda`) REFERENCES `mhd_jizdy` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `fk_jizdy_stani_id_uzel` FOREIGN KEY (`id_trasa_uzel`) REFERENCES `mhd_trasy_uzly` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=cp1250 ROW_FORMAT=FIXED COMMENT='Jednotlivé zastávky jízd';</code></pre> 
-<pre class="brush: sql"><code>CREATE TABLE `mhd_linky` (
+) ENGINE=InnoDB DEFAULT CHARSET=cp1250 ROW_FORMAT=FIXED COMMENT='Jednotlivé zastávky jízd';</code></pre>
+
+<pre
+class="brush: sql"><code>CREATE TABLE `mhd_linky` (
   `id` smallint(5) unsigned NOT NULL auto_increment,
   `nazev` varchar(60) NOT NULL,
   `cislo` tinyint(3) unsigned default NULL,
   PRIMARY KEY  (`id`),
   KEY `cislo` (`cislo`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=cp1250;</code></pre> 
-<pre class="brush: sql"><code>CREATE TABLE `mhd_trasy` (
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=cp1250;</code></pre>
+
+<pre
+class="brush: sql"><code>CREATE TABLE `mhd_trasy` (
   `id` smallint(5) unsigned NOT NULL auto_increment,
   `id_linka` smallint(5) unsigned default NULL,
   `popis` char(96) NOT NULL default '',
@@ -114,8 +123,10 @@
   PRIMARY KEY  (`id`),
   KEY `id_linka` (`id_linka`),
   CONSTRAINT `fk_trasy_id_linka` FOREIGN KEY (`id_linka`) REFERENCES `mhd_linky` (`id`) ON DELETE SET NULL ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=158 DEFAULT CHARSET=cp1250 COMMENT='Jednotlive verze linek';</code></pre> 
-<pre class="brush: sql"><code>CREATE TABLE `mhd_trasy_uzly` (
+) ENGINE=InnoDB AUTO_INCREMENT=158 DEFAULT CHARSET=cp1250 COMMENT='Jednotlive verze linek';</code></pre>
+
+<pre
+class="brush: sql"><code>CREATE TABLE `mhd_trasy_uzly` (
   `id` int(10) unsigned NOT NULL auto_increment,
   `id_trasa` smallint(5) unsigned NOT NULL default '0',
   `poradi` smallint(5) NOT NULL default '0',
@@ -125,8 +136,10 @@
   KEY `id_zast` (`id_zast`),
   CONSTRAINT `fk_trasy_uzly_id_trasa` FOREIGN KEY (`id_trasa`) REFERENCES `mhd_trasy` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `fk_trasy_uzly_id_zast` FOREIGN KEY (`id_zast`) REFERENCES `mhd_zast` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=12555 DEFAULT CHARSET=cp1250 ROW_FORMAT=FIXED COMMENT='Trasy linek (pro kazdou verzi linky a pro kazdy smer)';</code></pre> 
-<pre class="brush: sql"><code>CREATE TABLE `mhd_zast` (
+) ENGINE=InnoDB AUTO_INCREMENT=12555 DEFAULT CHARSET=cp1250 ROW_FORMAT=FIXED COMMENT='Trasy linek (pro kazdou verzi linky a pro kazdy smer)';</code></pre>
+
+<pre
+class="brush: sql"><code>CREATE TABLE `mhd_zast` (
   `id` smallint(5) unsigned NOT NULL auto_increment,
   `nazev` varchar(60) NOT NULL default '',
   `nazev_plny` varchar(60) NOT NULL,
@@ -144,13 +157,21 @@
   PRIMARY KEY  (`id`),
   KEY `id_skup` (`id_skup`),
   CONSTRAINT `fk_id_skup` FOREIGN KEY (`id_skup`) REFERENCES `mhd_zast_skup` (`id`) ON DELETE SET NULL ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=540 DEFAULT CHARSET=cp1250 ROW_FORMAT=DYNAMIC COMMENT='Zastavky';</code></pre> 
-<h4>Procedures</h4> 
-<h5><code>mhd_VyhledejSpoje</code>&nbsp;– searching the connection</h5> 
-<h5>Usage:</h5> 
-<pre class="brush: sql"><code>CALL mhd_VyhledejSpoje(115, 465, NOW(), 3);</code></pre> 
-<h5>Result:</h5> 
-<pre class="brush: sql"><code>CREATE DEFINER=`root`@`localhost` PROCEDURE `mhd_VyhledejSpoje`(
+) ENGINE=InnoDB AUTO_INCREMENT=540 DEFAULT CHARSET=cp1250 ROW_FORMAT=DYNAMIC COMMENT='Zastavky';</code></pre>
+
+<h4>Procedures</h4>
+
+<h5><code>mhd_VyhledejSpoje</code> – searching the connection</h5>
+
+<h5>Usage:</h5>
+
+<pre
+class="brush: sql"><code>CALL mhd_VyhledejSpoje(115, 465, NOW(), 3);</code></pre>
+
+<h5>Result:</h5>
+
+<pre
+class="brush: sql"><code>CREATE DEFINER=`root`@`localhost` PROCEDURE `mhd_VyhledejSpoje`(
   idZastFrom INT UNSIGNED,
   idZastTo INT UNSIGNED,
   whn DATETIME,
@@ -166,7 +187,8 @@ BEGIN
 -- snipped --
 
 
-END $$</code></pre></div>
+END $$</code></pre>
+</div>
 
 	<hr />
 

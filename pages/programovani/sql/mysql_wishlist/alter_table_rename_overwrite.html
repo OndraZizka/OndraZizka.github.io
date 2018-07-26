@@ -77,21 +77,45 @@
 
 	<div class="date"><em>2012-12-16</em></div>
 
-	<div class="doc-body"><h3>ALTER TABLE … RENAME [OVERWRITE] [TO] to overwrite existing&nbsp;table</h3> 
-<p><strong>This is a MySQL feature request submitted as <a href="http://bugs.mysql.com/bug.php?id=36271">bug report #36271</a>.</strong></p> 
-<p>Since MySQL does not support passing result sets in stored procedures, common practice is to use TEMPORARY TABES when working with larger data sets. (From what did I&nbsp;see, this is the most frequently discussed topic at <a href="http://forums.mysql.com/list.php?98">Stored Procedures forum</a>.</p> 
-<p>To create generally usable API, one needs to define the names of temp tables with input and output data. Thus, passing temp tables between different procedures needs to rename them. To make it safely, one has to try the drop before altering:</p> 
-<pre class="brush: sql"><code>CALL PrepareSomeData(...);  -- This creates TEMP TABLE prepared_data
+	<div class="doc-body"><h3>ALTER TABLE … RENAME [OVERWRITE] [TO] to overwrite existing table</h3>
+
+<p><strong>This is a MySQL feature request submitted as <a
+href="http://bugs.mysql.com/bug.php?id=36271">bug report
+#36271</a>.</strong></p>
+
+<p>Since MySQL does not support passing result sets in stored procedures, common
+practice is to use TEMPORARY TABES when working with larger data sets. (From
+what did I see, this is the most frequently discussed topic at <a
+href="http://forums.mysql.com/list.php?98">Stored Procedures forum</a>.</p>
+
+<p>To create generally usable API, one needs to define the names of temp tables
+with input and output data. Thus, passing temp tables between different
+procedures needs to rename them. To make it safely, one has to try the drop
+before altering:</p>
+
+<pre
+class="brush: sql"><code>CALL PrepareSomeData(...);  -- This creates TEMP TABLE prepared_data
 DROP TEMPORARY TABLE IF EXISTS input_data;
 ALTER TABLE prepared_data RENAME TO input_data;
-CALL ProcessData(...);      -- This procedure looks for the input_data table.</code></pre> 
-<p>And this has to be done many times.</p> 
-<p>My suggestion is to introduce the <code>OVERWRITE</code> option to the <code>ALTER TABLE</code> statement:</p> 
-<pre class="brush: sql"><code>CALL PrepareSomeData(...);  -- This creates TEMP TABLE prepared_data
+CALL ProcessData(...);      -- This procedure looks for the input_data table.</code></pre>
+
+<p>And this has to be done many times.</p>
+
+<p>My suggestion is to introduce the <code>OVERWRITE</code> option to the
+<code>ALTER TABLE</code> statement:</p>
+
+<pre
+class="brush: sql"><code>CALL PrepareSomeData(...);  -- This creates TEMP TABLE prepared_data
 ALTER TABLE prepared_data RENAME OVERWRITE TO input_data;
-CALL ProcessData(...);      -- This procedure looks for the input_data table.</code></pre> 
-<p>The alter with OVERWRITE would check whether a table with such name exists, and if so, it would drop it&nbsp;first.</p> 
-<p>(Of course, better solution of the problem itself would be a possibility to pass result sets in variables, but as I&nbsp;got to know, that is planned in far future.)</p></div>
+CALL ProcessData(...);      -- This procedure looks for the input_data table.</code></pre>
+
+<p>The alter with OVERWRITE would check whether a table with such name exists,
+and if so, it would drop it first.</p>
+
+<p>(Of course, better solution of the problem itself would be a possibility to
+pass result sets in variables, but as I got to know, that is planned in far
+future.)</p>
+</div>
 
 	<hr />
 

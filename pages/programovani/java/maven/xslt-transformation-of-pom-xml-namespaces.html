@@ -77,23 +77,36 @@
 
 	<div class="date"><em>2012-12-31</em></div>
 
-	<div class="doc-body"><h3>Maven: XSLT transformation of pom.xml</h3> 
-<pre class="brush: xml"><code>&lt;project xmlns="http://maven.apache.org/POM/4.0.0"
+	<div class="doc-body"><h3>Maven: XSLT transformation of pom.xml</h3>
+
+<pre
+class="brush: xml"><code>&lt;project xmlns="http://maven.apache.org/POM/4.0.0"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd"&gt;
-...</code></pre> 
-<p>This won't work:</p> 
-<pre class="brush: xml"><code>&lt;xsl:template match="/project/version"&gt;...</code></pre> 
-<p><code>pom.xml</code> is namespaced, so your XSLT stylesheet needs some&nbsp;tweak.</p> 
-<p>You need to declare a namespace, effectively assigning it a prefix.</p> 
-<pre class="brush: xml"><code>&lt;xsl:stylesheet version="1.0"
+...</code></pre>
+
+<p>This won't work:</p>
+
+<pre
+class="brush: xml"><code>&lt;xsl:template match="/project/version"&gt;...</code></pre>
+
+<p><code>pom.xml</code> is namespaced, so your XSLT stylesheet needs
+some tweak.</p>
+
+<p>You need to declare a namespace, effectively assigning it a prefix.</p>
+
+<pre
+class="brush: xml"><code>&lt;xsl:stylesheet version="1.0"
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
   xmlns:pom="http://maven.apache.org/POM/4.0.0"
 &gt;
     &lt;xsl:template match="/pom:project/pom:version"&gt;
         &lt;xsl:value-of select="string()"/&gt;
-    &lt;/xsl:template&gt;</code></pre> 
-<p>Here you define the prefix for the POM's&nbsp;default namespace. The same applies for other namespaces, if others are ever&nbsp;used.</p></div>
+    &lt;/xsl:template&gt;</code></pre>
+
+<p>Here you define the prefix for the POM's default namespace. The same applies
+for other namespaces, if others are ever used.</p>
+</div>
 
 	<hr />
 

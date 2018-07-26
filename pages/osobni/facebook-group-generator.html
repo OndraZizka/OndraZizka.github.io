@@ -77,26 +77,53 @@
 
 	<div class="date"><em>2012-12-13</em></div>
 
-	<div class="doc-body"><h3>Facebook Group Generator</h3> 
-<div style="display:none"> 
- <div>
-  <script type="text/javascript"></script>
- </div> 
- <p>function repeat(num, str){<br> ret = "";<br> for( i = 0; i &lt; num; i++ )<br> ret += str;<br> return ret;&nbsp;}</p> 
- <p>function rand(from, to){<br> return Math.random() % (to&nbsp;– from) + from;&nbsp;}</p> 
- <p>function chooseRandom( values ){<br> return values[ rand( 0, values.length ) ];&nbsp;}</p> 
- <p>var generators = [<br> function createHateGroup(){ return „Nesnáším "+google.findRan­domNoun()+ repeat(rand(), "!“)); },<br> function createWinGroup(){ return rand(5,20) + " členů této skupiny dostane každý „+chooseRandom("den“,„t­ýden“,„měsíc“)+" „+chooseRandom("iP­hone“,„20.000&nbsp;Kč“,„au­to“,„hodinky“,„pa­roubka“,„rako­vinu“); },&nbsp;];</p> 
- <p>function generateGroup(){<br> return generators[ran­d(0,generator­s.length-1)]();&nbsp;}</p> 
- <div></div> 
-</div> 
-<p>Facebook group generator:</p> 
-<pre class="js [.brush]"><code>facebook.createGroup("Nesnáším "+google.findRandomNoun()+ repeat(rand(), "!"));</code></pre> 
-<p>Facebook group generator:</p> 
-<pre class="js [.brush]"><code>facebook.createGroup(
+	<div class="doc-body"><h3>Facebook Group Generator</h3>
+
+<div style="display:none">
+	<div><script type="text/javascript"></script></div>
+
+	<p>function repeat(num, str){<br />
+	ret = "";<br />
+	for( i = 0; i &lt; num; i++ )<br />
+	ret += str;<br />
+	return ret; }</p>
+
+	<p>function rand(from, to){<br />
+	return Math.random() % (to – from) + from; }</p>
+
+	<p>function chooseRandom( values ){<br />
+	return values[ rand( 0, values.length ) ]; }</p>
+
+	<p>var generators = [<br />
+	function createHateGroup(){ return „Nesnáším "+google.findRan­domNoun()+
+	repeat(rand(), "!“)); },<br />
+	function createWinGroup(){ return rand(5,20) + " členů této skupiny dostane
+	každý „+chooseRandom("den“,„t­ýden“,„měsíc“)+"
+	„+chooseRandom("iP­hone“,„20.000 Kč“,„au­to“,„hodinky“,„pa­roubka“,„rako­vinu“);
+	}, ];</p>
+
+	<p>function generateGroup(){<br />
+	return generators[ran­d(0,generator­s.length-1)](); }</p>
+
+	<div></div>
+</div>
+
+<p>Facebook group generator:</p>
+
+<pre
+class="js [.brush]"><code>facebook.createGroup("Nesnáším "+google.findRandomNoun()+ repeat(rand(), "!"));</code></pre>
+
+<p>Facebook group generator:</p>
+
+<pre
+class="js [.brush]"><code>facebook.createGroup(
   rand(5,20) + " členů této skupiny dostane každý "+chooseRandom("den","týden","měsíc")+" "+chooseRandom("iPhone","20.000 Kč","auto","hodinky","paroubka","rakovinu","přes držku")
-);</code></pre> 
-<p>Facebook group generator:</p> 
-<pre class="js [.brush]"><code>facebook.createGroup(
+);</code></pre>
+
+<p>Facebook group generator:</p>
+
+<pre
+class="js [.brush]"><code>facebook.createGroup(
   "Najde se na facebooků "+rand(5,50)+"0 000 "
   + chooseRandom("Čechů","Moraváků","skejtborďáků","neonacistů","emařů","skupin","feťáků","romů","lidí","lidišek")
   + " co "
@@ -104,7 +131,8 @@
   + " "
   + google.findRandomNounOrVerbInfinitive()
   + "?")
-);</code></pre></div>
+);</code></pre>
+</div>
 
 	<hr />
 

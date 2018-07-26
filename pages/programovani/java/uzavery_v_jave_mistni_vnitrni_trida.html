@@ -77,11 +77,21 @@
 
 	<div class="date"><em>2012-12-16</em></div>
 
-	<div class="doc-body"><h3>Uzávěry v&nbsp;jazyce Java&nbsp;– přes místní vnitřní třídu</h3> 
-<p>Uzávěry jsou fajn věc&nbsp;– kolikrát programátorovi ušetří psaní metody nebo třídy, kterou by použil jen na jednom místě. Využívá se jich zejména při tvorbě <acronym title="grafických uživatelských rozhraní">GUI</acronym>.</p> 
-<p>Mým nejoblíbenějším jazykem (když pomineme vlastnosti některých implementací) je JavaScript, mimojiné pro jeho elegantní řešení uzávěrů.</p> 
-<p>Jaké máme možnosti uzávěrů v&nbsp;Javě? Já jsem našel jen&nbsp;tento:</p> 
-<pre class="brush: java"><code>/** Creates new form HlavniOkno */
+	<div class="doc-body"><h3>Uzávěry v jazyce Java – přes místní vnitřní třídu</h3>
+
+<p>Uzávěry jsou fajn věc – kolikrát programátorovi ušetří psaní
+metody nebo třídy, kterou by použil jen na jednom místě. Využívá se jich
+zejména při tvorbě <acronym
+title="grafických uživatelských rozhraní">GUI</acronym>.</p>
+
+<p>Mým nejoblíbenějším jazykem (když pomineme vlastnosti některých
+implementací) je JavaScript, mimojiné pro jeho elegantní řešení
+uzávěrů.</p>
+
+<p>Jaké máme možnosti uzávěrů v Javě? Já jsem našel jen tento:</p>
+
+<pre
+class="brush: java"><code>/** Creates new form HlavniOkno */
 public HlavniOkno() {
 
   initComponents();
@@ -96,9 +106,15 @@ public HlavniOkno() {
   }
   tabsPanel.getImportPanel().jbtnImportovat.addActionListener( new ImportButtonListener( this ) );
 
-}</code></pre> 
-<p>Jde o&nbsp;to, že při použití anonymní vnitřní třídy nemůžete použít pojmenovaný konstruktor, nelze tedy objektu předat nějakou hodnotu (což je podle mě škoda, ale asi tomu něco brání). Jinak by se dalo provést&nbsp;toto:</p> 
-<pre class="brush: java"><code>/** Creates new form HlavniOkno */
+}</code></pre>
+
+<p>Jde o to, že při použití anonymní vnitřní třídy nemůžete použít
+pojmenovaný konstruktor, nelze tedy objektu předat nějakou hodnotu (což je
+podle mě škoda, ale asi tomu něco brání). Jinak by se dalo
+provést toto:</p>
+
+<pre
+class="brush: java"><code>/** Creates new form HlavniOkno */
 public HlavniOkno() {
 
   initComponents();
@@ -113,9 +129,14 @@ public HlavniOkno() {
     }
   } );
 
-}</code></pre> 
-<p>Nelze použít ani <code>this</code>, protože u&nbsp;anonymních vnitřních tříd <code>this</code> ukazuje pouze na onu vnitřní třídu. Jinak by se dalo použít&nbsp;toto:</p> 
-<pre class="brush: java"><code>/** Creates new form HlavniOkno */
+}</code></pre>
+
+<p>Nelze použít ani <code>this</code>, protože u anonymních vnitřních
+tříd <code>this</code> ukazuje pouze na onu vnitřní třídu. Jinak by se
+dalo použít toto:</p>
+
+<pre
+class="brush: java"><code>/** Creates new form HlavniOkno */
 public HlavniOkno() {
 
   initComponents();
@@ -126,9 +147,11 @@ public HlavniOkno() {
       this.notifyImportButtonPressed();
     }
   } );
-}</code></pre> 
-<p>Neznáte nějaké jednodušší řešení? Kdyžtak napište na <a href="mailto:ondra@dynawest.cz">ondra@
-  <!-- -->dynawest.cz</a>,&nbsp;díky.</p></div>
+}</code></pre>
+
+<p>Neznáte nějaké jednodušší řešení? Kdyžtak napište na <a
+href="mailto:ondra&#64;dynawest.cz">ondra&#64;<!-- -->dynawest.cz</a>, díky.</p>
+</div>
 
 	<hr />
 

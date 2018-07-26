@@ -77,63 +77,147 @@
 
 	<div class="date"><em>2012-12-16</em></div>
 
-	<div class="doc-body"><h3>Úplné začátky se Spring framework</h3> 
-<h4>K&nbsp;čemu je Spring?</h4> 
-<p>Spring má více částí, takže se dá využívat lecjak.</p> 
-<ul> 
- <li><strong>Spring Web MVC</strong>&nbsp;– framework pro návrh webových aplikací ve stylu <em>Model, View and Controller</em></li> 
- <li><strong>Spring JDBC</strong>&nbsp;– zjednodušení práce s&nbsp;JDBC, něco jako&nbsp;<a href="http://ibatis.apache.org/">iBatis</a></li> 
- <li><strong>Spring AOP</strong>&nbsp;– viz článek <a href="navod-spring-aop-zacatky.texy">Začátky se Spring AOP&nbsp;–&nbsp;návod</a></li> 
- <li><strong>Spring Inversion of Control</strong> (dependency injection, BeanFactory, ApplicationCon­text)&nbsp;– knihovna pro vnější konfiguraci</li> 
- <li>a <a href="http://www.springframework.org/about">další</a>…</li> 
-</ul> 
-<p>Mě v&nbsp;tomto článku bude zajímat poslední položka&nbsp;– <em>IoC</em>. Je to jen zlomek toho, co Spring dokáže, ale je to také základ skoro všeho, co se ve Springu dělá. (Proto tedy název článku „Úplné začátky…“ a nikoliv „Spring&nbsp;IoC“.)</p> 
-<h4>Spring Inversion of Control (IoC)</h4> 
-<p>Inversion of Control (česky bych řekl „vyvržení střev aplikace“, ale jinak pochopitelně „převrácené řízení“) je technika, pomocí které především oddělíte konfiguraci od kódu a také oddělíte jednotlivé části aplikace navzájem.</p> 
-<p>Zprvu se vám může zdát, že stačí normální konfigurace přes <code>Properties</code> a dělat to níže popisovaným způsobem je složitější. A&nbsp;máte pravdu! Ale vtip je v&nbsp;tom, že pokud děláte J2EE aplikaci, postupem času začne váš projekt používat <acronym title="Například já teď pracuju na celkem jednoduchém projektu, ale už teď používám Hibernate přes JPA, iBatis, FreeMarker a&nbsp;další.">desítky</acronym> modulů, z&nbsp;nichž každý má vlastní způsob konfigurace.</p> 
-<p>Se Spring IoC ale dnes už spolupracuje skoro každý významný projekt, a díky tomu je všechny můžete nakonfigurovat jednotným způsobem, což je u&nbsp;větších projektů neocenitelné. Spring navíc pro nejběžnější úlohy nabízí velmi přímočará řešení s&nbsp;defaultními hodnotami, proto přidat nový modul často znamená jen přidat pár řádků do XML konfigurace Springu.</p> 
-<h4>Jak na to</h4> 
-<p>Hlavní třídou k&nbsp;tomuto je buď <code>ApplicationContext</code>, nebo <em>Bean Factory</em> neboli <em>továrna na „bíny“</em>. <code>BeanFactory</code> je jednodušší (osekaná) verze <code>ApplicationContext</code>u, proto začneme tou. <code>ApplicationContext</code> využijete u&nbsp;pokročilejších technik, jako je správa transakcí nebo&nbsp;AOP.</p> 
-<div>
- <img src="http://www.zizka.ch/images/spring-beans-factory.png" alt="">
-</div> 
-<p><em>Obrázek je z&nbsp;<a href="http://static.springframework.org/spring/docs/2.5.x/reference/beans.html#beans-basics">dokumentace Springu</a>, kde najdete lepší tutoriál než je tento, ale v&nbsp;angličtině.</em></p> 
-<p>Zatímco běžně byste třeba pro databázové spojení měli třídu <code>DatabaseManager</code>, z&nbsp;ní udělali jedináčka (singleton), a tuto třídu inicializovali a vložili kamsi do hlavního objektu aplikace, se Springem přenecháte vytvoření a konfiguraci objektu na Springu a v&nbsp;kódu ostatních si o&nbsp;něj vždy jen požádáte.</p> 
-<p>Co zbývá na vás je implementace příslušné třídy a vytvoření XML souboru s&nbsp;metadaty pro jeho konfiguraci.</p> 
-<p>V&nbsp;podstatě velice jednoduché. Takže nyní ukázka. Předpokládejme obecně jakoukoliv aplikaci.</p> 
-<hr> 
-<h5>Jak inicializovat spring</h5> 
-<p>Inicializace probíhá tak, že vytvoříte továrnu na beany a do konstruktoru předáte soubor, který se má číst. U&nbsp;newebových aplikací můžete XML soubor dát kam chcete a pojmenovat jej jak chcete.</p> 
-<pre class="brush: java"><code>import org.springframework.beans.factory.xml.XmlBeanFactory;
+	<div class="doc-body"><h3>Úplné začátky se Spring framework</h3>
+
+<h4>K čemu je Spring?</h4>
+
+<p>Spring má více částí, takže se dá využívat lecjak.</p>
+
+<ul>
+	<li><strong>Spring Web MVC</strong> – framework pro návrh webových
+	aplikací ve stylu <em>Model, View and Controller</em></li>
+
+	<li><strong>Spring JDBC</strong> – zjednodušení práce s JDBC, něco
+	jako <a href="http://ibatis.apache.org/">iBatis</a></li>
+
+	<li><strong>Spring AOP</strong> – viz článek <a
+	href="navod-spring-aop-zacatky.texy">Začátky se Spring
+	AOP – návod</a></li>
+
+	<li><strong>Spring Inversion of Control</strong> (dependency injection,
+	BeanFactory, ApplicationCon­text) – knihovna pro vnější konfiguraci</li>
+
+	<li>a <a href="http://www.springframework.org/about">další</a>…</li>
+</ul>
+
+<p>Mě v tomto článku bude zajímat poslední položka – <em>IoC</em>. Je
+to jen zlomek toho, co Spring dokáže, ale je to také základ skoro všeho, co
+se ve Springu dělá. (Proto tedy název článku „Úplné začátky…“ a
+nikoliv „Spring IoC“.)</p>
+
+<h4>Spring Inversion of Control (IoC)</h4>
+
+<p>Inversion of Control (česky bych řekl „vyvržení střev aplikace“, ale
+jinak pochopitelně „převrácené řízení“) je technika, pomocí které
+především oddělíte konfiguraci od kódu a také oddělíte jednotlivé
+části aplikace navzájem.</p>
+
+<p>Zprvu se vám může zdát, že stačí normální konfigurace přes
+<code>Properties</code> a dělat to níže popisovaným způsobem je
+složitější. A máte pravdu! Ale vtip je v tom, že pokud děláte J2EE
+aplikaci, postupem času začne váš projekt používat <acronym
+title="Například já teď pracuju na celkem jednoduchém projektu, ale už teď používám Hibernate přes JPA, iBatis, FreeMarker a další.">desítky</acronym>
+modulů, z nichž každý má vlastní způsob konfigurace.</p>
+
+<p>Se Spring IoC ale dnes už spolupracuje skoro každý významný projekt, a
+díky tomu je všechny můžete nakonfigurovat jednotným způsobem, což je
+u větších projektů neocenitelné. Spring navíc pro nejběžnější úlohy
+nabízí velmi přímočará řešení s defaultními hodnotami, proto přidat
+nový modul často znamená jen přidat pár řádků do XML konfigurace
+Springu.</p>
+
+<h4>Jak na to</h4>
+
+<p>Hlavní třídou k tomuto je buď <code>ApplicationContext</code>, nebo
+<em>Bean Factory</em> neboli <em>továrna na „bíny“</em>.
+<code>BeanFactory</code> je jednodušší (osekaná) verze
+<code>ApplicationContext</code>u, proto začneme tou.
+<code>ApplicationContext</code> využijete u pokročilejších technik, jako je
+správa transakcí nebo AOP.</p>
+
+<div><img src="spring-beans-factory.png" alt="" /></div>
+
+<p><em>Obrázek je z <a
+href="http://static.springframework.org/spring/docs/2.5.x/reference/beans.html#beans-basics">dokumentace
+Springu</a>, kde najdete lepší tutoriál než je tento, ale
+v angličtině.</em></p>
+
+<p>Zatímco běžně byste třeba pro databázové spojení měli třídu
+<code>DatabaseManager</code>, z ní udělali jedináčka (singleton), a tuto
+třídu inicializovali a vložili kamsi do hlavního objektu aplikace, se
+Springem přenecháte vytvoření a konfiguraci objektu na Springu a v kódu
+ostatních si o něj vždy jen požádáte.</p>
+
+<p>Co zbývá na vás je implementace příslušné třídy a vytvoření XML
+souboru s metadaty pro jeho konfiguraci.</p>
+
+<p>V podstatě velice jednoduché. Takže nyní ukázka. Předpokládejme
+obecně jakoukoliv aplikaci.</p>
+
+<hr />
+
+<h5>Jak inicializovat spring</h5>
+
+<p>Inicializace probíhá tak, že vytvoříte továrnu na beany a do
+konstruktoru předáte soubor, který se má číst. U newebových aplikací
+můžete XML soubor dát kam chcete a pojmenovat jej jak chcete.</p>
+
+<pre
+class="brush: java"><code>import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.core.io.ClassPathResource;
 
 public void init() {
 
   XmlBeanFactory bf = new XmlBeanFactory( new ClassPathResource( "properties/SpringBeans.xml" ));
 
-}</code></pre> 
-<p>U&nbsp;webových aplikací se konfigurační soubory dávají do <code>/WEB-INF/</code>, anžto tam se webový klient nikdy nedostane (zaručeno specifikací&nbsp;J2EE).</p> 
-<pre class="brush: java"><code>import org.springframework.beans.factory.xml.XmlBeanFactory;
+}</code></pre>
+
+<p>U webových aplikací se konfigurační soubory dávají do
+<code>/WEB-INF/</code>, anžto tam se webový klient nikdy nedostane (zaručeno
+specifikací J2EE).</p>
+
+<pre
+class="brush: java"><code>import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.web.context.support.ServletContextResource;
 
 public void init() {
 
   XmlBeanFactory bf = new XmlBeanFactory(new ServletContextResource(this.getServletContext(), "/WEB-INF/applicationContext.xml"));
 
-}</code></pre> 
-<p>Soubor <code>applicationContext.xml</code> viz dále.</p> 
-<hr> 
-<h5>Nyní jak si budete žádat o&nbsp;připravený objekt (pro ukázku třeba&nbsp;DAO):</h5> 
-<pre class="brush: java"><code>userDAO = (UserDAO) bf.getBean("userDAO");</code></pre> 
-<p><code>userDAO</code> je jméno konkrétního objektu třídy <code>UserDAO</code>&nbsp;– viz&nbsp;dále.</p> 
-<p>Krásné, že? :-)</p> 
-<p>Samozřejmě je to o&nbsp;něco složitější než to udělat přímo v&nbsp;kódu, ale zkuste to a uvidíte, že tomu přijdete na&nbsp;chuť.</p> 
-<hr> 
-<h5>Konfigurace</h5> 
-<p><strong>A&nbsp;teď co je k&nbsp;tomu potřeba:</strong></p> 
-<p>V&nbsp;konfiguračním souboru <code>/WEB-INF/applicationContext.xml</code> řeknete springu, jaké všechny objekty má připravit a jak je nastavit.</p> 
-<p><em>Poznámka: U&nbsp;newebových aplikací můžete XML soubor dát kam chcete a pojmenovat jej jak chcete.</em></p> 
-<pre class="brush: xml"><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+}</code></pre>
+
+<p>Soubor <code>applicationContext.xml</code> viz dále.</p>
+
+<hr />
+
+<h5>Nyní jak si budete žádat o připravený objekt (pro ukázku
+třeba DAO):</h5>
+
+<pre
+class="brush: java"><code>userDAO = (UserDAO) bf.getBean("userDAO");</code></pre>
+
+<p><code>userDAO</code> je jméno konkrétního objektu třídy
+<code>UserDAO</code> – viz dále.</p>
+
+<p>Krásné, že? :-)</p>
+
+<p>Samozřejmě je to o něco složitější než to udělat přímo v kódu,
+ale zkuste to a uvidíte, že tomu přijdete na chuť.</p>
+
+<hr />
+
+<h5>Konfigurace</h5>
+
+<p><strong>A teď co je k tomu potřeba:</strong></p>
+
+<p>V konfiguračním souboru <code>/WEB-INF/applicationContext.xml</code>
+řeknete springu, jaké všechny objekty má připravit a jak je nastavit.</p>
+
+<p><em>Poznámka: U newebových aplikací můžete XML soubor dát kam chcete a
+pojmenovat jej jak chcete.</em></p>
+
+<pre
+class="brush: xml"><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 
 &lt;!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd"&gt;
 
@@ -150,15 +234,33 @@ public void init() {
 
  &lt;import resource="spring-config/userDAOs.xml" /&gt;
 
-&lt;/beans&gt;</code></pre> 
-<p>První element <code>&lt;bean&gt;</code> je přímá definice objektu, další definice jsou obsažené v&nbsp;souborech načtených přes element <code>&lt;import&gt;</code>.</p> 
-<p>Atribut <code>id="propertyConfigurer"</code> obsahuje jméno, pod kterým Spring o&nbsp;daný objekt budete pozdeji&nbsp;žádat.</p> 
-<p>Atribut <code>class="..."</code> je jméno třídy, ze které Spring objekt vytvoří. Použije k&nbsp;tomu konstruktor bez parametrů. Mohl by použít i&nbsp;jiný, ale takto nám to&nbsp;stačí.</p> 
-<p>Element <code>&lt;property name="locations"&gt;</code> použije Spring k&nbsp;nastavení vlastnosti objektu přes setter, tedy přes <code>setLocations(...)</code>. Dokáže pracovat s&nbsp;různými typy, zde například je to seznam (stringů).</p> 
-<hr> 
-<p>Ještě se podíváme na soubor <code>userDAOs.xml</code>.</p> 
-<p>//Update 2008/09:// Momentálně trochu nedovysvětlené… časem snad připíšu.</p> 
-<pre class="brush: xml"><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;/beans&gt;</code></pre>
+
+<p>První element <code>&lt;bean&gt;</code> je přímá definice objektu,
+další definice jsou obsažené v souborech načtených přes element
+<code>&lt;import&gt;</code>.</p>
+
+<p>Atribut <code>id="propertyConfigurer"</code> obsahuje jméno, pod kterým
+Spring o daný objekt budete pozdeji žádat.</p>
+
+<p>Atribut <code>class="..."</code> je jméno třídy, ze které Spring objekt
+vytvoří. Použije k tomu konstruktor bez parametrů. Mohl by použít
+i jiný, ale takto nám to stačí.</p>
+
+<p>Element <code>&lt;property name="locations"&gt;</code> použije Spring
+k nastavení vlastnosti objektu přes setter, tedy přes
+<code>setLocations(...)</code>. Dokáže pracovat s různými typy, zde
+například je to seznam (stringů).</p>
+
+<hr />
+
+<p>Ještě se podíváme na soubor <code>userDAOs.xml</code>.</p>
+
+<p>//Update 2008/09:// Momentálně trochu nedovysvětlené… časem snad
+připíšu.</p>
+
+<pre
+class="brush: xml"><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 
 &lt;!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd"&gt;
 
@@ -172,11 +274,17 @@ public void init() {
    &lt;property name="..." ref="..."/&gt;
  &lt;/bean&gt;
 
-&lt;/beans&gt;</code></pre> 
-<p>A&nbsp;spring je na světě.</p> 
-<h4>Závěr</h4> 
-<p>Zatím jste se naučili jen tzv. <em>Inversion of Control</em>.</p> 
-<p>Popisy dalších částí Spring Frameworku budu postupně přidávat, najdete je v&nbsp;sekci Java +&nbsp;J2EE.</p></div>
+&lt;/beans&gt;</code></pre>
+
+<p>A spring je na světě.</p>
+
+<h4>Závěr</h4>
+
+<p>Zatím jste se naučili jen tzv. <em>Inversion of Control</em>.</p>
+
+<p>Popisy dalších částí Spring Frameworku budu postupně přidávat,
+najdete je v sekci Java + J2EE.</p>
+</div>
 
 	<hr />
 

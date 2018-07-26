@@ -79,11 +79,18 @@ server=default, name=farm] - Ondřej Žižka</h1>
 
 	<div class="date"><em>2012-12-31</em></div>
 
-	<div class="doc-body"><h3>Error installing to Create: name=ProfileKe­y@…[domain=de­fault, server=default, name=farm]</h3> 
-<p>This is what you see when you have already one <code>production</code> JBoss EAP instance running and try to run other (see below).</p> 
-<p>To check the instances, try this:</p> 
-<pre class="brush: bash"><code>ps -flC java | grep org.jboss</code></pre> 
-<pre class="brush: plain"><code>=========================================================================
+	<div class="doc-body"><h3>Error installing to Create: name=ProfileKe­y@…[domain=de­fault,
+server=default, name=farm]</h3>
+
+<p>This is what you see when you have already one <code>production</code> JBoss
+EAP instance running and try to run other (see below).</p>
+
+<p>To check the instances, try this:</p>
+
+<pre class="brush: bash"><code>ps -flC java | grep org.jboss</code></pre>
+
+<pre
+class="brush: plain"><code>=========================================================================
 
   JBoss Bootstrap Environment
 
@@ -385,7 +392,8 @@ ProfileKey@6600b925[domain=default, server=default, name=production1] is missing
 15:17:30,834 ERROR [STDERR]     at org.jboss.bootstrap.AbstractServerImpl.start(AbstractServerImpl.java:461)
 15:17:30,834 ERROR [STDERR]     at org.jboss.Main.boot(Main.java:221)
 15:17:30,834 ERROR [STDERR]     at org.jboss.Main$1.run(Main.java:556)
-15:17:30,834 ERROR [STDERR]     at java.lang.Thread.run(Thread.java:619)</code></pre></div>
+15:17:30,834 ERROR [STDERR]     at java.lang.Thread.run(Thread.java:619)</code></pre>
+</div>
 
 	<hr />
 

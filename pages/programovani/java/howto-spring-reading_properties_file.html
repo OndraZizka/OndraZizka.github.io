@@ -77,22 +77,42 @@
 
 	<div class="date"><em>2012-12-16</em></div>
 
-	<div class="doc-body"><h3>How to read properties file in Spring Framework</h3> 
-<p>I've had a problem with reading <code>.properties</code> file in Spring Framework. I&nbsp;needed to inject it into the iBatis' <code>SqlMapConfig.xml</code>:</p> 
-<pre class="brush: xml"><code>&lt;!-- iBatis --&gt;
+	<div class="doc-body"><h3>How to read properties file in Spring Framework</h3>
+
+<p>I've had a problem with reading <code>.properties</code> file in Spring
+Framework. I needed to inject it into the iBatis'
+<code>SqlMapConfig.xml</code>:</p>
+
+<pre
+class="brush: xml"><code>&lt;!-- iBatis --&gt;
 &lt;bean id="sqlMap" class="org.springframework.orm.ibatis.SqlMapClientFactoryBean"&gt;
   &lt;property name="sqlMapClientProperties" value="file:conf/${profile}/nastaveni.properties" /&gt;
   &lt;property name="configLocation" value="ibatis-maps/SqlMapConfig2.xml"/&gt;
 &lt;/bean&gt;
-&lt;alias alias="iBatis" name="sqlMap"/&gt;</code></pre> 
-<p>But iBatis kept complaining that the properties defined in the file were not resolved. Better said, it behaved like the actual value was the property name, thus the&nbsp;code</p> 
-<pre class="brush: xml"><code>&lt;transactionManager type="JDBC"&gt;
+&lt;alias alias="iBatis" name="sqlMap"/&gt;</code></pre>
+
+<p>But iBatis kept complaining that the properties defined in the file were not
+resolved. Better said, it behaved like the actual value was the property name,
+thus the code</p>
+
+<pre
+class="brush: xml"><code>&lt;transactionManager type="JDBC"&gt;
   &lt;dataSource type="SIMPLE"&gt;
-    &lt;property name="JDBC.Driver" value="${jdbc.driver}"/&gt;</code></pre> 
-<p>gave me a <code>ClassNotFoundException</code> for the class <code>jdbc.driver</code>.</p> 
-<p>What actually happened was clear when I&nbsp;made a test bean with a property of type <code>java.lang.Properties</code>. Spring takes the file path „file:conf/${pro­file}/nastave­ni.properties“ as a Properties string definition and provides iBatis a <code>Properties</code> object with a single property: <code>file = conf/release/nastaveni.properties</code>.</p> 
-<p>The solution is to use the <code>SqlMapClientFactoryBean</code>:</p> 
-<pre class="brush: xml"><code>&lt;!-- iBatis --&gt;
+    &lt;property name="JDBC.Driver" value="${jdbc.driver}"/&gt;</code></pre>
+
+<p>gave me a <code>ClassNotFoundException</code> for the class
+<code>jdbc.driver</code>.</p>
+
+<p>What actually happened was clear when I made a test bean with a property of
+type <code>java.lang.Properties</code>. Spring takes the file path
+„file:conf/${pro­file}/nastave­ni.properties“ as a Properties string
+definition and provides iBatis a <code>Properties</code> object with a single
+property: <code>file = conf/release/nastaveni.properties</code>.</p>
+
+<p>The solution is to use the <code>SqlMapClientFactoryBean</code>:</p>
+
+<pre
+class="brush: xml"><code>&lt;!-- iBatis --&gt;
 &lt;bean id="sqlMap" class="org.springframework.orm.ibatis.SqlMapClientFactoryBean"&gt;
   &lt;property name="sqlMapClientProperties"&gt;
     &lt;bean class="org.springframework.beans.factory.config.PropertiesFactoryBean"&gt;
@@ -100,8 +120,10 @@
     &lt;/bean&gt;
   &lt;/property&gt;
   &lt;property name="configLocation" value="ibatis-maps/SqlMapConfig2.xml"/&gt;
-&lt;/bean&gt;</code></pre> 
-<p>Of course, this is a trivial think, but not much well documented.</p></div>
+&lt;/bean&gt;</code></pre>
+
+<p>Of course, this is a trivial think, but not much well documented.</p>
+</div>
 
 	<hr />
 

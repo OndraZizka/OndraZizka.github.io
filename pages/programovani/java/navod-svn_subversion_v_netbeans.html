@@ -77,79 +77,133 @@
 
 	<div class="date"><em>2012-12-16</em></div>
 
-	<div class="doc-body"><h3>Import projektu ze SVN do NetBeans projektu (stručný&nbsp;návod)</h3> 
-<p>Chtěl jsem se trochu povrtat v&nbsp;projektu <a href="http://poi.apache.org/subversion.html">Apache POI</a>, ale jak průvodci v&nbsp;NetBeans, tak instrukce na stránce projektu předpokládají, že se SVN umíte, jak když bičem mrská, což v&nbsp;mém případě bylo doteď přesně naopak&nbsp;:-)</p> 
-<p>Dobrý návod pro NetBeans najdete na <a href="http://www.netbeans.org/kb/60/ide/subversion.html">http://www.netbeans.org/…version.html</a>. Já se ho pokusím trochu zestručnít a tento extrakt obohatit o&nbsp;své zkušenosti.</p> 
-<h4>Pojmy SVN</h4> 
-<p><em>Subversion</em> jsem viděl poprvé, proto jsem se chvíli plácal v&nbsp;pojmech. Pro pořádek a pro začátečníky je tedy&nbsp;uvedu.</p> 
-<dl> 
- <dt>
-  <strong>Commit</strong>
- </dt> 
- <dd>
-  odeslání vámi upravené verze souboru do repozitáře.
- </dd> 
- <dt>
-  <strong>Import</strong>
- </dt> 
- <dd>
-  překvapivě neznamená importovat něco do NetBeans, ale naopak nahrát celý váš projekt do repozitáře. Je to takový hromadný 
-  <em>commit</em>.
- </dd> 
- <dt>
-  <strong>Update</strong>
- </dt> 
- <dd>
-  je stažení aktuální verze souboru z&nbsp;repozitáře k&nbsp;vám na disk, spolu s&nbsp;případnými úpravami a podmínkami.
- </dd> 
- <dt>
-  <strong>Checkout</strong>
- </dt> 
- <dd>
-  je stažení celého projektu někam na váš disk. V&nbsp;podstatě takový hromadný update.
- </dd> 
- <dt>
-  <strong>HEAD</strong>
- </dt> 
- <dd>
-  je označení (klíčové slovo, chcete-li) pro nejaktuálnější verzi projektu v&nbsp;repozitáři.
- </dd> 
-</dl> 
-<p>Zbytek pojmů najdete po netu, tohle je fakt jen nakopávací tutoriál&nbsp;:-)</p> 
-<p><em>Poznámka: Jak tak koukám, asi budu muset poladit&nbsp;CSS.</em></p> 
-<h4>Jak nahrát projekt z&nbsp;SVN repository do NetBeans projektu</h4> 
-<p>Nyní se trochu odchýlím od výše odkazovaného návodu. V&nbsp;NetBeans jsem provedl checkout projektu Apache&nbsp;POI.</p> 
-<ul> 
- <li>V&nbsp;hlavním menu jsem vybral <code>Versioning</code> → <code>Subversion</code> → <code>Checkout</code>.</li> 
- <li>Jako URL jsem zadal URL uvedenou na <a href="http://poi.apache.org/subversion.html">stránkách projektu POI</a>, tedy <a href="http://svn.apache.org/repos/asf/poi/trunk/">http://svn.apache.org/…f/poi/trunk/</a>.</li> 
- <li>Jako složku, kam se má projekt stáhnout, jsem vybral složku, kam chci nahrát projekt&nbsp;– vlastní název „Apache POI“ se mi líbí víc než „poi/trunk“&nbsp;:-)</li> 
- <li>Zaškrtl jsem <code>Skip trunk and checkout it's contents</code>. Tím se mi <code>src/</code> a další objeví přímo ve vybraném adresáři.</li> 
- <li>Následně klikám na Finish. Chvíli se stahuje.</li> 
- <li>Apache POI nemá (jak se dá čekat) soubory projektu NetBeans, proto vám vyskočí okénko, zda jej chcete vytvořit.</li> 
- <li>Klikám na <code>Create project...</code> a vybírám <code>Java</code> → <code>Java Project with Existing Sources</code>. <code>Next</code>…</li> 
- <li>Všimněte si, že název build souboru je zatím <code>build.xml</code>.</li> 
- <li>Klikněte na <code>Browse</code> a najděte adresář, kam jste stáhli zdrojáky.</li> 
- <li><code>build.xml</code> zde již existuje, proto se build skript NetBeans přejmenoval na <code>nbbuild.xml</code>. <code>Next</code>…</li> 
-</ul> 
-<!-- * Do zdrojáků přidejte všechny složky kromě `.svn`. `Next`, `Finish`... --> 
-<ul> 
- <li>Nyní si prohlédněte adresář projektu, hlavně složku <code>src</code>. Ta neobsahuje (jak je obvyklé) rovnou hierarchii tříd, ale dále se dělí na kategorie. Proto vyberte jen ty kategorie, které do projektu chcete.&nbsp;Např.:</li> 
- <li>Do zdrojáků přidejte složky <code>src/java/</code> a <code>src/examples/src/</code>. <code>Next</code>, <code>Finish</code>.</li> 
-</ul> 
-<p>Tím jste úspěšně založili projekt z&nbsp;SVN repository.</p> 
-<p>NetBeans začne projekt rovnou kompilovat, ale pravděpodobně nerozluští některé reference. Je třeba dodat nějaké knihovny. V&nbsp;mém případě hledá balíček <code>org.apache.commons.logging.Log</code>. To je notoricky známá věc, takže pokud nemáte: <a href="http://commons.apache.org/logging/">stáhnout</a> a přidat <code>.jar</code>-ka jako novou knihovnu.</p> 
-<p>Nyní již kompilace proběhne vpořádku, pouze si překladač stěžuje na podivné volání funkcí,</p> 
-<blockquote> 
- <p>warning: non-varargs call of varargs method with inexact argument type for last parameter;</p> 
-</blockquote> 
-<p>za což může tato nezvyklá konstrukce v&nbsp;kódu projektu Apache&nbsp;POI:</p> 
-<pre class="brush: java"><code>Class clazz = (Class) VALUE_EVALS_MAP.get(ptg.getClass());
+	<div class="doc-body"><h3>Import projektu ze SVN do NetBeans projektu (stručný návod)</h3>
+
+<p>Chtěl jsem se trochu povrtat v projektu <a
+href="http://poi.apache.org/subversion.html">Apache POI</a>, ale jak průvodci
+v NetBeans, tak instrukce na stránce projektu předpokládají, že se SVN
+umíte, jak když bičem mrská, což v mém případě bylo doteď přesně
+naopak :-)</p>
+
+<p>Dobrý návod pro NetBeans najdete na <a
+href="http://www.netbeans.org/kb/60/ide/subversion.html">http://www.netbeans.org/…version.html</a>.
+Já se ho pokusím trochu zestručnít a tento extrakt obohatit o své
+zkušenosti.</p>
+
+<h4>Pojmy SVN</h4>
+
+<p><em>Subversion</em> jsem viděl poprvé, proto jsem se chvíli plácal
+v pojmech. Pro pořádek a pro začátečníky je tedy uvedu.</p>
+
+<dl>
+	<dt><strong>Commit</strong></dt>
+
+	<dd>odeslání vámi upravené verze souboru do repozitáře.</dd>
+
+	<dt><strong>Import</strong></dt>
+
+	<dd>překvapivě neznamená importovat něco do NetBeans, ale naopak nahrát
+	celý váš projekt do repozitáře. Je to takový hromadný
+	<em>commit</em>.</dd>
+
+	<dt><strong>Update</strong></dt>
+
+	<dd>je stažení aktuální verze souboru z repozitáře k vám na disk, spolu
+	s případnými úpravami a podmínkami.</dd>
+
+	<dt><strong>Checkout</strong></dt>
+
+	<dd>je stažení celého projektu někam na váš disk. V podstatě takový
+	hromadný update.</dd>
+
+	<dt><strong>HEAD</strong></dt>
+
+	<dd>je označení (klíčové slovo, chcete-li) pro nejaktuálnější verzi
+	projektu v repozitáři.</dd>
+</dl>
+
+<p>Zbytek pojmů najdete po netu, tohle je fakt jen nakopávací
+tutoriál :-)</p>
+
+<p><em>Poznámka: Jak tak koukám, asi budu muset poladit CSS.</em></p>
+
+<h4>Jak nahrát projekt z SVN repository do NetBeans projektu</h4>
+
+<p>Nyní se trochu odchýlím od výše odkazovaného návodu. V NetBeans jsem
+provedl checkout projektu Apache POI.</p>
+
+<ul>
+	<li>V hlavním menu jsem vybral <code>Versioning</code> →
+	<code>Subversion</code> → <code>Checkout</code>.</li>
+
+	<li>Jako URL jsem zadal URL uvedenou na <a
+	href="http://poi.apache.org/subversion.html">stránkách projektu POI</a>, tedy
+	<a
+	href="http://svn.apache.org/repos/asf/poi/trunk/">http://svn.apache.org/…f/poi/trunk/</a>.</li>
+
+	<li>Jako složku, kam se má projekt stáhnout, jsem vybral složku, kam chci
+	nahrát projekt – vlastní název „Apache POI“ se mi líbí víc než
+	„poi/trunk“ :-)</li>
+
+	<li>Zaškrtl jsem <code>Skip trunk and checkout it's contents</code>. Tím se mi
+	<code>src/</code> a další objeví přímo ve vybraném adresáři.</li>
+
+	<li>Následně klikám na Finish. Chvíli se stahuje.</li>
+
+	<li>Apache POI nemá (jak se dá čekat) soubory projektu NetBeans, proto vám
+	vyskočí okénko, zda jej chcete vytvořit.</li>
+
+	<li>Klikám na <code>Create project...</code> a vybírám <code>Java</code> →
+	<code>Java Project with Existing Sources</code>. <code>Next</code>…</li>
+
+	<li>Všimněte si, že název build souboru je zatím
+	<code>build.xml</code>.</li>
+
+	<li>Klikněte na <code>Browse</code> a najděte adresář, kam jste stáhli
+	zdrojáky.</li>
+
+	<li><code>build.xml</code> zde již existuje, proto se build skript NetBeans
+	přejmenoval na <code>nbbuild.xml</code>. <code>Next</code>…</li>
+</ul>
+<!-- * Do zdrojáků přidejte všechny složky kromě `.svn`. `Next`, `Finish`... -->
+<ul>
+	<li>Nyní si prohlédněte adresář projektu, hlavně složku <code>src</code>.
+	Ta neobsahuje (jak je obvyklé) rovnou hierarchii tříd, ale dále se dělí na
+	kategorie. Proto vyberte jen ty kategorie, které do projektu
+	chcete. Např.:</li>
+
+	<li>Do zdrojáků přidejte složky <code>src/java/</code> a
+	<code>src/examples/src/</code>. <code>Next</code>, <code>Finish</code>.</li>
+</ul>
+
+<p>Tím jste úspěšně založili projekt z SVN repository.</p>
+
+<p>NetBeans začne projekt rovnou kompilovat, ale pravděpodobně nerozluští
+některé reference. Je třeba dodat nějaké knihovny. V mém případě
+hledá balíček <code>org.apache.commons.logging.Log</code>. To je notoricky
+známá věc, takže pokud nemáte: <a
+href="http://commons.apache.org/logging/">stáhnout</a> a přidat
+<code>.jar</code>-ka jako novou knihovnu.</p>
+
+<p>Nyní již kompilace proběhne vpořádku, pouze si překladač stěžuje na
+podivné volání funkcí,</p>
+
+<blockquote>
+	<p>warning: non-varargs call of varargs method with inexact argument type for
+	last parameter;</p>
+</blockquote>
+
+<p>za což může tato nezvyklá konstrukce v kódu projektu Apache POI:</p>
+
+<pre
+class="brush: java"><code>Class clazz = (Class) VALUE_EVALS_MAP.get(ptg.getClass());
 try {
  if (ptg instanceof Area3DPtg) {
    Constructor constructor = clazz.getConstructor(AREA3D_CONSTRUCTOR_CLASS_ARRAY);
    retval = (OperationEval) constructor.newInstance(new Ptg[] { ptg });
  }
-...</code></pre></div>
+...</code></pre>
+</div>
 
 	<hr />
 

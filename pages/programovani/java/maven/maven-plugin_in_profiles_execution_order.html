@@ -77,10 +77,16 @@
 
 	<div class="date"><em>2012-12-16</em></div>
 
-	<div class="doc-body"><h3>Maven: Order of execution of plugins in profiles</h3> 
-<p>I&nbsp;was curious in which order Maven executes the plugins: Whether it uses POM profile appearance order, or uses the ordering from the command line's <code>-P</code> param&nbsp;value.</p> 
-<p>So I&nbsp;put this in a pom.xml:</p> 
-<pre class="brush: xml"><code>&lt;profiles&gt;
+	<div class="doc-body"><h3>Maven: Order of execution of plugins in profiles</h3>
+
+<p>I was curious in which order Maven executes the plugins: Whether it uses POM
+profile appearance order, or uses the ordering from the command line's
+<code>-P</code> param value.</p>
+
+<p>So I put this in a pom.xml:</p>
+
+<pre
+class="brush: xml"><code>&lt;profiles&gt;
     &lt;profile&gt;
       &lt;id&gt;test1&lt;/id&gt;
       &lt;build&gt;
@@ -133,10 +139,14 @@
       &lt;/build&gt;
     &lt;/profile&gt;
 
-&lt;/profiles&gt;</code></pre> 
-<p>Then I&nbsp;launched it using:</p> 
-<pre class="bash"><code>mvn initialize -P test2,test1</code></pre> 
-<p>And the result?</p> 
+&lt;/profiles&gt;</code></pre>
+
+<p>Then I launched it using:</p>
+
+<pre class="bash"><code>mvn initialize -P test2,test1</code></pre>
+
+<p>And the result?</p>
+
 <pre><code>[INFO] Scanning for projects...
 [INFO] ------------------------------------------------------------------------
 [INFO] Building pohlidame-backend
@@ -150,12 +160,21 @@
 [INFO] Executing tasks
      [echo] test2 ECHO.
 [INFO] Executed tasks
-...</code></pre> 
-<p><strong>Plugin execution order follows the order in <code>pom.xml</code>.</strong> The only way to get <code>test2</code> run first is to swap them in <code>pom.xml</code>.</p> 
-<h4>Executed twice?</h4> 
-<p>Another interesting thing is what happens when when launched&nbsp;using:</p> 
-<pre class="bash"><code>mvn clean install -Dmaven.test.skip=true -P test1,test2</code></pre> 
-<p>In this case, the AntRun plugin is executed four times:</p> 
+...</code></pre>
+
+<p><strong>Plugin execution order follows the order in
+<code>pom.xml</code>.</strong> The only way to get <code>test2</code> run first
+is to swap them in <code>pom.xml</code>.</p>
+
+<h4>Executed twice?</h4>
+
+<p>Another interesting thing is what happens when when launched using:</p>
+
+<pre
+class="bash"><code>mvn clean install -Dmaven.test.skip=true -P test1,test2</code></pre>
+
+<p>In this case, the AntRun plugin is executed four times:</p>
+
 <pre><code>mvn install -Dmaven.test.skip=true -P test1,test2
 [INFO] Scanning for projects...
 [INFO] ------------------------------------------------------------------------
@@ -202,8 +221,11 @@
 [INFO] Total time: 7 seconds
 [INFO] Finished at: Fri May 08 07:02:31 CEST 2009
 [INFO] Final Memory: 29M/247M
-[INFO] ------------------------------------------------------------------------</code></pre> 
-<p>Does that mean that the <code>initialize</code> phase is used before packaging the <code>.jar</code>?</p></div>
+[INFO] ------------------------------------------------------------------------</code></pre>
+
+<p>Does that mean that the <code>initialize</code> phase is used before
+packaging the <code>.jar</code>?</p>
+</div>
 
 	<hr />
 

@@ -77,68 +77,162 @@
 
 	<div class="date"><em>2012-12-13</em></div>
 
-	<div class="doc-body"><h3>JavaScript isometric libraries and „game engines“</h3> 
-<p>When you seach for „JavaScript isometric“, you get few links, most of them useless. Let's&nbsp;see what we&nbsp;get:</p> 
-<h4>IsoGame</h4> 
-<div>
- <img src="http://www.zizka.ch/images/isometric/IsoGame-screenshot.png" alt="" style="float:left">
-</div> 
-<p>Just a sprite moving over a generated grid. Somewhat buggy movement algorithm. PHP used to draw the tile sprite. Doesn't work with PHP 5.2.&nbsp;Here's&nbsp;the fixed version: <a href="isometric/IsoGame.zip">IsoGame.zip</a></p> 
-<p><strong>URL:</strong> <a href="http://code.google.com/p/isogame/">http://code.google.com/p/isogame/</a></p> 
-<p><strong>Verdict:</strong> <em>Not useful.</em></p> 
-<h4>Clint's&nbsp;isometric game example, now with Yahoo!</h4> 
-<div>
- <img src="http://www.zizka.ch/images/isometric/Clints-screenshot.png" alt="" style="float:left">
-</div> 
-<p>Another sprite moving, this time, only over a texture; grid is „virtual“ (only computed). The movement is done quite nicely; However, this is not a library, only some poorly coded proof-of concept.</p> 
-<p><strong>URL:</strong> <a href="http://www.rickherron.com/clint/IsoTest9/IsoTest.html">http://www.rickherron.com/…IsoTest.html</a></p> 
-<p><strong>Verdict:</strong> <em>Not useful.</em></p> 
-<h4>„the snowman that learned to program“'s&nbsp;Ja­vaScript Isometric Game&nbsp;Engine</h4> 
-<div>
- <img src="http://www.zizka.ch/images/isometric/Snowman-hello_ninja_world.png" alt="" style="float:left">
-</div> 
-<p>„Example of an isometric tile environment with depth sorting and path finding“, as the page&nbsp;says.</p> 
-<p>* Uses <code>&lt;canvas&gt;</code> to render the image.<br> * „Manually“ drawn sprites, no rendering engine.<br> * Uses jQuery.<br> * A* pathfinding algorithm, Heap and Collection implementations.</p> 
-<p><strong>URL:</strong> The code is available at <a href="http://github.com/clindsey/cll_js_iso/tree/master">GitHub</a>.</p> 
-<p><strong>Demo:</strong> <a href="http://greenmayo.com/dev/CarterHenry/">http://greenmayo.com/…CarterHenry/</a></p> 
-<p><strong>Verdict:</strong> A&nbsp;bit useful.</p> 
-<h4>FreeVolution</h4> 
-<div>
- <img src="http://www.zizka.ch/images/isometric/FreeVolution-screenshot.png" alt="" style="float:left">
-</div> 
-<p>The „first full fledged DHTML isometric tile engine on the internet“. As you scroll around, tiles are fetched and destroyed trough AJAX. PHP backend for AJAX&nbsp;calls.</p> 
-<p>* Uses really a LOT of <code>&lt;img&gt;</code> elements, all with in-line CSS. No wonder it's&nbsp;so slow (read, „unusably“ slow).<br> * JavaScript (or, client side) Written in a PHP way, that means, no consistent JavaScript library.<br> * However, the math behind it could be quite good for inspiration.</p> 
-<p><strong>Demo:</strong> <a href="http://www.pc-gamers.com/webgamex/iso_js_coords.php">http://www.pc-gamers.com/…s_coords.php</a></p> 
-<p><strong>Projec page</strong> not found.</p> 
-<p><strong>Verdict:</strong> Could be useful; have to study it more (really pity it's&nbsp;not coded better).</p> 
-<h4>Oasis&nbsp;– Flash Isometric Map Maker</h4> 
-<p>For Flash… not useful. Perhaps the math, will have a look at the sources.</p> 
-<p><strong>URL:</strong> <a href="http://komirad.com/doc/12/flash-isometric-map-maker-oasis">http://komirad.com/…-maker-oasis</a></p> 
-<h4>Isometric ‚n‘ Hexagonal Maps (an article)</h4> 
-<p><strong>URL:</strong> <a href="http://www.gamedev.net/reference/articles/article747.asp">http://www.gamedev.net/…ticle747.asp</a></p> 
-<h4>c# to javascript, actionscript</h4> 
-<p>Really nice and functional isometric rendering. One of versions has even an attempt of interactivity, though doesn't work for me&nbsp;(FF3).</p> 
-<p>The only, but fatal, drawback is that the JS code is generated from C#, and quite unreadable.</p> 
-<p><strong>URL:</strong> <a href="http://zproxy.wordpress.com/2007/12/25/new-example-isometric-threedstuff-javascript-tycoon/">http://zproxy.wordpress.com/…ript-tycoon/</a></p> 
-<p><strong>Demo:</strong> <a href="http://jsc.sourceforge.net/examples/web/ThreeDStuff/IsometricWithNatureBoy.htm">http://jsc.sourceforge.net/…atureBoy.htm</a></p> 
-<p><strong>Verdict:</strong> Would be useful if it was written in JavaScript.</p> 
-<h4>Axono.me</h4> 
-<p>A&nbsp;library, not studied yet.</p> 
-<p>„axono.me has been designed to render axonometric projections, though it works fine for any kind of grid. The library has been tested using Safari 4&nbsp;and Firefox.“</p> 
-<p><strong>URL:</strong> <a href="http://www.creativeapplications.net.php5-3.dfw1-2.websitetestlink.com/scripts/axono-me-scripts/">http://www.creativeapplications.net.php5-3.dfw1-2.websitetestlink.com/…-me-scripts/</a></p> 
-<p><strong>GitHub:</strong> <a href="http://github.com/elbowdonkey/axonome">http://github.com/…nkey/axonome</a></p> 
-<h4>Rhodesy Isometric</h4> 
-<p>Written in JavaScript. Seems to be fast, precise, and contains algorithm for distributing terrain level shift from one&nbsp;point.</p> 
-<p><strong>URL:</strong> <a href="http://forums.tigsource.com/index.php?topic=3031.0">http://forums.tigsource.com/index.php?…</a></p> 
-<p><strong>Demo:</strong> <a href="http://rhodesy.acsv.net/isometric/">http://rhodesy.acsv.net/isometric/</a></p> 
-<p><strong>Verdict:</strong> Not studied yet, looks very good.</p> 
-<h4>Isometric drawings with jQuery</h4> 
-<p><strong>URL:</strong> <a href="http://www.tdupree.com/2008/05/19/isometric-drawings-with-jquery/">http://www.tdupree.com/…with-jquery/</a></p> 
-<p><strong>Demo:</strong> <a href="http://www.themaninblue.com/experiment/Cubescape/new.php">http://www.themaninblue.com/…cape/new.php</a></p> 
-<p><strong>Verdict:</strong> Not studied yet, looks good.</p> 
-<h4>Other links</h4> 
-<p><a href="http://www.smashingmagazine.com/2009/02/08/50-extremely-useful-javascript-tools/">50&nbsp;Useful JavaScript Tools</a></p> 
-<p><a href="http://x9productions.com/blog/?p=7">Isometric camera in javascript for Unity</a>&nbsp;– I&nbsp;don't understand this much. Somehow linked to „Unity3D Dialog Engine“, whatever that&nbsp;is.</p></div>
+	<div class="doc-body"><h3>JavaScript isometric libraries and „game engines“</h3>
+
+<p>When you seach for „JavaScript isometric“, you get few links, most of
+them useless. Let's see what we get:</p>
+
+<h4>IsoGame</h4>
+
+<div><img src="isometric/IsoGame-screenshot.png" alt="" style="float:left"
+/></div>
+
+<p>Just a sprite moving over a generated grid. Somewhat buggy movement
+algorithm. PHP used to draw the tile sprite. Doesn't work with PHP
+5.2. Here's the fixed version: <a
+href="isometric/IsoGame.zip">IsoGame.zip</a></p>
+
+<p><strong>URL:</strong> <a
+href="http://code.google.com/p/isogame/">http://code.google.com/p/isogame/</a></p>
+
+<p><strong>Verdict:</strong> <em>Not useful.</em></p>
+
+<h4>Clint's isometric game example, now with Yahoo!</h4>
+
+<div><img src="isometric/Clints-screenshot.png" alt="" style="float:left"
+/></div>
+
+<p>Another sprite moving, this time, only over a texture; grid is „virtual“
+(only computed). The movement is done quite nicely; However, this is not a
+library, only some poorly coded proof-of concept.</p>
+
+<p><strong>URL:</strong> <a
+href="http://www.rickherron.com/clint/IsoTest9/IsoTest.html">http://www.rickherron.com/…IsoTest.html</a></p>
+
+<p><strong>Verdict:</strong> <em>Not useful.</em></p>
+
+<h4>„the snowman that learned to program“'s Ja­vaScript Isometric
+Game Engine</h4>
+
+<div><img src="isometric/Snowman-hello_ninja_world.png" alt=""
+style="float:left" /></div>
+
+<p>„Example of an isometric tile environment with depth sorting and path
+finding“, as the page says.</p>
+
+<p>* Uses <code>&lt;canvas&gt;</code> to render the image.<br />
+* „Manually“ drawn sprites, no rendering engine.<br />
+* Uses jQuery.<br />
+* A* pathfinding algorithm, Heap and Collection implementations.</p>
+
+<p><strong>URL:</strong> The code is available at <a
+href="http://github.com/clindsey/cll_js_iso/tree/master">GitHub</a>.</p>
+
+<p><strong>Demo:</strong> <a
+href="http://greenmayo.com/dev/CarterHenry/">http://greenmayo.com/…CarterHenry/</a></p>
+
+<p><strong>Verdict:</strong> A bit useful.</p>
+
+<h4>FreeVolution</h4>
+
+<div><img src="isometric/FreeVolution-screenshot.png" alt="" style="float:left"
+/></div>
+
+<p>The „first full fledged DHTML isometric tile engine on the internet“. As
+you scroll around, tiles are fetched and destroyed trough AJAX. PHP backend for
+AJAX calls.</p>
+
+<p>* Uses really a LOT of <code>&lt;img&gt;</code> elements, all with in-line
+CSS. No wonder it's so slow (read, „unusably“ slow).<br />
+* JavaScript (or, client side) Written in a PHP way, that means, no consistent
+JavaScript library.<br />
+* However, the math behind it could be quite good for inspiration.</p>
+
+<p><strong>Demo:</strong> <a
+href="http://www.pc-gamers.com/webgamex/iso_js_coords.php">http://www.pc-gamers.com/…s_coords.php</a></p>
+
+<p><strong>Projec page</strong> not found.</p>
+
+<p><strong>Verdict:</strong> Could be useful; have to study it more (really pity
+it's not coded better).</p>
+
+<h4>Oasis – Flash Isometric Map Maker</h4>
+
+<p>For Flash… not useful. Perhaps the math, will have a look at the
+sources.</p>
+
+<p><strong>URL:</strong> <a
+href="http://komirad.com/doc/12/flash-isometric-map-maker-oasis">http://komirad.com/…-maker-oasis</a></p>
+
+<h4>Isometric ‚n‘ Hexagonal Maps (an article)</h4>
+
+<p><strong>URL:</strong> <a
+href="http://www.gamedev.net/reference/articles/article747.asp">http://www.gamedev.net/…ticle747.asp</a></p>
+
+<h4>c# to javascript, actionscript</h4>
+
+<p>Really nice and functional isometric rendering. One of versions has even an
+attempt of interactivity, though doesn't work for me (FF3).</p>
+
+<p>The only, but fatal, drawback is that the JS code is generated from C#, and
+quite unreadable.</p>
+
+<p><strong>URL:</strong> <a
+href="http://zproxy.wordpress.com/2007/12/25/new-example-isometric-threedstuff-javascript-tycoon/">http://zproxy.wordpress.com/…ript-tycoon/</a></p>
+
+<p><strong>Demo:</strong> <a
+href="http://jsc.sourceforge.net/examples/web/ThreeDStuff/IsometricWithNatureBoy.htm">http://jsc.sourceforge.net/…atureBoy.htm</a></p>
+
+<p><strong>Verdict:</strong> Would be useful if it was written in
+JavaScript.</p>
+
+<h4>Axono.me</h4>
+
+<p>A library, not studied yet.</p>
+
+<p>„axono.me has been designed to render axonometric projections, though it
+works fine for any kind of grid. The library has been tested using Safari 4 and
+Firefox.“</p>
+
+<p><strong>URL:</strong> <a
+href="http://www.creativeapplications.net.php5-3.dfw1-2.websitetestlink.com/scripts/axono-me-scripts/">http://www.creativeapplications.net.php5-3.dfw1-2.websitetestlink.com/…-me-scripts/</a></p>
+
+<p><strong>GitHub:</strong> <a
+href="http://github.com/elbowdonkey/axonome">http://github.com/…nkey/axonome</a></p>
+
+<h4>Rhodesy Isometric</h4>
+
+<p>Written in JavaScript. Seems to be fast, precise, and contains algorithm for
+distributing terrain level shift from one point.</p>
+
+<p><strong>URL:</strong> <a
+href="http://forums.tigsource.com/index.php?topic=3031.0">http://forums.tigsource.com/index.php?…</a></p>
+
+<p><strong>Demo:</strong> <a
+href="http://rhodesy.acsv.net/isometric/">http://rhodesy.acsv.net/isometric/</a></p>
+
+<p><strong>Verdict:</strong> Not studied yet, looks very good.</p>
+
+<h4>Isometric drawings with jQuery</h4>
+
+<p><strong>URL:</strong> <a
+href="http://www.tdupree.com/2008/05/19/isometric-drawings-with-jquery/">http://www.tdupree.com/…with-jquery/</a></p>
+
+<p><strong>Demo:</strong> <a
+href="http://www.themaninblue.com/experiment/Cubescape/new.php">http://www.themaninblue.com/…cape/new.php</a></p>
+
+<p><strong>Verdict:</strong> Not studied yet, looks good.</p>
+
+<h4>Other links</h4>
+
+<p><a
+href="http://www.smashingmagazine.com/2009/02/08/50-extremely-useful-javascript-tools/">50 Useful
+JavaScript Tools</a></p>
+
+<p><a href="http://x9productions.com/blog/?p=7">Isometric camera in javascript
+for Unity</a> – I don't understand this much. Somehow linked to „Unity3D
+Dialog Engine“, whatever that is.</p>
+</div>
 
 	<hr />
 

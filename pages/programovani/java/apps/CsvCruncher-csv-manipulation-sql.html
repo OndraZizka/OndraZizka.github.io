@@ -77,34 +77,75 @@
 
 	<div class="date"><em>2012-12-31</em></div>
 
-	<div class="doc-body"><h3>CsvCruncher&nbsp;– CSV manipulation through SQL (HSQLDB)</h3> 
-<p>Hi,</p> 
-<p>I've crafted a tool which transforms a CSV file into another CSV file using a SQL statement (as I&nbsp;did not found&nbsp;such).</p> 
-<p>Can be useful for various quick'n'dirty integration during test automation, esp. for data-oriented tasks like perf-tests.</p> 
-<p><a href="CsvCruncher-1.0.jar">DOWNLOAD</a></p> 
-<p>Many tools spit out CSV, or are able to as one of output options. Also, in hudson, you can very simply log any values you get into bash like echo " $val2, $val2" &gt;&gt; data.csv, for each build or part of a build. So it can be kind of integration&nbsp;tool.</p> 
-<p>Then you can do quite complex queries&nbsp;– from a flat table, you can actually do subselects and then left joins, which gives you very powerful tool to process the data into something what is ready for plotting as-is&nbsp;– that means, data filtered, cleaned, aggregated, converted, aligned, sorted,&nbsp;etc.</p> 
-<p>That might be my POV, since I&nbsp;like SQL and it's&nbsp;my favorite language not only for querying but also data-oriented procedural programming. But nonetheless, I&nbsp;already shortened my perf test task by ~ 40&nbsp;minutes of my work for each release. Instead of manual shannanigans in OpenOffice, I&nbsp;run a single command, and voila&nbsp;;-)</p> 
-<p>HSQL's&nbsp;syntax: <a href="http://hsqldb.org/doc/2.0/guide/dataaccess-chapt.html">http://hsqldb.org/…s-chapt.html</a> (I&nbsp;was very surprised by HSQL's&nbsp;features, it supports much more of SQL than e.g. MySQL.)</p> 
-<p>Enjoy :)</p> 
-<hr> 
-<h4>Usage:</h4> 
-<p><code>crunch [-in] &lt;inCSV&gt; [-out] &lt;outCSV&gt; [-sql] &lt;SQL&gt;"</code></p> 
-<h4>Example:</h4> 
-<pre class="brush: bash"><code>crunch input.csv output.csv "SELECT AVG(duration) AS durAvg FROM (SELECT * FROM indata ORDER BY duration LIMIT 2 OFFSET 6)"`</code></pre> 
-<h4>Example:</h4> 
-<pre class="brush: bash"><code>## jobName, buildNumber, config, ar, arFile, deployDur, warmupDur, scale
+	<div class="doc-body"><h3>CsvCruncher – CSV manipulation through SQL (HSQLDB)</h3>
+
+<p>Hi,</p>
+
+<p>I've crafted a tool which transforms a CSV file into another CSV file using a
+SQL statement (as I did not found such).</p>
+
+<p>Can be useful for various quick'n'dirty integration during test automation,
+esp. for data-oriented tasks like perf-tests.</p>
+
+<p><a href="CsvCruncher-1.0.jar">DOWNLOAD</a></p>
+
+<p>Many tools spit out CSV, or are able to as one of output options. Also, in
+hudson, you can very simply log any values you get into bash like echo " $val2,
+$val2" &gt;&gt; data.csv, for each build or part of a build. So it can be kind
+of integration tool.</p>
+
+<p>Then you can do quite complex queries – from a flat table, you can
+actually do subselects and then left joins, which gives you very powerful tool
+to process the data into something what is ready for plotting as-is – that
+means, data filtered, cleaned, aggregated, converted, aligned, sorted, etc.</p>
+
+<p>That might be my POV, since I like SQL and it's my favorite language not
+only for querying but also data-oriented procedural programming. But
+nonetheless, I already shortened my perf test task by ~ 40 minutes of my work
+for each release. Instead of manual shannanigans in OpenOffice, I run a single
+command, and voila ;-)</p>
+
+<p>HSQL's syntax: <a
+href="http://hsqldb.org/doc/2.0/guide/dataaccess-chapt.html">http://hsqldb.org/…s-chapt.html</a>
+(I was very surprised by HSQL's features, it supports much more of SQL than
+e.g. MySQL.)</p>
+
+<p>Enjoy :)</p>
+
+<hr />
+
+<h4>Usage:</h4>
+
+<p><code>crunch [-in] &lt;inCSV&gt; [-out] &lt;outCSV&gt; [-sql] &lt;SQL&gt;"</code></p>
+
+<h4>Example:</h4>
+
+<pre
+class="brush: bash"><code>crunch input.csv output.csv "SELECT AVG(duration) AS durAvg FROM (SELECT * FROM indata ORDER BY duration LIMIT 2 OFFSET 6)"`</code></pre>
+
+<h4>Example:</h4>
+
+<pre
+class="brush: bash"><code>## jobName, buildNumber, config, ar, arFile, deployDur, warmupDur, scale
 'eap-5.1.0-perf-deployers', 355,'production','testdata/war/hellothere.war','hellothere.war',10282,14804,1000
 'eap-5.1.0-perf-deployers', 355,'production','testdata/ear/EarWithWar-Counter.ear','EarWithWar-Counter.ear',11005,18904,1000
 'eap-5.1.0-perf-deployers', 355,'production','testdata-own/war/war-big-1.0.war','war-big-1.0.war',1966,14800,100
-...</code></pre> 
-<pre class="brush: sql"><code>   SELECT jobName, buildNumber, config, ar, arFile, deployDur, warmupDur, scale,"
-+ " CAST(warmupDur AS DOUBLE) / CAST(deployDur AS DOUBLE) AS warmupSlower FROM indata ORDER BY deployDur</code></pre> 
-<pre class="brush: bash"><code>'eap-5.1.0-perf-deployers',355,'production','testdata/war/hellothere.war','hellothere.war',10282,14804,1000,1.4397977047267068E0
+...</code></pre>
+
+<pre
+class="brush: sql"><code>   SELECT jobName, buildNumber, config, ar, arFile, deployDur, warmupDur, scale,"
++ " CAST(warmupDur AS DOUBLE) / CAST(deployDur AS DOUBLE) AS warmupSlower FROM indata ORDER BY deployDur</code></pre>
+
+<pre
+class="brush: bash"><code>'eap-5.1.0-perf-deployers',355,'production','testdata/war/hellothere.war','hellothere.war',10282,14804,1000,1.4397977047267068E0
 'eap-5.1.0-perf-deployers',355,'production','testdata/ear/EarWithWar-Counter.ear','EarWithWar-Counter.ear',11005,18904,1000,1.7177646524307133E0
-'eap-5.1.0-perf-deployers',355,'production','testdata-own/war/war-big-1.0.war','war-big-1.0.war',1966,14800,100,7.527975584944048E0</code></pre> 
-<p>(<code>crunch</code> script yet to be done. Currently you need to call <code>java -jar CsvCruncher.jar &lt;args&gt;</code>.)</p> 
-<hr></div>
+'eap-5.1.0-perf-deployers',355,'production','testdata-own/war/war-big-1.0.war','war-big-1.0.war',1966,14800,100,7.527975584944048E0</code></pre>
+
+<p>(<code>crunch</code> script yet to be done. Currently you need to call
+<code>java -jar CsvCruncher.jar &lt;args&gt;</code>.)</p>
+
+<hr />
+</div>
 
 	<hr />
 

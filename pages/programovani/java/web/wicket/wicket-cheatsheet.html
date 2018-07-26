@@ -77,31 +77,50 @@
 
 	<div class="date"><em>2012-12-31</em></div>
 
-	<div class="doc-body"><h3>My Wicket Cheat-sheet</h3> 
-<h4>JS resources into one link</h4> 
-<p>&gt;&gt; (09:44:54 AM) selckin: is there an easy way to make it concatinate a bunch of javascript/css resources into one link? &gt;&gt; (09:46:37 AM) martin-g: I&nbsp;use wro4j for&nbsp;that</p> 
-<h4>Basics</h4> 
-<p><code>new ExternalLink("id", "href", "label")</code></p> 
-<p>Switch off HTML escaping: <code>Component#setEscapeModelStrings( false )</code></p> 
-<p>Don't print wrapper HTML element: <code>Component#setRenderBodyOnly( true )</code></p> 
-<h4>Development / deployment Wicket mode</h4> 
-<pre class="brush: xml"><code>&lt;context-param&gt;
+	<div class="doc-body"><h3>My Wicket Cheat-sheet</h3>
+
+<h4>JS resources into one link</h4>
+
+<p>&gt;&gt; (09:44:54 AM) selckin: is there an easy way to make it concatinate a
+bunch of javascript/css resources into one link? &gt;&gt; (09:46:37 AM)
+martin-g: I use wro4j for that</p>
+
+<h4>Basics</h4>
+
+<p><code>new ExternalLink("id", "href", "label")</code></p>
+
+<p>Switch off HTML escaping:
+<code>Component#setEscapeModelStrings( false )</code></p>
+
+<p>Don't print wrapper HTML element:
+<code>Component#setRenderBodyOnly( true )</code></p>
+
+<h4>Development / deployment Wicket mode</h4>
+
+<pre
+class="brush: xml"><code>&lt;context-param&gt;
         &lt;param-name&gt;configuration&lt;/param-name&gt;
         &lt;param-value&gt;deployment/development&lt;/param-value&gt;
-&lt;/context-param&gt;</code></pre> 
-<pre class="brush: plain"><code>********************************************************************
+&lt;/context-param&gt;</code></pre>
+
+<pre
+class="brush: plain"><code>********************************************************************
 *** WARNING: Wicket is running in DEVELOPMENT mode.              ***
 ***                               ^^^^^^^^^^^                    ***
 *** Do NOT deploy to your live server(s) without changing this.  ***
 *** See Application#getConfigurationType() for more information. ***
-********************************************************************</code></pre> 
-<h4>Setting / changing attributes</h4> 
-<pre class="brush: java"><code>label1.add(
+********************************************************************</code></pre>
+
+<h4>Setting / changing attributes</h4>
+
+<pre
+class="brush: java"><code>label1.add(
   new AttributeModifier("class", true, new Model() {
     Object getObject(Component comp) {
       return Math.random()&gt;0.5 ? "SomeClass" : "AnotherClass";
     }
-  });</code></pre></div>
+  });</code></pre>
+</div>
 
 	<hr />
 

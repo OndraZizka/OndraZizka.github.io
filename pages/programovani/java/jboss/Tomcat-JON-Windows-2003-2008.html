@@ -79,8 +79,13 @@
 
 	<div class="date"><em>2012-12-13</em></div>
 
-	<div class="doc-body"><h3>JBoss Operation Network 2.3.0: Tomcat not supported on Windows 2003&nbsp;and&nbsp;2008</h3> 
-<p>For the record: You won't get Tomcat to work on JON 2.3.0.&nbsp;It has problems with process scanning, using Sigar. See the log bellow. Note the part with&nbsp;<code>Unexpected error occurred while looking up info for [&lt;unknown&gt;] process with pid [288] - call to getProcExe failed. Did the process die? Cause: org.hyperic.sigar.SigarException: Incorrect function.</code></p> 
+	<div class="doc-body"><h3>JBoss Operation Network 2.3.0: Tomcat not supported on Windows
+2003 and 2008</h3>
+
+<p>For the record: You won't get Tomcat to work on JON 2.3.0. It has problems
+with process scanning, using Sigar. See the log bellow. Note the part
+with <code>Unexpected error occurred while looking up info for [&lt;unknown&gt;] process with pid [288] - call to getProcExe failed. Did the process die? Cause: org.hyperic.sigar.SigarException: Incorrect function.</code></p>
+
 <pre><code>2010-02-11 20:44:45,390 DEBUG [MeasurementManager.sender-1] (rhq.core.pc.measurement.MeasurementCollectorRunner)- Measurement report contains no data - not sending to Server.
 2010-02-11 20:45:15,406 INFO  [MeasurementManager.sender-1] (rhq.core.pc.measurement.MeasurementCollectorRunner)- Measurement collection for [8] metrics took 0ms - sending report to Server...
 2010-02-11 20:45:45,406 INFO  [MeasurementManager.sender-1] (rhq.core.pc.measurement.MeasurementCollectorRunner)- Measurement collection for [5] metrics took 0ms - sending report to Server...
@@ -1927,7 +1932,8 @@ Caused by: org.rhq.core.pluginapi.inventory.InvalidPluginConfigurationException:
 2010-02-11 20:54:08,703 INFO  [InventoryManager.availability-1] (rhq.core.pc.inventory.InventoryManager)- Sending availability report to Server...
 2010-02-11 20:54:08,703 DEBUG [InventoryManager.availability-1] (rhq.core.pc.inventory.InventoryManager)- Availability report content: AV:[jawa14][36][full]
 2010-02-11 20:54:15,390 INFO  [MeasurementManager.sender-1] (rhq.core.pc.measurement.MeasurementCollectorRunner)- Measurement collection for [11] metrics took 0ms - sending report to Server...
-2010-02-11 20:54:45,390 DEBUG [MeasurementManager.sender-1] (rhq.core.pc.measurement.MeasurementCollectorRunner)- Measurement report contains no data - not sending to Server.</code></pre></div>
+2010-02-11 20:54:45,390 DEBUG [MeasurementManager.sender-1] (rhq.core.pc.measurement.MeasurementCollectorRunner)- Measurement report contains no data - not sending to Server.</code></pre>
+</div>
 
 	<hr />
 

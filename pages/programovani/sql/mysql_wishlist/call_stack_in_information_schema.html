@@ -77,24 +77,38 @@
 
 	<div class="date"><em>2012-12-16</em></div>
 
-	<div class="doc-body"><h3>Stored Procedure call stack in INFORMATION_SCHEMA</h3> 
-<p><strong>This is a MySQL feature request submitted as <a href="http://bugs.mysql.com/bug.php?id=36106">bug report #36106</a>.</strong></p> 
-<p>Having a call stack available in stored procedures would make debugging much much easier. It could be a table like&nbsp;this:</p> 
+	<div class="doc-body"><h3>Stored Procedure call stack in INFORMATION_SCHEMA</h3>
+
+<p><strong>This is a MySQL feature request submitted as <a
+href="http://bugs.mysql.com/bug.php?id=36106">bug report
+#36106</a>.</strong></p>
+
+<p>Having a call stack available in stored procedures would make debugging much
+much easier. It could be a table like this:</p>
+
 <pre><code>----------------------------------------------
 depth INT  routine_name VARCHAR   routine_type ENUM  started TIMESTAMP ...
 1          nn_TeachXOR            PROCEDURE          128458937
 2          nn_ComputeNet          PROCEDURE          128458938
 3          nn_ComputeLevel        PROCEDURE          128458938
-...</code></pre> 
-<p>With such table, one could do profiling,</p> 
-<pre class="brush: sql"><code>SELECT UNIX_TIMESTAMP() - started AS duration
+...</code></pre>
+
+<p>With such table, one could do profiling,</p>
+
+<pre
+class="brush: sql"><code>SELECT UNIX_TIMESTAMP() - started AS duration
   FROM INFORMATION_SCHEMA.CALLSTACK
-  ORDER BY depth DESC LIMIT 1;</code></pre> 
-<p>structured logging, e.g.:</p> 
-<pre class="brush: sql"><code>INSERT INTO log
+  ORDER BY depth DESC LIMIT 1;</code></pre>
+
+<p>structured logging, e.g.:</p>
+
+<pre
+class="brush: sql"><code>INSERT INTO log
   SELECT CONCAT( REPEAT('  ', ), '+--  ', routine_name) AS str
-  ORDER BY depth ASC;</code></pre> 
-<p>and more…</p></div>
+  ORDER BY depth ASC;</code></pre>
+
+<p>and more…</p>
+</div>
 
 	<hr />
 

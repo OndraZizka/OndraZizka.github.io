@@ -77,28 +77,48 @@
 
 	<div class="date"><em>2012-12-31</em></div>
 
-	<div class="doc-body"><h3>Querying and transforming CSV files using SQL.</h3> 
-<h4>Building:</h4> 
-<p>Provided you have Java JDK 1.6&nbsp;and <a href="http://maven.apache.org/download.html">Maven 2.2.1+</a> installed:</p> 
-<pre class="brush: bash"><code>svn co http://ondrazizka.googlecode.com/svn/trunk/CsvCruncher/
+	<div class="doc-body"><h3>Querying and transforming CSV files using SQL.</h3>
+
+<h4>Building:</h4>
+
+<p>Provided you have Java JDK 1.6 and <a
+href="http://maven.apache.org/download.html">Maven 2.2.1+</a> installed:</p>
+
+<pre
+class="brush: bash"><code>svn co http://ondrazizka.googlecode.com/svn/trunk/CsvCruncher/
 cd CsvCruncher
-mvn clean install</code></pre> 
-<h4>Usage:</h4> 
-<pre class="brush: bash"><code>crunch [-in] &lt;inCSV&gt; [-out] &lt;outCSV&gt; [-sql] &lt;SQL&gt;"</code></pre> 
-<h4>Examples</h4> 
-<pre class="brush: bash"><code>crunch input.csv output.csv "SELECT AVG(duration) AS durAvg FROM (SELECT * FROM indata ORDER BY duration LIMIT 2 OFFSET 6)"</code></pre> 
-<hr> 
-<pre class="brush: bash"><code>## jobName, buildNumber, config, ar, arFile, deployDur, warmupDur, scale
+mvn clean install</code></pre>
+
+<h4>Usage:</h4>
+
+<pre
+class="brush: bash"><code>crunch [-in] &lt;inCSV&gt; [-out] &lt;outCSV&gt; [-sql] &lt;SQL&gt;"</code></pre>
+
+<h4>Examples</h4>
+
+<pre
+class="brush: bash"><code>crunch input.csv output.csv "SELECT AVG(duration) AS durAvg FROM (SELECT * FROM indata ORDER BY duration LIMIT 2 OFFSET 6)"</code></pre>
+
+<hr />
+
+<pre
+class="brush: bash"><code>## jobName, buildNumber, config, ar, arFile, deployDur, warmupDur, scale
 'eap-5.1.0-perf-deployers', 355,'production','testdata/war/hellothere.war','hellothere.war',10282,14804,1000
 'eap-5.1.0-perf-deployers', 355,'production','testdata/ear/EarWithWar-Counter.ear','EarWithWar-Counter.ear',11005,18904,1000
 'eap-5.1.0-perf-deployers', 355,'production','testdata-own/war/war-big-1.0.war','war-big-1.0.war',1966,14800,100
-...</code></pre> 
-<pre class="brush: bash"><code>SELECT jobName, buildNumber, config, ar, arFile, deployDur, warmupDur, scale,"
-  + " CAST(warmupDur AS DOUBLE) / CAST(deployDur AS DOUBLE) AS warmupSlower FROM indata ORDER BY deployDur</code></pre> 
-<pre class="brush: bash"><code>'eap-5.1.0-perf-deployers',355,'production','testdata/war/hellothere.war','hellothere.war',10282,14804,1000,1.4397977047267068E0
+...</code></pre>
+
+<pre
+class="brush: bash"><code>SELECT jobName, buildNumber, config, ar, arFile, deployDur, warmupDur, scale,"
+  + " CAST(warmupDur AS DOUBLE) / CAST(deployDur AS DOUBLE) AS warmupSlower FROM indata ORDER BY deployDur</code></pre>
+
+<pre
+class="brush: bash"><code>'eap-5.1.0-perf-deployers',355,'production','testdata/war/hellothere.war','hellothere.war',10282,14804,1000,1.4397977047267068E0
 'eap-5.1.0-perf-deployers',355,'production','testdata/ear/EarWithWar-Counter.ear','EarWithWar-Counter.ear',11005,18904,1000,1.7177646524307133E0
-'eap-5.1.0-perf-deployers',355,'production','testdata-own/war/war-big-1.0.war','war-big-1.0.war',1966,14800,100,7.527975584944048E0</code></pre> 
-<p>(For the <code>crunch</code> see <code>target/appassabler/bin</code> .)</p></div>
+'eap-5.1.0-perf-deployers',355,'production','testdata-own/war/war-big-1.0.war','war-big-1.0.war',1966,14800,100,7.527975584944048E0</code></pre>
+
+<p>(For the <code>crunch</code> see <code>target/appassabler/bin</code> .)</p>
+</div>
 
 	<hr />
 

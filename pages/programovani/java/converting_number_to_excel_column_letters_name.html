@@ -77,12 +77,25 @@
 
 	<div class="date"><em>2012-12-16</em></div>
 
-	<div class="doc-body"><h3>Converting a number to Excel column character name</h3> 
-<p>If you use Java to work with Excel files (for example, using <a href="http://poi.apache.org/hssf/index.html">HSSF</a> from the <a href="http://poi.apache.org/hssf/index.html">Apache POI project</a>), you might to cross the problem of converting an integer to a alphabetical columns naming.</p> 
-<p>That might seem trivial at first sight, but the Excel letter naming system is not easily convertible because of different handling of&nbsp;zero.</p> 
-<p>Here is the method I&nbsp;created for that task.</p> 
-<p><em>Note that this solution is general for any number; when counting on the fact that Excel's&nbsp;last column is IV, this could be done using one <code>if</code>.</em></p> 
-<pre class="brush: java"><code>/**
+	<div class="doc-body"><h3>Converting a number to Excel column character name</h3>
+
+<p>If you use Java to work with Excel files (for example, using <a
+href="http://poi.apache.org/hssf/index.html">HSSF</a> from the <a
+href="http://poi.apache.org/hssf/index.html">Apache POI project</a>), you might
+to cross the problem of converting an integer to a alphabetical columns
+naming.</p>
+
+<p>That might seem trivial at first sight, but the Excel letter naming system is
+not easily convertible because of different handling of zero.</p>
+
+<p>Here is the method I created for that task.</p>
+
+<p><em>Note that this solution is general for any number; when counting on the
+fact that Excel's last column is IV, this could be done using one
+<code>if</code>.</em></p>
+
+<pre
+class="brush: java"><code>/**
  * Converts column number to Excel column characters name, e.g.: 43 =&gt; AQ
  * @autor Ondra Žižka
  */
@@ -107,10 +120,17 @@ private static String ConvertColumnNumberToChars( int i ){
   }
   return String.copyValueOf( ac );
 
-}// private static String ConvertColumnNumberToChars( int i )</code></pre> 
-<p>Keywords: Excel, column, number, integer, letter, column name, sheet, Java, POI,&nbsp;HSSF.</p> 
-<h3>Převod čísla sloupce na písmeno ve stylu Excelu</h3> 
-<p>Výše najdete způsob, jak převést číslo sloupce v&nbsp;Excel tabulce na název složený z&nbsp;písmen. Nechce se mi to přepisovat do češtiny celé, tak aspoň tahle česká klíčová slova&nbsp;:-)</p></div>
+}// private static String ConvertColumnNumberToChars( int i )</code></pre>
+
+<p>Keywords: Excel, column, number, integer, letter, column name, sheet, Java,
+POI, HSSF.</p>
+
+<h3>Převod čísla sloupce na písmeno ve stylu Excelu</h3>
+
+<p>Výše najdete způsob, jak převést číslo sloupce v Excel tabulce na
+název složený z písmen. Nechce se mi to přepisovat do češtiny celé, tak
+aspoň tahle česká klíčová slova :-)</p>
+</div>
 
 	<hr />
 

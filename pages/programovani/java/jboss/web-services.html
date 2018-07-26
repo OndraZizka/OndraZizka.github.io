@@ -77,12 +77,20 @@
 
 	<div class="date"><em>2012-12-13</em></div>
 
-	<div class="doc-body"><h3>JBoss WebServices (JBossWS) notes</h3> 
-<h4>WARNING: Unable to process deployment descriptor</h4> 
+	<div class="doc-body"><h3>JBoss WebServices (JBossWS) notes</h3>
+
+<h4>WARNING: Unable to process deployment descriptor</h4>
+
 <pre><code>17:27:55,019 INFO  [TomcatDeployment] deploy, ctxPath=/HelloWS
 17:27:55,048 WARNING [config] Unable to process deployment descriptor for context '/HelloWS'
-17:27:55,049 INFO  [config] Initializing Mojarra (1.2_13-b01-FCS) for context '/HelloWS'</code></pre> 
-<p>(…)you need to customise the default WebRoot/WEB-INF/web.xml. This is what tells JBoss where to find the entry point for the web service&nbsp;– the deployment descriptor. By default it points to a .jsp. If you forget and try to deploy it anyway, the deployment will work, a warning message: unable to process deployment descriptor for context null appears in the&nbsp;log(…)</p></div>
+17:27:55,049 INFO  [config] Initializing Mojarra (1.2_13-b01-FCS) for context '/HelloWS'</code></pre>
+
+<p>(…)you need to customise the default WebRoot/WEB-INF/web.xml. This is what
+tells JBoss where to find the entry point for the web service – the
+deployment descriptor. By default it points to a .jsp. If you forget and try to
+deploy it anyway, the deployment will work, a warning message: unable to process
+deployment descriptor for context null appears in the log(…)</p>
+</div>
 
 	<hr />
 

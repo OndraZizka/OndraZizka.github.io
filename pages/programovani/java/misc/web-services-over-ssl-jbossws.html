@@ -77,13 +77,22 @@
 
 	<div class="date"><em>2012-12-31</em></div>
 
-	<div class="doc-body"><h3>Web Services over SSL with JBoss WS</h3> 
-<p>To use specifically JBoss Web Services, set the path to JBoss AS endorsed dirs as JVM&nbsp;arg:</p> 
-<pre class="brush: plain"><code>-Djava.endorsed.dirs=/jboss-as/default/lib/endorsed/</code></pre> 
-<p>To set SSL debugging on, add this arg to JVM:</p> 
-<pre class="brush: plain"><code>-Djavax.net.debug=all</code></pre> 
-<h4>Example code</h4> 
-<pre class="brush: java"><code>String hostPort = "https://localhost:8443";
+	<div class="doc-body"><h3>Web Services over SSL with JBoss WS</h3>
+
+<p>To use specifically JBoss Web Services, set the path to JBoss AS endorsed
+dirs as JVM arg:</p>
+
+<pre
+class="brush: plain"><code>-Djava.endorsed.dirs=/jboss-as/default/lib/endorsed/</code></pre>
+
+<p>To set SSL debugging on, add this arg to JVM:</p>
+
+<pre class="brush: plain"><code>-Djavax.net.debug=all</code></pre>
+
+<h4>Example code</h4>
+
+<pre
+class="brush: java"><code>String hostPort = "https://localhost:8443";
 
 // Using 1 keystore as both key and trust store
 String keystoreTruststorePath = "/tmp/my.keystore";
@@ -130,7 +139,8 @@ for(int i=0; i &lt; 5; i++)
         info ( greeting.getText() );
         log.info( "******* CLIENT: INVOKE WS COMPLETED *******" );
         log.info( "Client invoked - reponse: " + greeting.getText() );
-}</code></pre></div>
+}</code></pre>
+</div>
 
 	<hr />
 

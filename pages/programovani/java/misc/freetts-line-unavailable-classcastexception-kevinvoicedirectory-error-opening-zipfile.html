@@ -77,86 +77,221 @@
 
 	<div class="date"><em>2012-12-31</em></div>
 
-	<div class="doc-body"><h3>FreeTTS Troubleshooting</h3> 
-<h3>Java sound problems in Linux&nbsp;– LINE UNAVAILABLE</h3> 
-<p>It's&nbsp;a JVM bug described <a href="http://bugs.sun.com/bugdatabase/view_bug.do?bug_id=4498848">here</a></p> 
-<p>Also <a href="http://sourceforge.net/projects/freetts/forums/forum/137669/topic/722735?message=1659298">here</a> :</p> 
-<blockquote> 
- <ol start="2"> 
-  <li>Another possibility, which I&nbsp;have not verified, might be due to a delay that we put it to the closing of the currentClip. <p>We put in this delay to workaround a Java Sound bug in&nbsp;Linux.</p> <p>The resulting scenario is: because the last clip was not closed before the next clip attempts to&nbsp;play,</p> <p>the audio device is still occupied, thus generating a LineUnavailable­Exception.</p> <p>Though, we've hardly experienced any problems with the JavaClipAudio­Player, so I&nbsp;doubt this is the problem.</p> </li> 
- </ol> 
-</blockquote> 
-<p>Also <a href="http://sourceforge.net/projects/freetts/forums/forum/137669/topic/930844?message=2221602">here</a> about „long sentences“:</p> 
-<blockquote> 
- <p>The problem, it seems is in the code that breaks up a very long sentence. FreeTTS is designed to synthesize text with low latency. When given a very long sentence, such as in your example, it will decide that the sentence is too long to be synthesized in a timely fashion and break it up into smaller bits. This logic is rarely (if every executed) since it only is invoked when very long sentences occur. If I&nbsp;change your sample code to concatenate a period instead of a comma after every „Number xx“, things are synthesized just fine with no line unavailable&nbsp;error.</p> 
-</blockquote> 
-<h4>Workaround:</h4> 
-<pre class="brush: java"><code>System.setProperty("com.sun.speech.freetts.audio.AudioPlayer.openFailDelayMs", "100");
-System.setProperty("com.sun.speech.freetts.audio.AudioPlayer.totalOpenFailDelayMs", "30000");</code></pre> 
-<p>Also <a href="http://sourceforge.net/projects/freetts/forums/forum/137669/topic/1293759?message=3178304">here</a> :</p> 
-<blockquote> 
- <p>If you disable the ARts sound daemon under KDE FreeTTS will work and not give the error:<br> <code>LINE UNAVAILABLE: Format is PCM_SIGNED 16000.0 Hz, 16 bit, mono, 2 bytes/frame, big-endian</code> Or something simular to t he error above. I&nbsp;believe the issue (and reply if I'm wrong) is the ARts daemon grabs the /dev/dsp device and prevents FreeTTS from using it. Though I&nbsp;don't run ETS (Enlightenment sound daemon) this daemon too, could be a problem for fellow FreeTTS users/developers. I&nbsp;believe this daemon too grabs on to /dev/dsp and prevents others from using&nbsp;it.</p> 
-</blockquote> 
-<p>Also, <a href="http://sourceforge.net/projects/freetts/forums/forum/137669/topic/686662?message=1582276">testing the line availability</a> :</p> 
-<blockquote> 
- <ol start="2"> 
-  <li>To test if an environment supports sound, copy the code in&nbsp;<code>com.sun.speech.freetts.audio.JavaStreamingAudioPlayer.openLine()</code> <p>to a method in your application (remember to include the javax.sound.sam­pled.* packages).</p> <p>Before you call FreeTTS methods, call this method to see if your environment supports&nbsp;sound.</p> <p>If it does, remember to close the audio line, since FreeTTS will try to open it&nbsp;again.</p> </li> 
- </ol> 
-</blockquote> 
-<h4>Solution:</h4> 
-<p>Fix FreeTTS according to <a href="http://forums.sun.com/thread.jspa?threadID=5189363">this link</a>, which is now unavailable because Oracle fucked it up. That page supposedly contained a fix for FreeTTS making it not vulnerable to that JVM's&nbsp;bug.</p> 
-<h4>Also see:</h4> 
-<ul> 
- <li><a href="http://sourceforge.net/search/?group_id=42080&amp;type_of_search=forums&amp;words=LINE+UNAVAILABLE&amp;search=Search">FreeTTS forum search</a></li> 
- <li><a href="http://freetts.sourceforge.net/docs/index.php#What_does_the_message_Line_unavailable">FreeTTS FAQ</a></li> 
- <li><a href="http://www.ryan-h.com/uncategorized/java-speech-jsapi-freetts">Useful howto</a> at ryan-h's&nbsp;blog.</li> 
-</ul> 
-<h3>Problem finding dependencies&nbsp;– ZipException` „Error opening ZIP&nbsp;file“</h3> 
-<p>After I&nbsp;mavenized FreeTTS, I&nbsp;started getting an exception from JDK saying it can't read ZIP file somewhere in <code>VoiceManager.java</code>.</p> 
-<p>I&nbsp;used strace to figure out a „Error opening ZIP file“. That did not help because it did not tell me about JVM's&nbsp;calls to <code>open()</code> for some reason, but anyway, here's&nbsp;the command:</p> 
-<pre class="brush: bash"><code>sudo strace -e trace=all -o log.txt \
+	<div class="doc-body"><h3>FreeTTS Troubleshooting</h3>
+
+<h3>Java sound problems in Linux – LINE UNAVAILABLE</h3>
+
+<p>It's a JVM bug described <a
+href="http://bugs.sun.com/bugdatabase/view_bug.do?bug_id=4498848">here</a></p>
+
+<p>Also <a
+href="http://sourceforge.net/projects/freetts/forums/forum/137669/topic/722735?message=1659298">here</a>
+:</p>
+
+<blockquote>
+	<ol start="2">
+		<li>Another possibility, which I have not verified, might be due to a delay
+		that we put it to the closing of the currentClip.
+			<p>We put in this delay to workaround a Java Sound bug in Linux.</p>
+
+			<p>The resulting scenario is: because the last clip was not closed before the
+			next clip attempts to play,</p>
+
+			<p>the audio device is still occupied, thus generating a
+			LineUnavailable­Exception.</p>
+
+			<p>Though, we've hardly experienced any problems with the JavaClipAudio­Player,
+			so I doubt this is the problem.</p>
+		</li>
+	</ol>
+</blockquote>
+
+<p>Also <a
+href="http://sourceforge.net/projects/freetts/forums/forum/137669/topic/930844?message=2221602">here</a>
+about „long sentences“:</p>
+
+<blockquote>
+	<p>The problem, it seems is in the code that breaks up a very long sentence.
+	FreeTTS is designed to synthesize text with low latency. When given a very long
+	sentence, such as in your example, it will decide that the sentence is too long
+	to be synthesized in a timely fashion and break it up into smaller bits. This
+	logic is rarely (if every executed) since it only is invoked when very long
+	sentences occur. If I change your sample code to concatenate a period instead
+	of a comma after every „Number xx“, things are synthesized just fine with no
+	line unavailable error.</p>
+</blockquote>
+
+<h4>Workaround:</h4>
+
+<pre
+class="brush: java"><code>System.setProperty("com.sun.speech.freetts.audio.AudioPlayer.openFailDelayMs", "100");
+System.setProperty("com.sun.speech.freetts.audio.AudioPlayer.totalOpenFailDelayMs", "30000");</code></pre>
+
+<p>Also <a
+href="http://sourceforge.net/projects/freetts/forums/forum/137669/topic/1293759?message=3178304">here</a>
+:</p>
+
+<blockquote>
+	<p>If you disable the ARts sound daemon under KDE FreeTTS will work and not give
+	the error:<br />
+	<code>LINE UNAVAILABLE: Format is PCM_SIGNED 16000.0 Hz, 16 bit, mono, 2 bytes/frame, big-endian</code>
+	Or something simular to t he error above. I believe the issue (and reply if I'm
+	wrong) is the ARts daemon grabs the /dev/dsp device and prevents FreeTTS from
+	using it. Though I don't run ETS (Enlightenment sound daemon) this daemon too,
+	could be a problem for fellow FreeTTS users/developers. I believe this daemon
+	too grabs on to /dev/dsp and prevents others from using it.</p>
+</blockquote>
+
+<p>Also, <a
+href="http://sourceforge.net/projects/freetts/forums/forum/137669/topic/686662?message=1582276">testing
+the line availability</a> :</p>
+
+<blockquote>
+	<ol start="2">
+		<li>To test if an environment supports sound, copy the code
+		in <code>com.sun.speech.freetts.audio.JavaStreamingAudioPlayer.openLine()</code>
+			<p>to a method in your application (remember to include the
+			javax.sound.sam­pled.* packages).</p>
+
+			<p>Before you call FreeTTS methods, call this method to see if your environment
+			supports sound.</p>
+
+			<p>If it does, remember to close the audio line, since FreeTTS will try to open
+			it again.</p>
+		</li>
+	</ol>
+</blockquote>
+
+<h4>Solution:</h4>
+
+<p>Fix FreeTTS according to <a
+href="http://forums.sun.com/thread.jspa?threadID=5189363">this link</a>, which
+is now unavailable because Oracle fucked it up. That page supposedly contained a
+fix for FreeTTS making it not vulnerable to that JVM's bug.</p>
+
+<h4>Also see:</h4>
+
+<ul>
+	<li><a
+	href="http://sourceforge.net/search/?group_id=42080&amp;type_of_search=forums&amp;words=LINE+UNAVAILABLE&amp;search=Search">FreeTTS
+	forum search</a></li>
+
+	<li><a
+	href="http://freetts.sourceforge.net/docs/index.php#What_does_the_message_Line_unavailable">FreeTTS
+	FAQ</a></li>
+
+	<li><a
+	href="http://www.ryan-h.com/uncategorized/java-speech-jsapi-freetts">Useful
+	howto</a> at ryan-h's blog.</li>
+</ul>
+
+<h3>Problem finding dependencies – ZipException` „Error opening
+ZIP file“</h3>
+
+<p>After I mavenized FreeTTS, I started getting an exception from JDK saying
+it can't read ZIP file somewhere in <code>VoiceManager.java</code>.</p>
+
+<p>I used strace to figure out a „Error opening ZIP file“. That did not
+help because it did not tell me about JVM's calls to <code>open()</code> for
+some reason, but anyway, here's the command:</p>
+
+<pre
+class="brush: bash"><code>sudo strace -e trace=all -o log.txt \
 java -Xrunjdwp:transport=dt_socket,server=y,address=4000 \
      -Djpda.listen=true -Djpda.address=4000 \
      -Dmbrola.base="`pwd`/../mbrola301"\
      -Dfreetts.voicespath="`pwd`/../mbrola301/voices"\
      -jar /home/ondra/work/BOTS/SpeechBot/SpeechBot-mavenized/target/SpeechBot-1.0-SNAPSHOT.jar \
-     irc.eng.brq.redhat.com '#some'</code></pre> 
-<h4>The cause</h4> 
-<p>The problem was that mavenization of FreeTTS and MBrola involved re-naming the .jar&nbsp;files.</p> 
-<p>But FreeTTS not only has hard-coded dependencies in it's <code>MANIFEST.MF</code>'s <code>Class-Path</code>, which is quite stupid for a library, it also has code inside which actually relies on these data, which is the real peak of stupidity. So if you Mavenize such library, it ends up in different directories. So it will not usually work in&nbsp;IDE.</p> 
-<p>You need to flatten the dependencies to a single dir, using e.g. <code>mvn dependencies:copy</code>, see <a href="http://ondra.zizka.cz/stranky/programovani/java/maven/maven-create-distribution-package.texy">this example</a>. You also need to set Maven to put all app's&nbsp;dependencies to it's&nbsp;jar's <code>MANIFEST.MF</code>'s <code>Class-Path</code>&nbsp;– here it's&nbsp;ok because it's&nbsp;an app, not a library.</p> 
-<p>Then you need to manually rewrite all FreeTTS libraries' MANIFEST.MF in the local repository, so that you can rebuild your application. Change the <code>Class-Path</code> to reflect the names of the jar files; Usually, that means adding <code>-&lt;version&gt;</code> so it's&nbsp;e.g. <code>cmulex-1.2.jar:freetts-1.2.jar:...</code>.</p> 
-<p>Then you run a shell command like</p> 
-<pre class="brush: bash"><code>java -Dmbrola.base="`pwd`/../mbrola301"\
+     irc.eng.brq.redhat.com '#some'</code></pre>
+
+<h4>The cause</h4>
+
+<p>The problem was that mavenization of FreeTTS and MBrola involved re-naming
+the .jar files.</p>
+
+<p>But FreeTTS not only has hard-coded dependencies in it's
+<code>MANIFEST.MF</code>'s <code>Class-Path</code>, which is quite stupid for a
+library, it also has code inside which actually relies on these data, which is
+the real peak of stupidity. So if you Mavenize such library, it ends up in
+different directories. So it will not usually work in IDE.</p>
+
+<p>You need to flatten the dependencies to a single dir, using e.g.
+<code>mvn dependencies:copy</code>, see <a
+href="http://ondra.zizka.cz/stranky/programovani/java/maven/maven-create-distribution-package.texy">this
+example</a>. You also need to set Maven to put all app's dependencies to
+it's jar's <code>MANIFEST.MF</code>'s <code>Class-Path</code> – here
+it's ok because it's an app, not a library.</p>
+
+<p>Then you need to manually rewrite all FreeTTS libraries' MANIFEST.MF in the
+local repository, so that you can rebuild your application. Change the
+<code>Class-Path</code> to reflect the names of the jar files; Usually, that
+means adding <code>-&lt;version&gt;</code> so it's e.g.
+<code>cmulex-1.2.jar:freetts-1.2.jar:...</code>.</p>
+
+<p>Then you run a shell command like</p>
+
+<pre
+class="brush: bash"><code>java -Dmbrola.base="`pwd`/../mbrola301"\
      -Dfreetts.voicespath="`pwd`/../mbrola301/voices"\
      -jar /home/ondra/work/BOTS/SpeechBot/SpeechBot-mavenized/target/SpeechBot-1.0-SNAPSHOT.jar \
-     irc.eng.brq.redhat.com '#some'</code></pre> 
-<p>Here you don't need to specify -cp because the deps are in the app's&nbsp;MANIFEST.MF as per the explanation&nbsp;above.</p> 
-<h3>Problems finding Voices</h3> 
-<p>I&nbsp;had some troubles make FreeTTS find MBrola's&nbsp;voices.</p> 
-<p>Don't forget to set the <code>mbrola.base</code> system property when you run your application,&nbsp;e.g.:</p> 
-<pre class="brush: plain"><code>java -jar myapp.jar -Dmbrola.base="`pwd`/../mbrola301"</code></pre> 
-<p>eventually you can set <code>freetts.voicespath</code> to different&nbsp;dir:</p> 
-<pre class="brush: plain"><code>java -jar myapp.jar -Dmbrola.base="`pwd`/../mbrola301" -Dfreetts.voicespath="`pwd`/../mbrola301/voices"</code></pre> 
-<hr> 
-<p>There are few voices in FreeTTS with MBrola.</p> 
-<pre class="brush: plain"><code>// This is a tiny database, contains only data for time demo app.
+     irc.eng.brq.redhat.com '#some'</code></pre>
+
+<p>Here you don't need to specify -cp because the deps are in the
+app's MANIFEST.MF as per the explanation above.</p>
+
+<h3>Problems finding Voices</h3>
+
+<p>I had some troubles make FreeTTS find MBrola's voices.</p>
+
+<p>Don't forget to set the <code>mbrola.base</code> system property when you run
+your application, e.g.:</p>
+
+<pre
+class="brush: plain"><code>java -jar myapp.jar -Dmbrola.base="`pwd`/../mbrola301"</code></pre>
+
+<p>eventually you can set <code>freetts.voicespath</code> to different dir:</p>
+
+<pre
+class="brush: plain"><code>java -jar myapp.jar -Dmbrola.base="`pwd`/../mbrola301" -Dfreetts.voicespath="`pwd`/../mbrola301/voices"</code></pre>
+
+<hr />
+
+<p>There are few voices in FreeTTS with MBrola.</p>
+
+<pre
+class="brush: plain"><code>// This is a tiny database, contains only data for time demo app.
 System.setProperty("freetts.voices","com.sun.speech.freetts.en.us.cmu_time_awb.AlanVoiceDirectory");
 
 // Using this throws the ClassCastException. You need to recompile it.
 System.setProperty("freetts.voices", "com.sun.speech.freetts.en.us.cmu_us_kal.KevinVoiceDirectory");
 
 // MBrola voices.
-System.setProperty("freetts.voices", "de.dfki.lt.freetts.en.us.MbrolaVoiceDirectory");</code></pre> 
-<p>Even after setting <code>mbrola.voices</code>, it kept finding only <code>mbrola_us1</code>, <code>mbrola_us2</code>, <code>mbrola_us3</code>. I&nbsp;added some voices from their web, but these were not listed as available. I&nbsp;guess I&nbsp;need some other <code>VoiceDirectory</code> implementation because the voices are hardcoded in <code>KevinVoiceDirectory</code> so I&nbsp;guess there's&nbsp;no dynamic loading despite all that mess in <code>VoiceDirectory.java</code>.</p> 
-<h3>Weird ClassCastException for KevinVoiceDirec­tory, gone after re-compiling</h3> 
-<p>After solving „Error reading ZIP“ by changing FreeTTS's&nbsp;jar's&nbsp;M­ANIFEST.MF's&nbsp;Class-Path value to reflect my jar names (mavenized), I&nbsp;started getting&nbsp;this:</p> 
-<pre class="brush: plain"><code>Exception in thread "main" java.lang.ClassCastException: com.sun.speech.freetts.en.us.cmu_us_kal.KevinVoiceDirectory cannot be cast to com.sun.speech.freetts.VoiceDirectory
+System.setProperty("freetts.voices", "de.dfki.lt.freetts.en.us.MbrolaVoiceDirectory");</code></pre>
+
+<p>Even after setting <code>mbrola.voices</code>, it kept finding only
+<code>mbrola_us1</code>, <code>mbrola_us2</code>, <code>mbrola_us3</code>.
+I added some voices from their web, but these were not listed as available.
+I guess I need some other <code>VoiceDirectory</code> implementation because
+the voices are hardcoded in <code>KevinVoiceDirectory</code> so I guess
+there's no dynamic loading despite all that mess in
+<code>VoiceDirectory.java</code>.</p>
+
+<h3>Weird ClassCastException for KevinVoiceDirec­tory, gone after
+re-compiling</h3>
+
+<p>After solving „Error reading ZIP“ by changing
+FreeTTS's jar's M­ANIFEST.MF's Class-Path value to reflect my jar names
+(mavenized), I started getting this:</p>
+
+<pre
+class="brush: plain"><code>Exception in thread "main" java.lang.ClassCastException: com.sun.speech.freetts.en.us.cmu_us_kal.KevinVoiceDirectory cannot be cast to com.sun.speech.freetts.VoiceDirectory
         at com.sun.speech.freetts.VoiceManager.getVoices(VoiceManager.java:113)
         at cz.dynawest.speechbot.synt.MbrolaSpeaker.&lt;init&gt;(MbrolaSpeaker.java:38)
         at cz.dynawest.speechbot.SpeechBot.&lt;init&gt;(SpeechBot.java:25)
-        at cz.dynawest.speechbot.SpeechBot.main(SpeechBot.java:65)</code></pre> 
-<p>After re-compiling KevinVoiceDirectory and storing it in jar, it&nbsp;works.</p></div>
+        at cz.dynawest.speechbot.SpeechBot.main(SpeechBot.java:65)</code></pre>
+
+<p>After re-compiling KevinVoiceDirectory and storing it in jar, it works.</p>
+</div>
 
 	<hr />
 

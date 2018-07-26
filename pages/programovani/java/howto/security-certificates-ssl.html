@@ -77,8 +77,10 @@
 
 	<div class="date"><em>2012-12-31</em></div>
 
-	<div class="doc-body"><h3>Java security&nbsp;– how to work with SSL certificates</h3> 
-<pre class="brush: bash"><code># Get the server's cert.
+	<div class="doc-body"><h3>Java security – how to work with SSL certificates</h3>
+
+<pre
+class="brush: bash"><code># Get the server's cert.
 openssl s_client -connect support.stage.redhat.com:443
 # Store the cert incl. -----BEGIN .... and -----END ... to stage.pem
 
@@ -86,15 +88,49 @@ openssl s_client -connect support.stage.redhat.com:443
 sudo keytool -import -alias support.stage.redhat.com -keystore /etc/java-6-sun/security/cacerts -file stage.pem
 
 # Check if it's really there.
-keytool -keystore /etc/java-6-sun/security/cacerts -list | grep stage</code></pre> 
-<h4>Sources</h4> 
-<ul> 
- <li><a href="http://blogs.sun.com/andreas/entry/no_more_unable_to_find">No more ‚unable to find valid certification path to requested target‘</a>&nbsp;*****</li> 
- <li><a href="http://java.sun.com/javase/6/docs/technotes/tools/solaris/keytool.html">keytool&nbsp;– Key and Certificate Management Tool</a>&nbsp;*****</li> 
- <li>„Connecting to SSL services“: <a href="http://confluence.atlassian.com/display/JIRA/Connecting+to+SSL+services">http://confluence.atlassian.com/…SSL+services</a> *****</li> 
- <li><a href="http://conshell.net/wiki/index.php/OpenSSL_to_Keytool_Conversion_tips">OpenSSL to Keytool Conversion tips</a> ***</li> 
-</ul> 
-<p>-----BEGIN CERTIFICATE----- MIIDUzCCArygA­wIBAgICApowDQYJ­KoZIhvcNAQEFBQAw­gZ0×CzAJBgNVBA­YTAlVT MRcwFQYDVQQIEw5Ob3J0aC­BDYXJvbGluYTEQ­MA4GA1UEBxMHUm­FsZWlnaDEWMBQG A1UEChMNUmVkI­EhhdCwgSW5jLjEL­MAkGA1UECxMCSVMxFjA­UBgNVBAMTDVJlZCBI YXQgSVMgQ0ExJjAk­BgkqhkiG9w0BCQEW­F3N5c2FkbWluL­XJkdUByZWRoYX­QuY29t MB4XDTEwMDMyM­zA3MTI1OFoXDTE­yMDMyMjA3MTI1O­FowgZkxCzAJBgNVBA­YTAlVT MRcwFQYDVQQIEw5Ob3J0aC­BDYXJvbGluYTEW­MBQGA1UEChMNUm­VkIEhhdCwgSW5j LjELMAkGA1UEC­xMCSVMxITAfBgNVBAM­TGHN1cHBvcnQuc3RhZ2U­ucmVkaGF0LmNv bTEpMCcGCSqGSIb3­DQEJARYac3lzYW­RtaW4tcmhjb3JwQHJlZGhhdC­5jb20wgZ8w DQYJKoZIhvcNA­QEBBQADgY0AMIG­JAoGBANwkCOjqkZN1a9UZ­x3ghl8v/cOG+I2kj 1SggHDlPDO5W1­qwbKOIduL156W6goX5­qzH1dhTJMoLGcBqn8a­YeLYVvf0rQ9hk8u ZvJmXdwNqA4cK­S53cW3dmDzU6V7DIR­PUawh/cQ2T6Ab81g­kxHuXdhAWKsD95bb4Y WsdNnL6/O3npAg­MBAAGjgaMwgaAw­CQYDVR0TBAIwA­DAsBglghkgBhvhC­AQ0EHxYd T3BlblNTTCBHZ­W5lcmF0ZWQgQ2Vyd­GlmaWNhdGUwHQYD­VR0OBBYEFKq7K0bna­wI3 da76+NWa20pwK­zlVMB8GA1UdIw­QYMBaAFA2sGXDtBKde­eKv+i6g06yEmwVY1MCUG A1UdEQQeMByBGnN5c2FkbWluL­XJoY29ycEByZWRo­YXQuY29tMA0GCSqG­SIb3DQEB BQUAA4GBANfwu­LigUmnxEy3E2Ly­bIlrm5OJV9U3KLu­a3I18uUg5jmBRb6fhq­cddw kiX/WVZyhAy+XZWM3U­toDSoQRqvgdcklmu­USlKRS8/aWniD0cVK1uD­xK9QVNkIyb BiWGuekG2×awh3lIC­NVHbaSTxxn3kHGxCWS­btwXngI7+cRrCz3×E -----END CERTIFICATE-----</p></div>
+keytool -keystore /etc/java-6-sun/security/cacerts -list | grep stage</code></pre>
+
+<h4>Sources</h4>
+
+<ul>
+	<li><a href="http://blogs.sun.com/andreas/entry/no_more_unable_to_find">No more
+	‚unable to find valid certification path to requested
+	target‘</a> *****</li>
+
+	<li><a
+	href="http://java.sun.com/javase/6/docs/technotes/tools/solaris/keytool.html">keytool –
+	Key and Certificate Management Tool</a> *****</li>
+
+	<li>„Connecting to SSL services“: <a
+	href="http://confluence.atlassian.com/display/JIRA/Connecting+to+SSL+services">http://confluence.atlassian.com/…SSL+services</a>
+	*****</li>
+
+	<li><a
+	href="http://conshell.net/wiki/index.php/OpenSSL_to_Keytool_Conversion_tips">OpenSSL
+	to Keytool Conversion tips</a> ***</li>
+</ul>
+
+<p>-----BEGIN CERTIFICATE-----
+MIIDUzCCArygA­wIBAgICApowDQYJ­KoZIhvcNAQEFBQAw­gZ0×CzAJBgNVBA­YTAlVT
+MRcwFQYDVQQIEw5Ob3J0aC­BDYXJvbGluYTEQ­MA4GA1UEBxMHUm­FsZWlnaDEWMBQG
+A1UEChMNUmVkI­EhhdCwgSW5jLjEL­MAkGA1UECxMCSVMxFjA­UBgNVBAMTDVJlZCBI
+YXQgSVMgQ0ExJjAk­BgkqhkiG9w0BCQEW­F3N5c2FkbWluL­XJkdUByZWRoYX­QuY29t
+MB4XDTEwMDMyM­zA3MTI1OFoXDTE­yMDMyMjA3MTI1O­FowgZkxCzAJBgNVBA­YTAlVT
+MRcwFQYDVQQIEw5Ob3J0aC­BDYXJvbGluYTEW­MBQGA1UEChMNUm­VkIEhhdCwgSW5j
+LjELMAkGA1UEC­xMCSVMxITAfBgNVBAM­TGHN1cHBvcnQuc3RhZ2U­ucmVkaGF0LmNv
+bTEpMCcGCSqGSIb3­DQEJARYac3lzYW­RtaW4tcmhjb3JwQHJlZGhhdC­5jb20wgZ8w
+DQYJKoZIhvcNA­QEBBQADgY0AMIG­JAoGBANwkCOjqkZN1a9UZ­x3ghl8v/cOG+I2kj
+1SggHDlPDO5W1­qwbKOIduL156W6goX5­qzH1dhTJMoLGcBqn8a­YeLYVvf0rQ9hk8u
+ZvJmXdwNqA4cK­S53cW3dmDzU6V7DIR­PUawh/cQ2T6Ab81g­kxHuXdhAWKsD95bb4Y
+WsdNnL6/O3npAg­MBAAGjgaMwgaAw­CQYDVR0TBAIwA­DAsBglghkgBhvhC­AQ0EHxYd
+T3BlblNTTCBHZ­W5lcmF0ZWQgQ2Vyd­GlmaWNhdGUwHQYD­VR0OBBYEFKq7K0bna­wI3
+da76+NWa20pwK­zlVMB8GA1UdIw­QYMBaAFA2sGXDtBKde­eKv+i6g06yEmwVY1MCUG
+A1UdEQQeMByBGnN5c2FkbWluL­XJoY29ycEByZWRo­YXQuY29tMA0GCSqG­SIb3DQEB
+BQUAA4GBANfwu­LigUmnxEy3E2Ly­bIlrm5OJV9U3KLu­a3I18uUg5jmBRb6fhq­cddw
+kiX/WVZyhAy+XZWM3U­toDSoQRqvgdcklmu­USlKRS8/aWniD0cVK1uD­xK9QVNkIyb
+BiWGuekG2×awh3lIC­NVHbaSTxxn3kHGxCWS­btwXngI7+cRrCz3×E -----END
+CERTIFICATE-----</p>
+</div>
 
 	<hr />
 

@@ -77,30 +77,93 @@
 
 	<div class="date"><em>2012-12-16</em></div>
 
-	<div class="doc-body"><h3>JPA and Hibernate mapping with MySQL&nbsp;– common errors and exceptions</h3> 
-<p><strong>Few tips on using Java Persistence API and Hibernate (with Hibernate Annotations and Hibernate EntityManager)</strong></p> 
-<p><em>(Hibernate mapování s&nbsp;MySQL&nbsp;– nejčastější chyby a výjimky)</em></p> 
-<p>Some exceptions seem complicated for someone who doesn't have a clue what's&nbsp;going on under Hibernate's&nbsp;hood.</p> 
-<p>During the developement of my latest project, I've explained several weird-looking exceptions to my co-worker, and we also discussed the reason to use some code patterns encouraged (if not required) by Hibernate mapping.</p> 
-<p>So I&nbsp;have decided do put some of the exceptions and their explanation here. The respective error messages comming from database are MySQL specific, but for other RDBMS it will be similar.</p> 
-<h4>Some tips for investigating the exception</h4> 
-<p>Sometimes the important part is almost at the end&nbsp;– either at the end of a very long line, or at the end of stack trace. So don't panic when you see something&nbsp;like:</p> 
-<pre class="stacktrace"><code>org.springframework.orm.hibernate3.HibernateJdbcException: JDBC exception on Hibernate data access: SQLException for SQL</code></pre> 
-<p>Current habit of handlig exceptions is to add it's <code>getMessage()</code> at the end of the message of the exception to be thrown. This way, when the exception bubbles from the deepness of several libraries (like JDBC driver, Hibernate Core, Hibernate EntityManager and Java Persistence API (JPA)), the first line is usually very long. Given that the actual important information (Database's&nbsp;mes­sage) comes from the very lowest layer, it ends up at the end of the&nbsp;line.</p> 
-<p>For the case when you find nothing useful at the first line, scroll down the stacktrace to see the root causes. Those are the lines starting with „Caused by:“. Read them carefully, because they are something like a scenario, whereas the lines starting with „at“ are kind of scaffolding or sceneries.</p> 
-<p>When you haven't found anything familiar even in the root causes, still it may be useful to scan the „at“ lines to see where and when exactly the exception happened, because there's&nbsp;a small chance that you've find a bug, or you have triggered an exception that is not (yet) well documented and discussed in forums to get simple answer just by googling for the Exception text. However, there are some time-proven libraries like JDBC driver which are very unlikely to have bugs, and almost all possible exceptions have been discussed somewhere&nbsp;– so you can skip their „at“ lines when investigating; just keep in mind that your exception appeared in the context of this library.</p> 
-<p>Last note for those who don't know&nbsp;– the exceptions in the stack trace are in reverse order in which they appeared. In other words, if you split the stack trace by the „Caused by“ lines and reverse the blocks order, you would get the actual call stack in the moment when the deepest root cause happened.</p> 
-<h4>Three main sources of Hibernate + JPA exceptions</h4> 
-<p>Most commonly appearing exceptions come from these situations:</p> 
-<h5>1) You've an error in your mapping (annotations) and Hibernate refuses to create the <code>EntityManagerFactory</code>.</h5> 
-<p><em>To be written later (when I&nbsp;get some of these again&nbsp;:).</em></p> 
-<h5>2) You've an error in your mapping, which proves in runtime&nbsp;– like, NOT NULL checks performed by database when you persist an entity with null property.</h5> 
-<p><em>To be written later.</em></p> 
-<h5>3) You've an error in program logic in your entity or DAO methods.</h5> 
-<p>This makes Hibernate complain such like „trying to persist deleted entity“. Most common cause is that you have some references across the network of objects, which prevent Hibernate to perform the requested operation.</p> 
-<p>In case of deletion, check all direct AND indirect bi-directional references between the entity to be deleted and other entities&nbsp;– including collections. If the references reach to an entity that keeps the other side of the relation, Hibernate can't delete the refering entity before you release the other side of the relation.</p> 
-<p>Let's&nbsp;see the example:</p> 
-<pre class="brush: java"><code>@Entity
+	<div class="doc-body"><h3>JPA and Hibernate mapping with MySQL – common errors and exceptions</h3>
+
+<p><strong>Few tips on using Java Persistence API and Hibernate (with Hibernate
+Annotations and Hibernate EntityManager)</strong></p>
+
+<p><em>(Hibernate mapování s MySQL – nejčastější chyby a
+výjimky)</em></p>
+
+<p>Some exceptions seem complicated for someone who doesn't have a clue
+what's going on under Hibernate's hood.</p>
+
+<p>During the developement of my latest project, I've explained several
+weird-looking exceptions to my co-worker, and we also discussed the reason to
+use some code patterns encouraged (if not required) by Hibernate mapping.</p>
+
+<p>So I have decided do put some of the exceptions and their explanation here.
+The respective error messages comming from database are MySQL specific, but for
+other RDBMS it will be similar.</p>
+
+<h4>Some tips for investigating the exception</h4>
+
+<p>Sometimes the important part is almost at the end – either at the end of a
+very long line, or at the end of stack trace. So don't panic when you see
+something like:</p>
+
+<pre
+class="stacktrace"><code>org.springframework.orm.hibernate3.HibernateJdbcException: JDBC exception on Hibernate data access: SQLException for SQL</code></pre>
+
+<p>Current habit of handlig exceptions is to add it's <code>getMessage()</code>
+at the end of the message of the exception to be thrown. This way, when the
+exception bubbles from the deepness of several libraries (like JDBC driver,
+Hibernate Core, Hibernate EntityManager and Java Persistence API (JPA)), the
+first line is usually very long. Given that the actual important information
+(Database's mes­sage) comes from the very lowest layer, it ends up at the end
+of the line.</p>
+
+<p>For the case when you find nothing useful at the first line, scroll down the
+stacktrace to see the root causes. Those are the lines starting with „Caused
+by:“. Read them carefully, because they are something like a scenario, whereas
+the lines starting with „at“ are kind of scaffolding or sceneries.</p>
+
+<p>When you haven't found anything familiar even in the root causes, still it
+may be useful to scan the „at“ lines to see where and when exactly the
+exception happened, because there's a small chance that you've find a bug, or
+you have triggered an exception that is not (yet) well documented and discussed
+in forums to get simple answer just by googling for the Exception text. However,
+there are some time-proven libraries like JDBC driver which are very unlikely to
+have bugs, and almost all possible exceptions have been discussed somewhere –
+so you can skip their „at“ lines when investigating; just keep in mind that
+your exception appeared in the context of this library.</p>
+
+<p>Last note for those who don't know – the exceptions in the stack trace are
+in reverse order in which they appeared. In other words, if you split the stack
+trace by the „Caused by“ lines and reverse the blocks order, you would get
+the actual call stack in the moment when the deepest root cause happened.</p>
+
+<h4>Three main sources of Hibernate + JPA exceptions</h4>
+
+<p>Most commonly appearing exceptions come from these situations:</p>
+
+<h5>1) You've an error in your mapping (annotations) and Hibernate refuses to
+create the <code>EntityManagerFactory</code>.</h5>
+
+<p><em>To be written later (when I get some of these again :).</em></p>
+
+<h5>2) You've an error in your mapping, which proves in runtime – like, NOT
+NULL checks performed by database when you persist an entity with null
+property.</h5>
+
+<p><em>To be written later.</em></p>
+
+<h5>3) You've an error in program logic in your entity or DAO methods.</h5>
+
+<p>This makes Hibernate complain such like „trying to persist deleted
+entity“. Most common cause is that you have some references across the network
+of objects, which prevent Hibernate to perform the requested operation.</p>
+
+<p>In case of deletion, check all direct AND indirect bi-directional references
+between the entity to be deleted and other entities – including collections.
+If the references reach to an entity that keeps the other side of the relation,
+Hibernate can't delete the refering entity before you release the other side of
+the relation.</p>
+
+<p>Let's see the example:</p>
+
+<pre
+class="brush: java"><code>@Entity
 class Order
 
   @OneToMany( ... )
@@ -116,33 +179,65 @@ class Order
 
   ...
 
-}</code></pre> 
-<h5>4) You've an error in handling of the transaction.</h5> 
-<p><code>java.lang.IllegalArgumentException: Removing a detached instance ...</code></p> 
-<p><em>To be written later.</em></p> 
-<p>Long story in short:</p> 
-<p><strong>Option 1:</strong> <code>getReference()</code></p> 
-<pre class="brush: java"><code>public void remove( Item item ) {
+}</code></pre>
+
+<h5>4) You've an error in handling of the transaction.</h5>
+
+<p><code>java.lang.IllegalArgumentException: Removing a detached instance ...</code></p>
+
+<p><em>To be written later.</em></p>
+
+<p>Long story in short:</p>
+
+<p><strong>Option 1:</strong> <code>getReference()</code></p>
+
+<pre
+class="brush: java"><code>public void remove( Item item ) {
   this.em.remove( this.em.getReference( Item.class, item.getId() ) );
-}</code></pre> 
-<p><strong>Option 2:</strong> <code>merge()</code></p> 
-<pre class="brush: java"><code>public void remove( Item item ) {
+}</code></pre>
+
+<p><strong>Option 2:</strong> <code>merge()</code></p>
+
+<pre
+class="brush: java"><code>public void remove( Item item ) {
   this.em.remove( this.em.merge( Item.class, item.getId() ) );
-}</code></pre> 
-<blockquote> 
- <p>There is additional overhead to merge since in addition to doing a lookup, it will merge into it if it exists, and it will create a new instance if it doesn't.&nbsp;–&nbsp;<a href="http://forums.java.net/jive/thread.jspa?threadID=19659">http://forums.java.net/…/thread.jspa?…</a></p> 
-</blockquote> 
-<p>Generally speaking, using <code>merge()</code> is slower, but safer when you're not sure in which state you will call the <code>remove()</code> method.</p> 
-<hr> 
-<h4>Common Exceptions I've seen when when learning JPA with Hibernate</h4> 
+}</code></pre>
+
+<blockquote>
+	<p>There is additional overhead to merge since in addition to doing a lookup, it
+	will merge into it if it exists, and it will create a new instance if it
+	doesn't. – <a
+	href="http://forums.java.net/jive/thread.jspa?threadID=19659">http://forums.java.net/…/thread.jspa?…</a></p>
+</blockquote>
+
+<p>Generally speaking, using <code>merge()</code> is slower, but safer when
+you're not sure in which state you will call the <code>remove()</code>
+method.</p>
+
+<hr />
+
+<h4>Common Exceptions I've seen when when learning JPA with Hibernate</h4>
+
 <pre><code>Caused by: org.hibernate.exception.GenericJDBCException: could not insert: [cz.dynawest.isir.entities.User]
-Caused by: java.sql.SQLException: Field 'created' doesn't have a default value</code></pre> 
-<p>This one is easy&nbsp;– probably you have a NOT NULL column, but haven't annotated it&nbsp;– so Hibernate, when it sees <code>null</code> value, it does not include the column in the <code>INSERT</code> query. Add <code>@Column( nullable=false )</code> to the mentioned property.</p> 
-<pre class="brush: java"><code>@Column( nullable=false )
-private Date created;</code></pre> 
-<p>This will not solve the problem, but at least you will catch it sooner&nbsp;– before Hibernate sends the SQL to the database, it will throw an exception with the message saying which property you did not&nbsp;set.</p> 
-<p>Full stack trace:</p> 
-<pre class="java .small"><code>org.springframework.orm.hibernate3.HibernateJdbcException: JDBC exception on Hibernate data access: SQLException for SQL [insert into isir_sled_users (aktivace_klic, mail, pass) values (?, ?, ?)]; SQL state [HY000]; error code [1364]; could not insert: [cz.dynawest.isir.entities.User]; nested exception is org.hibernate.exception.GenericJDBCException: could not insert: [cz.dynawest.isir.entities.User]
+Caused by: java.sql.SQLException: Field 'created' doesn't have a default value</code></pre>
+
+<p>This one is easy – probably you have a NOT NULL column, but haven't
+annotated it – so Hibernate, when it sees <code>null</code> value, it does
+not include the column in the <code>INSERT</code> query. Add
+<code>@Column( nullable=false )</code> to the mentioned property.</p>
+
+<pre
+class="brush: java"><code>@Column( nullable=false )
+private Date created;</code></pre>
+
+<p>This will not solve the problem, but at least you will catch it sooner –
+before Hibernate sends the SQL to the database, it will throw an exception with
+the message saying which property you did not set.</p>
+
+<p>Full stack trace:</p>
+
+<pre
+class="java .small"><code>org.springframework.orm.hibernate3.HibernateJdbcException: JDBC exception on Hibernate data access: SQLException for SQL [insert into isir_sled_users (aktivace_klic, mail, pass) values (?, ?, ?)]; SQL state [HY000]; error code [1364]; could not insert: [cz.dynawest.isir.entities.User]; nested exception is org.hibernate.exception.GenericJDBCException: could not insert: [cz.dynawest.isir.entities.User]
         at org.springframework.orm.hibernate3.SessionFactoryUtils.convertHibernateAccessException(SessionFactoryUtils.java:642)
         at org.springframework.orm.jpa.vendor.HibernateJpaDialect.translateExceptionIfPossible(HibernateJpaDialect.java:95)
         at org.springframework.dao.support.DataAccessUtils.translateIfNecessary(DataAccessUtils.java:212)
@@ -200,8 +295,10 @@ Caused by: java.sql.SQLException: Field 'created' doesn't have a default value
         at com.mysql.jdbc.PreparedStatement.executeUpdate(PreparedStatement.java:1937)
         at com.mysql.jdbc.PreparedStatement.executeUpdate(PreparedStatement.java:1922)
         at org.hibernate.id.IdentityGenerator$GetGeneratedKeysDelegate.executeAndExtract(IdentityGenerator.java:94)
-        at org.hibernate.id.insert.AbstractReturningDelegate.performInsert(AbstractReturningDelegate.java:57)</code></pre> 
-<hr></div>
+        at org.hibernate.id.insert.AbstractReturningDelegate.performInsert(AbstractReturningDelegate.java:57)</code></pre>
+
+<hr />
+</div>
 
 	<hr />
 

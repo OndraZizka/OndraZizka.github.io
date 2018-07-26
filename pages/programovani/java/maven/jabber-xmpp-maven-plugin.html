@@ -77,11 +77,20 @@
 
 	<div class="date"><em>2012-12-16</em></div>
 
-	<div class="doc-body"><h3>Jabber (XMPP) Plugin for Maven</h3> 
-<p>I've created a simple plugin for Maven2, which can send a message from the Maven build process.</p> 
-<p>//Update:// Plugin's&nbsp;page moved. For actual page and download links, see <a href="http://www.pohlidame.cz/insolvencni-rejstrik/maven-jabber-plugin.html">Plugin's&nbsp;page at the Insolvenční rejstřík site</a>.</p> 
-<p>This is how I&nbsp;use it in the <a href="http://www.pohlidame.cz/">Insolvenční rejstřík</a> project:</p> 
-<pre class="brush: xml"><code>&lt;build&gt;
+	<div class="doc-body"><h3>Jabber (XMPP) Plugin for Maven</h3>
+
+<p>I've created a simple plugin for Maven2, which can send a message from the
+Maven build process.</p>
+
+<p>//Update:// Plugin's page moved. For actual page and download links, see <a
+href="http://www.pohlidame.cz/insolvencni-rejstrik/maven-jabber-plugin.html">Plugin's page
+at the Insolvenční rejstřík site</a>.</p>
+
+<p>This is how I use it in the <a href="http://www.pohlidame.cz/">Insolvenční
+rejstřík</a> project:</p>
+
+<pre
+class="brush: xml"><code>&lt;build&gt;
     &lt;plugins&gt;
 
       &lt;plugin&gt;
@@ -104,11 +113,23 @@
       &lt;/plugin&gt;
 
     &lt;/plugins&gt;
-  &lt;/build&gt;</code></pre> 
-<p>Documentation of respective configuration items are in the source and in the&nbsp;POJO.</p> 
-<p>
- <!-- Download "here":http:./download/maven-jabber-plugin.zip. --> I'll put it here for download soon. Come back in a&nbsp;week.</p> 
-<p>It depends on the <a href="http://www.igniterealtime.org/projects/smack/index.jsp">Smack library</a> (perhaps best Jabber/XMPP library for Java, from the creators of the OpenFire XMPP server). However, to make it work for the server we use&nbsp;– <a href="http://www.jabber.cz/">Jabber.cz</a>&nbsp;– I&nbsp;had to patch the sources, otherwise I&nbsp;was getting a NullPointerEx­ception during SaSL authentication. <a href="http://www.igniterealtime.org/community/message/186935/">More about the patch here</a>.</p></div>
+  &lt;/build&gt;</code></pre>
+
+<p>Documentation of respective configuration items are in the source and in
+the POJO.</p>
+
+<p><!-- Download "here":http:./download/maven-jabber-plugin.zip. --> I'll put it
+here for download soon. Come back in a week.</p>
+
+<p>It depends on the <a
+href="http://www.igniterealtime.org/projects/smack/index.jsp">Smack library</a>
+(perhaps best Jabber/XMPP library for Java, from the creators of the OpenFire
+XMPP server). However, to make it work for the server we use – <a
+href="http://www.jabber.cz/">Jabber.cz</a> – I had to patch the sources,
+otherwise I was getting a NullPointerEx­ception during SaSL authentication. <a
+href="http://www.igniterealtime.org/community/message/186935/">More about the
+patch here</a>.</p>
+</div>
 
 	<hr />
 

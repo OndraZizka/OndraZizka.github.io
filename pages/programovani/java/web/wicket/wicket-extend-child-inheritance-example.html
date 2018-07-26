@@ -79,10 +79,15 @@ and wicket:extend - Ondřej Žižka</h1>
 
 	<div class="date"><em>2012-12-13</em></div>
 
-	<div class="doc-body"><h3>Example of Wicket's&nbsp;markup inheritance&nbsp;– <code>wicket:child</code> and&nbsp;<code>wicket:extend</code></h3> 
-<p>This is the most clean way of composing the pages content in Wicket.</p> 
-<h4>Base page</h4> 
-<pre class="brush: html"><code>&lt;html&gt;
+	<div class="doc-body"><h3>Example of Wicket's markup inheritance – <code>wicket:child</code>
+and <code>wicket:extend</code></h3>
+
+<p>This is the most clean way of composing the pages content in Wicket.</p>
+
+<h4>Base page</h4>
+
+<pre
+class="brush: html"><code>&lt;html&gt;
   &lt;body&gt;
     &lt;h1&gt;My Web&lt;/h1&gt;
 
@@ -92,10 +97,15 @@ and wicket:extend - Ondřej Žižka</h1>
 
     &lt;div&gt;(c) 2010 Ondra.Zizka.cz&lt;/div&gt;
   &lt;/body&gt;
-&lt;/html&gt;</code></pre> 
-<pre class="brush: java"><code>public class BaseLayoutPage extends WebPage { ... }</code></pre> 
-<h4>Child page</h4> 
-<pre class="brush: html"><code>&lt;html&gt;
+&lt;/html&gt;</code></pre>
+
+<pre
+class="brush: java"><code>public class BaseLayoutPage extends WebPage { ... }</code></pre>
+
+<h4>Child page</h4>
+
+<pre
+class="brush: html"><code>&lt;html&gt;
   &lt;body&gt;
     &lt;h1&gt;Child page&lt;/h1&gt;
 
@@ -116,12 +126,15 @@ and wicket:extend - Ondřej Žižka</h1>
 
     &lt;div&gt;(c) 2010 Ondra.Zizka.cz&lt;/div&gt;
   &lt;/body&gt;
-&lt;/html&gt;</code></pre> 
-<pre class="brush: java"><code>public class NewsPageContent extends BaseLayoutPage {
+&lt;/html&gt;</code></pre>
+
+<pre
+class="brush: java"><code>public class NewsPageContent extends BaseLayoutPage {
   public NewsPageContent(){
     add( new Label("news", "Good news everyone!" ) );
   }
-}</code></pre></div>
+}</code></pre>
+</div>
 
 	<hr />
 

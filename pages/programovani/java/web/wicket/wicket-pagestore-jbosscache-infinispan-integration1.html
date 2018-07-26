@@ -79,12 +79,25 @@ JBoss Cache) - Ondřej Žižka</h1>
 
 	<div class="date"><em>2012-12-13</em></div>
 
-	<div class="doc-body"><h3>Wicket IPageStore implementation with Infinispan (formerly JBoss&nbsp;Cache)</h3> 
-<p>The class below uses Infinispan.</p> 
-<p>I&nbsp;also wanted to code it using a <a href="http://docs.jboss.org/infinispan/4.0/apidocs/org/infinispan/tree/TreeCache.html">TreeCache API</a>, but eventually dropped that as I&nbsp;found the possibility to <a href="http://community.jboss.org/wiki/QueryingInfinispan">index &amp; query the cache</a> using Lucene.</p> 
-<p>Note that I&nbsp;wrote this just to have a look at Infinispan, and it is not tested.</p> 
-<p><strong>If you test it, <a href="mailto:ondra@dynawest.cz">please let me know</a>.</strong></p> 
-<pre class="brush: java"><code>package cz.dw.test.jbosscache;
+	<div class="doc-body"><h3>Wicket IPageStore implementation with Infinispan (formerly
+JBoss Cache)</h3>
+
+<p>The class below uses Infinispan.</p>
+
+<p>I also wanted to code it using a <a
+href="http://docs.jboss.org/infinispan/4.0/apidocs/org/infinispan/tree/TreeCache.html">TreeCache
+API</a>, but eventually dropped that as I found the possibility to <a
+href="http://community.jboss.org/wiki/QueryingInfinispan">index &amp; query the
+cache</a> using Lucene.</p>
+
+<p>Note that I wrote this just to have a look at Infinispan, and it is not
+tested.</p>
+
+<p><strong>If you test it, <a href="mailto:ondra&#64;dynawest.cz">please let me
+know</a>.</strong></p>
+
+<pre
+class="brush: java"><code>package cz.dw.test.jbosscache;
 
 import java.io.IOException;
 import java.util.List;
@@ -313,7 +326,8 @@ public class JBossCachePageStore extends AbstractPageStore implements IPageStore
                 return cq.getResultSize() &gt; 0;
         }
 
-}// class</code></pre></div>
+}// class</code></pre>
+</div>
 
 	<hr />
 

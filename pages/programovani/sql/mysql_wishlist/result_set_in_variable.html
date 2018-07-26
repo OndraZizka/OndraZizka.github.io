@@ -77,10 +77,22 @@
 
 	<div class="date"><em>2012-12-16</em></div>
 
-	<div class="doc-body"><h3>MySQL: Result set in a <code>@variable</code></h3> 
-<p>A&nbsp;solution of passing a result set between stored routines is frequently asked question on the official MySQL's&nbsp;<a href="http://forums.mysql.com/list.php?98">Stored Procedures forum</a> (see e.g. <a href="http://forums.mysql.com/read.php?98,205840,205840#msg-205840">Calling PROCEDURE on SELECT output</a>, <a href="http://forums.mysql.com/read.php?98,203671,203671#msg-203671">Use resultset from sproc in select statement or in another sproc</a>, and others).</p> 
-<p>Since MySQL does not support passing result sets in stored procedures, common practice is to use TEMPORARY TABLES when working with larger data&nbsp;sets.</p> 
-<pre class="brush: sql"><code>CREATE PROCEDURE `lib_Explode`(sSepar VARCHAR(255), saVal TEXT)
+	<div class="doc-body"><h3>MySQL: Result set in a <code>@variable</code></h3>
+
+<p>A solution of passing a result set between stored routines is frequently
+asked question on the official MySQL's <a
+href="http://forums.mysql.com/list.php?98">Stored Procedures forum</a> (see e.g.
+<a href="http://forums.mysql.com/read.php?98,205840,205840#msg-205840">Calling
+PROCEDURE on SELECT output</a>, <a
+href="http://forums.mysql.com/read.php?98,203671,203671#msg-203671">Use
+resultset from sproc in select statement or in another sproc</a>, and
+others).</p>
+
+<p>Since MySQL does not support passing result sets in stored procedures, common
+practice is to use TEMPORARY TABLES when working with larger data sets.</p>
+
+<pre
+class="brush: sql"><code>CREATE PROCEDURE `lib_Explode`(sSepar VARCHAR(255), saVal TEXT)
 body: BEGIN
 
   DROP TEMPORARY TABLE IF EXISTS lib_Explode;
@@ -99,77 +111,127 @@ body: BEGIN
     INSERT INTO lib_Explode SET val = @sHead;
   END WHILE;
 
-END $$</code></pre> 
-<p>Although, this approach introduces a drawback&nbsp;– you have to care about table names. There are three options:</p> 
-<ul> 
- <li>Keep track of the table names used. <em>Leads to total chaos in table&nbsp;names.</em></li> 
- <li>Use dynamic prepared statements. <em>Leads to awful&nbsp;code.</em></li> 
- <li>Use some naming conventions. <em>Leads to many table renamings.</em></li> 
-</ul> 
-<p>(I&nbsp;personally prefer the last option.)</p> 
-<p>The much more ellegant solution would be if a variable could hold a result set. Let's&nbsp;see what would be possible with such feature.</p> 
-<h4>Storing a result set into a <code>@variable</code></h4> 
-<p>First, let's&nbsp;create a 3&nbsp;×&nbsp;2 table:</p> 
-<pre class="brush: sql"><code>CREATE TABLE table1 ( a INT, b INT );
+END $$</code></pre>
+
+<p>Although, this approach introduces a drawback – you have to care about
+table names. There are three options:</p>
+
+<ul>
+	<li>Keep track of the table names used. <em>Leads to total chaos in
+	table names.</em></li>
+
+	<li>Use dynamic prepared statements. <em>Leads to awful code.</em></li>
+
+	<li>Use some naming conventions. <em>Leads to many table renamings.</em></li>
+</ul>
+
+<p>(I personally prefer the last option.)</p>
+
+<p>The much more ellegant solution would be if a variable could hold a result
+set. Let's see what would be possible with such feature.</p>
+
+<h4>Storing a result set into a <code>@variable</code></h4>
+
+<p>First, let's create a 3 × 2 table:</p>
+
+<pre
+class="brush: sql"><code>CREATE TABLE table1 ( a INT, b INT );
 INSERT INTO table1 VALUES (1,2), (3,4), (5,6);
-SELECT * FROM table1;</code></pre> 
-<p>The table now looks like this:</p> 
-<table> 
- <thead> 
-  <tr> 
-   <th>a</th> 
-   <th>b</th> 
-  </tr> 
- </thead> 
- <tbody> 
-  <tr> 
-   <td>1</td> 
-   <td>2</td> 
-  </tr> 
-  <tr> 
-   <td>3</td> 
-   <td>4</td> 
-  </tr> 
-  <tr> 
-   <td>5</td> 
-   <td>6</td> 
-  </tr> 
- </tbody> 
-</table> 
-<p>Currently, we can select a single value into a variable:</p> 
-<pre class="brush: sql"><code>SELECT a FROM table1 INTO @var LIMIT 1;</code></pre> 
-<p>But what much more cool would be if we could store a result&nbsp;set:</p> 
-<pre class="brush: sql"><code>##  Create the result set and store it in a variable.
+SELECT * FROM table1;</code></pre>
+
+<p>The table now looks like this:</p>
+
+<table>
+	<thead>
+		<tr>
+			<th>a</th>
+
+			<th>b</th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<tr>
+			<td>1</td>
+
+			<td>2</td>
+		</tr>
+
+		<tr>
+			<td>3</td>
+
+			<td>4</td>
+		</tr>
+
+		<tr>
+			<td>5</td>
+
+			<td>6</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>Currently, we can select a single value into a variable:</p>
+
+<pre
+class="brush: sql"><code>SELECT a FROM table1 INTO @var LIMIT 1;</code></pre>
+
+<p>But what much more cool would be if we could store a result set:</p>
+
+<pre
+class="brush: sql"><code>##  Create the result set and store it in a variable.
 SELECT * FROM table1 INTO @resultset;
   -- or --
-SET @resultset = (SELECT * FROM table1);</code></pre> 
-<p>MySQL would recognize that we are assigning a result set. After executing, <code>@resultset</code> would be of special type <code>RESULTSET</code>. Then, we could pass it to a stored procedure.</p> 
-<h4>Passing a result set as a parameter of a stored procedure</h4> 
-<pre class="brush: sql"><code>CREATE PROCEDURE StoredProcedure( rsData RESULTSET ) BEGIN
+SET @resultset = (SELECT * FROM table1);</code></pre>
+
+<p>MySQL would recognize that we are assigning a result set. After executing,
+<code>@resultset</code> would be of special type <code>RESULTSET</code>. Then,
+we could pass it to a stored procedure.</p>
+
+<h4>Passing a result set as a parameter of a stored procedure</h4>
+
+<pre
+class="brush: sql"><code>CREATE PROCEDURE StoredProcedure( rsData RESULTSET ) BEGIN
   SELECT a + b FROM rsData;
 END $$
 
 ##  Pass the result set into a stored procedure.
-CALL StoredProcedure( @resultset );</code></pre> 
-<p>In the stored procedure, a <code>RESULTSET</code> param could act exactly as a <code>TEMPORARY</code>&nbsp;table.</p> 
-<h4>Retrieving a result set from a stored procedure</h4> 
-<pre class="brush: sql"><code>##  Retrieving a result set from a stored procedure
+CALL StoredProcedure( @resultset );</code></pre>
+
+<p>In the stored procedure, a <code>RESULTSET</code> param could act exactly as
+a <code>TEMPORARY</code> table.</p>
+
+<h4>Retrieving a result set from a stored procedure</h4>
+
+<pre
+class="brush: sql"><code>##  Retrieving a result set from a stored procedure
 CALL StoredProcedure() INTO @result;
 
 -- or
 
-SET @result = (CALL StoredProcedure());</code></pre> 
-<p>After executing, <code>@result</code> would be of special type <code>RESULTSET</code> and contain the result of the first <code>SELECT</code> performed in a procedure.</p> 
-<h4>Retrieving multiple result sets from a stored procedure</h4> 
-<p>Multiple results from a <code>CALL</code> could also be fetched:</p> 
-<pre class="brush: sql"><code>CREATE PROCEDURE StoredProcedure( rsData RESULTSET ) BEGIN
+SET @result = (CALL StoredProcedure());</code></pre>
+
+<p>After executing, <code>@result</code> would be of special type
+<code>RESULTSET</code> and contain the result of the first <code>SELECT</code>
+performed in a procedure.</p>
+
+<h4>Retrieving multiple result sets from a stored procedure</h4>
+
+<p>Multiple results from a <code>CALL</code> could also be fetched:</p>
+
+<pre
+class="brush: sql"><code>CREATE PROCEDURE StoredProcedure( rsData RESULTSET ) BEGIN
   SELECT a + b FROM rsData;
   SELECT a * b FROM rsData;
 END $$
 
 ##  Retrieving multiple result sets from a stored procedure
-CALL StoredProcedure() INTO @result1, @result2;</code></pre> 
-<p>So. This is my suggestion of how to deal with result sets in stored procedures. Hopefully I&nbsp;will see it in MySQL some day&nbsp;– it would reduce the code of my procedures near to&nbsp;half.</p></div>
+CALL StoredProcedure() INTO @result1, @result2;</code></pre>
+
+<p>So. This is my suggestion of how to deal with result sets in stored
+procedures. Hopefully I will see it in MySQL some day – it would reduce the
+code of my procedures near to half.</p>
+</div>
 
 	<hr />
 

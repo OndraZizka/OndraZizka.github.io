@@ -77,18 +77,24 @@
 
 	<div class="date"><em>2012-12-31</em></div>
 
-	<div class="doc-body"><h3>HTTP PUT and POST requests with Jersey</h3> 
-<p>May not be exactly right but you'll get the idea.</p> 
-<pre class="brush: java"><code>import com.sun.jersey.api.client.Client;
+	<div class="doc-body"><h3>HTTP PUT and POST requests with Jersey</h3>
+
+<p>May not be exactly right but you'll get the idea.</p>
+
+<pre
+class="brush: java"><code>import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.WebResource;
 import com.sun.jersey.api.client.WebResource.Builder;
 import com.sun.jersey.api.client.filter.HTTPBasicAuthFilter;
 import com.sun.jersey.multipart.FormDataBodyPart;
 import com.sun.jersey.multipart.FormDataMultiPart;
 import com.sun.jersey.multipart.file.FileDataBodyPart;
-import javax.ws.rs.core.MediaType;</code></pre> 
-<h4>PUT</h4> 
-<pre class="brush: java"><code>String name = "someName";
+import javax.ws.rs.core.MediaType;</code></pre>
+
+<h4>PUT</h4>
+
+<pre
+class="brush: java"><code>String name = "someName";
 
 // HTTP Client
 final Client client = Client.create();
@@ -103,9 +109,12 @@ Builder builder = client.resource( this.adminBaseUrl + URL_PATH_DEPLOY )
         .type(MediaType.APPLICATION_OCTET_STREAM_TYPE);
 
 // Do the request itself.
-final String textResponse = builder.put(String.class, form);</code></pre> 
-<h4>HTML form-like multipart POST file upload</h4> 
-<pre class="brush: java"><code>final File archiveFile = new File(new File(System.getProperty("java.io.tmpdir")), archiveName);
+final String textResponse = builder.put(String.class, form);</code></pre>
+
+<h4>HTML form-like multipart POST file upload</h4>
+
+<pre
+class="brush: java"><code>final File archiveFile = new File(new File(System.getProperty("java.io.tmpdir")), archiveName);
 
 // Build up the POST form to send to Tomcat
 final FormDataMultiPart form = new FormDataMultiPart();
@@ -128,11 +137,15 @@ Builder builder = client.resource( this.adminBaseUrl + URL_PATH_DEPLOY )
         // What we're sending in PUT body.
         .type(MediaType.MULTIPART_FORM_DATA_TYPE)
         // Do the request itself.
-        .post(String.class, form);</code></pre> 
-<h4>… and yet how to export Arquillian's&nbsp;ar­chive to a file</h4> 
-<pre class="brush: java"><code>// Export to a file so we can send it over the wire
+        .post(String.class, form);</code></pre>
+
+<h4>… and yet how to export Arquillian's ar­chive to a file</h4>
+
+<pre
+class="brush: java"><code>// Export to a file so we can send it over the wire
 final File archiveFile = new File(new File(System.getProperty("java.io.tmpdir")), archiveName);
-archive.as(ZipExporter.class).exportZip(archiveFile, true);</code></pre></div>
+archive.as(ZipExporter.class).exportZip(archiveFile, true);</code></pre>
+</div>
 
 	<hr />
 

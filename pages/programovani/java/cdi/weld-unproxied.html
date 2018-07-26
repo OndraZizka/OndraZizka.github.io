@@ -81,8 +81,12 @@ final method - Ondřej Žižka</h1>
 
 	<div class="date"><em>2012-12-31</em></div>
 
-	<div class="doc-body"><h3>CDI / Weld: UnproxyableRe­solutionExcep­tion: WELD-001437&nbsp;Normal scoped bean String is not proxyable because the type is final or it contains a final&nbsp;method</h3> 
-<pre class="brush: plain"><code>09:35:09.378 DEBUG [main] org.jboss.weld.Bootstrap  WELD-000100 Weld initialized. Validating beans
+	<div class="doc-body"><h3>CDI / Weld: UnproxyableRe­solutionExcep­tion: WELD-001437 Normal scoped
+bean String is not proxyable because the type is final or it contains a
+final method</h3>
+
+<pre
+class="brush: plain"><code>09:35:09.378 DEBUG [main] org.jboss.weld.Bootstrap  WELD-000100 Weld initialized. Validating beans
 09:35:09.384 WARN  [main] org.mortbay.log  failed org.mortbay.jetty.servlet.Context@5110ba8b{/,null}: org.jboss.weld.exceptions.UnproxyableResolutionException: WELD-001437 Normal scoped bean class java.lang.String is not proxyable because the type is final or it contains a final method class java.lang.String.
 09:35:09.385 ERROR [main] org.mortbay.log  Error starting handlers
 org.jboss.weld.exceptions.UnproxyableResolutionException: WELD-001437 Normal scoped bean class java.lang.String is not proxyable because the type is final or it contains a final method class java.lang.String.
@@ -105,10 +109,17 @@ org.jboss.weld.exceptions.UnproxyableResolutionException: WELD-001437 Normal sco
         at org.jboss.jawabot.web.RunInJetty.run(RunInJetty.java:100)
         at org.jboss.jawabot.mod.web.WebModuleHook.initModule(WebModuleHook.java:18)
         at org.jboss.jawabot.JawaBotApp.initAndStartModules(JawaBotApp.java:106)
-        at org.jboss.jawabot.JawaBotApp.main(JawaBotApp.java:53)</code></pre> 
-<p>See <a href="http://docs.jboss.org/weld/reference/1.1.0.Final/en-US/html_single/#d0e1429">Weld reference&nbsp;– 4.9.&nbsp;Client proxies</a></p> 
-<p>You need to create beans.xml. This should ensure that everything gets scanned:</p> 
-<pre class="brush: xml"><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+        at org.jboss.jawabot.JawaBotApp.main(JawaBotApp.java:53)</code></pre>
+
+<p>See <a
+href="http://docs.jboss.org/weld/reference/1.1.0.Final/en-US/html_single/#d0e1429">Weld
+reference – 4.9. Client proxies</a></p>
+
+<p>You need to create beans.xml. This should ensure that everything gets
+scanned:</p>
+
+<pre
+class="brush: xml"><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;beans xmlns="http://java.sun.com/xml/ns/javaee"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:weld="http://jboss.org/schema/weld/beans"
@@ -120,8 +131,10 @@ org.jboss.weld.exceptions.UnproxyableResolutionException: WELD-001437 Normal sco
         &lt;weld:include name="org.jboss.jawabot.**"/&gt;
     &lt;/weld:scan&gt;
 
-&lt;/beans&gt;</code></pre> 
-<p>HTH</p></div>
+&lt;/beans&gt;</code></pre>
+
+<p>HTH</p>
+</div>
 
 	<hr />
 

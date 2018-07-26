@@ -77,21 +77,38 @@
 
 	<div class="date"><em>2012-12-31</em></div>
 
-	<div class="doc-body"><h3>Trying Jira on JBoss?</h3> 
-<p>I've tried Jira on JBoss EAP 5.1.1&nbsp;and encountered some errors…</p> 
-<h4>Specification violation [EJB3 JPA 6.2.1.2]&nbsp;– You have not defined a jta-data-source for a JTA enabled persistence context named: propertyset</h4> 
-<p>It's&nbsp;a known problem, see <a href="https://issues.jboss.org/browse/EJBTHREE-1166">EJBTHREE-1166</a>.</p> 
-<p>I&nbsp;searched but google's&nbsp;results are cluttered with solution for Spring + JBoss problem with <code>RESOURCE_LOCAL</code>.</p> 
-<p>This comes from <code>jira.war/WEB-INF/lib/propertyset-1.5.jar!/META-INF/persistence.xml</code> which contains:</p> 
-<pre class="brush: xml"><code>&lt;persistence xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0"&gt;
+	<div class="doc-body"><h3>Trying Jira on JBoss?</h3>
+
+<p>I've tried Jira on JBoss EAP 5.1.1 and encountered some errors…</p>
+
+<h4>Specification violation [EJB3 JPA 6.2.1.2] – You have not defined a
+jta-data-source for a JTA enabled persistence context named: propertyset</h4>
+
+<p>It's a known problem, see <a
+href="https://issues.jboss.org/browse/EJBTHREE-1166">EJBTHREE-1166</a>.</p>
+
+<p>I searched but google's results are cluttered with solution for Spring +
+JBoss problem with <code>RESOURCE_LOCAL</code>.</p>
+
+<p>This comes from
+<code>jira.war/WEB-INF/lib/propertyset-1.5.jar!/META-INF/persistence.xml</code>
+which contains:</p>
+
+<pre
+class="brush: xml"><code>&lt;persistence xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0"&gt;
   &lt;persistence-unit name="propertyset" transaction-type="JTA"&gt;
     &lt;description&gt;Persistence Unit for OSPropertySet&lt;/description&gt;
     &lt;class&gt;com.opensymphony.module.propertyset.ejb3.PropertyEntry&lt;/class&gt;
     &lt;exclude-unlisted-classes&gt;true&lt;/exclude-unlisted-classes&gt;
   &lt;/persistence-unit&gt;
-&lt;/persistence&gt;</code></pre> 
-<p>I&nbsp;use the <code>all</code> config with the default <code>&lt;jboss&gt;/server/&lt;conf&gt;/hsqldb-ds.xml</code> which defines <code>&lt;local-tx-datasource&gt;</code>.</p> 
-<pre class="brush: plain"><code>03:52:20,472 INFO  [PersistenceUnitDeployment] Starting persistence unit persistence.unit:unitName=#propertyset
+&lt;/persistence&gt;</code></pre>
+
+<p>I use the <code>all</code> config with the default
+<code>&lt;jboss&gt;/server/&lt;conf&gt;/hsqldb-ds.xml</code> which defines
+<code>&lt;local-tx-datasource&gt;</code>.</p>
+
+<pre
+class="brush: plain"><code>03:52:20,472 INFO  [PersistenceUnitDeployment] Starting persistence unit persistence.unit:unitName=#propertyset
 03:52:21,444 ERROR [AbstractKernelController] Error installing to Start: name=persistence.unit:unitName=#propertyset state=Create
 java.lang.RuntimeException: Specification violation [EJB3 JPA 6.2.1.2] - You have not defined a jta-data-source for a JTA enabled persistence context named: propertyset
         at org.jboss.jpa.deployment.PersistenceUnitInfoImpl.&lt;init&gt;(PersistenceUnitInfoImpl.java:115)
@@ -165,10 +182,16 @@ java.lang.RuntimeException: Specification violation [EJB3 JPA 6.2.1.2] - You hav
         at java.util.concurrent.ThreadPoolExecutor$Worker.runTask(ThreadPoolExecutor.java:886)
         at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:908)
         at java.lang.Thread.run(Thread.java:662)
-03:52:53,767 INFO  [TomcatDeployment] deploy, ctxPath=/atlassian-jira-4.3.2</code></pre> 
-<h4>ClassCastException: org.apache.xer­ces.jaxp.SAXPar­serFactoryImpl cannot be cast to javax.xml.par­sers.SAXParser­Factory</h4> 
-<p>Another problem I&nbsp;run into. That can probably be solved by removing log4j from Jira's&nbsp;WAR.</p> 
-<pre class="brush: plain"><code>03:52:54,448 ERROR [STDERR] log4j:ERROR A "org.jboss.logging.util.OnlyOnceErrorHandler" object is not assignable to a "org.apache.log4j.spi.ErrorHandler" variable.
+03:52:53,767 INFO  [TomcatDeployment] deploy, ctxPath=/atlassian-jira-4.3.2</code></pre>
+
+<h4>ClassCastException: org.apache.xer­ces.jaxp.SAXPar­serFactoryImpl cannot
+be cast to javax.xml.par­sers.SAXParser­Factory</h4>
+
+<p>Another problem I run into. That can probably be solved by removing log4j
+from Jira's WAR.</p>
+
+<pre
+class="brush: plain"><code>03:52:54,448 ERROR [STDERR] log4j:ERROR A "org.jboss.logging.util.OnlyOnceErrorHandler" object is not assignable to a "org.apache.log4j.spi.ErrorHandler" variable.
 03:52:54,448 ERROR [STDERR] log4j:ERROR The class "org.apache.log4j.spi.ErrorHandler" was loaded by
 03:52:54,448 ERROR [STDERR] log4j:ERROR [BaseClassLoader@172f1b4e{vfszip:/mnt/ssd1/_projekty/JBoss/EAP/eap/server/all/deploy/atlassian-jira-4.3.2.war/}] whereas object of type
 03:52:54,448 ERROR [STDERR] log4j:ERROR "org.jboss.logging.util.OnlyOnceErrorHandler" was loaded by [org.jboss.bootstrap.NoAnnotationURLClassLoader@187a84e4].
@@ -261,7 +284,8 @@ java.lang.ClassCastException: org.apache.xerces.jaxp.SAXParserFactoryImpl cannot
         at java.lang.Thread.run(Thread.java:662)
 03:52:54,703 ERROR [STDERR] SLF4J: Class path contains multiple SLF4J bindings.
 03:52:54,703 ERROR [STDERR] SLF4J: Found binding in [vfszip:/mnt/ssd1/_projekty/JBoss/EAP/eap/common/lib/slf4j-jboss-logging.jar/org/slf4j/impl/StaticLoggerBinder.class]
-03:52:54,703 ERROR [STDERR] SLF4J: Found binding in [vfszip:/mnt/ssd1/_projekty/JBoss/EAP/eap/server/all/deploy/atlassian-jira-4.3.2.war/WEB-INF/lib/slf4j-log4j12-1.5.8.jar/org/slf4j/impl/StaticLoggerBinder.class]</code></pre></div>
+03:52:54,703 ERROR [STDERR] SLF4J: Found binding in [vfszip:/mnt/ssd1/_projekty/JBoss/EAP/eap/server/all/deploy/atlassian-jira-4.3.2.war/WEB-INF/lib/slf4j-log4j12-1.5.8.jar/org/slf4j/impl/StaticLoggerBinder.class]</code></pre>
+</div>
 
 	<hr />
 

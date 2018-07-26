@@ -79,9 +79,14 @@ org/apache/wic­ket/util/lang/Pro­pertyResolver - Ondřej Žižka</h1>
 
 	<div class="date"><em>2012-12-31</em></div>
 
-	<div class="doc-body"><h3>Wicket exception on shutdown&nbsp;– java.lang.NoClas­sDefFoundError: org/apache/wic­ket/util/lang/Pro­pertyResolver</h3> 
-<p>This happens when I&nbsp;undeploy a Wicket 1.4.9&nbsp;application (remove the webapp dir) on Tomcat 6.0.29:</p> 
-<pre class="plain"><code>Nov 25, 2010 11:30:49 PM org.apache.catalina.startup.HostConfig checkResources
+	<div class="doc-body"><h3>Wicket exception on shutdown – java.lang.NoClas­sDefFoundError:
+org/apache/wic­ket/util/lang/Pro­pertyResolver</h3>
+
+<p>This happens when I undeploy a Wicket 1.4.9 application (remove the webapp
+dir) on Tomcat 6.0.29:</p>
+
+<pre
+class="plain"><code>Nov 25, 2010 11:30:49 PM org.apache.catalina.startup.HostConfig checkResources
 INFO: Undeploying context []
 Nov 25, 2010 11:30:49 PM org.apache.catalina.startup.HostConfig checkResources
 WARNING: Error while removing context []
@@ -131,27 +136,59 @@ java.lang.NoClassDefFoundError: org/apache/wicket/util/lang/PropertyResolver
         at org.apache.catalina.core.ContainerBase$ContainerBackgroundProcessor.processChildren(ContainerBase.java:1601)
         at org.apache.catalina.core.ContainerBase$ContainerBackgroundProcessor.processChildren(ContainerBase.java:1610)
         at org.apache.catalina.core.ContainerBase$ContainerBackgroundProcessor.run(ContainerBase.java:1590)
-        at java.lang.Thread.run(Thread.java:662)</code></pre> 
-<h4>Solution</h4> 
-<p>From <a href="http://www.mail-archive.com/users@wicket.apache.org/msg49863.html">http://www.mail-archive.com/…sg49863.html</a> :</p> 
-<p>Alexandros Karypidis:</p> 
-<blockquote> 
- <p>Sun, 21&nbsp;Mar 2010 02:58:42&nbsp;–0700<br> Ok, I've pinpointed the underlying cause. Indeed, the file is simply removed before the destroy() method has a chance to clean up. I&nbsp;verified this by using this ugly&nbsp;hack:</p> 
- <ol> 
-  <li>Adding a field: <p><code>private InputStream wicketJarProtector;</code></p> </li> 
-  <li>In <code>WicketFilter.init()</code> I&nbsp;open the wicket jar to „protect“ it from deletion: <p><code>wicketJarProtector = filterConfig.getServletContext().getResourceAsStream("/WEB-INF/lib/wicket.jar");</code></p> </li> 
-  <li>In <code>WicketFilter.destroy()</code> I&nbsp;close the file handle: <p><code>wicketJarProtector.close();</code></p> </li> 
- </ol> 
- <p>This prevents the file from being deleted, undeployment completes successfully.</p> 
- <p>I'm not sure how to „properly“ fix this… Any ideas?</p> 
-</blockquote> 
-<p>Igor Vaynberg:</p> 
-<blockquote> 
- <p>I&nbsp;can kind of see what is going on, the YourApplication class is loaded using a different classloader then the wicket jar. and tomcat cleans it up. fair enough. but, YourApplication class extends Application which is inside the jar, so tomcat should not be cleaning it up…makes no sense. How can the entire jar be gone if one of the classes that was loaded from it is still being used. It may be an optimization they do but its may be backfiring in this particular case. You may have to use your jar protector as a permanent workaround.</p> 
- <ul> 
-  <li>igor</li> 
- </ul> 
-</blockquote></div>
+        at java.lang.Thread.run(Thread.java:662)</code></pre>
+
+<h4>Solution</h4>
+
+<p>From <a
+href="http://www.mail-archive.com/users&#64;wicket.apache.org/msg49863.html">http://www.mail-archive.com/…sg49863.html</a>
+:</p>
+
+<p>Alexandros Karypidis:</p>
+
+<blockquote>
+	<p>Sun, 21 Mar 2010 02:58:42 –0700<br />
+	Ok, I've pinpointed the underlying cause. Indeed, the file is simply removed
+	before the destroy() method has a chance to clean up. I verified this by using
+	this ugly hack:</p>
+
+	<ol>
+		<li>Adding a field:
+			<p><code>private InputStream wicketJarProtector;</code></p>
+		</li>
+
+		<li>In <code>WicketFilter.init()</code> I open the wicket jar to „protect“
+		it from deletion:
+			<p><code>wicketJarProtector = filterConfig.getServletContext().getResourceAsStream("/WEB-INF/lib/wicket.jar");</code></p>
+		</li>
+
+		<li>In <code>WicketFilter.destroy()</code> I close the file handle:
+			<p><code>wicketJarProtector.close();</code></p>
+		</li>
+	</ol>
+
+	<p>This prevents the file from being deleted, undeployment completes
+	successfully.</p>
+
+	<p>I'm not sure how to „properly“ fix this… Any ideas?</p>
+</blockquote>
+
+<p>Igor Vaynberg:</p>
+
+<blockquote>
+	<p>I can kind of see what is going on, the YourApplication class is loaded
+	using a different classloader then the wicket jar. and tomcat cleans it up. fair
+	enough. but, YourApplication class extends Application which is inside the jar,
+	so tomcat should not be cleaning it up…makes no sense. How can the entire jar
+	be gone if one of the classes that was loaded from it is still being used. It
+	may be an optimization they do but its may be backfiring in this particular
+	case. You may have to use your jar protector as a permanent workaround.</p>
+
+	<ul>
+		<li>igor</li>
+	</ul>
+</blockquote>
+</div>
 
 	<hr />
 

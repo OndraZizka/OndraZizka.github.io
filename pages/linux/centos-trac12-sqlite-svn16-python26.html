@@ -77,13 +77,24 @@
 
 	<div class="date"><em>2012-12-31</em></div>
 
-	<div class="doc-body"><h3>Installing Trac 12&nbsp;on Centos 5.5&nbsp;– requires Python&nbsp;2.6</h3> 
-<p>I&nbsp;had problems with incompatible versions&nbsp;– CentOS 5.5&nbsp;insists on having Python 2.4&nbsp;because Yum uses&nbsp;it.</p> 
-<p>If you try to uninstall <code>python-sqlite</code> to upgrade to support SQLite 3.x, which is needed by Trac &gt;=12.x, stupid <code>yum</code> will uninstall itself. I&nbsp;never thought any package manager would do that, but be warned&nbsp;– <code>yum</code> is really pretty&nbsp;dumb.</p> 
-<hr> 
-<p>Basically, I&nbsp;added all the RPM repositories I&nbsp;found to&nbsp;Yum.</p> 
-<p>In the end, my <code>/etc/yum.repo.d</code> contained:</p> 
-<pre class="plain"><code>[root@localhost yum.repos.d]# ls -1
+	<div class="doc-body"><h3>Installing Trac 12 on Centos 5.5 – requires Python 2.6</h3>
+
+<p>I had problems with incompatible versions – CentOS 5.5 insists on having
+Python 2.4 because Yum uses it.</p>
+
+<p>If you try to uninstall <code>python-sqlite</code> to upgrade to support
+SQLite 3.x, which is needed by Trac &gt;=12.x, stupid <code>yum</code> will
+uninstall itself. I never thought any package manager would do that, but be
+warned – <code>yum</code> is really pretty dumb.</p>
+
+<hr />
+
+<p>Basically, I added all the RPM repositories I found to Yum.</p>
+
+<p>In the end, my <code>/etc/yum.repo.d</code> contained:</p>
+
+<pre
+class="plain"><code>[root@localhost yum.repos.d]# ls -1
 CentOS-Base.repo
 CentOS-Media.repo
 chl.repo
@@ -94,12 +105,23 @@ jpackage50.repo
 mirrors-rpmforge
 rpmforge.repo
 rpmforge-testing.repo
-trac-repos.repo</code></pre> 
-<p>First, I&nbsp;needed Python 2.6.&nbsp;This was soved by Chris Lea's&nbsp;repo&nbsp;– he made a package which installs Python 2.6&nbsp;to <code>/usr/lib/python2.6</code>, leaving Python 2.4&nbsp;in&nbsp;peace.</p> 
-<p>Then, CentOS had SVN 1.4.2.&nbsp;I&nbsp;used <code>yum update subversion</code>, which updated to SVN 1.6.13&nbsp;from one of the repos above, probably RPMForge.</p> 
-<p>The last piece was to install <code>subversion-python</code> binding package to python 2.6, for which I&nbsp;needed to learn a new RPM&nbsp;trick:</p> 
-<pre class="plain"><code>rpm -i subversion-python...rpm --relocate /usr/lib/python2.4=/usr/lib/python2.6</code></pre> 
-<p>Yum can't do this AFAIK.</p></div>
+trac-repos.repo</code></pre>
+
+<p>First, I needed Python 2.6. This was soved by Chris Lea's repo – he
+made a package which installs Python 2.6 to <code>/usr/lib/python2.6</code>,
+leaving Python 2.4 in peace.</p>
+
+<p>Then, CentOS had SVN 1.4.2. I used <code>yum update subversion</code>,
+which updated to SVN 1.6.13 from one of the repos above, probably RPMForge.</p>
+
+<p>The last piece was to install <code>subversion-python</code> binding package
+to python 2.6, for which I needed to learn a new RPM trick:</p>
+
+<pre
+class="plain"><code>rpm -i subversion-python...rpm --relocate /usr/lib/python2.4=/usr/lib/python2.6</code></pre>
+
+<p>Yum can't do this AFAIK.</p>
+</div>
 
 	<hr />
 

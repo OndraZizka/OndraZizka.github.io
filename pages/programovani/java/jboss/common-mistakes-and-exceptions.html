@@ -77,11 +77,18 @@
 
 	<div class="date"><em>2012-12-13</em></div>
 
-	<div class="doc-body"><h3>Common JBoss AS mistakes and exceptions</h3> 
-<h4><code>signer information does not match signer information of other classes in the same package</code></h4> 
-<p>JBoss EAP jar's&nbsp;are signed. If you add some unsigned jars with the same package names, JVM classloader will complain.</p> 
-<p>To unsign EAP, you can do:</p> 
-<pre class="bash"><code>find . -type f -iname '*.jar' -exec zip -d '{}' META-INF/JBOSSCOD.{SF,RSA} \;</code></pre> 
+	<div class="doc-body"><h3>Common JBoss AS mistakes and exceptions</h3>
+
+<h4><code>signer information does not match signer information of other classes in the same package</code></h4>
+
+<p>JBoss EAP jar's are signed. If you add some unsigned jars with the same
+package names, JVM classloader will complain.</p>
+
+<p>To unsign EAP, you can do:</p>
+
+<pre
+class="bash"><code>find . -type f -iname '*.jar' -exec zip -d '{}' META-INF/JBOSSCOD.{SF,RSA} \;</code></pre>
+
 <pre><code>2010-03-18 01:25:34,002 FINE  [com.sun.xml.bind.v2.runtime.reflect.opt.Injector] (main) Unable to inject org/jboss/resource/metadata/mcf/DataSourceConnectionPropertyMetaData$JaxbAccessorF_value
 java.lang.reflect.InvocationTargetException
         at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
@@ -94,7 +101,8 @@ Caused by: java.lang.SecurityException: class "org.jboss.resource.metadata.mcf.D
         at java.lang.ClassLoader.preDefineClass(ClassLoader.java:504)
         at java.lang.ClassLoader.defineClass(ClassLoader.java:631)
         at java.lang.ClassLoader.defineClass(ClassLoader.java:482)
-        ... 108 more</code></pre></div>
+        ... 108 more</code></pre>
+</div>
 
 	<hr />
 

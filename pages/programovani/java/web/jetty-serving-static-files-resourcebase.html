@@ -77,8 +77,10 @@
 
 	<div class="date"><em>2012-12-31</em></div>
 
-	<div class="doc-body"><h3>Jetty: Serving static files from a directory</h3> 
-<pre class="brush: java"><code>          Server server = new Server(8080);
+	<div class="doc-body"><h3>Jetty: Serving static files from a directory</h3>
+
+<pre
+class="brush: java"><code>          Server server = new Server(8080);
           Context ctx = new Context( server, "/", Context.SESSIONS );
 
           ServletHolder servletHolder = new ServletHolder(new WicketServlet());
@@ -92,9 +94,14 @@ ServletHolder defaultSH = new ServletHolder(new org.mortbay.jetty.servlet.Defaul
 // This didn't work - see the NPE bellow.
 //defaultSH.setInitParameter("relativeResourceBase", "./src/main/java/org/jawabot/web/files");
 defaultSH.setInitParameter("resourceBase", "./src/main/java/org/jawabot/web/files");
-ctx.addServlet(defaultSH, "/");</code></pre> 
-<p>Strange thing is that <code>resourceBase</code> works when provided with a relative path, and setting <code>relativeResourceBase</code> didn't work, I&nbsp;was getting this&nbsp;NPE:</p> 
-<pre class="brush: plain"><code>04:49:39.401 DEBUG [main] org.mortbay.log  started org.apache.wicket.protocol.http.WicketServlet-16695559
+ctx.addServlet(defaultSH, "/");</code></pre>
+
+<p>Strange thing is that <code>resourceBase</code> works when provided with a
+relative path, and setting <code>relativeResourceBase</code> didn't work, I was
+getting this NPE:</p>
+
+<pre
+class="brush: plain"><code>04:49:39.401 DEBUG [main] org.mortbay.log  started org.apache.wicket.protocol.http.WicketServlet-16695559
 04:49:39.404 DEBUG [main] org.mortbay.log  Checking Resource aliases
 04:49:39.405 ERROR [main] org.mortbay.log  EXCEPTION
 java.lang.NullPointerException
@@ -117,7 +124,8 @@ java.lang.NullPointerException
 04:49:39.407 DEBUG [main] org.mortbay.log  starting Server@16a786
 04:49:39.410 INFO  [main] org.mortbay.log  Started SocketConnector@0.0.0.0:8080
 04:49:39.410 DEBUG [main] org.mortbay.log  started SocketConnector@0.0.0.0:8080
-04:49:39.410 DEBUG [main] org.mortbay.log  started Server@16a786</code></pre></div>
+04:49:39.410 DEBUG [main] org.mortbay.log  started Server@16a786</code></pre>
+</div>
 
 	<hr />
 

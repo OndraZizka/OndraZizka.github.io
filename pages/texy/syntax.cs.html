@@ -77,350 +77,559 @@
 
 	<div class="date"><em>2012-12-13</em></div>
 
-	<div class="doc-body"><h3>Tento soubor nenĂ aktuĂˇlnĂ!</h3> 
-<h3>Texy! is sexy!</h3> 
-<p>Texy! je pĹ™evadÄ›ÄŤ textu do formĂˇtovanĂ©ho HTML kĂłdu. DĂky nÄ›mu mĹŻĹľete psĂˇt strukturovanĂ© dokumenty i&nbsp;bez znalosti nebo pouĹľitĂ jazyka HTML. Dokument napĂĹˇete v&nbsp;pĹ™ehlednĂ©, ÄŤistÄ› textovĂ©, formÄ› a Texy! jej automaticky pĹ™evede do validnĂho (X)HTML&nbsp;kĂłdu.</p> 
-<p>Texy! je jednĂm z&nbsp;<strong>nejkomplexnÄ›jĹˇĂch</strong> formĂˇtovaÄŤĹŻ. UmĂ zpracovĂˇvat obrĂˇzky, odkazy, vnoĹ™enĂ© seznamy, tabulky a mĂˇ takĂ© plnou podporu <acronym title="KaskĂˇdovĂ© styly">CSS</acronym>.</p> 
-<h4>Titulky</h4> 
-<h3>Titulek niĹľĹˇĂ ĂşrovnÄ›</h3> 
-<h4>Odstavce</h4> 
-<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur turpis enim, placerat tincidunt, tincidunt ac, fringilla et, mauris. stĂˇle ten stejnĂ˝ odstavec<br> stĂˇle ten stejnĂ˝ odstavec, ale Ĺ™Ăˇdek je oddÄ›len elementem <code>&lt;br&gt;</code><br> a druhĂ˝ oddÄ›lenĂ˝ Ĺ™Ăˇdek</p> 
-<p style="text-align:center">VycentrovĂˇno modifikĂˇtorem</p> 
-<p style="color:blue">Obarveno modifikĂˇtorem</p> 
-<h4>HorizontĂˇlnĂ linky</h4> 
-<p>ÄŤtyĹ™i&nbsp;linky, ÄŤtyĹ™i&nbsp;zpĹŻsoby zĂˇpisu</p> 
-<hr> 
-<hr> 
-<h4>KĂłd</h4> 
-<pre class="php"><code>function reImage($matches) {
+	<div class="doc-body"><h3>Tento soubor nenĂ aktuĂˇlnĂ!</h3>
+
+<h3>Texy! is sexy!</h3>
+
+<p>Texy! je pĹ™evadÄ›ÄŤ textu do formĂˇtovanĂ©ho HTML kĂłdu. DĂky
+nÄ›mu mĹŻĹľete psĂˇt strukturovanĂ© dokumenty i bez znalosti nebo
+pouĹľitĂ jazyka HTML. Dokument napĂĹˇete v pĹ™ehlednĂ©, ÄŤistÄ›
+textovĂ©, formÄ› a Texy! jej automaticky pĹ™evede do validnĂho
+(X)HTML kĂłdu.</p>
+
+<p>Texy! je jednĂm z <strong>nejkomplexnÄ›jĹˇĂch</strong>
+formĂˇtovaÄŤĹŻ. UmĂ zpracovĂˇvat obrĂˇzky, odkazy, vnoĹ™enĂ©
+seznamy, tabulky a mĂˇ takĂ© plnou podporu <acronym
+title="KaskĂˇdovĂ© styly">CSS</acronym>.</p>
+
+<h4>Titulky</h4>
+
+<h3>Titulek niĹľĹˇĂ ĂşrovnÄ›</h3>
+
+<h4>Odstavce</h4>
+
+<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur turpis
+enim, placerat tincidunt, tincidunt ac, fringilla et, mauris. stĂˇle ten
+stejnĂ˝ odstavec<br />
+stĂˇle ten stejnĂ˝ odstavec, ale Ĺ™Ăˇdek je oddÄ›len elementem
+<code>&lt;br&gt;</code><br />
+a druhĂ˝ oddÄ›lenĂ˝ Ĺ™Ăˇdek</p>
+
+<p style="text-align:center">VycentrovĂˇno modifikĂˇtorem</p>
+
+<p style="color:blue">Obarveno modifikĂˇtorem</p>
+
+<h4>HorizontĂˇlnĂ linky</h4>
+
+<p>ÄŤtyĹ™i linky, ÄŤtyĹ™i zpĹŻsoby zĂˇpisu</p>
+
+<hr />
+<hr />
+
+<h4>KĂłd</h4>
+
+<pre
+class="php"><code>function reImage($matches) {
   $content = $matches[1];
   $align = $matches[5];
   $href = $matches[6];
-}</code></pre> 
-<p>Syntax-highlighting lze zprovoznit pouĹľitĂm pĹ™ĂdanĂ©ho&nbsp;modulu</p> 
-<h4>VypnutĂ Texy</h4> 
-<em>pĹ™Ăklad</em>: **this is not strong** &lt;em&gt;pĹ™Ăklad&lt;/em&gt;: **this is not strong** 
-<h4>Div</h4> 
-<div class="header"> 
- <p>content of div</p> 
-</div> 
-<h5>vnoĹ™enĂ</h5> 
-<div class="header"> 
- <h4>This is a header.</h4> 
- <div> 
-  <p>vnoĹ™enĂ˝ div</p> 
- </div> 
- <p>Texy! je sexy!</p> 
-</div> 
-<h4>Citace</h4> 
-<blockquote cite="http://www.microsoft.com"> 
- <p>This is a blockquote with two paragraphs. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus. Vestibulum enim wisi, viverra nec, fringilla in, laoreet vitae,&nbsp;risus.</p> 
- <p>640&nbsp;K&nbsp;should be enough for everyone</p> 
-</blockquote> 
-<h5>vnoĹ™enĂ</h5> 
-<blockquote> 
- <h4>Titulek</h4> 
- <blockquote> 
-  <p>VnoĹ™enĂˇ citace</p> 
- </blockquote> 
- <p>a zpÄ›t do prvnĂ ĂşrovnÄ›</p> 
-</blockquote> 
-<h4>Odkazy</h4> 
-<ul> 
- <li>Look at <a href="http://texy.info">homepage</a>.</li> 
- <li>Do you know <a href="http://www.latrine.cz/">La Trine</a>?</li> 
- <li>This picture <a href="http://www.texy.info"><img src="http://www.zizka.ch/images/image.gif" alt=""></a> is clickable</li> 
-</ul> 
-<h5>uĹľitĂm referencĂ</h5> 
-<ul> 
- <li>Look at <a href="http://texy.info/" title="this is homepage">Texy!</a></li> 
- <li>My address is <a href="mailto:me@example.com">me@
-   <!-- -->example.com</a></li> 
- <li>What about <a href="http://texy.info/" title="this is homepage">this</a> site?</li> 
-</ul> 
-<h4>ObrĂˇzky</h4> 
-<div>
- <img src="http://www.zizka.ch/images/image.gif" alt="">
-</div> 
-<h5>v&nbsp;odstavĂch</h5> 
-<p><img src="http://www.zizka.ch/images/image.gif" alt="" style="float:left"> Left-aligned image. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur turpis enim, placerat tincidunt, tincidunt ac, fringilla et, mauris.</p> 
-<p><img src="http://www.zizka.ch/images/image.gif" alt="" style="float:right"> Right-aligned image. Curabitur quam justo, hendrerit a, mattis ut, ultrices at, dui. In mollis. Ut pellentesque erat vehicula nunc. Ut ultricies. Nulla nunc velit, consequat vel, laoreet in, blandit et,&nbsp;eros.</p> 
-<h5>s&nbsp;udĂˇlostĂ on-mouse-over</h5> 
-<div>
- <img src="http://www.zizka.ch/images/image.gif" alt="" onmouseover="this.src='images/image-over.gif'" onmouseout="this.src='images/image.gif'" onload="var i=new Image();i.src='images/image-over.gif';if(typeof preload=='undefined')preload=new Array();preload[preload.length]=i;this.onload=''">
-</div> 
-<h5>s&nbsp;popiskou</h5> 
-<div class="figure">
- <img src="http://www.zizka.ch/images/image.gif" alt=""> 
- <p>Toto je popiska pod obrĂˇzkem / fotkou</p> 
-</div> 
-<h5>uĹľitĂm referencĂ</h5> 
-<p>What a beautiful logo <img src="http://www.zizka.ch/images/image.gif" alt="alternative text"> :-)</p> 
-<h5>s&nbsp;modifikĂˇtorem</h5> 
-<div>
- <img src="http://www.zizka.ch/images/image.gif" style="width:100px" alt="">
-</div> 
-<h4>FrĂˇze</h4> 
-<p>UkĂˇzka: <em>zdĹŻraznÄ›nĂ©</em>, <strong>silnÄ› zdĹŻraznÄ›nĂ©</strong> and <strong><em>nejsilnÄ›ji zdĹŻraznÄ›nĂ©</em></strong></p> 
-<p>KrĂˇtkĂ˝ citĂˇt: <q cite="http://www.lipsum.com">Lorem Ipsum Dolores</q></p> 
-<p>Zdroj, citovanĂˇ osoba: Jak ~~Frank Borland~~ Ĺ™Ăkal,&nbsp;…</p> 
-<p>A&nbsp;dalĹˇĂ: superscript m<sup>2</sup> vs. subscript O<sub>2</sub></p> 
-<p>++pĹ™idanĂ˝ text++ vs.&nbsp;–odstranÄ›nĂ˝ text--</p> 
-<p>KĂłd: <code>&lt;br /&gt;</code></p> 
-<h5>s&nbsp;modifikĂˇtory</h5> 
-<p><strong style="color:green">silnĂ˝ a zelenĂ˝</strong> jako Hulk</p> 
-<h4>PĹ™ĂmĂ© HTML tagy</h4> 
-<p>This <strong>is strong</strong> text.</p> 
-<h4>Seznamy</h4> 
-<ul> 
- <li>Red</li> 
- <li>Green</li> 
- <li>Blue</li> 
-</ul> 
-<p>or</p> 
-<ul> 
- <li>Red</li> 
- <li>Green</li> 
- <li>Blue</li> 
-</ul> 
-<h5>ÄŤĂslovanĂ©</h5> 
-<ol> 
- <li>Bird</li> 
- <li>McHale</li> 
- <li>Parish</li> 
-</ol> 
-<ol> 
- <li>Bird</li> 
- <li>McHale</li> 
- <li>Parish</li> 
-</ol> 
-<ol style="list-style-type:lower-alpha"> 
- <li>Bird</li> 
- <li>McHale</li> 
- <li>Parish</li> 
-</ol> 
-<ol style="list-style-type:upper-alpha"> 
- <li>Bird</li> 
- <li>McHale</li> 
- <li>Parish</li> 
-</ol> 
-<ol style="list-style-type:upper-roman"> 
- <li>Bird</li> 
- <li>McHale</li> 
- <li>Parish</li> 
-</ol> 
-<h5>vnoĹ™enĂ©</h5> 
-<ol style="list-style-type:lower-alpha"> 
- <li>Bird 
-  <ol style="list-style-type:upper-roman"> 
-   <li>Bird 
-    <ul> 
-     <li>Red</li> 
-     <li>Green</li> 
-     <li>Blue</li> 
-    </ul> </li> 
-   <li>McHale</li> 
-   <li>Parish</li> 
-  </ol> </li> 
- <li>McHale</li> 
- <li>Parish 
-  <ol> 
-   <li>Bird</li> 
-   <li>McHale</li> 
-   <li>Parish</li> 
-  </ol> </li> 
-</ol> 
-<h5>definiÄŤnĂ seznam</h5> 
-<dl> 
- <dt>
-  Koncert DivokĂ˝ Bill
- </dt> 
- <dd>
-  termĂn: 9.&nbsp;12.&nbsp;2004
- </dd> 
- <dd>
-  mĂsto: Hala VodovĂˇ, Brno
- </dd> 
- <dd>
-  Cena: 260&nbsp;KÄŤ
- </dd> 
-</dl> 
-<p>a s&nbsp;modifikĂˇtory:</p> 
-<dl style="color:red"> 
- <dt style="color:blue">
-  triangl
- </dt> 
- <dd style="color:green">
-  trojĂşhelnĂk
- </dd> 
- <dd>
-  neladÄ›nĂ˝ bicĂ hudebnĂ nĂˇstroj
- </dd> 
- <dd>
-  tringulaÄŤnĂ vÄ›Ĺľ
- </dd> 
-</dl> 
-<h4>ModifikĂˇtory</h4> 
-<p>Lze pouĹľĂt tyto druhy modifikĂˇtorĹŻ:</p> 
-<ul> 
- <li>(titulek) popisnĂ©, pĹ™idajĂ objektu titulek (nebo alternativnĂ text obrĂˇzkĹŻm)</li> 
- <li>[class1 class2 #id] urÄŤujĂcĂ tĹ™Ădu a/nebo ID</li> 
- <li>{class:blue} pĹ™ĂmĂ˝ zĂˇpis stylu</li> 
- <li>horizontĂˇlnĂ zarovnĂˇnĂ: 
-  <ul> 
-   <li>doleva &lt;</li> 
-   <li>doprava &gt;</li> 
-   <li>vycentrovanĂ˝ &lt;&gt;</li> 
-   <li>do bloku =</li> 
-  </ul> </li> 
- <li>vertikĂˇlnĂ zarovnĂˇnĂ: (jen u&nbsp;tabulek) 
-  <ul> 
-   <li>nahoru ^</li> 
-   <li>na stĹ™ed&nbsp;–</li> 
-   <li>dolĹŻ _</li> 
-  </ul> </li> 
-</ul> 
-<h4>Typografie</h4> 
-<ul> 
- <li>rozdÄ›lenĂ velmi dlouhĂ˝ch slov podle ÄŤeskĂ˝ch pravidel. PĹ™Ăklad: nejneobhospodaĹ™ovĂˇva­telnÄ›jĹˇĂmi</li> 
- <li>klikatelnĂ© adresy <a href="http://www.davidgrudl.com">www.davidgrudl.com</a>, <a href="mailto:david@grudl.com">david@
-   <!-- -->grudl.com</a> (emaily jsou odolnĂ© vĹŻÄŤi spambotĹŻm)</li> 
- <li>„ÄŤeskĂ©“ ‚typografickĂ©‘ uvozovky</li> 
- <li>pomlÄŤka vs. spojovnĂk: 10–15 vs. ÄŤesko-slovenskĂ˝</li> 
- <li>pomlÄŤka: jedna&nbsp;– dvÄ›</li> 
- <li>typografickĂ˝ kĹ™ĂĹľek u&nbsp;rozmÄ›rĹŻ 10&nbsp;×&nbsp;20</li> 
- <li>nedÄ›litelnĂ© mezery u&nbsp;telefonnĂch ÄŤĂsel +420&nbsp;776&nbsp;552&nbsp;046</li> 
- <li>vklĂˇdĂˇnĂ nezalomitelnĂ˝ch mezer za jednopĂsmennĂ© pĹ™edloĹľky</li> 
- <li>acronym <acronym title="North Atlantic Treaty Organisation">NATO</acronym></li> 
- <li>abbr <acronym title="a dalĹˇĂ">et al.</acronym></li> 
- <li>nĂˇhrady™ nebo® za pĹ™ĂsluĹˇnĂ© entity(C)</li> 
- <li>Ĺˇipky ← a → a ↔ ;</li> 
- <li>tĹ™i&nbsp;teÄŤky…</li> 
- <li>zachovĂˇnĂ HTML entit &amp;</li> 
- <li>a spousta dalĹˇĂho :-)</li> 
-</ul> 
-<h4>Tabulky</h4> 
-<table> 
- <tbody> 
-  <tr> 
-   <td>first col</td> 
-   <td>second col</td> 
-   <td>third col</td> 
-  </tr> 
-  <tr> 
-   <td>Adam</td> 
-   <td>Eva</td> 
-   <td>Franta</td> 
-  </tr> 
- </tbody> 
-</table> 
-<h5>s&nbsp;hlaviÄŤkou</h5> 
-<table> 
- <thead> 
-  <tr> 
-   <th>First Name</th> 
-   <th>Last Name</th> 
-   <th>Age</th> 
-  </tr> 
- </thead> 
- <tbody> 
-  <tr> 
-   <td>Jesus</td> 
-   <td>Christ</td> 
-   <td>33</td> 
-  </tr> 
-  <tr> 
-   <td>Cecilie</td> 
-   <td>Svobodova</td> 
-   <td>74</td> 
-  </tr> 
- </tbody> 
-</table> 
-<p>nebo pouĹľitĂm *</p> 
-<table> 
- <tbody> 
-  <tr> 
-   <th>First Name</th> 
-   <td>Jesus</td> 
-   <td>Cecilie</td> 
-  </tr> 
-  <tr> 
-   <th>Last Name</th> 
-   <td>Christ</td> 
-   <td>Svobodova</td> 
-  </tr> 
-  <tr> 
-   <th>Age</th> 
-   <td>33</td> 
-   <td>74</td> 
-  </tr> 
- </tbody> 
-</table> 
-<h5>slouÄŤenĂ sloupcĹŻ</h5> 
-<p>vĹˇimÄ›te si zdvojenĂ©ho ||</p> 
-<table> 
- <thead> 
-  <tr> 
-   <th colspan="2">Name</th> 
-   <th>Age</th> 
-  </tr> 
- </thead> 
- <tbody> 
-  <tr> 
-   <td>Jesus</td> 
-   <td>Christ</td> 
-   <td>33</td> 
-  </tr> 
-  <tr> 
-   <td>Cecilie</td> 
-   <td>Svobodova</td> 
-   <td>74</td> 
-  </tr> 
- </tbody> 
-</table> 
-<h5>slouÄŤenĂ Ĺ™ĂˇdkĹŻ</h5> 
-<table> 
- <thead> 
-  <tr> 
-   <th>First Name</th> 
-   <th>Last Name</th> 
-   <th>Age</th> 
-  </tr> 
- </thead> 
- <tbody> 
-  <tr> 
-   <td rowspan="2">Bill</td> 
-   <td>Gates</td> 
-   <td>50</td> 
-  </tr> 
-  <tr> 
-   <td>Clinton</td> 
-   <td>52</td> 
-  </tr> 
-  <tr> 
-   <td>Jim</td> 
-   <td>Beam</td> 
-   <td>70</td> 
-  </tr> 
- </tbody> 
-</table> 
-<h5>modifikĂˇtory</h5> 
-<table style="color:red"> 
- <tbody> 
-  <tr style="font-style:italic"> 
-   <td style="color:green">first col</td> 
-   <td style="text-align:right">second col</td> 
-   <td>third col</td> 
-  </tr> 
-  <tr> 
-   <td style="color:green">Adam</td> 
-   <td style="color:blue">Eva</td> 
-   <td>Franta</td> 
-  </tr> 
- </tbody> 
-</table> 
-<h4>Copyright</h4> 
-<p>Texy! © <a href="http://www.davidgrudl.com">David Grudl (dgx)</a>, 2004–2008</p></div>
+}</code></pre>
+
+<p>Syntax-highlighting lze zprovoznit pouĹľitĂm pĹ™ĂdanĂ©ho modulu</p>
+
+<h4>VypnutĂ Texy</h4>
+ <em>pĹ™Ăklad</em>: **this is not strong**
+&lt;em&gt;pĹ™Ăklad&lt;/em&gt;: **this is not strong**
+<h4>Div</h4>
+
+<div class="header">
+	<p>content of div</p>
+</div>
+
+<h5>vnoĹ™enĂ</h5>
+
+<div class="header">
+	<h4>This is a header.</h4>
+
+	<div>
+		<p>vnoĹ™enĂ˝ div</p>
+	</div>
+
+	<p>Texy! je sexy!</p>
+</div>
+
+<h4>Citace</h4>
+
+<blockquote cite="http://www.microsoft.com">
+	<p>This is a blockquote with two paragraphs. Lorem ipsum dolor sit amet,
+	consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus. Vestibulum
+	enim wisi, viverra nec, fringilla in, laoreet vitae, risus.</p>
+
+	<p>640 K should be enough for everyone</p>
+</blockquote>
+
+<h5>vnoĹ™enĂ</h5>
+
+<blockquote>
+	<h4>Titulek</h4>
+
+	<blockquote>
+		<p>VnoĹ™enĂˇ citace</p>
+	</blockquote>
+
+	<p>a zpÄ›t do prvnĂ ĂşrovnÄ›</p>
+</blockquote>
+
+<h4>Odkazy</h4>
+
+<ul>
+	<li>Look at <a href="http://texy.info">homepage</a>.</li>
+
+	<li>Do you know <a href="http://www.latrine.cz/">La Trine</a>?</li>
+
+	<li>This picture <a href="http://www.texy.info"><img src="image.gif" alt=""
+	/></a> is clickable</li>
+</ul>
+
+<h5>uĹľitĂm referencĂ</h5>
+
+<ul>
+	<li>Look at <a href="http://texy.info/" title="this is homepage">Texy!</a></li>
+
+	<li>My address is <a
+	href="mailto:me&#64;example.com">me&#64;<!-- -->example.com</a></li>
+
+	<li>What about <a href="http://texy.info/" title="this is homepage">this</a>
+	site?</li>
+</ul>
+
+<h4>ObrĂˇzky</h4>
+
+<div><img src="image.gif" alt="" /></div>
+
+<h5>v odstavĂch</h5>
+
+<p><img src="image.gif" alt="" style="float:left" /> Left-aligned image. Lorem
+ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur turpis enim,
+placerat tincidunt, tincidunt ac, fringilla et, mauris.</p>
+
+<p><img src="image.gif" alt="" style="float:right" /> Right-aligned image.
+Curabitur quam justo, hendrerit a, mattis ut, ultrices at, dui. In mollis. Ut
+pellentesque erat vehicula nunc. Ut ultricies. Nulla nunc velit, consequat vel,
+laoreet in, blandit et, eros.</p>
+
+<h5>s udĂˇlostĂ on-mouse-over</h5>
+
+<div><img src="image.gif" alt="" onmouseover="this.src='image-over.gif'"
+onmouseout="this.src='image.gif'"
+onload="var i=new Image();i.src='image-over.gif';if(typeof preload=='undefined')preload=new Array();preload[preload.length]=i;this.onload=''"
+/></div>
+
+<h5>s popiskou</h5>
+
+<div class="figure"><img src="image.gif" alt="" />
+	<p>Toto je popiska pod obrĂˇzkem / fotkou</p>
+</div>
+
+<h5>uĹľitĂm referencĂ</h5>
+
+<p>What a beautiful logo <img src="image.gif" alt="alternative text" /> :-)</p>
+
+<h5>s modifikĂˇtorem</h5>
+
+<div><img src="image.gif" style="width:100px" alt="" /></div>
+
+<h4>FrĂˇze</h4>
+
+<p>UkĂˇzka: <em>zdĹŻraznÄ›nĂ©</em>, <strong>silnÄ›
+zdĹŻraznÄ›nĂ©</strong> and <strong><em>nejsilnÄ›ji
+zdĹŻraznÄ›nĂ©</em></strong></p>
+
+<p>KrĂˇtkĂ˝ citĂˇt: <q cite="http://www.lipsum.com">Lorem Ipsum
+Dolores</q></p>
+
+<p>Zdroj, citovanĂˇ osoba: Jak ~~Frank Borland~~ Ĺ™Ăkal, …</p>
+
+<p>A dalĹˇĂ: superscript m<sup>2</sup> vs. subscript O<sub>2</sub></p>
+
+<p>++pĹ™idanĂ˝ text++ vs. –odstranÄ›nĂ˝ text--</p>
+
+<p>KĂłd: <code>&lt;br /&gt;</code></p>
+
+<h5>s modifikĂˇtory</h5>
+
+<p><strong style="color:green">silnĂ˝ a zelenĂ˝</strong> jako Hulk</p>
+
+<h4>PĹ™ĂmĂ© HTML tagy</h4>
+
+<p>This <strong>is strong</strong> text.</p>
+
+<h4>Seznamy</h4>
+
+<ul>
+	<li>Red</li>
+
+	<li>Green</li>
+
+	<li>Blue</li>
+</ul>
+
+<p>or</p>
+
+<ul>
+	<li>Red</li>
+
+	<li>Green</li>
+
+	<li>Blue</li>
+</ul>
+
+<h5>ÄŤĂslovanĂ©</h5>
+
+<ol>
+	<li>Bird</li>
+
+	<li>McHale</li>
+
+	<li>Parish</li>
+</ol>
+
+<ol>
+	<li>Bird</li>
+
+	<li>McHale</li>
+
+	<li>Parish</li>
+</ol>
+
+<ol style="list-style-type:lower-alpha">
+	<li>Bird</li>
+
+	<li>McHale</li>
+
+	<li>Parish</li>
+</ol>
+
+<ol style="list-style-type:upper-alpha">
+	<li>Bird</li>
+
+	<li>McHale</li>
+
+	<li>Parish</li>
+</ol>
+
+<ol style="list-style-type:upper-roman">
+	<li>Bird</li>
+
+	<li>McHale</li>
+
+	<li>Parish</li>
+</ol>
+
+<h5>vnoĹ™enĂ©</h5>
+
+<ol style="list-style-type:lower-alpha">
+	<li>Bird
+		<ol style="list-style-type:upper-roman">
+			<li>Bird
+				<ul>
+					<li>Red</li>
+
+					<li>Green</li>
+
+					<li>Blue</li>
+				</ul>
+			</li>
+
+			<li>McHale</li>
+
+			<li>Parish</li>
+		</ol>
+	</li>
+
+	<li>McHale</li>
+
+	<li>Parish
+		<ol>
+			<li>Bird</li>
+
+			<li>McHale</li>
+
+			<li>Parish</li>
+		</ol>
+	</li>
+</ol>
+
+<h5>definiÄŤnĂ seznam</h5>
+
+<dl>
+	<dt>Koncert DivokĂ˝ Bill</dt>
+
+	<dd>termĂn: 9. 12. 2004</dd>
+
+	<dd>mĂsto: Hala VodovĂˇ, Brno</dd>
+
+	<dd>Cena: 260 KÄŤ</dd>
+</dl>
+
+<p>a s modifikĂˇtory:</p>
+
+<dl style="color:red">
+	<dt style="color:blue">triangl</dt>
+
+	<dd style="color:green">trojĂşhelnĂk</dd>
+
+	<dd>neladÄ›nĂ˝ bicĂ hudebnĂ nĂˇstroj</dd>
+
+	<dd>tringulaÄŤnĂ vÄ›Ĺľ</dd>
+</dl>
+
+<h4>ModifikĂˇtory</h4>
+
+<p>Lze pouĹľĂt tyto druhy modifikĂˇtorĹŻ:</p>
+
+<ul>
+	<li>(titulek) popisnĂ©, pĹ™idajĂ objektu titulek (nebo alternativnĂ text
+	obrĂˇzkĹŻm)</li>
+
+	<li>[class1 class2 #id] urÄŤujĂcĂ tĹ™Ădu a/nebo ID</li>
+
+	<li>{class:blue} pĹ™ĂmĂ˝ zĂˇpis stylu</li>
+
+	<li>horizontĂˇlnĂ zarovnĂˇnĂ:
+		<ul>
+			<li>doleva &lt;</li>
+
+			<li>doprava &gt;</li>
+
+			<li>vycentrovanĂ˝ &lt;&gt;</li>
+
+			<li>do bloku =</li>
+		</ul>
+	</li>
+
+	<li>vertikĂˇlnĂ zarovnĂˇnĂ: (jen u tabulek)
+		<ul>
+			<li>nahoru ^</li>
+
+			<li>na stĹ™ed –</li>
+
+			<li>dolĹŻ _</li>
+		</ul>
+	</li>
+</ul>
+
+<h4>Typografie</h4>
+
+<ul>
+	<li>rozdÄ›lenĂ velmi dlouhĂ˝ch slov podle ÄŤeskĂ˝ch pravidel.
+	PĹ™Ăklad: nejneobhospodaĹ™ovĂˇva­telnÄ›jĹˇĂmi</li>
+
+	<li>klikatelnĂ© adresy <a
+	href="http://www.davidgrudl.com">www.davidgrudl.com</a>, <a
+	href="mailto:david&#64;grudl.com">david&#64;<!-- -->grudl.com</a> (emaily jsou
+	odolnĂ© vĹŻÄŤi spambotĹŻm)</li>
+
+	<li>„ÄŤeskĂ©“ ‚typografickĂ©‘ uvozovky</li>
+
+	<li>pomlÄŤka vs. spojovnĂk: 10–15 vs. ÄŤesko-slovenskĂ˝</li>
+
+	<li>pomlÄŤka: jedna – dvÄ›</li>
+
+	<li>typografickĂ˝ kĹ™ĂĹľek u rozmÄ›rĹŻ 10 × 20</li>
+
+	<li>nedÄ›litelnĂ© mezery u telefonnĂch ÄŤĂsel +420 776 552 046</li>
+
+	<li>vklĂˇdĂˇnĂ nezalomitelnĂ˝ch mezer za jednopĂsmennĂ©
+	pĹ™edloĹľky</li>
+
+	<li>acronym <acronym
+	title="North Atlantic Treaty Organisation">NATO</acronym></li>
+
+	<li>abbr <acronym title="a dalĹˇĂ">et al.</acronym></li>
+
+	<li>nĂˇhrady™ nebo® za pĹ™ĂsluĹˇnĂ© entity(C)</li>
+
+	<li>Ĺˇipky ← a → a ↔ ;</li>
+
+	<li>tĹ™i teÄŤky…</li>
+
+	<li>zachovĂˇnĂ HTML entit &amp;</li>
+
+	<li>a spousta dalĹˇĂho :-)</li>
+</ul>
+
+<h4>Tabulky</h4>
+
+<table>
+	<tbody>
+		<tr>
+			<td>first col</td>
+
+			<td>second col</td>
+
+			<td>third col</td>
+		</tr>
+
+		<tr>
+			<td>Adam</td>
+
+			<td>Eva</td>
+
+			<td>Franta</td>
+		</tr>
+	</tbody>
+</table>
+
+<h5>s hlaviÄŤkou</h5>
+
+<table>
+	<thead>
+		<tr>
+			<th>First Name</th>
+
+			<th>Last Name</th>
+
+			<th>Age</th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<tr>
+			<td>Jesus</td>
+
+			<td>Christ</td>
+
+			<td>33</td>
+		</tr>
+
+		<tr>
+			<td>Cecilie</td>
+
+			<td>Svobodova</td>
+
+			<td>74</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>nebo pouĹľitĂm *</p>
+
+<table>
+	<tbody>
+		<tr>
+			<th>First Name</th>
+
+			<td>Jesus</td>
+
+			<td>Cecilie</td>
+		</tr>
+
+		<tr>
+			<th>Last Name</th>
+
+			<td>Christ</td>
+
+			<td>Svobodova</td>
+		</tr>
+
+		<tr>
+			<th>Age</th>
+
+			<td>33</td>
+
+			<td>74</td>
+		</tr>
+	</tbody>
+</table>
+
+<h5>slouÄŤenĂ sloupcĹŻ</h5>
+
+<p>vĹˇimÄ›te si zdvojenĂ©ho ||</p>
+
+<table>
+	<thead>
+		<tr>
+			<th colspan="2">Name</th>
+
+			<th>Age</th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<tr>
+			<td>Jesus</td>
+
+			<td>Christ</td>
+
+			<td>33</td>
+		</tr>
+
+		<tr>
+			<td>Cecilie</td>
+
+			<td>Svobodova</td>
+
+			<td>74</td>
+		</tr>
+	</tbody>
+</table>
+
+<h5>slouÄŤenĂ Ĺ™ĂˇdkĹŻ</h5>
+
+<table>
+	<thead>
+		<tr>
+			<th>First Name</th>
+
+			<th>Last Name</th>
+
+			<th>Age</th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<tr>
+			<td rowspan="2">Bill</td>
+
+			<td>Gates</td>
+
+			<td>50</td>
+		</tr>
+
+		<tr>
+			<td>Clinton</td>
+
+			<td>52</td>
+		</tr>
+
+		<tr>
+			<td>Jim</td>
+
+			<td>Beam</td>
+
+			<td>70</td>
+		</tr>
+	</tbody>
+</table>
+
+<h5>modifikĂˇtory</h5>
+
+<table style="color:red">
+	<tbody>
+		<tr style="font-style:italic">
+			<td style="color:green">first col</td>
+
+			<td style="text-align:right">second col</td>
+
+			<td>third col</td>
+		</tr>
+
+		<tr>
+			<td style="color:green">Adam</td>
+
+			<td style="color:blue">Eva</td>
+
+			<td>Franta</td>
+		</tr>
+	</tbody>
+</table>
+
+<h4>Copyright</h4>
+
+<p>Texy! © <a href="http://www.davidgrudl.com">David Grudl (dgx)</a>,
+2004–2008</p>
+</div>
 
 	<hr />
 

@@ -77,44 +77,133 @@
 
 	<div class="date"><em>2012-12-13</em></div>
 
-	<div class="doc-body"><h3>Business society algorithm</h3> 
-<p>Notice paper.</p> 
-<p>Note that this is just a first brief snippet of my thoughts and may not corelate with anything&nbsp;else.</p> 
-<p>This describes a computation model that may be able to experimentaly employ computation resources, combine them to general structures, and after some time it could establish a structure that is apropriate for some task and „converges“. Succesfully tested on some simple&nbsp;tasks.</p> 
-<p>(For readers comming from a newsgroup: This is not the fuzzy graph thing; that's&nbsp;described elsewhere and unfortunatelly is not a part of this „model“.)</p> 
-<h4>Population (society)</h4> 
-<p>First, there is a <em>population</em> of <em>individuals</em> able to perform a computation.</p> 
-<p>Performing a computation means that the individual will be given an input and it will produce an output.</p> 
-<p>Individual can use anything to do that&nbsp;– any kind of neural network, single neuron, math function, logical function, web service, database, random generator, … but what it uses should be appropriate for the solution of the task: What classes of individuals are available in the environment is determined by the developer.</p> 
-<p>Let's&nbsp;say we are looking for an arithmetic expression consisting of additions, products, substractions and quotients. Then the population should consist of individuals that have 2&nbsp;inputs and one output and do the respective operations.</p> 
-<h4>Units</h4> 
-<p>Individuals can form <em>units</em> consisting of one or more individuals or&nbsp;units.</p> 
-<p>Such unit has one individual or unit that provides the unit's&nbsp;output.</p> 
-<h4>Customers (Employers)</h4> 
-<p>Customer is a unit or external entity, which provides some sources of input and demands an output. Given an output, it can provide some feedback&nbsp;– how good the output was and, optionally, what the output should&nbsp;be.</p> 
-<p>So, the customer provides the sources of inputs to the environment and announces the existence of a task. The units take these sources of input and any other sources available, and try to compute their output. „Other available sources“ can be the outputs of other units which already performed their computation.</p> 
-<p>Then the customer selects appropriate number of sources of input available in the environment which are dependent on at least one input source provided by the customer, and treats it as an output solving his&nbsp;task.</p> 
-<p>The selection is based on „selection interview“. The customer tests several applicants (units) with several input vectors. The best performing unit is selected. Customer's&nbsp;con­fidence in that unit is also counted in selection.</p> 
-<h4>Feedback</h4> 
-<p>When the customer evaluates the output (e.g. with an error function), it provides a feedback to the individual selected outputs, in a form of <em>payment</em>, and optionally tells them what the output should be. The amout paid is dependent on the quality of the overall output.</p> 
-<p>The payments from outputs are collected by their respective owning units. The unit then distributes the payment to its individual parts, be it other sub-units or individuals.</p> 
-<h4>Confidence and Credibility</h4> 
-<p>The customer evaluates the performance of the selected units. When a unit gives a good output, customer's&nbsp;con­fidence in that unit rises, and vice versa. When customer's&nbsp;con­fidence in some unit falls under „acceptable level“, the customer chooses another unit for that output, or for all outputs coming from the&nbsp;unit.</p> 
-<p>The more confidence a customer has in an unit, the more he pays&nbsp;it.</p> 
-<p>The unit has no credibility as its own property, because it can give good output for other&nbsp;task.</p> 
-<h4>Internal Unit Management</h4> 
-<p>The unit should be self-organized. Each individual or sub-unit inside it is responsible for selecting its sources and evaluating their confidence in that sources. The net payment that the unit receives for doing its job is distributed to the sub-units based on the sum of confidences they receive from their consumers.</p> 
-<h4>Economical / Natural Selection Laws</h4> 
-<p>When some unit can not pay enough to it's&nbsp;composing individuals, it falls apart and the individuals become free for other&nbsp;usage.</p> 
-<p>An individual can be assigned only to single employer at a&nbsp;time.</p> 
-<p>A&nbsp;unit can be assigned to more customers at a time.</p> 
-<p>An individual, that has no „money“, accepts a job with lower payment. When it's&nbsp;service are not needed, it starves and&nbsp;dies.</p> 
-<p>When an individual is the last one of its class, it can not&nbsp;die.</p> 
-<p>Succesful individual can reproduce, using either plain copy, mutated copy, or genetic crossing with other (successful) individual.</p> 
-<h4>Genetic Algorithms' Role</h4> 
-<p>Each individual's „class“ or „type“ may be able to describe (serialize) it's&nbsp;structure, from which it can be approximately or exactly reconstructed.</p> 
-<p>Individual's&nbsp;class may also offer genetic algorithm operators of mutation and crossing. Selection would be done by „economical starving“. Then, we might apply GA on individuals.</p> 
-<p>This way, if classes of all individuals employed in a unit could be reconstructed at least in structure, we could re-create the whole unit, and eventually whole intelligent system. Thus, we could create more intelligent systems and apply genetic algorithms on&nbsp;them.</p></div>
+	<div class="doc-body"><h3>Business society algorithm</h3>
+
+<p>Notice paper.</p>
+
+<p>Note that this is just a first brief snippet of my thoughts and may not
+corelate with anything else.</p>
+
+<p>This describes a computation model that may be able to experimentaly employ
+computation resources, combine them to general structures, and after some time
+it could establish a structure that is apropriate for some task and
+„converges“. Succesfully tested on some simple tasks.</p>
+
+<p>(For readers comming from a newsgroup: This is not the fuzzy graph thing;
+that's described elsewhere and unfortunatelly is not a part of this
+„model“.)</p>
+
+<h4>Population (society)</h4>
+
+<p>First, there is a <em>population</em> of <em>individuals</em> able to perform
+a computation.</p>
+
+<p>Performing a computation means that the individual will be given an input and
+it will produce an output.</p>
+
+<p>Individual can use anything to do that – any kind of neural network,
+single neuron, math function, logical function, web service, database, random
+generator, … but what it uses should be appropriate for the solution of the
+task: What classes of individuals are available in the environment is determined
+by the developer.</p>
+
+<p>Let's say we are looking for an arithmetic expression consisting of
+additions, products, substractions and quotients. Then the population should
+consist of individuals that have 2 inputs and one output and do the respective
+operations.</p>
+
+<h4>Units</h4>
+
+<p>Individuals can form <em>units</em> consisting of one or more individuals
+or units.</p>
+
+<p>Such unit has one individual or unit that provides the unit's output.</p>
+
+<h4>Customers (Employers)</h4>
+
+<p>Customer is a unit or external entity, which provides some sources of input
+and demands an output. Given an output, it can provide some feedback – how
+good the output was and, optionally, what the output should be.</p>
+
+<p>So, the customer provides the sources of inputs to the environment and
+announces the existence of a task. The units take these sources of input and any
+other sources available, and try to compute their output. „Other available
+sources“ can be the outputs of other units which already performed their
+computation.</p>
+
+<p>Then the customer selects appropriate number of sources of input available in
+the environment which are dependent on at least one input source provided by the
+customer, and treats it as an output solving his task.</p>
+
+<p>The selection is based on „selection interview“. The customer tests
+several applicants (units) with several input vectors. The best performing unit
+is selected. Customer's con­fidence in that unit is also counted in
+selection.</p>
+
+<h4>Feedback</h4>
+
+<p>When the customer evaluates the output (e.g. with an error function), it
+provides a feedback to the individual selected outputs, in a form of
+<em>payment</em>, and optionally tells them what the output should be. The amout
+paid is dependent on the quality of the overall output.</p>
+
+<p>The payments from outputs are collected by their respective owning units. The
+unit then distributes the payment to its individual parts, be it other sub-units
+or individuals.</p>
+
+<h4>Confidence and Credibility</h4>
+
+<p>The customer evaluates the performance of the selected units. When a unit
+gives a good output, customer's con­fidence in that unit rises, and vice
+versa. When customer's con­fidence in some unit falls under „acceptable
+level“, the customer chooses another unit for that output, or for all outputs
+coming from the unit.</p>
+
+<p>The more confidence a customer has in an unit, the more he pays it.</p>
+
+<p>The unit has no credibility as its own property, because it can give good
+output for other task.</p>
+
+<h4>Internal Unit Management</h4>
+
+<p>The unit should be self-organized. Each individual or sub-unit inside it is
+responsible for selecting its sources and evaluating their confidence in that
+sources. The net payment that the unit receives for doing its job is distributed
+to the sub-units based on the sum of confidences they receive from their
+consumers.</p>
+
+<h4>Economical / Natural Selection Laws</h4>
+
+<p>When some unit can not pay enough to it's composing individuals, it falls
+apart and the individuals become free for other usage.</p>
+
+<p>An individual can be assigned only to single employer at a time.</p>
+
+<p>A unit can be assigned to more customers at a time.</p>
+
+<p>An individual, that has no „money“, accepts a job with lower payment.
+When it's service are not needed, it starves and dies.</p>
+
+<p>When an individual is the last one of its class, it can not die.</p>
+
+<p>Succesful individual can reproduce, using either plain copy, mutated copy, or
+genetic crossing with other (successful) individual.</p>
+
+<h4>Genetic Algorithms' Role</h4>
+
+<p>Each individual's „class“ or „type“ may be able to describe
+(serialize) it's structure, from which it can be approximately or exactly
+reconstructed.</p>
+
+<p>Individual's class may also offer genetic algorithm operators of mutation
+and crossing. Selection would be done by „economical starving“. Then, we
+might apply GA on individuals.</p>
+
+<p>This way, if classes of all individuals employed in a unit could be
+reconstructed at least in structure, we could re-create the whole unit, and
+eventually whole intelligent system. Thus, we could create more intelligent
+systems and apply genetic algorithms on them.</p>
+</div>
 
 	<hr />
 

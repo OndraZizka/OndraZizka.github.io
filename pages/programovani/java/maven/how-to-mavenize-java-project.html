@@ -77,20 +77,43 @@
 
 	<div class="date"><em>2012-12-13</em></div>
 
-	<div class="doc-body"><h3>Sardine&nbsp;– mavenized version</h3> 
-<p><em>Copied from Sardine README.txt without editation.</em></p> 
-<p>This is a maven repository of the Sardine project.</p> 
-<p>To add a new version, do the following: <strong>Note:</strong> This is not a copy-paste code&nbsp;– edit it according to your situation.</p> 
-<p>mvn install:install-file -DpomFile=sardine-pom.xml -Dpackaging=jar -DgeneratePom=true -DgroupId=com.go­oglecode.sardi­ne -Dfile=sardine-XX\sardine.jar -DartifactId=sardine -Dversion=XX</p> 
-<p>svn co <a href="https://sardine.googlecode.com/svn/maven">https://sardine.googlecode.com/svn/maven</a> sardine-mvn&nbsp;–username <a href="mailto:you@gmail.com">you@
-  <!-- -->gmail.com</a></p> 
-<p>cp -r ~/.m2/reposito­ry/com/google­code/sardine/sar­dine sardine-mvn/com/google­code/sardine/sar­dine<br> mv ~/.m2/reposito­ry/com/google­code/sardine/sar­dine/maven-metadata-local.xml ~/.m2/reposito­ry/com/google­code/sardine/sar­dine/maven-metadata.xml</p> 
-<p>svn add&nbsp;–force *<br> svn commit -m „Maven repo: Added version&nbsp;XX“</p> 
-<ul> 
- <li><code>~/.m2/repository/</code> is your local Maven repository. On windows it is usually <code>c:\Documents and Settings\user\.m2\repository\</code>.</li> 
- <li>The <code>pom.xml</code> is there because it contains dependency definitions.</li> 
- <li>sardine-mvn/com/google­code/sardine/sar­dine/maven-metadata-local.xml</li> 
-</ul></div>
+	<div class="doc-body"><h3>Sardine – mavenized version</h3>
+
+<p><em>Copied from Sardine README.txt without editation.</em></p>
+
+<p>This is a maven repository of the Sardine project.</p>
+
+<p>To add a new version, do the following: <strong>Note:</strong> This is not a
+copy-paste code – edit it according to your situation.</p>
+
+<p>mvn install:install-file -DpomFile=sardine-pom.xml -Dpackaging=jar
+-DgeneratePom=true -DgroupId=com.go­oglecode.sardi­ne
+-Dfile=sardine-XX\sardine.jar -DartifactId=sardine -Dversion=XX</p>
+
+<p>svn co <a
+href="https://sardine.googlecode.com/svn/maven">https://sardine.googlecode.com/svn/maven</a>
+sardine-mvn –username <a
+href="mailto:you&#64;gmail.com">you&#64;<!-- -->gmail.com</a></p>
+
+<p>cp -r ~/.m2/reposito­ry/com/google­code/sardine/sar­dine
+sardine-mvn/com/google­code/sardine/sar­dine<br />
+mv
+~/.m2/reposito­ry/com/google­code/sardine/sar­dine/maven-metadata-local.xml
+~/.m2/reposito­ry/com/google­code/sardine/sar­dine/maven-metadata.xml</p>
+
+<p>svn add –force *<br />
+svn commit -m „Maven repo: Added version XX“</p>
+
+<ul>
+	<li><code>~/.m2/repository/</code> is your local Maven repository. On windows it
+	is usually <code>c:\Documents and Settings\user\.m2\repository\</code>.</li>
+
+	<li>The <code>pom.xml</code> is there because it contains dependency
+	definitions.</li>
+
+	<li>sardine-mvn/com/google­code/sardine/sar­dine/maven-metadata-local.xml</li>
+</ul>
+</div>
 
 	<hr />
 

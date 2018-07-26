@@ -79,24 +79,40 @@ alternatives and Gentoo's eselect) - Ondřej Žižka</h1>
 
 	<div class="date"><em>2012-12-13</em></div>
 
-	<div class="doc-body"><h3>Linux: Bash generic script to switch versions (like <code>alternatives</code> and Gentoo's <code>eselect</code>)</h3> 
-<p>I've made a switch script.</p> 
-<h4>Usage</h4> 
-<pre class="xbrush: bash"><code>$ switch
+	<div class="doc-body"><h3>Linux: Bash generic script to switch versions (like
+<code>alternatives</code> and Gentoo's <code>eselect</code>)</h3>
+
+<p>I've made a switch script.</p>
+
+<h4>Usage</h4>
+
+<pre
+class="xbrush: bash"><code>$ switch
 $ switch maven 2.2.1
 $ mvn -version
 $ switch maven 2.1.0
-$ mvn -version</code></pre> 
-<h4>Installation</h4> 
-<p>It uses your ~/sw/tools/.links, so update your PATH.</p> 
-<pre class="xbrush: bash"><code>export PATH=~/sw/tools/.links:$PATH</code></pre> 
-<p>Then (optionally):</p> 
-<pre class="xbrush: bash"><code>$ /mnt/jqa/sw/tools/switch.sh install
-Creating ~/sw/tools/.links/switch -&gt; /mnt/jqa/sw/tools/switch.sh</code></pre> 
-<h4>Download</h4> 
-<p>Download <a href="switch.zip">here</a>.</p> 
-<h4>Script's&nbsp;code</h4> 
-<pre class="xbrush: bash"><code>#####################################################################################################
+$ mvn -version</code></pre>
+
+<h4>Installation</h4>
+
+<p>It uses your ~/sw/tools/.links, so update your PATH.</p>
+
+<pre class="xbrush: bash"><code>export PATH=~/sw/tools/.links:$PATH</code></pre>
+
+<p>Then (optionally):</p>
+
+<pre
+class="xbrush: bash"><code>$ /mnt/jqa/sw/tools/switch.sh install
+Creating ~/sw/tools/.links/switch -&gt; /mnt/jqa/sw/tools/switch.sh</code></pre>
+
+<h4>Download</h4>
+
+<p>Download <a href="switch.zip">here</a>.</p>
+
+<h4>Script's code</h4>
+
+<pre
+class="xbrush: bash"><code>#####################################################################################################
 #
 #  This script creates switches between the versions of various tools,
 #  found in /mnt/jqa/sw/tools/ (curently hard-coded).
@@ -323,7 +339,8 @@ hash -r
 
 
 ##  If called without `source`, return an exit code.
-if [ "$0" == "switch.sh" ] ; then exit $RET; fi</code></pre></div>
+if [ "$0" == "switch.sh" ] ; then exit $RET; fi</code></pre>
+</div>
 
 	<hr />
 

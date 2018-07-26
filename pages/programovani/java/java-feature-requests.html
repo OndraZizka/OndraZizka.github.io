@@ -77,38 +77,79 @@
 
 	<div class="date"><em>2012-12-13</em></div>
 
-	<div class="doc-body"><h3>What I&nbsp;would change about the Java language</h3> 
-<p>Basically, I&nbsp;am quite happy with Java, exept it could have a little more syntax shortcuts.</p> 
-<h4>„Silent fallback operators“&nbsp;– <code>?.</code> and <code>!.</code></h4> 
-<p>An operator which would return <code>null</code> or <code>0</code> if a <code>NullPointerException</code>, resp. <code>Throwable</code>, would occur when computing expression's&nbsp;value.</p> 
-<pre class="brush: java"><code>// val will be 0 if getMap() or getKey(String) returned null.
-int val = unreliableMapProvider.getMap()?.get("key")?.getName();</code></pre> 
-<p>One use case: Logging performance.</p> 
-<pre class="brush: java"><code>log.info()?.log( timeConsumingCall() );
+	<div class="doc-body"><h3>What I would change about the Java language</h3>
+
+<p>Basically, I am quite happy with Java, exept it could have a little more
+syntax shortcuts.</p>
+
+<h4>„Silent fallback operators“ – <code>?.</code> and
+<code>!.</code></h4>
+
+<p>An operator which would return <code>null</code> or <code>0</code> if a
+<code>NullPointerException</code>, resp. <code>Throwable</code>, would occur
+when computing expression's value.</p>
+
+<pre
+class="brush: java"><code>// val will be 0 if getMap() or getKey(String) returned null.
+int val = unreliableMapProvider.getMap()?.get("key")?.getName();</code></pre>
+
+<p>One use case: Logging performance.</p>
+
+<pre
+class="brush: java"><code>log.info()?.log( timeConsumingCall() );
 // ... instead of ...
-if( log.isLoggable(Level.INFO) ) log.info( timeConsumingCall() );</code></pre> 
-<p>Of course there's&nbsp;much more use cases, I&nbsp;bet you could find many in your&nbsp;code.</p> 
-<h4>Better cast operator</h4> 
-<p>Writing <code>((Type)something).useItAsType()</code> is very boring. How about this:</p> 
-<pre class="brush: java"><code>Programmer prog = getJavaProgrammer();
-String anwser = prog.cast(JavaProgrammer).askAboutJava();</code></pre> 
-<p>Combined with the above operator, answer would be <code>null</code> if there was a <code>ClassCastException</code>:</p> 
-<pre class="brush: java"><code>String anwser = prog.cast(JavaProgrammer)!.askAboutJava();</code></pre> 
-<h4>Automatic casting after <code>instanceof</code></h4> 
-<p>The compiler should look for the following usage of <code>instanceof</code> and consider the variable as being of the checked&nbsp;type:</p> 
-<pre class="brush: java"><code>if( myObject instanceof String ){
+if( log.isLoggable(Level.INFO) ) log.info( timeConsumingCall() );</code></pre>
+
+<p>Of course there's much more use cases, I bet you could find many in
+your code.</p>
+
+<h4>Better cast operator</h4>
+
+<p>Writing <code>((Type)something).useItAsType()</code> is very boring. How
+about this:</p>
+
+<pre
+class="brush: java"><code>Programmer prog = getJavaProgrammer();
+String anwser = prog.cast(JavaProgrammer).askAboutJava();</code></pre>
+
+<p>Combined with the above operator, answer would be <code>null</code> if there
+was a <code>ClassCastException</code>:</p>
+
+<pre
+class="brush: java"><code>String anwser = prog.cast(JavaProgrammer)!.askAboutJava();</code></pre>
+
+<h4>Automatic casting after <code>instanceof</code></h4>
+
+<p>The compiler should look for the following usage of <code>instanceof</code>
+and consider the variable as being of the checked type:</p>
+
+<pre
+class="brush: java"><code>if( myObject instanceof String ){
   // No more redundant casting.
   myObject.length();
   // As myObject is now treated as string, this would cause a compiler error:
   myObject = new Integer(5);
-}</code></pre> 
-<h4>Properties (automatic getters and setters)</h4> 
-<p>Writing and reading getters and setters is the worst annoyance on Java. Except web developement, they are seldom used for custom behavior, anyway.</p> 
-<p>I&nbsp;like how it's&nbsp;done in C#. I'd do it similarly in&nbsp;Java.</p> 
-<p>* Declaring a <code>public property</code> automatically creates default getters and setters too.<br> * Declaring a <code>private property</code> creates no get/setters.<br> * Declaring a <code>readonly property</code> creates a public getter.<br> * Getters and setters are overridable.</p> 
-<h4>Closures</h4> 
-<p>Of course, closures… so instead of</p> 
-<pre class="brush: java"><code>interface RainListener {
+}</code></pre>
+
+<h4>Properties (automatic getters and setters)</h4>
+
+<p>Writing and reading getters and setters is the worst annoyance on Java.
+Except web developement, they are seldom used for custom behavior, anyway.</p>
+
+<p>I like how it's done in C#. I'd do it similarly in Java.</p>
+
+<p>* Declaring a <code>public property</code> automatically creates default
+getters and setters too.<br />
+* Declaring a <code>private property</code> creates no get/setters.<br />
+* Declaring a <code>readonly property</code> creates a public getter.<br />
+* Getters and setters are overridable.</p>
+
+<h4>Closures</h4>
+
+<p>Of course, closures… so instead of</p>
+
+<pre
+class="brush: java"><code>interface RainListener {
   void itsRaining();
 }
 
@@ -122,18 +163,32 @@ public void testRain(){
       void itsRaining(){  System.out.println("Hey, take your coat!");
     }
   );
-}</code></pre> 
-<p>it would be just</p> 
-<pre class="brush: java"><code>public void announceRain ( void fn() ){  fn();  }
+}</code></pre>
+
+<p>it would be just</p>
+
+<pre
+class="brush: java"><code>public void announceRain ( void fn() ){  fn();  }
 
 public void testRain(){
   announceRain( { System.out.println("Hey, take your coat!"); } )
-}</code></pre> 
-<p>or similar.</p> 
-<hr> 
-<p>I&nbsp;like the <a href="http://www.javac.info/consensus-closures-jsr.html">proposal published recently on JSR</a>.</p> 
-<p>Basically, closures ought to be syntax shortcut for functors. So they should be backward compatible with interfaces&nbsp;– that means, each closure parameter type would create one „anonymous interface“, and each closure implementation should be a static final functor implementing that interface.</p> 
-<pre class="brush: java"><code>public String process( List&lt;String&gt; list, String fn(String item) ){
+}</code></pre>
+
+<p>or similar.</p>
+
+<hr />
+
+<p>I like the <a
+href="http://www.javac.info/consensus-closures-jsr.html">proposal published
+recently on JSR</a>.</p>
+
+<p>Basically, closures ought to be syntax shortcut for functors. So they should
+be backward compatible with interfaces – that means, each closure parameter
+type would create one „anonymous interface“, and each closure implementation
+should be a static final functor implementing that interface.</p>
+
+<pre
+class="brush: java"><code>public String process( List&lt;String&gt; list, String fn(String item) ){
   String res = "";
   for( String str:  list )
     res += fn( str );
@@ -144,9 +199,12 @@ public void testClosure(){
 
   // item - auto-named, using the process params definition.
   System.out.println( process( list, { item.reverse() } ) );  // like { return item.reverse(); }
-}</code></pre> 
-<h5>Generics:</h5> 
-<pre class="brush: java"><code>public String process( List&lt;T&gt; list, String fn(T item) ){
+}</code></pre>
+
+<h5>Generics:</h5>
+
+<pre
+class="brush: java"><code>public String process( List&lt;T&gt; list, String fn(T item) ){
   String res = "";
   for( T str:  list )
     res += fn( str );
@@ -158,10 +216,16 @@ public void testClosure(){
 
   // item - type computed from the type of `List` item and `fn`'s definition.
   System.out.println( process( list, { item.reverse() } ) );
-}</code></pre> 
-<h5>Explicit closures (closure objects)</h5> 
-<p>This would work like „anonymous interfaces“&nbsp;– the compiler would check whether the method fits the type constraints. <strong>This would keep interfaces and functors backwards compatible.</strong></p> 
-<pre class="brush: java"><code>public class ClosureExample {
+}</code></pre>
+
+<h5>Explicit closures (closure objects)</h5>
+
+<p>This would work like „anonymous interfaces“ – the compiler would check
+whether the method fits the type constraints. <strong>This would keep interfaces
+and functors backwards compatible.</strong></p>
+
+<pre
+class="brush: java"><code>public class ClosureExample {
   public String process( List&lt;T&gt; list, String fn(T item) ){ ... }
 
   String myClosure(String item){ return item.reverse(); }
@@ -169,9 +233,12 @@ public void testClosure(){
   public void testClosure(){
     System.out.println( process( list, myClosure ) );
   }
-}</code></pre> 
-<p>… would act like if there was an „anonymous interface“:</p> 
-<pre class="brush: java"><code>private interface AnonInterface01 {  String fn(T item);  }
+}</code></pre>
+
+<p>… would act like if there was an „anonymous interface“:</p>
+
+<pre
+class="brush: java"><code>private interface AnonInterface01 {  String fn(T item);  }
 
 public class ClosureExample {
   public String process( List&lt;T&gt; list, AnonInterface01 fn ){ ... }
@@ -187,14 +254,24 @@ public class ClosureExample {
   public void testClosure(){
     System.out.println( process( list, FUNCTOR_01 ) );
   }
-}</code></pre> 
-<p>For the case with <code>myClosure</code> in other class, <code>AnonFunctor_1</code> would be moved to that class, and thus <code>this</code> would also point to that&nbsp;class.</p> 
-<p>The syntax of calling a closure in other class would simply use a dot (I&nbsp;dislike the hash notation):</p> 
-<pre class="brush: java"><code>public void testClosure(){
+}</code></pre>
+
+<p>For the case with <code>myClosure</code> in other class,
+<code>AnonFunctor_1</code> would be moved to that class, and thus
+<code>this</code> would also point to that class.</p>
+
+<p>The syntax of calling a closure in other class would simply use a dot
+(I dislike the hash notation):</p>
+
+<pre
+class="brush: java"><code>public void testClosure(){
   System.out.println( process( list, OtherClass.myClosure ) );
-}</code></pre> 
-<h5>Closures in a context (using <code>this</code> in closures):</h5> 
-<pre class="brush: java"><code>private String concat = "";
+}</code></pre>
+
+<h5>Closures in a context (using <code>this</code> in closures):</h5>
+
+<pre
+class="brush: java"><code>private String concat = "";
 
 public void testClosure(){
   List&lt;String&gt; list = Arrays.asList( new String[]{"foo","bar"} );
@@ -204,18 +281,28 @@ public void testClosure(){
 
   // For explicit closures, "this" resolves to their object.
   System.out.println( list.each( myClosure ) );
-}</code></pre> 
-<h4>Methods in interfaces</h4> 
-<p>These would be methods that reference only methods in itself. Intended to abstract some common logic without need of <code>abstract</code> classes or&nbsp;AOP.</p> 
-<pre class="brush: java"><code>interface Phone {
+}</code></pre>
+
+<h4>Methods in interfaces</h4>
+
+<p>These would be methods that reference only methods in itself. Intended to
+abstract some common logic without need of <code>abstract</code> classes
+or AOP.</p>
+
+<pre
+class="brush: java"><code>interface Phone {
 
   void callNumber( String number );
 
   void callMe(){ this.callNumber("+420 777 555 555"); }
 
-}</code></pre> 
-<p>Combined with inheritance, this could be a very effective way to create mix-ins:</p> 
-<pre class="brush: java"><code>interface Sumarizer extends ListIterator&lt;Integer&gt; {
+}</code></pre>
+
+<p>Combined with inheritance, this could be a very effective way to create
+mix-ins:</p>
+
+<pre
+class="brush: java"><code>interface Sumarizer extends ListIterator&lt;Integer&gt; {
 
   public int getSum(){
     int ret = 0;
@@ -224,21 +311,43 @@ public void testClosure(){
   }
 
 }
-/* Couldn't come up with better use case out of my head. */</code></pre> 
-<div style="display:none"> 
- <h4>Language constructs that return a value&nbsp;– <code>switch</code>, <code>if</code>/<code>else</code></h4> 
- <pre class="brush: java"><code>String num = switch(4){ case 1: yield "one"; default: yield "more"; }
+/* Couldn't come up with better use case out of my head. */</code></pre>
+
+<div style="display:none">
+	<h4>Language constructs that return a value – <code>switch</code>,
+	<code>if</code>/<code>else</code></h4>
+
+	<pre
+	class="brush: java"><code>String num = switch(4){ case 1: yield "one"; default: yield "more"; }
 
 boolean isSunShining
-String dayPart = if( isSunShining ) yield "day"; else yield "night";</code></pre> 
- <p>The <code>if</code>/<code>else</code> would not be just a nicer form of the ternary operator for long expressions; it would allow more statements before yielding.</p> 
- <p>Compiler would check for execution branches that would not yield a value like it does with <code>return</code>.</p> 
-</div> 
-<h4>JDK standard library feature requests</h4> 
-<p>* implement an ordered map.<br> * include <code>org.apache.commons.lang.StringUtils</code>.<br> * Simpler API for sound.<br> * <code>java.util.Properties</code>&nbsp;– rewrite, do not inherit from a map.<br> * <code>java.util.regex</code>: Support for recursion as in PCRE&nbsp;– <code>(?0)</code>.</p> 
-<p><em>More to come later.</em></p> 
-<hr> 
-<p>See also: <a href="http://www.linkedin.com/groupAnswers?viewQuestionAndAnswers=&amp;discussionID=10672776&amp;gid=43888&amp;trk=EML_anet_qa_ttle-dnhOon0JumNFomgJt7dBpSBA">http://www.linkedin.com/groupAnswers?…</a></p></div>
+String dayPart = if( isSunShining ) yield "day"; else yield "night";</code></pre>
+
+	<p>The <code>if</code>/<code>else</code> would not be just a nicer form of the
+	ternary operator for long expressions; it would allow more statements before
+	yielding.</p>
+
+	<p>Compiler would check for execution branches that would not yield a value like
+	it does with <code>return</code>.</p>
+</div>
+
+<h4>JDK standard library feature requests</h4>
+
+<p>* implement an ordered map.<br />
+* include <code>org.apache.commons.lang.StringUtils</code>.<br />
+* Simpler API for sound.<br />
+* <code>java.util.Properties</code> – rewrite, do not inherit from a map.<br
+/>
+* <code>java.util.regex</code>: Support for recursion as in PCRE –
+<code>(?0)</code>.</p>
+
+<p><em>More to come later.</em></p>
+
+<hr />
+
+<p>See also: <a
+href="http://www.linkedin.com/groupAnswers?viewQuestionAndAnswers=&amp;discussionID=10672776&amp;gid=43888&amp;trk=EML_anet_qa_ttle-dnhOon0JumNFomgJt7dBpSBA">http://www.linkedin.com/groupAnswers?…</a></p>
+</div>
 
 	<hr />
 

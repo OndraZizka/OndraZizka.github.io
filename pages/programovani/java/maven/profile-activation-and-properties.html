@@ -77,15 +77,26 @@
 
 	<div class="date"><em>2012-12-13</em></div>
 
-	<div class="doc-body"><h3>Maven: Profile activation and properties</h3> 
-<p>I&nbsp;was wondering whether you can use both of these scenarios with the same property:</p> 
-<ol> 
- <li>Activate the profile using <code>-P</code> and set the property in the profile</li> 
- <li>Activate the profile using <code>-D</code> + <code>&lt;activation&gt;</code>.</li> 
-</ol> 
-<h4>„Transitive“ activation: Does not work.</h4> 
-<p>By transitive activation, I&nbsp;mean that one profile sets a property which activates the other profile. That does not&nbsp;work.</p> 
-<pre class="brush: xml"><code>&lt;profiles&gt;
+	<div class="doc-body"><h3>Maven: Profile activation and properties</h3>
+
+<p>I was wondering whether you can use both of these scenarios with the same
+property:</p>
+
+<ol>
+	<li>Activate the profile using <code>-P</code> and set the property in the
+	profile</li>
+
+	<li>Activate the profile using <code>-D</code> +
+	<code>&lt;activation&gt;</code>.</li>
+</ol>
+
+<h4>„Transitive“ activation: Does not work.</h4>
+
+<p>By transitive activation, I mean that one profile sets a property which
+activates the other profile. That does not work.</p>
+
+<pre
+class="brush: xml"><code>&lt;profiles&gt;
   &lt;profile&gt;
     &lt;id&gt;foo&lt;/id&gt;
 
@@ -122,17 +133,26 @@
     &lt;/build&gt;
 
   &lt;/profile&gt;
-&lt;/profiles&gt;</code></pre> 
-<h4>Two-way activation: Works.</h4> 
-<p>A&nbsp;couple of details:</p> 
-<ul> 
- <li>The <code>&lt;activation&gt;</code> by property is not triggered when the property is not set on the command line&nbsp;–</li> 
-</ul> 
-<p>thus, setting it in `&lt;properties&gt; does not activate the profile.</p> 
-<ul> 
- <li>When you set the prop on cmdline, it activates the profile; however, it's <code>&lt;properties&gt;</code> does not override the value of the&nbsp;prop.</li> 
-</ul> 
-<pre class="brush: xml"><code>&lt;project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd"&gt;
+&lt;/profiles&gt;</code></pre>
+
+<h4>Two-way activation: Works.</h4>
+
+<p>A couple of details:</p>
+
+<ul>
+	<li>The <code>&lt;activation&gt;</code> by property is not triggered when the
+	property is not set on the command line –</li>
+</ul>
+
+<p>thus, setting it in `&lt;properties&gt; does not activate the profile.</p>
+
+<ul>
+	<li>When you set the prop on cmdline, it activates the profile; however, it's
+	<code>&lt;properties&gt;</code> does not override the value of the prop.</li>
+</ul>
+
+<pre
+class="brush: xml"><code>&lt;project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd"&gt;
   &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
 
   &lt;groupId&gt;cz.dynawest.maven.playground&lt;/groupId&gt;
@@ -172,8 +192,10 @@
     &lt;/profile&gt;
   &lt;/profiles&gt;
 
-&lt;/project&gt;</code></pre> 
-<pre class="brush: plain"><code>ondra@ondra-redhat:~/work-unrelated/MavenPlayground/props$ mvn test -Dfoo
+&lt;/project&gt;</code></pre>
+
+<pre
+class="brush: plain"><code>ondra@ondra-redhat:~/work-unrelated/MavenPlayground/props$ mvn test -Dfoo
 [INFO] Scanning for projects...
 [INFO] ------------------------------------------------------------------------
 [INFO] Building Maven Playground - props
@@ -182,8 +204,10 @@
 [INFO] [antrun:run {execution: default}]
 [INFO] Executing tasks
      [echo] *** foo:  true ***
-[INFO] Executed tasks</code></pre> 
-<pre class="brush: plain"><code>ondra@ondra-redhat:~/work-unrelated/MavenPlayground/props$ mvn test -Pfoo
+[INFO] Executed tasks</code></pre>
+
+<pre
+class="brush: plain"><code>ondra@ondra-redhat:~/work-unrelated/MavenPlayground/props$ mvn test -Pfoo
 [INFO] Scanning for projects...
 [INFO] ------------------------------------------------------------------------
 [INFO] Building Maven Playground - props
@@ -192,13 +216,16 @@
 [INFO] [antrun:run {execution: default}]
 [INFO] Executing tasks
      [echo] *** foo:  BBBBBB ***
-[INFO] Executed tasks</code></pre> 
-<pre class="brush: plain"><code>[INFO] Scanning for projects...
+[INFO] Executed tasks</code></pre>
+
+<pre
+class="brush: plain"><code>[INFO] Scanning for projects...
 [INFO] ------------------------------------------------------------------------
 [INFO] Building Maven Playground - props
 [INFO]    task-segment: [test]
 [INFO] ------------------------------------------------------------------------
-[INFO] No goals needed for project - skipping</code></pre></div>
+[INFO] No goals needed for project - skipping</code></pre>
+</div>
 
 	<hr />
 

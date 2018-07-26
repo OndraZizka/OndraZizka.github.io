@@ -77,19 +77,42 @@
 
 	<div class="date"><em>2012-12-16</em></div>
 
-	<div class="doc-body"><h3>Quick and dirty mavenization of an existing project</h3> 
-<p>This is my lazy way to get anything to a Maven repo. Shown on my mavenization of the Sardine library.</p> 
-<p>See also: <a href="how-to-add-existing-project-jar-to-maven-repository.texy">How to add existing project's&nbsp;jar to SVN-based Maven repository</a></p> 
-<hr> 
-<ol> 
- <li>Download the binaries of the lib you want to mavenize.</li> 
- <li>Create a script to put everything to the maven repo. <p>Choose a group name for the library and it's&nbsp;deps.</p> <p>You should not use the lib's&nbsp;package names, because it could interfere&nbsp;later</p> <p>with the official artifacts, should it ever be mavenized.</p> <p>I&nbsp;usually use my project's&nbsp;name with the lib's&nbsp;name appended&nbsp;– <code>org.jboss.qa.ews.sardine</code> in this&nbsp;case.</p> <pre><code>@ECHO off
+	<div class="doc-body"><h3>Quick and dirty mavenization of an existing project</h3>
+
+<p>This is my lazy way to get anything to a Maven repo. Shown on my mavenization
+of the Sardine library.</p>
+
+<p>See also: <a
+href="how-to-add-existing-project-jar-to-maven-repository.texy">How to add
+existing project's jar to SVN-based Maven repository</a></p>
+
+<hr />
+
+<ol>
+	<li>Download the binaries of the lib you want to mavenize.</li>
+
+	<li>Create a script to put everything to the maven repo.
+		<p>Choose a group name for the library and it's deps.</p>
+
+		<p>You should not use the lib's package names, because it could
+		interfere later</p>
+
+		<p>with the official artifacts, should it ever be mavenized.</p>
+
+		<p>I usually use my project's name with the lib's name appended –
+		<code>org.jboss.qa.ews.sardine</code> in this case.</p>
+
+		<pre><code>@ECHO off
 ECHO echo Edit this file before use. Check the -DartifactId and -Dversion params.
 ECHO return
 
 ECHO cmd /C mvn install:install-file -DpomFile=sardine-pom.xml -Dpackaging=jar -DgeneratePom=true -DgroupId=org.jboss.qa.ews.sardine -Dfile=sardine-80\sardine.jar -DartifactId=sardine -Dversion=80
 
-FOR %%f IN ( sardine-80\lib\*.jar) DO ECHO cmd /C mvn install:install-file -Dpackaging=jar -DgeneratePom=true -DgroupId=org.jboss.qa.ews.sardine -Dfile=%%f -DartifactId=%%~nf -Dversion=%%~nf</code></pre> <p>This will create something like this:</p> <pre><code>echo Edit this file before use. Check the -DartifactId and -Dversion params.
+FOR %%f IN ( sardine-80\lib\*.jar) DO ECHO cmd /C mvn install:install-file -Dpackaging=jar -DgeneratePom=true -DgroupId=org.jboss.qa.ews.sardine -Dfile=%%f -DartifactId=%%~nf -Dversion=%%~nf</code></pre>
+
+		<p>This will create something like this:</p>
+
+		<pre><code>echo Edit this file before use. Check the -DartifactId and -Dversion params.
 return
 
 cmd /C mvn install:install-file -DpomFile=sardine-pom.xml -Dpackaging=jar -DgeneratePom=true -DgroupId=org.jboss.qa.ews.sardine -Dfile=sardine-80\sardine.jar -DartifactId=sardine -Dversion=80
@@ -100,10 +123,15 @@ cmd /C mvn install:install-file -Dpackaging=jar -DgeneratePom=true -DgroupId=org
 cmd /C mvn install:install-file -Dpackaging=jar -DgeneratePom=true -DgroupId=org.jboss.qa.ews.sardine -Dfile=sardine-80\lib\httpcore-4.0.1.jar -DartifactId=httpcore -Dversion=4.0.1
 cmd /C mvn install:install-file -Dpackaging=jar -DgeneratePom=true -DgroupId=org.jboss.qa.ews.sardine -Dfile=sardine-80\lib\junit-4.8.1.jar -DartifactId=junit -Dversion=4.8.1
 cmd /C mvn install:install-file -Dpackaging=jar -DgeneratePom=true -DgroupId=org.jboss.qa.ews.sardine -Dfile=sardine-80\lib\svnkit.jar -DartifactId=svnkit -Dversion=0.0
-cmd /C mvn install:install-file -Dpackaging=jar -DgeneratePom=true -DgroupId=org.jboss.qa.ews.sardine -Dfile=sardine-80\lib\svntask.jar -DartifactId=svntask -Dversion=0.0</code></pre> </li> 
- <li>Create a <code>pom.xml</code> file, which will describe the mavenized library's&nbsp;depen­dencies.</li> 
-</ol> 
-<pre class="brush: xml"><code>&lt;project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+cmd /C mvn install:install-file -Dpackaging=jar -DgeneratePom=true -DgroupId=org.jboss.qa.ews.sardine -Dfile=sardine-80\lib\svntask.jar -DartifactId=svntask -Dversion=0.0</code></pre>
+	</li>
+
+	<li>Create a <code>pom.xml</code> file, which will describe the mavenized
+	library's depen­dencies.</li>
+</ol>
+
+<pre
+class="brush: xml"><code>&lt;project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd"&gt;
   &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
 
@@ -118,9 +146,16 @@ cmd /C mvn install:install-file -Dpackaging=jar -DgeneratePom=true -DgroupId=org
   &lt;dependencies&gt;
   &lt;/dependencies&gt;
 
-&lt;/project&gt;</code></pre> 
-<ol start="4"> 
- <li>Most of the deps should be found in some existing Maven repository. <p>Try to find as much as you can (the exact versions!), add them as a dependency to the <code>pom.xml</code>, and comment them out from the script.</p> <pre class="brush: xml"><code>&lt;dependency&gt;
+&lt;/project&gt;</code></pre>
+
+<ol start="4">
+	<li>Most of the deps should be found in some existing Maven repository.
+		<p>Try to find as much as you can (the exact versions!), add them as a
+		dependency to the <code>pom.xml</code>, and comment them out from the
+		script.</p>
+
+		<pre
+		class="brush: xml"><code>&lt;dependency&gt;
   &lt;groupId&gt;junit&lt;/groupId&gt;
   &lt;artifactId&gt;junit&lt;/artifactId&gt;
   &lt;version&gt;3.8.1&lt;/version&gt;
@@ -166,7 +201,9 @@ cmd /C mvn install:install-file -Dpackaging=jar -DgeneratePom=true -DgroupId=org
   &lt;groupId&gt;org.jboss.qa.ews.sardine&lt;/groupId&gt;
   &lt;artifactId&gt;svntask&lt;/artifactId&gt;
   &lt;version&gt;0.0&lt;/version&gt;
-&lt;/dependency&gt;</code></pre> <pre><code>cmd /C mvn install:install-file -DpomFile=sardine-pom.xml -Dpackaging=jar -DgeneratePom=true -DgroupId=org.jboss.qa.ews.sardine -Dfile=sardine-80\sardine.jar -DartifactId=sardine -Dversion=80
+&lt;/dependency&gt;</code></pre>
+
+		<pre><code>cmd /C mvn install:install-file -DpomFile=sardine-pom.xml -Dpackaging=jar -DgeneratePom=true -DgroupId=org.jboss.qa.ews.sardine -Dfile=sardine-80\sardine.jar -DartifactId=sardine -Dversion=80
 
 cmd /C mvn install:install-file -Dpackaging=jar -DgeneratePom=true -DgroupId=org.jboss.qa.ews.sardine -Dfile=sardine-80\lib\ant-googlecode-0.0.2.jar -DartifactId=ant-googlecode -Dversion=0.0.2
 @rem cmd /C mvn install:install-file -Dpackaging=jar -DgeneratePom=true -DgroupId=org.jboss.qa.ews.sardine -Dfile=sardine-80\lib\commons-logging-1.1.1.jar -DartifactId=commons-logging -Dversion=1.1.1
@@ -174,16 +211,39 @@ cmd /C mvn install:install-file -Dpackaging=jar -DgeneratePom=true -DgroupId=org
 @rem cmd /C mvn install:install-file -Dpackaging=jar -DgeneratePom=true -DgroupId=org.jboss.qa.ews.sardine -Dfile=sardine-80\lib\httpcore-4.0.1.jar -DartifactId=httpcore -Dversion=4.0.1
 @rem cmd /C mvn install:install-file -Dpackaging=jar -DgeneratePom=true -DgroupId=org.jboss.qa.ews.sardine -Dfile=sardine-80\lib\junit-4.8.1.jar -DartifactId=junit -Dversion=4.8.1
 cmd /C mvn install:install-file -Dpackaging=jar -DgeneratePom=true -DgroupId=org.jboss.qa.ews.sardine -Dfile=sardine-80\lib\svnkit.jar -DartifactId=svnkit -Dversion=0.0
-cmd /C mvn install:install-file -Dpackaging=jar -DgeneratePom=true -DgroupId=org.jboss.qa.ews.sardine -Dfile=sardine-80\lib\svntask.jar -DartifactId=svntask -Dversion=0.0</code></pre> </li> 
-</ol> 
-<ol start="5"> 
- <li>Some of the libs probably only serve the build process, in this case, <code>svnkit</code>, <code>svntask</code> and <code>ant-googlecode</code> (I&nbsp;just guessed from the names). <p>These are going to be removed too.</p> </li> 
- <li>As you see, only the library itself left for addition to a maven&nbsp;repo. <p>So, perform this:</p> <pre class="bash"><code>mvn install:install-file -DpomFile=sardine-pom.xml -Dpackaging=jar -DgeneratePom=true -DgroupId=org.jboss.qa.ews.sardine -Dfile=sardine-80\sardine.jar -DartifactId=sardine -Dversion=80</code></pre> </li> 
-</ol> 
-<ol start="7"> 
- <li>Go to your local maven repo and find the installed library there (<code>t:\data\.m2\repository\org\jboss\qa\ews\sardine\sardine</code> in my&nbsp;case). <p>Copy it to some publicly accessible site, where it can be downloaded from using plain&nbsp;HTTP.</p> <p>I&nbsp;used <a href="http://jtexy.googlecode.com/svn/maven/">Google Code SVN</a>. <code>svn --non-recursive</code> might help you with this&nbsp;task.</p> </li> 
-</ol> 
-<p>Done.</p></div>
+cmd /C mvn install:install-file -Dpackaging=jar -DgeneratePom=true -DgroupId=org.jboss.qa.ews.sardine -Dfile=sardine-80\lib\svntask.jar -DartifactId=svntask -Dversion=0.0</code></pre>
+	</li>
+</ol>
+
+<ol start="5">
+	<li>Some of the libs probably only serve the build process, in this case,
+	<code>svnkit</code>, <code>svntask</code> and <code>ant-googlecode</code>
+	(I just guessed from the names).
+		<p>These are going to be removed too.</p>
+	</li>
+
+	<li>As you see, only the library itself left for addition to a maven repo.
+		<p>So, perform this:</p>
+
+		<pre
+		class="bash"><code>mvn install:install-file -DpomFile=sardine-pom.xml -Dpackaging=jar -DgeneratePom=true -DgroupId=org.jboss.qa.ews.sardine -Dfile=sardine-80\sardine.jar -DartifactId=sardine -Dversion=80</code></pre>
+	</li>
+</ol>
+
+<ol start="7">
+	<li>Go to your local maven repo and find the installed library there
+	(<code>t:\data\.m2\repository\org\jboss\qa\ews\sardine\sardine</code> in
+	my case).
+		<p>Copy it to some publicly accessible site, where it can be downloaded from
+		using plain HTTP.</p>
+
+		<p>I used <a href="http://jtexy.googlecode.com/svn/maven/">Google Code SVN</a>.
+		<code>svn --non-recursive</code> might help you with this task.</p>
+	</li>
+</ol>
+
+<p>Done.</p>
+</div>
 
 	<hr />
 

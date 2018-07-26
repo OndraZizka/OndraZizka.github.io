@@ -77,26 +77,87 @@
 
 	<div class="date"><em>2012-12-13</em></div>
 
-	<div class="doc-body"><h3>Vybírám skriptovací jazyk pro systémové skripty</h3> 
-<p>Postupem času jsem přešel na Linux. Co mě zde ale nepřestává štvát, je&nbsp;Bash.</p> 
-<p>Bash je jazyk hrůzy. Ne tak hrozný, jako Caché ObjectScript, ale pořád dost hrozný:</p> 
-<pre class="bash"><code># Bohužel jsem momentálně nenašel dostatečně odstrašující příklad :)
+	<div class="doc-body"><h3>Vybírám skriptovací jazyk pro systémové skripty</h3>
+
+<p>Postupem času jsem přešel na Linux. Co mě zde ale nepřestává štvát,
+je Bash.</p>
+
+<p>Bash je jazyk hrůzy. Ne tak hrozný, jako Caché ObjectScript, ale pořád
+dost hrozný:</p>
+
+<pre
+class="bash"><code># Bohužel jsem momentálně nenašel dostatečně odstrašující příklad :)
 # V praxi ale narážím na naprosto nečitelný kód,
 # Využívající těch nejškaredějších syntaktických konstrukcí,
-# kde už člověk ztrácí přehled o tom, co je syntaxe find-u a kde je do ní vložen bash.</code></pre> 
-<p>Jasně, chápu… je to jazyk určený hlavně pro práci v&nbsp;prostředí linuxu, a tedy pro práci převážně s&nbsp;GNU programy, které se vyvíjely v&nbsp;symbióze s&nbsp;Bashem. V&nbsp;interaktivním režimu je stále dobře použitelný pro jednořádkové příkazy. Pokud ale mám louskat několikastránkový skript, kde jsou takových jednořádkových příkazů desítky a každý je taková malá hra „hádej kolik syntaxí je zde použito“, házím flintu do&nbsp;žita.</p> 
-<p>Doba pokročila, a skoro začíná být důležitější podpora novodobých technologií, jako je Java, XML, webové služby, a v&nbsp;neposlední řadě je velmi příjemné, když lze využít výhod IDE&nbsp;– doplňování, refactoring&nbsp;atd.</p> 
-<p>Jak je patrné z&nbsp;těchto stránek, jsem momentálně fanda Javy&nbsp;– a to ačkoliv jsem si vědom (někdy až bolestně) všech jejích nevýhod. A&nbsp;jako každý (programátor), občas chci napsat stručný skript, který provede pár operací podle několika zadaných parametrů. Jít na takovou záležitost s&nbsp;Javou je přeci jen poněkud nevhodné&nbsp;– napsat všechnu omáčku, zkompilovat, evt. zabalit do jarka a spouštět stylem <code>java -jar Skript.jar</code>, a to ještě dělat při ladění, to přeci jen není&nbsp;ono.</p> 
-<p>Takže jsem začal hledat jazyk, který byl vhodný právě pro takové skripty, případně snad i&nbsp;na konzoli. Měl by tedy splňovat tato kritéria:</p> 
-<p>* Stručný&nbsp;– jít bez okolků na jádro řešení úlohy (jako bash).<br> * Jednoduchá syntaxe bez desítek výjimek, různých módů nahrazování, a speciálních významů kombinací hieroglyfů typu $? atd.<br> * Přes jednoduchou syntaxi by měl mít dostatek prostředků pro stručný zápis nejběžnějších operací, např. práce se seznamy.<br> * Podpora Javy&nbsp;– ideálně by měl umět pracovat s&nbsp;jakoukoliv třídou Javy, včetně takových jako <code>Thread</code>, <code>Throwable</code> atd.<br> * Pochopitelně by měl umět OOP, výjimky, kontrolu typů.<br> * Měl by být konzistentní v&nbsp;konceptech.</p> 
-<p>Jako bonus potom započítávám tyto vlastnosti:</p> 
-<p>* Nativní podpora XML&nbsp;– nejlépe jako součást nativní podpory práce se stromovými strukturami.<br> * Bez nutnosti kompilace.<br> * Různé vychytávky typu „vše je objekt“, uzávěry (closures), <code>yield</code>.<br> * Možnost uplatnit změny v&nbsp;kódu za běhu programu.</p> 
-<h4>Kandidáti</h4> 
-<p>Nyní proberme jazyky a technologie, které připadají v&nbsp;úvahu:</p> 
-<p>* PHP rovnou diskvalifikuji z&nbsp;<a href="php/vyhody_a_nevyhody_php.texy">Těchto důvodů</a><br> * Python, resp. Jython<br> * Groovy<br> * Scala<br> * JavaScript<br> * JavaFX<br> * …navrhněte:&nbsp;<a href="mailto:ondra@dynawest.cz">ondra@
-  <!-- -->dynawest.cz</a></p> 
-<h4>Konkurz</h4> 
-<p>Tímto zahajuji výběrové řízení a začínám se poohlížet po vlastnostech jednotlivých jazyků. Pokud bude čas, rozepíšu se o&nbsp;tom, proč který jazyk ano či&nbsp;ne.</p></div>
+# kde už člověk ztrácí přehled o tom, co je syntaxe find-u a kde je do ní vložen bash.</code></pre>
+
+<p>Jasně, chápu… je to jazyk určený hlavně pro práci v prostředí
+linuxu, a tedy pro práci převážně s GNU programy, které se vyvíjely
+v symbióze s Bashem. V interaktivním režimu je stále dobře použitelný
+pro jednořádkové příkazy. Pokud ale mám louskat několikastránkový
+skript, kde jsou takových jednořádkových příkazů desítky a každý je
+taková malá hra „hádej kolik syntaxí je zde použito“, házím flintu
+do žita.</p>
+
+<p>Doba pokročila, a skoro začíná být důležitější podpora novodobých
+technologií, jako je Java, XML, webové služby, a v neposlední řadě je
+velmi příjemné, když lze využít výhod IDE – doplňování,
+refactoring atd.</p>
+
+<p>Jak je patrné z těchto stránek, jsem momentálně fanda Javy – a to
+ačkoliv jsem si vědom (někdy až bolestně) všech jejích nevýhod. A jako
+každý (programátor), občas chci napsat stručný skript, který provede pár
+operací podle několika zadaných parametrů. Jít na takovou záležitost
+s Javou je přeci jen poněkud nevhodné – napsat všechnu omáčku,
+zkompilovat, evt. zabalit do jarka a spouštět stylem
+<code>java -jar Skript.jar</code>, a to ještě dělat při ladění, to přeci
+jen není ono.</p>
+
+<p>Takže jsem začal hledat jazyk, který byl vhodný právě pro takové
+skripty, případně snad i na konzoli. Měl by tedy splňovat tato
+kritéria:</p>
+
+<p>* Stručný – jít bez okolků na jádro řešení úlohy (jako bash).<br
+/>
+* Jednoduchá syntaxe bez desítek výjimek, různých módů nahrazování, a
+speciálních významů kombinací hieroglyfů typu $? atd.<br />
+* Přes jednoduchou syntaxi by měl mít dostatek prostředků pro stručný
+zápis nejběžnějších operací, např. práce se seznamy.<br />
+* Podpora Javy – ideálně by měl umět pracovat s jakoukoliv třídou
+Javy, včetně takových jako <code>Thread</code>, <code>Throwable</code>
+atd.<br />
+* Pochopitelně by měl umět OOP, výjimky, kontrolu typů.<br />
+* Měl by být konzistentní v konceptech.</p>
+
+<p>Jako bonus potom započítávám tyto vlastnosti:</p>
+
+<p>* Nativní podpora XML – nejlépe jako součást nativní podpory práce
+se stromovými strukturami.<br />
+* Bez nutnosti kompilace.<br />
+* Různé vychytávky typu „vše je objekt“, uzávěry (closures),
+<code>yield</code>.<br />
+* Možnost uplatnit změny v kódu za běhu programu.</p>
+
+<h4>Kandidáti</h4>
+
+<p>Nyní proberme jazyky a technologie, které připadají v úvahu:</p>
+
+<p>* PHP rovnou diskvalifikuji z <a
+href="php/vyhody_a_nevyhody_php.texy">Těchto důvodů</a><br />
+* Python, resp. Jython<br />
+* Groovy<br />
+* Scala<br />
+* JavaScript<br />
+* JavaFX<br />
+* …navrhněte: <a
+href="mailto:ondra&#64;dynawest.cz">ondra&#64;<!-- -->dynawest.cz</a></p>
+
+<h4>Konkurz</h4>
+
+<p>Tímto zahajuji výběrové řízení a začínám se poohlížet po
+vlastnostech jednotlivých jazyků. Pokud bude čas, rozepíšu se o tom, proč
+který jazyk ano či ne.</p>
+</div>
 
 	<hr />
 

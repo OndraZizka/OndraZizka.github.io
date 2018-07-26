@@ -77,18 +77,30 @@
 
 	<div class="date"><em>2012-12-13</em></div>
 
-	<div class="doc-body"><h3>XSLT transformation in Java</h3> 
-<h4>Command-line XSLT transformation with Xalan</h4> 
-<p>Create a script:</p> 
-<pre class="bash [.brush]"><code>CURPATH=$(dirname $(which $0));
+	<div class="doc-body"><h3>XSLT transformation in Java</h3>
+
+<h4>Command-line XSLT transformation with Xalan</h4>
+
+<p>Create a script:</p>
+
+<pre
+class="bash [.brush]"><code>CURPATH=$(dirname $(which $0));
 CP=$(echo `ls $CURPATH/*.jar` | sed -e 's/ /:/g' )
 echo java -cp $CP org.apache.xalan.xslt.Process -IN $1 -XSL $2 -OUT $3
-java -cp $CP org.apache.xalan.xslt.Process -IN $1 -XSL $2 -OUT $3</code></pre> 
-<p>Then call it:</p> 
-<pre class="bash [.brush]"><code>~/scripts/xslt pom.xml test.xsl pom2.xml -PARAM grp net.sourceforge.htmlunit -PARAM art htmlunit -PARAM ver 666</code></pre> 
-<p>Sources: <a href="http://xml.apache.org/xalan-j/commandline.html">http://xml.apache.org/…andline.html</a></p> 
-<h4>Simple class for XSLT conversion using JDK's&nbsp;XSLT</h4> 
-<pre class="brush: java"><code>import javax.xml.transform.ErrorListener;
+java -cp $CP org.apache.xalan.xslt.Process -IN $1 -XSL $2 -OUT $3</code></pre>
+
+<p>Then call it:</p>
+
+<pre
+class="bash [.brush]"><code>~/scripts/xslt pom.xml test.xsl pom2.xml -PARAM grp net.sourceforge.htmlunit -PARAM art htmlunit -PARAM ver 666</code></pre>
+
+<p>Sources: <a
+href="http://xml.apache.org/xalan-j/commandline.html">http://xml.apache.org/…andline.html</a></p>
+
+<h4>Simple class for XSLT conversion using JDK's XSLT</h4>
+
+<pre
+class="brush: java"><code>import javax.xml.transform.ErrorListener;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerConfigurationException;
 import javax.xml.transform.TransformerException;
@@ -160,11 +172,16 @@ class MyErrorListener implements ErrorListener {
         if(e.getLocationAsString() != null)
             System.out.println(e.getLocationAsString());
     }
-}</code></pre> 
-<pre class="bash"><code>javac Xslt.java
-java Xslt data.xml template.xslt output.xml</code></pre> 
-<h4>Template which does some change and copies all other&nbsp;data</h4> 
-<pre class="brush: xml"><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+}</code></pre>
+
+<pre
+class="bash"><code>javac Xslt.java
+java Xslt data.xml template.xslt output.xml</code></pre>
+
+<h4>Template which does some change and copies all other data</h4>
+
+<pre
+class="brush: xml"><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"&gt;
     &lt;xsl:output method="xml" encoding="UTF-8" omit-xml-declaration="no" indent="yes"/&gt;
 
@@ -180,7 +197,8 @@ java Xslt data.xml template.xslt output.xml</code></pre>
         &lt;/xsl:copy&gt;
     &lt;/xsl:template&gt;
 
-&lt;/xsl:stylesheet&gt;</code></pre></div>
+&lt;/xsl:stylesheet&gt;</code></pre>
+</div>
 
 	<hr />
 

@@ -77,14 +77,21 @@
 
 	<div class="date"><em>2012-12-31</em></div>
 
-	<div class="doc-body"><h3>Wicket: How to create a component</h3> 
-<p>Creating a Wicket component is very easy.</p> 
-<p>Assume that you already have a page, from which you want to „extract“ a component, consisting of several subcomponents, or simply it needs nontrivial code to create&nbsp;– that's&nbsp;why you want to wrap it in a component.</p> 
-<div>
- <img src="http://www.zizka.ch/images/img/JawaBot-homepage.png" alt="" style="float:right">
-</div> 
-<p>On this page, you have a table of resources, which have a link with an icon. The code to create this link looks like&nbsp;this:</p> 
-<pre class="brush: html"><code>&lt;tr wicket:id="resources"&gt;
+	<div class="doc-body"><h3>Wicket: How to create a component</h3>
+
+<p>Creating a Wicket component is very easy.</p>
+
+<p>Assume that you already have a page, from which you want to „extract“ a
+component, consisting of several subcomponents, or simply it needs nontrivial
+code to create – that's why you want to wrap it in a component.</p>
+
+<div><img src="img/JawaBot-homepage.png" alt="" style="float:right" /></div>
+
+<p>On this page, you have a table of resources, which have a link with an icon.
+The code to create this link looks like this:</p>
+
+<pre
+class="brush: html"><code>&lt;tr wicket:id="resources"&gt;
    &lt;td&gt;
        &lt;a href="#" wicket:id="reslink"&gt;
           &lt;img wicket:id="icoType" src="ResourceMachine.gif"/&gt;
@@ -92,20 +99,37 @@
        &lt;/a&gt;
    &lt;/td&gt;
    ...
-&lt;/tr&gt;</code></pre> 
-<pre class="brush: java"><code>// Link itself. We're giving the resource as the parameter for the Resource page.
+&lt;/tr&gt;</code></pre>
+
+<pre
+class="brush: java"><code>// Link itself. We're giving the resource as the parameter for the Resource page.
 new BookmarkablePageLink("reslink", new ResourcePage( item.getModelObject().getResource() ))
 // Icon.
 .add( new Image( "icoType", "ResourceMachine.gif" ) )
 // Link's kabel
-.add( new Label("label", item.getModelObject().getResource().getName() ))</code></pre> 
-<p>As you can see, it takes about 3&nbsp;lines of java code and four of HTML to create the link. Let's&nbsp;make it&nbsp;1+1.</p> 
-<p>If you wonder what's&nbsp;the <strong><code>item</code></strong> reference&nbsp;– that's&nbsp;because I&nbsp;took this code from a <code>ListView#populateItem()</code>, which is usualy used to list a collection.</p> 
-<h4>Turning existing code into a component</h4> 
-<p>Each wicket component usually consists of one HTML file, describing it's&nbsp;HTML structure, and one Java file, describing everything else. These files have the same name, and suffixes <code>.html</code> and <code>.java</code>.</p> 
-<p>The HTML file is a normal page with only few Wicket-specific, but XHTML-compliant additions.</p> 
-<p>The <code>&lt;wicket:extend&gt;</code> element delimits what is going to be counted for the component. Everything else is ignored.</p> 
-<pre class="brush: html"><code>&lt;!DOCTYPE html&gt;
+.add( new Label("label", item.getModelObject().getResource().getName() ))</code></pre>
+
+<p>As you can see, it takes about 3 lines of java code and four of HTML to
+create the link. Let's make it 1+1.</p>
+
+<p>If you wonder what's the <strong><code>item</code></strong> reference –
+that's because I took this code from a <code>ListView#populateItem()</code>,
+which is usualy used to list a collection.</p>
+
+<h4>Turning existing code into a component</h4>
+
+<p>Each wicket component usually consists of one HTML file, describing
+it's HTML structure, and one Java file, describing everything else. These files
+have the same name, and suffixes <code>.html</code> and <code>.java</code>.</p>
+
+<p>The HTML file is a normal page with only few Wicket-specific, but
+XHTML-compliant additions.</p>
+
+<p>The <code>&lt;wicket:extend&gt;</code> element delimits what is going to be
+counted for the component. Everything else is ignored.</p>
+
+<pre
+class="brush: html"><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
    &lt;head&gt;
       &lt;title&gt;JawaBot resource&lt;/title&gt;
@@ -118,9 +142,13 @@ new BookmarkablePageLink("reslink", new ResourcePage( item.getModelObject().getR
    &lt;/wicket:panel&gt;
 
    &lt;/body&gt;
-&lt;/html&gt;</code></pre> 
-<p>In Java, we simply create a new class extending <code>Panel</code>&nbsp;class.</p> 
-<pre class="brush: java"><code>package org.jboss.jawabot.web._co;
+&lt;/html&gt;</code></pre>
+
+<p>In Java, we simply create a new class extending
+<code>Panel</code> class.</p>
+
+<pre
+class="brush: java"><code>package org.jboss.jawabot.web._co;
 
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.image.Image;
@@ -146,9 +174,16 @@ public class ResourceLinkPanel extends Panel {
       }});
    }
 
-}</code></pre> 
-<p>//Side note:// If you ever wanted to use parent component's&nbsp;in­stance, or the containing page, you can't do it in the constructor&nbsp;– the component doesn't have the references initialized yet. You need to override <code>onInitialize()</code> and move the code therein. For example, you might want not to render the icon if the page's&nbsp;param says&nbsp;to:</p> 
-<pre class="brush: java"><code>public class ResourceLink extends Panel {
+}</code></pre>
+
+<p>//Side note:// If you ever wanted to use parent component's in­stance, or
+the containing page, you can't do it in the constructor – the component
+doesn't have the references initialized yet. You need to override
+<code>onInitialize()</code> and move the code therein. For example, you might
+want not to render the icon if the page's param says to:</p>
+
+<pre
+class="brush: java"><code>public class ResourceLink extends Panel {
 
    public &lt;C extends Page&gt; ResourceLink( String id, Resource res ) {
       super( id, ResourcePage.class );
@@ -166,11 +201,22 @@ public class ResourceLinkPanel extends Panel {
       this.add( new Label("label", this.getModelObject().getName() ));
    }
 
-}</code></pre> 
-<h4>Where to put the image file?</h4> 
-<p>The last thing to do is to put the image file somewhere. Actually it's&nbsp;the easiest part&nbsp;– you simply put the file to the component's&nbsp;pac­kage&nbsp;– that is, the file must end in <code>.jar</code> next to the <code>ResourceLink.class</code> file&nbsp;– and Wicket will take care of everything.</p> 
-<p>It's&nbsp;usual to put resources in the <code>src/main/java</code> dir. Maven expects them in <code>src/main/resources</code> by default. To make it package resources from <code>src/main/java</code>, put this to <code>pom.xml</code>:</p> 
-<pre class="brush: xml"><code>&lt;build&gt;
+}</code></pre>
+
+<h4>Where to put the image file?</h4>
+
+<p>The last thing to do is to put the image file somewhere. Actually it's the
+easiest part – you simply put the file to the component's pac­kage –
+that is, the file must end in <code>.jar</code> next to the
+<code>ResourceLink.class</code> file – and Wicket will take care of
+everything.</p>
+
+<p>It's usual to put resources in the <code>src/main/java</code> dir. Maven
+expects them in <code>src/main/resources</code> by default. To make it package
+resources from <code>src/main/java</code>, put this to <code>pom.xml</code>:</p>
+
+<pre
+class="brush: xml"><code>&lt;build&gt;
    ...
    &lt;resources&gt;
      &lt;!-- Web - Wicket --&gt;
@@ -182,11 +228,22 @@ public class ResourceLinkPanel extends Panel {
      &lt;/resource&gt;
    &lt;/resources&gt;
    ...
-&lt;/build&gt;</code></pre> 
-<h4>Using the component in a page</h4> 
-<p>Replacing the old code with newly created component is the easiest part. You simply delete what you've put to the component's&nbsp;code, and put a placeholder in HTML and construct our specialized compoment instead of former <code>BookmarkablePageLink</code>.</p> 
-<p>In HTML, you may keep the content and remove <code>wicket:id</code>'s&nbsp;to help the future reader have easier imagination of what's&nbsp;inside of the compoment, or even to be able to display the HTML file in a browser. The content will be replaced by Wicket, according to it's&nbsp;child components.</p> 
-<pre class="brush: html"><code>&lt;tr wicket:id="resources"&gt;
+&lt;/build&gt;</code></pre>
+
+<h4>Using the component in a page</h4>
+
+<p>Replacing the old code with newly created component is the easiest part. You
+simply delete what you've put to the component's code, and put a placeholder in
+HTML and construct our specialized compoment instead of former
+<code>BookmarkablePageLink</code>.</p>
+
+<p>In HTML, you may keep the content and remove <code>wicket:id</code>'s to
+help the future reader have easier imagination of what's inside of the
+compoment, or even to be able to display the HTML file in a browser. The content
+will be replaced by Wicket, according to it's child components.</p>
+
+<pre
+class="brush: html"><code>&lt;tr wicket:id="resources"&gt;
    &lt;td&gt;
        &lt;a href="#" wicket:id="reslink"&gt;
           &lt;img src="ResourceMachine.gif"/&gt;
@@ -194,10 +251,14 @@ public class ResourceLinkPanel extends Panel {
        &lt;/a&gt;
    &lt;/td&gt;
    ...
-&lt;/tr&gt;</code></pre> 
-<pre class="brush: java"><code>// Link itself. We're giving the resource as the parameter for the Resource page.
-new ResourceLink("reslink", item.getModelObject().getResource() ))</code></pre> 
-<p>That's&nbsp;all.</p></div>
+&lt;/tr&gt;</code></pre>
+
+<pre
+class="brush: java"><code>// Link itself. We're giving the resource as the parameter for the Resource page.
+new ResourceLink("reslink", item.getModelObject().getResource() ))</code></pre>
+
+<p>That's all.</p>
+</div>
 
 	<hr />
 

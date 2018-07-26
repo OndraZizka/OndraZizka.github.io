@@ -77,19 +77,32 @@
 
 	<div class="date"><em>2012-12-16</em></div>
 
-	<div class="doc-body"><h3>Java objects in Stored Procedures (sci-fi)</h3> 
-<p>The notice of having possibility to call Java from stored procedures made me like looking forward to great future :-) The best thing I&nbsp;can imagine now is that I&nbsp;could have Java object references in user variables, something&nbsp;like:</p> 
-<pre class="brush: sql"><code>SET @jDate = java::new('java.util.Date');
-SET @sDate = @jDate.toString();</code></pre> 
-<p>Or, letting my imagination fly far away:</p> 
-<pre class="brush: sql"><code>SET @jWebService = java::jndi('java:comp/env/ws/weather');
+	<div class="doc-body"><h3>Java objects in Stored Procedures (sci-fi)</h3>
+
+<p>The notice of having possibility to call Java from stored procedures made me
+like looking forward to great future :-) The best thing I can imagine now is
+that I could have Java object references in user variables,
+something like:</p>
+
+<pre
+class="brush: sql"><code>SET @jDate = java::new('java.util.Date');
+SET @sDate = @jDate.toString();</code></pre>
+
+<p>Or, letting my imagination fly far away:</p>
+
+<pre
+class="brush: sql"><code>SET @jWebService = java::jndi('java:comp/env/ws/weather');
 SET @jResults = @jWebService.getWeatherIn('Brno');
 SET @jResIter = @jResults.getIterator();
 WHILE @jResIter.hasNext() DO
   SET @jRes = @jResIter.next();
   ...
-END WHILE;</code></pre> 
-<p>Concerning web services, there already is a solution: UDF (user defined functions). There are some already working, hopefully their authors will release their source some&nbsp;day.</p></div>
+END WHILE;</code></pre>
+
+<p>Concerning web services, there already is a solution: UDF (user defined
+functions). There are some already working, hopefully their authors will release
+their source some day.</p>
+</div>
 
 	<hr />
 

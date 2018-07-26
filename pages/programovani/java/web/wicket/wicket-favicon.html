@@ -77,24 +77,38 @@
 
 	<div class="date"><em>2013-01-18</em></div>
 
-	<div class="doc-body"><h3>Wicket: Favicon</h3> 
-<h4>Option 1: &lt;wicket:link&gt;</h4> 
-<pre class="html .brush"><code>&lt;wicket:link&gt;
+	<div class="doc-body"><h3>Wicket: Favicon</h3>
+
+<h4>Option 1: &lt;wicket:link&gt;</h4>
+
+<pre
+class="html .brush"><code>&lt;wicket:link&gt;
 &lt;link rel="shortcut icon" type="image/x-icon" href="ico/favicon.ico"/&gt;
-&lt;/wicket:link&gt;</code></pre> 
-<p>Put the icon relative to the Page it is in.</p> 
-<pre class="plain"><code>com/myapp/Page.html
+&lt;/wicket:link&gt;</code></pre>
+
+<p>Put the icon relative to the Page it is in.</p>
+
+<pre
+class="plain"><code>com/myapp/Page.html
 com/myapp/Page.java
-com/myapp/ico/favicon.ico</code></pre> 
-<p>Disadvantage: Bound to component.</p> 
-<h4>Option 2: <code>FavIconLink</code></h4> 
-<pre class="html .brush"><code>&lt;link wicket:id="favicon" rel="shortcut icon" type="image/x-icon" href="images/ico/Leaf.ico"/&gt;</code></pre> 
-<pre class="java .brush"><code>public class BaseLayoutPage extends WebPage {
+com/myapp/ico/favicon.ico</code></pre>
+
+<p>Disadvantage: Bound to component.</p>
+
+<h4>Option 2: <code>FavIconLink</code></h4>
+
+<pre
+class="html .brush"><code>&lt;link wicket:id="favicon" rel="shortcut icon" type="image/x-icon" href="images/ico/Leaf.ico"/&gt;</code></pre>
+
+<pre
+class="java .brush"><code>public class BaseLayoutPage extends WebPage {
 
     public BaseLayoutPage() {
 
-        add( new FavIconLink("favicon", "favicon.ico") );</code></pre> 
-<pre class="java .brush"><code>public class FavIconLink extends ExternalLink
+        add( new FavIconLink("favicon", "favicon.ico") );</code></pre>
+
+<pre
+class="java .brush"><code>public class FavIconLink extends ExternalLink
 {
     public FavIconLink( String id, String path ){
         super( id, path );
@@ -102,17 +116,26 @@ com/myapp/ico/favicon.ico</code></pre>
         add(new AttributeModifier("rel", "shortcut icon"));
         this.setContextRelative( true );
     }
-}</code></pre> 
-<p>And put the <code>favicon.ico</code> into .jar's&nbsp;root, i.e. by putting to <code>webapp/</code> in Maven WAR&nbsp;app.</p> 
-<h4>Option 3: <code>FavIconHeaderContributor</code> behavior</h4> 
-<pre class="java .brush"><code>public class WicketJavaEEApplication extends WebApplication {
+}</code></pre>
+
+<p>And put the <code>favicon.ico</code> into .jar's root, i.e. by putting to
+<code>webapp/</code> in Maven WAR app.</p>
+
+<h4>Option 3: <code>FavIconHeaderContributor</code> behavior</h4>
+
+<pre
+class="java .brush"><code>public class WicketJavaEEApplication extends WebApplication {
 
     @Override protected void init() {
         super.init();
         getSharedResources().add("favicon", new ContextRelativeResource("WEB-INF/classes/Leaf.ico"));
-        mountResource("/favicon.ico", new SharedResourceReference("favicon") );</code></pre> 
-<pre class="java .brush"><code>add( new FavIconHeaderContributor( new SharedResourceReference("favicon") ) );</code></pre> 
-<pre class="java .brush"><code>public class FavIconHeaderContributor implements IHeaderContributor
+        mountResource("/favicon.ico", new SharedResourceReference("favicon") );</code></pre>
+
+<pre
+class="java .brush"><code>add( new FavIconHeaderContributor( new SharedResourceReference("favicon") ) );</code></pre>
+
+<pre
+class="java .brush"><code>public class FavIconHeaderContributor implements IHeaderContributor
 {
     private ResourceReference resRef;
 
@@ -134,7 +157,8 @@ com/myapp/ico/favicon.ico</code></pre>
         sb.append("&lt;link rel=\"shortcut icon\" href=\"").append(url).append("\" type=\"image/x-icon\"&gt;\n");
         return sb.toString();
     }
-}</code></pre></div>
+}</code></pre>
+</div>
 
 	<hr />
 

@@ -77,20 +77,40 @@
 
 	<div class="date"><em>2012-12-13</em></div>
 
-	<div class="doc-body"><p>nainstaluj openvpn, to novsi (2008..)</p> 
-<p>(zip)</p> 
-<p>toto je cfg, to rozbal do programfiles/o­penvpn</p> 
-<p>uprav si etc/hosts ($win / system32 / drivers /etc) pridej&nbsp;tam:</p> 
+	<div class="doc-body"><p>nainstaluj openvpn, to novsi (2008..)</p>
+
+<p>(zip)</p>
+
+<p>toto je cfg, to rozbal do programfiles/o­penvpn</p>
+
+<p>uprav si etc/hosts ($win / system32 / drivers /etc) pridej tam:</p>
+
 <pre><code>192.168.77.1 hosting.vpn.rozsnyo.com
-192.168.77.1 sql.vpn.rozsnyo.com</code></pre> 
-<p>muzes zkusit ssh na tu ip/host, port 20202&nbsp;ondra/on­drazizka a zmen heslo (passwd i&nbsp;smbpasswd)</p> 
-<p>zkus \\hosting.vpn­.rozsnyo.com\on­dra<br> ondra/ a heslo ze smbpasswd<br> a na <a href="http://sql.vpn.rozsnyo.com">http://sql.vpn.rozsnyo.com</a> bys mel videt php my&nbsp;admin</p> 
-<p>nasmeruj tu tvou domenu na 77.93.215.16</p> 
-<p>toto je jen 2jadro (P4@3.4, 4G ram, 2× 74G/10k v&nbsp;mirroru)</p> 
-<p>DB: winlyricscom / winlyricscom , heslo vygeneruj (choze: poslu SMSkou)</p> 
-<h3>Na linuxu:</h3> 
-<p>nainstalujes si openvpn a na tom sdileni je ta slozka .vpn, v&nbsp;ni jsou konfiguraky a certifikaty pak to nejak prinutis at to pouzije.. (openvpn vyzaduje v&nbsp;jadru povolit „tun/tap“ device, treba jako modul) a pak do etc/fstab jede neco takovehoto:</p> 
-<pre><code>hosting.vpn.rozsnyo.com:/home/daniel    /home/daniel/hosting  nfs  noatime,noauto,user  0 0</code></pre></div>
+192.168.77.1 sql.vpn.rozsnyo.com</code></pre>
+
+<p>muzes zkusit ssh na tu ip/host, port 20202 ondra/on­drazizka a zmen heslo
+(passwd i smbpasswd)</p>
+
+<p>zkus \\hosting.vpn­.rozsnyo.com\on­dra<br />
+ondra/ a heslo ze smbpasswd<br />
+a na <a href="http://sql.vpn.rozsnyo.com">http://sql.vpn.rozsnyo.com</a> bys mel
+videt php my admin</p>
+
+<p>nasmeruj tu tvou domenu na 77.93.215.16</p>
+
+<p>toto je jen 2jadro (P4@3.4, 4G ram, 2× 74G/10k v mirroru)</p>
+
+<p>DB: winlyricscom / winlyricscom , heslo vygeneruj (choze: poslu SMSkou)</p>
+
+<h3>Na linuxu:</h3>
+
+<p>nainstalujes si openvpn a na tom sdileni je ta slozka .vpn, v ni jsou
+konfiguraky a certifikaty pak to nejak prinutis at to pouzije.. (openvpn
+vyzaduje v jadru povolit „tun/tap“ device, treba jako modul) a pak do
+etc/fstab jede neco takovehoto:</p>
+
+<pre><code>hosting.vpn.rozsnyo.com:/home/daniel    /home/daniel/hosting  nfs  noatime,noauto,user  0 0</code></pre>
+</div>
 
 	<hr />
 
