@@ -6,8 +6,8 @@
         <atom:link href="https://www.zizka.ch/feed.xml" rel="self" type="application/rss+xml"/>
         <description>JBake Bootstrap Template</description>
         <language>en-gb</language>
-        <pubDate>Thu, 26 Jul 2018 15:57:30 +0200</pubDate>
-        <lastBuildDate>Thu, 26 Jul 2018 15:57:30 +0200</lastBuildDate>
+        <pubDate>Fri, 27 Jul 2018 03:57:44 +0200</pubDate>
+        <lastBuildDate>Fri, 27 Jul 2018 03:57:44 +0200</lastBuildDate>
 
         <item>
             <title>Work on this site in progress</title>
@@ -825,186 +825,6 @@ Caused by: org.rhq.core.pluginapi.inventory.InvalidPluginConfigurationException:
 2010-02-11 20:54:08,703 DEBUG [InventoryManager.availability-1] (rhq.core.pc.inventory.InventoryManager)- Availability report content: AV:[jawa14][36][full]
 2010-02-11 20:54:15,390 INFO  [MeasurementManager.sender-1] (rhq.core.pc.measurement.MeasurementCollectorRunner)- Measurement collection for [11] metrics took 0ms - sending report to Server...
 2010-02-11 20:54:45,390 DEBUG [MeasurementManager.sender-1] (rhq.core.pc.measurement.MeasurementCollectorRunner)- Measurement report contains no data - not sending to Server.&lt;/code&gt;&lt;/pre&gt; 
-            </description>
-        </item>
-        <item>
-            <title>Nafukovací postele</title>
-            <link>https://www.zizka.ch/pages/osobni/nafukovaci-postele-03.html</link>
-            <pubDate>Thu, 26 Jul 2018 02:47:55 +0200</pubDate>
-            <guid isPermaLink="false">pages/osobni/nafukovaci-postele-03.html</guid>
-            <description>
-                 &lt;h3&gt;Nafukovací postele&lt;/h3&gt; 
-&lt;h4&gt;Nafukovací matrace Intex&lt;/h4&gt; 
-&lt;p&gt;Varování pro zájemce o&amp;nbsp;koupi &lt;strong&gt;nafukovací matrace Intex&lt;/strong&gt;: Následuje nepozměněná kopie e-mailové komunikace mezi mnou a firmou &lt;strong&gt;WebTip s.r.o.&lt;/strong&gt;, provozovatelem &lt;strong&gt;Hawaj.cz&lt;/strong&gt;.&lt;/p&gt; 
-&lt;hr&gt; 
-&lt;blockquote&gt;
- Dobrý den, 
- &lt;p&gt;je tedy podle vás vpořádku prodávat zmetky? Prosím o&amp;nbsp;jednoznačné vyjádření, zda je opravdu strategií vaší firmy prodávat nefunkční zboží a při reklamaci se vymlouvat na nesmysly, nebo jako slušná firma uznáte, že zboží, které se nedá použít ke svému účelu, je ostudou, a je nutné se omluvit a vyměnit jej za funkční kus či vrátit peníze. Vaši odpověď následně zveřejním na co nejvíce místech na internetu, a vzhledem k&amp;nbsp;tomu, že spravuji mnoho komunitních webů a několik zájmových skupin na Facebooku, vaše konečné jednání budou znát řádově desetitisíce&amp;nbsp;lidí.&lt;/p&gt; S&amp;nbsp;pozdravem Ondřej Žižka
-&lt;/blockquote&gt; 
-&lt;blockquote&gt; 
- &lt;pre&gt;----- Original Message -----
-From: Hawaj.cz
-To: &apos;Ondřej Žižka&apos;
-Sent: Thursday, November 11, 2010 11:15 AM
-Subject: RE: [personal] Zamitnuta reklamace&lt;/pre&gt; 
- &lt;p&gt;Vazeny pane,&lt;/p&gt; 
- &lt;p&gt;Na reklamaci mate skutecne 2&amp;nbsp;roky, ale vadu, ktera je zjevna je nutne neprodlene reklamovat a ne dale vyrobek i&amp;nbsp;s&amp;nbsp;pripadnou vadou pouzivat temer 2&amp;nbsp;roky. Mluvil ste o&amp;nbsp;emailove komunikaci, kterou poslete? Vyrobek Vam vracime zpet a sme opravneni pozadovat zaplaceni dopravneho, vzhledem k&amp;nbsp;tomu, ze jde o&amp;nbsp;neopravnenou reklamaci ale sme ochotni poslat postel zpet zdarma na nase naklady. Celou vec sme nasledne predali i&amp;nbsp;nasemu pravnikovi a stanovisko je nemenne.&lt;/p&gt; 
- &lt;p&gt;S&amp;nbsp;pozdravem a přáním hezkého dne&lt;/p&gt; 
- &lt;p&gt;internetový obchod Hawaj.cz&lt;/p&gt; 
- &lt;p&gt;provozuje WEBTIP s.r.o.&lt;/p&gt; E-mail: 
- &lt;a href=&quot;mailto:info@hawaj.cz&quot;&gt;info@
-  &lt;!-- --&gt;hawaj.cz&lt;/a&gt; URL: ww.hawaj.cz
-&lt;/blockquote&gt; 
-&lt;blockquote&gt; 
- &lt;pre&gt;--------------------------------------------------------------------------------
-From: Ondřej Žižka [mailto:ondra@dynawest.cz]
-Sent: Thursday, November 11, 2010 5:16 AM
-To: Hawaj.cz
-Subject: Re: [personal] Zamitnuta reklamace&lt;/pre&gt; 
- &lt;p&gt;Tak to si ovšem budete muset přečíst občanský zákoník. Já mám na reklamaci 2&amp;nbsp;roky a je jedno, jak dlouho jsem zboží používal.&lt;/p&gt; 
- &lt;p&gt;Nadále trvám na uznání reklamace.&lt;/p&gt; S&amp;nbsp;pozdravem Ondřej Žižka
-&lt;/blockquote&gt; 
-&lt;blockquote&gt; 
- &lt;pre&gt;----- Original Message -----
-From: Hawaj.cz
-To: &apos;Ondřej Žižka&apos;
-Sent: Wednesday, November 10, 2010 11:11 AM
-Subject: RE: [personal] Zamitnuta reklamace&lt;/pre&gt; 
- &lt;p&gt;Prosim dohledejte emaily. Neni mozne pouzivat 2&amp;nbsp;roky se zavadou a pak reklamovat. Na zamitnuti reklamace trvame.&lt;/p&gt; 
- &lt;p&gt;S&amp;nbsp;pozdravem a přáním hezkého dne&lt;/p&gt; 
- &lt;p&gt;internetový obchod Hawaj.cz&lt;/p&gt; 
- &lt;p&gt;provozuje WEBTIP s.r.o.&lt;/p&gt; E-mail: 
- &lt;a href=&quot;mailto:info@hawaj.cz&quot;&gt;info@
-  &lt;!-- --&gt;hawaj.cz&lt;/a&gt; URL: ww.hawaj.cz
-&lt;/blockquote&gt; 
-&lt;blockquote&gt; 
- &lt;pre&gt;--------------------------------------------------------------------------------
-From: Ondřej Žižka [mailto:ondra@dynawest.cz]
-Sent: Wednesday, November 10, 2010 5:04 AM
-To: Hawaj.cz
-Subject: Re: [personal] Zamitnuta reklamace&lt;/pre&gt; 
- &lt;p&gt;Dobrý den,&lt;/p&gt; 
- &lt;p&gt;běžný únik vzduchu je na závadu, jelikož znemožňuje užití postele k&amp;nbsp;jejímu účelu. Závadu jsme hlásili ihned po zjištění, napřed ale nikdo z&amp;nbsp;vaší firmy nereagoval a poté doporučil počkat a ověřit únik „po nějaké době“, až si „sednou švy“&amp;nbsp;– mohu dohledat maily, pokud chcete. Po nějaké době jsme tedy závadu ověřili.&lt;/p&gt; 
- &lt;p&gt;Proto na reklamaci trváme. Můžete řešit libovolným způsobem&amp;nbsp;– vrácením peněz, opravou nebo výměnou za funkční&amp;nbsp;kus.&lt;/p&gt; S&amp;nbsp;pozdravem Ondřej Žižka
-&lt;/blockquote&gt; 
-&lt;blockquote&gt; 
- &lt;pre&gt;----- Original Message -----
-From: Hawaj.cz
-To: ondra@dynawest.cz
-Sent: Monday, November 01, 2010 2:48 PM
-Subject: [personal] Zamitnuta reklamace&lt;/pre&gt; 
- &lt;p&gt;Dobry den, Vase reklamace byla zamitnuta. Nebyla shledana zadna zavada. Bezny unik vzduchu neni rozhodne na zavadu a Vam jak je videt nezabranil v&amp;nbsp;uzivani postele po dobu temer 2&amp;nbsp;let. Nehlede nato, ze je kupujici povinen reklamovat zavadu ihned po zjjisteni, coz ste take neucinili. Zcela jasne to plyne z&amp;nbsp;Vaseho pruvodniho dopisu, kde pisete, citujeme: &quot; tuto zavadu sme odhalili jiz pri prvnim pouziti. Vzhledem k&amp;nbsp;tomu, ze Vase reklamace je neopravnena je nutne uhradit castku 89&amp;nbsp;KC jako postovne zpet k&amp;nbsp;Vam, jelikoz neni nasi povinnosti toto hradit. ¨ S&amp;nbsp;pozdravem a přáním hezkého&amp;nbsp;dne&lt;/p&gt; 
- &lt;p&gt;internetový obchod Hawaj.cz&lt;/p&gt; 
- &lt;p&gt;provozuje WEBTIP s.r.o.&lt;/p&gt; E-mail: 
- &lt;a href=&quot;mailto:info@hawaj.cz&quot;&gt;info@
-  &lt;!-- --&gt;hawaj.cz&lt;/a&gt; URL: 
- &lt;a href=&quot;http://www.hawaj.cz&quot;&gt;www.hawaj.cz&lt;/a&gt;
-&lt;/blockquote&gt; 
-            </description>
-        </item>
-        <item>
-            <title>Nafukovací postele</title>
-            <link>https://www.zizka.ch/pages/osobni/nafukovaci-postele-02.html</link>
-            <pubDate>Thu, 26 Jul 2018 02:47:34 +0200</pubDate>
-            <guid isPermaLink="false">pages/osobni/nafukovaci-postele-02.html</guid>
-            <description>
-                 &lt;h3&gt;Nafukovací postele&lt;/h3&gt; 
-&lt;p&gt;Tato stránka obsahuje subjektivní hodnocení firmy WebTip a obchodu Hawaj.cz založené na zkušenosti s&amp;nbsp;jedním nákupem.&lt;/p&gt; 
-&lt;p&gt;Tato firma, místo aby dbala na dobré vztahy se zákazníkem, raději poštve svého právníka, aby poškozenému vyhrožoval otravnými soudy. Toto jednání považuji za nemorální.&lt;/p&gt; 
-&lt;p&gt;Vzkaz pro právníka: Text byl změněn tak, aby popisoval skutečnou situaci. Pochybuji o&amp;nbsp;tom, že pravdivé popsání špatné zkušenosti s&amp;nbsp;firmou, která mě podvedla, je protizákonné. Pokud ano, rád si přečtu v&amp;nbsp;dalším mailu od vás, podle jakého zákona.&lt;/p&gt; 
-&lt;hr&gt; 
-&lt;p&gt;Varování pro zájemce o&amp;nbsp;koupi &lt;strong&gt;nafukovací matrace Intex&lt;/strong&gt;:&lt;/p&gt; 
-&lt;p&gt;Nekupujte nafukovací postele u&amp;nbsp;firmy Hawaj.cz! Tato firma mi prodala nekvalitní nafukovací postel, a při její opakované reklamaci hledá skuliny v&amp;nbsp;občanském zákoníku, aby nemusela zmetek vzít&amp;nbsp;zpět.&lt;/p&gt; 
-&lt;p&gt;Více viz komunikace níže.&lt;/p&gt; 
-&lt;h4&gt;Nafukovací matrace Intex&lt;/h4&gt; 
-&lt;p&gt;Následuje přesná kopie e-mailové komunikace mezi mnou a firmou WebTip, provozovatelem Hawaj.cz:&lt;/p&gt; 
-&lt;hr&gt; 
-&lt;p&gt;Dobrý den,&lt;/p&gt; 
-&lt;p&gt;je tedy podle vás vpořádku prodávat zmetky? Prosím o&amp;nbsp;jednoznačné vyjádření, zda je opravdu strategií vaší firmy prodávat nefunkční zboží a při reklamaci se vymlouvat na nesmysly, nebo jako slušná firma uznáte, že zboží, které se nedá použít ke svému účelu, je ostudou, a je nutné se omluvit a vyměnit jej za funkční kus či vrátit peníze. Vaši odpověď následně zveřejním na co nejvíce místech na internetu, a vzhledem k&amp;nbsp;tomu, že spravuji mnoho komunitních webů a několik zájmových skupin na Facebooku, vaše konečné jednání budou znát řádově desetitisíce&amp;nbsp;lidí.&lt;/p&gt; 
-&lt;p&gt;S&amp;nbsp;pozdravem Ondřej Žižka&lt;/p&gt; 
-&lt;p&gt;----- Original Message ----- From: Hawaj.cz To: ‚Ondřej Žižka‘ Sent: Thursday, November 11, 2010 11:15 AM Subject: RE: [personal] Zamitnuta reklamace&lt;/p&gt; 
-&lt;p&gt;Vazeny pane,&lt;/p&gt; 
-&lt;p&gt;Na reklamaci mate skutecne 2&amp;nbsp;roky, ale vadu, ktera je zjevna je nutne neprodlene reklamovat a ne dale vyrobek i&amp;nbsp;s&amp;nbsp;pripadnou vadou pouzivat temer 2&amp;nbsp;roky. Mluvil ste o&amp;nbsp;emailove komunikaci, kterou poslete? Vyrobek Vam vracime zpet a sme opravneni pozadovat zaplaceni dopravneho, vzhledem k&amp;nbsp;tomu, ze jde o&amp;nbsp;neopravnenou reklamaci ale sme ochotni poslat postel zpet zdarma na nase naklady. Celou vec sme nasledne predali i&amp;nbsp;nasemu pravnikovi a stanovisko je nemenne.&lt;/p&gt; 
-&lt;p&gt;S&amp;nbsp;pozdravem a přáním hezkého dne&lt;/p&gt; 
-&lt;p&gt;internetový obchod Hawaj.cz&lt;/p&gt; 
-&lt;p&gt;provozuje WEBTIP s.r.o.&lt;/p&gt; 
-&lt;p&gt;E-mail: &lt;a href=&quot;mailto:info@hawaj.cz&quot;&gt;info@
-  &lt;!-- --&gt;hawaj.cz&lt;/a&gt; URL: &lt;a href=&quot;http://www.hawaj.cz&quot;&gt;www.hawaj.cz&lt;/a&gt;&lt;/p&gt; 
-&lt;hr&gt; 
-&lt;p&gt;From: Ondřej Žižka [mailto:ondra@dy­nawest.cz] Sent: Thursday, November 11, 2010 5:16 AM To: Hawaj.cz Subject: Re: [personal] Zamitnuta reklamace&lt;/p&gt; 
-&lt;p&gt;Tak to si ovšem budete muset přečíst občanský zákoník. Já mám na reklamaci 2&amp;nbsp;roky a je jedno, jak dlouho jsem zboží používal.&lt;/p&gt; 
-&lt;p&gt;Nadále trvám na uznání reklamace.&lt;/p&gt; 
-&lt;p&gt;S&amp;nbsp;pozdravem Ondřej Žižka&lt;/p&gt; 
-&lt;p&gt;----- Original Message ----- From: Hawaj.cz To: ‚Ondřej Žižka‘ Sent: Wednesday, November 10, 2010 11:11 AM Subject: RE: [personal] Zamitnuta reklamace&lt;/p&gt; 
-&lt;p&gt;Prosim dohledejte emaily. Neni mozne pouzivat 2&amp;nbsp;roky se zavadou a pak reklamovat. Na zamitnuti reklamace trvame.&lt;/p&gt; 
-&lt;p&gt;S&amp;nbsp;pozdravem a přáním hezkého dne&lt;/p&gt; 
-&lt;p&gt;internetový obchod Hawaj.cz&lt;/p&gt; 
-&lt;p&gt;provozuje WEBTIP s.r.o.&lt;/p&gt; 
-&lt;p&gt;E-mail: &lt;a href=&quot;mailto:info@hawaj.cz&quot;&gt;info@
-  &lt;!-- --&gt;hawaj.cz&lt;/a&gt; URL: &lt;a href=&quot;http://www.hawaj.cz&quot;&gt;www.hawaj.cz&lt;/a&gt;&lt;/p&gt; 
-&lt;hr&gt; 
-&lt;p&gt;From: Ondřej Žižka [mailto:ondra@dy­nawest.cz] Sent: Wednesday, November 10, 2010 5:04 AM To: Hawaj.cz Subject: Re: [personal] Zamitnuta reklamace&lt;/p&gt; 
-&lt;p&gt;Dobrý den,&lt;/p&gt; 
-&lt;p&gt;běžný únik vzduchu je na závadu, jelikož znemožňuje užití postele k&amp;nbsp;jejímu účelu. Závadu jsme hlásili ihned po zjištění, napřed ale nikdo z&amp;nbsp;vaší firmy nereagoval a poté doporučil počkat a ověřit únik „po nějaké době“, až si „sednou švy“&amp;nbsp;– mohu dohledat maily, pokud chcete. Po nějaké době jsme tedy závadu ověřili.&lt;/p&gt; 
-&lt;p&gt;Proto na reklamaci trváme. Můžete řešit libovolným způsobem&amp;nbsp;– vrácením peněz, opravou nebo výměnou za funkční&amp;nbsp;kus.&lt;/p&gt; 
-&lt;p&gt;S&amp;nbsp;pozdravem Ondřej Žižka&lt;/p&gt; 
-&lt;p&gt;----- Original Message ----- From: Hawaj.cz To: &lt;a href=&quot;mailto:ondra@dynawest.cz&quot;&gt;ondra@
-  &lt;!-- --&gt;dynawest.cz&lt;/a&gt; Sent: Monday, November 01, 2010 2:48 PM Subject: [personal] Zamitnuta reklamace&lt;/p&gt; 
-&lt;p&gt;Dobry den, Vase reklamace byla zamitnuta. Nebyla shledana zadna zavada. Bezny unik vzduchu neni rozhodne na zavadu a Vam jak je videt nezabranil v&amp;nbsp;uzivani postele po dobu temer 2&amp;nbsp;let. Nehlede nato, ze je kupujici povinen reklamovat zavadu ihned po zjjisteni, coz ste take neucinili. Zcela jasne to plyne z&amp;nbsp;Vaseho pruvodniho dopisu, kde pisete, citujeme: &quot; tuto zavadu sme odhalili jiz pri prvnim pouziti. Vzhledem k&amp;nbsp;tomu, ze Vase reklamace je neopravnena je nutne uhradit castku 89&amp;nbsp;KC jako postovne zpet k&amp;nbsp;Vam, jelikoz neni nasi povinnosti toto hradit. ¨ S&amp;nbsp;pozdravem a přáním hezkého&amp;nbsp;dne&lt;/p&gt; 
-&lt;p&gt;internetový obchod Hawaj.cz&lt;/p&gt; 
-&lt;p&gt;provozuje WEBTIP s.r.o.&lt;/p&gt; 
-&lt;p&gt;E-mail: &lt;a href=&quot;mailto:info@hawaj.cz&quot;&gt;info@
-  &lt;!-- --&gt;hawaj.cz&lt;/a&gt; URL: &lt;a href=&quot;http://www.hawaj.cz&quot;&gt;www.hawaj.cz&lt;/a&gt;&lt;/p&gt; 
-            </description>
-        </item>
-        <item>
-            <title>Nafukovací postele</title>
-            <link>https://www.zizka.ch/pages/osobni/nafukovaci-postele-.html</link>
-            <pubDate>Thu, 26 Jul 2018 02:47:08 +0200</pubDate>
-            <guid isPermaLink="false">pages/osobni/nafukovaci-postele-.html</guid>
-            <description>
-                 &lt;h3&gt;Nafukovací postele&lt;/h3&gt; 
-&lt;p&gt;Varování pro zájemce o&amp;nbsp;koupi &lt;strong&gt;nafukovací matrace Intex&lt;/strong&gt;:&lt;/p&gt; 
-&lt;p&gt;Nekupujte nafukovací postele u&amp;nbsp;firmy Hawaj.cz! Tato firma prodává nekvalitní nafukovací postele reklamované jinde, a při jeho opakované reklamaci hledá skuliny v&amp;nbsp;občanském zákoníku, aby nemusela zmetek vzít&amp;nbsp;zpět.&lt;/p&gt; 
-&lt;p&gt;Více viz komunikace níže.&lt;/p&gt; 
-&lt;h4&gt;Nafukovací matrace Intex&lt;/h4&gt; 
-&lt;hr&gt; 
-&lt;p&gt;Dobrý den,&lt;/p&gt; 
-&lt;p&gt;je tedy podle vás vpořádku prodávat zmetky? Prosím o&amp;nbsp;jednoznačné vyjádření, zda je opravdu strategií vaší firmy prodávat nefunkční zboží a při reklamaci se vymlouvat na nesmysly, nebo jako slušná firma uznáte, že zboží, které se nedá použít ke svému účelu, je ostudou, a je nutné se omluvit a vyměnit jej za funkční kus či vrátit peníze. Vaši odpověď následně zveřejním na co nejvíce místech na internetu, a vzhledem k&amp;nbsp;tomu, že spravuji mnoho komunitních webů a několik zájmových skupin na Facebooku, vaše konečné jednání budou znát řádově desetitisíce&amp;nbsp;lidí.&lt;/p&gt; 
-&lt;p&gt;S&amp;nbsp;pozdravem Ondřej Žižka&lt;/p&gt; 
-&lt;p&gt;----- Original Message ----- From: Hawaj.cz To: ‚Ondřej Žižka‘ Sent: Thursday, November 11, 2010 11:15 AM Subject: RE: [personal] Zamitnuta reklamace&lt;/p&gt; 
-&lt;p&gt;Vazeny pane,&lt;/p&gt; 
-&lt;p&gt;Na reklamaci mate skutecne 2&amp;nbsp;roky, ale vadu, ktera je zjevna je nutne neprodlene reklamovat a ne dale vyrobek i&amp;nbsp;s&amp;nbsp;pripadnou vadou pouzivat temer 2&amp;nbsp;roky. Mluvil ste o&amp;nbsp;emailove komunikaci, kterou poslete? Vyrobek Vam vracime zpet a sme opravneni pozadovat zaplaceni dopravneho, vzhledem k&amp;nbsp;tomu, ze jde o&amp;nbsp;neopravnenou reklamaci ale sme ochotni poslat postel zpet zdarma na nase naklady. Celou vec sme nasledne predali i&amp;nbsp;nasemu pravnikovi a stanovisko je nemenne.&lt;/p&gt; 
-&lt;p&gt;S&amp;nbsp;pozdravem a přáním hezkého dne&lt;/p&gt; 
-&lt;p&gt;internetový obchod Hawaj.cz&lt;/p&gt; 
-&lt;p&gt;provozuje WEBTIP s.r.o.&lt;/p&gt; 
-&lt;p&gt;E-mail: &lt;a href=&quot;mailto:info@hawaj.cz&quot;&gt;info@
-  &lt;!-- --&gt;hawaj.cz&lt;/a&gt; URL: &lt;a href=&quot;http://www.hawaj.cz&quot;&gt;www.hawaj.cz&lt;/a&gt;&lt;/p&gt; 
-&lt;hr&gt; 
-&lt;p&gt;From: Ondřej Žižka [mailto:ondra@dy­nawest.cz] Sent: Thursday, November 11, 2010 5:16 AM To: Hawaj.cz Subject: Re: [personal] Zamitnuta reklamace&lt;/p&gt; 
-&lt;p&gt;Tak to si ovšem budete muset přečíst občanský zákoník. Já mám na reklamaci 2&amp;nbsp;roky a je jedno, jak dlouho jsem zboží používal.&lt;/p&gt; 
-&lt;p&gt;Nadále trvám na uznání reklamace.&lt;/p&gt; 
-&lt;p&gt;S&amp;nbsp;pozdravem Ondřej Žižka&lt;/p&gt; 
-&lt;p&gt;----- Original Message ----- From: Hawaj.cz To: ‚Ondřej Žižka‘ Sent: Wednesday, November 10, 2010 11:11 AM Subject: RE: [personal] Zamitnuta reklamace&lt;/p&gt; 
-&lt;p&gt;Prosim dohledejte emaily. Neni mozne pouzivat 2&amp;nbsp;roky se zavadou a pak reklamovat. Na zamitnuti reklamace trvame.&lt;/p&gt; 
-&lt;p&gt;S&amp;nbsp;pozdravem a přáním hezkého dne&lt;/p&gt; 
-&lt;p&gt;internetový obchod Hawaj.cz&lt;/p&gt; 
-&lt;p&gt;provozuje WEBTIP s.r.o.&lt;/p&gt; 
-&lt;p&gt;E-mail: &lt;a href=&quot;mailto:info@hawaj.cz&quot;&gt;info@
-  &lt;!-- --&gt;hawaj.cz&lt;/a&gt; URL: &lt;a href=&quot;http://www.hawaj.cz&quot;&gt;www.hawaj.cz&lt;/a&gt;&lt;/p&gt; 
-&lt;hr&gt; 
-&lt;p&gt;From: Ondřej Žižka [mailto:ondra@dy­nawest.cz] Sent: Wednesday, November 10, 2010 5:04 AM To: Hawaj.cz Subject: Re: [personal] Zamitnuta reklamace&lt;/p&gt; 
-&lt;p&gt;Dobrý den,&lt;/p&gt; 
-&lt;p&gt;běžný únik vzduchu je na závadu, jelikož znemožňuje užití postele k&amp;nbsp;jejímu účelu. Závadu jsme hlásili ihned po zjištění, napřed ale nikdo z&amp;nbsp;vaší firmy nereagoval a poté doporučil počkat a ověřit únik „po nějaké době“, až si „sednou švy“&amp;nbsp;– mohu dohledat maily, pokud chcete. Po nějaké době jsme tedy závadu ověřili.&lt;/p&gt; 
-&lt;p&gt;Proto na reklamaci trváme. Můžete řešit libovolným způsobem&amp;nbsp;– vrácením peněz, opravou nebo výměnou za funkční&amp;nbsp;kus.&lt;/p&gt; 
-&lt;p&gt;S&amp;nbsp;pozdravem Ondřej Žižka&lt;/p&gt; 
-&lt;p&gt;----- Original Message ----- From: Hawaj.cz To: &lt;a href=&quot;mailto:ondra@dynawest.cz&quot;&gt;ondra@
-  &lt;!-- --&gt;dynawest.cz&lt;/a&gt; Sent: Monday, November 01, 2010 2:48 PM Subject: [personal] Zamitnuta reklamace&lt;/p&gt; 
-&lt;p&gt;Dobry den, Vase reklamace byla zamitnuta. Nebyla shledana zadna zavada. Bezny unik vzduchu neni rozhodne na zavadu a Vam jak je videt nezabranil v&amp;nbsp;uzivani postele po dobu temer 2&amp;nbsp;let. Nehlede nato, ze je kupujici povinen reklamovat zavadu ihned po zjjisteni, coz ste take neucinili. Zcela jasne to plyne z&amp;nbsp;Vaseho pruvodniho dopisu, kde pisete, citujeme: &quot; tuto zavadu sme odhalili jiz pri prvnim pouziti. Vzhledem k&amp;nbsp;tomu, ze Vase reklamace je neopravnena je nutne uhradit castku 89&amp;nbsp;KC jako postovne zpet k&amp;nbsp;Vam, jelikoz neni nasi povinnosti toto hradit. ¨ S&amp;nbsp;pozdravem a přáním hezkého&amp;nbsp;dne&lt;/p&gt; 
-&lt;p&gt;internetový obchod Hawaj.cz&lt;/p&gt; 
-&lt;p&gt;provozuje WEBTIP s.r.o.&lt;/p&gt; 
-&lt;p&gt;E-mail: &lt;a href=&quot;mailto:info@hawaj.cz&quot;&gt;info@
-  &lt;!-- --&gt;hawaj.cz&lt;/a&gt; URL: &lt;a href=&quot;http://www.hawaj.cz&quot;&gt;www.hawaj.cz&lt;/a&gt;&lt;/p&gt; 
             </description>
         </item>
         <item>
@@ -19150,30 +18970,6 @@ pageParameters.getString(&quot;1&quot;); // &quot;value2&quot;&lt;/code&gt;&lt;/
             </description>
         </item>
         <item>
-            <title>Barbora Světlíková</title>
-            <link>https://www.zizka.ch/pages/osobni/barbora_svetlikova.html</link>
-            <pubDate>Thu, 13 Dec 2012 13:39:20 +0100</pubDate>
-            <guid isPermaLink="false">pages/osobni/barbora_svetlikova.html</guid>
-            <description>
-                 &lt;h3&gt;Barbora Světlíková&lt;/h3&gt; 
-&lt;p&gt;&lt;img src=&quot;https://www.zizka.ch/pages/osobni/svetlikova_prolog1.png&quot; style=&quot;border:none;margin:0&quot; alt=&quot;Slečna&quot;&gt; Barbora Světlíková &lt;img src=&quot;https://www.zizka.ch/pages/osobni/svetlikova_prolog2.png&quot; style=&quot;border:none;margin:0&quot; alt=&quot;miláček okolí&quot;&gt; měla stopy svého jednání aspoň na internetu. Zde je příběh její bývalé spolubydlící:&lt;/p&gt; 
-&lt;blockquote&gt; 
- &lt;p&gt;&lt;strong&gt;Barbora Světlíková&lt;/strong&gt; je nebezpečná nízká udavačka. Já jsem její bývalá spolubydlící.&lt;/p&gt; 
- &lt;p&gt;Minulý rok jsem měla komplikace ve škole a letos jsem nemohla dostat koleje. Proto jsem bydlela na jméno kamarádky, která chtěla bydlet u&amp;nbsp;přítele a přenechala mi pokoj. Spolubydlící byla zmíněná Barbora Světlíková, studentka 4.&amp;nbsp;ročníku Fakulty podnikatelské VUT v&amp;nbsp;Brně.&lt;/p&gt; 
- &lt;p&gt;Nejprve jsme neměli žádné problémy&amp;nbsp;– uklízela jsem za ni celý pokoj, koupelnu, dávala jí různé drobnosti z&amp;nbsp;práce, svoje jídlo… V&amp;nbsp;čemkoli jsem se jí přizpůsobila, aby nám spolu bylo&amp;nbsp;dobře.&lt;/p&gt; 
- &lt;p&gt;Ale v&amp;nbsp;jednom jsem neucouvla, a to byla teplota. Barbora Světlíková je pravý exot a potřebuje v&amp;nbsp;pokoji 27&amp;nbsp;stupňů, čemuž říká trenková teplota. Když bylo na pokoji 24&amp;nbsp;stupňů, řikala tomu kompromis a nadávala, že mrzne. Problém jsem chtěla řešit&amp;nbsp;– sehnala jsem si ubytování jinde a na pokoj měla jít oficiálně ubytovaná kamarádka.&lt;/p&gt; 
- &lt;p&gt;A&amp;nbsp;pak mě Barbora Světlíková jednoduše po estébácku udala. Šla na pokrytecké centrum Přes bloky a lhala. Lhala, že dělám bordel, lhala, že ji nechávám čekat čtvrt hodiny na chodbě, než může dovnitř, lhala, že na pokoji dělám takovou zimu, že má nemocné ledviny a musí brát antibiotika (z&amp;nbsp;oněch 24&amp;nbsp;stupňů).&lt;/p&gt; 
- &lt;p&gt;Ze dne na den mě KaM vyhodili na ulici, a kamarádce zrušili smlouvu. To Světlíková dobře věděla&amp;nbsp;– byl to její záměr. Teď má pokoj pro sebe a udávání přišla na chuť: chce udat jiný pokoj, protože bydlí dva na jedno jméno. Na další studenty zas udává kvuli „hlasité hudbě“, která není přes zavřené dveře ani slyšet a při které jsem já bez problémů usnula.&lt;/p&gt; 
- &lt;p&gt;Nevaruji jen studenty, kteří nebydlí na své jméno (a že takových je hodně), ale i&amp;nbsp;jeji spolužáky a budoucí spolupracovníky&amp;nbsp;– protože tahle její vlastnost se může projevit kdekoli. Udává anonymně, bez varování, a do poslední chvíle, než její udání praskne, se tváří jako vaše dobrá kamarádka a moc se diví, který hajzl vám to mohl udělat. Potom se vám doslova tváří v&amp;nbsp;tvář vysměje. Zkrátka&amp;nbsp;– davejte si na ni dobrý pozor, kdy vám vrazí kudlu do&amp;nbsp;zad.&lt;/p&gt; 
- &lt;p&gt;Barbora Světlíková se stala fenoménem a synonymem pro anonymní udavače po vzoru StB. Její sousedi se třesou strachy, kdy je udá, a ostatní také čekají, kdy si Barbora Světlíková půjde kvokat na Přes bloky, kde lže jak když tiskne, dělá ze sebe chudinku, a přitom je to přesně ten typ člověka, na kterých desítky let stál komunismus&amp;nbsp;– udavačka, prospěchářka, sobecká mrcha, která naprosto nebere ohled na nikoho než na&amp;nbsp;sebe.&lt;/p&gt; 
- &lt;p&gt;Tímto poradenskému centru gratuluji k „úspěšně vyřešenému případu“, kdy ve spolupráci se zkaženou rozmazlenou fiflenou vyštípali z&amp;nbsp;kolejí hodnou bezproblémovou holku, která se navíc měla za 14&amp;nbsp;dnů od podrazu, který na ni spolubydlící provedla, stěhovat jinam. Takže BS si vesele bydlí sama na dvoulůžáku, což byl její jediný cíl. Ostatním gratuluji k&amp;nbsp;tomu, že ji neznáte.&lt;/p&gt; 
-&lt;/blockquote&gt; 
-&lt;p&gt;Zdroj: &lt;a href=&quot;http://manesova.northwind.cz/phpBB2/viewtopic.php?p=859&amp;amp;sid=602b27ad693f44876030551a46e2f9e7&quot;&gt;Pozor na udavačku Barboru Světlíkovou&lt;/a&gt;&lt;/p&gt; 
-&lt;p&gt;Tak to je docela zajímavý příběh. Myslel jsem, že takové „postavy“ se vyskytují jenom v&amp;nbsp;Růžové Zahradě, ale jak je vidět, na svině, které udají spolubydlící a bez varování je vyhodí na ulici, narazíte i&amp;nbsp;v&amp;nbsp;reálu. Proto pozor na vaši Barboru Světlíkovou&amp;nbsp;– dost možná nějakou kolem sebe&amp;nbsp;máte.&lt;/p&gt; 
-&lt;p&gt;//Poznámka:// Tato story je zcela fiktivní a nemá nic společného se skutečnou Bárou Světlíkovou ze Šumperka, studentkou Fakulty podnikatelské v&amp;nbsp;Brně. Rozhodně není pravda, že by Barbora světlíková byla pokrytecká svině a mrcha, která vám vrazí kudlu do zad. Je to milá slečna s&amp;nbsp;upřímným úsměvem, která s&amp;nbsp;každým vychází a klidně bude na pokoji bydlet s&amp;nbsp;kýmkoliv (pokud mu nevadí, že mu bude diktovat teplotu nad 27&amp;nbsp;stupňů, že vás bude obviňovat z&amp;nbsp;krádeže „desetikoruny pro štěstí“, kterou potřebuje kvůli písemkám, že přes noc bude bez sluchátek pouštět Růžovou zahradu, dále pokud budete tolerovat její hysterické záchvaty a pokud vám nevadí, že vás nemilosrdně udá a vyhodí vás tak na ulici).&lt;/p&gt; 
-            </description>
-        </item>
-        <item>
             <title>Kontakty</title>
             <link>https://www.zizka.ch/pages/osobni/kontakty.html</link>
             <pubDate>Thu, 13 Dec 2012 13:39:20 +0100</pubDate>
@@ -22823,6 +22619,81 @@ OU ZA VAS BIDNY ZIVOT MEL UZITEK I NEKDO JINY, BY VAS ASI ZAHUBILO JESTE DRIVE, 
  &lt;li&gt;two&lt;/li&gt; 
 &lt;/ul&gt; 
 &lt;p&gt;That&apos;s&amp;nbsp;all, &lt;a href=&quot;http://google.com&quot;&gt;folks&lt;/a&gt;.&lt;/p&gt; 
+            </description>
+        </item>
+        <item>
+            <title>Nafukovací postele III.</title>
+            <link>https://www.zizka.ch/pages/osobni/nafukovaci-postele-03.html</link>
+            <pubDate>Thu, 11 Nov 2010 00:00:00 +0100</pubDate>
+            <guid isPermaLink="false">pages/osobni/nafukovaci-postele-03.html</guid>
+            <description>
+                 &lt;h3&gt;Nafukovací postele III.&lt;/h3&gt; 
+&lt;h4&gt;Nafukovací matrace Intex&lt;/h4&gt; 
+&lt;p&gt;Varování pro zájemce o&amp;nbsp;koupi &lt;strong&gt;nafukovací matrace Intex&lt;/strong&gt;: Následuje nepozměněná kopie e-mailové komunikace mezi mnou a firmou &lt;strong&gt;WebTip s.r.o.&lt;/strong&gt;, provozovatelem &lt;strong&gt;Hawaj.cz&lt;/strong&gt;.&lt;/p&gt; 
+&lt;hr&gt; 
+&lt;blockquote&gt;
+ Dobrý den, 
+ &lt;p&gt;je tedy podle vás vpořádku prodávat zmetky? Prosím o&amp;nbsp;jednoznačné vyjádření, zda je opravdu strategií vaší firmy prodávat nefunkční zboží a při reklamaci se vymlouvat na nesmysly, nebo jako slušná firma uznáte, že zboží, které se nedá použít ke svému účelu, je ostudou, a je nutné se omluvit a vyměnit jej za funkční kus či vrátit peníze. Vaši odpověď následně zveřejním na co nejvíce místech na internetu, a vzhledem k&amp;nbsp;tomu, že spravuji mnoho komunitních webů a několik zájmových skupin na Facebooku, vaše konečné jednání budou znát řádově desetitisíce&amp;nbsp;lidí.&lt;/p&gt; S&amp;nbsp;pozdravem Ondřej Žižka
+&lt;/blockquote&gt; 
+&lt;blockquote&gt; 
+ &lt;pre&gt;----- Original Message -----
+From: Hawaj.cz
+To: &apos;Ondřej Žižka&apos;
+Sent: Thursday, November 11, 2010 11:15 AM
+Subject: RE: [personal] Zamitnuta reklamace&lt;/pre&gt; 
+ &lt;p&gt;Vazeny pane,&lt;/p&gt; 
+ &lt;p&gt;Na reklamaci mate skutecne 2&amp;nbsp;roky, ale vadu, ktera je zjevna je nutne neprodlene reklamovat a ne dale vyrobek i&amp;nbsp;s&amp;nbsp;pripadnou vadou pouzivat temer 2&amp;nbsp;roky. Mluvil ste o&amp;nbsp;emailove komunikaci, kterou poslete? Vyrobek Vam vracime zpet a sme opravneni pozadovat zaplaceni dopravneho, vzhledem k&amp;nbsp;tomu, ze jde o&amp;nbsp;neopravnenou reklamaci ale sme ochotni poslat postel zpet zdarma na nase naklady. Celou vec sme nasledne predali i&amp;nbsp;nasemu pravnikovi a stanovisko je nemenne.&lt;/p&gt; 
+ &lt;p&gt;S&amp;nbsp;pozdravem a přáním hezkého dne&lt;/p&gt; 
+ &lt;p&gt;internetový obchod Hawaj.cz&lt;/p&gt; 
+ &lt;p&gt;provozuje WEBTIP s.r.o.&lt;/p&gt; E-mail: 
+ &lt;a href=&quot;mailto:info@hawaj.cz&quot;&gt;info@
+  &lt;!-- --&gt;hawaj.cz&lt;/a&gt; URL: ww.hawaj.cz
+&lt;/blockquote&gt; 
+&lt;blockquote&gt; 
+ &lt;pre&gt;--------------------------------------------------------------------------------
+From: Ondřej Žižka [mailto:ondra@dynawest.cz]
+Sent: Thursday, November 11, 2010 5:16 AM
+To: Hawaj.cz
+Subject: Re: [personal] Zamitnuta reklamace&lt;/pre&gt; 
+ &lt;p&gt;Tak to si ovšem budete muset přečíst občanský zákoník. Já mám na reklamaci 2&amp;nbsp;roky a je jedno, jak dlouho jsem zboží používal.&lt;/p&gt; 
+ &lt;p&gt;Nadále trvám na uznání reklamace.&lt;/p&gt; S&amp;nbsp;pozdravem Ondřej Žižka
+&lt;/blockquote&gt; 
+&lt;blockquote&gt; 
+ &lt;pre&gt;----- Original Message -----
+From: Hawaj.cz
+To: &apos;Ondřej Žižka&apos;
+Sent: Wednesday, November 10, 2010 11:11 AM
+Subject: RE: [personal] Zamitnuta reklamace&lt;/pre&gt; 
+ &lt;p&gt;Prosim dohledejte emaily. Neni mozne pouzivat 2&amp;nbsp;roky se zavadou a pak reklamovat. Na zamitnuti reklamace trvame.&lt;/p&gt; 
+ &lt;p&gt;S&amp;nbsp;pozdravem a přáním hezkého dne&lt;/p&gt; 
+ &lt;p&gt;internetový obchod Hawaj.cz&lt;/p&gt; 
+ &lt;p&gt;provozuje WEBTIP s.r.o.&lt;/p&gt; E-mail: 
+ &lt;a href=&quot;mailto:info@hawaj.cz&quot;&gt;info@
+  &lt;!-- --&gt;hawaj.cz&lt;/a&gt; URL: ww.hawaj.cz
+&lt;/blockquote&gt; 
+&lt;blockquote&gt; 
+ &lt;pre&gt;--------------------------------------------------------------------------------
+From: Ondřej Žižka [mailto:ondra@dynawest.cz]
+Sent: Wednesday, November 10, 2010 5:04 AM
+To: Hawaj.cz
+Subject: Re: [personal] Zamitnuta reklamace&lt;/pre&gt; 
+ &lt;p&gt;Dobrý den,&lt;/p&gt; 
+ &lt;p&gt;běžný únik vzduchu je na závadu, jelikož znemožňuje užití postele k&amp;nbsp;jejímu účelu. Závadu jsme hlásili ihned po zjištění, napřed ale nikdo z&amp;nbsp;vaší firmy nereagoval a poté doporučil počkat a ověřit únik „po nějaké době“, až si „sednou švy“&amp;nbsp;– mohu dohledat maily, pokud chcete. Po nějaké době jsme tedy závadu ověřili.&lt;/p&gt; 
+ &lt;p&gt;Proto na reklamaci trváme. Můžete řešit libovolným způsobem&amp;nbsp;– vrácením peněz, opravou nebo výměnou za funkční&amp;nbsp;kus.&lt;/p&gt; S&amp;nbsp;pozdravem Ondřej Žižka
+&lt;/blockquote&gt; 
+&lt;blockquote&gt; 
+ &lt;pre&gt;----- Original Message -----
+From: Hawaj.cz
+To: ondra@dynawest.cz
+Sent: Monday, November 01, 2010 2:48 PM
+Subject: [personal] Zamitnuta reklamace&lt;/pre&gt; 
+ &lt;p&gt;Dobry den, Vase reklamace byla zamitnuta. Nebyla shledana zadna zavada. Bezny unik vzduchu neni rozhodne na zavadu a Vam jak je videt nezabranil v&amp;nbsp;uzivani postele po dobu temer 2&amp;nbsp;let. Nehlede nato, ze je kupujici povinen reklamovat zavadu ihned po zjjisteni, coz ste take neucinili. Zcela jasne to plyne z&amp;nbsp;Vaseho pruvodniho dopisu, kde pisete, citujeme: &quot; tuto zavadu sme odhalili jiz pri prvnim pouziti. Vzhledem k&amp;nbsp;tomu, ze Vase reklamace je neopravnena je nutne uhradit castku 89&amp;nbsp;KC jako postovne zpet k&amp;nbsp;Vam, jelikoz neni nasi povinnosti toto hradit. ¨ S&amp;nbsp;pozdravem a přáním hezkého&amp;nbsp;dne&lt;/p&gt; 
+ &lt;p&gt;internetový obchod Hawaj.cz&lt;/p&gt; 
+ &lt;p&gt;provozuje WEBTIP s.r.o.&lt;/p&gt; E-mail: 
+ &lt;a href=&quot;mailto:info@hawaj.cz&quot;&gt;info@
+  &lt;!-- --&gt;hawaj.cz&lt;/a&gt; URL: 
+ &lt;a href=&quot;http://www.hawaj.cz&quot;&gt;www.hawaj.cz&lt;/a&gt;
+&lt;/blockquote&gt; 
             </description>
         </item>
 
