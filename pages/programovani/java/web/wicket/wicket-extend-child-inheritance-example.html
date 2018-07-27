@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="utf-8"/>
-    <title>Example of Wicket's markup inheritance – wicket:child
+    <title>Example
+of Wicket's markup inheritance – wicket:child
 and wicket:extend - Ondřej Žižka</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="My personal web">
@@ -74,19 +75,22 @@ and wicket:extend - Ondřej Žižka</title>
 
     <div class="document-post">
         <div class="page-header">
-            <h1>Example of Wicket's markup inheritance – wicket:child
+            <h1>Example
+of Wicket's markup inheritance – wicket:child
 and wicket:extend</h1>
         </div>
         <div class="date"><em>2012-12-13</em></div>
-        <div class="doc-body"><h3>Example of Wicket's markup inheritance – <code>wicket:child</code>
-and <code>wicket:extend</code></h3>
+        <div class="doc-body"><h2
+id="toc-example-of-wicket-s-markup-inheritance-wicket-child-and-wicket-extend">Example
+of Wicket's markup inheritance – <code>wicket:child</code>
+and <code>wicket:extend</code></h2>
 
 <p>This is the most clean way of composing the pages content in Wicket.</p>
 
-<h4>Base page</h4>
+<h3 id="toc-base-page">Base page</h3>
 
 <pre
-class="brush: html"><code>&lt;html&gt;
+class="brush: html">&lt;html&gt;
   &lt;body&gt;
     &lt;h1&gt;My Web&lt;/h1&gt;
 
@@ -96,15 +100,15 @@ class="brush: html"><code>&lt;html&gt;
 
     &lt;div&gt;(c) 2010 Ondra.Zizka.cz&lt;/div&gt;
   &lt;/body&gt;
-&lt;/html&gt;</code></pre>
+&lt;/html&gt;</pre>
 
 <pre
-class="brush: java"><code>public class BaseLayoutPage extends WebPage { ... }</code></pre>
+class="brush: java">public class BaseLayoutPage extends WebPage { ... }</pre>
 
-<h4>Child page</h4>
+<h3 id="toc-child-page">Child page</h3>
 
 <pre
-class="brush: html"><code>&lt;html&gt;
+class="brush: html">&lt;html&gt;
   &lt;body&gt;
     &lt;h1&gt;Child page&lt;/h1&gt;
 
@@ -125,14 +129,14 @@ class="brush: html"><code>&lt;html&gt;
 
     &lt;div&gt;(c) 2010 Ondra.Zizka.cz&lt;/div&gt;
   &lt;/body&gt;
-&lt;/html&gt;</code></pre>
+&lt;/html&gt;</pre>
 
 <pre
-class="brush: java"><code>public class NewsPageContent extends BaseLayoutPage {
+class="brush: java">public class NewsPageContent extends BaseLayoutPage {
   public NewsPageContent(){
     add( new Label("news", "Good news everyone!" ) );
   }
-}</code></pre>
+}</pre>
 </div>
 
         <!-- Rating widget -->

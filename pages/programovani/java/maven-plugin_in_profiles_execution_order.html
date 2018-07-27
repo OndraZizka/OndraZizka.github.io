@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="utf-8"/>
-    <title>Maven: Order of execution of plugins in profiles - Ondřej Žižka</title>
+    <title>Maven: Order of
+execution of plugins in profiles - Ondřej Žižka</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="My personal web">
     <meta name="author" content="Ondřej Žižka">
@@ -73,10 +74,12 @@
 
     <div class="document-post">
         <div class="page-header">
-            <h1>Maven: Order of execution of plugins in profiles</h1>
+            <h1>Maven: Order of
+execution of plugins in profiles</h1>
         </div>
         <div class="date"><em>2012-12-16</em></div>
-        <div class="doc-body"><h3>Maven: Order of execution of plugins in profiles</h3>
+        <div class="doc-body"><h2 id="toc-maven-order-of-execution-of-plugins-in-profiles">Maven: Order of
+execution of plugins in profiles</h2>
 
 <p>I was curious in which order Maven executes the plugins: Whether it uses POM
 profile appearance order, or uses the ordering from the command line's
@@ -85,7 +88,7 @@ profile appearance order, or uses the ordering from the command line's
 <p>So I put this in a pom.xml:</p>
 
 <pre
-class="brush: xml"><code>&lt;profiles&gt;
+class="brush: xml">&lt;profiles&gt;
     &lt;profile&gt;
       &lt;id&gt;test1&lt;/id&gt;
       &lt;build&gt;
@@ -138,15 +141,15 @@ class="brush: xml"><code>&lt;profiles&gt;
       &lt;/build&gt;
     &lt;/profile&gt;
 
-&lt;/profiles&gt;</code></pre>
+&lt;/profiles&gt;</pre>
 
 <p>Then I launched it using:</p>
 
-<pre class="bash"><code>mvn initialize -P test2,test1</code></pre>
+<pre class="bash">mvn initialize -P test2,test1</pre>
 
 <p>And the result?</p>
 
-<pre><code>[INFO] Scanning for projects...
+<pre>[INFO] Scanning for projects...
 [INFO] ------------------------------------------------------------------------
 [INFO] Building pohlidame-backend
 [INFO]    task-segment: [install]
@@ -159,21 +162,21 @@ class="brush: xml"><code>&lt;profiles&gt;
 [INFO] Executing tasks
      [echo] test2 ECHO.
 [INFO] Executed tasks
-...</code></pre>
+...</pre>
 
 <p><strong>Plugin execution order follows the order in
 <code>pom.xml</code>.</strong> The only way to get <code>test2</code> run first
 is to swap them in <code>pom.xml</code>.</p>
 
-<h4>Executed twice?</h4>
+<h3 id="toc-executed-twice">Executed twice?</h3>
 
 <p>Another interesting thing is what happens when when launched using:</p>
 
-<pre><code>mvn clean install -Dmaven.test.skip=true -P test1,test2</code></pre>
+<pre>mvn clean install -Dmaven.test.skip=true -P test1,test2</pre>
 
 <p>In this case, the AntRun plugin is executed four times:</p>
 
-<pre><code>mvn install -Dmaven.test.skip=true -P test1,test2
+<pre>mvn install -Dmaven.test.skip=true -P test1,test2
 [INFO] Scanning for projects...
 [INFO] ------------------------------------------------------------------------
 [INFO] Building pohlidame-backend
@@ -219,7 +222,7 @@ is to swap them in <code>pom.xml</code>.</p>
 [INFO] Total time: 7 seconds
 [INFO] Finished at: Fri May 08 07:02:31 CEST 2009
 [INFO] Final Memory: 29M/247M
-[INFO] ------------------------------------------------------------------------</code></pre>
+[INFO] ------------------------------------------------------------------------</pre>
 
 <p>Does that mean that the <code>initialize</code> phase is used before
 packaging the <code>.jar</code>?</p>

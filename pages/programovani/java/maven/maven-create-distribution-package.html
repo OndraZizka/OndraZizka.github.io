@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="utf-8"/>
-    <title>How to create an application distribution package with Maven - Ondřej Žižka</title>
+    <title>How to
+create an application distribution package with Maven - Ondřej Žižka</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="My personal web">
     <meta name="author" content="Ondřej Žižka">
@@ -73,23 +74,25 @@
 
     <div class="document-post">
         <div class="page-header">
-            <h1>How to create an application distribution package with Maven</h1>
+            <h1>How to
+create an application distribution package with Maven</h1>
         </div>
         <div class="date"><em>2012-12-13</em></div>
-        <div class="doc-body"><h3>How to create an application distribution package with Maven</h3>
+        <div class="doc-body"><h2 id="toc-how-to-create-an-application-distribution-package-with-maven">How to
+create an application distribution package with Maven</h2>
 
 <p>There are several ways to prepare a whole application bundle with all
 it's dependencies, properly written MANIFEST.MF and all other necessary
 things.</p>
 
-<h4>Appassembler plugin</h4>
+<h3 id="toc-appassembler-plugin">Appassembler plugin</h3>
 
 <p>The best way I have found is the <a
 href="http://mojo.codehaus.org/appassembler/appassembler-maven-plugin/">Appassembler
 plugin</a>.</p>
 
 <pre
-class="brush: xml"><code>&lt;project&gt;
+class="brush: xml">&lt;project&gt;
   ...
   &lt;build&gt;
     &lt;plugins&gt;
@@ -129,20 +132,21 @@ class="brush: xml"><code>&lt;project&gt;
     &lt;/pluginRepository&gt;
   &lt;/pluginRepositories&gt;
 
-&lt;/project&gt;</code></pre>
+&lt;/project&gt;</pre>
 
 <p>This creates an application ready for zipping in
 <code>target/appassembler/</code>. More advanced example at <a
 href="http://mojo.codehaus.org/appassembler/appassembler-maven-plugin/usage-program.html">plugin's usage
 page</a>.</p>
 
-<h4>Preparing the bits for manual packaging</h4>
+<h3 id="toc-preparing-the-bits-for-manual-packaging">Preparing the bits for
+manual packaging</h3>
 
 <p>This <code>pom.xml</code> copies the dependencies to the
 <code>target/lib/</code> dir and creates the <code>MANIFEST.MF</code> file.</p>
 
 <pre
-class="brush: xml"><code>&lt;project&gt;
+class="brush: xml">&lt;project&gt;
 
   &lt;properties&gt;
     &lt;project.build.sourceEncoding&gt;UTF-8&lt;/project.build.sourceEncoding&gt;
@@ -217,7 +221,7 @@ class="brush: xml"><code>&lt;project&gt;
 
   &lt;/profiles&gt;
 
-&lt;/project&gt;</code></pre>
+&lt;/project&gt;</pre>
 </div>
 
         <!-- Rating widget -->

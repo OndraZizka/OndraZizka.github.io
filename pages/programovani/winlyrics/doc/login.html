@@ -76,21 +76,21 @@
             <h1>Přihlašování – login</h1>
         </div>
         <div class="date"><em>2012-12-16</em></div>
-        <div class="doc-body"><h3>Přihlašování – login</h3>
+        <div class="doc-body"><h2 id="toc-prihlasovani-login">Přihlašování – login</h2>
 
-<h4>Identifikace</h4>
+<h3 id="toc-identifikace">Identifikace</h3>
 
 <p>User bude identifikovaný e-mailem.<br />
 U toho je jeden problém – celkem dost uživatelů má ve WinLyrics více
 účtů s jedním mailem, patrně pro více počítačů. Viz tento dotaz:</p>
 
 <pre
-class="brush: sql"><code>SELECT email, COUNT(*) AS cnt FROM wl2_users GROUP BY email HAVING cnt &gt; 1 ORDER BY cnt DESC;</code></pre>
+class="brush: sql">SELECT email, COUNT(*) AS cnt FROM wl2_users GROUP BY email HAVING cnt &gt; 1 ORDER BY cnt DESC;</pre>
 
 <p>Tak těm bychom asi vytvořili jeden účet, který by mogli používat
 kdekoliv, ne?</p>
 
-<h4>Heslo</h4>
+<h3 id="toc-heslo">Heslo</h3>
 
 <p>Heslo bude uložené jako <code>MD5()</code>.</p>
 
@@ -98,27 +98,28 @@ kdekoliv, ne?</p>
 chozém.</strong> Já navrhuju to udělat přes challenge – response
 metodu.</p>
 
-<h4>Challenge – response autentization</h4>
+<h3 id="toc-challenge-response-autentization">Challenge – response
+autentization</h3>
 
 <p>Pro testování… – nastavíme někomu heslo…</p>
 
 <pre
-class="brush: sql"><code>UPDATE wl2_users SET pass_md5 = MD5('') WHERE email='winlyrics@dark-sun.org';</code></pre>
+class="brush: sql">UPDATE wl2_users SET pass_md5 = MD5('') WHERE email='winlyrics@dark-sun.org';</pre>
 
-<pre><code>&gt;&gt; http://localhost:81/winlyrics/real/authentize.php?action=create_session
+<pre>&gt;&gt; http://localhost:81/winlyrics/real/authentize.php?action=create_session
 
-&lt;&lt; SESSION_ID f8675g1390s7dngloohqitsd74</code></pre>
+&lt;&lt; SESSION_ID f8675g1390s7dngloohqitsd74</pre>
 
 <p><code>sess_id == "f8675g1390s7dngloohqitsd74"</code><br />
 <code>user pass == md5('') == "d41d8cd98f00b204e9800998ecf8427e"</code><br />
 <code>hash = md5( "f8675g1390s7dngloohqitsd74" . "d41d8cd98f00b204e9800998ecf8427e" ) == "989bd8a84f9e42b314b3358bb263794e"</code></p>
 
-<pre><code>&gt;&gt; http://localhost:81/winlyrics/real/authentize.php?action=verify&amp;sess_id=f8675g1390s7dngloohqitsd74&amp;user=winlyrics@dark-sun.org&amp;hash=989bd8a84f9e42b314b3358bb263794e
+<pre>&gt;&gt; http://localhost:81/winlyrics/real/authentize.php?action=verify&amp;sess_id=f8675g1390s7dngloohqitsd74&amp;user=winlyrics@dark-sun.org&amp;hash=989bd8a84f9e42b314b3358bb263794e
 
-&lt;&lt; AUTH_OK</code></pre>
+&lt;&lt; AUTH_OK</pre>
 
 <pre
-class="brush: sql"><code>SELECT id, MD5( CONCAT('f8675g1390s7dngloohqitsd74', pass_md5)) = '989bd8a84f9e42b314b3358bb263794e' FROM wl2_users WHERE email = 'winlyrics@dark-sun.org';</code></pre>
+class="brush: sql">SELECT id, MD5( CONCAT('f8675g1390s7dngloohqitsd74', pass_md5)) = '989bd8a84f9e42b314b3358bb263794e' FROM wl2_users WHERE email = 'winlyrics@dark-sun.org';</pre>
 
 <table>
 	<thead>
@@ -138,21 +139,21 @@ class="brush: sql"><code>SELECT id, MD5( CONCAT('f8675g1390s7dngloohqitsd74', pa
 	</tbody>
 </table>
 
-<pre><code>&gt;&gt; http://localhost:81/winlyrics/real/authentize.php?action=get_state&amp;sess_id=f8675g1390s7dngloohqitsd74
+<pre>&gt;&gt; http://localhost:81/winlyrics/real/authentize.php?action=get_state&amp;sess_id=f8675g1390s7dngloohqitsd74
 
-&lt;&lt; VERIFIED</code></pre>
+&lt;&lt; VERIFIED</pre>
 
 <pre
-class="php"><code>print_r( $_SESSION );
+class="php">print_r( $_SESSION );
 
 Array (
     [valid] =&gt; 1
     [verified] =&gt; 1
     [user] =&gt; winlyrics@dark-sun.org
     [user_id] =&gt; 1
-)</code></pre>
+)</pre>
 
-<h4><code>authentize.php</code></h4>
+<h3 id="toc-authentize-php"><code>authentize.php</code></h3>
 
 <p><strong>Autenthicates the user.</strong></p>
 
@@ -164,7 +165,7 @@ If they match, a „valid“ flag is set to the session and from that moment,<br
 />
 session ID can be used to perform user actions.</p>
 
-<h5>Actions:</h5>
+<h4 id="toc-actions">Actions:</h4>
 
 <p><strong><code>create_session == true</code>:</strong></p>
 
@@ -203,7 +204,7 @@ Returns: <code>"SESSION_ERROR"</code> on error or
 	session.</li>
 </ul>
 
-<h5>Session variables:</h5>
+<h4 id="toc-session-variables">Session variables:</h4>
 
 <ul>
 	<li><code>valid</code> – set to true when this session was created using the

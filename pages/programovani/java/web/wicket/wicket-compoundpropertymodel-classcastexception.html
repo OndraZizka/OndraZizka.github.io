@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="utf-8"/>
-    <title>Wicket: ClassCastException with CompoundProper­tyModel - Ondřej Žižka</title>
+    <title>Wicket:
+ClassCastException with CompoundProper­tyModel - Ondřej Žižka</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="My personal web">
     <meta name="author" content="Ondřej Žižka">
@@ -73,15 +74,17 @@
 
     <div class="document-post">
         <div class="page-header">
-            <h1>Wicket: ClassCastException with CompoundProper­tyModel</h1>
+            <h1>Wicket:
+ClassCastException with CompoundProper­tyModel</h1>
         </div>
         <div class="date"><em>2018-07-26</em></div>
-        <div class="doc-body"><h3>Wicket: ClassCastException with CompoundProper­tyModel</h3>
+        <div class="doc-body"><h2 id="toc-wicket-classcastexception-with-compoundpropertymodel">Wicket:
+ClassCastException with CompoundProper­tyModel</h2>
 
-<h4>Code</h4>
+<h3 id="toc-code">Code</h3>
 
 <pre
-class="brush: java"><code>public class ReservePage extends BaseLayoutPage {
+class="brush: java">public class ReservePage extends BaseLayoutPage {
 
    private Resource selectedResource = null;
    private Date dateFrom = null;
@@ -132,23 +135,23 @@ class="brush: java"><code>public class ReservePage extends BaseLayoutPage {
       // Action handling.
       Integer fromOffset = params.getInt("fromDateOffset", 0);
       Integer toOffset   = params.getAsInteger("toDateOffset");
-...</code></pre>
+...</pre>
 
-<h4>Discussion</h4>
+<h3 id="toc-discussion">Discussion</h3>
 
 <pre
-class="brush: plain"><code>(12:58:33 AM) OndraZizka: CompoundPropertyModel depends on getters/setters right?
+class="brush: plain">(12:58:33 AM) OndraZizka: CompoundPropertyModel depends on getters/setters right?
 (12:58:49 AM) reisi: just like PropertyModel
 (12:58:50 AM) OndraZizka: not enough to have private field
 (12:58:58 AM) OndraZizka: ok thx
 (12:59:20 AM) OndraZizka: When I don't have that,
 (12:59:25 AM) OndraZizka: wicket throws:
 (12:59:25 AM) OndraZizka: java.lang.ClassCastException: org.jboss.jawabot.web.pg.ReservePage cannot be cast to java.util.Date
-(01:00:00 AM) OndraZizka: I'd expect it to complain like "dateFrom" property not found in ...ReservePage</code></pre>
+(01:00:00 AM) OndraZizka: I'd expect it to complain like "dateFrom" property not found in ...ReservePage</pre>
 
-<h4>Stacktrace</h4>
+<h3 id="toc-stacktrace">Stacktrace</h3>
 
-<pre><code>WicketMessage: Exception in rendering component: [MarkupContainer [Component id = form]]
+<pre>WicketMessage: Exception in rendering component: [MarkupContainer [Component id = form]]
 
 Root cause:
 
@@ -251,7 +254,7 @@ at org.apache.wicket.RequestCycle.processEventsAndRespond(RequestCycle.java:1258
 at org.apache.wicket.RequestCycle.step(RequestCycle.java:1329)
 at org.apache.wicket.RequestCycle.steps(RequestCycle.java:1436)
 at org.apache.wicket.RequestCycle.request(RequestCycle.java:545)
-at org.apache.wicket.protocol.http.WicketFilter.doGet(WicketFilter.java:486)</code></pre>
+at org.apache.wicket.protocol.http.WicketFilter.doGet(WicketFilter.java:486)</pre>
 </div>
 
         <!-- Rating widget -->

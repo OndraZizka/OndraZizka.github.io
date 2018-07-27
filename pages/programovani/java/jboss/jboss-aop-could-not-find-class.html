@@ -76,21 +76,21 @@
             <h1>Could not find class</h1>
         </div>
         <div class="date"><em>2012-12-16</em></div>
-        <div class="doc-body"><h3>Could not find class</h3>
+        <div class="doc-body"><h2 id="toc-could-not-find-class">Could not find class</h2>
 
-<pre><code>[warn] Could not find class org.jboss.kernel.spi.dependency.KernelController (or one of its implemented interfaces)
+<pre>[warn] Could not find class org.jboss.kernel.spi.dependency.KernelController (or one of its implemented interfaces)
        that ... references.  It may not be in your classpath and you may not be getting field and constructor weaving for this class.
 [ERROR]javassist.NotFoundException: org.jboss.kernel.spi.dependency.KernelController
 [ERROR]        at javassist.ClassPool.get(ClassPool.java:436)
 [ERROR]        at org.jboss.aop.instrument.Instrumentor.convertReferences(Instrumentor.java:648)
-...</code></pre>
+...</pre>
 
 <p>Use
 <code>&lt;includeProjectDependency&gt;true&lt;/includeProjectDependency&gt;</code>
 for the Maven JBoss AOP plugin:</p>
 
 <pre
-class="brush: xml"><code>&lt;plugin&gt;
+class="brush: xml">&lt;plugin&gt;
   &lt;groupId&gt;org.jboss.maven.plugins&lt;/groupId&gt;
   &lt;artifactId&gt;maven-jbossaop-plugin&lt;/artifactId&gt;
   &lt;version&gt;2.1.3.GA&lt;/version&gt;
@@ -105,12 +105,12 @@ class="brush: xml"><code>&lt;plugin&gt;
       &lt;/configuration&gt;
     &lt;/execution&gt;
   &lt;/executions&gt;
-&lt;/plugin&gt;</code></pre>
+&lt;/plugin&gt;</pre>
 
-<h4>The stacktrace…</h4>
+<h3 id="toc-the-stacktrace">The stacktrace…</h3>
 
 <pre
-class="mavenlog"><code>[jbossaop:compile]
+class="mavenlog">[jbossaop:compile]
 [ERROR][warn] Could not find class org.jboss.kernel.spi.dependency.KernelController (or one of its implemented interfaces) that cz.dynawest.webttd.backend.JBossAopSampleApp references.  It may not be in your classpath and you may not be getting field and constructor weaving for this class.
 [ERROR]javassist.NotFoundException: org.jboss.kernel.spi.dependency.KernelController
 [ERROR]        at javassist.ClassPool.get(ClassPool.java:436)
@@ -266,7 +266,7 @@ class="mavenlog"><code>[jbossaop:compile]
 [aop-debug] org.jboss.aop.instrument.JoinpointSimpleClassifier javassist.CtConstructor@16a786[public JBossAopSampleApp ()V] matches no pointcuts
 [aop-debug] org.jboss.aop.instrument.Instrumentor was cz.dynawest.webttd.backend.JBossAopSampleApp converted: false
 [no comp needed] D:\web\x-com\java\server\WebTTD-backend\target\classes\cz\dynawest\webttd\backend\JBossAopSampleApp.class
-Build Successful: 375 ms</code></pre>
+Build Successful: 375 ms</pre>
 </div>
 
         <!-- Rating widget -->

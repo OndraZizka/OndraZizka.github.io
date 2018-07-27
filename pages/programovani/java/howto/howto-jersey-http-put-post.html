@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="utf-8"/>
-    <title>HTTP PUT and POST requests with Jersey - Ondřej Žižka</title>
+    <title>HTTP PUT and POST requests
+with Jersey - Ondřej Žižka</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="My personal web">
     <meta name="author" content="Ondřej Žižka">
@@ -73,27 +74,29 @@
 
     <div class="document-post">
         <div class="page-header">
-            <h1>HTTP PUT and POST requests with Jersey</h1>
+            <h1>HTTP PUT and POST requests
+with Jersey</h1>
         </div>
         <div class="date"><em>2012-12-31</em></div>
-        <div class="doc-body"><h3>HTTP PUT and POST requests with Jersey</h3>
+        <div class="doc-body"><h2 id="toc-http-put-and-post-requests-with-jersey">HTTP PUT and POST requests
+with Jersey</h2>
 
 <p>May not be exactly right but you'll get the idea.</p>
 
 <pre
-class="brush: java"><code>import com.sun.jersey.api.client.Client;
+class="brush: java">import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.WebResource;
 import com.sun.jersey.api.client.WebResource.Builder;
 import com.sun.jersey.api.client.filter.HTTPBasicAuthFilter;
 import com.sun.jersey.multipart.FormDataBodyPart;
 import com.sun.jersey.multipart.FormDataMultiPart;
 import com.sun.jersey.multipart.file.FileDataBodyPart;
-import javax.ws.rs.core.MediaType;</code></pre>
+import javax.ws.rs.core.MediaType;</pre>
 
-<h4>PUT</h4>
+<h3 id="toc-put">PUT</h3>
 
 <pre
-class="brush: java"><code>String name = "someName";
+class="brush: java">String name = "someName";
 
 // HTTP Client
 final Client client = Client.create();
@@ -108,12 +111,13 @@ Builder builder = client.resource( this.adminBaseUrl + URL_PATH_DEPLOY )
         .type(MediaType.APPLICATION_OCTET_STREAM_TYPE);
 
 // Do the request itself.
-final String textResponse = builder.put(String.class, form);</code></pre>
+final String textResponse = builder.put(String.class, form);</pre>
 
-<h4>HTML form-like multipart POST file upload</h4>
+<h3 id="toc-html-form-like-multipart-post-file-upload">HTML form-like multipart
+POST file upload</h3>
 
 <pre
-class="brush: java"><code>final File archiveFile = new File(new File(System.getProperty("java.io.tmpdir")), archiveName);
+class="brush: java">final File archiveFile = new File(new File(System.getProperty("java.io.tmpdir")), archiveName);
 
 // Build up the POST form to send to Tomcat
 final FormDataMultiPart form = new FormDataMultiPart();
@@ -136,14 +140,15 @@ Builder builder = client.resource( this.adminBaseUrl + URL_PATH_DEPLOY )
         // What we're sending in PUT body.
         .type(MediaType.MULTIPART_FORM_DATA_TYPE)
         // Do the request itself.
-        .post(String.class, form);</code></pre>
+        .post(String.class, form);</pre>
 
-<h4>… and yet how to export Arquillian's ar­chive to a file</h4>
+<h3 id="toc-and-yet-how-to-export-arquillian-s-archive-to-a-file">… and yet
+how to export Arquillian's ar­chive to a file</h3>
 
 <pre
-class="brush: java"><code>// Export to a file so we can send it over the wire
+class="brush: java">// Export to a file so we can send it over the wire
 final File archiveFile = new File(new File(System.getProperty("java.io.tmpdir")), archiveName);
-archive.as(ZipExporter.class).exportZip(archiveFile, true);</code></pre>
+archive.as(ZipExporter.class).exportZip(archiveFile, true);</pre>
 </div>
 
         <!-- Rating widget -->

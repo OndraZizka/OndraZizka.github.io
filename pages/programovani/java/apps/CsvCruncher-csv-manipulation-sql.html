@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="utf-8"/>
-    <title>CsvCruncher – CSV manipulation through SQL (HSQLDB) - Ondřej Žižka</title>
+    <title>CsvCruncher –
+CSV manipulation through SQL (HSQLDB) - Ondřej Žižka</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="My personal web">
     <meta name="author" content="Ondřej Žižka">
@@ -73,10 +74,12 @@
 
     <div class="document-post">
         <div class="page-header">
-            <h1>CsvCruncher – CSV manipulation through SQL (HSQLDB)</h1>
+            <h1>CsvCruncher –
+CSV manipulation through SQL (HSQLDB)</h1>
         </div>
         <div class="date"><em>2012-12-31</em></div>
-        <div class="doc-body"><h3>CsvCruncher – CSV manipulation through SQL (HSQLDB)</h3>
+        <div class="doc-body"><h2 id="toc-csvcruncher-csv-manipulation-through-sql-hsqldb">CsvCruncher –
+CSV manipulation through SQL (HSQLDB)</h2>
 
 <p>Hi,</p>
 
@@ -113,32 +116,32 @@ e.g. MySQL.)</p>
 
 <hr />
 
-<h4>Usage:</h4>
+<h3 id="toc-usage">Usage:</h3>
 
 <p><code>crunch [-in] &lt;inCSV&gt; [-out] &lt;outCSV&gt; [-sql] &lt;SQL&gt;"</code></p>
 
-<h4>Example:</h4>
+<h3 id="toc-example">Example:</h3>
 
 <pre
-class="brush: bash"><code>crunch input.csv output.csv "SELECT AVG(duration) AS durAvg FROM (SELECT * FROM indata ORDER BY duration LIMIT 2 OFFSET 6)"`</code></pre>
+class="brush: bash">crunch input.csv output.csv "SELECT AVG(duration) AS durAvg FROM (SELECT * FROM indata ORDER BY duration LIMIT 2 OFFSET 6)"`</pre>
 
-<h4>Example:</h4>
+<h3 id="toc-example-2">Example:</h3>
 
 <pre
-class="brush: bash"><code>## jobName, buildNumber, config, ar, arFile, deployDur, warmupDur, scale
+class="brush: bash">## jobName, buildNumber, config, ar, arFile, deployDur, warmupDur, scale
 'eap-5.1.0-perf-deployers', 355,'production','testdata/war/hellothere.war','hellothere.war',10282,14804,1000
 'eap-5.1.0-perf-deployers', 355,'production','testdata/ear/EarWithWar-Counter.ear','EarWithWar-Counter.ear',11005,18904,1000
 'eap-5.1.0-perf-deployers', 355,'production','testdata-own/war/war-big-1.0.war','war-big-1.0.war',1966,14800,100
-...</code></pre>
+...</pre>
 
 <pre
-class="brush: sql"><code>   SELECT jobName, buildNumber, config, ar, arFile, deployDur, warmupDur, scale,"
-+ " CAST(warmupDur AS DOUBLE) / CAST(deployDur AS DOUBLE) AS warmupSlower FROM indata ORDER BY deployDur</code></pre>
+class="brush: sql">   SELECT jobName, buildNumber, config, ar, arFile, deployDur, warmupDur, scale,"
++ " CAST(warmupDur AS DOUBLE) / CAST(deployDur AS DOUBLE) AS warmupSlower FROM indata ORDER BY deployDur</pre>
 
 <pre
-class="brush: bash"><code>'eap-5.1.0-perf-deployers',355,'production','testdata/war/hellothere.war','hellothere.war',10282,14804,1000,1.4397977047267068E0
+class="brush: bash">'eap-5.1.0-perf-deployers',355,'production','testdata/war/hellothere.war','hellothere.war',10282,14804,1000,1.4397977047267068E0
 'eap-5.1.0-perf-deployers',355,'production','testdata/ear/EarWithWar-Counter.ear','EarWithWar-Counter.ear',11005,18904,1000,1.7177646524307133E0
-'eap-5.1.0-perf-deployers',355,'production','testdata-own/war/war-big-1.0.war','war-big-1.0.war',1966,14800,100,7.527975584944048E0</code></pre>
+'eap-5.1.0-perf-deployers',355,'production','testdata-own/war/war-big-1.0.war','war-big-1.0.war',1966,14800,100,7.527975584944048E0</pre>
 
 <p>(<code>crunch</code> script yet to be done. Currently you need to call
 <code>java -jar CsvCruncher.jar &lt;args&gt;</code>.)</p>

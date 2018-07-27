@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="utf-8"/>
-    <title>How to add existing project's jar to SVN-based Maven
-repository - Ondřej Žižka</title>
+    <title>How
+to add existing project's jar to SVN-based Maven repository - Ondřej Žižka</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="My personal web">
     <meta name="author" content="Ondřej Žižka">
@@ -74,20 +74,20 @@ repository - Ondřej Žižka</title>
 
     <div class="document-post">
         <div class="page-header">
-            <h1>How to add existing project's jar to SVN-based Maven
-repository</h1>
+            <h1>How
+to add existing project's jar to SVN-based Maven repository</h1>
         </div>
         <div class="date"><em>2012-12-13</em></div>
-        <div class="doc-body"><h3>How to add existing project's <code>jar</code> to SVN-based Maven
-repository</h3>
+        <div class="doc-body"><h2 id="toc-how-to-add-existing-project-s-jar-to-svn-based-maven-repository">How
+to add existing project's <code>jar</code> to SVN-based Maven repository</h2>
 
 <p><em>See also</em>: <a href="mavenize-quick-and-dirty.texy">Quick and dirty
 mavenization of an existing project</a></p>
 
-<h4>Bash script for the impatient</h4>
+<h3 id="toc-bash-script-for-the-impatient">Bash script for the impatient</h3>
 
 <pre
-class="brush: bash"><code>#
+class="brush: bash">#
 #  Creates two files:
 #
 #    1) A bash script with mvn install:install-file commands to push the .jar's to a repository.
@@ -133,9 +133,9 @@ echo "
 
 &lt;/project&gt;" &gt;&gt; pomWithDeps.xml
 
-chmod u+x stuffTheRepo.sh</code></pre>
+chmod u+x stuffTheRepo.sh</pre>
 
-<h4>How-to for the rest</h4>
+<h3 id="toc-how-to-for-the-rest">How-to for the rest</h3>
 
 <p><em>Copied from Sardine project's READ­ME.txt.</em></p>
 
@@ -150,7 +150,7 @@ href="http://community.jboss.org/wiki/MavenReleaseRepository">JBoss
 wiki</a>.</p>
 
 <pre
-class="brush: bash"><code># First, create the sources and javadoc jar's.
+class="brush: bash"># First, create the sources and javadoc jar's.
 zip -9 -b sardine-XX/javadoc/* &gt; sardine-XX/javadoc.jar
 zip -9 -b sardine-XX/src/* &gt; sardine-XX/sources.jar
 
@@ -170,7 +170,7 @@ mv ~/.m2/repository/com/googlecode/sardine/sardine/maven-metadata-local.xml ~/.m
 
 # Add everything new and commit.
 svn add --force *
-svn commit -m "Maven repo: Added version XX"</code></pre>
+svn commit -m "Maven repo: Added version XX"</pre>
 
 <ul>
 	<li><code>~/.m2/repository/</code> is your local Maven repository.

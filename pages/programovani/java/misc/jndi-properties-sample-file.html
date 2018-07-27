@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="utf-8"/>
-    <title>JNDI: sample jndi.properties file - Ondřej Žižka</title>
+    <title>JNDI: sample jndi.properties
+file - Ondřej Žižka</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="My personal web">
     <meta name="author" content="Ondřej Žižka">
@@ -73,10 +74,12 @@
 
     <div class="document-post">
         <div class="page-header">
-            <h1>JNDI: sample jndi.properties file</h1>
+            <h1>JNDI: sample jndi.properties
+file</h1>
         </div>
         <div class="date"><em>2012-12-31</em></div>
-        <div class="doc-body"><h3>JNDI: sample jndi.properties file</h3>
+        <div class="doc-body"><h2 id="toc-jndi-sample-jndi-properties-file">JNDI: sample jndi.properties
+file</h2>
 
 <ul>
 	<li>For web app, this file must end up in
@@ -86,40 +89,40 @@
 	some jar's root.</li>
 </ul>
 
-<h4>For JBoss client app:</h4>
+<h3 id="toc-for-jboss-client-app">For JBoss client app:</h3>
 
 <pre
-class="brush: plain"><code>java.naming.factory.initial=org.jnp.interfaces.NamingContextFactory
+class="brush: plain">java.naming.factory.initial=org.jnp.interfaces.NamingContextFactory
 java.naming.provider.url=jnp://localhost:1099
-java.naming.factory.url.pkgs=org.jboss.naming.client</code></pre>
+java.naming.factory.url.pkgs=org.jboss.naming.client</pre>
 
-<h4>For Jetty:</h4>
+<h3 id="toc-for-jetty">For Jetty:</h3>
 
 <pre
-class="brush: plain"><code>java.naming.factory.initial=org.mortbay.naming.InitialContextFactory
-java.naming.factory.url.pkgs=org.mortbay.naming</code></pre>
+class="brush: plain">java.naming.factory.initial=org.mortbay.naming.InitialContextFactory
+java.naming.factory.url.pkgs=org.mortbay.naming</pre>
 
 <p>Don't forget to add jetty-naming to your classpath.</p>
 
 <pre
-class="brush: xml"><code>&lt;dependency&gt;
+class="brush: xml">&lt;dependency&gt;
    &lt;groupId&gt;org.mortbay.jetty&lt;/groupId&gt;
    &lt;artifactId&gt;jetty-naming&lt;/artifactId&gt;
    &lt;version&gt;${jetty.version}&lt;/version&gt;
    &lt;scope&gt;compile&lt;/scope&gt;
-&lt;/dependency&gt;</code></pre>
+&lt;/dependency&gt;</pre>
 
 <p>Otherwise you'll get</p>
 
 <pre
-class="brush: plain"><code>java.lang.ClassNotFoundException: org.mortbay.naming.InitialContextFactory
-    at java.net.URLClassLoader$1.run(URLClassLoader.java:202)</code></pre>
+class="brush: plain">java.lang.ClassNotFoundException: org.mortbay.naming.InitialContextFactory
+    at java.net.URLClassLoader$1.run(URLClassLoader.java:202)</pre>
 
 <p>For advanced setups, e.g. with LDAP, see <a
 href="http://download.oracle.com/javase/jndi/tutorial/trailmap.html">JNDI
 tutorial</a>.</p>
 
-<h4>NoInitialContex­tException</h4>
+<h3 id="toc-noinitialcontextexception">NoInitialContex­tException</h3>
 
 <p>This is what Sun JDK throws when the above properties are not set:</p>
 

@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="utf-8"/>
-    <title>ALTER TABLE … RENAME [OVERWRITE] [TO] to overwrite existing table - Ondřej Žižka</title>
+    <title>ALTER
+TABLE … RENAME [OVERWRITE] [TO] to overwrite existing table - Ondřej Žižka</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="My personal web">
     <meta name="author" content="Ondřej Žižka">
@@ -73,10 +74,12 @@
 
     <div class="document-post">
         <div class="page-header">
-            <h1>ALTER TABLE … RENAME [OVERWRITE] [TO] to overwrite existing table</h1>
+            <h1>ALTER
+TABLE … RENAME [OVERWRITE] [TO] to overwrite existing table</h1>
         </div>
         <div class="date"><em>2012-12-16</em></div>
-        <div class="doc-body"><h3>ALTER TABLE … RENAME [OVERWRITE] [TO] to overwrite existing table</h3>
+        <div class="doc-body"><h2 id="toc-alter-table-rename-overwrite-to-to-overwrite-existing-table">ALTER
+TABLE … RENAME [OVERWRITE] [TO] to overwrite existing table</h2>
 
 <p><strong>This is a MySQL feature request submitted as <a
 href="http://bugs.mysql.com/bug.php?id=36271">bug report
@@ -93,10 +96,10 @@ procedures needs to rename them. To make it safely, one has to try the drop
 before altering:</p>
 
 <pre
-class="brush: sql"><code>CALL PrepareSomeData(...);  -- This creates TEMP TABLE prepared_data
+class="brush: sql">CALL PrepareSomeData(...);  -- This creates TEMP TABLE prepared_data
 DROP TEMPORARY TABLE IF EXISTS input_data;
 ALTER TABLE prepared_data RENAME TO input_data;
-CALL ProcessData(...);      -- This procedure looks for the input_data table.</code></pre>
+CALL ProcessData(...);      -- This procedure looks for the input_data table.</pre>
 
 <p>And this has to be done many times.</p>
 
@@ -104,9 +107,9 @@ CALL ProcessData(...);      -- This procedure looks for the input_data table.</c
 <code>ALTER TABLE</code> statement:</p>
 
 <pre
-class="brush: sql"><code>CALL PrepareSomeData(...);  -- This creates TEMP TABLE prepared_data
+class="brush: sql">CALL PrepareSomeData(...);  -- This creates TEMP TABLE prepared_data
 ALTER TABLE prepared_data RENAME OVERWRITE TO input_data;
-CALL ProcessData(...);      -- This procedure looks for the input_data table.</code></pre>
+CALL ProcessData(...);      -- This procedure looks for the input_data table.</pre>
 
 <p>The alter with OVERWRITE would check whether a table with such name exists,
 and if so, it would drop it first.</p>

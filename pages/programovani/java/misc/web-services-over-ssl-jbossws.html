@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="utf-8"/>
-    <title>Web Services over SSL with JBoss WS - Ondřej Žižka</title>
+    <title>Web Services over SSL with
+JBoss WS - Ondřej Žižka</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="My personal web">
     <meta name="author" content="Ondřej Žižka">
@@ -73,25 +74,27 @@
 
     <div class="document-post">
         <div class="page-header">
-            <h1>Web Services over SSL with JBoss WS</h1>
+            <h1>Web Services over SSL with
+JBoss WS</h1>
         </div>
         <div class="date"><em>2012-12-31</em></div>
-        <div class="doc-body"><h3>Web Services over SSL with JBoss WS</h3>
+        <div class="doc-body"><h2 id="toc-web-services-over-ssl-with-jboss-ws">Web Services over SSL with
+JBoss WS</h2>
 
 <p>To use specifically JBoss Web Services, set the path to JBoss AS endorsed
 dirs as JVM arg:</p>
 
 <pre
-class="brush: plain"><code>-Djava.endorsed.dirs=/jboss-as/default/lib/endorsed/</code></pre>
+class="brush: plain">-Djava.endorsed.dirs=/jboss-as/default/lib/endorsed/</pre>
 
 <p>To set SSL debugging on, add this arg to JVM:</p>
 
-<pre class="brush: plain"><code>-Djavax.net.debug=all</code></pre>
+<pre class="brush: plain">-Djavax.net.debug=all</pre>
 
-<h4>Example code</h4>
+<h3 id="toc-example-code">Example code</h3>
 
 <pre
-class="brush: java"><code>String hostPort = "https://localhost:8443";
+class="brush: java">String hostPort = "https://localhost:8443";
 
 // Using 1 keystore as both key and trust store
 String keystoreTruststorePath = "/tmp/my.keystore";
@@ -138,7 +141,7 @@ for(int i=0; i &lt; 5; i++)
         info ( greeting.getText() );
         log.info( "******* CLIENT: INVOKE WS COMPLETED *******" );
         log.info( "Client invoked - reponse: " + greeting.getText() );
-}</code></pre>
+}</pre>
 </div>
 
         <!-- Rating widget -->

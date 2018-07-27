@@ -2,8 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="utf-8"/>
-    <title>MySQL: Error Code: 1005. Can't create table
-‚essc.#sql-4cb35‘ (errno: 150) - Ondřej Žižka</title>
+    <title>MySQL:
+Error Code: 1005. Can't create table ‚essc.#sql-4cb35‘
+(errno: 150) - Ondřej Žižka</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="My personal web">
     <meta name="author" content="Ondřej Žižka">
@@ -74,12 +75,15 @@
 
     <div class="document-post">
         <div class="page-header">
-            <h1>MySQL: Error Code: 1005. Can't create table
-‚essc.#sql-4cb35‘ (errno: 150)</h1>
+            <h1>MySQL:
+Error Code: 1005. Can't create table ‚essc.#sql-4cb35‘
+(errno: 150)</h1>
         </div>
         <div class="date"><em>2018-07-25</em></div>
-        <div class="doc-body"><h3>MySQL: Error Code: 1005. Can't create table
-‚essc.#sql-4cb<sub>35</sub>‘ (errno: 150)</h3>
+        <div class="doc-body"><h2
+id="toc-mysql-error-code-1005-can-t-create-table-essc-sql-4cb35-errno-150">MySQL:
+Error Code: 1005. Can't create table ‚essc.#sql-4cb<sub>35</sub>‘
+(errno: 150)</h2>
 
 <p>This happens when you're trying to <code>ALTER</code> a table, but it hits
 foreign key constraints.<br />
@@ -90,16 +94,16 @@ create a <code>FOREIGN KEY</code> using a <code>BIGINT</code> column.</p>
 <p>Usually, the solution is to drop all the relevant foreign keys, then align
 (or better, unify) the ID column types, and create the foreign keys again.</p>
 
-<h4>Hibernate</h4>
+<h3 id="toc-hibernate">Hibernate</h3>
 
 <p>With Hibernate, this may happen when you're adding entities to an existing
 schema, and rely on <code>hbm2dd</code> to create the columns for you (for
 development purposes, of course).</p>
 
-<h4>Cause</h4>
+<h3 id="toc-cause">Cause</h3>
 
 <pre
-class="brush java"><code>@Entity
+class="brush java">@Entity
 public class MyEntity {
     @Id @Generated(GenerationStrategy.IDENTITY)
     Long id;
@@ -110,33 +114,33 @@ public class OtherEntity {
     @ManyToOne
     @JoinColumn(name = "myent_id")
     MyEntity myEntity;
-}</code></pre>
+}</pre>
 
 <p>This results into:</p>
 
 <pre
-class="brush sql"><code>CREATE TABLE MyEntity (
+class="brush sql">CREATE TABLE MyEntity (
   `myent_id` BIGINT DEFAULT NULL,
   ...
   CONSTRAINT `FK...` FOREIGN KEY (``myent_id`) REFERENCES `MyEntity` (`id`),
-)</code></pre>
+)</pre>
 
 <p><code>hbm2ddl</code>'s attempt to create the table this way will fail with
 similar error:</p>
 
-<pre><code>Error Code: 1005. Can't create table 'essc.#sql-4cb_35' (errno: 150)</code></pre>
+<pre>Error Code: 1005. Can't create table 'essc.#sql-4cb_35' (errno: 150)</pre>
 
-<h4>Solution</h4>
+<h3 id="toc-solution">Solution</h3>
 
 <p>The solution is to add column definition:</p>
 
 <pre
-class="brush java"><code>@Entity
+class="brush java">@Entity
 public class MyEntity {
     @Id @Generated(GenerationStrategy.IDENTITY)
     @Column(columnDefinition = "INT UNSIGNED")
     Long id;
-}</code></pre>
+}</pre>
 </div>
 
         <!-- Rating widget -->

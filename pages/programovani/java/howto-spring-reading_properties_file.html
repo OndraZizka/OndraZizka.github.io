@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="utf-8"/>
-    <title>How to read properties file in Spring Framework - Ondřej Žižka</title>
+    <title>How to read
+properties file in Spring Framework - Ondřej Žižka</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="My personal web">
     <meta name="author" content="Ondřej Žižka">
@@ -73,31 +74,33 @@
 
     <div class="document-post">
         <div class="page-header">
-            <h1>How to read properties file in Spring Framework</h1>
+            <h1>How to read
+properties file in Spring Framework</h1>
         </div>
         <div class="date"><em>2012-12-16</em></div>
-        <div class="doc-body"><h3>How to read properties file in Spring Framework</h3>
+        <div class="doc-body"><h2 id="toc-how-to-read-properties-file-in-spring-framework">How to read
+properties file in Spring Framework</h2>
 
 <p>I've had a problem with reading <code>.properties</code> file in Spring
 Framework. I needed to inject it into the iBatis'
 <code>SqlMapConfig.xml</code>:</p>
 
 <pre
-class="brush: xml"><code>&lt;!-- iBatis --&gt;
+class="brush: xml">&lt;!-- iBatis --&gt;
 &lt;bean id="sqlMap" class="org.springframework.orm.ibatis.SqlMapClientFactoryBean"&gt;
   &lt;property name="sqlMapClientProperties" value="file:conf/${profile}/nastaveni.properties" /&gt;
   &lt;property name="configLocation" value="ibatis-maps/SqlMapConfig2.xml"/&gt;
 &lt;/bean&gt;
-&lt;alias alias="iBatis" name="sqlMap"/&gt;</code></pre>
+&lt;alias alias="iBatis" name="sqlMap"/&gt;</pre>
 
 <p>But iBatis kept complaining that the properties defined in the file were not
 resolved. Better said, it behaved like the actual value was the property name,
 thus the code</p>
 
 <pre
-class="brush: xml"><code>&lt;transactionManager type="JDBC"&gt;
+class="brush: xml">&lt;transactionManager type="JDBC"&gt;
   &lt;dataSource type="SIMPLE"&gt;
-    &lt;property name="JDBC.Driver" value="${jdbc.driver}"/&gt;</code></pre>
+    &lt;property name="JDBC.Driver" value="${jdbc.driver}"/&gt;</pre>
 
 <p>gave me a <code>ClassNotFoundException</code> for the class
 <code>jdbc.driver</code>.</p>
@@ -111,7 +114,7 @@ property: <code>file = conf/release/nastaveni.properties</code>.</p>
 <p>The solution is to use the <code>SqlMapClientFactoryBean</code>:</p>
 
 <pre
-class="brush: xml"><code>&lt;!-- iBatis --&gt;
+class="brush: xml">&lt;!-- iBatis --&gt;
 &lt;bean id="sqlMap" class="org.springframework.orm.ibatis.SqlMapClientFactoryBean"&gt;
   &lt;property name="sqlMapClientProperties"&gt;
     &lt;bean class="org.springframework.beans.factory.config.PropertiesFactoryBean"&gt;
@@ -119,7 +122,7 @@ class="brush: xml"><code>&lt;!-- iBatis --&gt;
     &lt;/bean&gt;
   &lt;/property&gt;
   &lt;property name="configLocation" value="ibatis-maps/SqlMapConfig2.xml"/&gt;
-&lt;/bean&gt;</code></pre>
+&lt;/bean&gt;</pre>
 
 <p>Of course, this is a trivial think, but not much well documented.</p>
 </div>

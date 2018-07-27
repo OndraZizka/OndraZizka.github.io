@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="utf-8"/>
-    <title>Groovy classloader bug with DOMBuilder - Ondřej Žižka</title>
+    <title>Groovy classloader bug with
+DOMBuilder - Ondřej Žižka</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="My personal web">
     <meta name="author" content="Ondřej Žižka">
@@ -73,43 +74,45 @@
 
     <div class="document-post">
         <div class="page-header">
-            <h1>Groovy classloader bug with DOMBuilder</h1>
+            <h1>Groovy classloader bug with
+DOMBuilder</h1>
         </div>
         <div class="date"><em>2012-12-13</em></div>
-        <div class="doc-body"><h3>Groovy classloader bug with DOMBuilder</h3>
+        <div class="doc-body"><h2 id="toc-groovy-classloader-bug-with-dombuilder">Groovy classloader bug with
+DOMBuilder</h2>
 
 <p>I've encountered buggy behavior with Groovy 1.6.6:</p>
 
 <pre
-class="brush: groovy"><code>import groovy.xml.DOMBuilder
+class="brush: groovy">import groovy.xml.DOMBuilder
 
 def filePath = "MestaXml.log";
 def doc  = DOMBuilder.parse(new FileReader(filePath));
-def docElm = doc.documentElement;</code></pre>
+def docElm = doc.documentElement;</pre>
 
-<pre><code>$ groovy SaveTransformer.groovy
+<pre>$ groovy SaveTransformer.groovy
 Caught: java.lang.LinkageError: loader constraint violation: loader (instance of &lt;bootloader&gt;)
 previously initiated loading for a different type with name "org/w3c/dom/NodeList"
-        at SaveTransformer.run(SaveTransformer.groovy:5)</code></pre>
+        at SaveTransformer.run(SaveTransformer.groovy:5)</pre>
 
 <p>However, if I compile the class and run with <code>java</code>,
 it's fine:</p>
 
-<pre><code>$ groovyc SaveTransformer.groovy
+<pre>$ groovyc SaveTransformer.groovy
 
 $ java -cp .;groovy-all-1.6.6.jar SaveTransformer
 
-$</code></pre>
+$</pre>
 
 <p>The same with Groovy 1.7-rc-1:</p>
 
-<pre><code>$ groovy -v
+<pre>$ groovy -v
 Groovy Version: 1.7-rc-1 JVM: 1.6.0_16
 
 $ groovy SaveTransformer.groovy
 Caught: java.lang.LinkageError: loader constraint violation: loader (instance of &lt;bootloader&gt;) previously initiated loading for a different type with name "org/w3c/dom/NodeList
 "
-        at SaveTransformer.run(SaveTransformer.groovy:5)</code></pre>
+        at SaveTransformer.run(SaveTransformer.groovy:5)</pre>
 
 <p>For the case the XML file was needed: <a
 href="download/MestaXml.zip">MestaXml.zip</a></p>

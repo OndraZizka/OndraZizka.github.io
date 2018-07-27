@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="utf-8"/>
-    <title>Stored Procedure call stack in INFORMATION_SCHEMA - Ondřej Žižka</title>
+    <title>Stored Procedure
+call stack in INFORMATION_SCHEMA - Ondřej Žižka</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="My personal web">
     <meta name="author" content="Ondřej Žižka">
@@ -73,10 +74,12 @@
 
     <div class="document-post">
         <div class="page-header">
-            <h1>Stored Procedure call stack in INFORMATION_SCHEMA</h1>
+            <h1>Stored Procedure
+call stack in INFORMATION_SCHEMA</h1>
         </div>
         <div class="date"><em>2012-12-16</em></div>
-        <div class="doc-body"><h3>Stored Procedure call stack in INFORMATION_SCHEMA</h3>
+        <div class="doc-body"><h2 id="toc-stored-procedure-call-stack-in-information-schema">Stored Procedure
+call stack in INFORMATION_SCHEMA</h2>
 
 <p><strong>This is a MySQL feature request submitted as <a
 href="http://bugs.mysql.com/bug.php?id=36106">bug report
@@ -85,26 +88,26 @@ href="http://bugs.mysql.com/bug.php?id=36106">bug report
 <p>Having a call stack available in stored procedures would make debugging much
 much easier. It could be a table like this:</p>
 
-<pre><code>----------------------------------------------
+<pre>----------------------------------------------
 depth INT  routine_name VARCHAR   routine_type ENUM  started TIMESTAMP ...
 1          nn_TeachXOR            PROCEDURE          128458937
 2          nn_ComputeNet          PROCEDURE          128458938
 3          nn_ComputeLevel        PROCEDURE          128458938
-...</code></pre>
+...</pre>
 
 <p>With such table, one could do profiling,</p>
 
 <pre
-class="brush: sql"><code>SELECT UNIX_TIMESTAMP() - started AS duration
+class="brush: sql">SELECT UNIX_TIMESTAMP() - started AS duration
   FROM INFORMATION_SCHEMA.CALLSTACK
-  ORDER BY depth DESC LIMIT 1;</code></pre>
+  ORDER BY depth DESC LIMIT 1;</pre>
 
 <p>structured logging, e.g.:</p>
 
 <pre
-class="brush: sql"><code>INSERT INTO log
+class="brush: sql">INSERT INTO log
   SELECT CONCAT( REPEAT('  ', ), '+--  ', routine_name) AS str
-  ORDER BY depth ASC;</code></pre>
+  ORDER BY depth ASC;</pre>
 
 <p>and more…</p>
 </div>

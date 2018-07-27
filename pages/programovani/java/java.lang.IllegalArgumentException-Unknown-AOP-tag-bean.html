@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="utf-8"/>
-    <title>java.lang.Ille­galArgumentEx­ception: Unknown AOP tag: bean - Ondřej Žižka</title>
+    <title>java.lang.Ille­galArgumentEx­ception:
+Unknown AOP tag: bean - Ondřej Žižka</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="My personal web">
     <meta name="author" content="Ondřej Žižka">
@@ -73,10 +74,13 @@
 
     <div class="document-post">
         <div class="page-header">
-            <h1>java.lang.Ille­galArgumentEx­ception: Unknown AOP tag: bean</h1>
+            <h1>java.lang.Ille­galArgumentEx­ception:
+Unknown AOP tag: bean</h1>
         </div>
         <div class="date"><em>2012-12-16</em></div>
-        <div class="doc-body"><h3>java.lang.Ille­galArgumentEx­ception: Unknown AOP tag: bean</h3>
+        <div class="doc-body"><h2
+id="toc-java-lang-illegalargumentexception-unknown-aop-tag-bean">java.lang.Ille­galArgumentEx­ception:
+Unknown AOP tag: bean</h2>
 
 <p>You've probably provided your JBoss Microcontainer XML (usually
 <code>jboss-beans.xml</code>) instead of the AOP XML file.</p>
@@ -84,14 +88,15 @@
 <p>JBoss AOP Maven Plugin eats this:</p>
 
 <pre
-class="brush: xml"><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+class="brush: xml">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;aop&gt;
    &lt;bind pointcut="execution(* *-&gt;*Fuel(..))"&gt;
        &lt;interceptor class="cz.zizka.ondra.jbmctest.FuelInterceptor"/&gt;
    &lt;/bind&gt;
-&lt;/aop&gt;</code></pre>
+&lt;/aop&gt;</pre>
 
-<h4>[cannot compile] implements Untransformable</h4>
+<h3 id="toc-cannot-compile-implements-untransformable">[cannot compile]
+implements Untransformable</h3>
 
 <p><code>[aop-debug] org.jboss.aop.ClassicWeavingStrategy [cannot compile] implements Untransformable: &lt;some class&gt;</code></p>
 
@@ -99,21 +104,21 @@ class="brush: xml"><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 the AOP package, and is disallowed to be weaved. Change your pointcut expression
 (e.g. do not use something too general, like <code>* *-&gt;*(..)</code>).</p>
 
-<h4>Could not find class</h4>
+<h3 id="toc-could-not-find-class">Could not find class</h3>
 
-<pre><code>[warn] Could not find class org.jboss.kernel.spi.dependency.KernelController (or one of its implemented interfaces)
+<pre>[warn] Could not find class org.jboss.kernel.spi.dependency.KernelController (or one of its implemented interfaces)
        that ... references.  It may not be in your classpath and you may not be getting field and constructor weaving for this class.
 [ERROR]javassist.NotFoundException: org.jboss.kernel.spi.dependency.KernelController
 [ERROR]        at javassist.ClassPool.get(ClassPool.java:436)
 [ERROR]        at org.jboss.aop.instrument.Instrumentor.convertReferences(Instrumentor.java:648)
-...</code></pre>
+...</pre>
 
 <p>Use
 <code>&lt;includeProjectDependency&gt;true&lt;/includeProjectDependency&gt;</code>
 for the Maven JBoss AOP plugin:</p>
 
 <pre
-class="brush: xml"><code>&lt;plugin&gt;
+class="brush: xml">&lt;plugin&gt;
   &lt;groupId&gt;org.jboss.maven.plugins&lt;/groupId&gt;
   &lt;artifactId&gt;maven-jbossaop-plugin&lt;/artifactId&gt;
   &lt;version&gt;2.1.3.GA&lt;/version&gt;
@@ -128,12 +133,12 @@ class="brush: xml"><code>&lt;plugin&gt;
       &lt;/configuration&gt;
     &lt;/execution&gt;
   &lt;/executions&gt;
-&lt;/plugin&gt;</code></pre>
+&lt;/plugin&gt;</pre>
 
-<h4>The stacktrace…</h4>
+<h3 id="toc-the-stacktrace">The stacktrace…</h3>
 
 <pre
-class="mavenlog"><code>NetBeans: Executing 'C:\sw\Java\apache-maven-2.2.0\bin\mvn.bat -Dexec.classpathScope=runtime -Dexec.args=-classpath %classpath cz.dynawest.webttd.backend.JBossAopSampleApp -Dexec.executable=C:\sw\Java\jdk1.6.0_16-64bit\bin\java.exe -Djboss.aop.instrumentor=org.jboss.aop.instrument.ClassicInstrumentor -Dnetbeans.execution=true process-classes org.codehaus.mojo:exec-maven-plugin:1.1.1:exec'
+class="mavenlog">NetBeans: Executing 'C:\sw\Java\apache-maven-2.2.0\bin\mvn.bat -Dexec.classpathScope=runtime -Dexec.args=-classpath %classpath cz.dynawest.webttd.backend.JBossAopSampleApp -Dexec.executable=C:\sw\Java\jdk1.6.0_16-64bit\bin\java.exe -Djboss.aop.instrumentor=org.jboss.aop.instrument.ClassicInstrumentor -Dnetbeans.execution=true process-classes org.codehaus.mojo:exec-maven-plugin:1.1.1:exec'
 NetBeans:      JAVA_HOME =C:\sw\Java\jdk1.6.0_16-64bit
 Scanning for projects...
 ------------------------------------------------------------------------
@@ -369,7 +374,7 @@ BUILD SUCCESSFUL
 Total time: 5 seconds
 Finished at: Fri Nov 13 13:10:23 CET 2009
 Final Memory: 22M/277M
-------------------------------------------------------------------------</code></pre>
+------------------------------------------------------------------------</pre>
 </div>
 
         <!-- Rating widget -->

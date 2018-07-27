@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="utf-8"/>
-    <title>JTexy! – Texy! Java Implementation project - Ondřej Žižka</title>
+    <title>JTexy! – Texy! Java
+Implementation project - Ondřej Žižka</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="My personal web">
     <meta name="author" content="Ondřej Žižka">
@@ -73,10 +74,12 @@
 
     <div class="document-post">
         <div class="page-header">
-            <h1>JTexy! – Texy! Java Implementation project</h1>
+            <h1>JTexy! – Texy! Java
+Implementation project</h1>
         </div>
         <div class="date"><em>2012-12-16</em></div>
-        <div class="doc-body"><h3>JTexy! – Texy! Java Implementation project</h3>
+        <div class="doc-body"><h2 id="toc-jtexy-texy-java-implementation-project">JTexy! – Texy! Java
+Implementation project</h2>
 
 <p>I am about to port <a href="http://www.texy.info/">Texy!</a> to Java.</p>
 
@@ -90,9 +93,10 @@ files, which can be used to validate the implementation.</p>
 href="http://download.texy.info/refs.zip">http://download.texy.info/refs.zip</a>
 .</p>
 
-<h4>Notes…</h4>
+<h3 id="toc-notes">Notes…</h3>
 
-<h5>Oh no – JDK6's regular expressions do not support recursion :(</h5>
+<h4 id="toc-oh-no-jdk6-s-regular-expressions-do-not-support-recursion">Oh
+no – JDK6's regular expressions do not support recursion :(</h4>
 
 <p>I am looking for a Java regexp lib with support for recursion, like:
 <code>&lt;a+(?0)&gt;</code>. See <a
@@ -100,27 +104,30 @@ href="http://www.php.net/manual/en/regexp.reference.recursive.php">http://www.ph
 I need it for this expression:</p>
 
 <pre
-class="regex"><code>(?:mUi)^/--++ *+(.*)(?: *(?&lt;= |^)\\.((?:\\([^)\\n]+\\)|\\[[^\\]\\n]+\\]|\\{[^}\\n]+\\}|&lt;&gt;|&gt;|=|&lt;){1,4}?))?$((?:\\n.*+)*)(?:\\n(?0)|\\n\\\\--.*$|\\z)</code></pre>
+class="regex">(?:mUi)^/--++ *+(.*)(?: *(?&lt;= |^)\\.((?:\\([^)\\n]+\\)|\\[[^\\]\\n]+\\]|\\{[^}\\n]+\\}|&lt;&gt;|&gt;|=|&lt;){1,4}?))?$((?:\\n.*+)*)(?:\\n(?0)|\\n\\\\--.*$|\\z)</pre>
 
 <p>JDK does not support it, ORO does neither, nor Stevesoft Pat does.</p>
 
-<h5><code>dev.java.net</code> is sooooo slooow…</h5>
+<h4 id="toc-dev-java-net-is-sooooo-slooow"><code>dev.java.net</code> is sooooo
+slooow…</h4>
 
 <p>Gone to Google Code: <a
 href="http://code.google.com/p/jtexy/">http://code.google.com/p/jtexy/</a></p>
 
-<h5>What's the relation between ORO and Jakarta Regexp?</h5>
+<h4 id="toc-what-s-the-relation-between-oro-and-jakarta-regexp">What's the
+relation between ORO and Jakarta Regexp?</h4>
 
 <p>ORO developement stalled in 2004? Is Jakarta Regexp a successor? Is Jakarta
 Regexp PERL compatible? ORO claims so, Regexp does not.</p>
 
-<h5>Parsing core: TexyParser.php @ 152</h5>
+<h4 id="toc-parsing-core-texyparser-php-152">Parsing core: TexyParser.php @
+152</h4>
 
 <p><a
 href="http://php.net/manual/en/function.preg-match-all.php">PHP's preg_mat­ch_all</a></p>
 
 <pre
-class="php"><code>// parse loop
+class="php">// parse loop
 $matches = array();
 $priority = 0;
 foreach ($this-&gt;patterns as $name =&gt; $pattern)
@@ -138,7 +145,7 @@ foreach ($this-&gt;patterns as $name =&gt; $pattern)
                 $matches[] = array($offset, $name, $m, $priority);
         }
         $priority++;
-}</code></pre>
+}</pre>
 
 <p><code>PREG_OFFSET_CAPTURE</code> – makes the returned multidimensional
 array even more multidimensional – stores the string at [0] and the offset at
@@ -156,7 +163,7 @@ breadth-first).</p>
 	href="http://www.skdevelopment.com/php-regular-expressions.php">http://www.skdevelopment.com/…ressions.php</a></p>
 </blockquote>
 
-<h5><strong>AAAAaaaaaa!</strong></h5>
+<h4 id="toc-aaaaaaaaaa"><strong>AAAAaaaaaa!</strong></h4>
 
 <p>No Java library supports global ungreediness! :-((<br />
 * <a
@@ -174,7 +181,7 @@ href="http://java.sun.com/javase/7/docs/api/java/util/regex/Pattern.html">http:/
 * java.util.regex tester: <a
 href="http://www.regexplanet.com/simple/index.html">http://www.regexplanet.com/…e/index.html</a></p>
 
-<h5>Promising clues:</h5>
+<h4 id="toc-promising-clues">Promising clues:</h4>
 
 <p>* OpenJDK should support LAZY<br />
 * There's a PHP port to Java: <a
@@ -188,7 +195,7 @@ href="http://hg.openjdk.java.net/jdk7/2d/jdk/file/3b6d7e15ccd9/src/share/classes
 />
 * 2721 private void addFlag(), 2760 private void subFlag()</p>
 
-<h5><code>preg_match_all()</code>:</h5>
+<h4 id="toc-preg-match-all"><code>preg_match_all()</code>:</h4>
 
 <p>Is this the same as multiple calls to <code>preg_match()</code>?<br />
 → <code>preg_match()</code> returns the number of times pattern matches. That
@@ -198,13 +205,13 @@ contrary will continue until it reaches the end of subject.</p>
 
 <p>Is there similar in Java, or do I have to iterate?</p>
 
-<h5>Need to re-design…</h5>
+<h4 id="toc-need-to-re-design">Need to re-design…</h4>
 
 <p>Original design is, despite of author's credits,… not perfect.<br />
 * The way modules are registered<br />
 * and whole callback system</p>
 
-<h5>Questions</h5>
+<h4 id="toc-questions">Questions</h4>
 
 <p><code>RegExp.Patterns.php</code> – slash hell – do the slashes belong
 to RE or to PHP?</p>
@@ -232,7 +239,7 @@ higher priority? <em>No, the other way.</em></p>
 <p>What is <code>TexyLineParser.again</code> good for? Never set to
 <code>true</code>?</p>
 
-<h4>Texy Refactoring</h4>
+<h3 id="toc-texy-refactoring">Texy Refactoring</h3>
 
 <blockquote>
 	<p>Zdravím,</p>
@@ -243,7 +250,7 @@ higher priority? <em>No, the other way.</em></p>
 	rovnou jako referenci funkce.</strong></p>
 
 	<pre
-	class="php"><code>public class RegexpInfo {
+	class="php">public class RegexpInfo {
 
         public String name;
         public String perlRegexp;
@@ -257,20 +264,20 @@ higher priority? <em>No, the other way.</em></p>
 
         public enum Type { LINE, BLOCK };
         public Type type = Type.LINE;
-}</code></pre>
+}</pre>
 
 	<p><strong>2) V parseru: Výsledky <code>preg_match_all()</code> převést na
 	pole objektů, místo pole polí (… polí polí, jak je zvykem
 	v PHP).</strong></p>
 
 	<pre
-	class="php"><code>class ParserMatchInfo implements Comparable&lt;ParserMatchInfo&gt;
+	class="php">class ParserMatchInfo implements Comparable&lt;ParserMatchInfo&gt;
 {
         public final RegexpInfo pattern;
         public final List&lt;MatchWithOffset&gt; groups;
         public final int offset;
         public final int priority;
-}</code></pre>
+}</pre>
 
 	<p>Taková třída je taky přirozeným místem pro funkci
 	<code>cmp()</code>.</p>
@@ -285,10 +292,10 @@ higher priority? <em>No, the other way.</em></p>
 	Aneb:</p>
 
 	<pre
-	class="php"><code>preg_match_all( $pattern['pattern'],  $text,  $ms,  PREG_SET_ORDER );
+	class="php">preg_match_all( $pattern['pattern'],  $text,  $ms,  PREG_SET_ORDER );
 $matches[0];    // --&gt; First match
 $matches[0][0]; // --&gt; Group - matched text of the whole first match.
-$matches[0][1]; // --&gt; First sub-group of the first match.</code></pre>
+$matches[0][1]; // --&gt; First sub-group of the first match.</pre>
 
 	<p>Tak nebude nutné pojmenovávat proměnné $ms, $matches, $m,
 	$mMatches, …</p>
@@ -309,13 +316,13 @@ $matches[0][1]; // --&gt; First sub-group of the first match.</code></pre>
 	vznikajícího JTexy.</p>
 </blockquote>
 
-<h4>Sun feature request</h4>
+<h3 id="toc-sun-feature-request">Sun feature request</h3>
 
-<h5>Synopsis</h5>
+<h4 id="toc-synopsis">Synopsis</h4>
 
 <p>Regex: Support for UNGREEDY or (?U) flag</p>
 
-<h5>Description</h5>
+<h4 id="toc-description">Description</h4>
 
 <p>Perl regular expressions have „/…/U“ and „(?U)“. Many of text
 processing tools based on regexp use this extensively (e.g. Texy).</p>
@@ -325,7 +332,7 @@ processing tools based on regexp use this extensively (e.g. Texy).</p>
 regular expressions (few dozens to hundreds), and many of them change with each
 release.</p>
 
-<h5>Justification</h5>
+<h4 id="toc-justification">Justification</h4>
 
 <ol>
 	<li>This would make porting such text tools easier to port to Java, and thus
@@ -339,7 +346,7 @@ release.</p>
 	shouldn't be complicated.</li>
 </ol>
 
-<h5>Expected Behavior:</h5>
+<h4 id="toc-expected-behavior">Expected Behavior:</h4>
 
 <p>Regex: „.*foo“ with UNGREEDY flag or „(?U).*foo“ String:
 „AAAfooBBBfoo“</p>
@@ -348,12 +355,13 @@ release.</p>
 group(1): AAAfoo<br />
 group(2): BBBfoo</p>
 
-<h5>Actual Behavior:</h5>
+<h4 id="toc-actual-behavior">Actual Behavior:</h4>
 
 <p>Current result:<br />
 group(1): AAAfooBBBfoo</p>
 
-<h5>Source code for an executable test case:</h5>
+<h4 id="toc-source-code-for-an-executable-test-case">Source code for an
+executable test case:</h4>
 
 <p>String inputStr = „AAAfooBBBfoo“; String patternStr = „.*foo“;</p>
 
@@ -362,15 +370,16 @@ pattern.matcher(in­putStr);</p>
 
 <p>… etc.</p>
 
-<h5>Workaround</h5>
+<h4 id="toc-workaround">Workaround</h4>
 
 <p>Well, changing all closures to be reluctant. <em>sigh</em></p>
 
-<h5>User Info</h5>
+<h4 id="toc-user-info">User Info</h4>
 
 <p><a href="mailto:ozizka&#64;redhat.com">ozizka&#64;<!-- -->redhat.com</a></p>
 
-<h4>Java implementace překladače Texy!</h4>
+<h3 id="toc-java-implementace-prekladace-texy">Java implementace překladače
+Texy!</h3>
 
 <p>Texy je bezesporu jeden z pokladů českého opensource. Je škoda, že je
 zatím jen pro PHP.</p>

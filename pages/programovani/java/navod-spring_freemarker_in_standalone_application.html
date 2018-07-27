@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="utf-8"/>
-    <title>FreeMarker templates via Spring in non-web application - Ondřej Žižka</title>
+    <title>FreeMarker
+templates via Spring in non-web application - Ondřej Žižka</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="My personal web">
     <meta name="author" content="Ondřej Žižka">
@@ -73,15 +74,17 @@
 
     <div class="document-post">
         <div class="page-header">
-            <h1>FreeMarker templates via Spring in non-web application</h1>
+            <h1>FreeMarker
+templates via Spring in non-web application</h1>
         </div>
         <div class="date"><em>2012-12-16</em></div>
-        <div class="doc-body"><h3>FreeMarker templates via Spring in non-web application</h3>
+        <div class="doc-body"><h2 id="toc-freemarker-templates-via-spring-in-non-web-application">FreeMarker
+templates via Spring in non-web application</h2>
 
-<h4>Spring bean configuration</h4>
+<h3 id="toc-spring-bean-configuration">Spring bean configuration</h3>
 
 <pre
-class="brush: xml"><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+class="brush: xml">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;!DOCTYPE beans PUBLIC '-//SPRING//DTD BEAN 2.0//EN' 'http://www.springframework.org/dtd/spring-beans-2.0.dtd'&gt;
 &lt;beans&gt;
 
@@ -96,7 +99,7 @@ class="brush: xml"><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
     &lt;/property&gt;
   &lt;/bean&gt;
 
-&lt;/beans&gt;</code></pre>
+&lt;/beans&gt;</pre>
 
 <p>Note that the templates are inside the <code>.jar</code>, thus on the
 classpath, so we used the <code>classpath:</code> pseudo-protocol. I have my
@@ -127,28 +130,28 @@ parts of the FreeMarker Java API doc:</p>
 <p>I have tried <code>output_encoding=utf-8</code>, but it did not work well,
 so I used <code>defaultEncoding</code>.</p>
 
-<h4>Template file</h4>
+<h3 id="toc-template-file">Template file</h3>
 
 <p>This is the example from the NetBeans FreeMarker support project. It works
 with three variables, <code>package</code>, <code>class</code> and
 <code>user</code>; all supposed to be <code>String</code>s.</p>
 
 <pre
-class="freemarker"><code>&lt;#if package?? &amp;&amp; package != ""&gt;
+class="freemarker">&lt;#if package?? &amp;&amp; package != ""&gt;
 package ${package};
 &lt;/#if&gt;
 /**
  * ${class}
  *
  * @author ${user}
- */</code></pre>
+ */</pre>
 
-<h4>Using the template</h4>
+<h3 id="toc-using-the-template">Using the template</h3>
 
 <p>Assuming that <code>beanFactory</code> is Spring Bean Factory object:</p>
 
 <pre
-class="brush: java"><code>Configuration cfg = (Configuration)beanFactory.getBean( "freemarkerConfiguration" );
+class="brush: java">Configuration cfg = (Configuration)beanFactory.getBean( "freemarkerConfiguration" );
 try {
   Template temp = cfg.getTemplate( "test.template" );
   Map root = new HashMap();
@@ -163,18 +166,18 @@ catch( IOException ex ) {
 }
 catch( TemplateException ex ) {
   log.log( Level.SEVERE, null, ex );
-}</code></pre>
+}</pre>
 
-<h4>The Result</h4>
+<h3 id="toc-the-result">The Result</h3>
 
 <p>As you expect, the result looks like this:</p>
 
 <pre
-class="freemarker"><code>/**
+class="freemarker">/**
  * TopClass
  *
  * @author Andrea Peniaková
- */</code></pre>
+ */</pre>
 </div>
 
         <!-- Rating widget -->

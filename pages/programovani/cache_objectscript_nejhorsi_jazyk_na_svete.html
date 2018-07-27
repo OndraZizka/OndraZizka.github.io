@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="utf-8"/>
-    <title>Caché ObjectScript – nejhorší jazyk na světě - Ondřej Žižka</title>
+    <title>Caché ObjectScript –
+nejhorší jazyk na světě - Ondřej Žižka</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="My personal web">
     <meta name="author" content="Ondřej Žižka">
@@ -73,10 +74,12 @@
 
     <div class="document-post">
         <div class="page-header">
-            <h1>Caché ObjectScript – nejhorší jazyk na světě</h1>
+            <h1>Caché ObjectScript –
+nejhorší jazyk na světě</h1>
         </div>
         <div class="date"><em>2012-12-13</em></div>
-        <div class="doc-body"><h3>Caché ObjectScript – nejhorší jazyk na světě</h3>
+        <div class="doc-body"><h2 id="toc-cache-objectscript-nejhorsi-jazyk-na-svete">Caché ObjectScript –
+nejhorší jazyk na světě</h2>
 
 <p>Setkali jste se někdy s postrelačním databázovým systémem Caché?
 Pokud ano, nejspíše to bylo na škole, a nebo na nějakém školení. Pokud
@@ -91,7 +94,7 @@ humbuk, takže se tu a tam objeví zmínka na leckterém českém webu typu
 třikrát, z čehož dvakrát sám od sebe, potřetí již nedobrovolně, skoro
 by se dalo říct nátlakem.</p>
 
-<h4>Moje zkušenosti s Caché</h4>
+<h3 id="toc-moje-zkusenosti-s-cache">Moje zkušenosti s Caché</h3>
 
 <p>Nějak se ke mě dostaly materiály o Caché, možná někde na Invexu…
 V podstatě se jednalo archy křídového papíru s velmi nevkusnými
@@ -117,7 +120,8 @@ kterou dokáží zápasit jen ti naprosto nejotrlejší programátoři, kterým
 Perl přišel jako příliš výřečný a srozumitelný, a hledají něco
 podobou bližšího zazipovanému strojovému kódu.</p>
 
-<h4>Caché ObjectScript (čtěte nalačno)</h4>
+<h3 id="toc-cache-objectscript-ctete-nalacno">Caché ObjectScript (čtěte
+nalačno)</h3>
 
 <p>Myslím, že za všechno mluví následující ukázka kódu (jazyk se
 ironicky jmenuje ObjectScript):</p>
@@ -136,13 +140,12 @@ JavaScriptu).</p>
 <p>Takže jestli se vám dělá značně nevolno při pohledu na
 konstrukce typu</p>
 
-<pre
-class="cache"><code>QUIT $Select(%sc'="":%sc,1:$$Error^%apiOBJ(5809))</code></pre>
+<pre class="cache">QUIT $Select(%sc'="":%sc,1:$$Error^%apiOBJ(5809))</pre>
 
 <p>nebo</p>
 
 <pre
-class="cache"><code>$ZObjVal(,1,0,3,1)&gt;1 Lock +(^Common.F.FormD(id)#"S"):ZUtil(115,4...)</code></pre>
+class="cache">$ZObjVal(,1,0,3,1)&gt;1 Lock +(^Common.F.FormD(id)#"S"):ZUtil(115,4...)</pre>
 
 <p>a při představě, že byste měli sami něco takového plodit a na tom by
 byl závislý váš příjem, nejste sami – nás bylo v ročníku
@@ -150,7 +153,7 @@ asi 100.</p>
 
 <p>Hrůza, hrůza, běs, rychle pryč!</p>
 
-<h4>CSP – Caché Server Pages</h4>
+<h3 id="toc-csp-cache-server-pages">CSP – Caché Server Pages</h3>
 
 <p>K Caché patří ještě Caché Server Pages, což je parodie na technologie
 jako ASP, JSP a podobně. Už to není TAK strašné, jako ObjectScript,
@@ -164,7 +167,8 @@ zprasí – a nikdo ze sta lidí nepochopil, podle jakých pravidel. Nakonec
 jsme to řešili hacky typu <code>&lt;scr#("")#ipt ...&gt;</code>, kde
 <code>#("")#</code> je vložený kousek kódu ObjectScriptu.</p>
 
-<h4>Integrované „vývojové prostředí“</h4>
+<h3 id="toc-integrovane-vyvojove-prostredi">Integrované „vývojové
+prostředí“</h3>
 
 <p>Caché rovněž disponuje čímsi, co nazývají IDE (nevím proč). Jedná
 se o chaotickou změť nástrojů chaoticky omotaných na dost mizerný
@@ -177,7 +181,7 @@ přijde do styku, ale pořád je to taková hrůza, že kdybych si měl vybrat
 mezi tímto a například editací asembleru přes braillův terminál, volil
 bych druhé.</p>
 
-<h4>Nejrychlejší? No a co?</h4>
+<h3 id="toc-nejrychlejsi-no-a-co">Nejrychlejší? No a co?</h3>
 
 <p>Výrobce se pyšní, že se jedná o nejrychlejší databázi na světě.
 Budiž, já jim to neberu, možné to je – netestoval jsem a ani nebudu. Ale
@@ -185,7 +189,7 @@ k čemu to je dobré, když do toho žádný programátor nebude chtít
 hrábnout ani pětimetrovou tyčí a při zmínce o Caché začne zvažovat
 změnu zaměstnavatele?</p>
 
-<h4>Relační mapování? IBM??</h4>
+<h3 id="toc-relacni-mapovani-ibm">Relační mapování? IBM??</h3>
 
 <p>Před nějakou dobou proběhla internetem zpráva o tom, že IBM použilo
 Caché na cosi, a že jim relační mapování trvalo 15 minut, zatímco jinak
@@ -212,7 +216,7 @@ znalí uslyší, <a
 href="http://www.novinky.cz/clanek/67691-seznam-cz-koketuje-s-technologii-php.html">nevěřicně
 kroutí hlavou</a>, v případě Caché se otřesou odporem.</p>
 
-<h4>Verdikt</h4>
+<h3 id="toc-verdikt">Verdikt</h3>
 
 <p>Firma InterSystems existuje již dlouhou dobu a stále zvládá pravidelně
 vydávat pamflety na křídovém papíře s nevkusnými malbami. Z toho

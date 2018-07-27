@@ -76,15 +76,15 @@
             <h1>My Wicket Cheat-sheet</h1>
         </div>
         <div class="date"><em>2012-12-31</em></div>
-        <div class="doc-body"><h3>My Wicket Cheat-sheet</h3>
+        <div class="doc-body"><h2 id="toc-my-wicket-cheat-sheet">My Wicket Cheat-sheet</h2>
 
-<h4>JS resources into one link</h4>
+<h3 id="toc-js-resources-into-one-link">JS resources into one link</h3>
 
 <p>&gt;&gt; (09:44:54 AM) selckin: is there an easy way to make it concatinate a
 bunch of javascript/css resources into one link? &gt;&gt; (09:46:37 AM)
 martin-g: I use wro4j for that</p>
 
-<h4>Basics</h4>
+<h3 id="toc-basics">Basics</h3>
 
 <p><code>new ExternalLink("id", "href", "label")</code></p>
 
@@ -94,31 +94,32 @@ martin-g: I use wro4j for that</p>
 <p>Don't print wrapper HTML element:
 <code>Component#setRenderBodyOnly( true )</code></p>
 
-<h4>Development / deployment Wicket mode</h4>
+<h3 id="toc-development-deployment-wicket-mode">Development / deployment Wicket
+mode</h3>
 
 <pre
-class="brush: xml"><code>&lt;context-param&gt;
+class="brush: xml">&lt;context-param&gt;
         &lt;param-name&gt;configuration&lt;/param-name&gt;
         &lt;param-value&gt;deployment/development&lt;/param-value&gt;
-&lt;/context-param&gt;</code></pre>
+&lt;/context-param&gt;</pre>
 
 <pre
-class="brush: plain"><code>********************************************************************
+class="brush: plain">********************************************************************
 *** WARNING: Wicket is running in DEVELOPMENT mode.              ***
 ***                               ^^^^^^^^^^^                    ***
 *** Do NOT deploy to your live server(s) without changing this.  ***
 *** See Application#getConfigurationType() for more information. ***
-********************************************************************</code></pre>
+********************************************************************</pre>
 
-<h4>Setting / changing attributes</h4>
+<h3 id="toc-setting-changing-attributes">Setting / changing attributes</h3>
 
 <pre
-class="brush: java"><code>label1.add(
+class="brush: java">label1.add(
   new AttributeModifier("class", true, new Model() {
     Object getObject(Component comp) {
       return Math.random()&gt;0.5 ? "SomeClass" : "AnotherClass";
     }
-  });</code></pre>
+  });</pre>
 </div>
 
         <!-- Rating widget -->

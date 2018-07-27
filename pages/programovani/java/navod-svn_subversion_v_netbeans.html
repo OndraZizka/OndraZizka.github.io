@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="utf-8"/>
-    <title>Import projektu ze SVN do NetBeans projektu (stručný návod) - Ondřej Žižka</title>
+    <title>Import
+projektu ze SVN do NetBeans projektu (stručný návod) - Ondřej Žižka</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="My personal web">
     <meta name="author" content="Ondřej Žižka">
@@ -73,10 +74,12 @@
 
     <div class="document-post">
         <div class="page-header">
-            <h1>Import projektu ze SVN do NetBeans projektu (stručný návod)</h1>
+            <h1>Import
+projektu ze SVN do NetBeans projektu (stručný návod)</h1>
         </div>
         <div class="date"><em>2012-12-16</em></div>
-        <div class="doc-body"><h3>Import projektu ze SVN do NetBeans projektu (stručný návod)</h3>
+        <div class="doc-body"><h2 id="toc-import-projektu-ze-svn-do-netbeans-projektu-strucny-navod">Import
+projektu ze SVN do NetBeans projektu (stručný návod)</h2>
 
 <p>Chtěl jsem se trochu povrtat v projektu <a
 href="http://poi.apache.org/subversion.html">Apache POI</a>, ale jak průvodci
@@ -89,7 +92,7 @@ href="http://www.netbeans.org/kb/60/ide/subversion.html">http://www.netbeans.org
 Já se ho pokusím trochu zestručnít a tento extrakt obohatit o své
 zkušenosti.</p>
 
-<h4>Pojmy SVN</h4>
+<h3 id="toc-pojmy-svn">Pojmy SVN</h3>
 
 <p><em>Subversion</em> jsem viděl poprvé, proto jsem se chvíli plácal
 v pojmech. Pro pořádek a pro začátečníky je tedy uvedu.</p>
@@ -126,7 +129,8 @@ tutoriál :-)</p>
 
 <p><em>Poznámka: Jak tak koukám, asi budu muset poladit CSS.</em></p>
 
-<h4>Jak nahrát projekt z SVN repository do NetBeans projektu</h4>
+<h3 id="toc-jak-nahrat-projekt-z-svn-repository-do-netbeans-projektu">Jak
+nahrát projekt z SVN repository do NetBeans projektu</h3>
 
 <p>Nyní se trochu odchýlím od výše odkazovaného návodu. V NetBeans jsem
 provedl checkout projektu Apache POI.</p>
@@ -195,13 +199,13 @@ podivné volání funkcí,</p>
 <p>za což může tato nezvyklá konstrukce v kódu projektu Apache POI:</p>
 
 <pre
-class="brush: java"><code>Class clazz = (Class) VALUE_EVALS_MAP.get(ptg.getClass());
+class="brush: java">Class clazz = (Class) VALUE_EVALS_MAP.get(ptg.getClass());
 try {
  if (ptg instanceof Area3DPtg) {
    Constructor constructor = clazz.getConstructor(AREA3D_CONSTRUCTOR_CLASS_ARRAY);
    retval = (OperationEval) constructor.newInstance(new Ptg[] { ptg });
  }
-...</code></pre>
+...</pre>
 </div>
 
         <!-- Rating widget -->

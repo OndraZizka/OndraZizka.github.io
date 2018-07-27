@@ -76,14 +76,14 @@
             <h1>Quartz Java timer intro</h1>
         </div>
         <div class="date"><em>2012-12-13</em></div>
-        <div class="doc-body"><h3>Quartz Java timer intro</h3>
+        <div class="doc-body"><h2 id="toc-quartz-java-timer-intro">Quartz Java timer intro</h2>
 
-<h4>Maven dependencies</h4>
+<h3 id="toc-maven-dependencies">Maven dependencies</h3>
 
 <p><code>pom.xml</code>:</p>
 
 <pre
-class="brush: xml"><code>&lt;dependency&gt;
+class="brush: xml">&lt;dependency&gt;
   &lt;groupId&gt;org.quartz-scheduler&lt;/groupId&gt;
   &lt;artifactId&gt;quartz&lt;/artifactId&gt;
   &lt;version&gt;1.8.0&lt;/version&gt;
@@ -99,9 +99,9 @@ class="brush: xml"><code>&lt;dependency&gt;
                     &lt;groupId&gt;log4j&lt;/groupId&gt;
                     &lt;artifactId&gt;log4j&lt;/artifactId&gt;
                     &lt;version&gt;1.2.14&lt;/version&gt;
-            &lt;/dependency&gt;</code></pre>
+            &lt;/dependency&gt;</pre>
 
-<h4>Quartz configuration</h4>
+<h3 id="toc-quartz-configuration">Quartz configuration</h3>
 
 <p>(taken from <a
 href="http://www.quartz-scheduler.org/docs/quick_start_guide.html">http://www.quartz-scheduler.org/…t_guide.html</a>
@@ -110,7 +110,7 @@ href="http://www.quartz-scheduler.org/docs/quick_start_guide.html">http://www.qu
 <p>Should end up on classpath in <code>org/quartz/quartz.properties</code>.</p>
 
 <pre
-class="brush: properties"><code>org.quartz.scheduler.instanceName = MyScheduler
+class="brush: properties">org.quartz.scheduler.instanceName = MyScheduler
 org.quartz.scheduler.instanceId = 1
 org.quartz.scheduler.rmi.export = false
 org.quartz.scheduler.rmi.proxy = false
@@ -118,12 +118,12 @@ org.quartz.scheduler.rmi.proxy = false
 org.quartz.threadPool.class = org.quartz.simpl.SimpleThreadPool
 org.quartz.threadPool.threadCount = 3
 
-org.quartz.jobStore.class = org.quartz.simpl.RAMJobStore</code></pre>
+org.quartz.jobStore.class = org.quartz.simpl.RAMJobStore</pre>
 
-<h4>Java code</h4>
+<h3 id="toc-java-code">Java code</h3>
 
 <pre
-class="brush: java"><code>import org.quartz.JobDetail;
+class="brush: java">import org.quartz.JobDetail;
 import org.quartz.Scheduler;
 import org.quartz.SchedulerException;
 import org.quartz.SimpleTrigger;
@@ -162,13 +162,13 @@ public class App
         se.printStackTrace();
     }
   }
-}</code></pre>
+}</pre>
 
 <p>And yet the code of the job class. Note that this is instantiated for each
 run, i.e. 11 times in our example.</p>
 
 <pre
-class="brush: java"><code>package cz.dynawest.quartztry.quartztry;
+class="brush: java">package cz.dynawest.quartztry.quartztry;
 
 import org.quartz.Job;
 import org.quartz.JobExecutionContext;
@@ -190,16 +190,16 @@ public class MyJobClass implements Job {
     System.out.println( "EXECUTED "+ ++counter +" times!" );
     //throw new UnsupportedOperationException("WTF.");
   }
-}</code></pre>
+}</pre>
 
-<h4>Logging configuration</h4>
+<h3 id="toc-logging-configuration">Logging configuration</h3>
 
 <p>Since 1.7.0, Quartz uses SLF4j, so you can use e.g. with log4j.</p>
 
 <p>If you decide so, put this on classpath to <code>log4.properties</code>.</p>
 
 <pre
-class="brush: properties"><code>log4j.rootLogger=DEBUG, stdout, file
+class="brush: properties">log4j.rootLogger=DEBUG, stdout, file
 
 log4j.appender.stdout=org.apache.log4j.ConsoleAppender
 log4j.appender.stdout.layout=org.apache.log4j.PatternLayout
@@ -208,12 +208,12 @@ log4j.appender.stdout.layout.ConversionPattern=%d %-5r %-5p [%c] (%t:%x) %m%n
 log4j.appender.file=org.apache.log4j.DailyRollingFileAppender
 log4j.appender.file.File=app.log
 log4j.appender.file.layout=org.apache.log4j.PatternLayout
-log4j.appender.file.layout.ConversionPattern=%d %-5r %-5p [%c] (%t:%x) %m%n</code></pre>
+log4j.appender.file.layout.ConversionPattern=%d %-5r %-5p [%c] (%t:%x) %m%n</pre>
 
-<h4>Output</h4>
+<h3 id="toc-output">Output</h3>
 
 <pre
-class="brush: plain"><code>2010-05-02 17:47:37,281 0     INFO  [org.quartz.core.SchedulerSignalerImpl] (main:) Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+class="brush: plain">2010-05-02 17:47:37,281 0     INFO  [org.quartz.core.SchedulerSignalerImpl] (main:) Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
 2010-05-02 17:47:37,281 0     INFO  [org.quartz.core.QuartzScheduler] (main:) Quartz Scheduler v.1.8.0 created.
 2010-05-02 17:47:37,281 0     INFO  [org.quartz.simpl.RAMJobStore] (main:) RAMJobStore initialized.
 2010-05-02 17:47:37,281 0     INFO  [org.quartz.core.QuartzScheduler] (main:) Scheduler meta-data: Quartz Scheduler (v1.8.0) 'MyScheduler' with instanceId '1'
@@ -277,7 +277,7 @@ EXECUTED 11 times!
 2010-05-02 17:47:42,281 5000  INFO  [org.quartz.core.QuartzScheduler] (main:) Scheduler MyScheduler_$_1 shutdown complete.
 2010-05-02 17:47:42,312 5031  DEBUG [org.quartz.simpl.SimpleThreadPool] (MyScheduler_Worker-1:) WorkerThread is shut down.
 2010-05-02 17:47:42,312 5031  DEBUG [org.quartz.simpl.SimpleThreadPool] (MyScheduler_Worker-2:) WorkerThread is shut down.
-2010-05-02 17:47:42,312 5031  DEBUG [org.quartz.simpl.SimpleThreadPool]</code></pre>
+2010-05-02 17:47:42,312 5031  DEBUG [org.quartz.simpl.SimpleThreadPool]</pre>
 </div>
 
         <!-- Rating widget -->

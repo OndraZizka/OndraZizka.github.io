@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="utf-8"/>
-    <title>JPA and Hibernate mapping with MySQL – common errors and exceptions - Ondřej Žižka</title>
+    <title>JPA
+and Hibernate mapping with MySQL – common errors and exceptions - Ondřej Žižka</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="My personal web">
     <meta name="author" content="Ondřej Žižka">
@@ -73,10 +74,13 @@
 
     <div class="document-post">
         <div class="page-header">
-            <h1>JPA and Hibernate mapping with MySQL – common errors and exceptions</h1>
+            <h1>JPA
+and Hibernate mapping with MySQL – common errors and exceptions</h1>
         </div>
         <div class="date"><em>2012-12-16</em></div>
-        <div class="doc-body"><h3>JPA and Hibernate mapping with MySQL – common errors and exceptions</h3>
+        <div class="doc-body"><h2
+id="toc-jpa-and-hibernate-mapping-with-mysql-common-errors-and-exceptions">JPA
+and Hibernate mapping with MySQL – common errors and exceptions</h2>
 
 <p><strong>Few tips on using Java Persistence API and Hibernate (with Hibernate
 Annotations and Hibernate EntityManager)</strong></p>
@@ -95,14 +99,15 @@ use some code patterns encouraged (if not required) by Hibernate mapping.</p>
 The respective error messages comming from database are MySQL specific, but for
 other RDBMS it will be similar.</p>
 
-<h4>Some tips for investigating the exception</h4>
+<h3 id="toc-some-tips-for-investigating-the-exception">Some tips for
+investigating the exception</h3>
 
 <p>Sometimes the important part is almost at the end – either at the end of a
 very long line, or at the end of stack trace. So don't panic when you see
 something like:</p>
 
 <pre
-class="stacktrace"><code>org.springframework.orm.hibernate3.HibernateJdbcException: JDBC exception on Hibernate data access: SQLException for SQL</code></pre>
+class="stacktrace">org.springframework.orm.hibernate3.HibernateJdbcException: JDBC exception on Hibernate data access: SQLException for SQL</pre>
 
 <p>Current habit of handlig exceptions is to add it's <code>getMessage()</code>
 at the end of the message of the exception to be thrown. This way, when the
@@ -132,22 +137,27 @@ in reverse order in which they appeared. In other words, if you split the stack
 trace by the „Caused by“ lines and reverse the blocks order, you would get
 the actual call stack in the moment when the deepest root cause happened.</p>
 
-<h4>Three main sources of Hibernate + JPA exceptions</h4>
+<h3 id="toc-three-main-sources-of-hibernate-jpa-exceptions">Three main sources
+of Hibernate + JPA exceptions</h3>
 
 <p>Most commonly appearing exceptions come from these situations:</p>
 
-<h5>1) You've an error in your mapping (annotations) and Hibernate refuses to
-create the <code>EntityManagerFactory</code>.</h5>
+<h4
+id="toc-1-you-ve-an-error-in-your-mapping-annotations-and-hibernate-refuses-to-create-the-entitymanagerfactory">1)
+You've an error in your mapping (annotations) and Hibernate refuses to create
+the <code>EntityManagerFactory</code>.</h4>
 
 <p><em>To be written later (when I get some of these again :).</em></p>
 
-<h5>2) You've an error in your mapping, which proves in runtime – like, NOT
-NULL checks performed by database when you persist an entity with null
-property.</h5>
+<h4
+id="toc-2-you-ve-an-error-in-your-mapping-which-proves-in-runtime-like-not-null-checks-performed-by-database-when-you-persist-an-entity-with-null-property">2)
+You've an error in your mapping, which proves in runtime – like, NOT NULL
+checks performed by database when you persist an entity with null property.</h4>
 
 <p><em>To be written later.</em></p>
 
-<h5>3) You've an error in program logic in your entity or DAO methods.</h5>
+<h4 id="toc-3-you-ve-an-error-in-program-logic-in-your-entity-or-dao-methods">3)
+You've an error in program logic in your entity or DAO methods.</h4>
 
 <p>This makes Hibernate complain such like „trying to persist deleted
 entity“. Most common cause is that you have some references across the network
@@ -162,7 +172,7 @@ the relation.</p>
 <p>Let's see the example:</p>
 
 <pre
-class="brush: java"><code>@Entity
+class="brush: java">@Entity
 class Order
 
   @OneToMany( ... )
@@ -178,9 +188,10 @@ class Order
 
   ...
 
-}</code></pre>
+}</pre>
 
-<h5>4) You've an error in handling of the transaction.</h5>
+<h4 id="toc-4-you-ve-an-error-in-handling-of-the-transaction">4) You've an error
+in handling of the transaction.</h4>
 
 <p><code>java.lang.IllegalArgumentException: Removing a detached instance ...</code></p>
 
@@ -191,16 +202,16 @@ class Order
 <p><strong>Option 1:</strong> <code>getReference()</code></p>
 
 <pre
-class="brush: java"><code>public void remove( Item item ) {
+class="brush: java">public void remove( Item item ) {
   this.em.remove( this.em.getReference( Item.class, item.getId() ) );
-}</code></pre>
+}</pre>
 
 <p><strong>Option 2:</strong> <code>merge()</code></p>
 
 <pre
-class="brush: java"><code>public void remove( Item item ) {
+class="brush: java">public void remove( Item item ) {
   this.em.remove( this.em.merge( Item.class, item.getId() ) );
-}</code></pre>
+}</pre>
 
 <blockquote>
 	<p>There is additional overhead to merge since in addition to doing a lookup, it
@@ -215,19 +226,20 @@ method.</p>
 
 <hr />
 
-<h4>Common Exceptions I've seen when when learning JPA with Hibernate</h4>
+<h3
+id="toc-common-exceptions-i-ve-seen-when-when-learning-jpa-with-hibernate">Common
+Exceptions I've seen when when learning JPA with Hibernate</h3>
 
-<pre><code>Caused by: org.hibernate.exception.GenericJDBCException: could not insert: [cz.dynawest.isir.entities.User]
-Caused by: java.sql.SQLException: Field 'created' doesn't have a default value</code></pre>
+<pre>Caused by: org.hibernate.exception.GenericJDBCException: could not insert: [cz.dynawest.isir.entities.User]
+Caused by: java.sql.SQLException: Field 'created' doesn't have a default value</pre>
 
 <p>This one is easy – probably you have a NOT NULL column, but haven't
 annotated it – so Hibernate, when it sees <code>null</code> value, it does
 not include the column in the <code>INSERT</code> query. Add
 <code>@Column( nullable=false )</code> to the mentioned property.</p>
 
-<pre
-class="brush: java"><code>@Column( nullable=false )
-private Date created;</code></pre>
+<pre class="brush: java">@Column( nullable=false )
+private Date created;</pre>
 
 <p>This will not solve the problem, but at least you will catch it sooner –
 before Hibernate sends the SQL to the database, it will throw an exception with
@@ -236,7 +248,7 @@ the message saying which property you did not set.</p>
 <p>Full stack trace:</p>
 
 <pre
-class="java .small"><code>org.springframework.orm.hibernate3.HibernateJdbcException: JDBC exception on Hibernate data access: SQLException for SQL [insert into isir_sled_users (aktivace_klic, mail, pass) values (?, ?, ?)]; SQL state [HY000]; error code [1364]; could not insert: [cz.dynawest.isir.entities.User]; nested exception is org.hibernate.exception.GenericJDBCException: could not insert: [cz.dynawest.isir.entities.User]
+class="java .small">org.springframework.orm.hibernate3.HibernateJdbcException: JDBC exception on Hibernate data access: SQLException for SQL [insert into isir_sled_users (aktivace_klic, mail, pass) values (?, ?, ?)]; SQL state [HY000]; error code [1364]; could not insert: [cz.dynawest.isir.entities.User]; nested exception is org.hibernate.exception.GenericJDBCException: could not insert: [cz.dynawest.isir.entities.User]
         at org.springframework.orm.hibernate3.SessionFactoryUtils.convertHibernateAccessException(SessionFactoryUtils.java:642)
         at org.springframework.orm.jpa.vendor.HibernateJpaDialect.translateExceptionIfPossible(HibernateJpaDialect.java:95)
         at org.springframework.dao.support.DataAccessUtils.translateIfNecessary(DataAccessUtils.java:212)
@@ -294,7 +306,7 @@ Caused by: java.sql.SQLException: Field 'created' doesn't have a default value
         at com.mysql.jdbc.PreparedStatement.executeUpdate(PreparedStatement.java:1937)
         at com.mysql.jdbc.PreparedStatement.executeUpdate(PreparedStatement.java:1922)
         at org.hibernate.id.IdentityGenerator$GetGeneratedKeysDelegate.executeAndExtract(IdentityGenerator.java:94)
-        at org.hibernate.id.insert.AbstractReturningDelegate.performInsert(AbstractReturningDelegate.java:57)</code></pre>
+        at org.hibernate.id.insert.AbstractReturningDelegate.performInsert(AbstractReturningDelegate.java:57)</pre>
 
 <hr />
 </div>

@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="utf-8"/>
-    <title>Wicket IPageStore implementation with Infinispan (formerly
-JBoss Cache) - Ondřej Žižka</title>
+    <title>Wicket
+IPageStore implementation with Infinispan (formerly JBoss Cache) - Ondřej Žižka</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="My personal web">
     <meta name="author" content="Ondřej Žižka">
@@ -74,12 +74,13 @@ JBoss Cache) - Ondřej Žižka</title>
 
     <div class="document-post">
         <div class="page-header">
-            <h1>Wicket IPageStore implementation with Infinispan (formerly
-JBoss Cache)</h1>
+            <h1>Wicket
+IPageStore implementation with Infinispan (formerly JBoss Cache)</h1>
         </div>
         <div class="date"><em>2012-12-13</em></div>
-        <div class="doc-body"><h3>Wicket IPageStore implementation with Infinispan (formerly
-JBoss Cache)</h3>
+        <div class="doc-body"><h2
+id="toc-wicket-ipagestore-implementation-with-infinispan-formerly-jboss-cache">Wicket
+IPageStore implementation with Infinispan (formerly JBoss Cache)</h2>
 
 <p>The class below uses Infinispan.</p>
 
@@ -98,18 +99,18 @@ know</a>.</strong></p>
 <p><em>TODO:</em> Remember the last version &amp; ajaxVersion for each page, not
 to have to sort it in Lucene.</p>
 
-<h4>How to use</h4>
+<h3 id="toc-how-to-use">How to use</h3>
 
 <pre
-class="brush: java"><code>@Override
+class="brush: java">@Override
 protected ISessionStore newSessionStore() {
   return new SecondLevelCacheSessionStore(this, new JBossCachePageStore());
-}</code></pre>
+}</pre>
 
-<h4>PageStore implementation</h4>
+<h3 id="toc-pagestore-implementation">PageStore implementation</h3>
 
 <pre
-class="brush: java"><code>package cz.dw.test.jbosscache;
+class="brush: java">package cz.dw.test.jbosscache;
 
 import java.io.IOException;
 import java.util.List;
@@ -338,12 +339,12 @@ public class JBossCachePageStore extends AbstractPageStore implements IPageStore
       return cq.getResultSize() &gt; 0;
    }
 
-}// class</code></pre>
+}// class</pre>
 
-<h4>Dependencies (Maven)</h4>
+<h3 id="toc-dependencies-maven">Dependencies (Maven)</h3>
 
 <pre
-class="brush: xml"><code>&lt;repositories&gt;
+class="brush: xml">&lt;repositories&gt;
   &lt;repository&gt;&lt;id&gt;jboss&lt;/id&gt;&lt;url&gt;https://repository.jboss.org/nexus/content/groups/public&lt;/url&gt;&lt;/repository&gt;
 &lt;/repositories&gt;
 
@@ -358,27 +359,27 @@ class="brush: xml"><code>&lt;repositories&gt;
     &lt;groupId&gt;org.infinispan&lt;/groupId&gt;
     &lt;artifactId&gt;infinispan-query&lt;/artifactId&gt;
     &lt;version&gt;4.0.0.FINAL&lt;/version&gt;
-  &lt;/dependency&gt;</code></pre>
+  &lt;/dependency&gt;</pre>
 
 <p>For possible Infinispan cache store implementations, see the <a
 href="https://repository.jboss.org/nexus/content/groups/public/org/infinispan/">JBoss
 Maven repo</a></p>
 
 <pre
-class="brush: xml"><code>&lt;dependency&gt;
+class="brush: xml">&lt;dependency&gt;
   &lt;groupId&gt;org.infinispan&lt;/groupId&gt;
   &lt;artifactId&gt;infinispan-cachestore-jdbm&lt;/artifactId&gt;
   &lt;version&gt;4.0.0.FINAL&lt;/version&gt;
-&lt;/dependency&gt;</code></pre>
+&lt;/dependency&gt;</pre>
 
 <p>Not used (yet?):</p>
 
 <pre
-class="brush: xml"><code>&lt;dependency&gt;
+class="brush: xml">&lt;dependency&gt;
   &lt;groupId&gt;org.infinispan&lt;/groupId&gt;
   &lt;artifactId&gt;infinispan-tree&lt;/artifactId&gt;
   &lt;version&gt;4.0.0.FINAL&lt;/version&gt;
-&lt;/dependency&gt;</code></pre>
+&lt;/dependency&gt;</pre>
 </div>
 
         <!-- Rating widget -->

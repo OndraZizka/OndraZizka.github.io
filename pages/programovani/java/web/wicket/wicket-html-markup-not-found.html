@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="utf-8"/>
-    <title>WicketMessage: Markup of type ‚html‘ for component not found - Ondřej Žižka</title>
+    <title>WicketMessage:
+Markup of type ‚html‘ for component not found - Ondřej Žižka</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="My personal web">
     <meta name="author" content="Ondřej Žižka">
@@ -73,17 +74,20 @@
 
     <div class="document-post">
         <div class="page-header">
-            <h1>WicketMessage: Markup of type ‚html‘ for component not found</h1>
+            <h1>WicketMessage:
+Markup of type ‚html‘ for component not found</h1>
         </div>
         <div class="date"><em>2012-12-31</em></div>
-        <div class="doc-body"><h3>WicketMessage: Markup of type ‚html‘ for component not found</h3>
+        <div class="doc-body"><h2
+id="toc-wicketmessage-markup-of-type-html-for-component-not-found">WicketMessage:
+Markup of type ‚html‘ for component not found</h2>
 
-<h4>Solution</h4>
+<h3 id="toc-solution">Solution</h3>
 
 <p>Let Maven pack everything into the <code>.war</code>:</p>
 
 <pre
-class="brush: plain"><code>&lt;resources&gt;
+class="brush: plain">&lt;resources&gt;
    &lt;!-- Web - Wicket --&gt;
                   &lt;resource&gt;
                           &lt;filtering&gt;false&lt;/filtering&gt;
@@ -91,12 +95,12 @@ class="brush: plain"><code>&lt;resources&gt;
                           &lt;includes&gt;&lt;include&gt;**&lt;/include&gt;&lt;/includes&gt;
                           &lt;excludes&gt;&lt;exclude&gt;**/*.java&lt;/exclude&gt;&lt;/excludes&gt;
                   &lt;/resource&gt;
-&lt;/resources&gt;</code></pre>
+&lt;/resources&gt;</pre>
 
-<h4>Symptom</h4>
+<h3 id="toc-symptom">Symptom</h3>
 
 <pre
-class="brush: plain"><code>WicketMessage: Markup of type 'html' for component 'org.jboss.jawabot.web.HomePage' not found. Enable debug messages for org.apache.wicket.util.resource to get a list of all filenames tried.: [Page class = org.jboss.jawabot.web.HomePage, id = 0, version = 0]
+class="brush: plain">WicketMessage: Markup of type 'html' for component 'org.jboss.jawabot.web.HomePage' not found. Enable debug messages for org.apache.wicket.util.resource to get a list of all filenames tried.: [Page class = org.jboss.jawabot.web.HomePage, id = 0, version = 0]
 
 Root cause:
 
@@ -128,7 +132,7 @@ at org.mortbay.jetty.HttpParser.parseNext(HttpParser.java:549)
 at org.mortbay.jetty.HttpParser.parseAvailable(HttpParser.java:212)
 at org.mortbay.jetty.HttpConnection.handle(HttpConnection.java:404)
 at org.mortbay.jetty.bio.SocketConnector$Connection.run(SocketConnector.java:228)
-at org.mortbay.thread.QueuedThreadPool$PoolThread.run(QueuedThreadPool.java:582)</code></pre>
+at org.mortbay.thread.QueuedThreadPool$PoolThread.run(QueuedThreadPool.java:582)</pre>
 </div>
 
         <!-- Rating widget -->

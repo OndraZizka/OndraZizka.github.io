@@ -76,9 +76,9 @@
             <h1>Úvod do J2EE</h1>
         </div>
         <div class="date"><em>2012-12-16</em></div>
-        <div class="doc-body"><h3>Úvod do J2EE</h3>
+        <div class="doc-body"><h2 id="toc-uvod-do-j2ee">Úvod do J2EE</h2>
 
-<h4>Komu tento úvod určen</h4>
+<h3 id="toc-komu-tento-uvod-urcen">Komu tento úvod určen</h3>
 
 <p>Úvod píšu pro lidi, kteří (stejně jako dříve já) chtějí proniknout
 do J2EE, ale ztrácejí se v záplavě pojmů a zkratek. Předpokládám
@@ -108,7 +108,7 @@ href="http://java.sun.com/j2ee/1.4/docs/tutorial/doc/">J2EE tutoriál</a>
 href="http://www.myeclipseide.com/documentation/quickstarts/earprojects/">procvičovací
 tutoriál pro Eclipse IDE</a>.</p>
 
-<h4>Co je J2EE</h4>
+<h3 id="toc-co-je-j2ee">Co je J2EE</h3>
 
 <p>Zkratka J2EE (nověji Java <acronym title="Enterprise Edition">EE</acronym>)
 označuje skupinu technologií, která se používá pro vývoj tzv.
@@ -130,7 +130,7 @@ technologií; Avšak jak jsem předeslal, úvod se snažím psát co
 nejpraktičtěji, proto uvedu jen úplně nejnutnější pojmy a zkratky; zbylé
 haldy si necháme na později a vrhneme se rovnou na software.</p>
 
-<h5>Servlety</h5>
+<h4 id="toc-servlety">Servlety</h4>
 
 <p>V době rozvoje Javy si její tvůrci a příznivci řekli, že by to mohla
 být šikovná technologie pro tvorbu dynamických webů – koneckonců jde
@@ -145,20 +145,20 @@ požadavek volají. V parametrech dostanou informace o požadavku, o session,
 a referenci na objekt odpovědi.</p>
 
 <pre
-class="brush: java"><code>public class HelloServlet extends HttpServlet {
+class="brush: java">public class HelloServlet extends HttpServlet {
 
   public void doGet (HttpServletRequest pozadavek, HttpServletResponse odpoved)
     throws ServletException, IOException {
 
     odpoved.getWriter().println("&lt;html&gt;&lt;body&gt;Hello, world!&lt;/body&gt;&lt;/html&gt;");
   }
-}</code></pre>
+}</pre>
 
 <p>Pak takovouto třídu zabalíte do JAR archivu spolu s konfigurákem
 <code>WEB-INF/web.xml</code>:</p>
 
 <pre
-class="brush: xml"><code>&lt;web-app xmlns="http://java.sun.com/xml/ns/j2ee" version="2.4"
+class="brush: xml">&lt;web-app xmlns="http://java.sun.com/xml/ns/j2ee" version="2.4"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http:/java.sun.com/dtd/web-app_2_3.dtd"&gt;
   &lt;servlet&gt;
@@ -170,7 +170,7 @@ class="brush: xml"><code>&lt;web-app xmlns="http://java.sun.com/xml/ns/j2ee" ver
     &lt;servlet-name&gt;hello&lt;/servlet-name&gt;
     &lt;url-pattern&gt;/hello&lt;/url-pattern&gt;
   &lt;/servlet-mapping&gt;
-&lt;/web-app&gt;</code></pre>
+&lt;/web-app&gt;</pre>
 
 <p>Potom už jen archiv „deploynete“ a aplikace jede.</p>
 
@@ -185,9 +185,9 @@ class="brush: xml"><code>&lt;web-app xmlns="http://java.sun.com/xml/ns/j2ee" ver
 přimo v Java kódu je dost otravné:</p>
 
 <pre
-class="brush: java"><code>PrintWriter vystup = odpoved.getWriter();
+class="brush: java">PrintWriter vystup = odpoved.getWriter();
 vystup.write("&lt;h1&gt;Ahoj " + session.getAttribute("name") +"!&lt;/h1&gt;");
-vystup.write("&lt;p&gt;Takhle nějak se generuje stránka ze servletu.&lt;/p&gt;");</code></pre>
+vystup.write("&lt;p&gt;Takhle nějak se generuje stránka ze servletu.&lt;/p&gt;");</pre>
 
 <p>Představte si takhle psát celou stránku. Proto se vývojáři poohlédli,
 jak se to řeší v jiných technologiích, například ASP nebo PHP (tehdy
@@ -202,10 +202,10 @@ menšina. No a tak vznikla technologie JSP.</p>
 	Servlet API.</p>
 </blockquote>
 
-<h5>JSP – Java Server Pages</h5>
+<h4 id="toc-jsp-java-server-pages">JSP – Java Server Pages</h4>
 
 <pre
-class="jsp"><code>&lt;h1&gt;Ahoj &lt;%= session.getAttribute("name") %&gt;!&lt;/h1&gt;</code></pre>
+class="jsp">&lt;h1&gt;Ahoj &lt;%= session.getAttribute("name") %&gt;!&lt;/h1&gt;</pre>
 
 <p>Rovnou při vzniku měla mnohem více možností, než konkureční způsoby
 vkládání kódu do HTML (můj názor). A to především díky zvláštním
@@ -213,7 +213,7 @@ tagům, jejichž interpretaci mají na starosti Java třídy. Takový tag
 vypadá například takto:</p>
 
 <pre
-class="brush: xml"><code>&lt;html:link action="/logout"&gt;Odhlásit&lt;/html:link&gt;</code></pre>
+class="brush: xml">&lt;html:link action="/logout"&gt;Odhlásit&lt;/html:link&gt;</pre>
 
 <p>Zrovna tento tag není úplně dobrý příklad, zrovna mi padnul pod ruku.
 ***Dát lepší příklad. Lepší by byl třeba tento: <em>(Poznámka pro
@@ -221,14 +221,14 @@ znalé: Tento kód jsem si z hlavy vymyslel, neodpovídá přesně tagům JSTL
 knihovny.)</em></p>
 
 <pre
-class="brush: xml"><code>&lt;cache:cache key="vypis_uzivatelu"&gt;
+class="brush: xml">&lt;cache:cache key="vypis_uzivatelu"&gt;
   &lt;sql:query sql="SELECT * FROM users ORDER BY name" var="resultUsers" /&gt;
   &lt;table&gt;
     &lt;c:foreach from="resultUsers" var="i"&gt;
       &lt;tr&gt;&lt;td&gt;&lt;c:out value="${resultUsers[i]}"/&gt;&lt;/td&gt;&lt;/tr&gt;
     &lt;/c:foreach&gt;
   &lt;/table&gt;
-&lt;/cache:cache&gt;</code></pre>
+&lt;/cache:cache&gt;</pre>
 
 <p>Ne, nelekejte se – neřeší se celá aplikační logika pomocí XML
 elementů (také to tak na mě z některých tutoriálů působilo). Elementy,
@@ -260,7 +260,7 @@ Můžete vyjádřit aritmetické operace, různě formátovat, volat statické
 Java funkce, které si sami naprogramujete, a další. (PHPčkářům by to
 mohlo připomínat <em>Smarty</em>.)</p>
 
-<h5>Životní cyklus J2EE aplikace</h5>
+<h4 id="toc-zivotni-cyklus-j2ee-aplikace">Životní cyklus J2EE aplikace</h4>
 
 <p>Pro lidi, kteří znají jen PHP, je pojem „životní cyklus“ trochu
 novinkou. PHP má totiž životní cyklus úplně nejjednoduší možný:<br />
@@ -284,7 +284,7 @@ využívají téměř všechny frameworky, různé cache nástroje, správci
 zdrojů (např. spojení do databáze) atd. Samozřejmě se nejedná o náhradu
 perzistence; může ji však skvěle doplňovat.</p>
 
-<h4>Servery</h4>
+<h3 id="toc-servery">Servery</h3>
 
 <p>Pokud chcete začít s vývojem webových aplikací s J2EE, přijdete zprvu
 asi do kontaktu s nějakým serverem, který je umí vykonávat. Takových
@@ -359,7 +359,8 @@ Nemačkejte na ně – zrušili byste si možnost správy Tomcatu (bohužel to
 není blbuvzdorné). Trochu rozvedu, k čemu jsou – čímž se dostáváme
 k tématu, jak se J2EE aplikace dostávají na server.</p>
 
-<h5>Deploy = upload aplikace (zjednodušeně řečeno)</h5>
+<h4 id="toc-deploy-upload-aplikace-zjednodusene-receno">Deploy = upload aplikace
+(zjednodušeně řečeno)</h4>
 
 <p>J2EE aplikace se obvykle na server umisťují v jednom souboru s příponou
 <code>.war</code> – Web ARchive. Ten má danou strukturu souborů a
@@ -392,7 +393,7 @@ děje proto, že se snažíte vyřešit problém nekompatibilních verzí
 tříd. Proto také doporučuji webové aplikace napřed zkoušet na
 kontejnerech, u kterých je toto riziko menší.</p>
 
-<h5>Součásti Tomcatu</h5>
+<h4 id="toc-soucasti-tomcatu">Součásti Tomcatu</h4>
 
 <p>Začátečníky často mate spoustu názvů, se kterými se při práci
 s Tomcatem setkají – bohužel zejména při výpisu chyb, ale částo také
@@ -413,7 +414,7 @@ přesunout dále, až za představení technologií.</p>
 <p>Tolik tedy zatím k serverům, a teď se podíváme po něčem, v čem
 budeme aplikace vyvíjet.</p>
 
-<h4>IDE – prostředí pro vývoj</h4>
+<h3 id="toc-ide-prostredi-pro-vyvoj">IDE – prostředí pro vývoj</h3>
 
 <p>Prostředí pro vývoj J2EE aplikací je opět více. Nejznámější jsou
 Eclipse a NetBeans. Začátečníkům rozhodně doporučuji NetBeans – na
@@ -441,7 +442,8 @@ i Apache Tomcat. Proč jsem vás tedy nechal stahovat samostatný Tomcat?</p>
 <p>K vývojovému prostředí se ještě dostaneme, nyní k samotným
 technologiím.</p>
 
-<h4>Perzistence – Hibernate, Toplink a spol.</h4>
+<h3 id="toc-perzistence-hibernate-toplink-a-spol">Perzistence – Hibernate,
+Toplink a spol.</h3>
 
 <p>Jednou z technologií, které jsou na J2EE nejlákavější, je perzistence
 objektů, či objektově-relační mapování. Ta slouží k automatickému
@@ -450,26 +452,26 @@ načítání. Dále je možné provádět nad objekty hromadné akce a dotazy
 pomocí jazyka podobného SQL. Objektům (resp. jejich třídám), se kterými
 v perzistenci pracujeme, se říká <em>entity</em>.</p>
 
-<h5>Hibernate</h5>
+<h4 id="toc-hibernate">Hibernate</h4>
 
 <p>Nejznámějším nástrojem pro perzistenci je Hibernate. Ten používá
 jazyk HQL. Pro mapování, tedy k popisu, jak se objekty které třídy
 rozkládají do tabulek v databázi, sloužily dříve XML soubory.</p>
 
 <pre
-class="brush: xml"><code>&lt;hibernate-mapping&gt;
+class="brush: xml">&lt;hibernate-mapping&gt;
  &lt;class name="ModelPlane" table="model_plane"&gt;
    &lt;id name="id" column="id_model" type="java.lang.Long"&gt;
      &lt;generator class="increment"/&gt;
    &lt;/id&gt;
    &lt;property name="name" column="name" type="java.lang.String" /&gt;
  &lt;/class&gt;
-&lt;/hibernate-mapping&gt;</code></pre>
+&lt;/hibernate-mapping&gt;</pre>
 
 <p>V poslední době se ale rozmáhá pohodlnější způsob – @anotace.</p>
 
 <pre
-class="brush: xml"><code>@Entity
+class="brush: xml">@Entity
 public class ModelPlane {
 
     private Long id;
@@ -483,7 +485,7 @@ public class ModelPlane {
 
     public String getName() { return name; }
     public void setName(String name) { this.name = name; }
-}</code></pre>
+}</pre>
 
 <p>Manuál k anotacím najdete <a
 href="http://www.hibernate.org/hib_docs/annotations/reference/en/html_single/">zde</a> –
@@ -503,7 +505,7 @@ mnohasetstránkovou knihu (viz Hibernate in Action). Proto vás jen odkážu na
 dobrý tutoriál, ze kterého cca během dne pochopíte, oč jde a jak se to
 programuje.</p>
 
-<h5>JPA – Java Persistence API</h5>
+<h4 id="toc-jpa-java-persistence-api">JPA – Java Persistence API</h4>
 
 <p>Ani perzistence neunikla tendenci ve světě Javy vše standardizovat a
 vymýšlet společná aplikační rozhraní. Tak vznikl standard JPA, což je
@@ -512,18 +514,18 @@ XML souborů používat @anotace, což jsou (pro ty, co neznají) meta-informace
 zapsané přímo v kódu Java tříd za zavináčem:</p>
 
 <pre
-class="brush: java"><code>@Entity
+class="brush: java">@Entity
 @Table(name="users")
 public class User {
   @Id public int id;
   @Column( name = "jmeno" ) public String krestniJmeno;
   ...
-}</code></pre>
+}</pre>
 
 <p>Trochu kontraproduktivně to vneslo bordel do názvosloví (vzniklo mnoho
 „skoro-synonym“), ale na to si zvyknete :-)</p>
 
-<h4>Frameworky</h4>
+<h3 id="toc-frameworky">Frameworky</h3>
 
 <p>Technologie JSP sama o sobě je pořád dost slabá a pro vývoj velkých
 aplikací nevhodná. Proto se postupem času objevily stovky frameworků,
@@ -544,7 +546,7 @@ PDF dokument pro tisk či PNG obrázek. Při tomto generování se obvykle
 použijí data připravená v akci, a k samoznému generování se často
 používá některý z přehršle šablonovacích systémů.</p>
 
-<h5>Struts</h5>
+<h4 id="toc-struts">Struts</h4>
 
 <p>Největší obliby (podle mého pozorování) došel framework Struts. Ten
 slouží právě zejména k rozdělení a řízení toku aplikace – kdy
@@ -563,21 +565,21 @@ JSP), které plní různé účely.</p>
 verze Struts 2, ve které původní funkčnost <em>Struts 1</em> tvoří asi
 20 %.</p>
 
-<h5>Seam Framework</h5>
+<h4 id="toc-seam-framework">Seam Framework</h4>
 
 <p><a href="http://seamframework.org/">Seam framework</a> z dílny JBoss je
 známý především díky své části určené pro ulehčení spolupráce JSF
 a EJB (podle čehož ostatně nese své jméno). Obsahuje však mnohem více
 součástí, a dalo by se říci, že záběrem konkuruje frameworku Spring.</p>
 
-<h5>JSF – Java Server Faces</h5>
+<h4 id="toc-jsf-java-server-faces">JSF – Java Server Faces</h4>
 
 <p>Sun ze všech nejvíce propaguje framework JSF. Ten do značné míry
 vychází ze Struts 1, má i podobný záběr funkcionality, ale v lecčems se
 zásadně liší, a pochopitelně s sebou přináší spoustu standardů a
 více XML.</p>
 
-<h5>Spring Framework</h5>
+<h4 id="toc-spring-framework">Spring Framework</h4>
 
 <p>Když jsem se kamaráda – J2EE juniora – poprvé zeptal, k čemu je
 Spring, řekl: „Spring je naprosto bomba.“ A pokračoval tím, jak mu to
@@ -639,7 +641,7 @@ proto vás rovnou odkáži na články</p>
 	templates via Spring in non-web application</a></li>
 </ul>
 
-<h5>Další</h5>
+<h4 id="toc-dalsi">Další</h4>
 
 <p>Pokud hledáte něco pro konkrétní účel, je obvykle dobré podívat se na
 projekty, které zastřešují jiné projekty – jako jsou <a
@@ -691,7 +693,7 @@ V takových se obvykle nespustí flamewar, ale naopak věcná diskuze, kde se
 velmi stučně dozvíte shrnutí, k čemu který slouží, respektive k čemu
 jej kdo používá, a často i krátké a výstižné ukázky kódu.</p>
 
-<h4>EJB</h4>
+<h3 id="toc-ejb">EJB</h3>
 
 <p>EJB, <em>Enterprise Java Beans</em>
 <!--, je cosi, čemu přesně ještě docela nerozumím, ale -->: v podstatě
@@ -713,7 +715,7 @@ zcela marně snažíte v aplikačním serveru pracujícím na EJB
 hodně často. Studium EJB doporučuji odložit na dobu, kdy budete mít v ruce
 JSP, Struts a Hibernate. ***Dopsat</p>
 
-<h4>Závěr</h4>
+<h3 id="toc-zaver">Závěr</h3>
 
 <p>Zatím vše. Jelikož se s obrovským světem J2EE stále seznamuji,
 vyhrazuji si právo plácat tu nesmysly, ale snažím se, aby uvedená fakta

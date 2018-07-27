@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="utf-8"/>
-    <title>Maven: Profile activation and properties - Ondřej Žižka</title>
+    <title>Maven: Profile activation
+and properties - Ondřej Žižka</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="My personal web">
     <meta name="author" content="Ondřej Žižka">
@@ -73,10 +74,12 @@
 
     <div class="document-post">
         <div class="page-header">
-            <h1>Maven: Profile activation and properties</h1>
+            <h1>Maven: Profile activation
+and properties</h1>
         </div>
         <div class="date"><em>2012-12-13</em></div>
-        <div class="doc-body"><h3>Maven: Profile activation and properties</h3>
+        <div class="doc-body"><h2 id="toc-maven-profile-activation-and-properties">Maven: Profile activation
+and properties</h2>
 
 <p>I was wondering whether you can use both of these scenarios with the same
 property:</p>
@@ -89,13 +92,14 @@ property:</p>
 	<code>&lt;activation&gt;</code>.</li>
 </ol>
 
-<h4>„Transitive“ activation: Does not work.</h4>
+<h3 id="toc-transitive-activation-does-not-work">„Transitive“ activation:
+Does not work.</h3>
 
 <p>By transitive activation, I mean that one profile sets a property which
 activates the other profile. That does not work.</p>
 
 <pre
-class="brush: xml"><code>&lt;profiles&gt;
+class="brush: xml">&lt;profiles&gt;
   &lt;profile&gt;
     &lt;id&gt;foo&lt;/id&gt;
 
@@ -132,9 +136,9 @@ class="brush: xml"><code>&lt;profiles&gt;
     &lt;/build&gt;
 
   &lt;/profile&gt;
-&lt;/profiles&gt;</code></pre>
+&lt;/profiles&gt;</pre>
 
-<h4>Two-way activation: Works.</h4>
+<h3 id="toc-two-way-activation-works">Two-way activation: Works.</h3>
 
 <p>A couple of details:</p>
 
@@ -151,7 +155,7 @@ class="brush: xml"><code>&lt;profiles&gt;
 </ul>
 
 <pre
-class="brush: xml"><code>&lt;project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd"&gt;
+class="brush: xml">&lt;project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd"&gt;
   &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
 
   &lt;groupId&gt;cz.dynawest.maven.playground&lt;/groupId&gt;
@@ -191,10 +195,10 @@ class="brush: xml"><code>&lt;project xmlns="http://maven.apache.org/POM/4.0.0" x
     &lt;/profile&gt;
   &lt;/profiles&gt;
 
-&lt;/project&gt;</code></pre>
+&lt;/project&gt;</pre>
 
 <pre
-class="brush: plain"><code>ondra@ondra-redhat:~/work-unrelated/MavenPlayground/props$ mvn test -Dfoo
+class="brush: plain">ondra@ondra-redhat:~/work-unrelated/MavenPlayground/props$ mvn test -Dfoo
 [INFO] Scanning for projects...
 [INFO] ------------------------------------------------------------------------
 [INFO] Building Maven Playground - props
@@ -203,10 +207,10 @@ class="brush: plain"><code>ondra@ondra-redhat:~/work-unrelated/MavenPlayground/p
 [INFO] [antrun:run {execution: default}]
 [INFO] Executing tasks
      [echo] *** foo:  true ***
-[INFO] Executed tasks</code></pre>
+[INFO] Executed tasks</pre>
 
 <pre
-class="brush: plain"><code>ondra@ondra-redhat:~/work-unrelated/MavenPlayground/props$ mvn test -Pfoo
+class="brush: plain">ondra@ondra-redhat:~/work-unrelated/MavenPlayground/props$ mvn test -Pfoo
 [INFO] Scanning for projects...
 [INFO] ------------------------------------------------------------------------
 [INFO] Building Maven Playground - props
@@ -215,15 +219,15 @@ class="brush: plain"><code>ondra@ondra-redhat:~/work-unrelated/MavenPlayground/p
 [INFO] [antrun:run {execution: default}]
 [INFO] Executing tasks
      [echo] *** foo:  BBBBBB ***
-[INFO] Executed tasks</code></pre>
+[INFO] Executed tasks</pre>
 
 <pre
-class="brush: plain"><code>[INFO] Scanning for projects...
+class="brush: plain">[INFO] Scanning for projects...
 [INFO] ------------------------------------------------------------------------
 [INFO] Building Maven Playground - props
 [INFO]    task-segment: [test]
 [INFO] ------------------------------------------------------------------------
-[INFO] No goals needed for project - skipping</code></pre>
+[INFO] No goals needed for project - skipping</pre>
 </div>
 
         <!-- Rating widget -->

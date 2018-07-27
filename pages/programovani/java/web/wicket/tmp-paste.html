@@ -76,12 +76,12 @@
             <h1>Wicket component</h1>
         </div>
         <div class="date"><em>2012-12-31</em></div>
-        <div class="doc-body"><h3>Wicket component</h3>
+        <div class="doc-body"><h2 id="toc-wicket-component">Wicket component</h2>
 
 <p>Originally I had:</p>
 
 <pre
-class="brush: html"><code>&lt;tr wicket:id="resources"&gt;
+class="brush: html">&lt;tr wicket:id="resources"&gt;
    &lt;td&gt;
        &lt;a href="#" wicket:id="reslink"&gt;
           &lt;img wicket:id="icoType" src="ResourceMachine.gif"/&gt;
@@ -89,20 +89,20 @@ class="brush: html"><code>&lt;tr wicket:id="resources"&gt;
        &lt;/a&gt;
    &lt;/td&gt;
    ...
-&lt;/tr&gt;</code></pre>
+&lt;/tr&gt;</pre>
 
 <pre
-class="brush: java"><code>// Link itself. We're giving the resource as the parameter for the Resource page.
+class="brush: java">// Link itself. We're giving the resource as the parameter for the Resource page.
 new BookmarkablePageLink("reslink", new ResourcePage( item.getModelObject().getResource() ))
 // Icon.
 .add( new Image( "icoType", "ResourceMachine.gif" ) )
 // Link's kabel
-.add( new Label("label", item.getModelObject().getResource().getName() ))</code></pre>
+.add( new Label("label", item.getModelObject().getResource().getName() ))</pre>
 
 <p>I tried to turn it into a component:</p>
 
 <pre
-class="brush: html"><code>&lt;!DOCTYPE html&gt;
+class="brush: html">&lt;!DOCTYPE html&gt;
 &lt;html&gt;
    &lt;head&gt;
       &lt;title&gt;JawaBot resource&lt;/title&gt;
@@ -117,10 +117,10 @@ class="brush: html"><code>&lt;!DOCTYPE html&gt;
    &lt;/a&gt;
 
    &lt;/body&gt;
-&lt;/html&gt;</code></pre>
+&lt;/html&gt;</pre>
 
 <pre
-class="brush: java"><code>package org.jboss.jawabot.web._co;
+class="brush: java">package org.jboss.jawabot.web._co;
 
 import org.apache.wicket.Page;
 import org.apache.wicket.PageParameters;
@@ -142,12 +142,12 @@ public class ResourceLink extends BookmarkablePageLink&lt;Resource&gt; {
       this.add( new Label("label", this.getModelObject().getName() ));
    }
 
-}</code></pre>
+}</pre>
 
-<h4>Using the component in a page</h4>
+<h3 id="toc-using-the-component-in-a-page">Using the component in a page</h3>
 
 <pre
-class="brush: html"><code>&lt;tr wicket:id="resources"&gt;
+class="brush: html">&lt;tr wicket:id="resources"&gt;
    &lt;td&gt;
        &lt;a href="#" wicket:id="reslink"&gt;
           &lt;img src="ResourceMachine.gif"/&gt;
@@ -155,11 +155,11 @@ class="brush: html"><code>&lt;tr wicket:id="resources"&gt;
        &lt;/a&gt;
    &lt;/td&gt;
    ...
-&lt;/tr&gt;</code></pre>
+&lt;/tr&gt;</pre>
 
 <pre
-class="brush: java"><code>// Link itself. We're giving the resource as the parameter for the Resource page.
-new ResourceLink("reslink", item.getModelObject().getResource() ))</code></pre>
+class="brush: java">// Link itself. We're giving the resource as the parameter for the Resource page.
+new ResourceLink("reslink", item.getModelObject().getResource() ))</pre>
 
 <p>That's all.</p>
 </div>

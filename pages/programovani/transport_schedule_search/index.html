@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="utf-8"/>
-    <title>Transport schedule connection search - Ondřej Žižka</title>
+    <title>Transport schedule connection
+search - Ondřej Žižka</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="My personal web">
     <meta name="author" content="Ondřej Žižka">
@@ -73,10 +74,12 @@
 
     <div class="document-post">
         <div class="page-header">
-            <h1>Transport schedule connection search</h1>
+            <h1>Transport schedule connection
+search</h1>
         </div>
         <div class="date"><em>2012-12-16</em></div>
-        <div class="doc-body"><h3>Transport schedule connection search</h3>
+        <div class="doc-body"><h2 id="toc-transport-schedule-connection-search">Transport schedule connection
+search</h2>
 
 <p>As a part of my master's thesis, I've written an SQL stored procedure that
 searches for connections in the transport schedules, using the breadth-first
@@ -84,20 +87,20 @@ search paradigm.</p>
 
 <p>Here is brief overview how it works.</p>
 
-<h4>Persistent tables</h4>
+<h3 id="toc-persistent-tables">Persistent tables</h3>
 
 <pre
-class="brush: sql"><code>CREATE TABLE `mhd_jizdy` (
+class="brush: sql">CREATE TABLE `mhd_jizdy` (
   `id` smallint(5) unsigned NOT NULL default '0',
   `nazev` varchar(140) NOT NULL,
   `id_trasa` smallint(5) unsigned NOT NULL default '0',
   PRIMARY KEY  (`id`),
   KEY `id_trasa` (`id_trasa`),
   CONSTRAINT `fk_jizdy_id_trasa` FOREIGN KEY (`id_trasa`) REFERENCES `mhd_trasy` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB ROW_FORMAT=FIXED COMMENT='Jizdy - seskupení jednotlivých zastávek na dané trase pr';</code></pre>
+) ENGINE=InnoDB ROW_FORMAT=FIXED COMMENT='Jizdy - seskupení jednotlivých zastávek na dané trase pr';</pre>
 
 <pre
-class="brush: sql"><code>CREATE TABLE `mhd_jizdy_stani` (
+class="brush: sql">CREATE TABLE `mhd_jizdy_stani` (
   `id_jizda` smallint(5) unsigned NOT NULL,
   `poradi` smallint(5) NOT NULL,
   `cas1` time default NULL,
@@ -107,19 +110,19 @@ class="brush: sql"><code>CREATE TABLE `mhd_jizdy_stani` (
   KEY `id_trasa_uzel` (`id_trasa_uzel`),
   CONSTRAINT `fk_jizdy_stani_id_jizda` FOREIGN KEY (`id_jizda`) REFERENCES `mhd_jizdy` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `fk_jizdy_stani_id_uzel` FOREIGN KEY (`id_trasa_uzel`) REFERENCES `mhd_trasy_uzly` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=cp1250 ROW_FORMAT=FIXED COMMENT='Jednotlivé zastávky jízd';</code></pre>
+) ENGINE=InnoDB DEFAULT CHARSET=cp1250 ROW_FORMAT=FIXED COMMENT='Jednotlivé zastávky jízd';</pre>
 
 <pre
-class="brush: sql"><code>CREATE TABLE `mhd_linky` (
+class="brush: sql">CREATE TABLE `mhd_linky` (
   `id` smallint(5) unsigned NOT NULL auto_increment,
   `nazev` varchar(60) NOT NULL,
   `cislo` tinyint(3) unsigned default NULL,
   PRIMARY KEY  (`id`),
   KEY `cislo` (`cislo`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=cp1250;</code></pre>
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=cp1250;</pre>
 
 <pre
-class="brush: sql"><code>CREATE TABLE `mhd_trasy` (
+class="brush: sql">CREATE TABLE `mhd_trasy` (
   `id` smallint(5) unsigned NOT NULL auto_increment,
   `id_linka` smallint(5) unsigned default NULL,
   `popis` char(96) NOT NULL default '',
@@ -128,10 +131,10 @@ class="brush: sql"><code>CREATE TABLE `mhd_trasy` (
   PRIMARY KEY  (`id`),
   KEY `id_linka` (`id_linka`),
   CONSTRAINT `fk_trasy_id_linka` FOREIGN KEY (`id_linka`) REFERENCES `mhd_linky` (`id`) ON DELETE SET NULL ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=158 DEFAULT CHARSET=cp1250 COMMENT='Jednotlive verze linek';</code></pre>
+) ENGINE=InnoDB AUTO_INCREMENT=158 DEFAULT CHARSET=cp1250 COMMENT='Jednotlive verze linek';</pre>
 
 <pre
-class="brush: sql"><code>CREATE TABLE `mhd_trasy_uzly` (
+class="brush: sql">CREATE TABLE `mhd_trasy_uzly` (
   `id` int(10) unsigned NOT NULL auto_increment,
   `id_trasa` smallint(5) unsigned NOT NULL default '0',
   `poradi` smallint(5) NOT NULL default '0',
@@ -141,10 +144,10 @@ class="brush: sql"><code>CREATE TABLE `mhd_trasy_uzly` (
   KEY `id_zast` (`id_zast`),
   CONSTRAINT `fk_trasy_uzly_id_trasa` FOREIGN KEY (`id_trasa`) REFERENCES `mhd_trasy` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `fk_trasy_uzly_id_zast` FOREIGN KEY (`id_zast`) REFERENCES `mhd_zast` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=12555 DEFAULT CHARSET=cp1250 ROW_FORMAT=FIXED COMMENT='Trasy linek (pro kazdou verzi linky a pro kazdy smer)';</code></pre>
+) ENGINE=InnoDB AUTO_INCREMENT=12555 DEFAULT CHARSET=cp1250 ROW_FORMAT=FIXED COMMENT='Trasy linek (pro kazdou verzi linky a pro kazdy smer)';</pre>
 
 <pre
-class="brush: sql"><code>CREATE TABLE `mhd_zast` (
+class="brush: sql">CREATE TABLE `mhd_zast` (
   `id` smallint(5) unsigned NOT NULL auto_increment,
   `nazev` varchar(60) NOT NULL default '',
   `nazev_plny` varchar(60) NOT NULL,
@@ -162,21 +165,22 @@ class="brush: sql"><code>CREATE TABLE `mhd_zast` (
   PRIMARY KEY  (`id`),
   KEY `id_skup` (`id_skup`),
   CONSTRAINT `fk_id_skup` FOREIGN KEY (`id_skup`) REFERENCES `mhd_zast_skup` (`id`) ON DELETE SET NULL ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=540 DEFAULT CHARSET=cp1250 ROW_FORMAT=DYNAMIC COMMENT='Zastavky';</code></pre>
+) ENGINE=InnoDB AUTO_INCREMENT=540 DEFAULT CHARSET=cp1250 ROW_FORMAT=DYNAMIC COMMENT='Zastavky';</pre>
 
-<h4>Procedures</h4>
+<h3 id="toc-procedures">Procedures</h3>
 
-<h5><code>mhd_VyhledejSpoje</code> – searching the connection</h5>
+<h4
+id="toc-mhd-vyhledejspoje-searching-the-connection"><code>mhd_VyhledejSpoje</code> –
+searching the connection</h4>
 
-<h5>Usage:</h5>
+<h4 id="toc-usage">Usage:</h4>
 
 <p>You ask for the fastest connection from the station #115 to the station #465
 from now on, using at the most 2 changes (3 transport vehicles).</p>
 
-<pre
-class="brush: sql"><code>CALL mhd_VyhledejSpoje(115, 465, NOW(), 3);</code></pre>
+<pre class="brush: sql">CALL mhd_VyhledejSpoje(115, 465, NOW(), 3);</pre>
 
-<h5>Result:</h5>
+<h4 id="toc-result">Result:</h4>
 
 <table>
 	<thead>
@@ -204,10 +208,10 @@ class="brush: sql"><code>CALL mhd_VyhledejSpoje(115, 465, NOW(), 3);</code></pre
 	</tbody>
 </table>
 
-<h5>Source code:</h5>
+<h4 id="toc-source-code">Source code:</h4>
 
 <pre
-class="brush: sql"><code>CREATE DEFINER=`root`@`localhost` PROCEDURE `mhd_VyhledejSpoje`(
+class="brush: sql">CREATE DEFINER=`root`@`localhost` PROCEDURE `mhd_VyhledejSpoje`(
   idZastFrom INT UNSIGNED,
   idZastTo INT UNSIGNED,
   whn DATETIME,
@@ -223,7 +227,7 @@ BEGIN
 -- snipped --
 
 
-END $$</code></pre>
+END $$</pre>
 </div>
 
         <!-- Rating widget -->

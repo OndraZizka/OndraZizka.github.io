@@ -2,8 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="utf-8"/>
-    <title>Linux: Bash generic script to switch versions (like
-alternatives and Gentoo's eselect) - Ondřej Žižka</title>
+    <title>Linux:
+Bash generic script to switch versions (like alternatives and
+Gentoo's eselect) - Ondřej Žižka</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="My personal web">
     <meta name="author" content="Ondřej Žižka">
@@ -74,44 +75,47 @@ alternatives and Gentoo's eselect) - Ondřej Žižka</title>
 
     <div class="document-post">
         <div class="page-header">
-            <h1>Linux: Bash generic script to switch versions (like
-alternatives and Gentoo's eselect)</h1>
+            <h1>Linux:
+Bash generic script to switch versions (like alternatives and
+Gentoo's eselect)</h1>
         </div>
         <div class="date"><em>2012-12-13</em></div>
-        <div class="doc-body"><h3>Linux: Bash generic script to switch versions (like
-<code>alternatives</code> and Gentoo's <code>eselect</code>)</h3>
+        <div class="doc-body"><h2
+id="toc-linux-bash-generic-script-to-switch-versions-like-alternatives-and-gentoo-s-eselect">Linux:
+Bash generic script to switch versions (like <code>alternatives</code> and
+Gentoo's <code>eselect</code>)</h2>
 
 <p>I've made a switch script.</p>
 
-<h4>Usage</h4>
+<h3 id="toc-usage">Usage</h3>
 
 <pre
-class="xbrush: bash"><code>$ switch
+class="xbrush: bash">$ switch
 $ switch maven 2.2.1
 $ mvn -version
 $ switch maven 2.1.0
-$ mvn -version</code></pre>
+$ mvn -version</pre>
 
-<h4>Installation</h4>
+<h3 id="toc-installation">Installation</h3>
 
 <p>It uses your ~/sw/tools/.links, so update your PATH.</p>
 
-<pre class="xbrush: bash"><code>export PATH=~/sw/tools/.links:$PATH</code></pre>
+<pre class="xbrush: bash">export PATH=~/sw/tools/.links:$PATH</pre>
 
 <p>Then (optionally):</p>
 
 <pre
-class="xbrush: bash"><code>$ /mnt/jqa/sw/tools/switch.sh install
-Creating ~/sw/tools/.links/switch -&gt; /mnt/jqa/sw/tools/switch.sh</code></pre>
+class="xbrush: bash">$ /mnt/jqa/sw/tools/switch.sh install
+Creating ~/sw/tools/.links/switch -&gt; /mnt/jqa/sw/tools/switch.sh</pre>
 
-<h4>Download</h4>
+<h3 id="toc-download">Download</h3>
 
 <p>Download <a href="switch.zip">here</a>.</p>
 
-<h4>Script's code</h4>
+<h3 id="toc-script-s-code">Script's code</h3>
 
 <pre
-class="xbrush: bash"><code>#####################################################################################################
+class="xbrush: bash">#####################################################################################################
 #
 #  This script creates switches between the versions of various tools,
 #  found in /mnt/jqa/sw/tools/ (curently hard-coded).
@@ -338,7 +342,7 @@ hash -r
 
 
 ##  If called without `source`, return an exit code.
-if [ "$0" == "switch.sh" ] ; then exit $RET; fi</code></pre>
+if [ "$0" == "switch.sh" ] ; then exit $RET; fi</pre>
 </div>
 
         <!-- Rating widget -->

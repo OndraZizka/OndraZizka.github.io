@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="utf-8"/>
-    <title>Wicket: The component(s) below failed to render when
+    <title>Wicket:
+The component(s) below failed to render when
 using wicket:extend - Ondřej Žižka</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="My personal web">
@@ -74,25 +75,28 @@ using wicket:extend - Ondřej Žižka</title>
 
     <div class="document-post">
         <div class="page-header">
-            <h1>Wicket: The component(s) below failed to render when
+            <h1>Wicket:
+The component(s) below failed to render when
 using wicket:extend</h1>
         </div>
         <div class="date"><em>2012-12-31</em></div>
-        <div class="doc-body"><h3>Wicket: The component(s) below failed to render when
-using <code>wicket:extend</code></h3>
+        <div class="doc-body"><h2
+id="toc-wicket-the-component-s-below-failed-to-render-when-using-wicket-extend">Wicket:
+The component(s) below failed to render when
+using <code>wicket:extend</code></h2>
 
 <p>The problem in my case was that I forgot to call super constructor from a
 subpage subclass.</p>
 
 <pre
-class="brush: java"><code>public ShowPathPage(PageParameters pageParams) {
+class="brush: java">public ShowPathPage(PageParameters pageParams) {
 
   super(pageParams);  // Don't forget this.
 
-  add( new NavigationPanel("navigation") );</code></pre>
+  add( new NavigationPanel("navigation") );</pre>
 
 <pre
-class="brush: plain"><code>WicketMessage: The component(s) below failed to render. A common problem is that you have added a component in code but forgot to reference it in the markup (thus the component will never be rendered).
+class="brush: plain">WicketMessage: The component(s) below failed to render. A common problem is that you have added a component in code but forgot to reference it in the markup (thus the component will never be rendered).
 
 1. [MarkupContainer [Component id = header]]
 2. [Component id = datum]
@@ -142,7 +146,7 @@ at org.mortbay.jetty.HttpParser.parseNext(HttpParser.java:549)
 at org.mortbay.jetty.HttpParser.parseAvailable(HttpParser.java:212)
 at org.mortbay.jetty.HttpConnection.handle(HttpConnection.java:404)
 at org.mortbay.io.nio.SelectChannelEndPoint.run(SelectChannelEndPoint.java:410)
-at org.mortbay.thread.QueuedThreadPool$PoolThread.run(QueuedThreadPool.java:582)</code></pre>
+at org.mortbay.thread.QueuedThreadPool$PoolThread.run(QueuedThreadPool.java:582)</pre>
 </div>
 
         <!-- Rating widget -->

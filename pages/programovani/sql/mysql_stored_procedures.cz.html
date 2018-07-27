@@ -76,7 +76,7 @@
             <h1>SQL procedury pro MySQL 5.0</h1>
         </div>
         <div class="date"><em>2012-12-16</em></div>
-        <div class="doc-body"><h3>SQL procedury pro MySQL 5.0</h3>
+        <div class="doc-body"><h2 id="toc-sql-procedury-pro-mysql-5-0">SQL procedury pro MySQL 5.0</h2>
 
 <p>V průběhu doby jsem při řešení různých projektů vytvořil
 užitečné procedury a funkce, které usnadňují vývoj procedur pro MySQL a
@@ -90,9 +90,9 @@ v jiné proceduře, osvojil jsem si pravidlo, že výsledek uložím do
 např. takto:</p>
 
 <pre
-class="brush: sql .[brush:] sql"><code>CALL lib_Explode();
+class="brush: sql .[brush:] sql">CALL lib_Explode();
 SELECT * FROM lib_Explode;
-DROP TEMPORARY TABLE IF EXISTS lib_Explode; -- Volitelně</code></pre>
+DROP TEMPORARY TABLE IF EXISTS lib_Explode; -- Volitelně</pre>
 
 <p>O uvoňování se obvykle nemusíte starat, funkce si sama tabulku
 příště přepíše, a <code>TEMPORARY</code> tabulky se samy uvolní při
@@ -105,10 +105,9 @@ považujte to za chybu a nahlašte.</p>
 <p>Pro pohodlí uvádím procedury s určením oddělovače pro MySQL Query
 Browser. Proto příklady začínají a končí takto:</p>
 
-<pre
-class="brush: sql .[brush:] sql"><code>DELIMITER $$
+<pre class="brush: sql .[brush:] sql">DELIMITER $$
 ...
-END; $$</code></pre>
+END; $$</pre>
 
 <ul>
 	<li><strong>Utils</strong> – různé užitečné procedurky, většinou na
@@ -133,18 +132,18 @@ END; $$</code></pre>
 	</li>
 </ul>
 
-<h4>Logging</h4>
+<h3 id="toc-logging">Logging</h3>
 
 <pre
-class="brush: sql .[brush:] sql"><code>CREATE TABLE lib_logg (
+class="brush: sql .[brush:] sql">CREATE TABLE lib_logg (
   `whn` datetime NOT NULL,
   `thread` int(10) unsigned NOT NULL,
   `level` enum('info','warn','error') NOT NULL default 'info',
   `str` text NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;</code></pre>
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;</pre>
 
 <pre
-class="brush: sql"><code>DELIMITER $$
+class="brush: sql">DELIMITER $$
 CREATE PROCEDURE  Logg( sStr TEXT ) BEGIN
   INSERT DELAYED INTO lib_logg SET str = sStr, whn = NOW(), thread = CONNECTION_ID();
 END; $$
@@ -168,14 +167,15 @@ END $$
 
 CREATE PROCEDURE LoggLeave(sRout VARCHAR(255)) BEGIN
  INSERT INTO lib_logg SET rout = sRout, level='leave', str = NULL, whn = NOW(), thread = CONNECTION_ID();
-END $$</code></pre>
+END $$</pre>
 
-<h4>String funkce</h4>
+<h3 id="toc-string-funkce">String funkce</h3>
 
-<h5><code>lib_Explode()</code> – obdoba <code>Explode()</code> z PHP</h5>
+<h4 id="toc-lib-explode-obdoba-explode-z-php"><code>lib_Explode()</code> –
+obdoba <code>Explode()</code> z PHP</h4>
 
 <pre
-class="brush: sql"><code>DELIMITER $$
+class="brush: sql">DELIMITER $$
 
 CREATE PROCEDURE lib_Explode( sSepar VARCHAR(255), saVal TEXT )
 body:
@@ -203,12 +203,12 @@ BEGIN
 
   END WHILE;
 
-END; $$</code></pre>
+END; $$</pre>
 
 <p>Použití:</p>
 
 <pre
-class="brush: sql"><code>CALL lib_Explode( ',' ,  'Ahoj, jak se máte, 212' );</code></pre>
+class="brush: sql">CALL lib_Explode( ',' ,  'Ahoj, jak se máte, 212' );</pre>
 
 <p>Výsledek:</p>
 
@@ -247,8 +247,8 @@ ekvivalent k <code>explode()</code>, poohlédněte se po „agregační
 funkci“ <code>GROUP_CONCAT()</code>:</p>
 
 <pre
-class="brush: sql"><code>CALL lib_GenerateSequence( 5, 15, 2 );
-SELECT GROUP_CONCAT(i SEPARATOR ' a ') AS vysledek FROM lib_GenerateSequence;</code></pre>
+class="brush: sql">CALL lib_GenerateSequence( 5, 15, 2 );
+SELECT GROUP_CONCAT(i SEPARATOR ' a ') AS vysledek FROM lib_GenerateSequence;</pre>
 
 <p>Výsledek:</p>
 
@@ -266,14 +266,15 @@ SELECT GROUP_CONCAT(i SEPARATOR ' a ') AS vysledek FROM lib_GenerateSequence;</c
 	</tbody>
 </table>
 
-<h5><code>F1() - F6()</code> – obdoba <code>"sprintf()"</code> s 1 až
-6 parametry.</h5>
+<h4
+id="toc-f1-f6-obdoba-sprintf-s-1-az-6-parametry"><code>F1() - F6()</code> –
+obdoba <code>"sprintf()"</code> s 1 až 6 parametry.</h4>
 
 <p>Ve funkci F1() se nahrazuje string %s, v ostatních <code>{1}</code> až
 <code>{6}</code>.</p>
 
 <pre
-class="brush: sql"><code>DELIMITER $$
+class="brush: sql">DELIMITER $$
 
 CREATE FUNCTION  F1 ( sFormat TEXT, sPar1 TEXT )
     RETURNS text CHARSET utf8 BEGIN
@@ -306,12 +307,12 @@ CREATE FUNCTION  F6 ( sFormat TEXT, sPar1 TEXT, sPar2 TEXT,  sPar3 TEXT,
        sPar4 TEXT, sPar5 TEXT, sPar6 TEXT  ) RETURNS text CHARSET utf8 BEGIN
   RETURN REPLACE( REPLACE( REPLACE( REPLACE( REPLACE( REPLACE( sFormat,
     '{1}', sPar1), '{2}', sPar2), '{3}', sPar3), '{4}', sPar4), '{5}', sPar5), '{6}', sPar6);
-END; $$</code></pre>
+END; $$</pre>
 
 <p>Použití:</p>
 
 <pre
-class="brush: sql"><code>SELECT F2( 'Ve městě {1} je {2} stupňů.', 'Praha', 31.2 ) FROM DUAL;</code></pre>
+class="brush: sql">SELECT F2( 'Ve městě {1} je {2} stupňů.', 'Praha', 31.2 ) FROM DUAL;</pre>
 
 <p>Výsledek:</p>
 
@@ -323,7 +324,7 @@ class="brush: sql"><code>SELECT F2( 'Ve městě {1} je {2} stupňů.', 'Praha', 
 	</tbody>
 </table>
 
-<h4>NULL-safe functions</h4>
+<h3 id="toc-null-safe-functions">NULL-safe functions</h3>
 
 <p>Somethimes you need to ensure that no parameter of a function is
 <code>NULL</code>, e.g. in case of calling CONCAT(), which returns
@@ -333,11 +334,11 @@ functions. Mainly for debugging purposes.</p>
 
 <p>Funkce hlavně pro potřeby logování.</p>
 
-<h5>NS() – NULL-safe</h5>
+<h4 id="toc-ns-null-safe">NS() – NULL-safe</h4>
 
-<h5>NSB() – NULL-safe boolean</h5>
+<h4 id="toc-nsb-null-safe-boolean">NSB() – NULL-safe boolean</h4>
 
-<h5>NSQ() – NULL-safe quoted</h5>
+<h4 id="toc-nsq-null-safe-quoted">NSQ() – NULL-safe quoted</h4>
 
 <p>If the only argument is <code>NULL</code>, returns the string „NULL“.
 Otherwise returns:</p>
@@ -352,7 +353,7 @@ Otherwise returns:</p>
 </ul>
 
 <pre
-class="brush: sql"><code>DELIMITER $$
+class="brush: sql">DELIMITER $$
 
 CREATE FUNCTION NS( s VARCHAR(255) )
 RETURNS varchar(255) CHARSET utf8 BEGIN
@@ -369,19 +370,21 @@ CHARSET utf8 NO SQL DETERMINISTIC BEGIN
   RETURN IF( s IS NULL, 'NULL', CONCAT('"',s,'"') );
 END  $$
 
-DELIMITER ;</code></pre>
+DELIMITER ;</pre>
 
 <p>Použití:</p>
 
 <pre
-class="brush: sql"><code>CALL Logg( F1('Computing level %s.', NS(@iLevel)) )</code></pre>
+class="brush: sql">CALL Logg( F1('Computing level %s.', NS(@iLevel)) )</pre>
 
-<h4>Utilities</h4>
+<h3 id="toc-utilities">Utilities</h3>
 
-<h5>lib_GenerateSe­quence – generování lineární sekvence čísel</h5>
+<h4
+id="toc-lib-generatesequence-generovani-linearni-sekvence-cisel">lib_GenerateSe­quence –
+generování lineární sekvence čísel</h4>
 
 <pre
-class="brush: sql"><code>DELIMITER $$
+class="brush: sql">DELIMITER $$
 
 CREATE PROCEDURE lib_GenerateSequence(
   iFrom INTEGER, iTo INTEGER, iStep INTEGER )
@@ -405,11 +408,11 @@ BEGIN
     SET @iMin = @iMin + iStep;
   END LOOP;
 
-END; $$</code></pre>
+END; $$</pre>
 
 <p>Použití:</p>
 
-<pre class="brush: sql"><code>CALL lib_GenerateSequence( 5, 15, 2 )</code></pre>
+<pre class="brush: sql">CALL lib_GenerateSequence( 5, 15, 2 )</pre>
 
 <p>Výsledek:</p>
 

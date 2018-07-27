@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="utf-8"/>
-    <title>Maven and Log4j: Missing JMX dependencies - Ondřej Žižka</title>
+    <title>Maven and Log4j: Missing
+JMX dependencies - Ondřej Žižka</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="My personal web">
     <meta name="author" content="Ondřej Žižka">
@@ -73,28 +74,30 @@
 
     <div class="document-post">
         <div class="page-header">
-            <h1>Maven and Log4j: Missing JMX dependencies</h1>
+            <h1>Maven and Log4j: Missing
+JMX dependencies</h1>
         </div>
         <div class="date"><em>2012-12-13</em></div>
-        <div class="doc-body"><h3>Maven and Log4j: Missing JMX dependencies</h3>
+        <div class="doc-body"><h2 id="toc-maven-and-log4j-missing-jmx-dependencies">Maven and Log4j: Missing
+JMX dependencies</h2>
 
-<h4>Symptoms</h4>
+<h3 id="toc-symptoms">Symptoms</h3>
 
 <p>You want to use Log4j, but when performing <code>mvn install</code>,
 you get:</p>
 
 <pre
-class="brush: plain"><code>Compilation failure
+class="brush: plain">Compilation failure
 
 error: error reading t:\data\.m2\repository\com\sun\jdmk\jmxtools\1.2.1\jmxtools-1.2.1.jar; error in opening zip file
-error: error reading t:\data\.m2\repository\com\sun\jmx\jmxri\1.2.1\jmxri-1.2.1.jar; error in opening zip file</code></pre>
+error: error reading t:\data\.m2\repository\com\sun\jmx\jmxri\1.2.1\jmxri-1.2.1.jar; error in opening zip file</pre>
 
 <p>And when you check the file, you see it's a HTML page pointing humans, not
 Maven, to Sun Maven repository, but to a location from where JMX was
 removed:</p>
 
 <pre
-class="brush: html"><code>&lt;!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN"&gt;
+class="brush: html">&lt;!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN"&gt;
 &lt;html&gt;&lt;head&gt;
 &lt;title&gt;301 Moved Permanently&lt;/title&gt;
 &lt;/head&gt;&lt;body&gt;
@@ -102,9 +105,9 @@ class="brush: html"><code>&lt;!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN"&g
 &lt;p&gt;The document has moved &lt;a href="http://download.java.net/maven/1/com.sun.jdmk/jars/jmxtools-1.2.1.jar"&gt;here&lt;/a&gt;.&lt;/p&gt;
 &lt;hr&gt;
 &lt;address&gt;Apache Server at maven-repository.dev.java.net Port 443&lt;/address&gt;
-&lt;/body&gt;&lt;/html&gt;</code></pre>
+&lt;/body&gt;&lt;/html&gt;</pre>
 
-<h4>Fixing JMXtools and JMXri</h4>
+<h3 id="toc-fixing-jmxtools-and-jmxri">Fixing JMXtools and JMXri</h3>
 
 <p>You have two options:</p>
 
@@ -115,8 +118,8 @@ class="brush: html"><code>&lt;!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN"&g
 		<p>extract the jar's and perform:</p>
 
 		<pre
-		class="brush: bash"><code>mvn install:install-file -DgroupId=com.sun.jmx -DartifactId=jmxri -Dversion=1.2.1 -Dpackaging=jar -Dfile=jmxri.jar
-mvn install:install-file -DgroupId=com.sun.jdmk -DartifactId=jmxtools -Dversion=1.2.1 -Dpackaging=jar -Dfile=jmxtools.jar</code></pre>
+		class="brush: bash">mvn install:install-file -DgroupId=com.sun.jmx -DartifactId=jmxri -Dversion=1.2.1 -Dpackaging=jar -Dfile=jmxri.jar
+mvn install:install-file -DgroupId=com.sun.jdmk -DartifactId=jmxtools -Dversion=1.2.1 -Dpackaging=jar -Dfile=jmxtools.jar</pre>
 	</li>
 
 	<li>Use <a href="http://code.google.com/p/ondrazizka/">my Maven repository</a>

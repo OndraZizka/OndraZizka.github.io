@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="utf-8"/>
-    <title>Profiles in Spring Framework Configuration - Ondřej Žižka</title>
+    <title>Profiles in Spring
+Framework Configuration - Ondřej Žižka</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="My personal web">
     <meta name="author" content="Ondřej Žižka">
@@ -73,10 +74,12 @@
 
     <div class="document-post">
         <div class="page-header">
-            <h1>Profiles in Spring Framework Configuration</h1>
+            <h1>Profiles in Spring
+Framework Configuration</h1>
         </div>
         <div class="date"><em>2012-12-16</em></div>
-        <div class="doc-body"><h3>Profiles in Spring Framework Configuration</h3>
+        <div class="doc-body"><h2 id="toc-profiles-in-spring-framework-configuration">Profiles in Spring
+Framework Configuration</h2>
 
 <p>Spring is a perfect place to centralize your project's con­figuration.
 Afterall, that was it's initial purpose.</p>
@@ -87,20 +90,21 @@ should change.</p>
 
 <p>I'll show you how to do that.</p>
 
-<h4>Substitution in Values – <code>PropertyPlaceholderConfigurer</code></h4>
+<h3 id="toc-substitution-in-values-propertyplaceholderconfigurer">Substitution
+in Values – <code>PropertyPlaceholderConfigurer</code></h3>
 
 <p>You can read some properties from a file and use them to substitute some
 „variables“ in bean properties' values. A typical usage example is JDBC
 configuration – one for developement and other for release:</p>
 
 <pre
-class="brush: xml"><code>&lt;!-- JDBC Datasource --&gt;
+class="brush: xml">&lt;!-- JDBC Datasource --&gt;
 &lt;bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource"&gt;
   &lt;property name="driverClassName" value="${jdbc.driver}" /&gt;
   &lt;property name="url" value="${jdbc.url}" /&gt;
   &lt;property name="username" value="${jdbc.username}" /&gt;
   &lt;property name="password" value="${jdbc.password}" /&gt;
-&lt;/bean&gt;</code></pre>
+&lt;/bean&gt;</pre>
 
 <p>Now you must specify a file where the values of these
 <code>${...}</code>-enclosed variables, called placeholders, are defined. You
@@ -111,18 +115,18 @@ define „defaults“ and then override some properties in an
 external file.</p>
 
 <pre
-class="brush: xml"><code>&lt;context:property-placeholder location="
+class="brush: xml">&lt;context:property-placeholder location="
   classpath:properties/database.properties,
-  file:conf/database.properties" /&gt;</code></pre>
+  file:conf/database.properties" /&gt;</pre>
 
 <p>If you want to keep the possibility of removing the external file and relying
 solely on the defaults, you might use the <code>ignoreResourceNotFound</code>
 attribute:</p>
 
 <pre
-class="brush: xml"><code>&lt;context:property-placeholder location="
+class="brush: xml">&lt;context:property-placeholder location="
   classpath:properties/database.properties,
-  file:conf/database.properties" ignoreResourceNotFound="true" /&gt;</code></pre>
+  file:conf/database.properties" ignoreResourceNotFound="true" /&gt;</pre>
 
 <p>However, in <code>Spring 2.x</code>, only the <code>location</code> attribute
 is supported for <code>&lt;context:property-placeholder/&gt;</code> element
@@ -131,14 +135,15 @@ work in Spring 3.0</a>). So, you need to define it „old way“ – as
 a bean:</p>
 
 <pre
-class="brush: xml"><code>&lt;bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"&gt;
+class="brush: xml">&lt;bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"&gt;
   &lt;property name="locations" value="
       classpath:properties/database.properties,
       file:conf/database.properties" /&gt;
   &lt;property name="ignoreResourceNotFound" value="true" /&gt;
-&lt;/bean&gt;</code></pre>
+&lt;/bean&gt;</pre>
 
-<h4>Setting up a Profile – Parametrized Configuration</h4>
+<h3 id="toc-setting-up-a-profile-parametrized-configuration">Setting up a
+Profile – Parametrized Configuration</h3>
 
 <p>In the preamble, I promissed I'll show how to set up some basic
 profiling.</p>
@@ -158,16 +163,16 @@ is available from <code>System.getProperty(String)</code> and
 parameter, or programatically:</p>
 
 <pre
-class="brush: bash"><code>## in the command line:
+class="brush: bash">## in the command line:
 $ java -Dprofile=testing
 
 // Or in Java:
-System.setProperty( "profile", "testing" );</code></pre>
+System.setProperty( "profile", "testing" );</pre>
 
 <p>Then we can set the bean up using all our weapons:</p>
 
 <pre
-class="brush: xml"><code>&lt;bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"&gt;
+class="brush: xml">&lt;bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"&gt;
   &lt;property name="locations" value="
       classpath:properties/database.properties,
       file:nastaveni.properties,
@@ -176,7 +181,7 @@ class="brush: xml"><code>&lt;bean class="org.springframework.beans.factory.confi
   &lt;property name="ignoreUnresolvablePlaceholders" value="true" /&gt;
   &lt;property name="searchSystemEnvironment" value="true" /&gt;
   &lt;property name="systemPropertiesModeName" value="SYSTEM_PROPERTIES_MODE_OVERRIDE" /&gt;
-&lt;/bean&gt;</code></pre>
+&lt;/bean&gt;</pre>
 
 <p>The <code>searchSystemEnvironment</code> and
 <code>systemPropertiesModeName</code> have reasonable defaults and can be
@@ -189,8 +194,10 @@ overriding: <a
 href="http://static.springframework.org/spring/docs/2.5.x/reference/beans.html#beans-factory-extension-factory-postprocessors">3.7.2. Customizing
 configuration metadata with BeanFactoryPos­tProcessors</a>.</p>
 
-<h4>Overriding (or Overwriting) default values –
-<code>PropertyOverrideConfigurer</code></h4>
+<h3
+id="toc-overriding-or-overwriting-default-values-propertyoverrideconfigurer">Overriding
+(or Overwriting) default values –
+<code>PropertyOverrideConfigurer</code></h3>
 
 <p>When using <code>PropertyPlaceholderConfigurer</code>, you inherently must
 define the values at least once in some properties file. Sometimes you could
@@ -202,24 +209,24 @@ want to keep the defaults right in the custom beans' configuration in Spring's
 configure your bean as usualy:</p>
 
 <pre
-class="brush: xml"><code>&lt;bean  name="projectInfo" class="cz.dynawest.springtest.CoolProject"&gt;
+class="brush: xml">&lt;bean  name="projectInfo" class="cz.dynawest.springtest.CoolProject"&gt;
   &lt;property name="author" value="Ondřej Žižka" /&gt;
   &lt;property name="maintainer" value="Ondřej Žižka" /&gt;
-&lt;/bean&gt;</code></pre>
+&lt;/bean&gt;</pre>
 
 <p>Then, you can override some of the properties in a properties file. The
 syntax of the name is
 <code>&lt;bean-name&gt;.&lt;property-name&gt;=&lt;value&gt;</code>.</p>
 
 <pre
-class="brush: properties"><code>## newProjectInfo.properties
-projectInfo.maintainer="Reese Witherspoon"</code></pre>
+class="brush: properties">## newProjectInfo.properties
+projectInfo.maintainer="Reese Witherspoon"</pre>
 
 <p>The final piece of the puzzle is to create a bean that will apply the value
 to the bean.</p>
 
 <pre
-class="brush: xml"><code>&lt;context:property-override location="classpath:newProjectInfo.properties"/&gt;</code></pre>
+class="brush: xml">&lt;context:property-override location="classpath:newProjectInfo.properties"/&gt;</pre>
 
 <p>More information on overriding can be found in Spring Reference
 Documentation – <a

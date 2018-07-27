@@ -97,7 +97,7 @@ a { color: #0366d6; }
     margin: 0 0 1ex 0;
 }
 
-.banner.divider {
+.banner.post-separator {
     background-position: center;
     height: 80px;
 }

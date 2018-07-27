@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="utf-8"/>
-    <title>PHP Database abstraction library - Ondřej Žižka</title>
+    <title>PHP Database abstraction
+library - Ondřej Žižka</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="My personal web">
     <meta name="author" content="Ondřej Žižka">
@@ -73,10 +74,12 @@
 
     <div class="document-post">
         <div class="page-header">
-            <h1>PHP Database abstraction library</h1>
+            <h1>PHP Database abstraction
+library</h1>
         </div>
         <div class="date"><em>2012-12-31</em></div>
-        <div class="doc-body"><h3>PHP Database abstraction library</h3>
+        <div class="doc-body"><h2 id="toc-php-database-abstraction-library">PHP Database abstraction
+library</h2>
 
 <p><a href="lib-docs/index.html">Documentation</a> (together with my other
 libs)</p>
@@ -90,22 +93,22 @@ influenced by Java I was turing to from PHP at that time).</p>
 <p>It provided methods for quite every aspect of a DB. But since I worked only
 with MySQL, only that implementation was written :)</p>
 
-<h4>Usage example</h4>
+<h3 id="toc-usage-example">Usage example</h3>
 
 <pre
-class="brush: php"><code>$aasAreas = Array();
+class="brush: php">$aasAreas = Array();
 $sSQL = "SELECT id, x, y, x2 AS r, popis FROM ".$oFW-&gt;GetOption('tables.areas')
        ." WHERE id_ad=".asq((int)$_GET['id']);
 $oRes = $oFW-&gt;GetDB()-&gt;Select($sSQL);
 if(!$oRes || !$oRes-&gt;IsOk()){ $sError = $oRes-&gt;GetError(); break; }
 else while( $a = $oRes-&gt;FetchRow() ){
     $aasAreas[] = $a;
-}</code></pre>
+}</pre>
 
-<h4>Another usage example</h4>
+<h3 id="toc-another-usage-example">Another usage example</h3>
 
 <pre
-class="brush: php"><code>&lt;?
+class="brush: php">&lt;?
 header("Content-Type: text/plain");
 
 $oMySQLConn = new cDBAccess_MySQL('localhost:3350', 'test', 'test');
@@ -144,12 +147,12 @@ echo " ".(int)$bTableOk = $oMySQLConn-&gt;CheckTable('i18n', Array(
         Array('name'=&gt;'lang',  'null'=&gt;false, 'key'=&gt;'multiple', 'types'=&gt;''),
         Array('name'=&gt;'val',   'null'=&gt;false, 'key'=&gt;'none',     'types'=&gt;''),
 ) );
-?&gt;</code></pre>
+?&gt;</pre>
 
-<h4>Base (abstract) class</h4>
+<h3 id="toc-base-abstract-class">Base (abstract) class</h3>
 
 <pre
-class="brush: php"><code>&lt;?php
+class="brush: php">&lt;?php
 
 /*****************************************************************
    cDBAccess - Yet another database access wrapper
@@ -474,12 +477,12 @@ class cDBA_Result{
         function GetColumns(){ return Array(); }
 
 } /* class cDBA_Result */
-?&gt;</code></pre>
+?&gt;</pre>
 
-<h4>MySQL extension</h4>
+<h3 id="toc-mysql-extension">MySQL extension</h3>
 
 <pre
-class="brush: php"><code>&lt;?php
+class="brush: php">&lt;?php
 
 require_once dirname(__FILE__).'/'.'lib.cDBAccess.php';
 if(!function_exists('mysql_pconnect'))
@@ -863,7 +866,7 @@ class cDBA_MySQL_Error extends cDBA_Error{
                 return sprintf($f, $this-&gt;sError, $sql);
                 //$iErrno
         }
-} /* cDBA_MySQL_Error */</code></pre>
+} /* cDBA_MySQL_Error */</pre>
 </div>
 
         <!-- Rating widget -->

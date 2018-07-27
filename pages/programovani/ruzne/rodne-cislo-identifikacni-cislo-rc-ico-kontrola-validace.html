@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="utf-8"/>
-    <title>Kontrola rodného čísla (RČ) a identifikačního čísla (IČ) - Ondřej Žižka</title>
+    <title>Kontrola
+rodného čísla (RČ) a identifikačního čísla (IČ) - Ondřej Žižka</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="My personal web">
     <meta name="author" content="Ondřej Žižka">
@@ -73,16 +74,18 @@
 
     <div class="document-post">
         <div class="page-header">
-            <h1>Kontrola rodného čísla (RČ) a identifikačního čísla (IČ)</h1>
+            <h1>Kontrola
+rodného čísla (RČ) a identifikačního čísla (IČ)</h1>
         </div>
         <div class="date"><em>2018-07-26</em></div>
-        <div class="doc-body"><h3>Kontrola rodného čísla (RČ) a identifikačního čísla (IČ)</h3>
+        <div class="doc-body"><h2 id="toc-kontrola-rodneho-cisla-rc-a-identifikacniho-cisla-ic">Kontrola
+rodného čísla (RČ) a identifikačního čísla (IČ)</h2>
 
 <p>Výcuc z <a
 href="http://latrine.dgx.cz/jak-overit-platne-ic-a-rodne-cislo">http://latrine.dgx.cz/…-rodne-cislo</a>
 .</p>
 
-<h4>Ověření rodného čísla</h4>
+<h3 id="toc-overeni-rodneho-cisla">Ověření rodného čísla</h3>
 
 <ol>
 	<li>spočti zbytek po dělení prvních devíti číslic a čísla 11</li>
@@ -95,10 +98,10 @@ href="http://latrine.dgx.cz/jak-overit-platne-ic-a-rodne-cislo">http://latrine.d
 <p>Tedy 780123/3540 je korektní rodné číslo, ačkoliv není dělitelné
 jedenácti.</p>
 
-<h5>Implementace v PHP:</h5>
+<h4 id="toc-implementace-v-php">Implementace v PHP:</h4>
 
 <pre
-class="brush: php"><code>function verifyRC($rc)
+class="brush: php">function verifyRC($rc)
 {
     // "be liberal in what you receive"
     if (!preg_match('#^\s*(\d\d)(\d\d)(\d\d)[ /]*(\d\d\d)(\d?)\s*$#', $rc, $matches)) {
@@ -133,12 +136,12 @@ class="brush: php"><code>function verifyRC($rc)
 
     // cislo je OK
     return TRUE;
-}</code></pre>
+}</pre>
 
-<h5>Rodné číslo – JavaScript:</h5>
+<h4 id="toc-rodne-cislo-javascript">Rodné číslo – JavaScript:</h4>
 
 <pre
-class="brush: js"><code>function testRC(x, age)
+class="brush: js">function testRC(x, age)
 {
   if(!age) age = 0;
   try
@@ -172,9 +175,9 @@ class="brush: js"><code>function testRC(x, age)
     return false;
   }
   return true;
-}</code></pre>
+}</pre>
 
-<h4>Ověření IČ</h4>
+<h3 id="toc-overeni-ic">Ověření IČ</h3>
 
 <p>Takže, jak se ověřuje IČ? Například 69663963</p>
 
@@ -198,10 +201,10 @@ class="brush: js"><code>function testRC(x, age)
 	</li>
 </ol>
 
-<h5>Implementace v PHP:</h5>
+<h4 id="toc-implementace-v-php-2">Implementace v PHP:</h4>
 
 <pre
-class="brush: php"><code>function verifyIC($ic)
+class="brush: php">function verifyIC($ic)
 {
     // "be liberal in what you receive"
     $ic = preg_replace('#\s+#', '', $ic);
@@ -225,12 +228,12 @@ class="brush: php"><code>function verifyIC($ic)
     else $c = 11 - $a;
 
     return (int) $ic[7] === $c;
-}</code></pre>
+}</pre>
 
-<h5>IČ – JavaScript:</h5>
+<h4 id="toc-ic-javascript">IČ – JavaScript:</h4>
 
 <pre
-class="brush: js"><code>function testICO(x)
+class="brush: js">function testICO(x)
 {
   try
   {
@@ -253,12 +256,12 @@ class="brush: js"><code>function testICO(x)
     return false;
   }
   return true;
-}</code></pre>
+}</pre>
 
-<h5>DIČ – JavaScript:</h5>
+<h4 id="toc-dic-javascript">DIČ – JavaScript:</h4>
 
 <pre
-class="brush: js"><code>function testDIC(x)
+class="brush: js">function testDIC(x)
 {
   try
   {
@@ -287,7 +290,7 @@ class="brush: js"><code>function testDIC(x)
     alert('Zadaný údaj není korektní!');
     return false;
   }
-}</code></pre>
+}</pre>
 </div>
 
         <!-- Rating widget -->

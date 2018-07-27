@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="utf-8"/>
-    <title>MySQL Stored Procedures Library - Ondřej Žižka</title>
+    <title>MySQL Stored Procedures
+Library - Ondřej Žižka</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="My personal web">
     <meta name="author" content="Ondřej Žižka">
@@ -73,14 +74,16 @@
 
     <div class="document-post">
         <div class="page-header">
-            <h1>MySQL Stored Procedures Library</h1>
+            <h1>MySQL Stored Procedures
+Library</h1>
         </div>
         <div class="date"><em>2012-12-13</em></div>
-        <div class="doc-body"><h3>MySQL Stored Procedures Library</h3>
+        <div class="doc-body"><h2 id="toc-mysql-stored-procedures-library">MySQL Stored Procedures
+Library</h2>
 
 <p>Solution of common elementary tasks that MySQL does not solve natively.</p>
 
-<h4>What's &amp; Why's</h4>
+<h3 id="toc-what-s-why-s">What's &amp; Why's</h3>
 
 <p>During a developement of custom projects I've written some useful procedures
 and functions, which ease the developement of procedures for MySQL and somebody
@@ -123,7 +126,7 @@ it's own (yet).</p>
 <p>There are some others which are not addressed by this library yet, because
 I didn't need to solve them since I develop for MySQL 5.0.</p>
 
-<h4>The Principles</h4>
+<h3 id="toc-the-principles">The Principles</h3>
 
 <p>First, let's say something about the principles how these
 procedures work.</p>
@@ -152,9 +155,9 @@ custom of storing the result into a TEMPORARY TABLE named exactly like the
 procedure name. E.g:</p>
 
 <pre
-class="brush: sql"><code>CALL lib_Explode(',', 'coma, separated, data, 3.14');
+class="brush: sql">CALL lib_Explode(',', 'coma, separated, data, 3.14');
 SELECT * FROM lib_Explode;
-DROP TEMPORARY TABLE IF EXISTS lib_Explode; -- Optional, read below.</code></pre>
+DROP TEMPORARY TABLE IF EXISTS lib_Explode; -- Optional, read below.</pre>
 
 <p><strong>Result:</strong></p>
 
@@ -202,20 +205,21 @@ end (i.e. after the client disconnects).</p>
 <p><strike>Procedures which return a table, should return it every time; when an
 error occurs, the table is empty.</strike> (This wasn't a good idea.)</p>
 
-<h4>About the code below</h4>
+<h3 id="toc-about-the-code-below">About the code below</h3>
 
 <p>For brevity, I do not „prefix“ the code with <code>DELIMITER</code>, but
 if you do not use the <a href="#Download">complete script</a>, be sure to use
 the code this way:</p>
 
-<pre class="brush: sql"><code>DELIMITER $$
+<pre class="brush: sql">DELIMITER $$
 ...
-END; $$</code></pre>
+END; $$</pre>
 
 <p>The code may be cluttered with some debug calls commented out.<br />
 Generally, procedures should be bug-free, as I use them quite much.</p>
 
-<h4>Stored procedures library categories</h4>
+<h3 id="toc-stored-procedures-library-categories">Stored procedures library
+categories</h3>
 
 <p>Currently the stored procedures available divide into these categories:</p>
 
@@ -261,18 +265,18 @@ Generally, procedures should be bug-free, as I use them quite much.</p>
 	places on earth. (Not available yet).</li>
 </ul>
 <a name="Logging"></a>
-<h4>Logging</h4>
+<h3 id="toc-logging">Logging</h3>
 
 <pre
-class="brush: sql"><code>CREATE TABLE lib_logg (
+class="brush: sql">CREATE TABLE lib_logg (
   `whn` datetime NOT NULL,
   `thread` int(10) unsigned NOT NULL,
   `level` enum('info','warn','error') NOT NULL default 'info',
   `str` text NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;</code></pre>
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;</pre>
 
 <pre
-class="brush: sql"><code>DELIMITER $$
+class="brush: sql">DELIMITER $$
 CREATE PROCEDURE  Logg( sStr TEXT ) BEGIN
   INSERT DELAYED INTO lib_logg SET str = sStr, whn = NOW(), thread = CONNECTION_ID();
 END; $$
@@ -296,16 +300,18 @@ END $$
 
 CREATE PROCEDURE LoggLeave(sRout VARCHAR(255)) BEGIN
  INSERT INTO lib_logg SET rout = sRout, level='leave', str = NULL, whn = NOW(), thread = CONNECTION_ID();
-END $$</code></pre>
+END $$</pre>
 <a name="String_functions"></a>
-<h4>String functions</h4>
+<h3 id="toc-string-functions">String functions</h3>
 
-<h5><code>lib_Explode()</code> – similar to PHP's <code>Explode()</code></h5>
+<h4
+id="toc-lib-explode-similar-to-php-s-explode"><code>lib_Explode()</code> –
+similar to PHP's <code>Explode()</code></h4>
 
 <p><strong>Usage:</strong></p>
 
 <pre
-class="brush: sql"><code>CALL lib_Explode( ',' ,  'Ahoj, jak se máte, 212' );</code></pre>
+class="brush: sql">CALL lib_Explode( ',' ,  'Ahoj, jak se máte, 212' );</pre>
 
 <p><strong>Result:</strong></p>
 
@@ -342,7 +348,7 @@ class="brush: sql"><code>CALL lib_Explode( ',' ,  'Ahoj, jak se máte, 212' );</
 <p><strong>Source code:</strong></p>
 
 <pre
-class="brush: sql"><code>CREATE PROCEDURE lib_Explode( sSepar VARCHAR(255), saVal TEXT )
+class="brush: sql">CREATE PROCEDURE lib_Explode( sSepar VARCHAR(255), saVal TEXT )
 body:
 BEGIN
 
@@ -368,15 +374,15 @@ BEGIN
 
   END WHILE;
 
-END; $$</code></pre>
+END; $$</pre>
 
 <p>Note: If you are looking for something like <code>lib_Implode()</code>, that
 is, PHP's <code>explode()</code> equivalent, see MySQL's „aggregate
 functioni“ <code>GROUP_CONCAT()</code>:</p>
 
 <pre
-class="brush: sql"><code>CALL lib_GenerateSequence( 5, 15, 2 );
-SELECT GROUP_CONCAT(i SEPARATOR ' a ') AS vysledek FROM lib_GenerateSequence;</code></pre>
+class="brush: sql">CALL lib_GenerateSequence( 5, 15, 2 );
+SELECT GROUP_CONCAT(i SEPARATOR ' a ') AS vysledek FROM lib_GenerateSequence;</pre>
 
 <p>Výsledek:</p>
 
@@ -394,8 +400,8 @@ SELECT GROUP_CONCAT(i SEPARATOR ' a ') AS vysledek FROM lib_GenerateSequence;</c
 	</tbody>
 </table>
 
-<h5><code>F1() - F6()</code> – <code>"sprintf()"</code> with 1 to
-6 parameters</h5>
+<h4 id="toc-f1-f6-sprintf-with-1-to-6-parameters"><code>F1() - F6()</code> –
+<code>"sprintf()"</code> with 1 to 6 parameters</h4>
 
 <p>In the F1 function the <code>%s</code> string is replaced. Other functions
 replace strings <code>{1}</code> to <code>{6}</code>.</p>
@@ -403,7 +409,7 @@ replace strings <code>{1}</code> to <code>{6}</code>.</p>
 <p><strong>Usage:</strong></p>
 
 <pre
-class="brush: sql"><code>SELECT F2( 'Ve městě {1} je {2} stupňů.', 'Praha', 31.2 ) FROM DUAL;</code></pre>
+class="brush: sql">SELECT F2( 'Ve městě {1} je {2} stupňů.', 'Praha', 31.2 ) FROM DUAL;</pre>
 
 <p><strong>Result:</strong></p>
 
@@ -418,7 +424,7 @@ class="brush: sql"><code>SELECT F2( 'Ve městě {1} je {2} stupňů.', 'Praha', 
 <p><strong>Source code:</strong></p>
 
 <pre
-class="brush: sql"><code>CREATE FUNCTION  F1 ( sFormat TEXT, sPar1 TEXT )
+class="brush: sql">CREATE FUNCTION  F1 ( sFormat TEXT, sPar1 TEXT )
     RETURNS text CHARSET utf8 BEGIN
   RETURN REPLACE(sFormat, '%s', sPar1);
 END; $$
@@ -449,9 +455,9 @@ CREATE FUNCTION  F6 ( sFormat TEXT, sPar1 TEXT, sPar2 TEXT,  sPar3 TEXT,
        sPar4 TEXT, sPar5 TEXT, sPar6 TEXT  ) RETURNS text CHARSET utf8 BEGIN
   RETURN REPLACE( REPLACE( REPLACE( REPLACE( REPLACE( REPLACE( sFormat,
     '{1}', sPar1), '{2}', sPar2), '{3}', sPar3), '{4}', sPar4), '{5}', sPar5), '{6}', sPar6);
-END; $$</code></pre>
+END; $$</pre>
 <a name="NULL-safe_functions"></a>
-<h4>NULL-safe functions</h4>
+<h3 id="toc-null-safe-functions">NULL-safe functions</h3>
 
 <p>Somethimes you need to ensure that no parameter of a function is
 <code>NULL</code>, e.g. in case of calling CONCAT(), which returns
@@ -461,11 +467,11 @@ functions. Mainly for debugging purposes.</p>
 
 <p>Funkce hlavně pro potřeby logování.</p>
 
-<h5>NS() – NULL-safe</h5>
+<h4 id="toc-ns-null-safe">NS() – NULL-safe</h4>
 
-<h5>NSB() – NULL-safe boolean</h5>
+<h4 id="toc-nsb-null-safe-boolean">NSB() – NULL-safe boolean</h4>
 
-<h5>NSQ() – NULL-safe quoted</h5>
+<h4 id="toc-nsq-null-safe-quoted">NSQ() – NULL-safe quoted</h4>
 
 <p>If the only argument is <code>NULL</code>, returns the string „NULL“.
 Otherwise returns:</p>
@@ -482,12 +488,12 @@ Otherwise returns:</p>
 <p><strong>Usage:</strong></p>
 
 <pre
-class="brush: sql"><code>CALL Logg( F1('Computing level %s.', NS(@iLevel)) )</code></pre>
+class="brush: sql">CALL Logg( F1('Computing level %s.', NS(@iLevel)) )</pre>
 
 <p><strong>Source code:</strong></p>
 
 <pre
-class="brush: sql"><code>CREATE FUNCTION NS( s VARCHAR(255) )
+class="brush: sql">CREATE FUNCTION NS( s VARCHAR(255) )
 RETURNS varchar(255) CHARSET utf8 BEGIN
   RETURN IF( s IS NULL, 'NULL', CONCAT('"',s,'"') );
 END $$
@@ -500,15 +506,17 @@ END $$
 CREATE FUNCTION NSQ(s VARCHAR(255)) RETURNS varchar(255)
 CHARSET utf8 NO SQL DETERMINISTIC BEGIN
   RETURN IF( s IS NULL, 'NULL', CONCAT('"',s,'"') );
-END  $$</code></pre>
+END  $$</pre>
 <a name="Utilities"></a>
-<h4>Utilities</h4>
+<h3 id="toc-utilities">Utilities</h3>
 
-<h5>lib_GenerateSe­quence – linear sequence generator</h5>
+<h4
+id="toc-lib-generatesequence-linear-sequence-generator">lib_GenerateSe­quence –
+linear sequence generator</h4>
 
 <p><strong>Usage:</strong></p>
 
-<pre class="brush: sql"><code>CALL lib_GenerateSequence( 5, 15, 2 )</code></pre>
+<pre class="brush: sql">CALL lib_GenerateSequence( 5, 15, 2 )</pre>
 
 <p><strong>Result:</strong></p>
 
@@ -549,7 +557,7 @@ END  $$</code></pre>
 <p><strong>Source code:</strong></p>
 
 <pre
-class="brush: sql"><code>DELIMITER $$
+class="brush: sql">DELIMITER $$
 
 CREATE PROCEDURE lib_GenerateSequence(
   iFrom INTEGER, iTo INTEGER, iStep INTEGER )
@@ -573,23 +581,24 @@ BEGIN
     SET @iMin = @iMin + iStep;
   END LOOP;
 
-END; $$</code></pre>
+END; $$</pre>
 
-<h5>lib_Temporary­TableHasColum­ns( sTable, saColumns, OUT BOOL bHas ) –
-TEMP TABLE checking</h5>
+<h4
+id="toc-lib-temporarytablehascolumns-stable-sacolumns-out-bool-bhas-temp-table-checking">lib_Temporary­TableHasColum­ns(
+sTable, saColumns, OUT BOOL bHas ) – TEMP TABLE checking</h4>
 
 <p>Checks whether a TEMP TABLE exists and has the given columns.</p>
 
 <p><strong>Usage:</strong></p>
 
 <pre
-class="brush: sql"><code>CALL lib_TemporaryTableHasColumns('table', 'col1,col2,col3', @bHas);
-SELECT @bHas;</code></pre>
+class="brush: sql">CALL lib_TemporaryTableHasColumns('table', 'col1,col2,col3', @bHas);
+SELECT @bHas;</pre>
 
 <p><strong>Source code:</strong></p>
 
 <pre
-class="brush: sql"><code>CREATE lib_TemporaryTableHasColumns (
+class="brush: sql">CREATE lib_TemporaryTableHasColumns (
   IN sTable VARCHAR(255), IN saColumns VARCHAR(255), OUT bHas BOOLEAN)
 BEGIN
 
@@ -620,10 +629,11 @@ BEGIN
   DEALLOCATE PREPARE stmt_name;
   SET bHas = TRUE;
 
-END $$</code></pre>
+END $$</pre>
 
-<h5><code>lib_RaiseError()</code> – Similar to <code>RaiseError()</code> in
-other DBs</h5>
+<h4
+id="toc-lib-raiseerror-similar-to-raiseerror-in-other-dbs"><code>lib_RaiseError()</code> –
+Similar to <code>RaiseError()</code> in other DBs</h4>
 
 <p>Raises an error („throws an exception“) with a message containing the
 given string.</p>
@@ -631,20 +641,20 @@ given string.</p>
 <p><strong>Usage:</strong></p>
 
 <pre
-class="brush: sql"><code>CALL lib_RaiseError('Disaster!');
-##  Says:   PROCEDURE neural_network.error: Disaster! You're doomed, solution does not exist</code></pre>
+class="brush: sql">CALL lib_RaiseError('Disaster!');
+##  Says:   PROCEDURE neural_network.error: Disaster! You're doomed, solution does not exist</pre>
 
 <p><strong>Source code:</strong></p>
 
 <pre
-class="brush: sql"><code>CREATE DEFINER=`root`@`localhost` PROCEDURE `lib_RaiseError`( sError VARCHAR(255) )
+class="brush: sql">CREATE DEFINER=`root`@`localhost` PROCEDURE `lib_RaiseError`( sError VARCHAR(255) )
 BEGIN
   ## PROCEDURE neural_network.Ahoj lidi does not exist
   CALL ExecuteQuery(F1('CALL `error: %s   You\'re doomed, solution`', sError));
 
   ##  Usage:
 
-END $$</code></pre>
+END $$</pre>
 </div>
 
         <!-- Rating widget -->

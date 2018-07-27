@@ -84,8 +84,8 @@
 
 <p>uprav si etc/hosts ($win / system32 / drivers /etc) pridej tam:</p>
 
-<pre><code>192.168.77.1 hosting.vpn.rozsnyo.com
-192.168.77.1 sql.vpn.rozsnyo.com</code></pre>
+<pre>192.168.77.1 hosting.vpn.rozsnyo.com
+192.168.77.1 sql.vpn.rozsnyo.com</pre>
 
 <p>muzes zkusit ssh na tu ip/host, port 20202 ondra/on­drazizka a zmen heslo
 (passwd i smbpasswd)</p>
@@ -101,14 +101,14 @@ videt php my admin</p>
 
 <p>DB: winlyricscom / winlyricscom , heslo vygeneruj (choze: poslu SMSkou)</p>
 
-<h3>Na linuxu:</h3>
+<h2 id="toc-na-linuxu">Na linuxu:</h2>
 
 <p>nainstalujes si openvpn a na tom sdileni je ta slozka .vpn, v ni jsou
 konfiguraky a certifikaty pak to nejak prinutis at to pouzije.. (openvpn
 vyzaduje v jadru povolit „tun/tap“ device, treba jako modul) a pak do
 etc/fstab jede neco takovehoto:</p>
 
-<pre><code>hosting.vpn.rozsnyo.com:/home/daniel    /home/daniel/hosting  nfs  noatime,noauto,user  0 0</code></pre>
+<pre>hosting.vpn.rozsnyo.com:/home/daniel    /home/daniel/hosting  nfs  noatime,noauto,user  0 0</pre>
 </div>
 
         <!-- Rating widget -->

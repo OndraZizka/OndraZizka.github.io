@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="utf-8"/>
-    <title>Hibernate write-only properties - Ondřej Žižka</title>
+    <title>Hibernate write-only
+properties - Ondřej Žižka</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="My personal web">
     <meta name="author" content="Ondřej Žižka">
@@ -73,17 +74,19 @@
 
     <div class="document-post">
         <div class="page-header">
-            <h1>Hibernate write-only properties</h1>
+            <h1>Hibernate write-only
+properties</h1>
         </div>
         <div class="date"><em>2012-12-31</em></div>
-        <div class="doc-body"><h3>Hibernate write-only properties</h3>
+        <div class="doc-body"><h2 id="toc-hibernate-write-only-properties">Hibernate write-only
+properties</h2>
 
 <p>How to implement?</p>
 
 <p>Easily… simply ignore the value when being set.</p>
 
 <pre
-class="brush: java"><code>@Entity
+class="brush: java">@Entity
 public class Invoice {
 
     private List&lt;Items&gt; items = new ArrayList();
@@ -98,7 +101,7 @@ public class Invoice {
       // Ignore.
     }
 
-}</code></pre>
+}</pre>
 
 <p>Note that this will have the side effect of re-computing every time Hibernate
 saves the data.</p>

@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="utf-8"/>
-    <title>Installing Trac 12 on Centos 5.5 – requires Python 2.6 - Ondřej Žižka</title>
+    <title>Installing
+Trac 12 on Centos 5.5 – requires Python 2.6 - Ondřej Žižka</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="My personal web">
     <meta name="author" content="Ondřej Žižka">
@@ -73,10 +74,12 @@
 
     <div class="document-post">
         <div class="page-header">
-            <h1>Installing Trac 12 on Centos 5.5 – requires Python 2.6</h1>
+            <h1>Installing
+Trac 12 on Centos 5.5 – requires Python 2.6</h1>
         </div>
         <div class="date"><em>2012-12-31</em></div>
-        <div class="doc-body"><h3>Installing Trac 12 on Centos 5.5 – requires Python 2.6</h3>
+        <div class="doc-body"><h2 id="toc-installing-trac-12-on-centos-5-5-requires-python-2-6">Installing
+Trac 12 on Centos 5.5 – requires Python 2.6</h2>
 
 <p>I had problems with incompatible versions – CentOS 5.5 insists on having
 Python 2.4 because Yum uses it.</p>
@@ -93,7 +96,7 @@ warned – <code>yum</code> is really pretty dumb.</p>
 <p>In the end, my <code>/etc/yum.repo.d</code> contained:</p>
 
 <pre
-class="plain"><code>[root@localhost yum.repos.d]# ls -1
+class="plain">[root@localhost yum.repos.d]# ls -1
 CentOS-Base.repo
 CentOS-Media.repo
 chl.repo
@@ -104,7 +107,7 @@ jpackage50.repo
 mirrors-rpmforge
 rpmforge.repo
 rpmforge-testing.repo
-trac-repos.repo</code></pre>
+trac-repos.repo</pre>
 
 <p>First, I needed Python 2.6. This was soved by Chris Lea's repo – he
 made a package which installs Python 2.6 to <code>/usr/lib/python2.6</code>,
@@ -117,7 +120,7 @@ which updated to SVN 1.6.13 from one of the repos above, probably RPMForge.</p>
 to python 2.6, for which I needed to learn a new RPM trick:</p>
 
 <pre
-class="plain"><code>rpm -i subversion-python...rpm --relocate /usr/lib/python2.4=/usr/lib/python2.6</code></pre>
+class="plain">rpm -i subversion-python...rpm --relocate /usr/lib/python2.4=/usr/lib/python2.6</pre>
 
 <p>Yum can't do this AFAIK.</p>
 </div>

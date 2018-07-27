@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="utf-8"/>
-    <title>Quick and dirty mavenization of an existing project - Ondřej Žižka</title>
+    <title>Quick and dirty
+mavenization of an existing project - Ondřej Žižka</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="My personal web">
     <meta name="author" content="Ondřej Žižka">
@@ -73,10 +74,12 @@
 
     <div class="document-post">
         <div class="page-header">
-            <h1>Quick and dirty mavenization of an existing project</h1>
+            <h1>Quick and dirty
+mavenization of an existing project</h1>
         </div>
         <div class="date"><em>2012-12-16</em></div>
-        <div class="doc-body"><h3>Quick and dirty mavenization of an existing project</h3>
+        <div class="doc-body"><h2 id="toc-quick-and-dirty-mavenization-of-an-existing-project">Quick and dirty
+mavenization of an existing project</h2>
 
 <p>This is my lazy way to get anything to a Maven repo. Shown on my mavenization
 of the Sardine library.</p>
@@ -96,18 +99,18 @@ of the Sardine library.</p>
 		<code>org.jboss.qa.ews.sardine</code> in this case.</p>
 
 		<pre
-		class="bat"><code>@ECHO off
+		class="bat">@ECHO off
 ECHO echo Edit this file before use. Check the -DartifactId and -Dversion params.
 ECHO return
 
 ECHO cmd /C mvn install:install-file -DpomFile=sardine-pom.xml -Dpackaging=jar -DgeneratePom=true -DgroupId=org.jboss.qa.ews.sardine -Dfile=sardine-80\sardine.jar -DartifactId=sardine -Dversion=80
 
-FOR %%f IN ( sardine-80\lib\*.jar) DO ECHO cmd /C mvn install:install-file -Dpackaging=jar -DgeneratePom=true -DgroupId=org.jboss.qa.ews.sardine -Dfile=%%f -DartifactId=%%~nf -Dversion=%%~nf</code></pre>
+FOR %%f IN ( sardine-80\lib\*.jar) DO ECHO cmd /C mvn install:install-file -Dpackaging=jar -DgeneratePom=true -DgroupId=org.jboss.qa.ews.sardine -Dfile=%%f -DartifactId=%%~nf -Dversion=%%~nf</pre>
 
 		<p>This will create something like this:</p>
 
 		<pre
-		class="bat"><code>echo Edit this file before use. Check the -DartifactId and -Dversion params.
+		class="bat">echo Edit this file before use. Check the -DartifactId and -Dversion params.
 return
 
 cmd /C mvn install:install-file -DpomFile=sardine-pom.xml -Dpackaging=jar -DgeneratePom=true -DgroupId=org.jboss.qa.ews.sardine -Dfile=sardine-80\sardine.jar -DartifactId=sardine -Dversion=80
@@ -118,7 +121,7 @@ cmd /C mvn install:install-file -Dpackaging=jar -DgeneratePom=true -DgroupId=org
 cmd /C mvn install:install-file -Dpackaging=jar -DgeneratePom=true -DgroupId=org.jboss.qa.ews.sardine -Dfile=sardine-80\lib\httpcore-4.0.1.jar -DartifactId=httpcore -Dversion=4.0.1
 cmd /C mvn install:install-file -Dpackaging=jar -DgeneratePom=true -DgroupId=org.jboss.qa.ews.sardine -Dfile=sardine-80\lib\junit-4.8.1.jar -DartifactId=junit -Dversion=4.8.1
 cmd /C mvn install:install-file -Dpackaging=jar -DgeneratePom=true -DgroupId=org.jboss.qa.ews.sardine -Dfile=sardine-80\lib\svnkit.jar -DartifactId=svnkit -Dversion=0.0
-cmd /C mvn install:install-file -Dpackaging=jar -DgeneratePom=true -DgroupId=org.jboss.qa.ews.sardine -Dfile=sardine-80\lib\svntask.jar -DartifactId=svntask -Dversion=0.0</code></pre>
+cmd /C mvn install:install-file -Dpackaging=jar -DgeneratePom=true -DgroupId=org.jboss.qa.ews.sardine -Dfile=sardine-80\lib\svntask.jar -DartifactId=svntask -Dversion=0.0</pre>
 	</li>
 
 	<li>Create a <code>pom.xml</code> file, which will describe the mavenized
@@ -126,7 +129,7 @@ cmd /C mvn install:install-file -Dpackaging=jar -DgeneratePom=true -DgroupId=org
 </ol>
 
 <pre
-class="brush: xml"><code>&lt;project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+class="brush: xml">&lt;project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd"&gt;
   &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
 
@@ -141,7 +144,7 @@ class="brush: xml"><code>&lt;project xmlns="http://maven.apache.org/POM/4.0.0" x
   &lt;dependencies&gt;
   &lt;/dependencies&gt;
 
-&lt;/project&gt;</code></pre>
+&lt;/project&gt;</pre>
 
 <ol start="4">
 	<li>Most of the deps should be found in some existing Maven repository.
@@ -150,7 +153,7 @@ class="brush: xml"><code>&lt;project xmlns="http://maven.apache.org/POM/4.0.0" x
 		script.</p>
 
 		<pre
-		class="brush: xml"><code>&lt;dependency&gt;
+		class="brush: xml">&lt;dependency&gt;
   &lt;groupId&gt;junit&lt;/groupId&gt;
   &lt;artifactId&gt;junit&lt;/artifactId&gt;
   &lt;version&gt;3.8.1&lt;/version&gt;
@@ -196,10 +199,10 @@ class="brush: xml"><code>&lt;project xmlns="http://maven.apache.org/POM/4.0.0" x
   &lt;groupId&gt;org.jboss.qa.ews.sardine&lt;/groupId&gt;
   &lt;artifactId&gt;svntask&lt;/artifactId&gt;
   &lt;version&gt;0.0&lt;/version&gt;
-&lt;/dependency&gt;</code></pre>
+&lt;/dependency&gt;</pre>
 
 		<pre
-		class="bat"><code>cmd /C mvn install:install-file -DpomFile=sardine-pom.xml -Dpackaging=jar -DgeneratePom=true -DgroupId=org.jboss.qa.ews.sardine -Dfile=sardine-80\sardine.jar -DartifactId=sardine -Dversion=80
+		class="bat">cmd /C mvn install:install-file -DpomFile=sardine-pom.xml -Dpackaging=jar -DgeneratePom=true -DgroupId=org.jboss.qa.ews.sardine -Dfile=sardine-80\sardine.jar -DartifactId=sardine -Dversion=80
 
 cmd /C mvn install:install-file -Dpackaging=jar -DgeneratePom=true -DgroupId=org.jboss.qa.ews.sardine -Dfile=sardine-80\lib\ant-googlecode-0.0.2.jar -DartifactId=ant-googlecode -Dversion=0.0.2
 @rem cmd /C mvn install:install-file -Dpackaging=jar -DgeneratePom=true -DgroupId=org.jboss.qa.ews.sardine -Dfile=sardine-80\lib\commons-logging-1.1.1.jar -DartifactId=commons-logging -Dversion=1.1.1
@@ -207,7 +210,7 @@ cmd /C mvn install:install-file -Dpackaging=jar -DgeneratePom=true -DgroupId=org
 @rem cmd /C mvn install:install-file -Dpackaging=jar -DgeneratePom=true -DgroupId=org.jboss.qa.ews.sardine -Dfile=sardine-80\lib\httpcore-4.0.1.jar -DartifactId=httpcore -Dversion=4.0.1
 @rem cmd /C mvn install:install-file -Dpackaging=jar -DgeneratePom=true -DgroupId=org.jboss.qa.ews.sardine -Dfile=sardine-80\lib\junit-4.8.1.jar -DartifactId=junit -Dversion=4.8.1
 cmd /C mvn install:install-file -Dpackaging=jar -DgeneratePom=true -DgroupId=org.jboss.qa.ews.sardine -Dfile=sardine-80\lib\svnkit.jar -DartifactId=svnkit -Dversion=0.0
-cmd /C mvn install:install-file -Dpackaging=jar -DgeneratePom=true -DgroupId=org.jboss.qa.ews.sardine -Dfile=sardine-80\lib\svntask.jar -DartifactId=svntask -Dversion=0.0</code></pre>
+cmd /C mvn install:install-file -Dpackaging=jar -DgeneratePom=true -DgroupId=org.jboss.qa.ews.sardine -Dfile=sardine-80\lib\svntask.jar -DartifactId=svntask -Dversion=0.0</pre>
 	</li>
 </ol>
 
@@ -222,7 +225,7 @@ cmd /C mvn install:install-file -Dpackaging=jar -DgeneratePom=true -DgroupId=org
 		<p>So, perform this:</p>
 
 		<pre
-		class="bash"><code>mvn install:install-file -DpomFile=sardine-pom.xml -Dpackaging=jar -DgeneratePom=true -DgroupId=org.jboss.qa.ews.sardine -Dfile=sardine-80\sardine.jar -DartifactId=sardine -Dversion=80</code></pre>
+		class="bash">mvn install:install-file -DpomFile=sardine-pom.xml -Dpackaging=jar -DgeneratePom=true -DgroupId=org.jboss.qa.ews.sardine -Dfile=sardine-80\sardine.jar -DartifactId=sardine -Dversion=80</pre>
 	</li>
 </ol>
 

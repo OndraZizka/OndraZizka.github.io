@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="utf-8"/>
-    <title>Wicket exception on shutdown – java.lang.NoClas­sDefFoundError:
+    <title>Wicket
+exception on shutdown – java.lang.NoClas­sDefFoundError:
 org/apache/wic­ket/util/lang/Pro­pertyResolver - Ondřej Žižka</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="My personal web">
@@ -74,18 +75,21 @@ org/apache/wic­ket/util/lang/Pro­pertyResolver - Ondřej Žižka</title>
 
     <div class="document-post">
         <div class="page-header">
-            <h1>Wicket exception on shutdown – java.lang.NoClas­sDefFoundError:
+            <h1>Wicket
+exception on shutdown – java.lang.NoClas­sDefFoundError:
 org/apache/wic­ket/util/lang/Pro­pertyResolver</h1>
         </div>
         <div class="date"><em>2012-12-31</em></div>
-        <div class="doc-body"><h3>Wicket exception on shutdown – java.lang.NoClas­sDefFoundError:
-org/apache/wic­ket/util/lang/Pro­pertyResolver</h3>
+        <div class="doc-body"><h2
+id="toc-wicket-exception-on-shutdown-java-lang-noclassdeffounderror-org-apache-wicket-util-lang-propertyresolver">Wicket
+exception on shutdown – java.lang.NoClas­sDefFoundError:
+org/apache/wic­ket/util/lang/Pro­pertyResolver</h2>
 
 <p>This happens when I undeploy a Wicket 1.4.9 application (remove the webapp
 dir) on Tomcat 6.0.29:</p>
 
 <pre
-class="plain"><code>Nov 25, 2010 11:30:49 PM org.apache.catalina.startup.HostConfig checkResources
+class="plain">Nov 25, 2010 11:30:49 PM org.apache.catalina.startup.HostConfig checkResources
 INFO: Undeploying context []
 Nov 25, 2010 11:30:49 PM org.apache.catalina.startup.HostConfig checkResources
 WARNING: Error while removing context []
@@ -135,9 +139,9 @@ java.lang.NoClassDefFoundError: org/apache/wicket/util/lang/PropertyResolver
         at org.apache.catalina.core.ContainerBase$ContainerBackgroundProcessor.processChildren(ContainerBase.java:1601)
         at org.apache.catalina.core.ContainerBase$ContainerBackgroundProcessor.processChildren(ContainerBase.java:1610)
         at org.apache.catalina.core.ContainerBase$ContainerBackgroundProcessor.run(ContainerBase.java:1590)
-        at java.lang.Thread.run(Thread.java:662)</code></pre>
+        at java.lang.Thread.run(Thread.java:662)</pre>
 
-<h4>Solution</h4>
+<h3 id="toc-solution">Solution</h3>
 
 <p>From <a
 href="http://www.mail-archive.com/users&#64;wicket.apache.org/msg49863.html">http://www.mail-archive.com/…sg49863.html</a>

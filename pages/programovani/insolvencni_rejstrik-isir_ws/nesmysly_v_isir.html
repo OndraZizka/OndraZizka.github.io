@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="utf-8"/>
-    <title>Nedomyšlenost webové služby Insolvenčním rejstříku - Ondřej Žižka</title>
+    <title>Nedomyšlenost
+webové služby Insolvenčním rejstříku - Ondřej Žižka</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="My personal web">
     <meta name="author" content="Ondřej Žižka">
@@ -73,10 +74,12 @@
 
     <div class="document-post">
         <div class="page-header">
-            <h1>Nedomyšlenost webové služby Insolvenčním rejstříku</h1>
+            <h1>Nedomyšlenost
+webové služby Insolvenčním rejstříku</h1>
         </div>
         <div class="date"><em>2012-12-16</em></div>
-        <div class="doc-body"><h3>Nedomyšlenost webové služby Insolvenčním rejstříku</h3>
+        <div class="doc-body"><h2 id="toc-nedomyslenost-webove-sluzby-insolvencnim-rejstriku">Nedomyšlenost
+webové služby Insolvenčním rejstříku</h2>
 
 <p>S webovou službou Insolvenčního rejstříku pracuji již asi měsíc, ale
 stále nevycházím z údivu, jak hloupá tato služba je. Již jsem psal o <a
@@ -87,7 +90,8 @@ zdaleka nevyčerpal.</p>
 <p>Pojďme se nyní podívat, jak vypadá samotná obsahová stránka
 služby ISIR.</p>
 
-<h4>Nesmysl první: chaos v událostech</h4>
+<h3 id="toc-nesmysl-prvni-chaos-v-udalostech">Nesmysl první: chaos
+v událostech</h3>
 
 <p>Jak se dozvíte ve výše odkazovaném článku, webová služba
 Insolvenční rejstřík funguje jako internetový záznam událostí, které se
@@ -95,7 +99,7 @@ staly během existence systému ISIR. To znamená, že nežádáte
 o konkrétní informace, ale výstup tohoto typu:</p>
 
 <pre
-class="brush: xml"><code>&lt;tns:udalost ... &gt;
+class="brush: xml">&lt;tns:udalost ... &gt;
   &lt;info cas="2008-01-22 00:00:00.0" id="2644" oddil="A" poradi="1" typ="6"
          typ_text="Insolvenční návrh spojený s návrhem na povolení oddlužení"/&gt;
   &lt;idOsobyPuvodce&gt;KSVYCHK&lt;/idOsobyPuvodce&gt;
@@ -118,7 +122,7 @@ class="brush: xml"><code>&lt;tns:udalost ... &gt;
   &lt;info cas="2008-01-22 00:00:00.0" id="2646" oddil="" poradi="-1" typ="2" typ_text="Změna adresy osoby"/&gt;
   &lt;idOsobyPuvodce&gt;KSVYCHK&lt;/idOsobyPuvodce&gt;
   &lt;osoba&gt; ...  &lt;/osoba&gt;
-&lt;/tns:udalost&gt;</code></pre>
+&lt;/tns:udalost&gt;</pre>
 
 <p>O kvalitě tohoto zpracování jsem již napsal dost.</p>
 
@@ -127,7 +131,7 @@ tvořit lokální databázi ISIR“. Jenže ouha. To, co přichází jako obsah,
 má jen velmi mlhavou definici, v jejímž rámci se dějí
 skutečné divy.</p>
 
-<h5>Pořadí událostí</h5>
+<h4 id="toc-poradi-udalosti">Pořadí událostí</h4>
 
 <p>Pokud byste čekali, že události chodí pro každé řížení zhruba ve
 stejném pořadí, tak jste velmi na omylu. Jednou se spis zakládá událostí
@@ -140,7 +144,7 @@ jindy událostí typu <code>5 - Insolvenční návrh</code>, a jindy zase typu
 <p>Dále vám přijde událost s osobou:</p>
 
 <pre
-class="brush: xml"><code>&lt;tns:udalost&gt;
+class="brush: xml">&lt;tns:udalost&gt;
   &lt;info cas="2008-02-18 00:00:00.0" id="7859" oddil="" poradi="-1" typ="1" typ_text="Změna osoby"/&gt;
   &lt;idOsobyPuvodce&gt;KSJICCB&lt;/idOsobyPuvodce&gt;
     &lt;osoba&gt;
@@ -150,13 +154,13 @@ class="brush: xml"><code>&lt;tns:udalost&gt;
     &lt;druhOsoby&gt;P&lt;/druhOsoby&gt;
     &lt;ic&gt;25165488&lt;/ic&gt;
   &lt;/osoba&gt;
-&lt;/tns:udalost&gt;</code></pre>
+&lt;/tns:udalost&gt;</pre>
 
 <p>A o chvíli později přide další událost, která se liží <em>pouze
 v ID události</em>!</p>
 
 <pre
-class="brush: xml"><code>&lt;tns:udalost&gt;
+class="brush: xml">&lt;tns:udalost&gt;
   &lt;info cas="2008-02-18 00:00:00.0" id="7863" oddil="" poradi="-1" typ="1" typ_text="Změna osoby"/&gt;
   &lt;idOsobyPuvodce&gt;KSJICCB&lt;/idOsobyPuvodce&gt;
   &lt;osoba&gt;
@@ -166,7 +170,7 @@ class="brush: xml"><code>&lt;tns:udalost&gt;
     &lt;druhOsoby&gt;P&lt;/druhOsoby&gt;
     &lt;ic&gt;25165488&lt;/ic&gt;
   &lt;/osoba&gt;
-&lt;/tns:udalost&gt;</code></pre>
+&lt;/tns:udalost&gt;</pre>
 
 <p>Událost je tedy úplně zbytečná. Stejné je to ovšem i s jinými
 událostmi – např. pro adresu. A aby toho nebylo dost, tak takováto
@@ -182,17 +186,18 @@ zápisech by byly zpracované volitelně? Kdepak, pro CCA moc složité.</p>
 <p><em><a href="isir_typy_akci.texy">Kompletní seznam událostí
 k 1.7.2008</a></em></p>
 
-<h4>Nesmysl druhý: nicneříkající události</h4>
+<h3 id="toc-nesmysl-druhy-nicnerikajici-udalosti">Nesmysl druhý:
+nicneříkající události</h3>
 
 <p>Velká spousta (ne-li většina) události nenesou jakoukoliv použitelnou
 informaci. Jako příklad vezměme třeba tuto:</p>
 
 <pre
-class="brush: xml"><code>&lt;tns:udalost ... &gt;
+class="brush: xml">&lt;tns:udalost ... &gt;
   &lt;info cas="2008-02-18 00:00:00.0" id="7865" oddil="A" poradi="2" typ="23" typ_text="Návrh - přílohy"/&gt;
   &lt;idOsobyPuvodce&gt;KSJICCB&lt;/idOsobyPuvodce&gt;
   &lt;vec&gt; &lt;druhStavRizeni&gt;NEVYRIZENA&lt;/druhStavRizeni&gt; &lt;/vec&gt;
-&lt;/tns:udalost&gt;</code></pre>
+&lt;/tns:udalost&gt;</pre>
 
 <p>Ta nám říká, že na budějovickém krajském soudu se objevila příloha
 k návrhu. Nic víc a žádné další informace se již ve webové službě
@@ -201,11 +206,11 @@ neobjeví. <em>K čemu je taková událost?</em></p>
 <p>Moje naprosto nejoblíbenější událost je typ „Jiné“:</p>
 
 <pre
-class="brush: xml"><code>&lt;tns:udalost ... &gt;
+class="brush: xml">&lt;tns:udalost ... &gt;
   &lt;info cas="2008-04-04 12:14:48.0" id="29563" oddil="P19" poradi="2" typ="239" typ_text="Jiné"/&gt;
   &lt;idOsobyPuvodce&gt;KSJICCB&lt;/idOsobyPuvodce&gt;
   &lt;vec&gt; &lt;druhStavRizeni&gt;KONKURS&lt;/druhStavRizeni&gt; &lt;/vec&gt;
-&lt;/tns:udalost&gt;</code></pre>
+&lt;/tns:udalost&gt;</pre>
 
 <p>Zde opravdu netuším, co tím chtěl básník říci. Pokud by se vám
 zdálo, že jde o tu položku KONKURS, tak nikoliv – ta již je ve spisu od
@@ -215,7 +220,7 @@ přiřazení správce konkursu.</p>
 Insolvenčního rejstříku</a> (zde spis <code>INS 116~2008</code>).<br />
 Další takovéto dokumenty dám zájemcům k dispozici.</p>
 
-<h4>Nesmysl třetí: chaos v datech</h4>
+<h3 id="toc-nesmysl-treti-chaos-v-datech">Nesmysl třetí: chaos v datech</h3>
 
 <p>Kdybyste programovali informační systém s identifikací osob podle
 rodného čísla, nejspíše byste vybrali nějakou formu jeho reprezentace a
@@ -237,7 +242,7 @@ Hrabůvka“, a jindy zase „Ostrava Hrabůvka“; no a když se soudce
 přepíše, tak to může být klidně i „Ostrava Harbůvka“. Proč ne,
 když máme událost „Mylný zápis“…</p>
 
-<h4>Suma sumárum</h4>
+<h3 id="toc-suma-sumarum">Suma sumárum</h3>
 
 <p>Když to shrnu: Chápu, že u komplexního informačního systému, jako je
 ISIR, je obtížné reflektovat často se měnící požadavky zadavatele často

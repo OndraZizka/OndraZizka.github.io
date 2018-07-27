@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="utf-8"/>
-    <title>JAXB – a List with inherited classes - Ondřej Žižka</title>
+    <title>JAXB – a List with inherited
+classes - Ondřej Žižka</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="My personal web">
     <meta name="author" content="Ondřej Žižka">
@@ -73,28 +74,30 @@
 
     <div class="document-post">
         <div class="page-header">
-            <h1>JAXB – a List with inherited classes</h1>
+            <h1>JAXB – a List with inherited
+classes</h1>
         </div>
         <div class="date"><em>2012-12-13</em></div>
-        <div class="doc-body"><h3>JAXB – a List with inherited classes</h3>
+        <div class="doc-body"><h2 id="toc-jaxb-a-list-with-inherited-classes">JAXB – a List with inherited
+classes</h2>
 
 <pre
-class="brush: xml"><code>&lt;cells&gt;
+class="brush: xml">&lt;cells&gt;
   &lt;cell ownerType="NOBODY" owner="0" height="1" /&gt;
   &lt;cell ownerType="NOBODY" owner="0" height="1" /&gt;
   &lt;cell ownerType="NOBODY" owner="0" height="1" /&gt;
   &lt;buildingCell buildingType="6"  ownerType="NOBODY" owner="1" height="1" /&gt;
   &lt;roadCell dirs="WE"  ownerType="TOWN" owner="1" height="1" /&gt;
   &lt;buildingCell buildingType="24"  ownerType="NOBODY" owner="1" height="1" /&gt;
-&lt;/cells&gt;</code></pre>
+&lt;/cells&gt;</pre>
 
 <pre
-class="brush: java"><code>@XmlElements({
+class="brush: java">@XmlElements({
   @XmlElement(name="cell", type=CellBean.class),
   @XmlElement(name="buildingCell", type=BuildingCellBean.class),
   @XmlElement(name="roadCell", type=RoadCellBean.class)
 })
-public List&lt;CellBean&gt; cells;</code></pre>
+public List&lt;CellBean&gt; cells;</pre>
 </div>
 
         <!-- Rating widget -->

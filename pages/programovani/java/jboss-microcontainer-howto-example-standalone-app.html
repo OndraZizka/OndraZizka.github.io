@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="utf-8"/>
-    <title>JBoss Microcontainer Sample Application – Howto - Ondřej Žižka</title>
+    <title>JBoss Microcontainer
+Sample Application – Howto - Ondřej Žižka</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="My personal web">
     <meta name="author" content="Ondřej Žižka">
@@ -73,14 +74,16 @@
 
     <div class="document-post">
         <div class="page-header">
-            <h1>JBoss Microcontainer Sample Application – Howto</h1>
+            <h1>JBoss Microcontainer
+Sample Application – Howto</h1>
         </div>
         <div class="date"><em>2012-12-16</em></div>
-        <div class="doc-body"><h3>JBoss Microcontainer Sample Application – Howto</h3>
+        <div class="doc-body"><h2 id="toc-jboss-microcontainer-sample-application-howto">JBoss Microcontainer
+Sample Application – Howto</h2>
 
 <p><em>A very brief intro to JBoss Microcontainer.</em></p>
 
-<h4>Prerequisites</h4>
+<h3 id="toc-prerequisites">Prerequisites</h3>
 
 <p>This tutorial assumes you're familiar with Maven. If you're not, don't
 worry – most IDE's will hide it from you quite well.</p>
@@ -89,7 +92,7 @@ worry – most IDE's will hide it from you quite well.</p>
 title="inversion of control">IoC</acronym>, which is not only similar to, but
 compatible with JBoss Microcontainer.</p>
 
-<h5>Maven configuration</h5>
+<h4 id="toc-maven-configuration">Maven configuration</h4>
 
 <p>You need to set up Maven to use JBoss Maven repository (all JBoss projects
 use this repository, by the way). Follow instalation instructions in <a
@@ -97,7 +100,7 @@ href="http://www.jboss.org/file-access/default/members/jbossmc/freezone/docs/2.0
 Micontainer User Guide</a>. Here is the shortened version of the profile:</p>
 
 <pre
-class="brush: xml"><code>&lt;profile&gt;
+class="brush: xml">&lt;profile&gt;
   &lt;id&gt;jboss.repository&lt;/id&gt;
     &lt;activation&gt; &lt;property&gt; &lt;name&gt;!jboss.repository.off&lt;/name&gt; &lt;/property&gt; &lt;/activation&gt;
   &lt;repositories&gt;
@@ -108,7 +111,7 @@ class="brush: xml"><code>&lt;profile&gt;
     &lt;pluginRepository&gt; &lt;id&gt;repository.jboss.org&lt;/id&gt; &lt;url&gt;http://repository.jboss.org/maven2&lt;/url&gt; &lt;snapshots&gt;&lt;enabled&gt;false&lt;/enabled&gt;&lt;/snapshots&gt; &lt;/pluginRepository&gt;
     &lt;pluginRepository&gt; &lt;id&gt;snapshots.jboss.org&lt;/id&gt; &lt;url&gt;http://snapshots.jboss.org/maven2&lt;/url&gt; &lt;snapshots&gt;&lt;enabled&gt;true&lt;/enabled&gt;&lt;/snapshots&gt; &lt;/pluginRepository&gt;
   &lt;/pluginRepositories&gt;
-&lt;/profile&gt;</code></pre>
+&lt;/profile&gt;</pre>
 
 <p>Then add this dependency to your project:</p>
 <!-- Old versions
@@ -130,16 +133,17 @@ class="brush: xml"><code>&lt;profile&gt;
 </dependency>
 -->
 <pre
-class="brush: xml"><code>&lt;dependency&gt;
+class="brush: xml">&lt;dependency&gt;
   &lt;groupId&gt;org.jboss.microcontainer&lt;/groupId&gt;
   &lt;artifactId&gt;jboss-kernel&lt;/artifactId&gt;
   &lt;version&gt;2.0.9.GA&lt;/version&gt;
-&lt;/dependency&gt;</code></pre>
+&lt;/dependency&gt;</pre>
 
 <p>Then clean and build the project – that will download all the dependencies
 (may take a while).</p>
 
-<h4>What is JBoss Microcontainer good for?</h4>
+<h3 id="toc-what-is-jboss-microcontainer-good-for">What is JBoss Microcontainer
+good for?</h3>
 
 <p>It's an inversion of control (IoC) framework, like Spring or Guice. IoC
 frameworks let you create, configure and wire up simple Java objects (POJOs).
@@ -147,7 +151,8 @@ Classes of these objects need no special coding to be usable with JBoss
 Microcontainer. These objects usualy represent the modules of your
 application.</p>
 
-<h5>An example of how to use IoC in a typical web application</h5>
+<h4 id="toc-an-example-of-how-to-use-ioc-in-a-typical-web-application">An
+example of how to use IoC in a typical web application</h4>
 
 <ol>
 	<li>Create and configure a JDBC datasource</li>
@@ -162,12 +167,13 @@ application.</p>
 	it's <code>EntityManagerFactory</code>.</li>
 </ol>
 
-<h4>Creating a class to use with JBoss Microcontainer</h4>
+<h3 id="toc-creating-a-class-to-use-with-jboss-microcontainer">Creating a class
+to use with JBoss Microcontainer</h3>
 
 <p>As written above, any class can be used.</p>
 
 <pre
-class="brush: java"><code>package cz.zizka.ondra.jbmctest;
+class="brush: java">package cz.zizka.ondra.jbmctest;
 
 public class Car
 {
@@ -190,15 +196,16 @@ public class Car
 
   public String toString(){  return "Car \""+this.name+"\"";  }
 
-}</code></pre>
+}</pre>
 
-<h4>Instantiating a class in JBoss Microcontainer</h4>
+<h3 id="toc-instantiating-a-class-in-jboss-microcontainer">Instantiating a class
+in JBoss Microcontainer</h3>
 
 <p>Create a XML file named <code>jboss-beans.xml</code> and put it to the
 resources dir (Maven's default is <code>src/main/resources</code>).</p>
 
 <pre
-class="brush: xml"><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+class="brush: xml">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;deployment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
             xsi:schemaLocation="urn:jboss:bean-deployer:2.0 bean-deployer_2_0.xsd"
             xmlns="urn:jboss:bean-deployer:2.0"&gt;
@@ -208,7 +215,7 @@ class="brush: xml"><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
      &lt;property name="litresOfFuel"&gt;37&lt;/property&gt;
    &lt;/bean&gt;
 
-&lt;/deployment&gt;</code></pre>
+&lt;/deployment&gt;</pre>
 
 <p>The example above calls a default constructor (with no arguments), and then
 sets the properties. If they were private and you had setters for them, those
@@ -217,19 +224,19 @@ would be used.</p>
 <p>An alternative way is to call the constructor:</p>
 
 <pre
-class="brush: xml"><code>&lt;bean name="myCar" class="cz.zizka.ondra.jbmctest.Car"&gt;
+class="brush: xml">&lt;bean name="myCar" class="cz.zizka.ondra.jbmctest.Car"&gt;
  &lt;constructor&gt;
      &lt;parameter&gt;Red Devil&lt;/parameter&gt;
      &lt;parameter&gt;37&lt;/parameter&gt;
  &lt;/constructor&gt;
-&lt;/bean&gt;</code></pre>
+&lt;/bean&gt;</pre>
 
-<h4>Wiring up the objects</h4>
+<h3 id="toc-wiring-up-the-objects">Wiring up the objects</h3>
 
 <p>To attach one object to the other, use <code>&lt;inject&gt;</code>:</p>
 
 <pre
-class="brush: java"><code>package cz.zizka.ondra.jbmctest;
+class="brush: java">package cz.zizka.ondra.jbmctest;
 
 public class Garage
 {
@@ -240,10 +247,10 @@ public class Garage
   public String toString(){
     return "Garage with a car: "+this.getCar();
   }
-}</code></pre>
+}</pre>
 
 <pre
-class="brush: xml"><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+class="brush: xml">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;deployment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
             xsi:schemaLocation="urn:jboss:bean-deployer:2.0 bean-deployer_2_0.xsd"
             xmlns="urn:jboss:bean-deployer:2.0"&gt;
@@ -257,12 +264,14 @@ class="brush: xml"><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
      &lt;property name="myGarage"&gt;&lt;inject bean="myCar"/&gt;&lt;/property&gt;
    &lt;/bean&gt;
 
-&lt;/deployment&gt;</code></pre>
+&lt;/deployment&gt;</pre>
 
-<h4>Creating JBoss Microcontainer object in your application (bootstraping)</h4>
+<h3
+id="toc-creating-jboss-microcontainer-object-in-your-application-bootstraping">Creating
+JBoss Microcontainer object in your application (bootstraping)</h3>
 
 <pre
-class="brush: java"><code>public class App {
+class="brush: java">public class App {
 
   public static void main( String[] args ) throws Throwable
   {
@@ -287,9 +296,9 @@ class="brush: java"><code>public class App {
 
   }// main()
 
-}// class</code></pre>
+}// class</pre>
 
-<h4>See also</h4>
+<h3 id="toc-see-also">See also</h3>
 
 <p>Unlike spring, JBoss Microcontainer is not much documented when it comes to
 usage in a standalone application.</p>

@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="utf-8"/>
-    <title>Maven 2 and Ant + Ivy Comparison - Ondřej Žižka</title>
+    <title>Maven 2 and Ant + Ivy
+Comparison - Ondřej Žižka</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="My personal web">
     <meta name="author" content="Ondřej Žižka">
@@ -73,14 +74,16 @@
 
     <div class="document-post">
         <div class="page-header">
-            <h1>Maven 2 and Ant + Ivy Comparison</h1>
+            <h1>Maven 2 and Ant + Ivy
+Comparison</h1>
         </div>
         <div class="date"><em>2012-12-16</em></div>
-        <div class="doc-body"><h3>Maven 2 and Ant + Ivy Comparison</h3>
+        <div class="doc-body"><h2 id="toc-maven-2-and-ant-ivy-comparison">Maven 2 and Ant + Ivy
+Comparison</h2>
 
 <p>I'm no big Maven fan. Anyway:</p>
 
-<h4>Different concepts</h4>
+<h3 id="toc-different-concepts">Different concepts</h3>
 
 <p>Comparing configuration and scopes is nonsense. Scope says when the
 dependency should be used with the meaning of
@@ -88,15 +91,15 @@ _in_which_par­t_of_the_buil­d_process_ to use it. When you want to use
 different dependencies for different app builds, Maven provides profiles.</p>
 
 <pre
-class="brush: xml"><code>&lt;dependency org="hibernate" name="hibernate" rev="2.1.8" conf="default-&gt;proxool,oscache"/&gt;
-&lt;dependency org="hibernate" name="hibernate" rev="2.1.8" conf="default-&gt;dbcp,swarmcache"/&gt;</code></pre>
+class="brush: xml">&lt;dependency org="hibernate" name="hibernate" rev="2.1.8" conf="default-&gt;proxool,oscache"/&gt;
+&lt;dependency org="hibernate" name="hibernate" rev="2.1.8" conf="default-&gt;dbcp,swarmcache"/&gt;</pre>
 
 <p>becomes</p>
 
 <pre
-class="bash"><code>mvn &lt;goal&gt; -Pproxool,oscache
+class="bash">mvn &lt;goal&gt; -Pproxool,oscache
 mvn &lt;goal&gt; -Pdbcp,swarmcache
-+ the respective profiles in pom.xml.</code></pre>
++ the respective profiles in pom.xml.</pre>
 
 <p>Matt Raible citation stating „…For example, Hibernate downloads a bunch
 of JBoss JARs…“ – that's not Maven's fault at all, rather Hibernate
@@ -104,7 +107,7 @@ dev's. They shouldn't include optional dependencies in metadata… you should
 include it in your project / profile. But give it some time, JBoss is moving to
 Maven and some day the metadata will be hopefully correct.</p>
 
-<h4>Documentation</h4>
+<h3 id="toc-documentation">Documentation</h3>
 
 <p>I agree that „An important thing to be able to use a tool is its amount of
 documentation“, but again, that doesn't affect quality of the tool itself. And
@@ -122,7 +125,7 @@ post from Angel Cervera Claudio:</p>
 
 <p>So much the amount of documentation of Ivy.</p>
 
-<h4>Conflict management</h4>
+<h3 id="toc-conflict-management">Conflict management</h3>
 
 <blockquote>
 	<p>„So if your module depends on foo 1.0, none of your dependencies will ever
@@ -142,7 +145,7 @@ using [1.2,1.5), or similar – but I never used it, I always want to use the
 version I developed and tested with, and wonder whether anyone does
 otherwise.</p>
 
-<h4>Flexibility</h4>
+<h3 id="toc-flexibility">Flexibility</h3>
 
 <blockquote>
 	<p>„In Ivy many things can be configured, and many others can be plugged in:
@@ -157,7 +160,7 @@ plug a „module descriptor parser“ for? Perhaps caused by my unexperienced
 view, but this argument reminds me the arguments for comparing Java and C++,
 that in Java you can't use pointer arithmetics – similar logical skew.</p>
 
-<h4>Public Repositories</h4>
+<h3 id="toc-public-repositories">Public Repositories</h3>
 
 <blockquote>
 	<p>„The only problem some may face is that module descriptors are not always

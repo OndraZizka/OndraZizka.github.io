@@ -76,19 +76,19 @@
             <h1>JBoss AS Java system variables</h1>
         </div>
         <div class="date"><em>2012-12-13</em></div>
-        <div class="doc-body"><h3>JBoss AS Java system variables</h3>
+        <div class="doc-body"><h2 id="toc-jboss-as-java-system-variables">JBoss AS Java system variables</h2>
 
 <p><code>-D</code> variables for JBoss AS startup script –
 <code>bin/run.sh</code></p>
 
-<pre><code>-Djboss.boot.server.log.level=DEBUG
-logger.level=${jboss.boot.server.log.level:DEBUG}</code></pre>
+<pre>-Djboss.boot.server.log.level=DEBUG
+logger.level=${jboss.boot.server.log.level:DEBUG}</pre>
 
 <p>Following is not a list of them… just a try with grep. Other are in XML
 files, some might even be in the code.</p>
 
 <pre
-class="bash"><code>$ find . -name *.properties -exec grep $\{ {} \; &gt; vars.txt
+class="bash">$ find . -name *.properties -exec grep $\{ {} \; &gt; vars.txt
 
 javac.boot.classpath=${sun.boot.classpath}
 javac.classpath=${classpath}
@@ -148,7 +148,7 @@ java.specification.version=${java.specification.version}
 java.class.version=${java.class.version}
 os.name=${os.name}
 os.arch=${os.arch}
-os.version=${os.version}</code></pre>
+os.version=${os.version}</pre>
 </div>
 
         <!-- Rating widget -->

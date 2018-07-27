@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="utf-8"/>
-    <title>Wicket and nice URLs – URL coding strategies - Ondřej Žižka</title>
+    <title>Wicket and nice
+URLs – URL coding strategies - Ondřej Žižka</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="My personal web">
     <meta name="author" content="Ondřej Žižka">
@@ -73,10 +74,12 @@
 
     <div class="document-post">
         <div class="page-header">
-            <h1>Wicket and nice URLs – URL coding strategies</h1>
+            <h1>Wicket and nice
+URLs – URL coding strategies</h1>
         </div>
         <div class="date"><em>2012-12-13</em></div>
-        <div class="doc-body"><h3>Wicket and nice URLs – URL coding strategies</h3>
+        <div class="doc-body"><h2 id="toc-wicket-and-nice-urls-url-coding-strategies">Wicket and nice
+URLs – URL coding strategies</h2>
 
 <p>Intro: <a
 href="http://www.javalobby.org/java/forums/t68753.html">http://www.javalobby.org/…/t68753.html</a></p>
@@ -84,28 +87,33 @@ href="http://www.javalobby.org/java/forums/t68753.html">http://www.javalobby.org
 <p><a href="https://cwiki.apache.org/WICKET/url-coding-strategies.html">Not much
 nice wiki page</a> – almost useless, just aggregated JavaDoc's</p>
 
-<h4>URL coding strategies</h4>
+<h3 id="toc-url-coding-strategies">URL coding strategies</h3>
 
-<h5>BookmarkablePa­geRequestTarge­tUrlCodingStra­tegy example</h5>
+<h4
+id="toc-bookmarkablepagerequesttargeturlcodingstrategy-example">BookmarkablePa­geRequestTarge­tUrlCodingStra­tegy
+example</h4>
 
 <pre
-class="brush: plain"><code>http://localhost/app/mountPath/param1/value1/param2/value2
+class="brush: plain">http://localhost/app/mountPath/param1/value1/param2/value2
 
 // [in AlohaApplication.init()]
 mountBookmarkablePage("/mountPath", MyPage.class);
 
 pageParameters.getString("param1"); // "value1"
-pageParameters.getString("param2"); // "value2"</code></pre>
+pageParameters.getString("param2"); // "value2"</pre>
 
-<h5>IndexedParamUr­lCodingStrate­gy example</h5>
+<h4
+id="toc-indexedparamurlcodingstrategy-example">IndexedParamUr­lCodingStrate­gy
+example</h4>
 
 <pre
-class="brush: plain"><code>http://localhost/app/mountPath/value1/value2
+class="brush: plain">http://localhost/app/mountPath/value1/value2
 
 pageParameters.getString("0"); // "value1"
-pageParameters.getString("1"); // "value2"</code></pre>
+pageParameters.getString("1"); // "value2"</pre>
 
-<h5>HybridUrlCodin­gStrategy example</h5>
+<h4 id="toc-hybridurlcodingstrategy-example">HybridUrlCodin­gStrategy
+example</h4>
 
 <p>„The url with HybridUrlCodin­gStrategy looks like
 <code>/mount/path/param1/value1.3.</code> or
@@ -113,15 +121,17 @@ pageParameters.getString("1"); // "value2"</code></pre>
 <code>2</code> is version number.“ I haven't tried this yet.</p>
 
 <pre
-class="brush: plain"><code>http://localhost/app/mountPath/param1/value1.3.2
+class="brush: plain">http://localhost/app/mountPath/param1/value1.3.2
 
 pageParameters.getString("param1"); // "value1"
-// what else?</code></pre>
+// what else?</pre>
 
-<h5>PackageReques­tTargetUrlCodin­gStrategy example</h5>
+<h4
+id="toc-packagerequesttargeturlcodingstrategy-example">PackageReques­tTargetUrlCodin­gStrategy
+example</h4>
 
 <pre
-class="brush: plain"><code> + cz.dynawest.wicketdemo
+class="brush: plain"> + cz.dynawest.wicketdemo
  |--HomePage.class
  |--HomePage.html
  |--Contacts.class
@@ -136,15 +146,17 @@ http://localhost/app/mountPath/HomePage/param1/value1/param2/value2
 http://localhost/app/mountPath/Contacts/param1/value1/param2/value2
 
 pageParameters.getString("param1"); // "value1"
-pageParameters.getString("param2"); // "value2"</code></pre>
+pageParameters.getString("param2"); // "value2"</pre>
 
-<h5>QueryStringUr­lCodingStrate­gy example</h5>
+<h4
+id="toc-querystringurlcodingstrategy-example">QueryStringUr­lCodingStrate­gy
+example</h4>
 
 <p>The PHP way. <a
 href="http://wicket.apache.org/docs/1.4/org/apache/wicket/request/target/coding/QueryStringUrlCodingStrategy.html">JavaDoc</a></p>
 
 <pre
-class="brush: plain"><code>http://localhost/app/mountPath?param1=value1&amp;param2=value2
+class="brush: plain">http://localhost/app/mountPath?param1=value1&amp;param2=value2
 
 // [in AlohaApplication.init()]
 private &lt;C extends Page&gt; void mountBookmarkablePageWithUrlCoding(String path, Class&lt;C&gt; pageClass)
@@ -154,10 +166,12 @@ private &lt;C extends Page&gt; void mountBookmarkablePageWithUrlCoding(String pa
 
 
 pageParameters.getString("param1"); // "value1"
-pageParameters.getString("param2"); // "value2"</code></pre>
+pageParameters.getString("param2"); // "value2"</pre>
 
-<h5>MixedParamUrlCo­dingStrategy example (<a
-href="http://wicket.apache.org/docs/1.4/org/apache/wicket/request/target/coding/MixedParamUrlCodingStrategy.html">JavaDoc</a>)</h5>
+<h4
+id="toc-mixedparamurlcodingstrategy-example-javadoc">MixedParamUrlCo­dingStrategy
+example (<a
+href="http://wicket.apache.org/docs/1.4/org/apache/wicket/request/target/coding/MixedParamUrlCodingStrategy.html">JavaDoc</a>)</h4>
 
 <p>Url coding strategy for bookmarkable pages that encodes a set of given
 parameters in the url's path and the rest in the query-string.</p>
@@ -167,7 +181,7 @@ e.g. [„param0“, „param1“]. Found parameters will be appended to the url
 in the form</p>
 
 <pre
-class="brush: plain"><code>http://localhost/app/mountPath/paramvalue0/valueA/valueB?param1=value1&amp;param2=value2
+class="brush: plain">http://localhost/app/mountPath/paramvalue0/valueA/valueB?param1=value1&amp;param2=value2
 
 // [in AlohaApplication.init()]
 
@@ -176,21 +190,23 @@ String[]{"paramA","paramB"}
 pageParameters.getString("paramA"); // "valueA"
 pageParameters.getString("paramB"); // "valueB"
 pageParameters.getString("param1"); // "value1"
-pageParameters.getString("param2"); // "value2"</code></pre>
+pageParameters.getString("param2"); // "value2"</pre>
 
 <p>JavaDoc errata:<br />
 „When both "b“ and „c“ are missing on encode, the<strong>y</strong> will
 not get a value during decode."</p>
 
-<h5>CryptedUrlWeb­RequestCodingStra­tegy example</h5>
+<h4
+id="toc-cryptedurlwebrequestcodingstrategy-example">CryptedUrlWeb­RequestCodingStra­tegy
+example</h4>
 
 <p>TBD</p>
 
 <pre
-class="brush: plain"><code>http://localhost/app/mountPath/value1/value2
+class="brush: plain">http://localhost/app/mountPath/value1/value2
 
 pageParameters.getString("0"); // "value1"
-pageParameters.getString("1"); // "value2"</code></pre>
+pageParameters.getString("1"); // "value2"</pre>
 </div>
 
         <!-- Rating widget -->

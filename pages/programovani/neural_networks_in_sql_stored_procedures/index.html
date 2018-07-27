@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="utf-8"/>
-    <title>Neural Networks SQL implementation – Stored Procedures - Ondřej Žižka</title>
+    <title>Neural
+Networks SQL implementation – Stored Procedures - Ondřej Žižka</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="My personal web">
     <meta name="author" content="Ondřej Žižka">
@@ -73,10 +74,12 @@
 
     <div class="document-post">
         <div class="page-header">
-            <h1>Neural Networks SQL implementation – Stored Procedures</h1>
+            <h1>Neural
+Networks SQL implementation – Stored Procedures</h1>
         </div>
         <div class="date"><em>2012-12-16</em></div>
-        <div class="doc-body"><h3>Neural Networks SQL implementation – Stored Procedures</h3>
+        <div class="doc-body"><h2 id="toc-neural-networks-sql-implementation-stored-procedures">Neural
+Networks SQL implementation – Stored Procedures</h2>
 <!--
 //The page is being updated at the moment.//
 -->
@@ -84,7 +87,7 @@
 were you looking for a simple solution for work with many large networks, for
 teaching them and for their storage? Then this may interest you.</p>
 <a name="Contents"></a>
-<h4>Contents</h4>
+<h3 id="toc-contents">Contents</h3>
 
 <ul>
 	<li>Introduction</li>
@@ -115,15 +118,17 @@ teaching them and for their storage? Then this may interest you.</p>
 	<li><a href="#Resources">Resources</a></li>
 </ul>
 <a name="Introduction"></a>
-<h4>Introduction</h4>
+<h3 id="toc-introduction">Introduction</h3>
 
 <p>For an overview of what neuron networks are and what they are used to, see
 e.g. <a
 href="http://en.wikipedia.org/wiki/Artificial_neural_network">Wikipedia's ar­ticle</a>.
 This page assumes you have some experience with neural networks.</p>
 
-<h5>Why implement neural networks in SQL, when C++/Java implementation is much
-faster?</h5>
+<h4
+id="toc-why-implement-neural-networks-in-sql-when-c-java-implementation-is-much-faster">Why
+implement neural networks in SQL, when C++/Java implementation is much
+faster?</h4>
 
 <p>Imagine a task solved by a very large neural networks, like <a
 href="http://speech.fit.vutbr.cz/">speech recognition</a>, text recognition and
@@ -177,7 +182,7 @@ networks.</p>
 	at once, but they are not tested yet.</li>
 </ul>
 <a name="News"></a>
-<h4>News</h4>
+<h3 id="toc-news">News</h3>
 
 <p>//2008–05–03:// Available for download: <a
 href="download/NN_SQL.zip">Complete database creation script</a>. <strong>Do not
@@ -192,7 +197,7 @@ learns much much
 faster. <!-- On XOR 2,2,1 network it does about 5 000 "teach cases"
 per minute on my slow computer. --></p>
 <a name="Persistent Tables"></a>
-<h4>Persistent Tables</h4>
+<h3 id="toc-persistent-tables">Persistent Tables</h3>
 
 <p>This implementation is designed to hold any number of networks of any
 architecture in fixed number of tables. So, all neurons are in one table
@@ -205,7 +210,7 @@ slowed down the computation, which took about seven times longer, I had to
 switch to MyISAM or Memory engine.</p>
 
 <pre
-class="brush: sql"><code>CREATE TABLE  nn_networks (
+class="brush: sql">CREATE TABLE  nn_networks (
   `id` int(10) unsigned NOT NULL auto_increment,
   `name` varchar(45) NOT NULL,
   `inputs` int(10) unsigned NOT NULL default '0',
@@ -213,44 +218,44 @@ class="brush: sql"><code>CREATE TABLE  nn_networks (
   `architecture` enum('perceptron') NOT NULL default 'perceptron',
   `definition` varchar(255) NOT NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=FIXED COMMENT='Neural networks';</code></pre>
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=FIXED COMMENT='Neural networks';</pre>
 
 <pre
-class="brush: sql"><code>CREATE TABLE  nn_net_neurons (
+class="brush: sql">CREATE TABLE  nn_net_neurons (
   `id_net` int(10) unsigned NOT NULL,
   `id_neuron` int(10) unsigned NOT NULL auto_increment,
   `bias` double NOT NULL,
   PRIMARY KEY  (`id_neuron`),
   KEY `id_net` (`id_net`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=FIXED COMMENT='Neural net neurons';</code></pre>
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=FIXED COMMENT='Neural net neurons';</pre>
 
 <pre
-class="brush: sql"><code>CREATE TABLE  nn_net_synapses (
+class="brush: sql">CREATE TABLE  nn_net_synapses (
   `id_from` int(10) unsigned default '0',
   `id_to` int(10) unsigned default '0',
   `weight` double NOT NULL,
   UNIQUE KEY `from_to` (`id_from`,`id_to`),
   KEY `id_to` (`id_to`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=FIXED COMMENT='Connections between neurons';</code></pre>
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=FIXED COMMENT='Connections between neurons';</pre>
 
 <pre
-class="brush: sql"><code>CREATE TABLE lib_logg (
+class="brush: sql">CREATE TABLE lib_logg (
   `whn` datetime NOT NULL,
   `thread` int(10) unsigned NOT NULL,
   `level` enum('info','warn','error','enter','leave') NOT NULL default 'info',
   `str` text,
   `rout` varchar(255) default NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;</code></pre>
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;</pre>
 <a name="Neural Network Creation"></a>
-<h4>Neural Network Creation</h4>
+<h3 id="toc-neural-network-creation">Neural Network Creation</h3>
 
-<h5>Usage:</h5>
+<h4 id="toc-usage">Usage:</h4>
 
 <pre
-class="brush: sql"><code>##    Layers definition,  initial weigths range, initial bias range, OUT network ID
-CALL nn_CreatePerceptron('2,2,1','XOR', 0.10, 0.5, @out_NetID);</code></pre>
+class="brush: sql">##    Layers definition,  initial weigths range, initial bias range, OUT network ID
+CALL nn_CreatePerceptron('2,2,1','XOR', 0.10, 0.5, @out_NetID);</pre>
 
-<h5>Result:</h5>
+<h4 id="toc-result">Result:</h4>
 
 <p>Creates a perceptron with an architecture defined by first parameter.
 <code>2,2,1</code> creates 2 input neurons, 2 hidden neurons and 1 output
@@ -260,13 +265,13 @@ weights, which are set randomly. Fourth parameter is the range of initial
 biases, also set randomly. In the fifth parameter the procedure returns an ID of
 the created network.</p>
 
-<h5>Source:</h5>
+<h4 id="toc-source">Source:</h4>
 
 <p>Procedure <code>nn_CreatePerceptron</code> is a wrapper for
 <code>nn_GeneratePerceptron</code> (see below).</p>
 
 <pre
-class="brush: sql"><code>CREATE PROCEDURE `nn_CreatePerceptron`(
+class="brush: sql">CREATE PROCEDURE `nn_CreatePerceptron`(
   sLayers VARCHAR(255), sName VARCHAR(255),
   dWeightsRange DOUBLE, dBiasRange DOUBLE,
   out_iNetId INT UNSIGNED)
@@ -309,7 +314,7 @@ BEGIN
   CALL Logg(CONCAT( 'Created synapses for nn #',out_iNetId,'' ));
 
 
-END $$</code></pre>
+END $$</pre>
 
 <p>Procedure <code>nn_GeneratePerceptron</code> is called by
 <code>nn_CreatePerceptron</code>. That's because
@@ -318,7 +323,7 @@ in a virtual space, before merging it to the persistent tables. This helps
 isolating the eventual transactions and improves the performance.</p>
 
 <pre
-class="brush: sql"><code>CREATE PROCEDURE `nn_GeneratePerceptron`(
+class="brush: sql">CREATE PROCEDURE `nn_GeneratePerceptron`(
   sLayers VARCHAR(255), dWeightsRange DOUBLE, dBiasRange DOUBLE
 )
 body: BEGIN
@@ -446,24 +451,25 @@ body: BEGIN
   ##  Restore original auto-increment settings.
   SET @@session.auto_increment_increment = @oldInc, @@session.auto_increment_offset = @oldOff;
 
-END $$</code></pre>
+END $$</pre>
 <a name="Geting Info about Neural Network"></a>
-<h4>Geting Info about Neural Network</h4>
+<h3 id="toc-geting-info-about-neural-network">Geting Info about Neural
+Network</h3>
 
 <p>When we have an existing network, we want to be able to identify it's input
 and output neurons. That's what <code>nn_GetInputNeuronIDs</code> and
 <code>nn_GetOutputNeuronIDs</code> are.</p>
 
-<h5>Usage:</h5>
+<h4 id="toc-usage-2">Usage:</h4>
 
 <pre
-class="brush: sql"><code>##  Get the input neuron IDs for the network with ID 1.
+class="brush: sql">##  Get the input neuron IDs for the network with ID 1.
 CALL nn_GetInputNeuronIDs( 1 );
 
 ##  Get the output neuron IDs for the network with ID 1.
-CALL nn_GetOutputNeuronIDs( 1 );</code></pre>
+CALL nn_GetOutputNeuronIDs( 1 );</pre>
 
-<h5>Result:</h5>
+<h4 id="toc-result-2">Result:</h4>
 
 <p>For the XOR network with 2,2,1 architecture, the output could be
 like this:</p>
@@ -512,10 +518,10 @@ like this:</p>
 	</tbody>
 </table>
 
-<h5>Source:</h5>
+<h4 id="toc-source-2">Source:</h4>
 
 <pre
-class="brush: sql"><code>CREATE PROCEDURE `nn_GetInputNeuronIDs`(iNetID INTEGER)
+class="brush: sql">CREATE PROCEDURE `nn_GetInputNeuronIDs`(iNetID INTEGER)
     COMMENT 'Returns tmp.t. (pos, id_neuron) with given net''s input neurons.'
 body:
 BEGIN
@@ -538,10 +544,10 @@ BEGIN
     LEFT JOIN nn_net_neurons AS neu ON neu.id_net = iNetID AND syn.id_to = neu.id_neuron
     WHERE id_net = iNetID AND syn.id_from IS NULL
     ORDER BY id_to;
-END $$</code></pre>
+END $$</pre>
 
 <pre
-class="brush: sql"><code>CREATE PROCEDURE `nn_GetOutputNeuronIDs`(iNetID INTEGER)
+class="brush: sql">CREATE PROCEDURE `nn_GetOutputNeuronIDs`(iNetID INTEGER)
     COMMENT 'Returns tmp.t. (pos, id_neuron) with given net''s output neurons.'
 body:
 BEGIN
@@ -567,24 +573,23 @@ BEGIN
 
   #SELECT * FROM nn_GetInputNeuronIDs; -- DEBUG
 
-END $$</code></pre>
+END $$</pre>
 <a name="Neural Network Computation"></a>
-<h4>Neural Network Computation</h4>
+<h3 id="toc-neural-network-computation">Neural Network Computation</h3>
 
-<h5>Procedure <code>nn_ComputeNet</code></h5>
+<h4 id="toc-procedure-nn-computenet">Procedure <code>nn_ComputeNet</code></h4>
 
 <p>Computes a single network output for given input.</p>
 
-<h5>Usage:</h5>
+<h4 id="toc-usage-3">Usage:</h4>
 
 <pre
-class="brush: sql"><code>CALL nn_ComputeNet(1, '-1, 1', TRUE);
-SELECT * FROM nn_ComputeNet;</code></pre>
+class="brush: sql">CALL nn_ComputeNet(1, '-1, 1', TRUE);
+SELECT * FROM nn_ComputeNet;</pre>
 
-<pre
-class="brush: sql"><code>SELECT * FROM nn_ComputeNet_InternalValues;</code></pre>
+<pre class="brush: sql">SELECT * FROM nn_ComputeNet_InternalValues;</pre>
 
-<h5>Result:</h5>
+<h4 id="toc-result-3">Result:</h4>
 
 <table>
 	<thead>
@@ -646,10 +651,10 @@ class="brush: sql"><code>SELECT * FROM nn_ComputeNet_InternalValues;</code></pre
 	</tbody>
 </table>
 
-<h5>Source:</h5>
+<h4 id="toc-source-3">Source:</h4>
 
 <pre
-class="brush: sql"><code>CREATE PROCEDURE `nn_ComputeNet`(
+class="brush: sql">CREATE PROCEDURE `nn_ComputeNet`(
   iNetId INTEGER, sadInput VARCHAR(255), bStoreInternalValues BOOLEAN)
 body: BEGIN
 
@@ -755,15 +760,16 @@ body: BEGIN
 
   ALTER TABLE nn_ComputeNet_prev_layer RENAME TO nn_ComputeNet;
 
-END $$</code></pre>
+END $$</pre>
 <a name="Teaching the Neural Network with Backpropagation Algorithm"></a>
-<h4>Teaching the Neural Network with Backpropagation Algorithm</h4>
+<h3 id="toc-teaching-the-neural-network-with-backpropagation-algorithm">Teaching
+the Neural Network with Backpropagation Algorithm</h3>
 
 <p>For explanation of backpropagation, see <a
 href="http://dontveter.com/bpr/public2.html">Don Tveter's backpro­pagation
 tutorial</a>.</p>
 
-<h5>Usage:</h5>
+<h4 id="toc-usage-4">Usage:</h4>
 
 <p>Again, the API is very simple. First, procedure <code>nn_ComputeNet</code>
 computes the net's output. While doing that, it also stores the internal
@@ -771,7 +777,7 @@ neurons' values; we asked to do so by setting the third parameter to
 <code>TRUE</code>.</p>
 
 <pre
-class="brush: sql"><code>CALL nn_ComputeNet( iNetID, '1, -1', TRUE );  ##  Be sure to set to TRUE!</code></pre>
+class="brush: sql">CALL nn_ComputeNet( iNetID, '1, -1', TRUE );  ##  Be sure to set to TRUE!</pre>
 
 <p>Then we have to rename the tables, because MySQL does not allow to pass the
 result set in any other way. (At least one row could be spared… see my <a
@@ -779,9 +785,9 @@ href="../sql/mysql_wishlist/alter_table_rename_overwrite.texy">MySQL
 wish-list</a>.)</p>
 
 <pre
-class="brush: sql"><code>DROP TEMPORARY TABLE IF EXISTS nn_CorrectWeights, nn_CorrectWeights_InternalValues;
+class="brush: sql">DROP TEMPORARY TABLE IF EXISTS nn_CorrectWeights, nn_CorrectWeights_InternalValues;
 ALTER TABLE nn_ComputeNet RENAME TO nn_CorrectWeights;
-ALTER TABLE nn_ComputeNet_InternalValues RENAME TO nn_CorrectWeights_InternalValues;</code></pre>
+ALTER TABLE nn_ComputeNet_InternalValues RENAME TO nn_CorrectWeights_InternalValues;</pre>
 
 <p>And finally we call the <code>nn_CorrectWeights</code> procedure, which
 applies the backpropagation algorithm to the network, and returns the <em>error
@@ -792,22 +798,22 @@ Psi, Alfa, Beta, Gama, Pi, or however you call it – I call it „learning
 rate“. Finally it's the output variable for error level.</p>
 
 <pre
-class="brush: sql"><code>CALL nn_CorrectWeights(iNetID, '1', @dLearn, @out_dErrorSum);</code></pre>
+class="brush: sql">CALL nn_CorrectWeights(iNetID, '1', @dLearn, @out_dErrorSum);</pre>
 
 <p>Based on the error level, you can apply the simulated annealing, as we will
 show later. Using that, you can get to very low error levels, less than
 0.0001 for some tasks.</p>
 
-<h5>Result:</h5>
+<h4 id="toc-result-4">Result:</h4>
 
 <p>After calling <code>nn_CorrectWeights</code>, the weights in the persistent
 table are updated to reflect the changes made by the backpropagation
 algorithm.</p>
 
-<h5>Source:</h5>
+<h4 id="toc-source-4">Source:</h4>
 
 <pre
-class="brush: sql"><code>CREATE PROCEDURE `nn_CorrectWeights`(
+class="brush: sql">CREATE PROCEDURE `nn_CorrectWeights`(
   id_net INTEGER, sadValuesWanted VARCHAR(255), dLearn DOUBLE, OUT out_dErrorSum DOUBLE
 )
 BEGIN body: BEGIN
@@ -1021,16 +1027,16 @@ END body;
   DROP TEMPORARY TABLE IF EXISTS nn_CorrectWeights_Computed;
   #DROP TEMPORARY TABLE IF EXISTS nn_GetOutputNeuronIDs;
   # CALL LoggLeave('nn_CorrectWeights');
-END $$</code></pre>
+END $$</pre>
 
-<h4>Training sets</h4>
+<h3 id="toc-training-sets">Training sets</h3>
 
 <p>For effective use of SQL implementation of NN, it's good to have an option
 to feed the network directly from the database. Assumming you prepared the data
 into an appropriate data structure, you can teach the network with one
 <code>CALL</code>.</p>
 
-<h5>Tables structure</h5>
+<h4 id="toc-tables-structure">Tables structure</h4>
 
 <p>A training data set is defined in the <code>nn_trainsets</code> table. Such
 set is, for example, train data for XOR.</p>
@@ -1045,7 +1051,7 @@ train data has 4 train cases:<br />
 respectively.</p>
 
 <pre
-class="brush: sql"><code>CREATE TABLE `nn_trainsets` (
+class="brush: sql">CREATE TABLE `nn_trainsets` (
   `id_set` int(10) unsigned NOT NULL auto_increment,
   `name` varchar(45) NOT NULL,
   `input_count` int(10) unsigned NOT NULL,
@@ -1072,9 +1078,10 @@ CREATE TABLE `nn_trainsets_output` (
   `pos` int(10) unsigned NOT NULL,
   `val` double NOT NULL,
   PRIMARY KEY  USING BTREE (`pos`,`id_case`)
-) ENGINE=MyISAM  ROW_FORMAT=FIXED;</code></pre>
+) ENGINE=MyISAM  ROW_FORMAT=FIXED;</pre>
 
-<h5>Modified procedures for computation and teaching</h5>
+<h4 id="toc-modified-procedures-for-computation-and-teaching">Modified
+procedures for computation and teaching</h4>
 
 <p>Due to need of optimization, procedures <code>nn_ComputeNet</code> and
 <code>nn_CorrectWeights</code> had to be modified. Two specialized procedures
@@ -1084,7 +1091,7 @@ serialized values in parameters; instead, they expect pre-created tables with
 these values.</p>
 
 <pre
-class="brush: sql"><code>CREATE PROCEDURE `nn_ts_ComputeNet`( iNetID INTEGER, bStoreInternalValues BOOLEAN )
+class="brush: sql">CREATE PROCEDURE `nn_ts_ComputeNet`( iNetID INTEGER, bStoreInternalValues BOOLEAN )
 body: BEGIN
 
   /*
@@ -1118,9 +1125,9 @@ BEGIN body: BEGIN
 
   -- Code too long - snipped. --
 
-END body; END $$</code></pre>
+END body; END $$</pre>
 
-<h5>The training process</h5>
+<h4 id="toc-the-training-process">The training process</h4>
 
 <p>Finally, procedure <code>nn_ts_TeachTrainset</code> teaches the net using the
 prepared training data set. All it needs is the network ID, the training set ID,
@@ -1133,7 +1140,7 @@ of teaching is stopped immediatelly when the target error is reached with some
 training case (insufficient, to be fixed).</p>
 
 <pre
-class="brush: sql"><code>CREATE PROCEDURE `neural_network`.`nn_ts_TeachTrainset` (
+class="brush: sql">CREATE PROCEDURE `neural_network`.`nn_ts_TeachTrainset` (
   iNetID INT UNSIGNED, iTrainsetID INT UNSIGNED, dLearn DOUBLE, dTargetError DOUBLE, iMaxRounds INT UNSIGNED
 )
 body: BEGIN
@@ -1147,7 +1154,7 @@ body: BEGIN
 
   -- Code too long - snipped. --
 
-END body; $$</code></pre>
+END body; $$</pre>
 
 <p>Then, teaching the neural network is as easy as a one-line <code>CALL</code>.
 This trains the network #2 using training set #1, having learn rate of
@@ -1155,22 +1162,22 @@ This trains the network #2 using training set #1, having learn rate of
 <code>1000</code> passes through the training set:</p>
 
 <pre
-class="brush: sql"><code>CALL nn_ts_TeachTrainset( 2, 1, 0.5, 0.0001, 1000 );</code></pre>
+class="brush: sql">CALL nn_ts_TeachTrainset( 2, 1, 0.5, 0.0001, 1000 );</pre>
 
 <p>This way, <a
 href="http://en.wikipedia.org/wiki/Simulated_annealing">simulated annealing</a>
 can be easily applied:</p>
 
 <pre
-class="brush: sql"><code>CALL nn_ts_TeachTrainset( 2, 1, 0.7,  0.01, 6000 );
+class="brush: sql">CALL nn_ts_TeachTrainset( 2, 1, 0.7,  0.01, 6000 );
 CALL nn_ts_TeachTrainset( 2, 1, 0.3,  0.003, 2000 );
 CALL nn_ts_TeachTrainset( 2, 1, 0.1,  0.0005, 1000 );
-CALL nn_ts_TeachTrainset( 2, 1, 0.05, 0.0001, 1000 );</code></pre>
+CALL nn_ts_TeachTrainset( 2, 1, 0.05, 0.0001, 1000 );</pre>
 
 <p>You can have a look what was happening during the process:</p>
 
 <pre
-class="brush: sql"><code>SELECT * FROM lib_logg WHERE rout = 'nn_ts_TeachTrainset';</code></pre>
+class="brush: sql">SELECT * FROM lib_logg WHERE rout = 'nn_ts_TeachTrainset';</pre>
 
 <table>
 	<thead>
@@ -1305,13 +1312,13 @@ class="brush: sql"><code>SELECT * FROM lib_logg WHERE rout = 'nn_ts_TeachTrainse
 <p>The structure of the network representation remains the same, so use the
 network with the same <code>CALL</code>s.</p>
 <a name="Project Info"></a>
-<h4>Project Info</h4>
+<h3 id="toc-project-info">Project Info</h3>
 
 <p>Tested with MySQL version 5.0.51a, 5.1.24 and 6.0.4-alpha.<br />
 Currently developed only by myself :-) Anyone is welcome to <code>JOIN</code>
 and help with the tasks below.</p>
 <a name="Download"></a>
-<h4>Download</h4>
+<h3 id="toc-download">Download</h3>
 
 <p>Download: <a href="download/NN_SQL.zip">Complete database creation script</a>
 (ZIP, 15 kB).</p>
@@ -1333,7 +1340,7 @@ reboot, ensure that ALL non-TEMPORARY tables' engine is MyISAM (recommended
 native engine) or <a href="http://www.primebase.org/">PBXT</a> (recommended
 plug-in engine, experimental).</p>
 <a name="Future developement"></a>
-<h4>Future developement</h4>
+<h3 id="toc-future-developement">Future developement</h3>
 
 <p>I will focus further developement on these areas:</p>
 
@@ -1356,7 +1363,7 @@ plug-in engine, experimental).</p>
 	<li>Hibernate mapping for the entities.</li>
 </ul>
 <a name="Resources"></a>
-<h4>Resources</h4>
+<h3 id="toc-resources">Resources</h3>
 
 <ul>
 	<li>Don Tveter: <a

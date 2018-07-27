@@ -76,13 +76,13 @@
             <h1>PHP Object Persistence</h1>
         </div>
         <div class="date"><em>2012-12-31</em></div>
-        <div class="doc-body"><h3>PHP Object Persistence</h3>
+        <div class="doc-body"><h2 id="toc-php-object-persistence">PHP Object Persistence</h2>
 
 <p><a href="lib-docs/index.html">Documentation</a> (together with my other
 libs)</p>
 
 <pre
-class="brush: php"><code>&lt;?php
+class="brush: php">&lt;?php
 
 
 
@@ -1906,12 +1906,12 @@ abstract class DwFwIdAndProperties {
 
         function DwFwIdAndParams($sId=null){ $this-&gt;sId = $sId; }
 
-}// class DwFwIdAndParams</code></pre>
+}// class DwFwIdAndParams</pre>
 
-<h4>Usage – model</h4>
+<h3 id="toc-usage-model">Usage – model</h3>
 
 <pre
-class="brush: php"><code>/** ************************************************************************
+class="brush: php">/** ************************************************************************
 *  Simple class that holds item's ID and a hashmap of parameters.          *
 ***************************************************************************/
 abstract class DwFwIdAndProperties {
@@ -1987,12 +1987,12 @@ class cObjectPersistence_TestClass_Key extends DwFwIdAndProperties {
                 if( 'id' == $sName ) return $this-&gt;SetId($sValue);
                 else                 return parent::SetProperty($sName, $sValue);
         }
-}// class cObjectPersistenceTestClass_User</code></pre>
+}// class cObjectPersistenceTestClass_User</pre>
 
-<h4>Usage – data manipulation</h4>
+<h3 id="toc-usage-data-manipulation">Usage – data manipulation</h3>
 
 <pre
-class="brush: php"><code>// Create DB object
+class="brush: php">// Create DB object
 $oDB = new cDBAccess_MySQL('localhost:3350', 'test', 'test', 'test', 'cp1250');
 $oDB-&gt;SetSelectMode(CDBA_SELECT_RETURNS_CRESULT_ON_ERROR);
 echo "Connect: ".///
@@ -2004,12 +2004,12 @@ echo "&lt;br/&gt;\n";///
 
 // Create Object Persistence object
 $oOP = new cDwObjectPersistence_DB($oDB);
-//$oColTypes =&amp; new cDwOpColumnTypesRepository();</code></pre>
+//$oColTypes =&amp; new cDwOpColumnTypesRepository();</pre>
 
-<h4>Example SQL schema &amp; data</h4>
+<h3 id="toc-example-sql-schema-data">Example SQL schema &amp; data</h3>
 
 <pre
-class="brush: sql"><code>CREATE TABLE `ap_users` (
+class="brush: sql">CREATE TABLE `ap_users` (
   `id` int(10) unsigned NOT NULL auto_increment,
   `user` varchar(255) NOT NULL,
   `pass` varchar(40) default NULL,
@@ -2047,10 +2047,10 @@ INSERT INTO ap_keys VALUES
 (10002, 118), (10002, 116),                  -- Zdenek
 (10003, 118), (10003, 330), (10003, 116),    -- Martin
 (10004, 110), (10004, 330),                  -- Zuzka
-(10006, 116), (10006, 118);                  -- Satan</code></pre>
+(10006, 116), (10006, 118);                  -- Satan</pre>
 
 <pre
-class="brush: php"><code>$oClass = new cDwOpClass('cObjectPersistenceTestClass_User', 'ap_users');
+class="brush: php">$oClass = new cDwOpClass('cObjectPersistenceTestClass_User', 'ap_users');
 //$oProp = $oClass-&gt;AddProperty('id', $oColTypes-&gt;GetColumnType('INT UNSIGNED'));
         $oProp = $oClass-&gt;AddProperty('id', new cDwOpColumnType_INT_UNSIGNED() );
         $oClass-&gt;SetIdProperty($oProp);
@@ -2070,12 +2070,12 @@ $oOP-&gt;AddClassIntoDictionary($oClass);
 $oClass = $oOP-&gt;CreateClassByTable('cObjectPersistenceTestClass_User', 'ap_users');
 $oClass-&gt;SetOrderProperties('lname, +fname, -id');
 //file_put_contents('x1.txt', AdjustedPrintR($oClass));///
-//echo "&lt;pre&gt;\$oClass: ".AdjustedPrintR($oClass)."&lt;/pre&gt;";///</code></pre>
+//echo "&lt;pre&gt;\$oClass: ".AdjustedPrintR($oClass)."&lt;/pre&gt;";///</pre>
 
-<h4>Usage – data manipulation</h4>
+<h3 id="toc-usage-data-manipulation-2">Usage – data manipulation</h3>
 
 <pre
-class="brush: php"><code>srand(time());
+class="brush: php">srand(time());
 
 echo "&lt;div&gt;GetPoolCount(): ".$oOP-&gt;GetPoolCount()."&lt;/div&gt;";
 
@@ -2235,7 +2235,7 @@ echo "&lt;div&gt;\$oClassKey-&gt;GetIdPropertiesSql(\$aoDoors[0]): ".$oClassKey-
 
 
 if( $oOP-&gt;GetError() )
-echo '&lt;div style="color: red"&gt;Error from the past: '.$oOP-&gt;GetError()."&lt;/div&gt;";</code></pre>
+echo '&lt;div style="color: red"&gt;Error from the past: '.$oOP-&gt;GetError()."&lt;/div&gt;";</pre>
 </div>
 
         <!-- Rating widget -->

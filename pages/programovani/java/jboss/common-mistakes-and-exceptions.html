@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="utf-8"/>
-    <title>Common JBoss AS mistakes and exceptions - Ondřej Žižka</title>
+    <title>Common JBoss AS mistakes
+and exceptions - Ondřej Žižka</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="My personal web">
     <meta name="author" content="Ondřej Žižka">
@@ -73,12 +74,15 @@
 
     <div class="document-post">
         <div class="page-header">
-            <h1>Common JBoss AS mistakes and exceptions</h1>
+            <h1>Common JBoss AS mistakes
+and exceptions</h1>
         </div>
         <div class="date"><em>2012-12-13</em></div>
-        <div class="doc-body"><h3>Common JBoss AS mistakes and exceptions</h3>
+        <div class="doc-body"><h2 id="toc-common-jboss-as-mistakes-and-exceptions">Common JBoss AS mistakes
+and exceptions</h2>
 
-<h4><code>signer information does not match signer information of other classes in the same package</code></h4>
+<h3
+id="toc-signer-information-does-not-match-signer-information-of-other-classes-in-the-same-package"><code>signer information does not match signer information of other classes in the same package</code></h3>
 
 <p>JBoss EAP jar's are signed. If you add some unsigned jars with the same
 package names, JVM classloader will complain.</p>
@@ -86,9 +90,9 @@ package names, JVM classloader will complain.</p>
 <p>To unsign EAP, you can do:</p>
 
 <pre
-class="bash"><code>find . -type f -iname '*.jar' -exec zip -d '{}' META-INF/JBOSSCOD.{SF,RSA} \;</code></pre>
+class="bash">find . -type f -iname '*.jar' -exec zip -d '{}' META-INF/JBOSSCOD.{SF,RSA} \;</pre>
 
-<pre><code>2010-03-18 01:25:34,002 FINE  [com.sun.xml.bind.v2.runtime.reflect.opt.Injector] (main) Unable to inject org/jboss/resource/metadata/mcf/DataSourceConnectionPropertyMetaData$JaxbAccessorF_value
+<pre>2010-03-18 01:25:34,002 FINE  [com.sun.xml.bind.v2.runtime.reflect.opt.Injector] (main) Unable to inject org/jboss/resource/metadata/mcf/DataSourceConnectionPropertyMetaData$JaxbAccessorF_value
 java.lang.reflect.InvocationTargetException
         at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
         at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
@@ -100,7 +104,7 @@ Caused by: java.lang.SecurityException: class "org.jboss.resource.metadata.mcf.D
         at java.lang.ClassLoader.preDefineClass(ClassLoader.java:504)
         at java.lang.ClassLoader.defineClass(ClassLoader.java:631)
         at java.lang.ClassLoader.defineClass(ClassLoader.java:482)
-        ... 108 more</code></pre>
+        ... 108 more</pre>
 </div>
 
         <!-- Rating widget -->

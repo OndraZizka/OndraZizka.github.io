@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="utf-8"/>
-    <title>WebTTD – A Browser-based Transport Tycoon Derivate - Ondřej Žižka</title>
+    <title>WebTTD –
+A Browser-based Transport Tycoon Derivate - Ondřej Žižka</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="My personal web">
     <meta name="author" content="Ondřej Žižka">
@@ -73,10 +74,12 @@
 
     <div class="document-post">
         <div class="page-header">
-            <h1>WebTTD – A Browser-based Transport Tycoon Derivate</h1>
+            <h1>WebTTD –
+A Browser-based Transport Tycoon Derivate</h1>
         </div>
         <div class="date"><em>2012-12-13</em></div>
-        <div class="doc-body"><h3>WebTTD – A Browser-based Transport Tycoon Derivate</h3>
+        <div class="doc-body"><h2 id="toc-webttd-a-browser-based-transport-tycoon-derivate">WebTTD –
+A Browser-based Transport Tycoon Derivate</h2>
 
 <p>I've a fixed idea of creating a web version of Transport Tycoon.</p>
 
@@ -84,7 +87,7 @@
 weeks or months, on a vast landscape. No hush-hush game like classical TTD, but
 rather slow progress, more business cooperation amongst players…</p>
 
-<h4>Game concept</h4>
+<h3 id="toc-game-concept">Game concept</h3>
 
 <p>Web game concepts are different from those of desktop games. If you ever have
 played Travian, you know how such web game works.</p>
@@ -119,7 +122,7 @@ player use other's track.</p>
 <p>There are other things to think about, but these three are the main to
 focus at.</p>
 
-<h4>Technology</h4>
+<h3 id="toc-technology">Technology</h3>
 
 <p>It would be programmed using technologies:</p>
 
@@ -188,9 +191,9 @@ currently affect him – that means:</p>
 <p>Estimated data transfer amounts is hundreds of bytes per second,
 at most.</p>
 
-<h4>Current code structure</h4>
+<h3 id="toc-current-code-structure">Current code structure</h3>
 
-<h5>Client side</h5>
+<h4 id="toc-client-side">Client side</h4>
 
 <ul>
 	<li><code>Xcom</code> – the main class / namespace (yeah, originally it
@@ -243,7 +246,7 @@ at most.</p>
 	</li>
 </ul>
 
-<h5>Server side</h5>
+<h4 id="toc-server-side">Server side</h4>
 
 <ul>
 	<li><code>Game game</code>
@@ -305,7 +308,7 @@ at most.</p>
 	</li>
 </ul>
 
-<h4>OpenTTD Save/Load</h4>
+<h3 id="toc-openttd-save-load">OpenTTD Save/Load</h3>
 
 <p><a href="http://svn.openttd.org/trunk/">http://svn.openttd.org/trunk/</a></p>
 
@@ -314,18 +317,18 @@ at most.</p>
 <p><code>src/saveload/saveload.cpp</code></p>
 
 <pre
-class="xbrush: cpp"><code>/**
+class="xbrush: cpp">/**
  * Save/Load an array.
  * @param array The array being manipulated
  * @param length The length of the array in elements
  * @param conv VarType type of the atomic array (int, byte, uint64, etc.)
  */
-void SlArray(void *array, size_t length, VarType conv){ ... }</code></pre>
+void SlArray(void *array, size_t length, VarType conv){ ... }</pre>
 
 <p><code>src/map.cpp</code></p>
 
 <pre
-class="cpp"><code>uint _map_log_x;     ///&lt; 2^_map_log_x == _map_size_x
+class="cpp">uint _map_log_x;     ///&lt; 2^_map_log_x == _map_size_x
 uint _map_log_y;     ///&lt; 2^_map_log_y == _map_size_y
 uint _map_size_x;    ///&lt; Size of the map along the X
 uint _map_size_y;    ///&lt; Size of the map along the Y
@@ -333,12 +336,12 @@ uint _map_size;      ///&lt; The number of tiles on the map
 uint _map_tile_mask; ///&lt; _map_size - 1 (to mask the mapsize)
 
 Tile *_m = NULL;          ///&lt; Tiles of the map
-TileExtended *_me = NULL; ///&lt; Extended Tiles of the map</code></pre>
+TileExtended *_me = NULL; ///&lt; Extended Tiles of the map</pre>
 
 <p><code>src/map_type.h</code></p>
 
 <pre
-class="cpp"><code>/**
+class="cpp">/**
  * Data that is stored per tile. Also used TileExtended for this.
  * Look at docs/landscape.html for the exact meaning of the members.
  */
@@ -350,7 +353,7 @@ struct Tile {
         byte   m4;          ///&lt; General purpose
         byte   m5;          ///&lt; General purpose
         byte   m6;          ///&lt; Primarily used for bridges and rainforest/desert
-};</code></pre>
+};</pre>
 
 <p><a
 href="http://svn.openttd.org/trunk/docs/landscape.html">http://svn.openttd.org/…ndscape.html</a><br
@@ -370,7 +373,7 @@ landscape_grid</a></p>
 
 <p><a href="SaveTransformer.rar">OpenTTD save file transformer</a></p>
 
-<h4>TODOs</h4>
+<h3 id="toc-todos">TODOs</h3>
 
 <ul>
 	<li>Construction toolbars</li>
@@ -406,7 +409,7 @@ landscape_grid</a></p>
 	<li>City growth algorithm</li>
 </ul>
 
-<h4>Links</h4>
+<h3 id="toc-links">Links</h3>
 
 <p><a
 href="http://www.simugraph.com/simutrans-web/en/history/index.html">Simutrans
@@ -420,7 +423,7 @@ page :)</p>
 <p><a href="http://www.tt-forums.net/viewtopic.php?f=33&amp;t=45809">OpenTTD
 forums</a> – link to my request for OpenTTD map export</p>
 
-<h4>A bit of realism</h4>
+<h3 id="toc-a-bit-of-realism">A bit of realism</h3>
 
 <p>But of course, for one man, this is work for years.</p>
 

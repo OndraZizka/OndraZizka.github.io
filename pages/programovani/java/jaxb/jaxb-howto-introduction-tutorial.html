@@ -76,15 +76,15 @@
             <h1>JAXB example</h1>
         </div>
         <div class="date"><em>2012-12-13</em></div>
-        <div class="doc-body"><h3>JAXB example</h3>
+        <div class="doc-body"><h2 id="toc-jaxb-example">JAXB example</h2>
 
 <p>You should get a point of how to use JAXB after reading through
 this code.</p>
 
-<h4>XML content to read</h4>
+<h3 id="toc-xml-content-to-read">XML content to read</h3>
 
 <pre
-class="brush: xml"><code>&lt;jawabotConfig&gt;
+class="brush: xml">&lt;jawabotConfig&gt;
 
    &lt;settings
       verbose = "true"
@@ -126,12 +126,12 @@ class="brush: xml"><code>&lt;jawabotConfig&gt;
       &lt;group name="openjdk"&gt;ptisnovs&lt;/group&gt;
    &lt;/userGroups&gt;
 
-&lt;/jawabotConfig&gt;</code></pre>
+&lt;/jawabotConfig&gt;</pre>
 
-<h4>Root JAXB bean</h4>
+<h3 id="toc-root-jaxb-bean">Root JAXB bean</h3>
 
 <pre
-class="brush: java"><code>@XmlRootElement(name="jawabotConfig")
+class="brush: java">@XmlRootElement(name="jawabotConfig")
 public class ConfigBean {
 
    @XmlElement
@@ -152,13 +152,14 @@ public class ConfigBean {
    @XmlElement
    public UserGroupsBean userGroups;
 
-}// class</code></pre>
+}// class</pre>
 
-<h4>Sub-beans for <code>&lt;settings&gt;</code>, <code>&lt;irc&gt;</code>,
-<code>&lt;resourceGroups&gt;</code></h4>
+<h3 id="toc-sub-beans-for-settings-irc-resourcegroups">Sub-beans for
+<code>&lt;settings&gt;</code>, <code>&lt;irc&gt;</code>,
+<code>&lt;resourceGroups&gt;</code></h3>
 
 <pre
-class="brush: java"><code>public class SettingsBean {
+class="brush: java">public class SettingsBean {
 
    @XmlAttribute public boolean verbose = true;
    @XmlAttribute public boolean acceptInvitation = true;
@@ -172,19 +173,19 @@ class="brush: java"><code>public class SettingsBean {
    @XmlAttribute public String debugChannel = "#some";
    @XmlAttribute public boolean unsecuredShutdown = false;
 
-}// class</code></pre>
+}// class</pre>
 
 <pre
-class="brush: java"><code>public class IrcBean implements Serializable {
+class="brush: java">public class IrcBean implements Serializable {
 
    @XmlElement public String defaultNick;
 
    @XmlElement(name="server") public List&lt;ServerBean&gt; servers;
 
-}// class</code></pre>
+}// class</pre>
 
 <pre
-class="brush: java"><code>public class ServerBean {
+class="brush: java">public class ServerBean {
 
    @XmlAttribute public String host;
    @XmlAttribute public Integer port;
@@ -192,10 +193,10 @@ class="brush: java"><code>public class ServerBean {
    @XmlElement
    @XmlList public List&lt;String&gt; autoJoinChannels;
 
-}// class</code></pre>
+}// class</pre>
 
 <pre
-class="brush: java"><code>public class ResourceGroupsBean implements Serializable {
+class="brush: java">public class ResourceGroupsBean implements Serializable {
 
    /*
    &lt;resourceGroups&gt;
@@ -207,18 +208,19 @@ class="brush: java"><code>public class ResourceGroupsBean implements Serializabl
    @XmlElement(name="group")
    List&lt;ResourceGroupBean&gt; groups;
 
-}// class</code></pre>
+}// class</pre>
 
-<h4>Code which reads the XML into the bean</h4>
+<h3 id="toc-code-which-reads-the-xml-into-the-bean">Code which reads the XML
+into the bean</h3>
 
 <pre
-class="brush: java"><code>String filePath = "myFile.xml"
+class="brush: java">String filePath = "myFile.xml"
 InputStream is = JawaBot.class.getClassLoader().getResourceAsStream(filePath);
 InputStreamReader reader = new InputStreamReader( is );
 
 JAXBContext jc = JAXBContext.newInstance( ConfigBean.class );
 Unmarshaller mc = jc.createUnmarshaller();
-ConfigBean config = (ConfigBean) mc.unmarshal(reader);</code></pre>
+ConfigBean config = (ConfigBean) mc.unmarshal(reader);</pre>
 </div>
 
         <!-- Rating widget -->

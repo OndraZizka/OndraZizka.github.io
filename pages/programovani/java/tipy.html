@@ -76,9 +76,9 @@
             <h1>Java tipy</h1>
         </div>
         <div class="date"><em>2012-12-16</em></div>
-        <div class="doc-body"><h3>Java tipy</h3>
+        <div class="doc-body"><h2 id="toc-java-tipy">Java tipy</h2>
 
-<h4>Co všechno umí interface?</h4>
+<h3 id="toc-co-vsechno-umi-interface">Co všechno umí interface?</h3>
 
 <p>Zajímavým jevem je, že člověk pohybující se v jistém oboru na
 úrovni nejvyšší abstrakce a žhavých novinek často zapomíná samotné
@@ -95,7 +95,7 @@ s tím?</p>
 <p>Moje nadtřída vypadala takto (zkráceno):</p>
 
 <pre
-class="brush: java"><code>public abstract class Action {
+class="brush: java">public abstract class Action {
 
   protected static Logger log;
   static{
@@ -130,7 +130,7 @@ class="brush: java"><code>public abstract class Action {
     public void setView( String view ) {      this.view = view;    }
   }
 
-}// class Action</code></pre>
+}// class Action</pre>
 
 <p>V podstatě velmi jednoduchá třída. Když jsem se na ni zběžně
 podíval, zdálo se mi, že na to, abych z ní udělal interface je moc
@@ -157,19 +157,20 @@ zbytečný konstruktor) nebylo. A krásná refaktorizace je na světě :-)</p>
 si, že do <code>interface</code> můžete kromě metod dávat i konstanty a
 hlavně <em>vnitřní třídy</em>.</p>
 
-<h4>Vnitřní třídy pro seskupení funkčnosti vnější třídy</h4>
+<h3 id="toc-vnitrni-tridy-pro-seskupeni-funkcnosti-vnejsi-tridy">Vnitřní
+třídy pro seskupení funkčnosti vnější třídy</h3>
 
 <p>Pokud chcete v nějaké třídě uklidit, možná vám pomůže použití
 vnitřní třídy.</p>
 
 <pre
-class="brush: java"><code>class VnějšíTřída {
+class="brush: java">class VnějšíTřída {
 
     class VnitřníTřída {
         ...
     }
 
-}</code></pre>
+}</pre>
 
 <p>Vnitřní třída (<em>inner class</em>) neboli nestatické vnořené třídy
 mají zajímavou vlastnost: Jejich instance je součástí instance
@@ -184,7 +185,7 @@ třídy.)</em></p>
 <p>Díky tomu z ní můžete přistupovat ke všem jejím prvkům:</p>
 
 <pre
-class="brush: java"><code>class MujProgram(){
+class="brush: java">class MujProgram(){
   Logger log;
 
   // inicializace v konstruktoru...
@@ -202,7 +203,7 @@ class="brush: java"><code>class MujProgram(){
 
   }
 
-}</code></pre>
+}</pre>
 
 <p>Jedná se tedy o podobný mechanismus, jako vnořené funkce v Pascalu
 (které kdysi sháněl můj kamarád Karel Kyrian :-)</p>
@@ -212,7 +213,8 @@ rozhraní (<em>interface</em>), například pro obsluhu událostí: Vnitřní
 třída implementuje rozhraní <code>*Listener</code> a její instanci potom
 u zdroje událostí registruji jako posluchače.</p>
 
-<h4>Nastavení kódování JDBC MySQL připojení</h4>
+<h3 id="toc-nastaveni-kodovani-jdbc-mysql-pripojeni">Nastavení kódování JDBC
+MySQL připojení</h3>
 
 <p>MySQL standardně nastavuje kódování spojení na ISO-LATIN-1 (tuším).
 Proto je třeba spojení přenastavit.</p>
@@ -222,7 +224,7 @@ je třeba MySQL spojení nastavit jinak – a to parametrem v
 „Connection URL“:</p>
 
 <pre
-class="url"><code>jdbc:mysql://dev:3306/myDatabase?autoReconnect=true&amp;amp;allowMultiQueries=true&amp;amp;characterEncoding=UTF-8&amp;amp;characterSetResults=UTF-8</code></pre>
+class="url">jdbc:mysql://dev:3306/myDatabase?autoReconnect=true&amp;amp;allowMultiQueries=true&amp;amp;characterEncoding=UTF-8&amp;amp;characterSetResults=UTF-8</pre>
 
 <p>Pokud byste chtěli kódování <code>Windows-1250</code>, použijte hodnotu
 <code>Cp1250</code>.<br />
@@ -238,18 +240,18 @@ href="http://www.macroware.cz/software/unicode/">http://www.macroware.cz/…are/
 <p>Klíčová slova: databáze, JDBC, MySQL, nastavení, kódování, iBatis,
 Hibernate. Keywords: database, JDBC, character set, setting, charset.</p>
 
-<h4>Jak zjistit, zda cesta (adresář) existuje, a pokud ne,
-vytvořit jej?</h4>
+<h3 id="toc-jak-zjistit-zda-cesta-adresar-existuje-a-pokud-ne-vytvorit-jej">Jak
+zjistit, zda cesta (adresář) existuje, a pokud ne, vytvořit jej?</h3>
 
 <pre
-class="brush: java"><code>try{
+class="brush: java">try{
   File dir = new File("./spisy_xml");
   if( !dir.exists() &amp;&amp; !dir.mkdirs() )
     throw new Exception("Nepodařilo se vytvořit adresář "+dir.getPath());
 }
 catch( Exception ex ){
   throw new Exception("Chyba při vytváření adresáře pro XML soubory.", ex);
-}</code></pre>
+}</pre>
 
 <p>Klíčová slova: java, j2se, adresář, složka, kontrola, existence,
 existuje, vytvoření. Keywords: java, directory, folder, check, existence,

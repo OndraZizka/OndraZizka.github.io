@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="utf-8"/>
-    <title>Web Service Client from WSDL using Axis2 - Ondřej Žižka</title>
+    <title>Web Service Client from
+WSDL using Axis2 - Ondřej Žižka</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="My personal web">
     <meta name="author" content="Ondřej Žižka">
@@ -73,10 +74,12 @@
 
     <div class="document-post">
         <div class="page-header">
-            <h1>Web Service Client from WSDL using Axis2</h1>
+            <h1>Web Service Client from
+WSDL using Axis2</h1>
         </div>
         <div class="date"><em>2012-12-16</em></div>
-        <div class="doc-body"><h3>Web Service Client from WSDL using Axis2</h3>
+        <div class="doc-body"><h2 id="toc-web-service-client-from-wsdl-using-axis2">Web Service Client from
+WSDL using Axis2</h2>
 
 <ul>
 	<li>Download Axis2 (tested with 1.4.1).</li>
@@ -89,7 +92,7 @@
 </ul>
 
 <pre
-class="bat"><code>%AXIS2_HOME%\bin\WSDL2Java -uri IsirPub001.wsdl -p cz.pohlidame.isir.client -d adb -s</code></pre>
+class="bat">%AXIS2_HOME%\bin\WSDL2Java -uri IsirPub001.wsdl -p cz.pohlidame.isir.client -d adb -s</pre>
 
 <p>That will generate a single java file with a stub for that WSDL.</p>
 
@@ -97,7 +100,7 @@ class="bat"><code>%AXIS2_HOME%\bin\WSDL2Java -uri IsirPub001.wsdl -p cz.pohlidam
 	<li>This code will use the stub to call the web service:</li>
 </ul>
 
-<pre><code>try {
+<pre>try {
 
   IsirPub001Stub stub = new IsirPub001Stub();
   IsirPub001Stub.GetIsirPub0012E e = new IsirPub001Stub.GetIsirPub0012E();
@@ -114,7 +117,7 @@ class="bat"><code>%AXIS2_HOME%\bin\WSDL2Java -uri IsirPub001.wsdl -p cz.pohlidam
 }
 catch( RemoteException ex ) {
   Logger.getLogger( Main.class.getName() ).log( Level.SEVERE, null, ex );
-}</code></pre>
+}</pre>
 
 <ul>
 	<li>Run this code with libraries from <code>%AXIS2_HOME%\lib</code> at the

@@ -76,20 +76,20 @@
             <h1>User Songs Rating</h1>
         </div>
         <div class="date"><em>2012-12-16</em></div>
-        <div class="doc-body"><h3>User Songs Rating</h3>
+        <div class="doc-body"><h2 id="toc-user-songs-rating">User Songs Rating</h2>
 
 <p>To save user's rating, call <code>rate.php</code>:</p>
 
 <pre
-class="url"><code>rate.php?user=Trapper852@Adelphia.net&amp;song_id=1500&amp;rating=10
-http://d02-0330a.kn.vutbr.cz/winlyrics/real/rate.php?user=Trapper852@Adelphia.net&amp;song_id=1500&amp;rating=10</code></pre>
+class="url">rate.php?user=Trapper852@Adelphia.net&amp;song_id=1500&amp;rating=10
+http://d02-0330a.kn.vutbr.cz/winlyrics/real/rate.php?user=Trapper852@Adelphia.net&amp;song_id=1500&amp;rating=10</pre>
 
 <p><strong>Params:</strong></p>
 
 <pre
-class="doc"><code>@param user     string         Identifier - e.g. e-mail - of the user who rates the song.
+class="doc">@param user     string         Identifier - e.g. e-mail - of the user who rates the song.
 @param song_id  unsigned int   ID of the rated song.  UNSIGNED INT
-@param rating   signed byte    Rating of the song.</code></pre>
+@param rating   signed byte    Rating of the song.</pre>
 
 <p><strong>Returns:</strong></p>
 
@@ -119,7 +119,7 @@ details.</p>
 	re-authentize.</li>
 </ul>
 
-<h4>Session-based rating</h4>
+<h3 id="toc-session-based-rating">Session-based rating</h3>
 
 <ol>
 	<li>Authentize using <code>authentize.php</code></li>
@@ -127,52 +127,52 @@ details.</p>
 	<li>Use the session to rate:</li>
 </ol>
 
-<pre><code>&gt;&gt; `http://localhost:81/winlyrics/real/rate_sess.php?sess_id=f8675g1390s7dngloohqitsd74&amp;song_id=15&amp;rating=10`
-&lt;&lt; `OK`</code></pre>
+<pre>&gt;&gt; `http://localhost:81/winlyrics/real/rate_sess.php?sess_id=f8675g1390s7dngloohqitsd74&amp;song_id=15&amp;rating=10`
+&lt;&lt; `OK`</pre>
 
 <p><strong>Params:</strong></p>
 
 <pre
-class="doc"><code>@param sess_id  string         Session ID, previously acquired using authentize.php
+class="doc">@param sess_id  string         Session ID, previously acquired using authentize.php
 @param song_id  unsigned int   ID of the rated song.  UNSIGNED INT
-@param rating   signed byte    Rating of the song.</code></pre>
+@param rating   signed byte    Rating of the song.</pre>
 
 <p><strong>Returns:</strong> Same as above.</p>
 
-<h4>SQL code</h4>
+<h3 id="toc-sql-code">SQL code</h3>
 
-<h5>Tests</h5>
+<h4 id="toc-tests">Tests</h4>
 
 <p>Creates a user-song-rating triplet for user
 <code>Trapper852@Adelphia.net</code> and song <code>1500</code>, rated
 <code>-10</code>:</p>
 
 <pre
-class="brush: sql"><code>CALL wl2_SetRating( (SELECT id FROM wl2_users WHERE email = 'Trapper852@Adelphia.net'), 1500, -10 );</code></pre>
+class="brush: sql">CALL wl2_SetRating( (SELECT id FROM wl2_users WHERE email = 'Trapper852@Adelphia.net'), 1500, -10 );</pre>
 
 <p>Changes that rating to 50:</p>
 
 <pre
-class="brush: sql"><code>CALL wl2_SetRating( (SELECT id FROM wl2_users WHERE email = 'Trapper852@Adelphia.net'), 1500, 50 );</code></pre>
+class="brush: sql">CALL wl2_SetRating( (SELECT id FROM wl2_users WHERE email = 'Trapper852@Adelphia.net'), 1500, 50 );</pre>
 
 <p>Creates rating for other song and other user:</p>
 
-<pre class="brush: sql"><code>CALL wl2_SetRating( 20, 1700, 40 );</code></pre>
+<pre class="brush: sql">CALL wl2_SetRating( 20, 1700, 40 );</pre>
 
 <p>Does nothing (invalid user)</p>
 
 <pre
-class="brush: sql"><code>CALL wl2_SetRating( (SELECT id FROM wl2_users WHERE email = 'non@existent@user'), 200, 30 );</code></pre>
+class="brush: sql">CALL wl2_SetRating( (SELECT id FROM wl2_users WHERE email = 'non@existent@user'), 200, 30 );</pre>
 
 <p>Removes the rating for given user-song tuple:</p>
 
 <pre
-class="brush: sql"><code>CALL wl2_SetRating( (SELECT id FROM wl2_users WHERE email = 'Trapper852@Adelphia.net'), 1500, NULL );</code></pre>
+class="brush: sql">CALL wl2_SetRating( (SELECT id FROM wl2_users WHERE email = 'Trapper852@Adelphia.net'), 1500, NULL );</pre>
 
-<h5>Tables</h5>
+<h4 id="toc-tables">Tables</h4>
 
 <pre
-class="brush: sql"><code>CREATE TABLE  `winlyricscom`.`wl2_users` SELECT * FROM users;
+class="brush: sql">CREATE TABLE  `winlyricscom`.`wl2_users` SELECT * FROM users;
 ALTER TABLE `winlyricscom`.`wl2_users`
   ADD COLUMN `pass_md5` char(32) character set cp1250 collate cp1250_bin NOT NULL,
   MODIFY `email` `email` varchar(128) character set cp1250 NOT NULL,
@@ -180,33 +180,33 @@ ALTER TABLE `winlyricscom`.`wl2_users`
 
 -- evt. --
 INSERT INTO wl2_users
-  SELECT id, '' AS pass, jmeno, adresa, mesto, stat_kod, postal, email FROM reg_users;</code></pre>
+  SELECT id, '' AS pass, jmeno, adresa, mesto, stat_kod, postal, email FROM reg_users;</pre>
 
 <pre
-class="brush: sql"><code>CREATE TABLE  `winlyricscom`.`wl2_songs_rating` (
+class="brush: sql">CREATE TABLE  `winlyricscom`.`wl2_songs_rating` (
   `id_song` int(10) unsigned NOT NULL auto_increment,
   `rating_sum` int(10) unsigned NOT NULL,
   `rating_cnt` int(10) unsigned NOT NULL,
   `rating` float NOT NULL,
   PRIMARY KEY  (`id_song`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf-8;</code></pre>
+) ENGINE=MyISAM DEFAULT CHARSET=utf-8;</pre>
 
 <pre
-class="brush: sql"><code>CREATE TABLE  `winlyricscom`.`wl2_users_ratings` (
+class="brush: sql">CREATE TABLE  `winlyricscom`.`wl2_users_ratings` (
   `id_user` int(10) unsigned NOT NULL,
   `id_lyrics` int(10) unsigned NOT NULL,
   `rating` tinyint(4) NOT NULL,
   PRIMARY KEY  (`id_user`,`id_lyrics`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;</code></pre>
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;</pre>
 
-<h5>Procedure <code>wl2_SetRating</code></h5>
+<h4 id="toc-procedure-wl2-setrating">Procedure <code>wl2_SetRating</code></h4>
 
 <p>Creates / updates rating of given song by the given user. Repeated rating
 from one user changes his previous rating. Stores the data in
 <code>wl2_users_ratings</code>.</p>
 
 <pre
-class="brush: sql"><code>DELIMITER $$
+class="brush: sql">DELIMITER $$
 
 DROP PROCEDURE IF EXISTS `winlyricscom`.`wl2_SetRating`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE  `winlyricscom`.`wl2_SetRating`(idUser INT UNSIGNED, idSong INT UNSIGNED, iRating TINYINT)
@@ -224,15 +224,16 @@ BEGIN
 
 END $$
 
-DELIMITER ;</code></pre>
+DELIMITER ;</pre>
 
-<h5>Procedure <code>wl2_RebuildRating</code></h5>
+<h4 id="toc-procedure-wl2-rebuildrating">Procedure
+<code>wl2_RebuildRating</code></h4>
 
 <p>Rebuilds the average ratings in <code>wl2_songs_rating</code> based on data
 in <code>wl2_users_ratings</code>.</p>
 
 <pre
-class="brush: sql"><code>DELIMITER $$
+class="brush: sql">DELIMITER $$
 
 DROP PROCEDURE IF EXISTS `winlyricscom`.`wl2_RebuildRating`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE  `winlyricscom`.`wl2_RebuildRating`()
@@ -250,7 +251,7 @@ BEGIN
 
 END $$
 
-DELIMITER ;</code></pre>
+DELIMITER ;</pre>
 </div>
 
         <!-- Rating widget -->

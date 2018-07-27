@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="utf-8"/>
-    <title>JBoss Microcontainer with JBoss AOP – Howto with sample application - Ondřej Žižka</title>
+    <title>JBoss
+Microcontainer with JBoss AOP – Howto with sample application - Ondřej Žižka</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="My personal web">
     <meta name="author" content="Ondřej Žižka">
@@ -73,20 +74,23 @@
 
     <div class="document-post">
         <div class="page-header">
-            <h1>JBoss Microcontainer with JBoss AOP – Howto with sample application</h1>
+            <h1>JBoss
+Microcontainer with JBoss AOP – Howto with sample application</h1>
         </div>
         <div class="date"><em>2012-12-16</em></div>
-        <div class="doc-body"><h3>JBoss Microcontainer with JBoss AOP – Howto with sample application</h3>
+        <div class="doc-body"><h2
+id="toc-jboss-microcontainer-with-jboss-aop-howto-with-sample-application">JBoss
+Microcontainer with JBoss AOP – Howto with sample application</h2>
 
 <p><em>A very brief intro to JBoss AOP.</em></p>
 
-<h4>Prerequisites</h4>
+<h3 id="toc-prerequisites">Prerequisites</h3>
 
 <p>This tutorial is a follow-up to the <a
 href="jboss-microcontainer-howto-example-standalone-app.texy">JBoss
 Microcontainer intro</a> – read that first if you haven't yet.</p>
 
-<h4>What is AOP good for?</h4>
+<h3 id="toc-what-is-aop-good-for">What is AOP good for?</h3>
 
 <p>AOP (Aspect Oriented Programming) is a concept of moving a „programatic
 envelopes“ away from the methods. What I call a programatic envelope is that
@@ -109,7 +113,7 @@ methods.</p>
 generalization. It can help it to put the envelope code around method which it
 still does not know.</p>
 
-<h4>How does AOP work?</h4>
+<h3 id="toc-how-does-aop-work">How does AOP work?</h3>
 
 <p>First, you mark some Java constructs (methods, fields, constructors, …) to
 be AOP'ed (encapsulated with your envelope code).<br />
@@ -119,7 +123,8 @@ Then you need some tool which will bind the aspect to those methods. This is
 done by advanced techniques like byte-code instrumentation and class
 reflection.</p>
 
-<h4>Why JBoss AOP (and not the others)?</h4>
+<h3 id="toc-why-jboss-aop-and-not-the-others">Why JBoss AOP (and not the
+others)?</h3>
 
 <p>JBoss AOP offers much more then the other AOP frameworks (like
 Spring AOP).</p>
@@ -147,7 +152,7 @@ Spring AOP).</p>
 	to be weaved in runtime.</li>
 </ul>
 
-<h4>Terms</h4>
+<h3 id="toc-terms">Terms</h3>
 
 <p>Copied from <a
 href="http://www.jboss.org/jbossaop/docs/2.0.0.GA/docs/aspect-framework/reference/en/html_single/index.html#base-terms">JBoss
@@ -198,7 +203,7 @@ AOP reference docs</a>.</p>
 	be reused in other JBoss environments like EJBs and JMX MBeans.</dd>
 </dl>
 
-<h4>What we're willing to achieve?</h4>
+<h3 id="toc-what-we-re-willing-to-achieve">What we're willing to achieve?</h3>
 
 <p>We want to catch all calls to methods that affect the fuel in the
 <code>Car</code>. To make this easily achievable with AOP, let's follow a
@@ -209,7 +214,7 @@ names end with „Fuel“.</p>
 have two fuel-related properties:</p>
 
 <pre
-class="brush: java"><code>public class Car {
+class="brush: java">public class Car {
   public int litresOfFuel;
   public int getLitresOfFuel() {    return litresOfFuel;  }
   public void setLitresOfFuel( int litresOfFuel ) {    this.litresOfFuel = litresOfFuel;  }
@@ -222,14 +227,15 @@ class="brush: java"><code>public class Car {
     return "Car \""+this.name+"\" with "+(this.litresOfFuel + this.reserveFuel)+" litres of fuel.";
   }
   ...
-}</code></pre>
+}</pre>
 
-<h4>Creating an <code>Interceptor</code> („envelope“)</h4>
+<h3 id="toc-creating-an-interceptor-envelope">Creating an
+<code>Interceptor</code> („envelope“)</h3>
 
 <p>This is a simple interceptor that will just notify us when triggered.</p>
 
 <pre
-class="brush: java"><code>package cz.zizka.ondra.jbmctest;
+class="brush: java">package cz.zizka.ondra.jbmctest;
 
 import java.util.logging.Logger;
 import org.jboss.aop.advice.Interceptor;
@@ -252,9 +258,10 @@ public class FuelInterceptor implements Interceptor, Untransformable {
   public String getName() {
     return FuelInterceptor.class.getName();
   }
-}// class FuelInterceptor</code></pre>
+}// class FuelInterceptor</pre>
 
-<h4>Binding the interceptor to the method calls</h4>
+<h3 id="toc-binding-the-interceptor-to-the-method-calls">Binding the interceptor
+to the method calls</h3>
 
 <p>For the syntax of AOP pointcuts, see <a
 href="http://www.jboss.org/jbossaop/docs/2.0.0.GA/docs/aspect-framework/reference/en/html_single/index.html#pointcuts">JBoss
@@ -263,7 +270,7 @@ AOP documentation</a>.</p>
 <p>The syntax for our purpose stated above would be:</p>
 
 <pre
-class="brush: text"><code>execution(* cz.zizka.ondra.jbmctest.Car-&gt;set*Fuel(..)</code></pre>
+class="brush: text">execution(* cz.zizka.ondra.jbmctest.Car-&gt;set*Fuel(..)</pre>
 
 <p>The AOP settings go to a special XML file having <code>&lt;aop&gt;</code> as
 it's root element, and conforming to the JBoss AOP XSD.<br />
@@ -285,18 +292,18 @@ binding it to all methods of the <code>Car</code> class whose name has the
 pattern <code>set*Fuel</code>.</p>
 
 <pre
-class="brush: xml"><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+class="brush: xml">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;aop&gt;
    &lt;bind pointcut="execution(* cz.zizka.ondra.*-&gt;set*Fuel(..))"&gt;
        &lt;interceptor class="cz.zizka.ondra.jbmctest.FuelInterceptor"/&gt;
    &lt;/bind&gt;
-&lt;/aop&gt;</code></pre>
+&lt;/aop&gt;</pre>
 
 <p>Alternatively, it should be possible to put the AOP settings to the JBoss
 Microcontainer XML (but I wasn't able to get it working):</p>
 
 <pre
-class="brush: xml"><code>&lt;deployment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+class="brush: xml">&lt;deployment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
             xsi:schemaLocation="urn:jboss:bean-deployer:2.0 bean-deployer_2_0.xsd"
             xmlns="urn:jboss:bean-deployer:2.0"
             xmlns:aop="urn:jboss:aop-beans:1.0"&gt;
@@ -309,16 +316,16 @@ class="brush: xml"><code>&lt;deployment xmlns:xsi="http://www.w3.org/2001/XMLSch
     &lt;aop:interceptor-ref name="FuelInterceptor"/&gt;
   &lt;/aop:bind&gt;
 
-&lt;/deployment&gt;</code></pre>
+&lt;/deployment&gt;</pre>
 
-<h4>Maven configuration</h4>
+<h3 id="toc-maven-configuration">Maven configuration</h3>
 
 <p>After setting Maven to use JBoss repositories (see the <a
 href="jboss-microcontainer-howto-example-standalone-app.texy">JBoss
 Microcontainer how-to</a>), add these dependencies to your project:</p>
 
 <pre
-class="brush: xml"><code>&lt;dependencies&gt;
+class="brush: xml">&lt;dependencies&gt;
   &lt;dependency&gt;
     &lt;groupId&gt;org.jboss.microcontainer&lt;/groupId&gt;
     &lt;artifactId&gt;jboss-kernel&lt;/artifactId&gt;
@@ -335,14 +342,14 @@ class="brush: xml"><code>&lt;dependencies&gt;
     &lt;version&gt;2.0.9.GA&lt;/version&gt;
     &lt;scope&gt;runtime&lt;/scope&gt;
   &lt;/dependency&gt;
-&lt;/dependencies&gt;</code></pre>
+&lt;/dependencies&gt;</pre>
 
 <p>Also, add the JBoss AOP Maven plugin. It binds automatically to the
 <code>compile</code> phase. This will change the classes code to call your
 interceptors when a method is being called.</p>
 
 <pre
-class="brush: xml"><code>&lt;plugins&gt;
+class="brush: xml">&lt;plugins&gt;
   &lt;plugin&gt;
     &lt;groupId&gt;org.jboss.maven.plugins&lt;/groupId&gt;
     &lt;artifactId&gt;maven-jbossaop-plugin&lt;/artifactId&gt;
@@ -359,12 +366,12 @@ class="brush: xml"><code>&lt;plugins&gt;
       &lt;/execution&gt;
     &lt;/executions&gt;
   &lt;/plugin&gt;
-&lt;/plugins&gt;</code></pre>
+&lt;/plugins&gt;</pre>
 
-<h4>Test code</h4>
+<h3 id="toc-test-code">Test code</h3>
 
 <pre
-class="brush: java"><code>public class JBossAopSampleApp {
+class="brush: java">public class JBossAopSampleApp {
 
   public static void main( String[] args ) throws Throwable
   {
@@ -378,20 +385,20 @@ class="brush: java"><code>public class JBossAopSampleApp {
     System.out.println( "I have a garage: "+car);
   }
 
-}</code></pre>
+}</pre>
 
-<h4>The result</h4>
+<h3 id="toc-the-result">The result</h3>
 
 <p>Now run the application, and you'll see that the interceptor is really being
 invoked.</p>
 
 <pre
-class="brush: text"><code>I have a garage: Garage with a car: Car "Red Devil" with 0 litres of fuel.
+class="brush: text">I have a garage: Garage with a car: Car "Red Devil" with 0 litres of fuel.
 16.11.2009 11:42:47 FuelInterceptor invoke INFO: The fuel is being changed for the car 'Red Devil'.
 16.11.2009 11:42:47 FuelInterceptor invoke INFO: The fuel is being changed for the car 'Red Devil'.
-I have a garage: Garage with a car: Car "Red Devil" with 2 litres of fuel.</code></pre>
+I have a garage: Garage with a car: Car "Red Devil" with 2 litres of fuel.</pre>
 
-<h4>Sample application</h4>
+<h3 id="toc-sample-application">Sample application</h3>
 
 <p>The application created in the examples above can be downloaded here: <a
 href="download/JBossAOPsample.zip">JBossAOPsample­.zip</a></p>

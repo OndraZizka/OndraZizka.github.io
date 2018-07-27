@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="utf-8"/>
-    <title>Java security – how to work with SSL certificates - Ondřej Žižka</title>
+    <title>Java security –
+how to work with SSL certificates - Ondřej Žižka</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="My personal web">
     <meta name="author" content="Ondřej Žižka">
@@ -73,13 +74,15 @@
 
     <div class="document-post">
         <div class="page-header">
-            <h1>Java security – how to work with SSL certificates</h1>
+            <h1>Java security –
+how to work with SSL certificates</h1>
         </div>
         <div class="date"><em>2012-12-31</em></div>
-        <div class="doc-body"><h3>Java security – how to work with SSL certificates</h3>
+        <div class="doc-body"><h2 id="toc-java-security-how-to-work-with-ssl-certificates">Java security –
+how to work with SSL certificates</h2>
 
 <pre
-class="brush: bash"><code># Get the server's cert.
+class="brush: bash"># Get the server's cert.
 openssl s_client -connect support.stage.redhat.com:443
 # Store the cert incl. -----BEGIN .... and -----END ... to stage.pem
 
@@ -87,9 +90,9 @@ openssl s_client -connect support.stage.redhat.com:443
 sudo keytool -import -alias support.stage.redhat.com -keystore /etc/java-6-sun/security/cacerts -file stage.pem
 
 # Check if it's really there.
-keytool -keystore /etc/java-6-sun/security/cacerts -list | grep stage</code></pre>
+keytool -keystore /etc/java-6-sun/security/cacerts -list | grep stage</pre>
 
-<h4>Sources</h4>
+<h3 id="toc-sources">Sources</h3>
 
 <ul>
 	<li><a href="http://blogs.sun.com/andreas/entry/no_more_unable_to_find">No more

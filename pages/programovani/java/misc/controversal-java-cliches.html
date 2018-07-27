@@ -76,9 +76,10 @@
             <h1>Controversial Java cliches</h1>
         </div>
         <div class="date"><em>2012-12-31</em></div>
-        <div class="doc-body"><h3>Controversial Java cliches</h3>
+        <div class="doc-body"><h2 id="toc-controversial-java-cliches">Controversial Java cliches</h2>
 
-<h4>1) Using underscore <code>_</code> in Java identifiers is lame</h4>
+<h3 id="toc-1-using-underscore-in-java-identifiers-is-lame">1) Using underscore
+<code>_</code> in Java identifiers is lame</h3>
 
 <p>This stupid cliche comes from the times when Java was replacing C++. Every
 typical thing which was used in C++ was lame and must have had been done the
@@ -90,42 +91,45 @@ underscore, neva-eva. Well, you can. And it's very appropriate sometimes.
 Consider DAO classes:</p>
 
 <pre
-class="brush: java"><code>public interface FooDAO {
+class="brush: java">public interface FooDAO {
   public Foo getFoo();
   public List&lt;Foo&gt; getAllFoo_OrderByName();
   public List&lt;Foo&gt; getAllFoo_OrderByAge();
-}</code></pre>
+}</pre>
 
 <p>The underscores make the method names much more readable. Of course, you
 could parametrize that – but why not implement a method for use cases used in
 95% of overall DAO usage. Leave parametrization to low-level APIs.</p>
 
-<h4>2) Using <code>goto</code> statement in Java is lame</h4>
+<h3 id="toc-2-using-goto-statement-in-java-is-lame">2) Using <code>goto</code>
+statement in Java is lame</h3>
 
 <p>Wrong, again. The so-called „Java goto statement“, or labeled break, is
 very useful for certain cases of flow control.</p>
 
 <pre
-class="brush: java"><code>foo:
+class="brush: java">foo:
 for( String s : strings ){
   for( int i = 0; i &lt; s.length(); i++ ){
     if( s.charAt(i) == '@' )
       break foo;
   }
-}</code></pre>
+}</pre>
 
 <p>It's just a shorter syntax for not-so-smart handling of everything in
 <code>if {...} else {...}</code>. I still don't get this hypocrisy of some
 people who fall in love with Scala or Groovy which are full of various syntax
 shortcuts of the same kind, but yell hysterically when they see this.</p>
 
-<h4>3) Gathering <code>CONSTANTS</code> in <code>interface</code>s</h4>
+<h3 id="toc-3-gathering-constants-in-interfaces">3) Gathering
+<code>CONSTANTS</code> in <code>interface</code>s</h3>
 
 <p>…is percieved by some people as misuse. However, it makes perfect sense
 semantically too: public constants are a part of API, aka application
 programming interface.</p>
 
-<h4>4) Inner classes in <code>interface</code>s</h4>
+<h3 id="toc-4-inner-classes-in-interfaces">4) Inner classes in
+<code>interface</code>s</h3>
 
 <p>This is perfectly cool if you want to use interface
 implementation's met­hods in e.g. default implementations of some algorithms.

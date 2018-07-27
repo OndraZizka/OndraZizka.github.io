@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="utf-8"/>
-    <title>Hibernate super-quick start in NetBeans - Ondřej Žižka</title>
+    <title>Hibernate super-quick start
+in NetBeans - Ondřej Žižka</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="My personal web">
     <meta name="author" content="Ondřej Žižka">
@@ -73,17 +74,19 @@
 
     <div class="document-post">
         <div class="page-header">
-            <h1>Hibernate super-quick start in NetBeans</h1>
+            <h1>Hibernate super-quick start
+in NetBeans</h1>
         </div>
         <div class="date"><em>2012-12-16</em></div>
-        <div class="doc-body"><h3>Hibernate super-quick start in NetBeans</h3>
+        <div class="doc-body"><h2 id="toc-hibernate-super-quick-start-in-netbeans">Hibernate super-quick start
+in NetBeans</h2>
 
 <p>Here's my how-to for starting a Hibernate project. It is meant as a reminder
 for me :-)</p>
 
 <p>We'll use Java Persistence API.</p>
 
-<h4>What is Hibernate?</h4>
+<h3 id="toc-what-is-hibernate">What is Hibernate?</h3>
 
 <p>Mainly, Hibernate is a tool to move the SQL out of the application code. The
 philosophy of Hibernate is that you should not write SQL to manipulate data,
@@ -100,7 +103,7 @@ special language similar to SQL is used. For Hibernate it's
 <code>HQL</code>((Hibernate Query Language), for standardized JPA((Java
 Persistence API) it's <code>EQL</code>((Entity Query Language).</p>
 
-<h4>Download</h4>
+<h3 id="toc-download">Download</h3>
 
 <ol>
 	<li>From <a href="http://www.hibernate.org/6.html"><strong>Hibernate
@@ -123,7 +126,8 @@ Persistence API) it's <code>EQL</code>((Entity Query Language).</p>
 		<code>c:\sw\JavaLibs\{projectName-version}</code>).</li>
 </ol>
 
-<h4>Setup Hibernate in your NetBeans project</h4>
+<h3 id="toc-setup-hibernate-in-your-netbeans-project">Setup Hibernate in your
+NetBeans project</h3>
 
 <p>Create the <strong>Persistence Unit</strong> – that is a piece of XML
 configuration, sipmly said. In NetBeans, there is some Hibernate support, but
@@ -182,7 +186,7 @@ one step.</p>
 
 <p>Now let's test whether you have done your job well.</p>
 
-<h4>Testing Hibernate Setup</h4>
+<h3 id="toc-testing-hibernate-setup">Testing Hibernate Setup</h3>
 
 <ul>
 	<li>Go to your directory with Hibernate EntityManager and open the
@@ -217,19 +221,20 @@ checked few things – let's see at the MySQL's general query log file (if
 enabled):</p>
 
 <pre
-class="log"><code>14 Connect     domov@localhost on domov
+class="log">14 Connect     domov@localhost on domov
 14 Query       SHOW VARIABLES WHERE Variable_name ='language' OR ... OR Variable_name = 'init_connect'
 14 Query       SHOW COLLATION
 14 Query       SET character_set_results = NULL
 14 Query       SET autocommit=1
-14 Query       SET sql_mode='STRICT_TRANS_TABLES'</code></pre>
+14 Query       SET sql_mode='STRICT_TRANS_TABLES'</pre>
 
 <p>This is what Hibernate does upon connetion to MySQL in default
 configuration.</p>
 
 <p>Let's make Hibernate do something.</p>
 
-<h4>First query and first transaction</h4>
+<h3 id="toc-first-query-and-first-transaction">First query and first
+transaction</h3>
 
 <p>Because we haven't mapped any entities yet, we can't load or save anything
 with Hibernate.<br />
@@ -265,14 +270,14 @@ object of interest for you.</p>
 </ul>
 
 <pre
-class="brush: java"><code>// Use persistence.xml configuration
+class="brush: java">// Use persistence.xml configuration
 EntityManagerFactory emf = Persistence.createEntityManagerFactory("ISIR_PU");
 EntityManager em = emf.createEntityManager(); // Retrieve an application managed entity manager
 
 em.createNativeQuery( "SET @a = 1;" ).executeUpdate();
 
 em.close();
-emf.close(); //close at application end</code></pre>
+emf.close(); //close at application end</pre>
 
 <p>Now run the file (<code>Shift+F6</code>).</p>
 
@@ -296,7 +301,7 @@ begin the transaction: <code>transaction.begin();</code> Move under the
 The final code will look like this:</p>
 
 <pre
-class="brush: java"><code>// Use persistence.xml configuration
+class="brush: java">// Use persistence.xml configuration
 EntityManagerFactory emf = Persistence.createEntityManagerFactory("ISIR_PU");
 EntityManager em = emf.createEntityManager(); // Retrieve an application managed entity manager
 
@@ -309,7 +314,7 @@ em.createNativeQuery( "SET @a = 1;" ).executeUpdate();
 transaction.commit();
 
 em.close();
-emf.close(); //close at application end</code></pre>
+emf.close(); //close at application end</pre>
 
 <p>Now run the file (<code>Shift+F6</code>). No complains? Congratulations! The
 you have done first steps! Later, I'll write something about object-relational

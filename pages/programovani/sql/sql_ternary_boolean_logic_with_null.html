@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="utf-8"/>
-    <title>„Ternary boolean logic“ in SQL – making NULL useful - Ondřej Žižka</title>
+    <title>„Ternary boolean
+logic“ in SQL – making NULL useful - Ondřej Žižka</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="My personal web">
     <meta name="author" content="Ondřej Žižka">
@@ -73,10 +74,12 @@
 
     <div class="document-post">
         <div class="page-header">
-            <h1>„Ternary boolean logic“ in SQL – making NULL useful</h1>
+            <h1>„Ternary boolean
+logic“ in SQL – making NULL useful</h1>
         </div>
         <div class="date"><em>2012-12-31</em></div>
-        <div class="doc-body"><h3>„Ternary boolean logic“ in SQL – making NULL useful</h3>
+        <div class="doc-body"><h2 id="toc-ternary-boolean-logic-in-sql-making-null-useful">„Ternary boolean
+logic“ in SQL – making NULL useful</h2>
 
 <p>Typically, SQL's <code>NULL</code> is used as „unknown value“ or „Not
 Applicable“.</p>
@@ -91,7 +94,7 @@ first post, you store NULL there to mark there's no post yet.</p>
 <p>That's the basic NULL usage. But it can provide you much more – mainly
 for complex <code>SELECT</code>s used for searching or for reports.</p>
 
-<h4>NULL features and performance</h4>
+<h3 id="toc-null-features-and-performance">NULL features and performance</h3>
 
 <p>On most enterprise-ready RDBMS's, NULL can be indexed.</p>
 
@@ -109,7 +112,7 @@ usually very quick, because this information is part of the index; more, the
 database system does not have to sort them internally in a tree index, like it
 has with concrete values (e.g. numeric ID's).</p>
 
-<h4>Basic NULL constructs in SQL</h4>
+<h3 id="toc-basic-null-constructs-in-sql">Basic NULL constructs in SQL</h3>
 
 <ul>
 	<li><code>SELECT a IS NULL</code></li>
@@ -125,7 +128,7 @@ has with concrete values (e.g. numeric ID's).</p>
 	non-<code>NULL</code> value.</li>
 </ul>
 
-<h4>NULL semantics</h4>
+<h3 id="toc-null-semantics">NULL semantics</h3>
 
 <p>Null has these characteristics:</p>
 
@@ -139,7 +142,7 @@ has with concrete values (e.g. numeric ID's).</p>
 	<li><code>NOT NULL</code> ⇒ <code>NULL</code></li>
 </ul>
 
-<h5>Comparison</h5>
+<h4 id="toc-comparison">Comparison</h4>
 
 <p>Comparison always returns <code>NULL</code>, even for
 <code>NULL = NULL</code>. You have to use <code>IS NULL</code>.</p>
@@ -174,7 +177,7 @@ convenient way when you need to work with multiple nullable values:</p>
 	<li><code>NULLIF()</code></li>
 </ul>
 
-<h5>Boolean logic</h5>
+<h4 id="toc-boolean-logic">Boolean logic</h4>
 
 <p>Boolean logic is specific. Here, NULL is considered as meaning „Unknown
 value“.</p>
@@ -191,7 +194,8 @@ is unknown as well.<br />
 Similarly it works with <code>OR</code>. For <code>XOR</code>, it's always
 <code>NULL</code>, as both operands are always needed.</p>
 
-<h4>Using NULL features to your advantage</h4>
+<h3 id="toc-using-null-features-to-your-advantage">Using NULL features to your
+advantage</h3>
 
 <p>Without learning the basics above, the NULL behavior might seem strange to
 you and can lead to an unexpected behavior. But if you keep that in mind, you

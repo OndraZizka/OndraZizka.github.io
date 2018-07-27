@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="utf-8"/>
-    <title>Úplné začátky se Spring framework - Ondřej Žižka</title>
+    <title>Úplné začátky se Spring
+framework - Ondřej Žižka</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="My personal web">
     <meta name="author" content="Ondřej Žižka">
@@ -73,12 +74,14 @@
 
     <div class="document-post">
         <div class="page-header">
-            <h1>Úplné začátky se Spring framework</h1>
+            <h1>Úplné začátky se Spring
+framework</h1>
         </div>
         <div class="date"><em>2012-12-16</em></div>
-        <div class="doc-body"><h3>Úplné začátky se Spring framework</h3>
+        <div class="doc-body"><h2 id="toc-uplne-zacatky-se-spring-framework">Úplné začátky se Spring
+framework</h2>
 
-<h4>K čemu je Spring?</h4>
+<h3 id="toc-k-cemu-je-spring">K čemu je Spring?</h3>
 
 <p>Spring má více částí, takže se dá využívat lecjak.</p>
 
@@ -104,7 +107,8 @@ to jen zlomek toho, co Spring dokáže, ale je to také základ skoro všeho, co
 se ve Springu dělá. (Proto tedy název článku „Úplné začátky…“ a
 nikoliv „Spring IoC“.)</p>
 
-<h4>Spring Inversion of Control (IoC)</h4>
+<h3 id="toc-spring-inversion-of-control-ioc">Spring Inversion of Control
+(IoC)</h3>
 
 <p>Inversion of Control (česky bych řekl „vyvržení střev aplikace“, ale
 jinak pochopitelně „převrácené řízení“) je technika, pomocí které
@@ -125,7 +129,7 @@ nabízí velmi přímočará řešení s defaultními hodnotami, proto přidat
 nový modul často znamená jen přidat pár řádků do XML konfigurace
 Springu.</p>
 
-<h4>Jak na to</h4>
+<h3 id="toc-jak-na-to">Jak na to</h3>
 
 <p>Hlavní třídou k tomuto je buď <code>ApplicationContext</code>, nebo
 <em>Bean Factory</em> neboli <em>továrna na „bíny“</em>.
@@ -155,45 +159,45 @@ obecně jakoukoliv aplikaci.</p>
 
 <hr />
 
-<h5>Jak inicializovat spring</h5>
+<h4 id="toc-jak-inicializovat-spring">Jak inicializovat spring</h4>
 
 <p>Inicializace probíhá tak, že vytvoříte továrnu na beany a do
 konstruktoru předáte soubor, který se má číst. U newebových aplikací
 můžete XML soubor dát kam chcete a pojmenovat jej jak chcete.</p>
 
 <pre
-class="brush: java"><code>import org.springframework.beans.factory.xml.XmlBeanFactory;
+class="brush: java">import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.core.io.ClassPathResource;
 
 public void init() {
 
   XmlBeanFactory bf = new XmlBeanFactory( new ClassPathResource( "properties/SpringBeans.xml" ));
 
-}</code></pre>
+}</pre>
 
 <p>U webových aplikací se konfigurační soubory dávají do
 <code>/WEB-INF/</code>, anžto tam se webový klient nikdy nedostane (zaručeno
 specifikací J2EE).</p>
 
 <pre
-class="brush: java"><code>import org.springframework.beans.factory.xml.XmlBeanFactory;
+class="brush: java">import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.web.context.support.ServletContextResource;
 
 public void init() {
 
   XmlBeanFactory bf = new XmlBeanFactory(new ServletContextResource(this.getServletContext(), "/WEB-INF/applicationContext.xml"));
 
-}</code></pre>
+}</pre>
 
 <p>Soubor <code>applicationContext.xml</code> viz dále.</p>
 
 <hr />
 
-<h5>Nyní jak si budete žádat o připravený objekt (pro ukázku
-třeba DAO):</h5>
+<h4
+id="toc-nyni-jak-si-budete-zadat-o-pripraveny-objekt-pro-ukazku-treba-dao">Nyní
+jak si budete žádat o připravený objekt (pro ukázku třeba DAO):</h4>
 
-<pre
-class="brush: java"><code>userDAO = (UserDAO) bf.getBean("userDAO");</code></pre>
+<pre class="brush: java">userDAO = (UserDAO) bf.getBean("userDAO");</pre>
 
 <p><code>userDAO</code> je jméno konkrétního objektu třídy
 <code>UserDAO</code> – viz dále.</p>
@@ -205,7 +209,7 @@ ale zkuste to a uvidíte, že tomu přijdete na chuť.</p>
 
 <hr />
 
-<h5>Konfigurace</h5>
+<h4 id="toc-konfigurace">Konfigurace</h4>
 
 <p><strong>A teď co je k tomu potřeba:</strong></p>
 
@@ -216,7 +220,7 @@ ale zkuste to a uvidíte, že tomu přijdete na chuť.</p>
 pojmenovat jej jak chcete.</em></p>
 
 <pre
-class="brush: xml"><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+class="brush: xml">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 
 &lt;!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd"&gt;
 
@@ -233,7 +237,7 @@ class="brush: xml"><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 
  &lt;import resource="spring-config/userDAOs.xml" /&gt;
 
-&lt;/beans&gt;</code></pre>
+&lt;/beans&gt;</pre>
 
 <p>První element <code>&lt;bean&gt;</code> je přímá definice objektu,
 další definice jsou obsažené v souborech načtených přes element
@@ -259,7 +263,7 @@ například je to seznam (stringů).</p>
 připíšu.</p>
 
 <pre
-class="brush: xml"><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+class="brush: xml">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 
 &lt;!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd"&gt;
 
@@ -273,11 +277,11 @@ class="brush: xml"><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
    &lt;property name="..." ref="..."/&gt;
  &lt;/bean&gt;
 
-&lt;/beans&gt;</code></pre>
+&lt;/beans&gt;</pre>
 
 <p>A spring je na světě.</p>
 
-<h4>Závěr</h4>
+<h3 id="toc-zaver">Závěr</h3>
 
 <p>Zatím jste se naučili jen tzv. <em>Inversion of Control</em>.</p>
 

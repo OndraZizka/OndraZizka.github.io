@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="utf-8"/>
-    <title>Java Concurrency, Threads and Synchronization - Ondřej Žižka</title>
+    <title>Java Concurrency,
+Threads and Synchronization - Ondřej Žižka</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="My personal web">
     <meta name="author" content="Ondřej Žižka">
@@ -73,10 +74,12 @@
 
     <div class="document-post">
         <div class="page-header">
-            <h1>Java Concurrency, Threads and Synchronization</h1>
+            <h1>Java Concurrency,
+Threads and Synchronization</h1>
         </div>
         <div class="date"><em>2012-12-16</em></div>
-        <div class="doc-body"><h3>Java Concurrency, Threads and Synchronization</h3>
+        <div class="doc-body"><h2 id="toc-java-concurrency-threads-and-synchronization">Java Concurrency,
+Threads and Synchronization</h2>
 
 <p>I've created a class which synchronizes many readers and writers (or better,
 modifier). It's a hybrid solution similar to a <em>thread barrier</em> and
@@ -116,13 +119,15 @@ Then, there's a simple non-reentrant implementation, for one writer only.<br />
 On the bottom of the page, there's my original solution which leads to
 starvation of the modifier. (That will come handy later as a bad example :)</p>
 
-<h4>Multiple modifiers, multiple readers, re-entrant, livelock-proof:</h4>
+<h3
+id="toc-multiple-modifiers-multiple-readers-re-entrant-livelock-proof">Multiple
+modifiers, multiple readers, re-entrant, livelock-proof:</h3>
 
 <p>Uses a <code>ReentrantLock</code> with two <code>Conditions</code>.<br />
 Also uses an adapted <code>HashMap</code> to count thread re-entries.</p>
 
 <pre
-class="brush: java"><code>package cz.dynawest.webttd;
+class="brush: java">package cz.dynawest.webttd;
 
 import java.util.*;
 import java.util.concurrent.locks.*;
@@ -294,12 +299,13 @@ final class CounterMap&lt;K&gt; {
     return cnt;
   }
 
-}</code></pre>
+}</pre>
 
-<h4>One modifier and many concurrent Readers, non-reentrant:</h4>
+<h3 id="toc-one-modifier-and-many-concurrent-readers-non-reentrant">One modifier
+and many concurrent Readers, non-reentrant:</h3>
 
 <pre
-class="brush: java"><code>import java.util.concurrent.locks.*;
+class="brush: java">import java.util.concurrent.locks.*;
 import java.util.logging.Logger;
 
 
@@ -372,10 +378,10 @@ public class ReadersAndModifierSynchronizer2 {
     finally{ lock.unlock(); }
   }
 
-}// class ReadersAndModifierSynchronizer2</code></pre>
+}// class ReadersAndModifierSynchronizer2</pre>
 
 <pre
-class="brush: java"><code>import cz.dynawest.logging.LoggingUtils;
+class="brush: java">import cz.dynawest.logging.LoggingUtils;
 import java.util.*;
 import java.util.logging.Logger;
 import org.testng.annotations.Test;
@@ -475,12 +481,14 @@ public class ReadersAndModifierTest {
       return new Thread( cons );
   }
 
-}</code></pre>
+}</pre>
 
-<h4>Modifier and concurrent Readers, leads to modifier starvation:</h4>
+<h3
+id="toc-modifier-and-concurrent-readers-leads-to-modifier-starvation">Modifier
+and concurrent Readers, leads to modifier starvation:</h3>
 
 <pre
-class="brush: java"><code>/**
+class="brush: java">/**
  * Todo: try to use Condition.
  *
  * @author Ondrej Zizka
@@ -522,10 +530,10 @@ public class ReadersAndModifierSynchronizer {
       this.notifyAll();
   }
 
-}// class ReadersAndModifierSynchronizer</code></pre>
+}// class ReadersAndModifierSynchronizer</pre>
 
 <pre
-class="brush: java"><code>import cz.dynawest.logging.LoggingUtils;
+class="brush: java">import cz.dynawest.logging.LoggingUtils;
 import java.util.*;
 import java.util.logging.Logger;
 import org.testng.annotations.Test;
@@ -616,7 +624,7 @@ public class ReadersAndModifierTest {
       return new Thread( cons );
   }
 
-}// class TestTest</code></pre>
+}// class TestTest</pre>
 </div>
 
         <!-- Rating widget -->

@@ -76,9 +76,10 @@
             <h1>FreeTTS Troubleshooting</h1>
         </div>
         <div class="date"><em>2012-12-31</em></div>
-        <div class="doc-body"><h3>FreeTTS Troubleshooting</h3>
+        <div class="doc-body"><h2 id="toc-freetts-troubleshooting">FreeTTS Troubleshooting</h2>
 
-<h3>Java sound problems in Linux – LINE UNAVAILABLE</h3>
+<h2 id="toc-java-sound-problems-in-linux-line-unavailable">Java sound problems
+in Linux – LINE UNAVAILABLE</h2>
 
 <p>It's a JVM bug described <a
 href="http://bugs.sun.com/bugdatabase/view_bug.do?bug_id=4498848">here</a></p>
@@ -120,11 +121,11 @@ about „long sentences“:</p>
 	line unavailable error.</p>
 </blockquote>
 
-<h4>Workaround:</h4>
+<h3 id="toc-workaround">Workaround:</h3>
 
 <pre
-class="brush: java"><code>System.setProperty("com.sun.speech.freetts.audio.AudioPlayer.openFailDelayMs", "100");
-System.setProperty("com.sun.speech.freetts.audio.AudioPlayer.totalOpenFailDelayMs", "30000");</code></pre>
+class="brush: java">System.setProperty("com.sun.speech.freetts.audio.AudioPlayer.openFailDelayMs", "100");
+System.setProperty("com.sun.speech.freetts.audio.AudioPlayer.totalOpenFailDelayMs", "30000");</pre>
 
 <p>Also <a
 href="http://sourceforge.net/projects/freetts/forums/forum/137669/topic/1293759?message=3178304">here</a>
@@ -161,14 +162,14 @@ the line availability</a> :</p>
 	</ol>
 </blockquote>
 
-<h4>Solution:</h4>
+<h3 id="toc-solution">Solution:</h3>
 
 <p>Fix FreeTTS according to <a
 href="http://forums.sun.com/thread.jspa?threadID=5189363">this link</a>, which
 is now unavailable because Oracle fucked it up. That page supposedly contained a
 fix for FreeTTS making it not vulnerable to that JVM's bug.</p>
 
-<h4>Also see:</h4>
+<h3 id="toc-also-see">Also see:</h3>
 
 <ul>
 	<li><a
@@ -184,8 +185,9 @@ fix for FreeTTS making it not vulnerable to that JVM's bug.</p>
 	howto</a> at ryan-h's blog.</li>
 </ul>
 
-<h3>Problem finding dependencies – ZipException` „Error opening
-ZIP file“</h3>
+<h2
+id="toc-problem-finding-dependencies-zipexception-error-opening-zip-file">Problem
+finding dependencies – ZipException` „Error opening ZIP file“</h2>
 
 <p>After I mavenized FreeTTS, I started getting an exception from JDK saying
 it can't read ZIP file somewhere in <code>VoiceManager.java</code>.</p>
@@ -195,15 +197,15 @@ help because it did not tell me about JVM's calls to <code>open()</code> for
 some reason, but anyway, here's the command:</p>
 
 <pre
-class="brush: bash"><code>sudo strace -e trace=all -o log.txt \
+class="brush: bash">sudo strace -e trace=all -o log.txt \
 java -Xrunjdwp:transport=dt_socket,server=y,address=4000 \
      -Djpda.listen=true -Djpda.address=4000 \
      -Dmbrola.base="`pwd`/../mbrola301"\
      -Dfreetts.voicespath="`pwd`/../mbrola301/voices"\
      -jar /home/ondra/work/BOTS/SpeechBot/SpeechBot-mavenized/target/SpeechBot-1.0-SNAPSHOT.jar \
-     irc.eng.brq.redhat.com '#some'</code></pre>
+     irc.eng.brq.redhat.com '#some'</pre>
 
-<h4>The cause</h4>
+<h3 id="toc-the-cause">The cause</h3>
 
 <p>The problem was that mavenization of FreeTTS and MBrola involved re-naming
 the .jar files.</p>
@@ -230,15 +232,15 @@ means adding <code>-&lt;version&gt;</code> so it's e.g.
 <p>Then you run a shell command like</p>
 
 <pre
-class="brush: bash"><code>java -Dmbrola.base="`pwd`/../mbrola301"\
+class="brush: bash">java -Dmbrola.base="`pwd`/../mbrola301"\
      -Dfreetts.voicespath="`pwd`/../mbrola301/voices"\
      -jar /home/ondra/work/BOTS/SpeechBot/SpeechBot-mavenized/target/SpeechBot-1.0-SNAPSHOT.jar \
-     irc.eng.brq.redhat.com '#some'</code></pre>
+     irc.eng.brq.redhat.com '#some'</pre>
 
 <p>Here you don't need to specify -cp because the deps are in the
 app's MANIFEST.MF as per the explanation above.</p>
 
-<h3>Problems finding Voices</h3>
+<h2 id="toc-problems-finding-voices">Problems finding Voices</h2>
 
 <p>I had some troubles make FreeTTS find MBrola's voices.</p>
 
@@ -246,26 +248,26 @@ app's MANIFEST.MF as per the explanation above.</p>
 your application, e.g.:</p>
 
 <pre
-class="brush: plain"><code>java -jar myapp.jar -Dmbrola.base="`pwd`/../mbrola301"</code></pre>
+class="brush: plain">java -jar myapp.jar -Dmbrola.base="`pwd`/../mbrola301"</pre>
 
 <p>eventually you can set <code>freetts.voicespath</code> to different dir:</p>
 
 <pre
-class="brush: plain"><code>java -jar myapp.jar -Dmbrola.base="`pwd`/../mbrola301" -Dfreetts.voicespath="`pwd`/../mbrola301/voices"</code></pre>
+class="brush: plain">java -jar myapp.jar -Dmbrola.base="`pwd`/../mbrola301" -Dfreetts.voicespath="`pwd`/../mbrola301/voices"</pre>
 
 <hr />
 
 <p>There are few voices in FreeTTS with MBrola.</p>
 
 <pre
-class="brush: plain"><code>// This is a tiny database, contains only data for time demo app.
+class="brush: plain">// This is a tiny database, contains only data for time demo app.
 System.setProperty("freetts.voices","com.sun.speech.freetts.en.us.cmu_time_awb.AlanVoiceDirectory");
 
 // Using this throws the ClassCastException. You need to recompile it.
 System.setProperty("freetts.voices", "com.sun.speech.freetts.en.us.cmu_us_kal.KevinVoiceDirectory");
 
 // MBrola voices.
-System.setProperty("freetts.voices", "de.dfki.lt.freetts.en.us.MbrolaVoiceDirectory");</code></pre>
+System.setProperty("freetts.voices", "de.dfki.lt.freetts.en.us.MbrolaVoiceDirectory");</pre>
 
 <p>Even after setting <code>mbrola.voices</code>, it kept finding only
 <code>mbrola_us1</code>, <code>mbrola_us2</code>, <code>mbrola_us3</code>.
@@ -275,19 +277,20 @@ the voices are hardcoded in <code>KevinVoiceDirectory</code> so I guess
 there's no dynamic loading despite all that mess in
 <code>VoiceDirectory.java</code>.</p>
 
-<h3>Weird ClassCastException for KevinVoiceDirec­tory, gone after
-re-compiling</h3>
+<h2
+id="toc-weird-classcastexception-for-kevinvoicedirectory-gone-after-re-compiling">Weird
+ClassCastException for KevinVoiceDirec­tory, gone after re-compiling</h2>
 
 <p>After solving „Error reading ZIP“ by changing
 FreeTTS's jar's M­ANIFEST.MF's Class-Path value to reflect my jar names
 (mavenized), I started getting this:</p>
 
 <pre
-class="brush: plain"><code>Exception in thread "main" java.lang.ClassCastException: com.sun.speech.freetts.en.us.cmu_us_kal.KevinVoiceDirectory cannot be cast to com.sun.speech.freetts.VoiceDirectory
+class="brush: plain">Exception in thread "main" java.lang.ClassCastException: com.sun.speech.freetts.en.us.cmu_us_kal.KevinVoiceDirectory cannot be cast to com.sun.speech.freetts.VoiceDirectory
         at com.sun.speech.freetts.VoiceManager.getVoices(VoiceManager.java:113)
         at cz.dynawest.speechbot.synt.MbrolaSpeaker.&lt;init&gt;(MbrolaSpeaker.java:38)
         at cz.dynawest.speechbot.SpeechBot.&lt;init&gt;(SpeechBot.java:25)
-        at cz.dynawest.speechbot.SpeechBot.main(SpeechBot.java:65)</code></pre>
+        at cz.dynawest.speechbot.SpeechBot.main(SpeechBot.java:65)</pre>
 
 <p>After re-compiling KevinVoiceDirectory and storing it in jar, it works.</p>
 </div>

@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="utf-8"/>
-    <title>Ondřej Žižka – Diplomová práce – Návod na zprovoznění - Ondřej Žižka</title>
+    <title>Ondřej
+Žižka – Diplomová práce – Návod na zprovoznění - Ondřej Žižka</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="My personal web">
     <meta name="author" content="Ondřej Žižka">
@@ -73,12 +74,14 @@
 
     <div class="document-post">
         <div class="page-header">
-            <h1>Ondřej Žižka – Diplomová práce – Návod na zprovoznění</h1>
+            <h1>Ondřej
+Žižka – Diplomová práce – Návod na zprovoznění</h1>
         </div>
         <div class="date"><em>2012-12-16</em></div>
-        <div class="doc-body"><h3>Ondřej Žižka – Diplomová práce – Návod na zprovoznění</h3>
+        <div class="doc-body"><h2 id="toc-ondrej-zizka-diplomova-prace-navod-na-zprovozneni">Ondřej
+Žižka – Diplomová práce – Návod na zprovoznění</h2>
 
-<h4>SQL skripty</h4>
+<h3 id="toc-sql-skripty">SQL skripty</h3>
 
 <p>Všechen SQL kód potřebný ke vytvoření databáze je v adresáři sql/
 v těchto souborech:</p>
@@ -108,7 +111,8 @@ uložených procedur.</p>
 	<li><code>NN - Naučená síť XOR.sql</code></li>
 </ul>
 
-<h4>Instalace MySQL, vytvoření databází a nastavení práv</h4>
+<h3 id="toc-instalace-mysql-vytvoreni-databazi-a-nastaveni-prav">Instalace
+MySQL, vytvoření databází a nastavení práv</h3>
 
 <p>Nejprve je třeba nainstalovat standardní distribuci MySQL 5.0 nebo
 vyšší (<a
@@ -122,16 +126,17 @@ práva k nim uživateli <code>OndrejZizka</code>, který se může připojit
 odkudkoliv (‚%‘):</p>
 
 <pre
-class="brush: sql"><code>CREATE DATABASE neural_network;
+class="brush: sql">CREATE DATABASE neural_network;
 CREATE DATABASE jizdnirady_cb;
 GRANT ALL ON neural_network.* TO OndrejZizka@'%' IDENTIFIED BY 'BezpecneHeslo';
-GRANT ALL ON jizdnirady_cb.*  TO OndrejZizka@'%' IDENTIFIED BY 'BezpecneHeslo';</code></pre>
+GRANT ALL ON jizdnirady_cb.*  TO OndrejZizka@'%' IDENTIFIED BY 'BezpecneHeslo';</pre>
 
 <p>Tyto úkony lze pohodlně provést v GUI nástroji MySQL Administrator,
 případně vykonat SQL příkazy v nástroji MySQL Query Browser,
 viz níže.</p>
 
-<h4>Rekonstrukce databáze z SQL souborů</h4>
+<h3 id="toc-rekonstrukce-databaze-z-sql-souboru">Rekonstrukce databáze z SQL
+souborů</h3>
 
 <p>SQL skripty jsou vytvořené nástrojem MySQL Administator, oficiálním
 nástrojem pro administraci databázového systému MySQL (<a
@@ -168,7 +173,7 @@ bohužel nedá v současné verzi MySQL nijak obejít.</p>
 <div><img src="navod/MySQL_Administrator-01.png" alt="" /> <img
 src="navod/MySQL_Administrator-02.png" alt="" /></div>
 
-<h4>Prohlížení dat</h4>
+<h3 id="toc-prohlizeni-dat">Prohlížení dat</h3>
 
 <p>Výše jmenovaný balík GUI nástrojů zahrnuje také MySQL Query Browser,
 šikovný nástroj pro práci s databázovým systémem MySQL.</p>
@@ -194,13 +199,13 @@ v dolní části</p>
 příkazy:</p>
 
 <pre
-class="brush: sql"><code>SELECT * FROM mhd_jizdy LIMIT 100;
+class="brush: sql">SELECT * FROM mhd_jizdy LIMIT 100;
 SELECT * FROM mhd_jizdy_stani LIMIT 100;
 SELECT * FROM mhd_linky;
 SELECT * FROM mhd_kody;
 SELECT * FROM mhd_trasy LIMIT 100;
 SELECT * FROM mhd_trasy_uzly LIMIT 100;
-SELECT * FROM mhd_zast LIMIT 100;</code></pre>
+SELECT * FROM mhd_zast LIMIT 100;</pre>
 
 <p>Zde je například výpis zastávek a jejich geografických po­zic:</p>
 
@@ -235,9 +240,9 @@ chceme znát – například:</p>
 <p>Tabulky neuronových sítí prozkoumáte takto:</p>
 
 <pre
-class="brush: sql"><code>SELECT * FROM neural_network.nn_networks;
+class="brush: sql">SELECT * FROM neural_network.nn_networks;
 SELECT * FROM neural_network.nn_net_neurons;
-SELECT * FROM neural_network.nn_net_synapses;</code></pre>
+SELECT * FROM neural_network.nn_net_synapses;</pre>
 
 <p>Po importu obsahují tabulky několik testovacích neuronových sítí.</p>
 
@@ -246,10 +251,10 @@ najdete v tabulkách <code>neural_network.lib_logg</code>, resp.
 <code>jizdnirady_cb.lib_logg</code>:</p>
 
 <pre
-class="brush: sql"><code>SELECT * FROM neural_network.lib_logg;
-SELECT * FROM jizdnirady_cb.lib_logg;</code></pre>
+class="brush: sql">SELECT * FROM neural_network.lib_logg;
+SELECT * FROM jizdnirady_cb.lib_logg;</pre>
 
-<h4>Volání API</h4>
+<h3 id="toc-volani-api">Volání API</h3>
 
 <p>Jak se konkrétní procedury používají je popsáno jednak v technické
 zprávě diplomové práce, jednak v komentářích v kódu jednotlivých
@@ -270,19 +275,20 @@ spustění transakce objeví tlačítka pro potvrzení nebo zrušení transakce.
 Stejného efektu lze docílit provedením příkazů <code>COMMIT;</code> nebo
 <code>ROLLBACK;</code>.</p>
 
-<h5>Kód pro vyhledávání v jízdních řádech</h5>
+<h4 id="toc-kod-pro-vyhledavani-v-jizdnich-radech">Kód pro vyhledávání
+v jízdních řádech</h4>
 
 <pre
-class="brush: sql"><code>-- Vyhledání spoje ze zastávky 115 do zastávky 465, maximálně 2 přestupy.
+class="brush: sql">-- Vyhledání spoje ze zastávky 115 do zastávky 465, maximálně 2 přestupy.
 CALL mhd_VyhledejSpoje(115, 465, NOW(), 3);
-SELECT * FROM mhd_VyhledejSpoje ORDER BY pos;</code></pre>
+SELECT * FROM mhd_VyhledejSpoje ORDER BY pos;</pre>
 
 <p>Zde je ukázka vyhledání spojů mezi zastávkami <em>Žižkova –
 Budvar – U pily – Nemocnice – U chromých</em>:</p>
 
 <div><img src="navod/QB-Spoje-Zizkova-U_Chromych.png" alt="" /></div>
 
-<h5>Kód pro neuronové sítě</h5>
+<h4 id="toc-kod-pro-neuronove-site">Kód pro neuronové sítě</h4>
 
 <p>Se sítěmi lze provádět v podstatě tři operace: Vytvářet je, provést
 jejich výpočet, a učit je.</p>
@@ -295,21 +301,21 @@ jejich výpočet, a učit je.</p>
 (vhodná pro řešení XOR):</p>
 
 <pre
-class="brush: sql"><code>-- Vytvoření neuronové sítě
-CALL nn_CreatePerceptron('2,2,1','XOR', 0.10, 0.5, @out_NetID);</code></pre>
+class="brush: sql">-- Vytvoření neuronové sítě
+CALL nn_CreatePerceptron('2,2,1','XOR', 0.10, 0.5, @out_NetID);</pre>
 
 <p>Pro vzniklou síť provádíme její výpočet a uchováváme hodnoty
 vnitřních neuronů:</p>
 
 <pre
-class="brush: sql"><code>-- Výpočet neuronové sítě
+class="brush: sql">-- Výpočet neuronové sítě
 CALL nn_ComputeNet(1, '-1, 1', TRUE);
 
 -- Zjistění výsledků výpočtu
 SELECT * FROM nn_ComputeNet;
 
 -- Výstupní hodnoty všech neuronů
-SELECT * FROM nn_ComputeNet_InternalValues;</code></pre>
+SELECT * FROM nn_ComputeNet_InternalValues;</pre>
 
 <p>Výsledkem jsou tyto struktury:</p>
 
@@ -376,10 +382,10 @@ SELECT * FROM nn_ComputeNet_InternalValues;</code></pre>
 <p>Na základě vzniklých hodnot můžeme provést jeden krok učení:</p>
 
 <pre
-class="brush: sql"><code>-- Učení neuronové sítě
+class="brush: sql">-- Učení neuronové sítě
 ALTER TABLE nn_ComputeNet RENAME TO nn_CorrectWeights;
 ALTER TABLE nn_ComputeNet_InternalValues RENAME TO nn_CorrectWeights_InternalValues;
-CALL nn_CorrectWeights(iNetID, '1', @dLearn, @out_dErrorSum);</code></pre>
+CALL nn_CorrectWeights(iNetID, '1', @dLearn, @out_dErrorSum);</pre>
 
 <p>Po provedení procedury (a případně potvrzení transakce) jsou váhy
 sítě upravené algoritmem backpropagation podle předchozího stavu sítě,
@@ -392,22 +398,23 @@ Kód v následující ukázce učí síť vytvořenou výše uvedeným postupem
 na cílovou úroveň chyby 0,0001 v maximálním počtu 10 000 kroků:</p>
 
 <pre
-class="brush: sql"><code>-- Učení neuronové sítě pro XOR
-CALL nn_TeachXOR_Dynamic(3, 0.0001, 10000);</code></pre>
+class="brush: sql">-- Učení neuronové sítě pro XOR
+CALL nn_TeachXOR_Dynamic(3, 0.0001, 10000);</pre>
 
-<h5>Kód učení neuronových sítí pro heuristiku vyhledávání spojů</h5>
+<h4 id="toc-kod-uceni-neuronovych-siti-pro-heuristiku-vyhledavani-spoju">Kód
+učení neuronových sítí pro heuristiku vyhledávání spojů</h4>
 
 <p>V diplomové práci používáme neuronové sítě k určení vhodné trasy
 pro dosažení cílové zastávky v nejlepším čase.<br />
 Zde je kód pro vytvoření a učení neuronové sítě pro zastávku 5:</p>
 
 <pre
-class="brush: sql"><code>-- Vytvoření sítě pro zastávku 5 se třiceti neurony v jedné skryté vrstvě:
+class="brush: sql">-- Vytvoření sítě pro zastávku 5 se třiceti neurony v jedné skryté vrstvě:
 CALL mhd_nn_CreateNetForStation(5, '30');
 
 -- Učení právě vzniklé sítě pro zastávku 5 do cílové
 -- úrovně chyby 0.0001, maximálně po 40 000 kol učení:
-CALL mhd_nn_TeachStationNet(5, LAST_INSERT_ID(), 0.0001, 40000);</code></pre>
+CALL mhd_nn_TeachStationNet(5, LAST_INSERT_ID(), 0.0001, 40000);</pre>
 
 <p>Všechny procesy se v naší implementaci zaznamenávají do logu. To je
 užitečné zejména pokud něco nepracuje podle očekávání. Většinou je

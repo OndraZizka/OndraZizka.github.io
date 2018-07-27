@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="utf-8"/>
-    <title>JBoss Operation Network 2.3.0: Tomcat not supported on Windows
-2003 and 2008 - Ondřej Žižka</title>
+    <title>JBoss
+Operation Network 2.3.0: Tomcat not supported on Windows 2003 and 2008 - Ondřej Žižka</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="My personal web">
     <meta name="author" content="Ondřej Žižka">
@@ -74,18 +74,19 @@
 
     <div class="document-post">
         <div class="page-header">
-            <h1>JBoss Operation Network 2.3.0: Tomcat not supported on Windows
-2003 and 2008</h1>
+            <h1>JBoss
+Operation Network 2.3.0: Tomcat not supported on Windows 2003 and 2008</h1>
         </div>
         <div class="date"><em>2018-07-26</em></div>
-        <div class="doc-body"><h3>JBoss Operation Network 2.3.0: Tomcat not supported on Windows
-2003 and 2008</h3>
+        <div class="doc-body"><h2
+id="toc-jboss-operation-network-2-3-0-tomcat-not-supported-on-windows-2003-and-2008">JBoss
+Operation Network 2.3.0: Tomcat not supported on Windows 2003 and 2008</h2>
 
 <p>For the record: You won't get Tomcat to work on JON 2.3.0. It has problems
 with process scanning, using Sigar. See the log bellow. Note the part
 with <code>Unexpected error occurred while looking up info for [&lt;unknown&gt;] process with pid [288] - call to getProcExe failed. Did the process die? Cause: org.hyperic.sigar.SigarException: Incorrect function.</code></p>
 
-<pre><code>2010-02-11 20:49:06,562 INFO  [ResourceContainer.invoker.daemon-28] (org.rhq.plugins.apache.ApacheServerComponent)- Initializing server component for server [C:\Program Files\Red Hat\Enterprise Web Server]...
+<pre>2010-02-11 20:49:06,562 INFO  [ResourceContainer.invoker.daemon-28] (org.rhq.plugins.apache.ApacheServerComponent)- Initializing server component for server [C:\Program Files\Red Hat\Enterprise Web Server]...
 2010-02-11 20:49:06,562 INFO  [ResourceContainer.invoker.daemon-28] (rhq.plugins.www.snmp.SNMPClient)- Initialized SNMP session for agent at /127.0.0.1:1610
 2010-02-11 20:49:06,687 DEBUG [ResourceContainer.invoker.daemon-28] (rhq.plugins.www.snmp.SNMPSession_v2c)- Error while pinging SNMP 1 agent at 127.0.0.1/1610/public. SNMP GETNEXT request for iso(1) failed - org.rhq.plugins.www.snmp.SNMPException: Request for [iso] timed out.
 2010-02-11 20:49:06,687 WARN  [ResourceContainer.invoker.daemon-28] (org.rhq.plugins.apache.ApacheServerComponent)- Failed to connect to SNMP agent at 127.0.0.1/1610/public
@@ -454,7 +455,7 @@ Caused by: org.rhq.core.pluginapi.inventory.InvalidPluginConfigurationException:
 2010-02-11 20:54:08,703 INFO  [InventoryManager.availability-1] (rhq.core.pc.inventory.InventoryManager)- Sending availability report to Server...
 2010-02-11 20:54:08,703 DEBUG [InventoryManager.availability-1] (rhq.core.pc.inventory.InventoryManager)- Availability report content: AV:[jawa14][36][full]
 2010-02-11 20:54:15,390 INFO  [MeasurementManager.sender-1] (rhq.core.pc.measurement.MeasurementCollectorRunner)- Measurement collection for [11] metrics took 0ms - sending report to Server...
-2010-02-11 20:54:45,390 DEBUG [MeasurementManager.sender-1] (rhq.core.pc.measurement.MeasurementCollectorRunner)- Measurement report contains no data - not sending to Server.</code></pre>
+2010-02-11 20:54:45,390 DEBUG [MeasurementManager.sender-1] (rhq.core.pc.measurement.MeasurementCollectorRunner)- Measurement report contains no data - not sending to Server.</pre>
 </div>
 
         <!-- Rating widget -->

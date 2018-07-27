@@ -76,7 +76,7 @@
             <h1>XULRunner tutorial</h1>
         </div>
         <div class="date"><em>2012-12-31</em></div>
-        <div class="doc-body"><h3>XULRunner tutorial</h3>
+        <div class="doc-body"><h2 id="toc-xulrunner-tutorial">XULRunner tutorial</h2>
 
 <p>I've been playing recently with a time-keeping tool, written in XUL, open in
 a popup window. The application is pretty simple, just allowing me to enter a
@@ -107,12 +107,13 @@ about XULRunner than I thought.</p>
 <p>As a convention, <em>emphasized</em> words are variables, and should be
 replaced with a value that makes sense for your application.</p>
 
-<h4>Setting up your folder structure</h4>
+<h3 id="toc-setting-up-your-folder-structure">Setting up your folder
+structure</h3>
 
 <p>Set up your application like so:</p>
 
 <pre
-class="brush: plain"><code>/applicationName
+class="brush: plain">/applicationName
    /chrome
       /applicationName
          your app files
@@ -120,27 +121,28 @@ class="brush: plain"><code>/applicationName
    /defaults
       /preferences
          prefs.js
-   application.ini</code></pre>
+   application.ini</pre>
 
 <pre
-class="brush: bash"><code>appName=myXulApp
+class="brush: bash">appName=myXulApp
 mkdir -p $appName/chrome/$appName
    touch $appName/chrome/chrome.manifest
 mkdir -p $appName/defaults/preferences
    touch $appName/defaults/preferences/prefs.js
-   touch $appName/application.ini</code></pre>
+   touch $appName/application.ini</pre>
 
 <p>There are more complicated ways to do it, but this seems to be the bare
 bones. Now let's set up all the configuration fi­les.</p>
 
-<h4>Setting up your <code>application.ini</code></h4>
+<h3 id="toc-setting-up-your-application-ini">Setting up your
+<code>application.ini</code></h3>
 
 <p>XULRunner works by reading an <code>application.ini</code> file, and then
 loading things up by looking at specific directories. Here's a sample
 <code>application.ini</code>:</p>
 
 <pre
-class="brush: plain"><code>[App]
+class="brush: plain">[App]
 Vendor=company
 Name=applicationName
 Version=0.1
@@ -148,31 +150,32 @@ BuildID=20050506
 
 [Gecko]
 MinVersion=1.8
-MaxVersion=1.8</code></pre>
+MaxVersion=1.8</pre>
 
 <p>The important bit is the <code>[Gecko]</code> section. The <code>[App]</code>
 section is nice, but doesn't seem to serve any essential function. The
 <code>[Gecko]</code> part tells XULRunner what versions of Gecko can be used
 with your app, and XULRunner will fail if those lines aren't there.</p>
 
-<h4>Setting up your <code>prefs.js</code></h4>
+<h3 id="toc-setting-up-your-prefs-js">Setting up your <code>prefs.js</code></h3>
 
 <p>This is a preferences file, where you set initial values of things, either
 gecko engine settings or application specific settings. All we need
 here is:</p>
 
 <pre
-class="brush: plain"><code>pref("toolkit.defaultChromeURI", "chrome://&lt;em&gt;applicationName&lt;/em&gt;/content/&lt;em&gt;startPage&lt;/em&gt;.xul");</code></pre>
+class="brush: plain">pref("toolkit.defaultChromeURI", "chrome://&lt;em&gt;applicationName&lt;/em&gt;/content/&lt;em&gt;startPage&lt;/em&gt;.xul");</pre>
 
 <p>The <em>startPage</em> is what XUL page you want to view initially.</p>
 
-<h4>Setting up your <code>chrome.manifest</code></h4>
+<h3 id="toc-setting-up-your-chrome-manifest">Setting up your
+<code>chrome.manifest</code></h3>
 
 <p>This file performs the mapping between a chrome:// url and your
 application files:</p>
 
 <pre
-class="brush: plain"><code>content &lt;em&gt;applicationName&lt;/em&gt; file:&lt;em&gt;applicationName&lt;/em&gt;/</code></pre>
+class="brush: plain">content &lt;em&gt;applicationName&lt;/em&gt; file:&lt;em&gt;applicationName&lt;/em&gt;/</pre>
 
 <p>That effectively tells XULRunner to look at <em>applicationName</em>/ in the
 chrome directory when it encounters a
@@ -192,26 +195,27 @@ want to deploy it as a jar:</p>
 	<li>Change the <code>chrome.manifest</code> to point to
 	<em>applicationNa­me</em>.jar:
 		<pre
-		class="brush: plain"><code>content &lt;em&gt;applicationName&lt;/em&gt; jar:&lt;em&gt;applicationName&lt;/em&gt;.jar!/</code></pre>
+		class="brush: plain">content &lt;em&gt;applicationName&lt;/em&gt; jar:&lt;em&gt;applicationName&lt;/em&gt;.jar!/</pre>
 
 		<p>The <code>jar:</code> protocol tells XULRunner that this is a jar file, the
 		the <code>!</code> after the filename tells it to look inside the jar file.</p>
 	</li>
 </ol>
 
-<h4>Running your app with XULRunner</h4>
+<h3 id="toc-running-your-app-with-xulrunner">Running your app with
+XULRunner</h3>
 
 <p>Now all the prep work has been done, and your application is ready to be run.
 After you <a
 href="http://ftp.mozilla.org/pub/mozilla.org/xulrunner/nightly/latest-trunk/">download
 XULRunner</a>, this is just a matter of a command line:</p>
 
-<pre class="brush: plain"><code>xulrunner application.ini</code></pre>
+<pre class="brush: plain">xulrunner application.ini</pre>
 
 <p>Your <em>startPage</em>.xul should open up in a window, like any other
 desktop app.</p>
 
-<h4>Conclusion</h4>
+<h3 id="toc-conclusion">Conclusion</h3>
 
 <p>To get a XUL app working with XUL Runner, you need 3 config files in
 3 different formats. That's kinda messed up. To be fair, the
@@ -229,7 +233,7 @@ see much of an advantage over just making an extension, its just a series of
 trade offs.<br />
 </p>
 
-<h5>Pros:</h5>
+<h4 id="toc-pros">Pros:</h4>
 
 <ul>
 	<li>Runs in its own process</li>
@@ -239,7 +243,7 @@ trade offs.<br />
 	<li>Doesn't require Firefox</li>
 </ul>
 
-<h5>Cons:</h5>
+<h4 id="toc-cons">Cons:</h4>
 
 <ul>
 	<li>Doesn't auto-update with Firefox, auto-update code would need to be

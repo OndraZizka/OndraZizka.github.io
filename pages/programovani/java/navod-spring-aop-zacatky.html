@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="utf-8"/>
-    <title>Začátky se Spring AOP – návod - Ondřej Žižka</title>
+    <title>Začátky se Spring AOP –
+návod - Ondřej Žižka</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="My personal web">
     <meta name="author" content="Ondřej Žižka">
@@ -73,16 +74,18 @@
 
     <div class="document-post">
         <div class="page-header">
-            <h1>Začátky se Spring AOP – návod</h1>
+            <h1>Začátky se Spring AOP –
+návod</h1>
         </div>
         <div class="date"><em>2012-12-16</em></div>
-        <div class="doc-body"><h3>Začátky se Spring AOP – návod</h3>
+        <div class="doc-body"><h2 id="toc-zacatky-se-spring-aop-navod">Začátky se Spring AOP –
+návod</h2>
 
 <p>Právě jsem úspěšně rozběhal Spring AOP ve stand-alone (newebové)
 aplikaci, takže si opět postup a poznatky zapíšu na web. Jako vždy si
 vyhrazuju právo mýlit se, ale snad jsem vše pochopil správně.</p>
 
-<h4>Co je AOP</h4>
+<h3 id="toc-co-je-aop">Co je AOP</h3>
 
 <p>AOP je zkratka za Aspect Oriented Programming neboli „aspektově
 orientované programování“.</p>
@@ -92,13 +95,13 @@ volání metod různých tříd volá vždy stejný nebo podobný kód –
 typickým příkladem je otevírání a uzavírání transakce, kontrola práv
 k provedení operace (autorizace), trasování běhu aplikace atd.</p>
 
-<h4>Co je aspekt</h4>
+<h3 id="toc-co-je-aspekt">Co je aspekt</h3>
 
 <p>Aspekt je (společná) vlastnost či spíše potřeba některých metod –
 například právě potřeba otevřít a uzavřít transakci nebo
 ověřit práva.</p>
 
-<h4>Co je Spring AOP</h4>
+<h3 id="toc-co-je-spring-aop">Co je Spring AOP</h3>
 
 <p>Spring AOP je jedna z implementací AOP. Dále existují ještě AOP
 frameworky <em>JBoss AOP</em> (s tím se dostanu brzy do potyčky :-), AspectJ
@@ -110,7 +113,7 @@ nejstručnějšího zápisu. Můžete využít buď @Anotace ve stylu AspectJ
 (<code>@Aspect</code>, <code>@Before</code>, <code>@Pointcut</code> atd.), nebo
 konfiguraci v XML souboru. Ukázka XML následuje.</p>
 
-<h4>Konfigurace Spring AOP v XML</h4>
+<h3 id="toc-konfigurace-spring-aop-v-xml">Konfigurace Spring AOP v XML</h3>
 
 <p>Dříve (před verzí Spring 2.0) se konfigurace AOP prováděla poněkud
 neohrabaně nastavováním Beans (což popisuji v návodu <a
@@ -122,7 +125,7 @@ framework</a>).</p>
 zmínit, proto se místo DTD použije definice přes <code>xmlns:aop</code>.</p>
 
 <pre
-class="brush: xml"><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+class="brush: xml">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;beans xmlns="http://www.springframework.org/schema/beans"
      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
      xmlns:aop="http://www.springframework.org/schema/aop"
@@ -150,7 +153,7 @@ class="brush: xml"><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
   &lt;/bean&gt;
 
 
-&lt;/beans&gt;</code></pre>
+&lt;/beans&gt;</pre>
 
 <p>K tomu ještě pár poznámek:</p>
 
@@ -160,8 +163,8 @@ class="brush: xml"><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 </ul>
 
 <pre
-class="brush: java"><code>aoptest.NejakaTrida objekt = new aoptest.NejakaTrida();
-objekt.metoda();  // &lt;--- ZDE AOP NEZAFUNGUJE!</code></pre>
+class="brush: java">aoptest.NejakaTrida objekt = new aoptest.NejakaTrida();
+objekt.metoda();  // &lt;--- ZDE AOP NEZAFUNGUJE!</pre>
 
 <ul>
 	<li>Aby Spring zpracovával jiné jmenné prostory nez výchozí, je třeba
@@ -172,14 +175,14 @@ objekt.metoda();  // &lt;--- ZDE AOP NEZAFUNGUJE!</code></pre>
 <p>Celý kód pro rozjetí AOP tedy vypadá takto:</p>
 
 <pre
-class="brush: java"><code>ApplicationContext ac = new ClassPathXmlApplicationContext("properties/SpringBeans.xml");
+class="brush: java">ApplicationContext ac = new ClassPathXmlApplicationContext("properties/SpringBeans.xml");
 aoptest.NejakaTrida objekt = (aoptest.NejakaTrida) new aoptest.NejakaTrida();
-objekt.metoda();  // &lt;--- zde AOP zavolá napřed metodu aoptest.AopTestAdviceBean::test().</code></pre>
+objekt.metoda();  // &lt;--- zde AOP zavolá napřed metodu aoptest.AopTestAdviceBean::test().</pre>
 
 <p>A k tomu samozřejmě definice příslušných tříd, myslím, že nemá
 cenu je zde vypisovat, jsou zcela obyčejné.</p>
 
-<h4>Potřebné knihovny</h4>
+<h3 id="toc-potrebne-knihovny">Potřebné knihovny</h3>
 
 <p>Použil jsem:</p>
 
@@ -220,7 +223,7 @@ cenu je zde vypisovat, jsou zcela obyčejné.</p>
 U ostatních nevím – je možné, že některé jsou navíc, ale takto mi to
 funguje a tak neřeším.</p>
 
-<h4>Závěr, literatura, zdroje</h4>
+<h3 id="toc-zaver-literatura-zdroje">Závěr, literatura, zdroje</h3>
 
 <p>Tolik tedy ke Spring AOP. Snad jsem na nic nezapomněl, ale v podstatě je
 to dost jednoduché.</p>
@@ -247,7 +250,8 @@ manuálu Springu</a>, zejména oblasti:</p>
 	9. Transaction management</a></li>
 </ul>
 
-<h5>Další použité či použitelné zdroje:</h5>
+<h4 id="toc-dalsi-pouzite-ci-pouzitelne-zdroje">Další použité či
+použitelné zdroje:</h4>
 
 <ul>
 	<li>IBM: <a
