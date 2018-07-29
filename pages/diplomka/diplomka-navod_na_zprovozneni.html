@@ -126,7 +126,7 @@ práva k nim uživateli <code>OndrejZizka</code>, který se může připojit
 odkudkoliv (‚%‘):</p>
 
 <pre
-class="brush: sql">CREATE DATABASE neural_network;
+class="brush: lang-sql brush: sql">CREATE DATABASE neural_network;
 CREATE DATABASE jizdnirady_cb;
 GRANT ALL ON neural_network.* TO OndrejZizka@'%' IDENTIFIED BY 'BezpecneHeslo';
 GRANT ALL ON jizdnirady_cb.*  TO OndrejZizka@'%' IDENTIFIED BY 'BezpecneHeslo';</pre>
@@ -199,7 +199,7 @@ v dolní části</p>
 příkazy:</p>
 
 <pre
-class="brush: sql">SELECT * FROM mhd_jizdy LIMIT 100;
+class="brush: lang-sql brush: sql">SELECT * FROM mhd_jizdy LIMIT 100;
 SELECT * FROM mhd_jizdy_stani LIMIT 100;
 SELECT * FROM mhd_linky;
 SELECT * FROM mhd_kody;
@@ -240,7 +240,7 @@ chceme znát – například:</p>
 <p>Tabulky neuronových sítí prozkoumáte takto:</p>
 
 <pre
-class="brush: sql">SELECT * FROM neural_network.nn_networks;
+class="brush: lang-sql brush: sql">SELECT * FROM neural_network.nn_networks;
 SELECT * FROM neural_network.nn_net_neurons;
 SELECT * FROM neural_network.nn_net_synapses;</pre>
 
@@ -251,7 +251,7 @@ najdete v tabulkách <code>neural_network.lib_logg</code>, resp.
 <code>jizdnirady_cb.lib_logg</code>:</p>
 
 <pre
-class="brush: sql">SELECT * FROM neural_network.lib_logg;
+class="brush: lang-sql brush: sql">SELECT * FROM neural_network.lib_logg;
 SELECT * FROM jizdnirady_cb.lib_logg;</pre>
 
 <h3 id="toc-volani-api">Volání API</h3>
@@ -279,7 +279,7 @@ Stejného efektu lze docílit provedením příkazů <code>COMMIT;</code> nebo
 v jízdních řádech</h4>
 
 <pre
-class="brush: sql">-- Vyhledání spoje ze zastávky 115 do zastávky 465, maximálně 2 přestupy.
+class="brush: lang-sql brush: sql">-- Vyhledání spoje ze zastávky 115 do zastávky 465, maximálně 2 přestupy.
 CALL mhd_VyhledejSpoje(115, 465, NOW(), 3);
 SELECT * FROM mhd_VyhledejSpoje ORDER BY pos;</pre>
 
@@ -301,14 +301,14 @@ jejich výpočet, a učit je.</p>
 (vhodná pro řešení XOR):</p>
 
 <pre
-class="brush: sql">-- Vytvoření neuronové sítě
+class="brush: lang-sql brush: sql">-- Vytvoření neuronové sítě
 CALL nn_CreatePerceptron('2,2,1','XOR', 0.10, 0.5, @out_NetID);</pre>
 
 <p>Pro vzniklou síť provádíme její výpočet a uchováváme hodnoty
 vnitřních neuronů:</p>
 
 <pre
-class="brush: sql">-- Výpočet neuronové sítě
+class="brush: lang-sql brush: sql">-- Výpočet neuronové sítě
 CALL nn_ComputeNet(1, '-1, 1', TRUE);
 
 -- Zjistění výsledků výpočtu
@@ -382,7 +382,7 @@ SELECT * FROM nn_ComputeNet_InternalValues;</pre>
 <p>Na základě vzniklých hodnot můžeme provést jeden krok učení:</p>
 
 <pre
-class="brush: sql">-- Učení neuronové sítě
+class="brush: lang-sql brush: sql">-- Učení neuronové sítě
 ALTER TABLE nn_ComputeNet RENAME TO nn_CorrectWeights;
 ALTER TABLE nn_ComputeNet_InternalValues RENAME TO nn_CorrectWeights_InternalValues;
 CALL nn_CorrectWeights(iNetID, '1', @dLearn, @out_dErrorSum);</pre>
@@ -398,7 +398,7 @@ Kód v následující ukázce učí síť vytvořenou výše uvedeným postupem
 na cílovou úroveň chyby 0,0001 v maximálním počtu 10 000 kroků:</p>
 
 <pre
-class="brush: sql">-- Učení neuronové sítě pro XOR
+class="brush: lang-sql brush: sql">-- Učení neuronové sítě pro XOR
 CALL nn_TeachXOR_Dynamic(3, 0.0001, 10000);</pre>
 
 <h4 id="toc-kod-uceni-neuronovych-siti-pro-heuristiku-vyhledavani-spoju">Kód
@@ -409,7 +409,7 @@ pro dosažení cílové zastávky v nejlepším čase.<br />
 Zde je kód pro vytvoření a učení neuronové sítě pro zastávku 5:</p>
 
 <pre
-class="brush: sql">-- Vytvoření sítě pro zastávku 5 se třiceti neurony v jedné skryté vrstvě:
+class="brush: lang-sql brush: sql">-- Vytvoření sítě pro zastávku 5 se třiceti neurony v jedné skryté vrstvě:
 CALL mhd_nn_CreateNetForStation(5, '30');
 
 -- Učení právě vzniklé sítě pro zastávku 5 do cílové
@@ -441,6 +441,12 @@ JabberID <code>ondra.zizka@jabber.cz</code>.</p>
 
     <hr />
 
+
+        <!--sharexy code start--><div id='shr_723771'><script type='text/javascript'>(function(w) { if (!w.SharexyWidget) { w.SharexyWidget = {};} if (!w.SharexyWidget.Params) { w.SharexyWidget.Params = {}; }
+        w.SharexyWidget.Params['723771'] = {'code_id':'723771','publisher_key':'undefined','design':'classic','layout_static':'h','type':'st','mode_float':'','size_float':'55','size_static':'55','buzz':'1',
+            'services':['facebook', 'google_plus', 'twitter', 'linkedin', 'reddit', 'buffer', 'pocket', 'print_page'],
+            'url':'current','allways_show_ads':'0','show_ads_sharing':'0','show_ads_cursor':'0','bg_float':'1','bg_color':'#ffffff','labels':'','counters':'0', 'counters_float':'0'} })(window);</script>
+        <script type='text/javascript' src='http://shuttle.sharexy.com/LoaderLite.js'></script></div><a href='http://sharexy.com/'><img src='http://sharexy.com/statpixel.png' style='border: 0' /></a><!--sharexy code end   -->
 
         <!-- Facebook comments -->
                     <div class="fb-comments" data-href="https://www.zizka.ch/pages/diplomka/diplomka-navod_na_zprovozneni.html" data-width="800" data-numposts="5"></div>

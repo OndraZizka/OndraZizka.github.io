@@ -96,7 +96,7 @@ JBoss problem with <code>RESOURCE_LOCAL</code>.</p>
 which contains:</p>
 
 <pre
-class="brush: xml">&lt;persistence xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0"&gt;
+class="brush: lang-xml brush: xml">&lt;persistence xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0"&gt;
   &lt;persistence-unit name="propertyset" transaction-type="JTA"&gt;
     &lt;description&gt;Persistence Unit for OSPropertySet&lt;/description&gt;
     &lt;class&gt;com.opensymphony.module.propertyset.ejb3.PropertyEntry&lt;/class&gt;
@@ -109,7 +109,7 @@ class="brush: xml">&lt;persistence xmlns="http://java.sun.com/xml/ns/persistence
 <code>&lt;local-tx-datasource&gt;</code>.</p>
 
 <pre
-class="brush: plain">03:52:20,472 INFO  [PersistenceUnitDeployment] Starting persistence unit persistence.unit:unitName=#propertyset
+class="brush: lang-plain brush: plain">03:52:20,472 INFO  [PersistenceUnitDeployment] Starting persistence unit persistence.unit:unitName=#propertyset
 03:52:21,444 ERROR [AbstractKernelController] Error installing to Start: name=persistence.unit:unitName=#propertyset state=Create
 java.lang.RuntimeException: Specification violation [EJB3 JPA 6.2.1.2] - You have not defined a jta-data-source for a JTA enabled persistence context named: propertyset
         at org.jboss.jpa.deployment.PersistenceUnitInfoImpl.&lt;init&gt;(PersistenceUnitInfoImpl.java:115)
@@ -194,7 +194,7 @@ javax.xml.par­sers.SAXParser­Factory</h3>
 from Jira's WAR.</p>
 
 <pre
-class="brush: plain">03:52:54,448 ERROR [STDERR] log4j:ERROR A "org.jboss.logging.util.OnlyOnceErrorHandler" object is not assignable to a "org.apache.log4j.spi.ErrorHandler" variable.
+class="brush: lang-plain brush: plain">03:52:54,448 ERROR [STDERR] log4j:ERROR A "org.jboss.logging.util.OnlyOnceErrorHandler" object is not assignable to a "org.apache.log4j.spi.ErrorHandler" variable.
 03:52:54,448 ERROR [STDERR] log4j:ERROR The class "org.apache.log4j.spi.ErrorHandler" was loaded by
 03:52:54,448 ERROR [STDERR] log4j:ERROR [BaseClassLoader@172f1b4e{vfszip:/mnt/ssd1/_projekty/JBoss/EAP/eap/server/all/deploy/atlassian-jira-4.3.2.war/}] whereas object of type
 03:52:54,448 ERROR [STDERR] log4j:ERROR "org.jboss.logging.util.OnlyOnceErrorHandler" was loaded by [org.jboss.bootstrap.NoAnnotationURLClassLoader@187a84e4].
@@ -296,6 +296,12 @@ java.lang.ClassCastException: org.apache.xerces.jaxp.SAXParserFactoryImpl cannot
 
     <hr />
 
+
+        <!--sharexy code start--><div id='shr_723771'><script type='text/javascript'>(function(w) { if (!w.SharexyWidget) { w.SharexyWidget = {};} if (!w.SharexyWidget.Params) { w.SharexyWidget.Params = {}; }
+        w.SharexyWidget.Params['723771'] = {'code_id':'723771','publisher_key':'undefined','design':'classic','layout_static':'h','type':'st','mode_float':'','size_float':'55','size_static':'55','buzz':'1',
+            'services':['facebook', 'google_plus', 'twitter', 'linkedin', 'reddit', 'buffer', 'pocket', 'print_page'],
+            'url':'current','allways_show_ads':'0','show_ads_sharing':'0','show_ads_cursor':'0','bg_float':'1','bg_color':'#ffffff','labels':'','counters':'0', 'counters_float':'0'} })(window);</script>
+        <script type='text/javascript' src='http://shuttle.sharexy.com/LoaderLite.js'></script></div><a href='http://sharexy.com/'><img src='http://sharexy.com/statpixel.png' style='border: 0' /></a><!--sharexy code end   -->
 
         <!-- Facebook comments -->
                     <div class="fb-comments" data-href="https://www.zizka.ch/pages/programovani/java/misc/jira-on-jboss-specification-violation-EJB3-JPA-jta-data-source-persistence-context-propertyset.html" data-width="800" data-numposts="5"></div>

@@ -93,7 +93,7 @@ code to create – that's why you want to wrap it in a component.</p>
 The code to create this link looks like this:</p>
 
 <pre
-class="brush: html">&lt;tr wicket:id="resources"&gt;
+class="brush: lang-html brush: html">&lt;tr wicket:id="resources"&gt;
    &lt;td&gt;
        &lt;a href="#" wicket:id="reslink"&gt;
           &lt;img wicket:id="icoType" src="ResourceMachine.gif"/&gt;
@@ -104,7 +104,7 @@ class="brush: html">&lt;tr wicket:id="resources"&gt;
 &lt;/tr&gt;</pre>
 
 <pre
-class="brush: java">// Link itself. We're giving the resource as the parameter for the Resource page.
+class="brush: lang-java brush: java">// Link itself. We're giving the resource as the parameter for the Resource page.
 new BookmarkablePageLink("reslink", new ResourcePage( item.getModelObject().getResource() ))
 // Icon.
 .add( new Image( "icoType", "ResourceMachine.gif" ) )
@@ -132,7 +132,7 @@ XHTML-compliant additions.</p>
 counted for the component. Everything else is ignored.</p>
 
 <pre
-class="brush: html">&lt;!DOCTYPE html&gt;
+class="brush: lang-html brush: html">&lt;!DOCTYPE html&gt;
 &lt;html&gt;
    &lt;head&gt;
       &lt;title&gt;JawaBot resource&lt;/title&gt;
@@ -151,7 +151,7 @@ class="brush: html">&lt;!DOCTYPE html&gt;
 <code>Panel</code> class.</p>
 
 <pre
-class="brush: java">package org.jboss.jawabot.web._co;
+class="brush: lang-java brush: java">package org.jboss.jawabot.web._co;
 
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.image.Image;
@@ -186,7 +186,7 @@ doesn't have the references initialized yet. You need to override
 want not to render the icon if the page's param says to:</p>
 
 <pre
-class="brush: java">public class ResourceLink extends Panel {
+class="brush: lang-java brush: java">public class ResourceLink extends Panel {
 
    public &lt;C extends Page&gt; ResourceLink( String id, Resource res ) {
       super( id, ResourcePage.class );
@@ -219,7 +219,7 @@ expects them in <code>src/main/resources</code> by default. To make it package
 resources from <code>src/main/java</code>, put this to <code>pom.xml</code>:</p>
 
 <pre
-class="brush: xml">&lt;build&gt;
+class="brush: lang-xml brush: xml">&lt;build&gt;
    ...
    &lt;resources&gt;
      &lt;!-- Web - Wicket --&gt;
@@ -246,7 +246,7 @@ compoment, or even to be able to display the HTML file in a browser. The content
 will be replaced by Wicket, according to it's child components.</p>
 
 <pre
-class="brush: html">&lt;tr wicket:id="resources"&gt;
+class="brush: lang-html brush: html">&lt;tr wicket:id="resources"&gt;
    &lt;td&gt;
        &lt;a href="#" wicket:id="reslink"&gt;
           &lt;img src="ResourceMachine.gif"/&gt;
@@ -257,7 +257,7 @@ class="brush: html">&lt;tr wicket:id="resources"&gt;
 &lt;/tr&gt;</pre>
 
 <pre
-class="brush: java">// Link itself. We're giving the resource as the parameter for the Resource page.
+class="brush: lang-java brush: java">// Link itself. We're giving the resource as the parameter for the Resource page.
 new ResourceLink("reslink", item.getModelObject().getResource() ))</pre>
 
 <p>That's all.</p>
@@ -269,6 +269,12 @@ new ResourceLink("reslink", item.getModelObject().getResource() ))</pre>
 
     <hr />
 
+
+        <!--sharexy code start--><div id='shr_723771'><script type='text/javascript'>(function(w) { if (!w.SharexyWidget) { w.SharexyWidget = {};} if (!w.SharexyWidget.Params) { w.SharexyWidget.Params = {}; }
+        w.SharexyWidget.Params['723771'] = {'code_id':'723771','publisher_key':'undefined','design':'classic','layout_static':'h','type':'st','mode_float':'','size_float':'55','size_static':'55','buzz':'1',
+            'services':['facebook', 'google_plus', 'twitter', 'linkedin', 'reddit', 'buffer', 'pocket', 'print_page'],
+            'url':'current','allways_show_ads':'0','show_ads_sharing':'0','show_ads_cursor':'0','bg_float':'1','bg_color':'#ffffff','labels':'','counters':'0', 'counters_float':'0'} })(window);</script>
+        <script type='text/javascript' src='http://shuttle.sharexy.com/LoaderLite.js'></script></div><a href='http://sharexy.com/'><img src='http://sharexy.com/statpixel.png' style='border: 0' /></a><!--sharexy code end   -->
 
         <!-- Facebook comments -->
                     <div class="fb-comments" data-href="https://www.zizka.ch/pages/programovani/java/web/wicket/wicket-howto-create-component.html" data-width="800" data-numposts="5"></div>

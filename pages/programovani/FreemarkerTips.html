@@ -82,7 +82,7 @@
 in FreeMarker</h3>
 
 <pre
-class="html">&lt;#assign photos&gt;
+class="lang-html brush: html">&lt;#assign photos&gt;
 DSC_0005.jpg
 DSC_0008.jpg
 DSC_0013.jpg
@@ -94,7 +94,7 @@ DSC_0020.jpg
 in FreeMarker</h3>
 
 <pre
-class="html">&lt;#assign nextRandom = .now?string["HHmmssSSS"]?number&gt;
+class="lang-html brush: html">&lt;#assign nextRandom = .now?string["HHmmssSSS"]?number&gt;
 &lt;#list posts[0..*MAX_POSTS] as posts&gt;
     &lt;img src="${photos[nextRandom % photos?size]}"&gt;
     &lt;#assign nextRandom = nextRandom * 13 % 104729&gt;
@@ -107,6 +107,12 @@ class="html">&lt;#assign nextRandom = .now?string["HHmmssSSS"]?number&gt;
 
     <hr />
 
+
+        <!--sharexy code start--><div id='shr_723771'><script type='text/javascript'>(function(w) { if (!w.SharexyWidget) { w.SharexyWidget = {};} if (!w.SharexyWidget.Params) { w.SharexyWidget.Params = {}; }
+        w.SharexyWidget.Params['723771'] = {'code_id':'723771','publisher_key':'undefined','design':'classic','layout_static':'h','type':'st','mode_float':'','size_float':'55','size_static':'55','buzz':'1',
+            'services':['facebook', 'google_plus', 'twitter', 'linkedin', 'reddit', 'buffer', 'pocket', 'print_page'],
+            'url':'current','allways_show_ads':'0','show_ads_sharing':'0','show_ads_cursor':'0','bg_float':'1','bg_color':'#ffffff','labels':'','counters':'0', 'counters_float':'0'} })(window);</script>
+        <script type='text/javascript' src='http://shuttle.sharexy.com/LoaderLite.js'></script></div><a href='http://sharexy.com/'><img src='http://sharexy.com/statpixel.png' style='border: 0' /></a><!--sharexy code end   -->
 
         <!-- Facebook comments -->
                     <div class="fb-comments" data-href="https://www.zizka.ch/pages/programovani/FreemarkerTips.html" data-width="800" data-numposts="5"></div>

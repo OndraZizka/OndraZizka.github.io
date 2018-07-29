@@ -117,7 +117,7 @@ názvy podobného ražení jako <code>getIsirPub001</code>,
 <code>tns:IsirPub001SEI_getIsirPub001Response</code>:</p>
 
 <pre
-class="brush: xml">&lt;wsdl:service name="IsirPub001"&gt;
+class="brush: lang-xml brush: xml">&lt;wsdl:service name="IsirPub001"&gt;
   &lt;wsdl:port name="IsirPub001Httpport1" binding="tns:IsirPub001HttpBinding"&gt;
     &lt;http:address location="https://isir.justice.cz:8443/isir_ws/rest/IsirPub001"/&gt;
   &lt;/wsdl:port&gt;
@@ -163,7 +163,8 @@ v zoufalosti během dvoudenního řešení nejen výše uvedených problémů
 jsem zkoušel volat webovou službu ISIR také z PHP. Výsledkem
 bylo toto:</p>
 
-<pre>500 Internal Server Error
+<pre
+class="lang-text brush: text">500 Internal Server Error
 java.lang.StringIndexOutOfBoundsException: String index out of range: -1
         at java.lang.String.substring(String.java:1444)
         at org.apache.axis2.builder.XFormURLEncodedBuilder.extractParametersFromRequest(XFormURLEncodedBuilder.java:155)
@@ -228,7 +229,8 @@ týkající se nějakého dlužníka, nejprve v systému klikne na tlačítko
 „Nový spis“. Vyplní jeho značku a stiskne „Vytvořit“. Tím se
 v logu ISIR vytvoří záznam a do výstupu webové služby přibyde:</p>
 
-<pre>ID: 2760
+<pre
+class="lang-text brush: text">ID: 2760
 Cas: 23.1.2008 9:11:46
 Spis: INS 132/2008 Odd: A  Poradi: 2, Typ: 185 (Vyhláška o zahájení insolvenčního řízení)
 
@@ -249,7 +251,8 @@ v informačním systému přejde do sekce „Návrh – přílohy“, čímž
 nám vznikne tento velice <strong>duchaplný</strong> a <strong>užitečný
 záznam</strong>:</p>
 
-<pre>ID: 2853
+<pre
+class="lang-text brush: text">ID: 2853
 Cas: 23.1.2008 11:57:20
 Spis: INS 132/2008  Odd: A  Poradi: 3, Typ: 23 (Návrh - přílohy)
 
@@ -268,7 +271,7 @@ insolvenčního soudu“, a tím vzniká další <strong>velmi užitečný
 záznam</strong>:</p>
 
 <pre
-class="brush: xml">ID: 2954
+class="brush: lang-xml brush: xml">ID: 2954
 Cas: 23.1.2008 16:48:44
 Spis: INS 132/2008  Odd: A  Poradi: 4, Typ: 204 (Pokyn insolvenčního soudu)
 
@@ -397,6 +400,12 @@ Insolvenční rejtřík ISIR</a>. Spuštění plánuji na konci
 
     <hr />
 
+
+        <!--sharexy code start--><div id='shr_723771'><script type='text/javascript'>(function(w) { if (!w.SharexyWidget) { w.SharexyWidget = {};} if (!w.SharexyWidget.Params) { w.SharexyWidget.Params = {}; }
+        w.SharexyWidget.Params['723771'] = {'code_id':'723771','publisher_key':'undefined','design':'classic','layout_static':'h','type':'st','mode_float':'','size_float':'55','size_static':'55','buzz':'1',
+            'services':['facebook', 'google_plus', 'twitter', 'linkedin', 'reddit', 'buffer', 'pocket', 'print_page'],
+            'url':'current','allways_show_ads':'0','show_ads_sharing':'0','show_ads_cursor':'0','bg_float':'1','bg_color':'#ffffff','labels':'','counters':'0', 'counters_float':'0'} })(window);</script>
+        <script type='text/javascript' src='http://shuttle.sharexy.com/LoaderLite.js'></script></div><a href='http://sharexy.com/'><img src='http://sharexy.com/statpixel.png' style='border: 0' /></a><!--sharexy code end   -->
 
         <!-- Facebook comments -->
                     <div class="fb-comments" data-href="https://www.zizka.ch/pages/programovani/insolvencni_rejstrik-isir_ws/index.html" data-width="800" data-numposts="5"></div>

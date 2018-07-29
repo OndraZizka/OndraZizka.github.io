@@ -155,7 +155,7 @@ custom of storing the result into a TEMPORARY TABLE named exactly like the
 procedure name. E.g:</p>
 
 <pre
-class="brush: sql">CALL lib_Explode(',', 'coma, separated, data, 3.14');
+class="brush: lang-sql brush: sql">CALL lib_Explode(',', 'coma, separated, data, 3.14');
 SELECT * FROM lib_Explode;
 DROP TEMPORARY TABLE IF EXISTS lib_Explode; -- Optional, read below.</pre>
 
@@ -211,7 +211,7 @@ error occurs, the table is empty.</strike> (This wasn't a good idea.)</p>
 if you do not use the <a href="#Download">complete script</a>, be sure to use
 the code this way:</p>
 
-<pre class="brush: sql">DELIMITER $$
+<pre class="brush: lang-sql brush: sql">DELIMITER $$
 ...
 END; $$</pre>
 
@@ -268,7 +268,7 @@ categories</h3>
 <h3 id="toc-logging">Logging</h3>
 
 <pre
-class="brush: sql">CREATE TABLE lib_logg (
+class="brush: lang-sql brush: sql">CREATE TABLE lib_logg (
   `whn` datetime NOT NULL,
   `thread` int(10) unsigned NOT NULL,
   `level` enum('info','warn','error') NOT NULL default 'info',
@@ -276,7 +276,7 @@ class="brush: sql">CREATE TABLE lib_logg (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;</pre>
 
 <pre
-class="brush: sql">DELIMITER $$
+class="brush: lang-sql brush: sql">DELIMITER $$
 CREATE PROCEDURE  Logg( sStr TEXT ) BEGIN
   INSERT DELAYED INTO lib_logg SET str = sStr, whn = NOW(), thread = CONNECTION_ID();
 END; $$
@@ -311,7 +311,7 @@ similar to PHP's <code>Explode()</code></h4>
 <p><strong>Usage:</strong></p>
 
 <pre
-class="brush: sql">CALL lib_Explode( ',' ,  'Ahoj, jak se máte, 212' );</pre>
+class="brush: lang-sql brush: sql">CALL lib_Explode( ',' ,  'Ahoj, jak se máte, 212' );</pre>
 
 <p><strong>Result:</strong></p>
 
@@ -348,7 +348,7 @@ class="brush: sql">CALL lib_Explode( ',' ,  'Ahoj, jak se máte, 212' );</pre>
 <p><strong>Source code:</strong></p>
 
 <pre
-class="brush: sql">CREATE PROCEDURE lib_Explode( sSepar VARCHAR(255), saVal TEXT )
+class="brush: lang-sql brush: sql">CREATE PROCEDURE lib_Explode( sSepar VARCHAR(255), saVal TEXT )
 body:
 BEGIN
 
@@ -381,7 +381,7 @@ is, PHP's <code>explode()</code> equivalent, see MySQL's „aggregate
 functioni“ <code>GROUP_CONCAT()</code>:</p>
 
 <pre
-class="brush: sql">CALL lib_GenerateSequence( 5, 15, 2 );
+class="brush: lang-sql brush: sql">CALL lib_GenerateSequence( 5, 15, 2 );
 SELECT GROUP_CONCAT(i SEPARATOR ' a ') AS vysledek FROM lib_GenerateSequence;</pre>
 
 <p>Výsledek:</p>
@@ -409,7 +409,7 @@ replace strings <code>{1}</code> to <code>{6}</code>.</p>
 <p><strong>Usage:</strong></p>
 
 <pre
-class="brush: sql">SELECT F2( 'Ve městě {1} je {2} stupňů.', 'Praha', 31.2 ) FROM DUAL;</pre>
+class="brush: lang-sql brush: sql">SELECT F2( 'Ve městě {1} je {2} stupňů.', 'Praha', 31.2 ) FROM DUAL;</pre>
 
 <p><strong>Result:</strong></p>
 
@@ -424,7 +424,7 @@ class="brush: sql">SELECT F2( 'Ve městě {1} je {2} stupňů.', 'Praha', 31.2 )
 <p><strong>Source code:</strong></p>
 
 <pre
-class="brush: sql">CREATE FUNCTION  F1 ( sFormat TEXT, sPar1 TEXT )
+class="brush: lang-sql brush: sql">CREATE FUNCTION  F1 ( sFormat TEXT, sPar1 TEXT )
     RETURNS text CHARSET utf8 BEGIN
   RETURN REPLACE(sFormat, '%s', sPar1);
 END; $$
@@ -488,12 +488,12 @@ Otherwise returns:</p>
 <p><strong>Usage:</strong></p>
 
 <pre
-class="brush: sql">CALL Logg( F1('Computing level %s.', NS(@iLevel)) )</pre>
+class="brush: lang-sql brush: sql">CALL Logg( F1('Computing level %s.', NS(@iLevel)) )</pre>
 
 <p><strong>Source code:</strong></p>
 
 <pre
-class="brush: sql">CREATE FUNCTION NS( s VARCHAR(255) )
+class="brush: lang-sql brush: sql">CREATE FUNCTION NS( s VARCHAR(255) )
 RETURNS varchar(255) CHARSET utf8 BEGIN
   RETURN IF( s IS NULL, 'NULL', CONCAT('"',s,'"') );
 END $$
@@ -516,7 +516,8 @@ linear sequence generator</h4>
 
 <p><strong>Usage:</strong></p>
 
-<pre class="brush: sql">CALL lib_GenerateSequence( 5, 15, 2 )</pre>
+<pre
+class="brush: lang-sql brush: sql">CALL lib_GenerateSequence( 5, 15, 2 )</pre>
 
 <p><strong>Result:</strong></p>
 
@@ -557,7 +558,7 @@ linear sequence generator</h4>
 <p><strong>Source code:</strong></p>
 
 <pre
-class="brush: sql">DELIMITER $$
+class="brush: lang-sql brush: sql">DELIMITER $$
 
 CREATE PROCEDURE lib_GenerateSequence(
   iFrom INTEGER, iTo INTEGER, iStep INTEGER )
@@ -592,13 +593,13 @@ sTable, saColumns, OUT BOOL bHas ) – TEMP TABLE checking</h4>
 <p><strong>Usage:</strong></p>
 
 <pre
-class="brush: sql">CALL lib_TemporaryTableHasColumns('table', 'col1,col2,col3', @bHas);
+class="brush: lang-sql brush: sql">CALL lib_TemporaryTableHasColumns('table', 'col1,col2,col3', @bHas);
 SELECT @bHas;</pre>
 
 <p><strong>Source code:</strong></p>
 
 <pre
-class="brush: sql">CREATE lib_TemporaryTableHasColumns (
+class="brush: lang-sql brush: sql">CREATE lib_TemporaryTableHasColumns (
   IN sTable VARCHAR(255), IN saColumns VARCHAR(255), OUT bHas BOOLEAN)
 BEGIN
 
@@ -641,13 +642,13 @@ given string.</p>
 <p><strong>Usage:</strong></p>
 
 <pre
-class="brush: sql">CALL lib_RaiseError('Disaster!');
+class="brush: lang-sql brush: sql">CALL lib_RaiseError('Disaster!');
 ##  Says:   PROCEDURE neural_network.error: Disaster! You're doomed, solution does not exist</pre>
 
 <p><strong>Source code:</strong></p>
 
 <pre
-class="brush: sql">CREATE DEFINER=`root`@`localhost` PROCEDURE `lib_RaiseError`( sError VARCHAR(255) )
+class="brush: lang-sql brush: sql">CREATE DEFINER=`root`@`localhost` PROCEDURE `lib_RaiseError`( sError VARCHAR(255) )
 BEGIN
   ## PROCEDURE neural_network.Ahoj lidi does not exist
   CALL ExecuteQuery(F1('CALL `error: %s   You\'re doomed, solution`', sError));
@@ -663,6 +664,12 @@ END $$</pre>
 
     <hr />
 
+
+        <!--sharexy code start--><div id='shr_723771'><script type='text/javascript'>(function(w) { if (!w.SharexyWidget) { w.SharexyWidget = {};} if (!w.SharexyWidget.Params) { w.SharexyWidget.Params = {}; }
+        w.SharexyWidget.Params['723771'] = {'code_id':'723771','publisher_key':'undefined','design':'classic','layout_static':'h','type':'st','mode_float':'','size_float':'55','size_static':'55','buzz':'1',
+            'services':['facebook', 'google_plus', 'twitter', 'linkedin', 'reddit', 'buffer', 'pocket', 'print_page'],
+            'url':'current','allways_show_ads':'0','show_ads_sharing':'0','show_ads_cursor':'0','bg_float':'1','bg_color':'#ffffff','labels':'','counters':'0', 'counters_float':'0'} })(window);</script>
+        <script type='text/javascript' src='http://shuttle.sharexy.com/LoaderLite.js'></script></div><a href='http://sharexy.com/'><img src='http://sharexy.com/statpixel.png' style='border: 0' /></a><!--sharexy code end   -->
 
         <!-- Facebook comments -->
                     <div class="fb-comments" data-href="https://www.zizka.ch/pages/programovani/sql/mysql_stored_procedures.html" data-width="800" data-numposts="5"></div>

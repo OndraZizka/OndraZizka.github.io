@@ -94,7 +94,7 @@ id="toc-bookmarkablepagerequesttargeturlcodingstrategy-example">BookmarkablePa­
 example</h4>
 
 <pre
-class="brush: plain">http://localhost/app/mountPath/param1/value1/param2/value2
+class="brush: lang-plain brush: plain">http://localhost/app/mountPath/param1/value1/param2/value2
 
 // [in AlohaApplication.init()]
 mountBookmarkablePage("/mountPath", MyPage.class);
@@ -107,7 +107,7 @@ id="toc-indexedparamurlcodingstrategy-example">IndexedParamUr­lCodingStrate­gy
 example</h4>
 
 <pre
-class="brush: plain">http://localhost/app/mountPath/value1/value2
+class="brush: lang-plain brush: plain">http://localhost/app/mountPath/value1/value2
 
 pageParameters.getString("0"); // "value1"
 pageParameters.getString("1"); // "value2"</pre>
@@ -121,7 +121,7 @@ example</h4>
 <code>2</code> is version number.“ I haven't tried this yet.</p>
 
 <pre
-class="brush: plain">http://localhost/app/mountPath/param1/value1.3.2
+class="brush: lang-plain brush: plain">http://localhost/app/mountPath/param1/value1.3.2
 
 pageParameters.getString("param1"); // "value1"
 // what else?</pre>
@@ -131,7 +131,7 @@ id="toc-packagerequesttargeturlcodingstrategy-example">PackageReques­tTargetUrl
 example</h4>
 
 <pre
-class="brush: plain"> + cz.dynawest.wicketdemo
+class="brush: lang-plain brush: plain"> + cz.dynawest.wicketdemo
  |--HomePage.class
  |--HomePage.html
  |--Contacts.class
@@ -156,7 +156,7 @@ example</h4>
 href="http://wicket.apache.org/docs/1.4/org/apache/wicket/request/target/coding/QueryStringUrlCodingStrategy.html">JavaDoc</a></p>
 
 <pre
-class="brush: plain">http://localhost/app/mountPath?param1=value1&amp;param2=value2
+class="brush: lang-plain brush: plain">http://localhost/app/mountPath?param1=value1&amp;param2=value2
 
 // [in AlohaApplication.init()]
 private &lt;C extends Page&gt; void mountBookmarkablePageWithUrlCoding(String path, Class&lt;C&gt; pageClass)
@@ -181,7 +181,7 @@ e.g. [„param0“, „param1“]. Found parameters will be appended to the url
 in the form</p>
 
 <pre
-class="brush: plain">http://localhost/app/mountPath/paramvalue0/valueA/valueB?param1=value1&amp;param2=value2
+class="brush: lang-plain brush: plain">http://localhost/app/mountPath/paramvalue0/valueA/valueB?param1=value1&amp;param2=value2
 
 // [in AlohaApplication.init()]
 
@@ -203,7 +203,7 @@ example</h4>
 <p>TBD</p>
 
 <pre
-class="brush: plain">http://localhost/app/mountPath/value1/value2
+class="brush: lang-plain brush: plain">http://localhost/app/mountPath/value1/value2
 
 pageParameters.getString("0"); // "value1"
 pageParameters.getString("1"); // "value2"</pre>
@@ -215,6 +215,12 @@ pageParameters.getString("1"); // "value2"</pre>
 
     <hr />
 
+
+        <!--sharexy code start--><div id='shr_723771'><script type='text/javascript'>(function(w) { if (!w.SharexyWidget) { w.SharexyWidget = {};} if (!w.SharexyWidget.Params) { w.SharexyWidget.Params = {}; }
+        w.SharexyWidget.Params['723771'] = {'code_id':'723771','publisher_key':'undefined','design':'classic','layout_static':'h','type':'st','mode_float':'','size_float':'55','size_static':'55','buzz':'1',
+            'services':['facebook', 'google_plus', 'twitter', 'linkedin', 'reddit', 'buffer', 'pocket', 'print_page'],
+            'url':'current','allways_show_ads':'0','show_ads_sharing':'0','show_ads_cursor':'0','bg_float':'1','bg_color':'#ffffff','labels':'','counters':'0', 'counters_float':'0'} })(window);</script>
+        <script type='text/javascript' src='http://shuttle.sharexy.com/LoaderLite.js'></script></div><a href='http://sharexy.com/'><img src='http://sharexy.com/statpixel.png' style='border: 0' /></a><!--sharexy code end   -->
 
         <!-- Facebook comments -->
                     <div class="fb-comments" data-href="https://www.zizka.ch/pages/programovani/java/web/wicket/wicket-path-based-url-coding-strategy.html" data-width="800" data-numposts="5"></div>

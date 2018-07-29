@@ -106,7 +106,7 @@ possibility.</p>
 href="https://docspace.corp.redhat.com/docs/DOC-53554">https://docspace.corp.redhat.com/docs/DOC-53554</a> :</p>
 
 <pre
-class="brush: plain">jboss-managed.jar      org/jboss/man/             jboss-managed      2.1.0.SP1     jboss-managed-2.1.0.SP1.jar
+class="brush: lang-plain brush: plain">jboss-managed.jar      org/jboss/man/             jboss-managed      2.1.0.SP1     jboss-managed-2.1.0.SP1.jar
 getopt.jar             gnu-getopt/                getopt             1.0.12-brew   getopt-1.0.12-brew.jar
 jboss-kernel.jar       org/jboss/microcontainer/  jboss-kernel       2.0.6.GA      jboss-kernel-2.0.6.GA.jar
 jboss-logging-spi.jar  org/jboss/logging/         jboss-logging-spi  2.1.0.GA      jboss-logging-spi-2.1.0.GA.jar
@@ -127,7 +127,7 @@ href="http://community.jboss.org/thread/89912">http://community.jboss.org/thread
 . One (IMO the best) option is to override it in <code>pom.xml</code>:</p>
 
 <pre
-class="brush: xml">&lt;repository&gt;
+class="brush: lang-xml brush: xml">&lt;repository&gt;
   &lt;id&gt;central&lt;/id&gt;
   &lt;url&gt;http://some.url&lt;/url&gt;
   &lt;snapshots&gt;&lt;enabled&gt;false&lt;/enabled&gt;&lt;/snapshots&gt;
@@ -137,7 +137,7 @@ class="brush: xml">&lt;repository&gt;
 <p>Add this to your .pom:</p>
 
 <pre
-class="brush: xml">&lt;repository&gt;
+class="brush: lang-xml brush: xml">&lt;repository&gt;
     &lt;id&gt;mavenhoe-repo&lt;/id&gt;
     &lt;url&gt;http://localhost:17283/jars?mvnPath=&lt;/url&gt;
 &lt;/repository&gt;</pre>
@@ -146,7 +146,7 @@ class="brush: xml">&lt;repository&gt;
 and use <code>mvn -s settings-local.xml</code>):</p>
 
 <pre
-class="brush: xml">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+class="brush: lang-xml brush: xml">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;settings&gt;
 
   &lt;localRepository&gt;/home/ondra/work/hbn/runner/EAP-5.1/work-space/m2repo&lt;/localRepository&gt;
@@ -171,26 +171,27 @@ class="brush: xml">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 
 <p>Run Mavenhoe:</p>
 
-<pre class="brush: xml">java -jar Mavenhoe.jar  &lt;path-to-EAP&gt;</pre>
+<pre
+class="brush: lang-xml brush: xml">java -jar Mavenhoe.jar  &lt;path-to-EAP&gt;</pre>
 
 <p>and try:</p>
 
-<pre class="brush: xml">http://localhost:17283/status</pre>
+<pre class="brush: lang-xml brush: xml">http://localhost:17283/status</pre>
 
 <p>– Will list all indexed jars.</p>
 
 <pre
-class="brush: xml">http://localhost:17283/jars?mvnPath=org/jboss/whatever/whatever/5.1.0.GA/whatever-5.1.0.GA.jar</pre>
+class="brush: lang-xml brush: xml">http://localhost:17283/jars?mvnPath=org/jboss/whatever/whatever/5.1.0.GA/whatever-5.1.0.GA.jar</pre>
 
 <p>– Should give 404</p>
 
 <pre
-class="brush: xml">http://localhost:17283/jars?mvnPath=org/jboss/whatever/hibernate-core/3.3.2.GA_CP03/hibernate-core-3.3.2.GA_CP03.jar</pre>
+class="brush: lang-xml brush: xml">http://localhost:17283/jars?mvnPath=org/jboss/whatever/hibernate-core/3.3.2.GA_CP03/hibernate-core-3.3.2.GA_CP03.jar</pre>
 
 <p>– Should let you download the hibernate-core-3.3.2.GA_CP03.jar</p>
 
 <pre
-class="brush: xml">http://localhost:17283/jars?mvnPath=foo/revolver/5.1.0.GA/foobar-5.1.0.GA.jar</pre>
+class="brush: lang-xml brush: xml">http://localhost:17283/jars?mvnPath=foo/revolver/5.1.0.GA/foobar-5.1.0.GA.jar</pre>
 
 <p>* Note how Mavenhoe (cur.ver.) only cares about the artifact name part of the
 Maven-style path, revolver.<br />
@@ -203,14 +204,14 @@ product may differ from the Maven artifact name.<br />
 2. ArtifactId­Mapper – looks for &lt;artifactId&gt;.jar .<br />
 * This is a subject to become configurable in some simple way</p>
 
-<pre class="brush: xml">http://localhost:17283/shutdown</pre>
+<pre class="brush: lang-xml brush: xml">http://localhost:17283/shutdown</pre>
 
 <p>– Shuts the server down.</p>
 
 <p><strong>Sample log output:</strong></p>
 
 <pre
-class="brush: plain">DEBUG org.jboss.qa.mavenhoe.mappers.OrMapper   Looking for: jdom:jdom:1.0 = jdom-1.0.jar
+class="brush: lang-plain brush: plain">DEBUG org.jboss.qa.mavenhoe.mappers.OrMapper   Looking for: jdom:jdom:1.0 = jdom-1.0.jar
 DEBUG org.jboss.qa.mavenhoe.mappers.FileBasedMapper   Looking for: jdom:jdom:1.0 = jdom-1.0.jar
 DEBUG org.jboss.qa.mavenhoe.mappers.FileBasedMapper     Thus  for: 'jdom:jdom'
 DEBUG org.jboss.qa.mavenhoe.mappers.FileBasedMapper     Supposed file name: null
@@ -236,6 +237,12 @@ DEBUG org.jboss.qa.mavenhoe.MavenHoeApp
 
     <hr />
 
+
+        <!--sharexy code start--><div id='shr_723771'><script type='text/javascript'>(function(w) { if (!w.SharexyWidget) { w.SharexyWidget = {};} if (!w.SharexyWidget.Params) { w.SharexyWidget.Params = {}; }
+        w.SharexyWidget.Params['723771'] = {'code_id':'723771','publisher_key':'undefined','design':'classic','layout_static':'h','type':'st','mode_float':'','size_float':'55','size_static':'55','buzz':'1',
+            'services':['facebook', 'google_plus', 'twitter', 'linkedin', 'reddit', 'buffer', 'pocket', 'print_page'],
+            'url':'current','allways_show_ads':'0','show_ads_sharing':'0','show_ads_cursor':'0','bg_float':'1','bg_color':'#ffffff','labels':'','counters':'0', 'counters_float':'0'} })(window);</script>
+        <script type='text/javascript' src='http://shuttle.sharexy.com/LoaderLite.js'></script></div><a href='http://sharexy.com/'><img src='http://sharexy.com/statpixel.png' style='border: 0' /></a><!--sharexy code end   -->
 
         <!-- Facebook comments -->
                     <div class="fb-comments" data-href="https://www.zizka.ch/pages/programovani/java/maven/mavenhoe-fake-jar-repository_.html" data-width="800" data-numposts="5"></div>

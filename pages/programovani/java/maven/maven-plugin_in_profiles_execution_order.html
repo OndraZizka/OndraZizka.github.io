@@ -88,7 +88,7 @@ profile appearance order, or uses the ordering from the command line's
 <p>So I put this in a pom.xml:</p>
 
 <pre
-class="brush: xml">&lt;profiles&gt;
+class="brush: lang-xml brush: xml">&lt;profiles&gt;
     &lt;profile&gt;
       &lt;id&gt;test1&lt;/id&gt;
       &lt;build&gt;
@@ -145,11 +145,12 @@ class="brush: xml">&lt;profiles&gt;
 
 <p>Then I launched it using:</p>
 
-<pre class="bash">mvn initialize -P test2,test1</pre>
+<pre class="lang-bash brush: bash">mvn initialize -P test2,test1</pre>
 
 <p>And the result?</p>
 
-<pre>[INFO] Scanning for projects...
+<pre
+class="lang-text brush: text">[INFO] Scanning for projects...
 [INFO] ------------------------------------------------------------------------
 [INFO] Building pohlidame-backend
 [INFO]    task-segment: [install]
@@ -172,11 +173,13 @@ is to swap them in <code>pom.xml</code>.</p>
 
 <p>Another interesting thing is what happens when when launched using:</p>
 
-<pre class="bash">mvn clean install -Dmaven.test.skip=true -P test1,test2</pre>
+<pre
+class="lang-bash brush: bash">mvn clean install -Dmaven.test.skip=true -P test1,test2</pre>
 
 <p>In this case, the AntRun plugin is executed four times:</p>
 
-<pre>mvn install -Dmaven.test.skip=true -P test1,test2
+<pre
+class="lang-text brush: text">mvn install -Dmaven.test.skip=true -P test1,test2
 [INFO] Scanning for projects...
 [INFO] ------------------------------------------------------------------------
 [INFO] Building pohlidame-backend
@@ -234,6 +237,12 @@ packaging the <code>.jar</code>?</p>
 
     <hr />
 
+
+        <!--sharexy code start--><div id='shr_723771'><script type='text/javascript'>(function(w) { if (!w.SharexyWidget) { w.SharexyWidget = {};} if (!w.SharexyWidget.Params) { w.SharexyWidget.Params = {}; }
+        w.SharexyWidget.Params['723771'] = {'code_id':'723771','publisher_key':'undefined','design':'classic','layout_static':'h','type':'st','mode_float':'','size_float':'55','size_static':'55','buzz':'1',
+            'services':['facebook', 'google_plus', 'twitter', 'linkedin', 'reddit', 'buffer', 'pocket', 'print_page'],
+            'url':'current','allways_show_ads':'0','show_ads_sharing':'0','show_ads_cursor':'0','bg_float':'1','bg_color':'#ffffff','labels':'','counters':'0', 'counters_float':'0'} })(window);</script>
+        <script type='text/javascript' src='http://shuttle.sharexy.com/LoaderLite.js'></script></div><a href='http://sharexy.com/'><img src='http://sharexy.com/statpixel.png' style='border: 0' /></a><!--sharexy code end   -->
 
         <!-- Facebook comments -->
                     <div class="fb-comments" data-href="https://www.zizka.ch/pages/programovani/java/maven/maven-plugin_in_profiles_execution_order.html" data-width="800" data-numposts="5"></div>

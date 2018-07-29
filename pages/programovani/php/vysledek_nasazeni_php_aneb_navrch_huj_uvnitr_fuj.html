@@ -127,7 +127,8 @@ stavy. Kudy chodím, tudy říkám, že PHP by mělo veškeré chyby převést
 na výjimky, a tento případ to potvrzuje. Při přidání komentáře se
 zobrazuje Warning:</p>
 
-<pre>Warning: Cannot modify header information - headers already sent by
+<pre
+class="lang-text brush: text">Warning: Cannot modify header information - headers already sent by
 (output started at /mnt/data/accounts/p/programujte/data/www/www/pridej_kom.php:6)
 in /mnt/data/accounts/p/programujte/data/www/www/pridej_kom.php on line 62</pre>
 
@@ -147,7 +148,8 @@ a nikoli výjimkou.</p>
 <p>Řekněme tedy, že by PHP skriptař viděl místo své stránky takovouto
 děsivou nestvůru:</p>
 
-<pre>500 Internal Server Error
+<pre
+class="lang-text brush: text">500 Internal Server Error
 java.lang.StringIndexOutOfBoundsException: String index out of range: -1
         at java.lang.String.substring(String.java:1444)
         at org.apache.axis2.builder.XFormURLEncodedBuilder.extractParametersFromRequest(XFormURLEncodedBuilder.java:155)
@@ -186,7 +188,8 @@ ohledu na to, kde se zrovna ve výsledném dokumentu nacházíme!</p>
 <p>Kdepak, primitivní PHP vám třeba ještě před XML prologem
 vystřihne svoje:</p>
 
-<pre>&lt;br /&gt;
+<pre
+class="lang-text brush: text">&lt;br /&gt;
 &lt;b&gt;Warning&lt;/b&gt;:  Cannot add header information - headers already sent by (output started at /var/www/html/lavoro/downloadIt.php:21 in &lt;b&gt;/var/www/html/lavoro/downloadIt.php&lt;/b&gt; on line &lt;b&gt;21&lt;/b&gt;&lt;br /&gt;</pre>
 
 <p>a bez povšimnutí může proletět dále ke klientovi, ačkoliv chybějící
@@ -236,6 +239,12 @@ framework“ – a pak to podle toho vypadá.</p>
 
     <hr />
 
+
+        <!--sharexy code start--><div id='shr_723771'><script type='text/javascript'>(function(w) { if (!w.SharexyWidget) { w.SharexyWidget = {};} if (!w.SharexyWidget.Params) { w.SharexyWidget.Params = {}; }
+        w.SharexyWidget.Params['723771'] = {'code_id':'723771','publisher_key':'undefined','design':'classic','layout_static':'h','type':'st','mode_float':'','size_float':'55','size_static':'55','buzz':'1',
+            'services':['facebook', 'google_plus', 'twitter', 'linkedin', 'reddit', 'buffer', 'pocket', 'print_page'],
+            'url':'current','allways_show_ads':'0','show_ads_sharing':'0','show_ads_cursor':'0','bg_float':'1','bg_color':'#ffffff','labels':'','counters':'0', 'counters_float':'0'} })(window);</script>
+        <script type='text/javascript' src='http://shuttle.sharexy.com/LoaderLite.js'></script></div><a href='http://sharexy.com/'><img src='http://sharexy.com/statpixel.png' style='border: 0' /></a><!--sharexy code end   -->
 
         <!-- Facebook comments -->
                     <div class="fb-comments" data-href="https://www.zizka.ch/pages/programovani/php/vysledek_nasazeni_php_aneb_navrch_huj_uvnitr_fuj.html" data-width="800" data-numposts="5"></div>

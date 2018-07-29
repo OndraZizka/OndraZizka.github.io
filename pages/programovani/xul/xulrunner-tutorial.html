@@ -113,7 +113,7 @@ structure</h3>
 <p>Set up your application like so:</p>
 
 <pre
-class="brush: plain">/applicationName
+class="brush: lang-plain brush: plain">/applicationName
    /chrome
       /applicationName
          your app files
@@ -124,7 +124,7 @@ class="brush: plain">/applicationName
    application.ini</pre>
 
 <pre
-class="brush: bash">appName=myXulApp
+class="brush: lang-bash brush: bash">appName=myXulApp
 mkdir -p $appName/chrome/$appName
    touch $appName/chrome/chrome.manifest
 mkdir -p $appName/defaults/preferences
@@ -142,7 +142,7 @@ loading things up by looking at specific directories. Here's a sample
 <code>application.ini</code>:</p>
 
 <pre
-class="brush: plain">[App]
+class="brush: lang-plain brush: plain">[App]
 Vendor=company
 Name=applicationName
 Version=0.1
@@ -164,7 +164,7 @@ gecko engine settings or application specific settings. All we need
 here is:</p>
 
 <pre
-class="brush: plain">pref("toolkit.defaultChromeURI", "chrome://&lt;em&gt;applicationName&lt;/em&gt;/content/&lt;em&gt;startPage&lt;/em&gt;.xul");</pre>
+class="brush: lang-plain brush: plain">pref("toolkit.defaultChromeURI", "chrome://&lt;em&gt;applicationName&lt;/em&gt;/content/&lt;em&gt;startPage&lt;/em&gt;.xul");</pre>
 
 <p>The <em>startPage</em> is what XUL page you want to view initially.</p>
 
@@ -175,7 +175,7 @@ class="brush: plain">pref("toolkit.defaultChromeURI", "chrome://&lt;em&gt;applic
 application files:</p>
 
 <pre
-class="brush: plain">content &lt;em&gt;applicationName&lt;/em&gt; file:&lt;em&gt;applicationName&lt;/em&gt;/</pre>
+class="brush: lang-plain brush: plain">content &lt;em&gt;applicationName&lt;/em&gt; file:&lt;em&gt;applicationName&lt;/em&gt;/</pre>
 
 <p>That effectively tells XULRunner to look at <em>applicationName</em>/ in the
 chrome directory when it encounters a
@@ -195,7 +195,7 @@ want to deploy it as a jar:</p>
 	<li>Change the <code>chrome.manifest</code> to point to
 	<em>applicationNa­me</em>.jar:
 		<pre
-		class="brush: plain">content &lt;em&gt;applicationName&lt;/em&gt; jar:&lt;em&gt;applicationName&lt;/em&gt;.jar!/</pre>
+		class="brush: lang-plain brush: plain">content &lt;em&gt;applicationName&lt;/em&gt; jar:&lt;em&gt;applicationName&lt;/em&gt;.jar!/</pre>
 
 		<p>The <code>jar:</code> protocol tells XULRunner that this is a jar file, the
 		the <code>!</code> after the filename tells it to look inside the jar file.</p>
@@ -210,7 +210,7 @@ After you <a
 href="http://ftp.mozilla.org/pub/mozilla.org/xulrunner/nightly/latest-trunk/">download
 XULRunner</a>, this is just a matter of a command line:</p>
 
-<pre class="brush: plain">xulrunner application.ini</pre>
+<pre class="brush: lang-plain brush: plain">xulrunner application.ini</pre>
 
 <p>Your <em>startPage</em>.xul should open up in a window, like any other
 desktop app.</p>
@@ -270,6 +270,12 @@ the benefits of XULRunner.</p>
 
     <hr />
 
+
+        <!--sharexy code start--><div id='shr_723771'><script type='text/javascript'>(function(w) { if (!w.SharexyWidget) { w.SharexyWidget = {};} if (!w.SharexyWidget.Params) { w.SharexyWidget.Params = {}; }
+        w.SharexyWidget.Params['723771'] = {'code_id':'723771','publisher_key':'undefined','design':'classic','layout_static':'h','type':'st','mode_float':'','size_float':'55','size_static':'55','buzz':'1',
+            'services':['facebook', 'google_plus', 'twitter', 'linkedin', 'reddit', 'buffer', 'pocket', 'print_page'],
+            'url':'current','allways_show_ads':'0','show_ads_sharing':'0','show_ads_cursor':'0','bg_float':'1','bg_color':'#ffffff','labels':'','counters':'0', 'counters_float':'0'} })(window);</script>
+        <script type='text/javascript' src='http://shuttle.sharexy.com/LoaderLite.js'></script></div><a href='http://sharexy.com/'><img src='http://sharexy.com/statpixel.png' style='border: 0' /></a><!--sharexy code end   -->
 
         <!-- Facebook comments -->
                     <div class="fb-comments" data-href="https://www.zizka.ch/pages/programovani/xul/xulrunner-tutorial.html" data-width="800" data-numposts="5"></div>

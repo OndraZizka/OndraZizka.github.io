@@ -85,7 +85,7 @@ U toho je jeden problém – celkem dost uživatelů má ve WinLyrics více
 účtů s jedním mailem, patrně pro více počítačů. Viz tento dotaz:</p>
 
 <pre
-class="brush: sql">SELECT email, COUNT(*) AS cnt FROM wl2_users GROUP BY email HAVING cnt &gt; 1 ORDER BY cnt DESC;</pre>
+class="brush: lang-sql brush: sql">SELECT email, COUNT(*) AS cnt FROM wl2_users GROUP BY email HAVING cnt &gt; 1 ORDER BY cnt DESC;</pre>
 
 <p>Tak těm bychom asi vytvořili jeden účet, který by mogli používat
 kdekoliv, ne?</p>
@@ -104,9 +104,10 @@ autentization</h3>
 <p>Pro testování… – nastavíme někomu heslo…</p>
 
 <pre
-class="brush: sql">UPDATE wl2_users SET pass_md5 = MD5('') WHERE email='winlyrics@dark-sun.org';</pre>
+class="brush: lang-sql brush: sql">UPDATE wl2_users SET pass_md5 = MD5('') WHERE email='winlyrics@dark-sun.org';</pre>
 
-<pre>&gt;&gt; http://localhost:81/winlyrics/real/authentize.php?action=create_session
+<pre
+class="lang-text brush: text">&gt;&gt; http://localhost:81/winlyrics/real/authentize.php?action=create_session
 
 &lt;&lt; SESSION_ID f8675g1390s7dngloohqitsd74</pre>
 
@@ -114,12 +115,13 @@ class="brush: sql">UPDATE wl2_users SET pass_md5 = MD5('') WHERE email='winlyric
 <code>user pass == md5('') == "d41d8cd98f00b204e9800998ecf8427e"</code><br />
 <code>hash = md5( "f8675g1390s7dngloohqitsd74" . "d41d8cd98f00b204e9800998ecf8427e" ) == "989bd8a84f9e42b314b3358bb263794e"</code></p>
 
-<pre>&gt;&gt; http://localhost:81/winlyrics/real/authentize.php?action=verify&amp;sess_id=f8675g1390s7dngloohqitsd74&amp;user=winlyrics@dark-sun.org&amp;hash=989bd8a84f9e42b314b3358bb263794e
+<pre
+class="lang-text brush: text">&gt;&gt; http://localhost:81/winlyrics/real/authentize.php?action=verify&amp;sess_id=f8675g1390s7dngloohqitsd74&amp;user=winlyrics@dark-sun.org&amp;hash=989bd8a84f9e42b314b3358bb263794e
 
 &lt;&lt; AUTH_OK</pre>
 
 <pre
-class="brush: sql">SELECT id, MD5( CONCAT('f8675g1390s7dngloohqitsd74', pass_md5)) = '989bd8a84f9e42b314b3358bb263794e' FROM wl2_users WHERE email = 'winlyrics@dark-sun.org';</pre>
+class="brush: lang-sql brush: sql">SELECT id, MD5( CONCAT('f8675g1390s7dngloohqitsd74', pass_md5)) = '989bd8a84f9e42b314b3358bb263794e' FROM wl2_users WHERE email = 'winlyrics@dark-sun.org';</pre>
 
 <table>
 	<thead>
@@ -139,12 +141,13 @@ class="brush: sql">SELECT id, MD5( CONCAT('f8675g1390s7dngloohqitsd74', pass_md5
 	</tbody>
 </table>
 
-<pre>&gt;&gt; http://localhost:81/winlyrics/real/authentize.php?action=get_state&amp;sess_id=f8675g1390s7dngloohqitsd74
+<pre
+class="lang-text brush: text">&gt;&gt; http://localhost:81/winlyrics/real/authentize.php?action=get_state&amp;sess_id=f8675g1390s7dngloohqitsd74
 
 &lt;&lt; VERIFIED</pre>
 
 <pre
-class="php">print_r( $_SESSION );
+class="lang-php brush: php">print_r( $_SESSION );
 
 Array (
     [valid] =&gt; 1
@@ -226,6 +229,12 @@ Returns: <code>"SESSION_ERROR"</code> on error or
 
     <hr />
 
+
+        <!--sharexy code start--><div id='shr_723771'><script type='text/javascript'>(function(w) { if (!w.SharexyWidget) { w.SharexyWidget = {};} if (!w.SharexyWidget.Params) { w.SharexyWidget.Params = {}; }
+        w.SharexyWidget.Params['723771'] = {'code_id':'723771','publisher_key':'undefined','design':'classic','layout_static':'h','type':'st','mode_float':'','size_float':'55','size_static':'55','buzz':'1',
+            'services':['facebook', 'google_plus', 'twitter', 'linkedin', 'reddit', 'buffer', 'pocket', 'print_page'],
+            'url':'current','allways_show_ads':'0','show_ads_sharing':'0','show_ads_cursor':'0','bg_float':'1','bg_color':'#ffffff','labels':'','counters':'0', 'counters_float':'0'} })(window);</script>
+        <script type='text/javascript' src='http://shuttle.sharexy.com/LoaderLite.js'></script></div><a href='http://sharexy.com/'><img src='http://sharexy.com/statpixel.png' style='border: 0' /></a><!--sharexy code end   -->
 
         <!-- Facebook comments -->
                     <div class="fb-comments" data-href="https://www.zizka.ch/pages/programovani/winlyrics/doc/login.html" data-width="800" data-numposts="5"></div>

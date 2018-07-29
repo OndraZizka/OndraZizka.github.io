@@ -88,7 +88,8 @@ href="http://bugs.mysql.com/bug.php?id=36106">bug report
 <p>Having a call stack available in stored procedures would make debugging much
 much easier. It could be a table like this:</p>
 
-<pre>----------------------------------------------
+<pre
+class="lang-text brush: text">----------------------------------------------
 depth INT  routine_name VARCHAR   routine_type ENUM  started TIMESTAMP ...
 1          nn_TeachXOR            PROCEDURE          128458937
 2          nn_ComputeNet          PROCEDURE          128458938
@@ -98,14 +99,14 @@ depth INT  routine_name VARCHAR   routine_type ENUM  started TIMESTAMP ...
 <p>With such table, one could do profiling,</p>
 
 <pre
-class="brush: sql">SELECT UNIX_TIMESTAMP() - started AS duration
+class="brush: lang-sql brush: sql">SELECT UNIX_TIMESTAMP() - started AS duration
   FROM INFORMATION_SCHEMA.CALLSTACK
   ORDER BY depth DESC LIMIT 1;</pre>
 
 <p>structured logging, e.g.:</p>
 
 <pre
-class="brush: sql">INSERT INTO log
+class="brush: lang-sql brush: sql">INSERT INTO log
   SELECT CONCAT( REPEAT('  ', ), '+--  ', routine_name) AS str
   ORDER BY depth ASC;</pre>
 
@@ -118,6 +119,12 @@ class="brush: sql">INSERT INTO log
 
     <hr />
 
+
+        <!--sharexy code start--><div id='shr_723771'><script type='text/javascript'>(function(w) { if (!w.SharexyWidget) { w.SharexyWidget = {};} if (!w.SharexyWidget.Params) { w.SharexyWidget.Params = {}; }
+        w.SharexyWidget.Params['723771'] = {'code_id':'723771','publisher_key':'undefined','design':'classic','layout_static':'h','type':'st','mode_float':'','size_float':'55','size_static':'55','buzz':'1',
+            'services':['facebook', 'google_plus', 'twitter', 'linkedin', 'reddit', 'buffer', 'pocket', 'print_page'],
+            'url':'current','allways_show_ads':'0','show_ads_sharing':'0','show_ads_cursor':'0','bg_float':'1','bg_color':'#ffffff','labels':'','counters':'0', 'counters_float':'0'} })(window);</script>
+        <script type='text/javascript' src='http://shuttle.sharexy.com/LoaderLite.js'></script></div><a href='http://sharexy.com/'><img src='http://sharexy.com/statpixel.png' style='border: 0' /></a><!--sharexy code end   -->
 
         <!-- Facebook comments -->
                     <div class="fb-comments" data-href="https://www.zizka.ch/pages/programovani/sql/mysql_wishlist/call_stack_in_information_schema.html" data-width="800" data-numposts="5"></div>

@@ -94,7 +94,7 @@ others).</p>
 practice is to use TEMPORARY TABLES when working with larger data sets.</p>
 
 <pre
-class="brush: sql">CREATE PROCEDURE `lib_Explode`(sSepar VARCHAR(255), saVal TEXT)
+class="brush: lang-sql brush: sql">CREATE PROCEDURE `lib_Explode`(sSepar VARCHAR(255), saVal TEXT)
 body: BEGIN
 
   DROP TEMPORARY TABLE IF EXISTS lib_Explode;
@@ -138,7 +138,7 @@ set. Let's see what would be possible with such feature.</p>
 <p>First, let's create a 3 × 2 table:</p>
 
 <pre
-class="brush: sql">CREATE TABLE table1 ( a INT, b INT );
+class="brush: lang-sql brush: sql">CREATE TABLE table1 ( a INT, b INT );
 INSERT INTO table1 VALUES (1,2), (3,4), (5,6);
 SELECT * FROM table1;</pre>
 
@@ -176,12 +176,13 @@ SELECT * FROM table1;</pre>
 
 <p>Currently, we can select a single value into a variable:</p>
 
-<pre class="brush: sql">SELECT a FROM table1 INTO @var LIMIT 1;</pre>
+<pre
+class="brush: lang-sql brush: sql">SELECT a FROM table1 INTO @var LIMIT 1;</pre>
 
 <p>But what much more cool would be if we could store a result set:</p>
 
 <pre
-class="brush: sql">##  Create the result set and store it in a variable.
+class="brush: lang-sql brush: sql">##  Create the result set and store it in a variable.
 SELECT * FROM table1 INTO @resultset;
   -- or --
 SET @resultset = (SELECT * FROM table1);</pre>
@@ -194,7 +195,7 @@ we could pass it to a stored procedure.</p>
 result set as a parameter of a stored procedure</h3>
 
 <pre
-class="brush: sql">CREATE PROCEDURE StoredProcedure( rsData RESULTSET ) BEGIN
+class="brush: lang-sql brush: sql">CREATE PROCEDURE StoredProcedure( rsData RESULTSET ) BEGIN
   SELECT a + b FROM rsData;
 END $$
 
@@ -208,7 +209,7 @@ a <code>TEMPORARY</code> table.</p>
 set from a stored procedure</h3>
 
 <pre
-class="brush: sql">##  Retrieving a result set from a stored procedure
+class="brush: lang-sql brush: sql">##  Retrieving a result set from a stored procedure
 CALL StoredProcedure() INTO @result;
 
 -- or
@@ -225,7 +226,7 @@ multiple result sets from a stored procedure</h3>
 <p>Multiple results from a <code>CALL</code> could also be fetched:</p>
 
 <pre
-class="brush: sql">CREATE PROCEDURE StoredProcedure( rsData RESULTSET ) BEGIN
+class="brush: lang-sql brush: sql">CREATE PROCEDURE StoredProcedure( rsData RESULTSET ) BEGIN
   SELECT a + b FROM rsData;
   SELECT a * b FROM rsData;
 END $$
@@ -244,6 +245,12 @@ code of my procedures near to half.</p>
 
     <hr />
 
+
+        <!--sharexy code start--><div id='shr_723771'><script type='text/javascript'>(function(w) { if (!w.SharexyWidget) { w.SharexyWidget = {};} if (!w.SharexyWidget.Params) { w.SharexyWidget.Params = {}; }
+        w.SharexyWidget.Params['723771'] = {'code_id':'723771','publisher_key':'undefined','design':'classic','layout_static':'h','type':'st','mode_float':'','size_float':'55','size_static':'55','buzz':'1',
+            'services':['facebook', 'google_plus', 'twitter', 'linkedin', 'reddit', 'buffer', 'pocket', 'print_page'],
+            'url':'current','allways_show_ads':'0','show_ads_sharing':'0','show_ads_cursor':'0','bg_float':'1','bg_color':'#ffffff','labels':'','counters':'0', 'counters_float':'0'} })(window);</script>
+        <script type='text/javascript' src='http://shuttle.sharexy.com/LoaderLite.js'></script></div><a href='http://sharexy.com/'><img src='http://sharexy.com/statpixel.png' style='border: 0' /></a><!--sharexy code end   -->
 
         <!-- Facebook comments -->
                     <div class="fb-comments" data-href="https://www.zizka.ch/pages/programovani/sql/mysql_wishlist/result_set_in_variable.html" data-width="800" data-numposts="5"></div>

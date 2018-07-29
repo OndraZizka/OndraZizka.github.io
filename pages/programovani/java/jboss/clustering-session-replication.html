@@ -83,12 +83,13 @@ Simple test</h2>
 
 <h3 id="toc-1-have-two-servers">1) Have two servers:</h3>
 
-<pre class="brush: bash">cp jbossas/server/all jbossas/server/all2`</pre>
+<pre
+class="brush: lang-bash brush: bash">cp jbossas/server/all jbossas/server/all2`</pre>
 
 <h3 id="toc-2-start-both-servers">2) Start both servers</h3>
 
 <pre
-class="brush: bash"># Server 1
+class="brush: lang-bash brush: bash"># Server 1
 bin/run.sh -u 224.13.15.5 -c all  -b 0.0.0.0 -Djboss.messaging.ServerPeerID=1
 # Server 2
 bin/run.sh -u 224.13.15.5 -c all2 -b 0.0.0.0 -Djboss.messaging.ServerPeerID=2</pre>
@@ -98,7 +99,7 @@ node ID for messaging &amp; JGroups, being used in
 <code>jbossas/server/&lt;profile&gt;/deploy/messaging/messaging-service.xml</code>:</p>
 
 <pre
-class="brush: xml">&lt;server&gt;
+class="brush: lang-xml brush: xml">&lt;server&gt;
 
    &lt;!-- ServerPeer MBean configuration
         ============================== --&gt;
@@ -116,7 +117,7 @@ class="brush: xml">&lt;server&gt;
 <p>If you don't set it, you'll see:</p>
 
 <pre
-class="brush: plain">2009-05-02 19:58:56,116 DEBUG [org.jboss.messaging.core.jmx.MessagingPostOfficeService] Starting failed jboss.messaging:service=PostOffice
+class="brush: lang-plain brush: plain">2009-05-02 19:58:56,116 DEBUG [org.jboss.messaging.core.jmx.MessagingPostOfficeService] Starting failed jboss.messaging:service=PostOffice
 java.lang.IllegalArgumentException: Cannot start post office since there is already a post office in the cluster with the same node id (0).
 Are you sure you have given each node a unique node id during installation?</pre>
 
@@ -126,7 +127,7 @@ create an application which sets some session data.</h3>
 <p><code>app.war/WEB-INF/web.xml</code>:</p>
 
 <pre
-class="brush: xml">&lt;?xml version="1.0"?&gt;
+class="brush: lang-xml brush: xml">&lt;?xml version="1.0"?&gt;
 &lt;web-app  xmlns="http://java.sun.com/xml/ns/j2ee"
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
           xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
@@ -137,7 +138,7 @@ class="brush: xml">&lt;?xml version="1.0"?&gt;
 <p><code>app.war/index.jsp</code>: (Sorry for the poor JSP code :)</p>
 
 <pre
-class="html [.brush:]">&lt;html&gt;
+class="lang-html [.brush:] brush: html [.brush:]">&lt;html&gt;
   &lt;body&gt;
 &lt;%
         String host;
@@ -172,7 +173,7 @@ Copy the <code>app.war</code> to both profiles to <code>app/deploy</code> and
 <p><strong>Server 1:</strong></p>
 
 <pre
-class="xbrush: plain">06:16:46,246 INFO  [PlatformMBeanServerRegistration] JBossCache MBeans were successfully registered to the platform mbean server.
+class="xbrush: lang-plain brush: plain">06:16:46,246 INFO  [PlatformMBeanServerRegistration] JBossCache MBeans were successfully registered to the platform mbean server.
 06:16:46,527 INFO  [STDOUT]
 ---------------------------------------------------------
 GMS: address is 10.34.33.46:38534 (cluster=DefaultPartition-SessionCache)
@@ -187,7 +188,7 @@ GMS: address is 10.34.33.46:38534 (cluster=DefaultPartition-SessionCache)
 <code>LegacyStateTransferIntegrator</code>.)</p>
 
 <pre
-class="xbrush: plain">06:18:28,968 INFO  [TomcatDeployment] deploy, ctxPath=/app
+class="xbrush: lang-plain brush: plain">06:18:28,968 INFO  [TomcatDeployment] deploy, ctxPath=/app
 06:18:29,283 INFO  [PlatformMBeanServerRegistration] JBossCache MBeans were successfully registered to the platform mbean server.
 06:18:29,319 INFO  [STDOUT]
 ---------------------------------------------------------
@@ -207,7 +208,7 @@ either use the <code>jsessionid=...</code> or set up some hi-tech
 load-balancing:</p>
 
 <pre
-class="brush: plain">ssh -D 9090 -Nf jawa15.englab.brq.redhat.com
+class="brush: lang-plain brush: plain">ssh -D 9090 -Nf jawa15.englab.brq.redhat.com
 
 # Or, if your server is at :8080 as is by default:
 
@@ -221,7 +222,7 @@ replicates</h3>
 <p>Then switch the proxy to the other server:</p>
 
 <pre
-class="brush: plain">ps aux | grep 'L 9091:jawa17'
+class="brush: lang-plain brush: plain">ps aux | grep 'L 9091:jawa17'
  ...
 kill 1234
 ssh -f ozizka@jawa17.englab.brq.redhat.com -L 9091:jawa17.englab.brq.redhat.com:8080 -N</pre>
@@ -241,6 +242,12 @@ the other server.</p>
 
     <hr />
 
+
+        <!--sharexy code start--><div id='shr_723771'><script type='text/javascript'>(function(w) { if (!w.SharexyWidget) { w.SharexyWidget = {};} if (!w.SharexyWidget.Params) { w.SharexyWidget.Params = {}; }
+        w.SharexyWidget.Params['723771'] = {'code_id':'723771','publisher_key':'undefined','design':'classic','layout_static':'h','type':'st','mode_float':'','size_float':'55','size_static':'55','buzz':'1',
+            'services':['facebook', 'google_plus', 'twitter', 'linkedin', 'reddit', 'buffer', 'pocket', 'print_page'],
+            'url':'current','allways_show_ads':'0','show_ads_sharing':'0','show_ads_cursor':'0','bg_float':'1','bg_color':'#ffffff','labels':'','counters':'0', 'counters_float':'0'} })(window);</script>
+        <script type='text/javascript' src='http://shuttle.sharexy.com/LoaderLite.js'></script></div><a href='http://sharexy.com/'><img src='http://sharexy.com/statpixel.png' style='border: 0' /></a><!--sharexy code end   -->
 
         <!-- Facebook comments -->
                     <div class="fb-comments" data-href="https://www.zizka.ch/pages/programovani/java/jboss/clustering-session-replication.html" data-width="800" data-numposts="5"></div>

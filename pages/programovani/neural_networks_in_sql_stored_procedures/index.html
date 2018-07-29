@@ -210,7 +210,7 @@ slowed down the computation, which took about seven times longer, I had to
 switch to MyISAM or Memory engine.</p>
 
 <pre
-class="brush: sql">CREATE TABLE  nn_networks (
+class="brush: lang-sql brush: sql">CREATE TABLE  nn_networks (
   `id` int(10) unsigned NOT NULL auto_increment,
   `name` varchar(45) NOT NULL,
   `inputs` int(10) unsigned NOT NULL default '0',
@@ -221,7 +221,7 @@ class="brush: sql">CREATE TABLE  nn_networks (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=FIXED COMMENT='Neural networks';</pre>
 
 <pre
-class="brush: sql">CREATE TABLE  nn_net_neurons (
+class="brush: lang-sql brush: sql">CREATE TABLE  nn_net_neurons (
   `id_net` int(10) unsigned NOT NULL,
   `id_neuron` int(10) unsigned NOT NULL auto_increment,
   `bias` double NOT NULL,
@@ -230,7 +230,7 @@ class="brush: sql">CREATE TABLE  nn_net_neurons (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=FIXED COMMENT='Neural net neurons';</pre>
 
 <pre
-class="brush: sql">CREATE TABLE  nn_net_synapses (
+class="brush: lang-sql brush: sql">CREATE TABLE  nn_net_synapses (
   `id_from` int(10) unsigned default '0',
   `id_to` int(10) unsigned default '0',
   `weight` double NOT NULL,
@@ -239,7 +239,7 @@ class="brush: sql">CREATE TABLE  nn_net_synapses (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=FIXED COMMENT='Connections between neurons';</pre>
 
 <pre
-class="brush: sql">CREATE TABLE lib_logg (
+class="brush: lang-sql brush: sql">CREATE TABLE lib_logg (
   `whn` datetime NOT NULL,
   `thread` int(10) unsigned NOT NULL,
   `level` enum('info','warn','error','enter','leave') NOT NULL default 'info',
@@ -252,7 +252,7 @@ class="brush: sql">CREATE TABLE lib_logg (
 <h4 id="toc-usage">Usage:</h4>
 
 <pre
-class="brush: sql">##    Layers definition,  initial weigths range, initial bias range, OUT network ID
+class="brush: lang-sql brush: sql">##    Layers definition,  initial weigths range, initial bias range, OUT network ID
 CALL nn_CreatePerceptron('2,2,1','XOR', 0.10, 0.5, @out_NetID);</pre>
 
 <h4 id="toc-result">Result:</h4>
@@ -271,7 +271,7 @@ the created network.</p>
 <code>nn_GeneratePerceptron</code> (see below).</p>
 
 <pre
-class="brush: sql">CREATE PROCEDURE `nn_CreatePerceptron`(
+class="brush: lang-sql brush: sql">CREATE PROCEDURE `nn_CreatePerceptron`(
   sLayers VARCHAR(255), sName VARCHAR(255),
   dWeightsRange DOUBLE, dBiasRange DOUBLE,
   out_iNetId INT UNSIGNED)
@@ -323,7 +323,7 @@ in a virtual space, before merging it to the persistent tables. This helps
 isolating the eventual transactions and improves the performance.</p>
 
 <pre
-class="brush: sql">CREATE PROCEDURE `nn_GeneratePerceptron`(
+class="brush: lang-sql brush: sql">CREATE PROCEDURE `nn_GeneratePerceptron`(
   sLayers VARCHAR(255), dWeightsRange DOUBLE, dBiasRange DOUBLE
 )
 body: BEGIN
@@ -463,7 +463,7 @@ and output neurons. That's what <code>nn_GetInputNeuronIDs</code> and
 <h4 id="toc-usage-2">Usage:</h4>
 
 <pre
-class="brush: sql">##  Get the input neuron IDs for the network with ID 1.
+class="brush: lang-sql brush: sql">##  Get the input neuron IDs for the network with ID 1.
 CALL nn_GetInputNeuronIDs( 1 );
 
 ##  Get the output neuron IDs for the network with ID 1.
@@ -521,7 +521,7 @@ like this:</p>
 <h4 id="toc-source-2">Source:</h4>
 
 <pre
-class="brush: sql">CREATE PROCEDURE `nn_GetInputNeuronIDs`(iNetID INTEGER)
+class="brush: lang-sql brush: sql">CREATE PROCEDURE `nn_GetInputNeuronIDs`(iNetID INTEGER)
     COMMENT 'Returns tmp.t. (pos, id_neuron) with given net''s input neurons.'
 body:
 BEGIN
@@ -547,7 +547,7 @@ BEGIN
 END $$</pre>
 
 <pre
-class="brush: sql">CREATE PROCEDURE `nn_GetOutputNeuronIDs`(iNetID INTEGER)
+class="brush: lang-sql brush: sql">CREATE PROCEDURE `nn_GetOutputNeuronIDs`(iNetID INTEGER)
     COMMENT 'Returns tmp.t. (pos, id_neuron) with given net''s output neurons.'
 body:
 BEGIN
@@ -584,10 +584,11 @@ END $$</pre>
 <h4 id="toc-usage-3">Usage:</h4>
 
 <pre
-class="brush: sql">CALL nn_ComputeNet(1, '-1, 1', TRUE);
+class="brush: lang-sql brush: sql">CALL nn_ComputeNet(1, '-1, 1', TRUE);
 SELECT * FROM nn_ComputeNet;</pre>
 
-<pre class="brush: sql">SELECT * FROM nn_ComputeNet_InternalValues;</pre>
+<pre
+class="brush: lang-sql brush: sql">SELECT * FROM nn_ComputeNet_InternalValues;</pre>
 
 <h4 id="toc-result-3">Result:</h4>
 
@@ -654,7 +655,7 @@ SELECT * FROM nn_ComputeNet;</pre>
 <h4 id="toc-source-3">Source:</h4>
 
 <pre
-class="brush: sql">CREATE PROCEDURE `nn_ComputeNet`(
+class="brush: lang-sql brush: sql">CREATE PROCEDURE `nn_ComputeNet`(
   iNetId INTEGER, sadInput VARCHAR(255), bStoreInternalValues BOOLEAN)
 body: BEGIN
 
@@ -777,7 +778,7 @@ neurons' values; we asked to do so by setting the third parameter to
 <code>TRUE</code>.</p>
 
 <pre
-class="brush: sql">CALL nn_ComputeNet( iNetID, '1, -1', TRUE );  ##  Be sure to set to TRUE!</pre>
+class="brush: lang-sql brush: sql">CALL nn_ComputeNet( iNetID, '1, -1', TRUE );  ##  Be sure to set to TRUE!</pre>
 
 <p>Then we have to rename the tables, because MySQL does not allow to pass the
 result set in any other way. (At least one row could be spared… see my <a
@@ -785,7 +786,7 @@ href="../sql/mysql_wishlist/alter_table_rename_overwrite.texy">MySQL
 wish-list</a>.)</p>
 
 <pre
-class="brush: sql">DROP TEMPORARY TABLE IF EXISTS nn_CorrectWeights, nn_CorrectWeights_InternalValues;
+class="brush: lang-sql brush: sql">DROP TEMPORARY TABLE IF EXISTS nn_CorrectWeights, nn_CorrectWeights_InternalValues;
 ALTER TABLE nn_ComputeNet RENAME TO nn_CorrectWeights;
 ALTER TABLE nn_ComputeNet_InternalValues RENAME TO nn_CorrectWeights_InternalValues;</pre>
 
@@ -798,7 +799,7 @@ Psi, Alfa, Beta, Gama, Pi, or however you call it – I call it „learning
 rate“. Finally it's the output variable for error level.</p>
 
 <pre
-class="brush: sql">CALL nn_CorrectWeights(iNetID, '1', @dLearn, @out_dErrorSum);</pre>
+class="brush: lang-sql brush: sql">CALL nn_CorrectWeights(iNetID, '1', @dLearn, @out_dErrorSum);</pre>
 
 <p>Based on the error level, you can apply the simulated annealing, as we will
 show later. Using that, you can get to very low error levels, less than
@@ -813,7 +814,7 @@ algorithm.</p>
 <h4 id="toc-source-4">Source:</h4>
 
 <pre
-class="brush: sql">CREATE PROCEDURE `nn_CorrectWeights`(
+class="brush: lang-sql brush: sql">CREATE PROCEDURE `nn_CorrectWeights`(
   id_net INTEGER, sadValuesWanted VARCHAR(255), dLearn DOUBLE, OUT out_dErrorSum DOUBLE
 )
 BEGIN body: BEGIN
@@ -1051,7 +1052,7 @@ train data has 4 train cases:<br />
 respectively.</p>
 
 <pre
-class="brush: sql">CREATE TABLE `nn_trainsets` (
+class="brush: lang-sql brush: sql">CREATE TABLE `nn_trainsets` (
   `id_set` int(10) unsigned NOT NULL auto_increment,
   `name` varchar(45) NOT NULL,
   `input_count` int(10) unsigned NOT NULL,
@@ -1091,7 +1092,7 @@ serialized values in parameters; instead, they expect pre-created tables with
 these values.</p>
 
 <pre
-class="brush: sql">CREATE PROCEDURE `nn_ts_ComputeNet`( iNetID INTEGER, bStoreInternalValues BOOLEAN )
+class="brush: lang-sql brush: sql">CREATE PROCEDURE `nn_ts_ComputeNet`( iNetID INTEGER, bStoreInternalValues BOOLEAN )
 body: BEGIN
 
   /*
@@ -1140,7 +1141,7 @@ of teaching is stopped immediatelly when the target error is reached with some
 training case (insufficient, to be fixed).</p>
 
 <pre
-class="brush: sql">CREATE PROCEDURE `neural_network`.`nn_ts_TeachTrainset` (
+class="brush: lang-sql brush: sql">CREATE PROCEDURE `neural_network`.`nn_ts_TeachTrainset` (
   iNetID INT UNSIGNED, iTrainsetID INT UNSIGNED, dLearn DOUBLE, dTargetError DOUBLE, iMaxRounds INT UNSIGNED
 )
 body: BEGIN
@@ -1162,14 +1163,14 @@ This trains the network #2 using training set #1, having learn rate of
 <code>1000</code> passes through the training set:</p>
 
 <pre
-class="brush: sql">CALL nn_ts_TeachTrainset( 2, 1, 0.5, 0.0001, 1000 );</pre>
+class="brush: lang-sql brush: sql">CALL nn_ts_TeachTrainset( 2, 1, 0.5, 0.0001, 1000 );</pre>
 
 <p>This way, <a
 href="http://en.wikipedia.org/wiki/Simulated_annealing">simulated annealing</a>
 can be easily applied:</p>
 
 <pre
-class="brush: sql">CALL nn_ts_TeachTrainset( 2, 1, 0.7,  0.01, 6000 );
+class="brush: lang-sql brush: sql">CALL nn_ts_TeachTrainset( 2, 1, 0.7,  0.01, 6000 );
 CALL nn_ts_TeachTrainset( 2, 1, 0.3,  0.003, 2000 );
 CALL nn_ts_TeachTrainset( 2, 1, 0.1,  0.0005, 1000 );
 CALL nn_ts_TeachTrainset( 2, 1, 0.05, 0.0001, 1000 );</pre>
@@ -1177,7 +1178,7 @@ CALL nn_ts_TeachTrainset( 2, 1, 0.05, 0.0001, 1000 );</pre>
 <p>You can have a look what was happening during the process:</p>
 
 <pre
-class="brush: sql">SELECT * FROM lib_logg WHERE rout = 'nn_ts_TeachTrainset';</pre>
+class="brush: lang-sql brush: sql">SELECT * FROM lib_logg WHERE rout = 'nn_ts_TeachTrainset';</pre>
 
 <table>
 	<thead>
@@ -1391,6 +1392,12 @@ PBXT PBTX.</p>
 
     <hr />
 
+
+        <!--sharexy code start--><div id='shr_723771'><script type='text/javascript'>(function(w) { if (!w.SharexyWidget) { w.SharexyWidget = {};} if (!w.SharexyWidget.Params) { w.SharexyWidget.Params = {}; }
+        w.SharexyWidget.Params['723771'] = {'code_id':'723771','publisher_key':'undefined','design':'classic','layout_static':'h','type':'st','mode_float':'','size_float':'55','size_static':'55','buzz':'1',
+            'services':['facebook', 'google_plus', 'twitter', 'linkedin', 'reddit', 'buffer', 'pocket', 'print_page'],
+            'url':'current','allways_show_ads':'0','show_ads_sharing':'0','show_ads_cursor':'0','bg_float':'1','bg_color':'#ffffff','labels':'','counters':'0', 'counters_float':'0'} })(window);</script>
+        <script type='text/javascript' src='http://shuttle.sharexy.com/LoaderLite.js'></script></div><a href='http://sharexy.com/'><img src='http://sharexy.com/statpixel.png' style='border: 0' /></a><!--sharexy code end   -->
 
         <!-- Facebook comments -->
                     <div class="fb-comments" data-href="https://www.zizka.ch/pages/programovani/neural_networks_in_sql_stored_procedures/index.html" data-width="800" data-numposts="5"></div>

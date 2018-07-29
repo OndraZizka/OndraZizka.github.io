@@ -98,7 +98,7 @@ in Values – <code>PropertyPlaceholderConfigurer</code></h3>
 configuration – one for developement and other for release:</p>
 
 <pre
-class="brush: xml">&lt;!-- JDBC Datasource --&gt;
+class="brush: lang-xml brush: xml">&lt;!-- JDBC Datasource --&gt;
 &lt;bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource"&gt;
   &lt;property name="driverClassName" value="${jdbc.driver}" /&gt;
   &lt;property name="url" value="${jdbc.url}" /&gt;
@@ -115,7 +115,7 @@ define „defaults“ and then override some properties in an
 external file.</p>
 
 <pre
-class="brush: xml">&lt;context:property-placeholder location="
+class="brush: lang-xml brush: xml">&lt;context:property-placeholder location="
   classpath:properties/database.properties,
   file:conf/database.properties" /&gt;</pre>
 
@@ -124,7 +124,7 @@ solely on the defaults, you might use the <code>ignoreResourceNotFound</code>
 attribute:</p>
 
 <pre
-class="brush: xml">&lt;context:property-placeholder location="
+class="brush: lang-xml brush: xml">&lt;context:property-placeholder location="
   classpath:properties/database.properties,
   file:conf/database.properties" ignoreResourceNotFound="true" /&gt;</pre>
 
@@ -135,7 +135,7 @@ work in Spring 3.0</a>). So, you need to define it „old way“ – as
 a bean:</p>
 
 <pre
-class="brush: xml">&lt;bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"&gt;
+class="brush: lang-xml brush: xml">&lt;bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"&gt;
   &lt;property name="locations" value="
       classpath:properties/database.properties,
       file:conf/database.properties" /&gt;
@@ -163,7 +163,7 @@ is available from <code>System.getProperty(String)</code> and
 parameter, or programatically:</p>
 
 <pre
-class="brush: bash">## in the command line:
+class="brush: lang-bash brush: bash">## in the command line:
 $ java -Dprofile=testing
 
 // Or in Java:
@@ -172,7 +172,7 @@ System.setProperty( "profile", "testing" );</pre>
 <p>Then we can set the bean up using all our weapons:</p>
 
 <pre
-class="brush: xml">&lt;bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"&gt;
+class="brush: lang-xml brush: xml">&lt;bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"&gt;
   &lt;property name="locations" value="
       classpath:properties/database.properties,
       file:nastaveni.properties,
@@ -209,7 +209,7 @@ want to keep the defaults right in the custom beans' configuration in Spring's
 configure your bean as usualy:</p>
 
 <pre
-class="brush: xml">&lt;bean  name="projectInfo" class="cz.dynawest.springtest.CoolProject"&gt;
+class="brush: lang-xml brush: xml">&lt;bean  name="projectInfo" class="cz.dynawest.springtest.CoolProject"&gt;
   &lt;property name="author" value="Ondřej Žižka" /&gt;
   &lt;property name="maintainer" value="Ondřej Žižka" /&gt;
 &lt;/bean&gt;</pre>
@@ -219,14 +219,14 @@ syntax of the name is
 <code>&lt;bean-name&gt;.&lt;property-name&gt;=&lt;value&gt;</code>.</p>
 
 <pre
-class="brush: properties">## newProjectInfo.properties
+class="brush: lang-properties brush: properties">## newProjectInfo.properties
 projectInfo.maintainer="Reese Witherspoon"</pre>
 
 <p>The final piece of the puzzle is to create a bean that will apply the value
 to the bean.</p>
 
 <pre
-class="brush: xml">&lt;context:property-override location="classpath:newProjectInfo.properties"/&gt;</pre>
+class="brush: lang-xml brush: xml">&lt;context:property-override location="classpath:newProjectInfo.properties"/&gt;</pre>
 
 <p>More information on overriding can be found in Spring Reference
 Documentation – <a
@@ -242,6 +242,12 @@ JavaDoc</a>.</p>
 
     <hr />
 
+
+        <!--sharexy code start--><div id='shr_723771'><script type='text/javascript'>(function(w) { if (!w.SharexyWidget) { w.SharexyWidget = {};} if (!w.SharexyWidget.Params) { w.SharexyWidget.Params = {}; }
+        w.SharexyWidget.Params['723771'] = {'code_id':'723771','publisher_key':'undefined','design':'classic','layout_static':'h','type':'st','mode_float':'','size_float':'55','size_static':'55','buzz':'1',
+            'services':['facebook', 'google_plus', 'twitter', 'linkedin', 'reddit', 'buffer', 'pocket', 'print_page'],
+            'url':'current','allways_show_ads':'0','show_ads_sharing':'0','show_ads_cursor':'0','bg_float':'1','bg_color':'#ffffff','labels':'','counters':'0', 'counters_float':'0'} })(window);</script>
+        <script type='text/javascript' src='http://shuttle.sharexy.com/LoaderLite.js'></script></div><a href='http://sharexy.com/'><img src='http://sharexy.com/statpixel.png' style='border: 0' /></a><!--sharexy code end   -->
 
         <!-- Facebook comments -->
                     <div class="fb-comments" data-href="https://www.zizka.ch/pages/programovani/java/howto-substitutions_in_spring_configuration-tutorial.html" data-width="800" data-numposts="5"></div>

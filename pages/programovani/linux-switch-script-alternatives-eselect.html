@@ -90,7 +90,7 @@ Gentoo's <code>eselect</code>)</h2>
 <h3 id="toc-usage">Usage</h3>
 
 <pre
-class="xbrush: bash">$ switch
+class="xbrush: lang-bash brush: bash">$ switch
 $ switch maven 2.2.1
 $ mvn -version
 $ switch maven 2.1.0
@@ -100,12 +100,13 @@ $ mvn -version</pre>
 
 <p>It uses your ~/sw/tools/.links, so update your PATH.</p>
 
-<pre class="xbrush: bash">export PATH=~/sw/tools/.links:$PATH</pre>
+<pre
+class="xbrush: lang-bash brush: bash">export PATH=~/sw/tools/.links:$PATH</pre>
 
 <p>Then (optionally):</p>
 
 <pre
-class="xbrush: bash">$ /mnt/jqa/sw/tools/switch.sh install
+class="xbrush: lang-bash brush: bash">$ /mnt/jqa/sw/tools/switch.sh install
 Creating ~/sw/tools/.links/switch -&gt; /mnt/jqa/sw/tools/switch.sh</pre>
 
 <h3 id="toc-download">Download</h3>
@@ -115,7 +116,7 @@ Creating ~/sw/tools/.links/switch -&gt; /mnt/jqa/sw/tools/switch.sh</pre>
 <h3 id="toc-script-s-code">Script's code</h3>
 
 <pre
-class="xbrush: bash">#####################################################################################################
+class="xbrush: lang-bash brush: bash">#####################################################################################################
 #
 #  This script creates switches between the versions of various tools,
 #  found in /mnt/jqa/sw/tools/ (curently hard-coded).
@@ -351,6 +352,12 @@ if [ "$0" == "switch.sh" ] ; then exit $RET; fi</pre>
 
     <hr />
 
+
+        <!--sharexy code start--><div id='shr_723771'><script type='text/javascript'>(function(w) { if (!w.SharexyWidget) { w.SharexyWidget = {};} if (!w.SharexyWidget.Params) { w.SharexyWidget.Params = {}; }
+        w.SharexyWidget.Params['723771'] = {'code_id':'723771','publisher_key':'undefined','design':'classic','layout_static':'h','type':'st','mode_float':'','size_float':'55','size_static':'55','buzz':'1',
+            'services':['facebook', 'google_plus', 'twitter', 'linkedin', 'reddit', 'buffer', 'pocket', 'print_page'],
+            'url':'current','allways_show_ads':'0','show_ads_sharing':'0','show_ads_cursor':'0','bg_float':'1','bg_color':'#ffffff','labels':'','counters':'0', 'counters_float':'0'} })(window);</script>
+        <script type='text/javascript' src='http://shuttle.sharexy.com/LoaderLite.js'></script></div><a href='http://sharexy.com/'><img src='http://sharexy.com/statpixel.png' style='border: 0' /></a><!--sharexy code end   -->
 
         <!-- Facebook comments -->
                     <div class="fb-comments" data-href="https://www.zizka.ch/pages/programovani/linux-switch-script-alternatives-eselect.html" data-width="800" data-numposts="5"></div>

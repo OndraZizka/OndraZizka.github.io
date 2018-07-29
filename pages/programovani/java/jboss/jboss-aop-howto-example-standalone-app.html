@@ -214,7 +214,7 @@ names end with „Fuel“.</p>
 have two fuel-related properties:</p>
 
 <pre
-class="brush: java">public class Car {
+class="brush: lang-java brush: java">public class Car {
   public int litresOfFuel;
   public int getLitresOfFuel() {    return litresOfFuel;  }
   public void setLitresOfFuel( int litresOfFuel ) {    this.litresOfFuel = litresOfFuel;  }
@@ -235,7 +235,7 @@ class="brush: java">public class Car {
 <p>This is a simple interceptor that will just notify us when triggered.</p>
 
 <pre
-class="brush: java">package cz.zizka.ondra.jbmctest;
+class="brush: lang-java brush: java">package cz.zizka.ondra.jbmctest;
 
 import java.util.logging.Logger;
 import org.jboss.aop.advice.Interceptor;
@@ -270,7 +270,7 @@ AOP documentation</a>.</p>
 <p>The syntax for our purpose stated above would be:</p>
 
 <pre
-class="brush: text">execution(* cz.zizka.ondra.jbmctest.Car-&gt;set*Fuel(..)</pre>
+class="brush: lang-text brush: text">execution(* cz.zizka.ondra.jbmctest.Car-&gt;set*Fuel(..)</pre>
 
 <p>The AOP settings go to a special XML file having <code>&lt;aop&gt;</code> as
 it's root element, and conforming to the JBoss AOP XSD.<br />
@@ -292,7 +292,7 @@ binding it to all methods of the <code>Car</code> class whose name has the
 pattern <code>set*Fuel</code>.</p>
 
 <pre
-class="brush: xml">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+class="brush: lang-xml brush: xml">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;aop&gt;
    &lt;bind pointcut="execution(* cz.zizka.ondra.*-&gt;set*Fuel(..))"&gt;
        &lt;interceptor class="cz.zizka.ondra.jbmctest.FuelInterceptor"/&gt;
@@ -303,7 +303,7 @@ class="brush: xml">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 Microcontainer XML (but I wasn't able to get it working):</p>
 
 <pre
-class="brush: xml">&lt;deployment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+class="brush: lang-xml brush: xml">&lt;deployment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
             xsi:schemaLocation="urn:jboss:bean-deployer:2.0 bean-deployer_2_0.xsd"
             xmlns="urn:jboss:bean-deployer:2.0"
             xmlns:aop="urn:jboss:aop-beans:1.0"&gt;
@@ -325,7 +325,7 @@ href="jboss-microcontainer-howto-example-standalone-app.texy">JBoss
 Microcontainer how-to</a>), add these dependencies to your project:</p>
 
 <pre
-class="brush: xml">&lt;dependencies&gt;
+class="brush: lang-xml brush: xml">&lt;dependencies&gt;
   &lt;dependency&gt;
     &lt;groupId&gt;org.jboss.microcontainer&lt;/groupId&gt;
     &lt;artifactId&gt;jboss-kernel&lt;/artifactId&gt;
@@ -349,7 +349,7 @@ class="brush: xml">&lt;dependencies&gt;
 interceptors when a method is being called.</p>
 
 <pre
-class="brush: xml">&lt;plugins&gt;
+class="brush: lang-xml brush: xml">&lt;plugins&gt;
   &lt;plugin&gt;
     &lt;groupId&gt;org.jboss.maven.plugins&lt;/groupId&gt;
     &lt;artifactId&gt;maven-jbossaop-plugin&lt;/artifactId&gt;
@@ -371,7 +371,7 @@ class="brush: xml">&lt;plugins&gt;
 <h3 id="toc-test-code">Test code</h3>
 
 <pre
-class="brush: java">public class JBossAopSampleApp {
+class="brush: lang-java brush: java">public class JBossAopSampleApp {
 
   public static void main( String[] args ) throws Throwable
   {
@@ -393,7 +393,7 @@ class="brush: java">public class JBossAopSampleApp {
 invoked.</p>
 
 <pre
-class="brush: text">I have a garage: Garage with a car: Car "Red Devil" with 0 litres of fuel.
+class="brush: lang-text brush: text">I have a garage: Garage with a car: Car "Red Devil" with 0 litres of fuel.
 16.11.2009 11:42:47 FuelInterceptor invoke INFO: The fuel is being changed for the car 'Red Devil'.
 16.11.2009 11:42:47 FuelInterceptor invoke INFO: The fuel is being changed for the car 'Red Devil'.
 I have a garage: Garage with a car: Car "Red Devil" with 2 litres of fuel.</pre>
@@ -410,6 +410,12 @@ href="download/JBossAOPsample.zip">JBossAOPsample­.zip</a></p>
 
     <hr />
 
+
+        <!--sharexy code start--><div id='shr_723771'><script type='text/javascript'>(function(w) { if (!w.SharexyWidget) { w.SharexyWidget = {};} if (!w.SharexyWidget.Params) { w.SharexyWidget.Params = {}; }
+        w.SharexyWidget.Params['723771'] = {'code_id':'723771','publisher_key':'undefined','design':'classic','layout_static':'h','type':'st','mode_float':'','size_float':'55','size_static':'55','buzz':'1',
+            'services':['facebook', 'google_plus', 'twitter', 'linkedin', 'reddit', 'buffer', 'pocket', 'print_page'],
+            'url':'current','allways_show_ads':'0','show_ads_sharing':'0','show_ads_cursor':'0','bg_float':'1','bg_color':'#ffffff','labels':'','counters':'0', 'counters_float':'0'} })(window);</script>
+        <script type='text/javascript' src='http://shuttle.sharexy.com/LoaderLite.js'></script></div><a href='http://sharexy.com/'><img src='http://sharexy.com/statpixel.png' style='border: 0' /></a><!--sharexy code end   -->
 
         <!-- Facebook comments -->
                     <div class="fb-comments" data-href="https://www.zizka.ch/pages/programovani/java/jboss/jboss-aop-howto-example-standalone-app.html" data-width="800" data-numposts="5"></div>

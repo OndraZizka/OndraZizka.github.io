@@ -125,7 +125,7 @@ framework</a>).</p>
 zmínit, proto se místo DTD použije definice přes <code>xmlns:aop</code>.</p>
 
 <pre
-class="brush: xml">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+class="brush: lang-xml brush: xml">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;beans xmlns="http://www.springframework.org/schema/beans"
      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
      xmlns:aop="http://www.springframework.org/schema/aop"
@@ -163,7 +163,7 @@ class="brush: xml">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 </ul>
 
 <pre
-class="brush: java">aoptest.NejakaTrida objekt = new aoptest.NejakaTrida();
+class="brush: lang-java brush: java">aoptest.NejakaTrida objekt = new aoptest.NejakaTrida();
 objekt.metoda();  // &lt;--- ZDE AOP NEZAFUNGUJE!</pre>
 
 <ul>
@@ -175,7 +175,7 @@ objekt.metoda();  // &lt;--- ZDE AOP NEZAFUNGUJE!</pre>
 <p>Celý kód pro rozjetí AOP tedy vypadá takto:</p>
 
 <pre
-class="brush: java">ApplicationContext ac = new ClassPathXmlApplicationContext("properties/SpringBeans.xml");
+class="brush: lang-java brush: java">ApplicationContext ac = new ClassPathXmlApplicationContext("properties/SpringBeans.xml");
 aoptest.NejakaTrida objekt = (aoptest.NejakaTrida) new aoptest.NejakaTrida();
 objekt.metoda();  // &lt;--- zde AOP zavolá napřed metodu aoptest.AopTestAdviceBean::test().</pre>
 
@@ -270,6 +270,12 @@ použitelné zdroje:</h4>
 
     <hr />
 
+
+        <!--sharexy code start--><div id='shr_723771'><script type='text/javascript'>(function(w) { if (!w.SharexyWidget) { w.SharexyWidget = {};} if (!w.SharexyWidget.Params) { w.SharexyWidget.Params = {}; }
+        w.SharexyWidget.Params['723771'] = {'code_id':'723771','publisher_key':'undefined','design':'classic','layout_static':'h','type':'st','mode_float':'','size_float':'55','size_static':'55','buzz':'1',
+            'services':['facebook', 'google_plus', 'twitter', 'linkedin', 'reddit', 'buffer', 'pocket', 'print_page'],
+            'url':'current','allways_show_ads':'0','show_ads_sharing':'0','show_ads_cursor':'0','bg_float':'1','bg_color':'#ffffff','labels':'','counters':'0', 'counters_float':'0'} })(window);</script>
+        <script type='text/javascript' src='http://shuttle.sharexy.com/LoaderLite.js'></script></div><a href='http://sharexy.com/'><img src='http://sharexy.com/statpixel.png' style='border: 0' /></a><!--sharexy code end   -->
 
         <!-- Facebook comments -->
                     <div class="fb-comments" data-href="https://www.zizka.ch/pages/programovani/java/navod-spring-aop-zacatky.html" data-width="800" data-numposts="5"></div>

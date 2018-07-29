@@ -104,7 +104,7 @@ href="http://www.php.net/manual/en/regexp.reference.recursive.php">http://www.ph
 I need it for this expression:</p>
 
 <pre
-class="regex">(?:mUi)^/--++ *+(.*)(?: *(?&lt;= |^)\\.((?:\\([^)\\n]+\\)|\\[[^\\]\\n]+\\]|\\{[^}\\n]+\\}|&lt;&gt;|&gt;|=|&lt;){1,4}?))?$((?:\\n.*+)*)(?:\\n(?0)|\\n\\\\--.*$|\\z)</pre>
+class="lang-regex brush: regex">(?:mUi)^/--++ *+(.*)(?: *(?&lt;= |^)\\.((?:\\([^)\\n]+\\)|\\[[^\\]\\n]+\\]|\\{[^}\\n]+\\}|&lt;&gt;|&gt;|=|&lt;){1,4}?))?$((?:\\n.*+)*)(?:\\n(?0)|\\n\\\\--.*$|\\z)</pre>
 
 <p>JDK does not support it, ORO does neither, nor Stevesoft Pat does.</p>
 
@@ -127,7 +127,7 @@ Regexp PERL compatible? ORO claims so, Regexp does not.</p>
 href="http://php.net/manual/en/function.preg-match-all.php">PHP's preg_mat­ch_all</a></p>
 
 <pre
-class="php">// parse loop
+class="lang-php brush: php">// parse loop
 $matches = array();
 $priority = 0;
 foreach ($this-&gt;patterns as $name =&gt; $pattern)
@@ -250,7 +250,7 @@ higher priority? <em>No, the other way.</em></p>
 	rovnou jako referenci funkce.</strong></p>
 
 	<pre
-	class="php">public class RegexpInfo {
+	class="lang-php brush: php">public class RegexpInfo {
 
         public String name;
         public String perlRegexp;
@@ -271,7 +271,7 @@ higher priority? <em>No, the other way.</em></p>
 	v PHP).</strong></p>
 
 	<pre
-	class="php">class ParserMatchInfo implements Comparable&lt;ParserMatchInfo&gt;
+	class="lang-php brush: php">class ParserMatchInfo implements Comparable&lt;ParserMatchInfo&gt;
 {
         public final RegexpInfo pattern;
         public final List&lt;MatchWithOffset&gt; groups;
@@ -292,7 +292,7 @@ higher priority? <em>No, the other way.</em></p>
 	Aneb:</p>
 
 	<pre
-	class="php">preg_match_all( $pattern['pattern'],  $text,  $ms,  PREG_SET_ORDER );
+	class="lang-php brush: php">preg_match_all( $pattern['pattern'],  $text,  $ms,  PREG_SET_ORDER );
 $matches[0];    // --&gt; First match
 $matches[0][0]; // --&gt; Group - matched text of the whole first match.
 $matches[0][1]; // --&gt; First sub-group of the first match.</pre>
@@ -417,6 +417,12 @@ zatím jen pro PHP.</p>
 
     <hr />
 
+
+        <!--sharexy code start--><div id='shr_723771'><script type='text/javascript'>(function(w) { if (!w.SharexyWidget) { w.SharexyWidget = {};} if (!w.SharexyWidget.Params) { w.SharexyWidget.Params = {}; }
+        w.SharexyWidget.Params['723771'] = {'code_id':'723771','publisher_key':'undefined','design':'classic','layout_static':'h','type':'st','mode_float':'','size_float':'55','size_static':'55','buzz':'1',
+            'services':['facebook', 'google_plus', 'twitter', 'linkedin', 'reddit', 'buffer', 'pocket', 'print_page'],
+            'url':'current','allways_show_ads':'0','show_ads_sharing':'0','show_ads_cursor':'0','bg_float':'1','bg_color':'#ffffff','labels':'','counters':'0', 'counters_float':'0'} })(window);</script>
+        <script type='text/javascript' src='http://shuttle.sharexy.com/LoaderLite.js'></script></div><a href='http://sharexy.com/'><img src='http://sharexy.com/statpixel.png' style='border: 0' /></a><!--sharexy code end   -->
 
         <!-- Facebook comments -->
                     <div class="fb-comments" data-href="https://www.zizka.ch/pages/programovani/java/texy_java_implementation.html" data-width="800" data-numposts="5"></div>

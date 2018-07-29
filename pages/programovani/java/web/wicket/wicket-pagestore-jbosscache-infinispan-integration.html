@@ -102,7 +102,7 @@ to have to sort it in Lucene.</p>
 <h3 id="toc-how-to-use">How to use</h3>
 
 <pre
-class="brush: java">@Override
+class="brush: lang-java brush: java">@Override
 protected ISessionStore newSessionStore() {
   return new SecondLevelCacheSessionStore(this, new JBossCachePageStore());
 }</pre>
@@ -110,7 +110,7 @@ protected ISessionStore newSessionStore() {
 <h3 id="toc-pagestore-implementation">PageStore implementation</h3>
 
 <pre
-class="brush: java">package cz.dw.test.jbosscache;
+class="brush: lang-java brush: java">package cz.dw.test.jbosscache;
 
 import java.io.IOException;
 import java.util.List;
@@ -344,7 +344,7 @@ public class JBossCachePageStore extends AbstractPageStore implements IPageStore
 <h3 id="toc-dependencies-maven">Dependencies (Maven)</h3>
 
 <pre
-class="brush: xml">&lt;repositories&gt;
+class="brush: lang-xml brush: xml">&lt;repositories&gt;
   &lt;repository&gt;&lt;id&gt;jboss&lt;/id&gt;&lt;url&gt;https://repository.jboss.org/nexus/content/groups/public&lt;/url&gt;&lt;/repository&gt;
 &lt;/repositories&gt;
 
@@ -366,7 +366,7 @@ href="https://repository.jboss.org/nexus/content/groups/public/org/infinispan/">
 Maven repo</a></p>
 
 <pre
-class="brush: xml">&lt;dependency&gt;
+class="brush: lang-xml brush: xml">&lt;dependency&gt;
   &lt;groupId&gt;org.infinispan&lt;/groupId&gt;
   &lt;artifactId&gt;infinispan-cachestore-jdbm&lt;/artifactId&gt;
   &lt;version&gt;4.0.0.FINAL&lt;/version&gt;
@@ -375,7 +375,7 @@ class="brush: xml">&lt;dependency&gt;
 <p>Not used (yet?):</p>
 
 <pre
-class="brush: xml">&lt;dependency&gt;
+class="brush: lang-xml brush: xml">&lt;dependency&gt;
   &lt;groupId&gt;org.infinispan&lt;/groupId&gt;
   &lt;artifactId&gt;infinispan-tree&lt;/artifactId&gt;
   &lt;version&gt;4.0.0.FINAL&lt;/version&gt;
@@ -388,6 +388,12 @@ class="brush: xml">&lt;dependency&gt;
 
     <hr />
 
+
+        <!--sharexy code start--><div id='shr_723771'><script type='text/javascript'>(function(w) { if (!w.SharexyWidget) { w.SharexyWidget = {};} if (!w.SharexyWidget.Params) { w.SharexyWidget.Params = {}; }
+        w.SharexyWidget.Params['723771'] = {'code_id':'723771','publisher_key':'undefined','design':'classic','layout_static':'h','type':'st','mode_float':'','size_float':'55','size_static':'55','buzz':'1',
+            'services':['facebook', 'google_plus', 'twitter', 'linkedin', 'reddit', 'buffer', 'pocket', 'print_page'],
+            'url':'current','allways_show_ads':'0','show_ads_sharing':'0','show_ads_cursor':'0','bg_float':'1','bg_color':'#ffffff','labels':'','counters':'0', 'counters_float':'0'} })(window);</script>
+        <script type='text/javascript' src='http://shuttle.sharexy.com/LoaderLite.js'></script></div><a href='http://sharexy.com/'><img src='http://sharexy.com/statpixel.png' style='border: 0' /></a><!--sharexy code end   -->
 
         <!-- Facebook comments -->
                     <div class="fb-comments" data-href="https://www.zizka.ch/pages/programovani/java/web/wicket/wicket-pagestore-jbosscache-infinispan-integration.html" data-width="800" data-numposts="5"></div>

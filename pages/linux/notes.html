@@ -86,17 +86,17 @@ Centos 5.5 – requires Python 2.6</a></p>
 <p>Mapovani vzdaleneho portu na vzdalenem stroji na lokalni port:</p>
 
 <pre
-class="brush: bash">ssh -L localPort:TargetPC:RemotePort PCsSSHaccountem</pre>
+class="brush: lang-bash brush: bash">ssh -L localPort:TargetPC:RemotePort PCsSSHaccountem</pre>
 
 <p>Zpristupneni lokalniho portu na zvoleny port vzdaleny:</p>
 
 <pre
-class="brush: bash">ssh -R VzdalenyPort:LokalniPC:LokalniPort PCsSSHaccountem</pre>
+class="brush: lang-bash brush: bash">ssh -R VzdalenyPort:LokalniPC:LokalniPort PCsSSHaccountem</pre>
 
 <h3 id="toc-bash-string-operations">Bash string operations</h3>
 
 <pre
-class="brush: bash">${parameter:-word}   # Provide a default if parameter is unset or null.
+class="brush: lang-bash brush: bash">${parameter:-word}   # Provide a default if parameter is unset or null.
 
 ${variable%pattern}   # Trim the shortest match from the end.
 ${variable##pattern}  # Trim the longest match from the beginning.
@@ -106,7 +106,7 @@ ${variable#pattern}   # Trim the shortest match from the beginning.</pre>
 <h3 id="toc-current-script">Current script</h3>
 
 <pre
-class=".plain">scriptPath="$(cd "${0%/*}" 2&gt;/dev/null; echo "$PWD"/"${0##*/}")"
+class="lang-.plain brush: .plain">scriptPath="$(cd "${0%/*}" 2&gt;/dev/null; echo "$PWD"/"${0##*/}")"
 scriptDir=`dirname "$scriptPath"`
 
 JAVA=/mnt/jqa/jdk1.6.0_18-x86_64/bin/java
@@ -160,7 +160,7 @@ $JAVA -cp $scriptDir/JiraBot-1.1.04.jar:`ls $scriptDir/lib/*.jar | awk '{ORS=":"
 <h3 id="toc-resolve-softlinks">Resolve softlinks</h3>
 
 <pre
-class="brush: bash"># resolve links - $0 may be a softlink
+class="brush: lang-bash brush: bash"># resolve links - $0 may be a softlink
 PRG="$0"
 
 while [ -h "$PRG" ] ; do
@@ -176,7 +176,7 @@ done</pre>
 <p>(from Tomcat's star­tup.sh)</p>
 
 <pre
-class="brush: bash">##  Resolve a softlink.
+class="brush: lang-bash brush: bash">##  Resolve a softlink.
 function resolve(){
 
   PRG="$1"
@@ -226,16 +226,16 @@ fi</pre>
 <h3 id="toc-snippets">Snippets</h3>
 
 <pre
-class=".plain">cvs -d:gserver:cvs.devel.redhat.com:/cvs/dist checkout httpd</pre>
+class="lang-.plain brush: .plain">cvs -d:gserver:cvs.devel.redhat.com:/cvs/dist checkout httpd</pre>
 
-<pre class=".plain">tcpdump -w snap -s2000 -i eth0</pre>
+<pre class="lang-.plain brush: .plain">tcpdump -w snap -s2000 -i eth0</pre>
 
 <pre
-class=".plain">keytool -list -keystore /qa/home/ozizka/opt/jdk1.6.0_18/jre/lib/security/cacerts
+class="lang-.plain brush: .plain">keytool -list -keystore /qa/home/ozizka/opt/jdk1.6.0_18/jre/lib/security/cacerts
 keytool -import -alias support.stage.redhat.com -keystore /qa/home/ozizka/opt/jdk1.6.0_18/jre/lib/security/cacerts -file stage-cert.pem</pre>
 
 <pre
-class=".plain"># Debian root
+class="lang-.plain brush: .plain"># Debian root
 PS1='\[\e[1m\]\[\e[31m\]\u@\h \[\e[0m\]\[\e[32m\][\[\e[33m\]\t\[\e[32m\]]\[\e[33m\]\[\e[1m\] \w\[\e[32m\]\[\e[0m\] \$ '
 
 # Debian:
@@ -256,6 +256,12 @@ export PATH=$JAVA_HOME/bin:$PATH</pre>
 
     <hr />
 
+
+        <!--sharexy code start--><div id='shr_723771'><script type='text/javascript'>(function(w) { if (!w.SharexyWidget) { w.SharexyWidget = {};} if (!w.SharexyWidget.Params) { w.SharexyWidget.Params = {}; }
+        w.SharexyWidget.Params['723771'] = {'code_id':'723771','publisher_key':'undefined','design':'classic','layout_static':'h','type':'st','mode_float':'','size_float':'55','size_static':'55','buzz':'1',
+            'services':['facebook', 'google_plus', 'twitter', 'linkedin', 'reddit', 'buffer', 'pocket', 'print_page'],
+            'url':'current','allways_show_ads':'0','show_ads_sharing':'0','show_ads_cursor':'0','bg_float':'1','bg_color':'#ffffff','labels':'','counters':'0', 'counters_float':'0'} })(window);</script>
+        <script type='text/javascript' src='http://shuttle.sharexy.com/LoaderLite.js'></script></div><a href='http://sharexy.com/'><img src='http://sharexy.com/statpixel.png' style='border: 0' /></a><!--sharexy code end   -->
 
         <!-- Facebook comments -->
                     <div class="fb-comments" data-href="https://www.zizka.ch/pages/linux/notes.html" data-width="800" data-numposts="5"></div>

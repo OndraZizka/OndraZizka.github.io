@@ -100,7 +100,7 @@ href="http://www.jboss.org/file-access/default/members/jbossmc/freezone/docs/2.0
 Micontainer User Guide</a>. Here is the shortened version of the profile:</p>
 
 <pre
-class="brush: xml">&lt;profile&gt;
+class="brush: lang-xml brush: xml">&lt;profile&gt;
   &lt;id&gt;jboss.repository&lt;/id&gt;
     &lt;activation&gt; &lt;property&gt; &lt;name&gt;!jboss.repository.off&lt;/name&gt; &lt;/property&gt; &lt;/activation&gt;
   &lt;repositories&gt;
@@ -133,7 +133,7 @@ class="brush: xml">&lt;profile&gt;
 </dependency>
 -->
 <pre
-class="brush: xml">&lt;dependency&gt;
+class="brush: lang-xml brush: xml">&lt;dependency&gt;
   &lt;groupId&gt;org.jboss.microcontainer&lt;/groupId&gt;
   &lt;artifactId&gt;jboss-kernel&lt;/artifactId&gt;
   &lt;version&gt;2.0.9.GA&lt;/version&gt;
@@ -173,7 +173,7 @@ to use with JBoss Microcontainer</h3>
 <p>As written above, any class can be used.</p>
 
 <pre
-class="brush: java">package cz.zizka.ondra.jbmctest;
+class="brush: lang-java brush: java">package cz.zizka.ondra.jbmctest;
 
 public class Car
 {
@@ -205,7 +205,7 @@ in JBoss Microcontainer</h3>
 resources dir (Maven's default is <code>src/main/resources</code>).</p>
 
 <pre
-class="brush: xml">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+class="brush: lang-xml brush: xml">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;deployment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
             xsi:schemaLocation="urn:jboss:bean-deployer:2.0 bean-deployer_2_0.xsd"
             xmlns="urn:jboss:bean-deployer:2.0"&gt;
@@ -224,7 +224,7 @@ would be used.</p>
 <p>An alternative way is to call the constructor:</p>
 
 <pre
-class="brush: xml">&lt;bean name="myCar" class="cz.zizka.ondra.jbmctest.Car"&gt;
+class="brush: lang-xml brush: xml">&lt;bean name="myCar" class="cz.zizka.ondra.jbmctest.Car"&gt;
  &lt;constructor&gt;
      &lt;parameter&gt;Red Devil&lt;/parameter&gt;
      &lt;parameter&gt;37&lt;/parameter&gt;
@@ -236,7 +236,7 @@ class="brush: xml">&lt;bean name="myCar" class="cz.zizka.ondra.jbmctest.Car"&gt;
 <p>To attach one object to the other, use <code>&lt;inject&gt;</code>:</p>
 
 <pre
-class="brush: java">package cz.zizka.ondra.jbmctest;
+class="brush: lang-java brush: java">package cz.zizka.ondra.jbmctest;
 
 public class Garage
 {
@@ -250,7 +250,7 @@ public class Garage
 }</pre>
 
 <pre
-class="brush: xml">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+class="brush: lang-xml brush: xml">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;deployment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
             xsi:schemaLocation="urn:jboss:bean-deployer:2.0 bean-deployer_2_0.xsd"
             xmlns="urn:jboss:bean-deployer:2.0"&gt;
@@ -271,7 +271,7 @@ id="toc-creating-jboss-microcontainer-object-in-your-application-bootstraping">C
 JBoss Microcontainer object in your application (bootstraping)</h3>
 
 <pre
-class="brush: java">public class App {
+class="brush: lang-java brush: java">public class App {
 
   public static void main( String[] args ) throws Throwable
   {
@@ -335,6 +335,12 @@ loads all <code>jboss-beans.xml</code> from the classpath.</p>
 
     <hr />
 
+
+        <!--sharexy code start--><div id='shr_723771'><script type='text/javascript'>(function(w) { if (!w.SharexyWidget) { w.SharexyWidget = {};} if (!w.SharexyWidget.Params) { w.SharexyWidget.Params = {}; }
+        w.SharexyWidget.Params['723771'] = {'code_id':'723771','publisher_key':'undefined','design':'classic','layout_static':'h','type':'st','mode_float':'','size_float':'55','size_static':'55','buzz':'1',
+            'services':['facebook', 'google_plus', 'twitter', 'linkedin', 'reddit', 'buffer', 'pocket', 'print_page'],
+            'url':'current','allways_show_ads':'0','show_ads_sharing':'0','show_ads_cursor':'0','bg_float':'1','bg_color':'#ffffff','labels':'','counters':'0', 'counters_float':'0'} })(window);</script>
+        <script type='text/javascript' src='http://shuttle.sharexy.com/LoaderLite.js'></script></div><a href='http://sharexy.com/'><img src='http://sharexy.com/statpixel.png' style='border: 0' /></a><!--sharexy code end   -->
 
         <!-- Facebook comments -->
                     <div class="fb-comments" data-href="https://www.zizka.ch/pages/programovani/java/jboss/jboss-microcontainer-howto-example-standalone-app.html" data-width="800" data-numposts="5"></div>

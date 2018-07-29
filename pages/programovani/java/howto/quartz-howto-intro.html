@@ -83,7 +83,7 @@
 <p><code>pom.xml</code>:</p>
 
 <pre
-class="brush: xml">&lt;dependency&gt;
+class="brush: lang-xml brush: xml">&lt;dependency&gt;
   &lt;groupId&gt;org.quartz-scheduler&lt;/groupId&gt;
   &lt;artifactId&gt;quartz&lt;/artifactId&gt;
   &lt;version&gt;1.8.0&lt;/version&gt;
@@ -110,7 +110,7 @@ href="http://www.quartz-scheduler.org/docs/quick_start_guide.html">http://www.qu
 <p>Should end up on classpath in <code>org/quartz/quartz.properties</code>.</p>
 
 <pre
-class="brush: properties">org.quartz.scheduler.instanceName = MyScheduler
+class="brush: lang-properties brush: properties">org.quartz.scheduler.instanceName = MyScheduler
 org.quartz.scheduler.instanceId = 1
 org.quartz.scheduler.rmi.export = false
 org.quartz.scheduler.rmi.proxy = false
@@ -123,7 +123,7 @@ org.quartz.jobStore.class = org.quartz.simpl.RAMJobStore</pre>
 <h3 id="toc-java-code">Java code</h3>
 
 <pre
-class="brush: java">import org.quartz.JobDetail;
+class="brush: lang-java brush: java">import org.quartz.JobDetail;
 import org.quartz.Scheduler;
 import org.quartz.SchedulerException;
 import org.quartz.SimpleTrigger;
@@ -168,7 +168,7 @@ public class App
 run, i.e. 11 times in our example.</p>
 
 <pre
-class="brush: java">package cz.dynawest.quartztry.quartztry;
+class="brush: lang-java brush: java">package cz.dynawest.quartztry.quartztry;
 
 import org.quartz.Job;
 import org.quartz.JobExecutionContext;
@@ -199,7 +199,7 @@ public class MyJobClass implements Job {
 <p>If you decide so, put this on classpath to <code>log4.properties</code>.</p>
 
 <pre
-class="brush: properties">log4j.rootLogger=DEBUG, stdout, file
+class="brush: lang-properties brush: properties">log4j.rootLogger=DEBUG, stdout, file
 
 log4j.appender.stdout=org.apache.log4j.ConsoleAppender
 log4j.appender.stdout.layout=org.apache.log4j.PatternLayout
@@ -213,7 +213,7 @@ log4j.appender.file.layout.ConversionPattern=%d %-5r %-5p [%c] (%t:%x) %m%n</pre
 <h3 id="toc-output">Output</h3>
 
 <pre
-class="brush: plain">2010-05-02 17:47:37,281 0     INFO  [org.quartz.core.SchedulerSignalerImpl] (main:) Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+class="brush: lang-plain brush: plain">2010-05-02 17:47:37,281 0     INFO  [org.quartz.core.SchedulerSignalerImpl] (main:) Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
 2010-05-02 17:47:37,281 0     INFO  [org.quartz.core.QuartzScheduler] (main:) Quartz Scheduler v.1.8.0 created.
 2010-05-02 17:47:37,281 0     INFO  [org.quartz.simpl.RAMJobStore] (main:) RAMJobStore initialized.
 2010-05-02 17:47:37,281 0     INFO  [org.quartz.core.QuartzScheduler] (main:) Scheduler meta-data: Quartz Scheduler (v1.8.0) 'MyScheduler' with instanceId '1'
@@ -286,6 +286,12 @@ EXECUTED 11 times!
 
     <hr />
 
+
+        <!--sharexy code start--><div id='shr_723771'><script type='text/javascript'>(function(w) { if (!w.SharexyWidget) { w.SharexyWidget = {};} if (!w.SharexyWidget.Params) { w.SharexyWidget.Params = {}; }
+        w.SharexyWidget.Params['723771'] = {'code_id':'723771','publisher_key':'undefined','design':'classic','layout_static':'h','type':'st','mode_float':'','size_float':'55','size_static':'55','buzz':'1',
+            'services':['facebook', 'google_plus', 'twitter', 'linkedin', 'reddit', 'buffer', 'pocket', 'print_page'],
+            'url':'current','allways_show_ads':'0','show_ads_sharing':'0','show_ads_cursor':'0','bg_float':'1','bg_color':'#ffffff','labels':'','counters':'0', 'counters_float':'0'} })(window);</script>
+        <script type='text/javascript' src='http://shuttle.sharexy.com/LoaderLite.js'></script></div><a href='http://sharexy.com/'><img src='http://sharexy.com/statpixel.png' style='border: 0' /></a><!--sharexy code end   -->
 
         <!-- Facebook comments -->
                     <div class="fb-comments" data-href="https://www.zizka.ch/pages/programovani/java/howto/quartz-howto-intro.html" data-width="800" data-numposts="5"></div>

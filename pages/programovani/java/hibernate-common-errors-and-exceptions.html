@@ -107,7 +107,7 @@ very long line, or at the end of stack trace. So don't panic when you see
 something like:</p>
 
 <pre
-class="stacktrace">org.springframework.orm.hibernate3.HibernateJdbcException: JDBC exception on Hibernate data access: SQLException for SQL</pre>
+class="lang-stacktrace brush: stacktrace">org.springframework.orm.hibernate3.HibernateJdbcException: JDBC exception on Hibernate data access: SQLException for SQL</pre>
 
 <p>Current habit of handlig exceptions is to add it's <code>getMessage()</code>
 at the end of the message of the exception to be thrown. This way, when the
@@ -172,7 +172,7 @@ the relation.</p>
 <p>Let's see the example:</p>
 
 <pre
-class="brush: java">@Entity
+class="brush: lang-java brush: java">@Entity
 class Order
 
   @OneToMany( ... )
@@ -202,14 +202,14 @@ in handling of the transaction.</h4>
 <p><strong>Option 1:</strong> <code>getReference()</code></p>
 
 <pre
-class="brush: java">public void remove( Item item ) {
+class="brush: lang-java brush: java">public void remove( Item item ) {
   this.em.remove( this.em.getReference( Item.class, item.getId() ) );
 }</pre>
 
 <p><strong>Option 2:</strong> <code>merge()</code></p>
 
 <pre
-class="brush: java">public void remove( Item item ) {
+class="brush: lang-java brush: java">public void remove( Item item ) {
   this.em.remove( this.em.merge( Item.class, item.getId() ) );
 }</pre>
 
@@ -230,7 +230,8 @@ method.</p>
 id="toc-common-exceptions-i-ve-seen-when-when-learning-jpa-with-hibernate">Common
 Exceptions I've seen when when learning JPA with Hibernate</h3>
 
-<pre>Caused by: org.hibernate.exception.GenericJDBCException: could not insert: [cz.dynawest.isir.entities.User]
+<pre
+class="lang-text brush: text">Caused by: org.hibernate.exception.GenericJDBCException: could not insert: [cz.dynawest.isir.entities.User]
 Caused by: java.sql.SQLException: Field 'created' doesn't have a default value</pre>
 
 <p>This one is easy – probably you have a NOT NULL column, but haven't
@@ -238,7 +239,8 @@ annotated it – so Hibernate, when it sees <code>null</code> value, it does
 not include the column in the <code>INSERT</code> query. Add
 <code>@Column( nullable=false )</code> to the mentioned property.</p>
 
-<pre class="brush: java">@Column( nullable=false )
+<pre
+class="brush: lang-java brush: java">@Column( nullable=false )
 private Date created;</pre>
 
 <p>This will not solve the problem, but at least you will catch it sooner –
@@ -248,7 +250,7 @@ the message saying which property you did not set.</p>
 <p>Full stack trace:</p>
 
 <pre
-class="java .small">org.springframework.orm.hibernate3.HibernateJdbcException: JDBC exception on Hibernate data access: SQLException for SQL [insert into isir_sled_users (aktivace_klic, mail, pass) values (?, ?, ?)]; SQL state [HY000]; error code [1364]; could not insert: [cz.dynawest.isir.entities.User]; nested exception is org.hibernate.exception.GenericJDBCException: could not insert: [cz.dynawest.isir.entities.User]
+class="lang-java .small brush: java .small">org.springframework.orm.hibernate3.HibernateJdbcException: JDBC exception on Hibernate data access: SQLException for SQL [insert into isir_sled_users (aktivace_klic, mail, pass) values (?, ?, ?)]; SQL state [HY000]; error code [1364]; could not insert: [cz.dynawest.isir.entities.User]; nested exception is org.hibernate.exception.GenericJDBCException: could not insert: [cz.dynawest.isir.entities.User]
         at org.springframework.orm.hibernate3.SessionFactoryUtils.convertHibernateAccessException(SessionFactoryUtils.java:642)
         at org.springframework.orm.jpa.vendor.HibernateJpaDialect.translateExceptionIfPossible(HibernateJpaDialect.java:95)
         at org.springframework.dao.support.DataAccessUtils.translateIfNecessary(DataAccessUtils.java:212)
@@ -317,6 +319,12 @@ Caused by: java.sql.SQLException: Field 'created' doesn't have a default value
 
     <hr />
 
+
+        <!--sharexy code start--><div id='shr_723771'><script type='text/javascript'>(function(w) { if (!w.SharexyWidget) { w.SharexyWidget = {};} if (!w.SharexyWidget.Params) { w.SharexyWidget.Params = {}; }
+        w.SharexyWidget.Params['723771'] = {'code_id':'723771','publisher_key':'undefined','design':'classic','layout_static':'h','type':'st','mode_float':'','size_float':'55','size_static':'55','buzz':'1',
+            'services':['facebook', 'google_plus', 'twitter', 'linkedin', 'reddit', 'buffer', 'pocket', 'print_page'],
+            'url':'current','allways_show_ads':'0','show_ads_sharing':'0','show_ads_cursor':'0','bg_float':'1','bg_color':'#ffffff','labels':'','counters':'0', 'counters_float':'0'} })(window);</script>
+        <script type='text/javascript' src='http://shuttle.sharexy.com/LoaderLite.js'></script></div><a href='http://sharexy.com/'><img src='http://sharexy.com/statpixel.png' style='border: 0' /></a><!--sharexy code end   -->
 
         <!-- Facebook comments -->
                     <div class="fb-comments" data-href="https://www.zizka.ch/pages/programovani/java/hibernate-common-errors-and-exceptions.html" data-width="800" data-numposts="5"></div>

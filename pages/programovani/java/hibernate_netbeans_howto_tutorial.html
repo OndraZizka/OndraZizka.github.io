@@ -221,7 +221,7 @@ checked few things – let's see at the MySQL's general query log file (if
 enabled):</p>
 
 <pre
-class="log">14 Connect     domov@localhost on domov
+class="lang-log brush: log">14 Connect     domov@localhost on domov
 14 Query       SHOW VARIABLES WHERE Variable_name ='language' OR ... OR Variable_name = 'init_connect'
 14 Query       SHOW COLLATION
 14 Query       SET character_set_results = NULL
@@ -270,7 +270,7 @@ object of interest for you.</p>
 </ul>
 
 <pre
-class="brush: java">// Use persistence.xml configuration
+class="brush: lang-java brush: java">// Use persistence.xml configuration
 EntityManagerFactory emf = Persistence.createEntityManagerFactory("ISIR_PU");
 EntityManager em = emf.createEntityManager(); // Retrieve an application managed entity manager
 
@@ -301,7 +301,7 @@ begin the transaction: <code>transaction.begin();</code> Move under the
 The final code will look like this:</p>
 
 <pre
-class="brush: java">// Use persistence.xml configuration
+class="brush: lang-java brush: java">// Use persistence.xml configuration
 EntityManagerFactory emf = Persistence.createEntityManagerFactory("ISIR_PU");
 EntityManager em = emf.createEntityManager(); // Retrieve an application managed entity manager
 
@@ -327,6 +327,12 @@ mapping.</p>
 
     <hr />
 
+
+        <!--sharexy code start--><div id='shr_723771'><script type='text/javascript'>(function(w) { if (!w.SharexyWidget) { w.SharexyWidget = {};} if (!w.SharexyWidget.Params) { w.SharexyWidget.Params = {}; }
+        w.SharexyWidget.Params['723771'] = {'code_id':'723771','publisher_key':'undefined','design':'classic','layout_static':'h','type':'st','mode_float':'','size_float':'55','size_static':'55','buzz':'1',
+            'services':['facebook', 'google_plus', 'twitter', 'linkedin', 'reddit', 'buffer', 'pocket', 'print_page'],
+            'url':'current','allways_show_ads':'0','show_ads_sharing':'0','show_ads_cursor':'0','bg_float':'1','bg_color':'#ffffff','labels':'','counters':'0', 'counters_float':'0'} })(window);</script>
+        <script type='text/javascript' src='http://shuttle.sharexy.com/LoaderLite.js'></script></div><a href='http://sharexy.com/'><img src='http://sharexy.com/statpixel.png' style='border: 0' /></a><!--sharexy code end   -->
 
         <!-- Facebook comments -->
                     <div class="fb-comments" data-href="https://www.zizka.ch/pages/programovani/java/hibernate_netbeans_howto_tutorial.html" data-width="800" data-numposts="5"></div>

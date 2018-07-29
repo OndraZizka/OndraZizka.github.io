@@ -97,7 +97,7 @@ pomocí konf. souboru (standardně log4j.properties někde v classpath).</p>
 <p>Zde je ukázka konfiguračního souboru pro log4j:</p>
 
 <pre
-class="java.properties">log4j.rootLogger=WARN, stdout, file
+class="lang-java.properties brush: java.properties">log4j.rootLogger=WARN, stdout, file
 
 log4j.appender.stdout=org.apache.log4j.ConsoleAppender
 log4j.appender.stdout.layout=org.apache.log4j.PatternLayout
@@ -128,7 +128,7 @@ výpisy obsahů objektů.</p>
 <p>Ukázka konfiguračního souboru pro <code>java.util.logging</code>:</p>
 
 <pre
-class="java.properties"># Handlers
+class="lang-java.properties brush: java.properties"># Handlers
 handlers = java.util.logging.ConsoleHandler java.util.logging.FileHandler
 
 
@@ -159,14 +159,15 @@ způsoby:</p>
 	<code>java.util.logging.config.file</code>:</li>
 </ol>
 
-<pre class="bash">java -Djava.util.logging.config.file=logging.properties</pre>
+<pre
+class="lang-bash brush: bash">java -Djava.util.logging.config.file=logging.properties</pre>
 
 <ol start="2">
 	<li>Programově:</li>
 </ol>
 
 <pre
-class="brush: java">LogManager.getLogManager().readConfiguration(new FileInputStream("logging.properties"));</pre>
+class="brush: lang-java brush: java">LogManager.getLogManager().readConfiguration(new FileInputStream("logging.properties"));</pre>
 
 <p>V obou případech se pak čte z <code>logging.properties</code> na
 <em>classpath</em>, tj. např. z vašeho JAR souboru.</p>
@@ -176,7 +177,7 @@ proměnnou, ale defaultně bere <code>logging.properties</code>. Uznávám,
 v log4j takovéto opičárny dělat nemusíte.</p>
 
 <pre
-class="brush: java">public class LoggingUtils
+class="brush: lang-java brush: java">public class LoggingUtils
 {
   private static final Logger log = Logger.getLogger( LoggingUtils.class.getName() );
 
@@ -210,7 +211,7 @@ class="brush: java">public class LoggingUtils
 <p>Samotné logování potom provedete takto:</p>
 
 <pre
-class="brush: java">class LoggingTest {
+class="brush: lang-java brush: java">class LoggingTest {
 
   // Získáte logger s nějakým jménem - obvykle se jménem aktuální třídy.
   // Uložíte si ho do privátní statické proměnné - logování je thread-safe.
@@ -242,6 +243,12 @@ Logging Overview</a>.</p>
 
     <hr />
 
+
+        <!--sharexy code start--><div id='shr_723771'><script type='text/javascript'>(function(w) { if (!w.SharexyWidget) { w.SharexyWidget = {};} if (!w.SharexyWidget.Params) { w.SharexyWidget.Params = {}; }
+        w.SharexyWidget.Params['723771'] = {'code_id':'723771','publisher_key':'undefined','design':'classic','layout_static':'h','type':'st','mode_float':'','size_float':'55','size_static':'55','buzz':'1',
+            'services':['facebook', 'google_plus', 'twitter', 'linkedin', 'reddit', 'buffer', 'pocket', 'print_page'],
+            'url':'current','allways_show_ads':'0','show_ads_sharing':'0','show_ads_cursor':'0','bg_float':'1','bg_color':'#ffffff','labels':'','counters':'0', 'counters_float':'0'} })(window);</script>
+        <script type='text/javascript' src='http://shuttle.sharexy.com/LoaderLite.js'></script></div><a href='http://sharexy.com/'><img src='http://sharexy.com/statpixel.png' style='border: 0' /></a><!--sharexy code end   -->
 
         <!-- Facebook comments -->
                     <div class="fb-comments" data-href="https://www.zizka.ch/pages/programovani/java/navod_logovani_java.util.logging.html" data-width="800" data-numposts="5"></div>

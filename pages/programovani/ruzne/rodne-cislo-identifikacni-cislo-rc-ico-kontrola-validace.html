@@ -101,7 +101,7 @@ jedenácti.</p>
 <h4 id="toc-implementace-v-php">Implementace v PHP:</h4>
 
 <pre
-class="brush: php">function verifyRC($rc)
+class="brush: lang-php brush: php">function verifyRC($rc)
 {
     // "be liberal in what you receive"
     if (!preg_match('#^\s*(\d\d)(\d\d)(\d\d)[ /]*(\d\d\d)(\d?)\s*$#', $rc, $matches)) {
@@ -141,7 +141,7 @@ class="brush: php">function verifyRC($rc)
 <h4 id="toc-rodne-cislo-javascript">Rodné číslo – JavaScript:</h4>
 
 <pre
-class="brush: js">function testRC(x, age)
+class="brush: lang-js brush: js">function testRC(x, age)
 {
   if(!age) age = 0;
   try
@@ -204,7 +204,7 @@ class="brush: js">function testRC(x, age)
 <h4 id="toc-implementace-v-php-2">Implementace v PHP:</h4>
 
 <pre
-class="brush: php">function verifyIC($ic)
+class="brush: lang-php brush: php">function verifyIC($ic)
 {
     // "be liberal in what you receive"
     $ic = preg_replace('#\s+#', '', $ic);
@@ -233,7 +233,7 @@ class="brush: php">function verifyIC($ic)
 <h4 id="toc-ic-javascript">IČ – JavaScript:</h4>
 
 <pre
-class="brush: js">function testICO(x)
+class="brush: lang-js brush: js">function testICO(x)
 {
   try
   {
@@ -261,7 +261,7 @@ class="brush: js">function testICO(x)
 <h4 id="toc-dic-javascript">DIČ – JavaScript:</h4>
 
 <pre
-class="brush: js">function testDIC(x)
+class="brush: lang-js brush: js">function testDIC(x)
 {
   try
   {
@@ -299,6 +299,12 @@ class="brush: js">function testDIC(x)
 
     <hr />
 
+
+        <!--sharexy code start--><div id='shr_723771'><script type='text/javascript'>(function(w) { if (!w.SharexyWidget) { w.SharexyWidget = {};} if (!w.SharexyWidget.Params) { w.SharexyWidget.Params = {}; }
+        w.SharexyWidget.Params['723771'] = {'code_id':'723771','publisher_key':'undefined','design':'classic','layout_static':'h','type':'st','mode_float':'','size_float':'55','size_static':'55','buzz':'1',
+            'services':['facebook', 'google_plus', 'twitter', 'linkedin', 'reddit', 'buffer', 'pocket', 'print_page'],
+            'url':'current','allways_show_ads':'0','show_ads_sharing':'0','show_ads_cursor':'0','bg_float':'1','bg_color':'#ffffff','labels':'','counters':'0', 'counters_float':'0'} })(window);</script>
+        <script type='text/javascript' src='http://shuttle.sharexy.com/LoaderLite.js'></script></div><a href='http://sharexy.com/'><img src='http://sharexy.com/statpixel.png' style='border: 0' /></a><!--sharexy code end   -->
 
         <!-- Facebook comments -->
                     <div class="fb-comments" data-href="https://www.zizka.ch/pages/programovani/ruzne/rodne-cislo-identifikacni-cislo-rc-ico-kontrola-validace.html" data-width="800" data-numposts="5"></div>

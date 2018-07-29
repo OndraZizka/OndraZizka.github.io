@@ -84,7 +84,7 @@ transformation with Xalan</h3>
 <p>Create a script:</p>
 
 <pre
-class="bash [.brush]">CURPATH=$(dirname $(which $0));
+class="lang-bash [.brush] brush: bash [.brush]">CURPATH=$(dirname $(which $0));
 CP=$(echo `ls $CURPATH/*.jar` | sed -e 's/ /:/g' )
 echo java -cp $CP org.apache.xalan.xslt.Process -IN $1 -XSL $2 -OUT $3
 java -cp $CP org.apache.xalan.xslt.Process -IN $1 -XSL $2 -OUT $3</pre>
@@ -92,7 +92,7 @@ java -cp $CP org.apache.xalan.xslt.Process -IN $1 -XSL $2 -OUT $3</pre>
 <p>Then call it:</p>
 
 <pre
-class="bash [.brush]">~/scripts/xslt pom.xml test.xsl pom2.xml -PARAM grp net.sourceforge.htmlunit -PARAM art htmlunit -PARAM ver 666</pre>
+class="lang-bash [.brush] brush: bash [.brush]">~/scripts/xslt pom.xml test.xsl pom2.xml -PARAM grp net.sourceforge.htmlunit -PARAM art htmlunit -PARAM ver 666</pre>
 
 <p>Sources: <a
 href="http://xml.apache.org/xalan-j/commandline.html">http://xml.apache.org/…andline.html</a></p>
@@ -101,7 +101,7 @@ href="http://xml.apache.org/xalan-j/commandline.html">http://xml.apache.org/…a
 XSLT conversion using JDK's XSLT</h3>
 
 <pre
-class="brush: java">import javax.xml.transform.ErrorListener;
+class="brush: lang-java brush: java">import javax.xml.transform.ErrorListener;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerConfigurationException;
 import javax.xml.transform.TransformerException;
@@ -176,14 +176,14 @@ class MyErrorListener implements ErrorListener {
 }</pre>
 
 <pre
-class="bash">javac Xslt.java
+class="lang-bash brush: bash">javac Xslt.java
 java Xslt data.xml template.xslt output.xml</pre>
 
 <h3 id="toc-template-which-does-some-change-and-copies-all-other-data">Template
 which does some change and copies all other data</h3>
 
 <pre
-class="brush: xml">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+class="brush: lang-xml brush: xml">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"&gt;
     &lt;xsl:output method="xml" encoding="UTF-8" omit-xml-declaration="no" indent="yes"/&gt;
 
@@ -208,6 +208,12 @@ class="brush: xml">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 
     <hr />
 
+
+        <!--sharexy code start--><div id='shr_723771'><script type='text/javascript'>(function(w) { if (!w.SharexyWidget) { w.SharexyWidget = {};} if (!w.SharexyWidget.Params) { w.SharexyWidget.Params = {}; }
+        w.SharexyWidget.Params['723771'] = {'code_id':'723771','publisher_key':'undefined','design':'classic','layout_static':'h','type':'st','mode_float':'','size_float':'55','size_static':'55','buzz':'1',
+            'services':['facebook', 'google_plus', 'twitter', 'linkedin', 'reddit', 'buffer', 'pocket', 'print_page'],
+            'url':'current','allways_show_ads':'0','show_ads_sharing':'0','show_ads_cursor':'0','bg_float':'1','bg_color':'#ffffff','labels':'','counters':'0', 'counters_float':'0'} })(window);</script>
+        <script type='text/javascript' src='http://shuttle.sharexy.com/LoaderLite.js'></script></div><a href='http://sharexy.com/'><img src='http://sharexy.com/statpixel.png' style='border: 0' /></a><!--sharexy code end   -->
 
         <!-- Facebook comments -->
                     <div class="fb-comments" data-href="https://www.zizka.ch/pages/programovani/java/xslt-commandline-with-xalan.html" data-width="800" data-numposts="5"></div>

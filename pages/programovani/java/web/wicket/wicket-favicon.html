@@ -81,14 +81,14 @@
 <h3 id="toc-option-1-wicket-link">Option 1: &lt;wicket:link&gt;</h3>
 
 <pre
-class="html .brush">&lt;wicket:link&gt;
+class="lang-html .brush brush: html .brush">&lt;wicket:link&gt;
 &lt;link rel="shortcut icon" type="image/x-icon" href="ico/favicon.ico"/&gt;
 &lt;/wicket:link&gt;</pre>
 
 <p>Put the icon relative to the Page it is in.</p>
 
 <pre
-class="plain">com/myapp/Page.html
+class="lang-plain brush: plain">com/myapp/Page.html
 com/myapp/Page.java
 com/myapp/ico/favicon.ico</pre>
 
@@ -97,17 +97,17 @@ com/myapp/ico/favicon.ico</pre>
 <h3 id="toc-option-2-faviconlink">Option 2: <code>FavIconLink</code></h3>
 
 <pre
-class="html .brush">&lt;link wicket:id="favicon" rel="shortcut icon" type="image/x-icon" href="images/ico/Leaf.ico"/&gt;</pre>
+class="lang-html .brush brush: html .brush">&lt;link wicket:id="favicon" rel="shortcut icon" type="image/x-icon" href="images/ico/Leaf.ico"/&gt;</pre>
 
 <pre
-class="java .brush">public class BaseLayoutPage extends WebPage {
+class="lang-java .brush brush: java .brush">public class BaseLayoutPage extends WebPage {
 
     public BaseLayoutPage() {
 
         add( new FavIconLink("favicon", "favicon.ico") );</pre>
 
 <pre
-class="java .brush">public class FavIconLink extends ExternalLink
+class="lang-java .brush brush: java .brush">public class FavIconLink extends ExternalLink
 {
     public FavIconLink( String id, String path ){
         super( id, path );
@@ -124,7 +124,7 @@ class="java .brush">public class FavIconLink extends ExternalLink
 <code>FavIconHeaderContributor</code> behavior</h3>
 
 <pre
-class="java .brush">public class WicketJavaEEApplication extends WebApplication {
+class="lang-java .brush brush: java .brush">public class WicketJavaEEApplication extends WebApplication {
 
     @Override protected void init() {
         super.init();
@@ -132,10 +132,10 @@ class="java .brush">public class WicketJavaEEApplication extends WebApplication 
         mountResource("/favicon.ico", new SharedResourceReference("favicon") );</pre>
 
 <pre
-class="java .brush">add( new FavIconHeaderContributor( new SharedResourceReference("favicon") ) );</pre>
+class="lang-java .brush brush: java .brush">add( new FavIconHeaderContributor( new SharedResourceReference("favicon") ) );</pre>
 
 <pre
-class="java .brush">public class FavIconHeaderContributor implements IHeaderContributor
+class="lang-java .brush brush: java .brush">public class FavIconHeaderContributor implements IHeaderContributor
 {
     private ResourceReference resRef;
 
@@ -166,6 +166,12 @@ class="java .brush">public class FavIconHeaderContributor implements IHeaderCont
 
     <hr />
 
+
+        <!--sharexy code start--><div id='shr_723771'><script type='text/javascript'>(function(w) { if (!w.SharexyWidget) { w.SharexyWidget = {};} if (!w.SharexyWidget.Params) { w.SharexyWidget.Params = {}; }
+        w.SharexyWidget.Params['723771'] = {'code_id':'723771','publisher_key':'undefined','design':'classic','layout_static':'h','type':'st','mode_float':'','size_float':'55','size_static':'55','buzz':'1',
+            'services':['facebook', 'google_plus', 'twitter', 'linkedin', 'reddit', 'buffer', 'pocket', 'print_page'],
+            'url':'current','allways_show_ads':'0','show_ads_sharing':'0','show_ads_cursor':'0','bg_float':'1','bg_color':'#ffffff','labels':'','counters':'0', 'counters_float':'0'} })(window);</script>
+        <script type='text/javascript' src='http://shuttle.sharexy.com/LoaderLite.js'></script></div><a href='http://sharexy.com/'><img src='http://sharexy.com/statpixel.png' style='border: 0' /></a><!--sharexy code end   -->
 
         <!-- Facebook comments -->
                     <div class="fb-comments" data-href="https://www.zizka.ch/pages/programovani/java/web/wicket/wicket-favicon.html" data-width="800" data-numposts="5"></div>

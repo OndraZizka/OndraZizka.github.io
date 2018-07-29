@@ -103,7 +103,8 @@ Everything on HDD, WC on the end of the disk: 2:37</p>
 <p><em>* Everything means JDK, Maven, Maven repository and the
 working copy.</em></p>
 
-<pre>&lt;localRepository&gt;/mnt/x32/data/.m2/repository&lt;/localRepository&gt;
+<pre
+class="lang-text brush: text">&lt;localRepository&gt;/mnt/x32/data/.m2/repository&lt;/localRepository&gt;
 export JAVA_HOME=/mnt/x32/sw/java/jdk/1.6.0_14
 export M2_HOME=/mnt/x32/sw/tools/maven/2.2.1</pre>
 
@@ -148,14 +149,14 @@ Completely on HDD: 3:16</p>
 	</tbody>
 </table>
 
-<pre
-style="display:none">ondra@c2:/mnt/x32/_projekty$ date; zip -R -1 AS.zip AS-svn-trunk &gt; /dev/null; date
+<pre style="display:none"
+class="lang-text brush: text">ondra@c2:/mnt/x32/_projekty$ date; zip -R -1 AS.zip AS-svn-trunk &gt; /dev/null; date
 ondra@c2:~/temp$ date; zip -R -1 AS.zip AS-svn-trunk &gt; /dev/null; date
 ondra@c2:/mnt/x32/_projekty$ date; unzip AS.zip -d test &gt; /dev/null; date
 ondra@c2:~/temp$ date; unzip AS.zip -d test &gt; /dev/null; date</pre>
 
-<pre
-style="display:none">Po lis 30 01:11:01 CET 2009
+<pre style="display:none"
+class="lang-text brush: text">Po lis 30 01:11:01 CET 2009
 Po lis 30 01:11:21 CET 2009
 
 Po lis 30 01:11:49 CET 2009
@@ -216,7 +217,8 @@ RAM: Kingmax 2× 2 GB DDR2, dual channel</p>
 <p>Edit (or create) your <code>~/.m2/settings.xml</code> – add or edit
 <code>&lt;localRepository&gt;</code> under the root element:</p>
 
-<pre>&lt;settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+<pre
+class="lang-text brush: text">&lt;settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0
                       http://maven.apache.org/xsd/settings-1.0.0.xsd"&gt;
@@ -231,18 +233,19 @@ environment variables to point to them. If you build using <code>build.sh</code>
 or <code>build.bat</code>, Maven from <code>AS-trunk/tools/maven</code>
 is used.</p>
 
-<pre>export JAVA_HOME=/mnt/x32/sw/java/jdk/1.6.0_14
+<pre
+class="lang-text brush: text">export JAVA_HOME=/mnt/x32/sw/java/jdk/1.6.0_14
 export M2_HOME=/mnt/x32/sw/tools/maven/2.2.1
 export PATH=$JAVA_HOME/bin:$M2_HOME/bin:$PATH</pre>
 
 <pre
-class="brush: bash">svn co -r 96748 http://anonsvn.jboss.org/repos/jbossas/trunk AS-trunk
+class="brush: lang-bash brush: bash">svn co -r 96748 http://anonsvn.jboss.org/repos/jbossas/trunk AS-trunk
 cd AS-trunk
 build.sh
 date; build.sh clean; build.sh date</pre>
 
 <pre
-class="brush: bash">cd ..
+class="brush: lang-bash brush: bash">cd ..
 date; zip -R -1 AS.zip AS-svn-trunk &gt; /dev/null; date
 date; unzip AS.zip -d test &gt; /dev/null; date</pre>
 
@@ -262,7 +265,8 @@ date; unzip AS.zip -d test &gt; /dev/null; date</pre>
 
 <h3 id="toc-referential-ramdisk-benchmark">Referential ramdisk benchmark</h3>
 
-<pre>ddr667, dualchan
+<pre
+class="lang-text brush: text">ddr667, dualchan
 4x2,4G xeon
 
 $ build.sh
@@ -295,6 +299,12 @@ sys     0m2.893s</pre>
 
     <hr />
 
+
+        <!--sharexy code start--><div id='shr_723771'><script type='text/javascript'>(function(w) { if (!w.SharexyWidget) { w.SharexyWidget = {};} if (!w.SharexyWidget.Params) { w.SharexyWidget.Params = {}; }
+        w.SharexyWidget.Params['723771'] = {'code_id':'723771','publisher_key':'undefined','design':'classic','layout_static':'h','type':'st','mode_float':'','size_float':'55','size_static':'55','buzz':'1',
+            'services':['facebook', 'google_plus', 'twitter', 'linkedin', 'reddit', 'buffer', 'pocket', 'print_page'],
+            'url':'current','allways_show_ads':'0','show_ads_sharing':'0','show_ads_cursor':'0','bg_float':'1','bg_color':'#ffffff','labels':'','counters':'0', 'counters_float':'0'} })(window);</script>
+        <script type='text/javascript' src='http://shuttle.sharexy.com/LoaderLite.js'></script></div><a href='http://sharexy.com/'><img src='http://sharexy.com/statpixel.png' style='border: 0' /></a><!--sharexy code end   -->
 
         <!-- Facebook comments -->
                     <div class="fb-comments" data-href="https://www.zizka.ch/pages/osobni/ssd-vs-hdd-comparison-benchmark-test.html" data-width="800" data-numposts="5"></div>

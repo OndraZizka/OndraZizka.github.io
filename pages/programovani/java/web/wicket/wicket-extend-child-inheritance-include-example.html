@@ -92,7 +92,7 @@ of Wicket's markup inheritance –<br />
 <p><code>BaseLayoutPage.html</code>:</p>
 
 <pre
-class="brush: html">&lt;html&gt;
+class="brush: lang-html brush: html">&lt;html&gt;
   &lt;body&gt;
     &lt;h1&gt;My Web&lt;/h1&gt;
 
@@ -107,14 +107,14 @@ class="brush: html">&lt;html&gt;
 <p><code>BaseLayoutPage.java</code>:</p>
 
 <pre
-class="brush: java">public class BaseLayoutPage extends WebPage { ... }</pre>
+class="brush: lang-java brush: java">public class BaseLayoutPage extends WebPage { ... }</pre>
 
 <h3 id="toc-child-page">Child page</h3>
 
 <p><code>NewsPageContent.html</code>:</p>
 
 <pre
-class="brush: html">&lt;html&gt;
+class="brush: lang-html brush: html">&lt;html&gt;
   &lt;body&gt;
     &lt;h1&gt;Child page&lt;/h1&gt;
 
@@ -141,7 +141,7 @@ class="brush: html">&lt;html&gt;
 <p><code>NewsPageContent.java</code>:</p>
 
 <pre
-class="brush: java">public class NewsPageContent extends BaseLayoutPage {
+class="brush: lang-java brush: java">public class NewsPageContent extends BaseLayoutPage {
   public NewsPageContent(){
     add( new Label("news", "Good news everyone!" ) );
   }
@@ -153,7 +153,7 @@ for case you don't know yet :)</h3>
 <p>In your <code>WicketApplication.java</code>:</p>
 
 <pre
-class="brush: java">public class WicketApplication extends WebApplication {
+class="brush: lang-java brush: java">public class WicketApplication extends WebApplication {
   public WicketApplication(){
     mountBookmarkablePage( "news", NewsPageContent.class );
   }
@@ -166,6 +166,12 @@ class="brush: java">public class WicketApplication extends WebApplication {
 
     <hr />
 
+
+        <!--sharexy code start--><div id='shr_723771'><script type='text/javascript'>(function(w) { if (!w.SharexyWidget) { w.SharexyWidget = {};} if (!w.SharexyWidget.Params) { w.SharexyWidget.Params = {}; }
+        w.SharexyWidget.Params['723771'] = {'code_id':'723771','publisher_key':'undefined','design':'classic','layout_static':'h','type':'st','mode_float':'','size_float':'55','size_static':'55','buzz':'1',
+            'services':['facebook', 'google_plus', 'twitter', 'linkedin', 'reddit', 'buffer', 'pocket', 'print_page'],
+            'url':'current','allways_show_ads':'0','show_ads_sharing':'0','show_ads_cursor':'0','bg_float':'1','bg_color':'#ffffff','labels':'','counters':'0', 'counters_float':'0'} })(window);</script>
+        <script type='text/javascript' src='http://shuttle.sharexy.com/LoaderLite.js'></script></div><a href='http://sharexy.com/'><img src='http://sharexy.com/statpixel.png' style='border: 0' /></a><!--sharexy code end   -->
 
         <!-- Facebook comments -->
                     <div class="fb-comments" data-href="https://www.zizka.ch/pages/programovani/java/web/wicket/wicket-extend-child-inheritance-include-example.html" data-width="800" data-numposts="5"></div>

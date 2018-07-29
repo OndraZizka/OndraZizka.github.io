@@ -92,7 +92,7 @@ WSDL using Axis2</h2>
 </ul>
 
 <pre
-class="bat">%AXIS2_HOME%\bin\WSDL2Java -uri IsirPub001.wsdl -p cz.pohlidame.isir.client -d adb -s</pre>
+class="lang-bat brush: bat">%AXIS2_HOME%\bin\WSDL2Java -uri IsirPub001.wsdl -p cz.pohlidame.isir.client -d adb -s</pre>
 
 <p>That will generate a single java file with a stub for that WSDL.</p>
 
@@ -100,7 +100,8 @@ class="bat">%AXIS2_HOME%\bin\WSDL2Java -uri IsirPub001.wsdl -p cz.pohlidame.isir
 	<li>This code will use the stub to call the web service:</li>
 </ul>
 
-<pre>try {
+<pre
+class="lang-text brush: text">try {
 
   IsirPub001Stub stub = new IsirPub001Stub();
   IsirPub001Stub.GetIsirPub0012E e = new IsirPub001Stub.GetIsirPub0012E();
@@ -157,6 +158,12 @@ catch( RemoteException ex ) {
 
     <hr />
 
+
+        <!--sharexy code start--><div id='shr_723771'><script type='text/javascript'>(function(w) { if (!w.SharexyWidget) { w.SharexyWidget = {};} if (!w.SharexyWidget.Params) { w.SharexyWidget.Params = {}; }
+        w.SharexyWidget.Params['723771'] = {'code_id':'723771','publisher_key':'undefined','design':'classic','layout_static':'h','type':'st','mode_float':'','size_float':'55','size_static':'55','buzz':'1',
+            'services':['facebook', 'google_plus', 'twitter', 'linkedin', 'reddit', 'buffer', 'pocket', 'print_page'],
+            'url':'current','allways_show_ads':'0','show_ads_sharing':'0','show_ads_cursor':'0','bg_float':'1','bg_color':'#ffffff','labels':'','counters':'0', 'counters_float':'0'} })(window);</script>
+        <script type='text/javascript' src='http://shuttle.sharexy.com/LoaderLite.js'></script></div><a href='http://sharexy.com/'><img src='http://sharexy.com/statpixel.png' style='border: 0' /></a><!--sharexy code end   -->
 
         <!-- Facebook comments -->
                     <div class="fb-comments" data-href="https://www.zizka.ch/pages/programovani/java/web_service_client_from_wsdl_using_axis2.html" data-width="800" data-numposts="5"></div>

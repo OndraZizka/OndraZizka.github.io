@@ -99,7 +99,7 @@ staly během existence systému ISIR. To znamená, že nežádáte
 o konkrétní informace, ale výstup tohoto typu:</p>
 
 <pre
-class="brush: xml">&lt;tns:udalost ... &gt;
+class="brush: lang-xml brush: xml">&lt;tns:udalost ... &gt;
   &lt;info cas="2008-01-22 00:00:00.0" id="2644" oddil="A" poradi="1" typ="6"
          typ_text="Insolvenční návrh spojený s návrhem na povolení oddlužení"/&gt;
   &lt;idOsobyPuvodce&gt;KSVYCHK&lt;/idOsobyPuvodce&gt;
@@ -144,7 +144,7 @@ jindy událostí typu <code>5 - Insolvenční návrh</code>, a jindy zase typu
 <p>Dále vám přijde událost s osobou:</p>
 
 <pre
-class="brush: xml">&lt;tns:udalost&gt;
+class="brush: lang-xml brush: xml">&lt;tns:udalost&gt;
   &lt;info cas="2008-02-18 00:00:00.0" id="7859" oddil="" poradi="-1" typ="1" typ_text="Změna osoby"/&gt;
   &lt;idOsobyPuvodce&gt;KSJICCB&lt;/idOsobyPuvodce&gt;
     &lt;osoba&gt;
@@ -160,7 +160,7 @@ class="brush: xml">&lt;tns:udalost&gt;
 v ID události</em>!</p>
 
 <pre
-class="brush: xml">&lt;tns:udalost&gt;
+class="brush: lang-xml brush: xml">&lt;tns:udalost&gt;
   &lt;info cas="2008-02-18 00:00:00.0" id="7863" oddil="" poradi="-1" typ="1" typ_text="Změna osoby"/&gt;
   &lt;idOsobyPuvodce&gt;KSJICCB&lt;/idOsobyPuvodce&gt;
   &lt;osoba&gt;
@@ -193,7 +193,7 @@ nicneříkající události</h3>
 informaci. Jako příklad vezměme třeba tuto:</p>
 
 <pre
-class="brush: xml">&lt;tns:udalost ... &gt;
+class="brush: lang-xml brush: xml">&lt;tns:udalost ... &gt;
   &lt;info cas="2008-02-18 00:00:00.0" id="7865" oddil="A" poradi="2" typ="23" typ_text="Návrh - přílohy"/&gt;
   &lt;idOsobyPuvodce&gt;KSJICCB&lt;/idOsobyPuvodce&gt;
   &lt;vec&gt; &lt;druhStavRizeni&gt;NEVYRIZENA&lt;/druhStavRizeni&gt; &lt;/vec&gt;
@@ -206,7 +206,7 @@ neobjeví. <em>K čemu je taková událost?</em></p>
 <p>Moje naprosto nejoblíbenější událost je typ „Jiné“:</p>
 
 <pre
-class="brush: xml">&lt;tns:udalost ... &gt;
+class="brush: lang-xml brush: xml">&lt;tns:udalost ... &gt;
   &lt;info cas="2008-04-04 12:14:48.0" id="29563" oddil="P19" poradi="2" typ="239" typ_text="Jiné"/&gt;
   &lt;idOsobyPuvodce&gt;KSJICCB&lt;/idOsobyPuvodce&gt;
   &lt;vec&gt; &lt;druhStavRizeni&gt;KONKURS&lt;/druhStavRizeni&gt; &lt;/vec&gt;
@@ -273,6 +273,12 @@ státních zakázek:</p>
 
     <hr />
 
+
+        <!--sharexy code start--><div id='shr_723771'><script type='text/javascript'>(function(w) { if (!w.SharexyWidget) { w.SharexyWidget = {};} if (!w.SharexyWidget.Params) { w.SharexyWidget.Params = {}; }
+        w.SharexyWidget.Params['723771'] = {'code_id':'723771','publisher_key':'undefined','design':'classic','layout_static':'h','type':'st','mode_float':'','size_float':'55','size_static':'55','buzz':'1',
+            'services':['facebook', 'google_plus', 'twitter', 'linkedin', 'reddit', 'buffer', 'pocket', 'print_page'],
+            'url':'current','allways_show_ads':'0','show_ads_sharing':'0','show_ads_cursor':'0','bg_float':'1','bg_color':'#ffffff','labels':'','counters':'0', 'counters_float':'0'} })(window);</script>
+        <script type='text/javascript' src='http://shuttle.sharexy.com/LoaderLite.js'></script></div><a href='http://sharexy.com/'><img src='http://sharexy.com/statpixel.png' style='border: 0' /></a><!--sharexy code end   -->
 
         <!-- Facebook comments -->
                     <div class="fb-comments" data-href="https://www.zizka.ch/pages/programovani/insolvencni_rejstrik-isir_ws/nesmysly_v_isir.html" data-width="800" data-numposts="5"></div>

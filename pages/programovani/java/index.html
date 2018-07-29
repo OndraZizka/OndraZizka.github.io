@@ -163,12 +163,12 @@ organized content, but hopefully you will find your subject by using
 
 <p>To start maven goals in debug mode:</p>
 
-<pre class="brush: xml">mvnDebug test ...</pre>
+<pre class="brush: lang-xml brush: xml">mvnDebug test ...</pre>
 
 <p>This does not work for me:</p>
 
 <pre
-class="brush: xml">mvn test -DargLine="-Xdebug -Xnoagent -Djava.compiler=NONE -Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=4000"</pre>
+class="brush: lang-xml brush: xml">mvn test -DargLine="-Xdebug -Xnoagent -Djava.compiler=NONE -Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=4000"</pre>
 
 <h3 id="toc-java-alternative-of-php-s-preg-replace-callback">Java alternative of
 PHP's <code>preg_replace_callback</code></h3>
@@ -243,7 +243,7 @@ DOMBuilder</h3>
 containing a minus. So you have to match e.g <code>web-xml</code>
 like this:</p>
 
-<pre class="xpath">*[name()='web-xml']</pre>
+<pre class="lang-xpath brush: xpath">*[name()='web-xml']</pre>
 
 <h3 id="toc-how-to-incrementally-update-a-jaxb-mapped-object">How to
 incrementally update a JAXB-mapped object</h3>
@@ -312,7 +312,7 @@ methods.<br />
 But you run into this:</p>
 
 <pre
-class="brush: text">org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'udalostiQueueController' defined in class path resource [properties/Actions.xml]: Initialization of bean failed; nested exception is org.springframework.aop.framework.AopConfigException: Cannot proxy target class because CGLIB2 is not available. Add CGLIB to the class path or specify proxy interfaces.
+class="brush: lang-text brush: text">org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'udalostiQueueController' defined in class path resource [properties/Actions.xml]: Initialization of bean failed; nested exception is org.springframework.aop.framework.AopConfigException: Cannot proxy target class because CGLIB2 is not available. Add CGLIB to the class path or specify proxy interfaces.
 
 Caused by: org.springframework.aop.framework.AopConfigException: Cannot proxy target class because CGLIB2 is not available. Add CGLIB to the class path or specify proxy interfaces.
         at org.springframework.aop.framework.DefaultAopProxyFactory.createAopProxy(DefaultAopProxyFactory.java:67)
@@ -330,7 +330,7 @@ when obtaining the bean in the code, store it into interface-typed
 reference.</p>
 
 <pre
-class="brush: java">public interface MyBean {
+class="brush: lang-java brush: java">public interface MyBean {
   public void doSomethingInAOP();
 }
 
@@ -339,7 +339,7 @@ public class MyBeanImpl implements MyBean {
 }</pre>
 
 <pre
-class="brush: xml">&lt;bean id="myBean" class="info.insolvencnirejstrik.controllers.MyBeanImpl" /&gt;
+class="brush: lang-xml brush: xml">&lt;bean id="myBean" class="info.insolvencnirejstrik.controllers.MyBeanImpl" /&gt;
 
 &lt;aop:config&gt;
 
@@ -349,7 +349,8 @@ class="brush: xml">&lt;bean id="myBean" class="info.insolvencnirejstrik.controll
 
 &lt;/aop:config&gt;</pre>
 
-<pre class="brush: java">MyBean bean = appContext.getBean("myBean");</pre>
+<pre
+class="brush: lang-java brush: java">MyBean bean = appContext.getBean("myBean");</pre>
 
 <h3 id="toc-ibatis-instantiation-error">Ibatis instantiation error</h3>
 
@@ -364,7 +365,8 @@ Xerces 2.0.2, which is old buggy version and causes stack overflow exception
 when parsing Spring's <code>applicationContext.xml</code>, which uses namespaces
 (e.g. for AOP).</p>
 
-<pre>Caused by: java.lang.StackOverflowError at org.apache.xerces.util.URI.isConformantSchemeName</pre>
+<pre
+class="lang-text brush: text">Caused by: java.lang.StackOverflowError at org.apache.xerces.util.URI.isConformantSchemeName</pre>
 
 <p>Because Maven uses the „nearest node in dependency graph“ rule for
 resolving version conflicts, it choses DBCP's Xerces 2.0.2, because other
@@ -439,7 +441,7 @@ s ukázkaou konfigurace.</p>
 mistakes</h3>
 
 <pre
-class="exception">ERROR [org.hibernate.LazyInitializationException] (main:) could not initialize proxy - no Session
+class="lang-exception brush: exception">ERROR [org.hibernate.LazyInitializationException] (main:) could not initialize proxy - no Session
 Exception in thread "main" org.hibernate.LazyInitializationException: could not initialize proxy - no Session
         at org.hibernate.proxy.AbstractLazyInitializer.initialize(AbstractLazyInitializer.java:57)
 org.hibernate.LazyInitializationException: could not initialize proxy - no Session
@@ -475,7 +477,7 @@ or implicitly (using e.g. Spring AOP).
 ------------------------------------------------</pre>
 
 <pre
-class="exception">org.hibernate.PersistentObjectException: detached entity passed to persist</pre>
+class="lang-exception brush: exception">org.hibernate.PersistentObjectException: detached entity passed to persist</pre>
 
 <p>You load or create an entity in one transaction, which then ends, and then
 you try to call <code>persist()</code>. Instead, you must call
@@ -515,13 +517,13 @@ map format: empty String in nullValue</h3>
 	an explicit parameterMap:</p>
 
 	<pre
-	class="brush: xml">&lt;parameter property="street" jdbcType="VARCHAR" nullValue=""/&gt;</pre>
+	class="brush: lang-xml brush: xml">&lt;parameter property="street" jdbcType="VARCHAR" nullValue=""/&gt;</pre>
 
 	<p>I want to do the same thing using inline parameters. I've tried the
 	following:</p>
 
 	<pre
-	class="ibatis">#street:VARCHAR:""#
+	class="lang-ibatis brush: ibatis">#street:VARCHAR:""#
 #street:VARCHAR:#
 #street,jdbcType=VARCHAR,nullValue=""#
 #street,jdbcType=VARCHAR,nullValue=#</pre>
@@ -564,7 +566,8 @@ map format: empty String in nullValue</h3>
 <code>INSERT</code>, which returns <code>NULL</code> if <code>expr1</code> =
 <code>expr2</code> is true, otherwise returns <code>expr1</code>.</p>
 
-<pre class="brush: sql">INSERT INTO table SET name = NULLIF(#name#,'');</pre>
+<pre
+class="brush: lang-sql brush: sql">INSERT INTO table SET name = NULLIF(#name#,'');</pre>
 
 <h3
 id="toc-java-lang-instantiationexception-in-ibatis-when-using-java-util-map"><code>java.lang.InstantiationException</code>
@@ -572,12 +575,13 @@ in iBatis when using java.util.Map</h3>
 
 <p>Exception:</p>
 
-<pre>JavaBeansDataExchange could not instantiate result class.  Cause: java.lang.InstantiationException: java.util.Map</pre>
+<pre
+class="lang-text brush: text">JavaBeansDataExchange could not instantiate result class.  Cause: java.lang.InstantiationException: java.util.Map</pre>
 
 <p>SQL mapping code:</p>
 
 <pre
-class="brush: xml">&lt;select id="getMatchingDluzniciForUser" parameterClass="long" resultClass="map"&gt;
+class="brush: lang-xml brush: xml">&lt;select id="getMatchingDluzniciForUser" parameterClass="long" resultClass="map"&gt;
 SELECT * FROM table
 &lt;/select&gt;</pre>
 
@@ -616,7 +620,7 @@ Use <code>zeroDateTimeBehavior</code></h3>
 e.g, ‚0000–00–00‘ for <code>DATE</code>), an exception is thrown:</p>
 
 <pre
-class="exception">java.sql.SQLException: Cannot convert value '0000-00-00 00:00:00' from column 4 to TIMESTAMP.</pre>
+class="lang-exception brush: exception">java.sql.SQLException: Cannot convert value '0000-00-00 00:00:00' from column 4 to TIMESTAMP.</pre>
 
 <p>In this case, using SQL commands like</p>
 
@@ -638,7 +642,8 @@ property to <code>convertToNull</code>:</p>
 <p>The way to set it depends on the way you configure JDBC driver. The most
 common case is to use connection URL parameters. In my case it reads:</p>
 
-<pre>jdbc:mysql://localhost/test?zeroDateTimeBehavior=convertToNull&amp;autoReconnect=true&amp;characterEncoding=UTF-8&amp;characterSetResults=UTF-8</pre>
+<pre
+class="lang-text brush: text">jdbc:mysql://localhost/test?zeroDateTimeBehavior=convertToNull&amp;autoReconnect=true&amp;characterEncoding=UTF-8&amp;characterSetResults=UTF-8</pre>
 
 <h3 id="toc-java-and-javaw-difference"><code>java</code> and <code>javaw</code>
 difference</h3>
@@ -708,7 +713,8 @@ with Hibernate Annotations 3.3.0 – only with Hibernate Annotations
 3.3.1. This information could spare you few minutes, as it would do to me if
 I knew it :)</p>
 
-<pre>java.lang.NoSuchMethodError: org.hibernate.cfg.AnnotationConfiguration.addProperties(Ljava/util/Properties;)Lorg/hibernate/cfg/AnnotationConfiguration;</pre>
+<pre
+class="lang-text brush: text">java.lang.NoSuchMethodError: org.hibernate.cfg.AnnotationConfiguration.addProperties(Ljava/util/Properties;)Lorg/hibernate/cfg/AnnotationConfiguration;</pre>
 
 <h3 id="toc-simplest-one-line-formatter-for-java-util-logging">Simplest One-line
 Formatter for <code>java.util.logging</code></h3>
@@ -719,13 +725,13 @@ whole log record can fit at a single line. So I've written
 <code>cz.dynawest.logging.SimplestFormatter</code>. Compare:</p>
 
 <pre
-class="log">13.7.2008 0:47:10 cz.dynawest.isir.Conversion3Controller ZpracujArchiv - INFO:   Test
+class="lang-log brush: log">13.7.2008 0:47:10 cz.dynawest.isir.Conversion3Controller ZpracujArchiv - INFO:   Test
 13.7.2008 0:47:10 cz.dynawest.isir.Conversion3Controller ZpracujArchiv - INFO:   Test2</pre>
 
 <p>vs.</p>
 
 <pre
-class="log">13.7.2008 0:47:10 cz.dynawest.isir.Conversion3Controller ZpracujArchiv
+class="lang-log brush: log">13.7.2008 0:47:10 cz.dynawest.isir.Conversion3Controller ZpracujArchiv
 INFO:   Test
 13.7.2008 0:47:10 cz.dynawest.isir.Conversion3Controller ZpracujArchiv
 INFO:   Test2</pre>
@@ -812,7 +818,7 @@ Texy!</h3>
 <h3 id="toc-my-usual-mysql-jdbc-params">My usual MySQL JDBC params</h3>
 
 <pre
-class="brush: plain">jdbc:mysql://localhost/test?characterEncoding=UTF-8&amp;characterSetResults=UTF-8&amp;autoReconnect=true&amp;zeroDateTimeBehavior=convertToNull</pre>
+class="brush: lang-plain brush: plain">jdbc:mysql://localhost/test?characterEncoding=UTF-8&amp;characterSetResults=UTF-8&amp;autoReconnect=true&amp;zeroDateTimeBehavior=convertToNull</pre>
 
 <h3 id="toc-uplne-zacatky-v-jave">Úplné začátky v Javě</h3>
 
@@ -847,6 +853,12 @@ pětipísmenných zkratek.</p>
 
     <hr />
 
+
+        <!--sharexy code start--><div id='shr_723771'><script type='text/javascript'>(function(w) { if (!w.SharexyWidget) { w.SharexyWidget = {};} if (!w.SharexyWidget.Params) { w.SharexyWidget.Params = {}; }
+        w.SharexyWidget.Params['723771'] = {'code_id':'723771','publisher_key':'undefined','design':'classic','layout_static':'h','type':'st','mode_float':'','size_float':'55','size_static':'55','buzz':'1',
+            'services':['facebook', 'google_plus', 'twitter', 'linkedin', 'reddit', 'buffer', 'pocket', 'print_page'],
+            'url':'current','allways_show_ads':'0','show_ads_sharing':'0','show_ads_cursor':'0','bg_float':'1','bg_color':'#ffffff','labels':'','counters':'0', 'counters_float':'0'} })(window);</script>
+        <script type='text/javascript' src='http://shuttle.sharexy.com/LoaderLite.js'></script></div><a href='http://sharexy.com/'><img src='http://sharexy.com/statpixel.png' style='border: 0' /></a><!--sharexy code end   -->
 
         <!-- Facebook comments -->
                     <div class="fb-comments" data-href="https://www.zizka.ch/pages/programovani/java/index.html" data-width="800" data-numposts="5"></div>

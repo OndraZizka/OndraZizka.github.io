@@ -145,7 +145,7 @@ požadavek volají. V parametrech dostanou informace o požadavku, o session,
 a referenci na objekt odpovědi.</p>
 
 <pre
-class="brush: java">public class HelloServlet extends HttpServlet {
+class="brush: lang-java brush: java">public class HelloServlet extends HttpServlet {
 
   public void doGet (HttpServletRequest pozadavek, HttpServletResponse odpoved)
     throws ServletException, IOException {
@@ -158,7 +158,7 @@ class="brush: java">public class HelloServlet extends HttpServlet {
 <code>WEB-INF/web.xml</code>:</p>
 
 <pre
-class="brush: xml">&lt;web-app xmlns="http://java.sun.com/xml/ns/j2ee" version="2.4"
+class="brush: lang-xml brush: xml">&lt;web-app xmlns="http://java.sun.com/xml/ns/j2ee" version="2.4"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http:/java.sun.com/dtd/web-app_2_3.dtd"&gt;
   &lt;servlet&gt;
@@ -185,7 +185,7 @@ class="brush: xml">&lt;web-app xmlns="http://java.sun.com/xml/ns/j2ee" version="
 přimo v Java kódu je dost otravné:</p>
 
 <pre
-class="brush: java">PrintWriter vystup = odpoved.getWriter();
+class="brush: lang-java brush: java">PrintWriter vystup = odpoved.getWriter();
 vystup.write("&lt;h1&gt;Ahoj " + session.getAttribute("name") +"!&lt;/h1&gt;");
 vystup.write("&lt;p&gt;Takhle nějak se generuje stránka ze servletu.&lt;/p&gt;");</pre>
 
@@ -205,7 +205,7 @@ menšina. No a tak vznikla technologie JSP.</p>
 <h4 id="toc-jsp-java-server-pages">JSP – Java Server Pages</h4>
 
 <pre
-class="jsp">&lt;h1&gt;Ahoj &lt;%= session.getAttribute("name") %&gt;!&lt;/h1&gt;</pre>
+class="lang-jsp brush: jsp">&lt;h1&gt;Ahoj &lt;%= session.getAttribute("name") %&gt;!&lt;/h1&gt;</pre>
 
 <p>Rovnou při vzniku měla mnohem více možností, než konkureční způsoby
 vkládání kódu do HTML (můj názor). A to především díky zvláštním
@@ -213,7 +213,7 @@ tagům, jejichž interpretaci mají na starosti Java třídy. Takový tag
 vypadá například takto:</p>
 
 <pre
-class="brush: xml">&lt;html:link action="/logout"&gt;Odhlásit&lt;/html:link&gt;</pre>
+class="brush: lang-xml brush: xml">&lt;html:link action="/logout"&gt;Odhlásit&lt;/html:link&gt;</pre>
 
 <p>Zrovna tento tag není úplně dobrý příklad, zrovna mi padnul pod ruku.
 ***Dát lepší příklad. Lepší by byl třeba tento: <em>(Poznámka pro
@@ -221,7 +221,7 @@ znalé: Tento kód jsem si z hlavy vymyslel, neodpovídá přesně tagům JSTL
 knihovny.)</em></p>
 
 <pre
-class="brush: xml">&lt;cache:cache key="vypis_uzivatelu"&gt;
+class="brush: lang-xml brush: xml">&lt;cache:cache key="vypis_uzivatelu"&gt;
   &lt;sql:query sql="SELECT * FROM users ORDER BY name" var="resultUsers" /&gt;
   &lt;table&gt;
     &lt;c:foreach from="resultUsers" var="i"&gt;
@@ -459,7 +459,7 @@ jazyk HQL. Pro mapování, tedy k popisu, jak se objekty které třídy
 rozkládají do tabulek v databázi, sloužily dříve XML soubory.</p>
 
 <pre
-class="brush: xml">&lt;hibernate-mapping&gt;
+class="brush: lang-xml brush: xml">&lt;hibernate-mapping&gt;
  &lt;class name="ModelPlane" table="model_plane"&gt;
    &lt;id name="id" column="id_model" type="java.lang.Long"&gt;
      &lt;generator class="increment"/&gt;
@@ -471,7 +471,7 @@ class="brush: xml">&lt;hibernate-mapping&gt;
 <p>V poslední době se ale rozmáhá pohodlnější způsob – @anotace.</p>
 
 <pre
-class="brush: xml">@Entity
+class="brush: lang-xml brush: xml">@Entity
 public class ModelPlane {
 
     private Long id;
@@ -514,7 +514,7 @@ XML souborů používat @anotace, což jsou (pro ty, co neznají) meta-informace
 zapsané přímo v kódu Java tříd za zavináčem:</p>
 
 <pre
-class="brush: java">@Entity
+class="brush: lang-java brush: java">@Entity
 @Table(name="users")
 public class User {
   @Id public int id;
@@ -737,6 +737,12 @@ webu velká spousta.</p>
 
     <hr />
 
+
+        <!--sharexy code start--><div id='shr_723771'><script type='text/javascript'>(function(w) { if (!w.SharexyWidget) { w.SharexyWidget = {};} if (!w.SharexyWidget.Params) { w.SharexyWidget.Params = {}; }
+        w.SharexyWidget.Params['723771'] = {'code_id':'723771','publisher_key':'undefined','design':'classic','layout_static':'h','type':'st','mode_float':'','size_float':'55','size_static':'55','buzz':'1',
+            'services':['facebook', 'google_plus', 'twitter', 'linkedin', 'reddit', 'buffer', 'pocket', 'print_page'],
+            'url':'current','allways_show_ads':'0','show_ads_sharing':'0','show_ads_cursor':'0','bg_float':'1','bg_color':'#ffffff','labels':'','counters':'0', 'counters_float':'0'} })(window);</script>
+        <script type='text/javascript' src='http://shuttle.sharexy.com/LoaderLite.js'></script></div><a href='http://sharexy.com/'><img src='http://sharexy.com/statpixel.png' style='border: 0' /></a><!--sharexy code end   -->
 
         <!-- Facebook comments -->
                     <div class="fb-comments" data-href="https://www.zizka.ch/pages/programovani/java/navod-j2ee_uvod.html" data-width="800" data-numposts="5"></div>

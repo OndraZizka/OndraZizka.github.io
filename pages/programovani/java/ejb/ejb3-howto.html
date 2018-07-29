@@ -81,7 +81,7 @@
 <p>No guarantees.</p>
 
 <pre
-class="brush: xml">&lt;!-- I used JBoss varia, 'cos I'm lazy. --&gt;
+class="brush: lang-xml brush: xml">&lt;!-- I used JBoss varia, 'cos I'm lazy. --&gt;
 &lt;dependency&gt;
   &lt;groupId&gt;org.jboss.jbossas&lt;/groupId&gt;
   &lt;artifactId&gt;jboss-as-varia&lt;/artifactId&gt;
@@ -90,7 +90,7 @@ class="brush: xml">&lt;!-- I used JBoss varia, 'cos I'm lazy. --&gt;
 &lt;/dependency&gt;</pre>
 
 <pre
-class="brush: java">package org.jboss.qa.eapperf.deployers.ejb3.calc;
+class="brush: lang-java brush: java">package org.jboss.qa.eapperf.deployers.ejb3.calc;
 
 import javax.ejb.Stateless;
 import javax.ejb.TransactionManagement;
@@ -115,7 +115,7 @@ public class CalculatorBean
 <p>Optional XML, which can override annotations:</p>
 
 <pre
-class="brush: xml">&lt;ejb-jar xmlns="http://java.sun.com/xml/ns/javaee"
+class="brush: lang-xml brush: xml">&lt;ejb-jar xmlns="http://java.sun.com/xml/ns/javaee"
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
           http://java.sun.com/xml/ns/javaee/ejb-jar_3_0.xsd"
@@ -141,7 +141,7 @@ necessary in <code>ejb-jar.xml</code> – JBMETA-208</h3>
 you'll get:</p>
 
 <pre
-class="brush: plain">java.lang.IllegalStateException: Attempt to process non-EJB3.x EJB-JAR metadata as EJB3.x for deployment ejb3-calculator-001.jar
+class="brush: lang-plain brush: plain">java.lang.IllegalStateException: Attempt to process non-EJB3.x EJB-JAR metadata as EJB3.x for deployment ejb3-calculator-001.jar
 
         at org.jboss.deployers.plugins.deployers.DeployersImpl.checkComplete(DeployersImpl.java:994)
         at org.jboss.deployers.plugins.deployers.DeployersImpl.checkComplete(DeployersImpl.java:940)
@@ -176,7 +176,7 @@ interface; ; Incomplete EJB2.x View [JBMETA-130]</h3>
 <p>If you happen to see this:</p>
 
 <pre
-class="brush: plain">Caused by: org.jboss.metadata.validation.chain.ValidatorChainException: Validation has failed due to the following ValidationException(s) raised:
+class="brush: lang-plain brush: plain">Caused by: org.jboss.metadata.validation.chain.ValidatorChainException: Validation has failed due to the following ValidationException(s) raised:
 * EJB Calculator-003 has defined EJB2.x home interface of org.jboss.qa.eapperf.deployers.ejb3.calc.Calculator but has no remote component interface; ; Incomplete EJB2.x View [JBMETA-130]
 
         at org.jboss.metadata.validation.chain.ejb.jboss.JBossMetaDataValidatorChain.validate(JBossMetaDataValidatorChain.java:130)
@@ -202,7 +202,7 @@ href="http://docs.jboss.com/ejb3/app-server/reference/build/reference/en/html/pa
 EJB 3 docs examples</a>, you'll end up with:</p>
 
 <pre
-class="brush: plain">DEPLOYMENTS IN ERROR:
+class="brush: lang-plain brush: plain">DEPLOYMENTS IN ERROR:
   Deployment "vfszip:/home/ondra/work/perf-eap/EAP-501/server/default/deploy/ejb3-calculator-001.jar/" is in error due to the following reason(s): org.jboss.metadata.validation.chain.ValidatorChainException: Validation has failed due to the following ValidationException(s) raised:
 * EJB Calculator-001 has defined EJB2.x remote component interface of org.jboss.qa.eapperf.deployers.ejb3.calc.CalculatorRemote but has no home; ; Incomplete EJB2.x View [JBMETA-130]
 
@@ -226,7 +226,7 @@ class="brush: plain">DEPLOYMENTS IN ERROR:
 it.</p>
 
 <pre
-class="brush: xml">&lt;enterprise-beans&gt;
+class="brush: lang-xml brush: xml">&lt;enterprise-beans&gt;
    &lt;session&gt;
       &lt;ejb-name&gt;Calculator-003&lt;/ejb-name&gt;
       &lt;!--
@@ -243,7 +243,7 @@ class="brush: xml">&lt;enterprise-beans&gt;
 <hr />
 
 <pre
-class="brush: plain">Deployment "vfszip:/home/ondra/work/perf-eap/EAP-501/server/default/deploy/ejb3-calculator-008.jar/" is in error due to the following reason(s):
+class="brush: lang-plain brush: plain">Deployment "vfszip:/home/ondra/work/perf-eap/EAP-501/server/default/deploy/ejb3-calculator-008.jar/" is in error due to the following reason(s):
 org.jboss.xb.binding.JBossXBRuntimeException: Element {http://www.jboss.com/xml/ns/javaee}jboss is not bound as a global element.
 ...
 Caused by: org.jboss.xb.binding.JBossXBException: Failed to parse source: Element {http://www.jboss.com/xml/ns/javaee}jboss is not bound as a global element.
@@ -279,7 +279,7 @@ Caused by: org.jboss.xb.binding.JBossXBRuntimeException: Element {http://www.jbo
 This works:</p>
 
 <pre
-class="brush: xml">&lt;jboss xmlns="http://www.jboss.com/xml/ns/javaee"
+class="brush: lang-xml brush: xml">&lt;jboss xmlns="http://www.jboss.com/xml/ns/javaee"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.jboss.com/xml/ns/javaee
                       http://www.jboss.org/j2ee/schema/jboss_5_0.xsd"
@@ -292,7 +292,7 @@ describing – in the <code>&lt;ejb-name&gt;...&lt;/ejb-name&gt;</code>
 element.</p>
 
 <pre
-class="brush: plain">Caused by: java.lang.RuntimeException: QName {http://www.jboss.com/xml/ns/javaee}session error adding org.jboss.metadata.ejb.jboss.JBoss50SessionBeanMetaData@1586a5 to collection org.jboss.metadata.ejb.jboss.JBossEnterpriseBeansMetaData@13ac6fd
+class="brush: lang-plain brush: plain">Caused by: java.lang.RuntimeException: QName {http://www.jboss.com/xml/ns/javaee}session error adding org.jboss.metadata.ejb.jboss.JBoss50SessionBeanMetaData@1586a5 to collection org.jboss.metadata.ejb.jboss.JBossEnterpriseBeansMetaData@13ac6fd
         at org.jboss.xb.builder.runtime.CollectionPropertyHandler.handle(CollectionPropertyHandler.java:166)
         at org.jboss.xb.builder.runtime.AbstractPropertyHandler.doHandle(AbstractPropertyHandler.java:98)
         at org.jboss.xb.builder.runtime.BeanHandler.setParent(BeanHandler.java:197)
@@ -321,7 +321,7 @@ Caused by: java.lang.IllegalStateException: Null name for bean: org.jboss.metada
 <p>Correct:</p>
 
 <pre
-class="brush: xml">&lt;enterprise-beans&gt;
+class="brush: lang-xml brush: xml">&lt;enterprise-beans&gt;
   &lt;session&gt;
     &lt;ejb-name&gt;Calculator-003&lt;/ejb-name&gt;
     &lt;jndi-name&gt;ejb/Calculator-003&lt;/jndi-name&gt;
@@ -335,6 +335,12 @@ class="brush: xml">&lt;enterprise-beans&gt;
 
     <hr />
 
+
+        <!--sharexy code start--><div id='shr_723771'><script type='text/javascript'>(function(w) { if (!w.SharexyWidget) { w.SharexyWidget = {};} if (!w.SharexyWidget.Params) { w.SharexyWidget.Params = {}; }
+        w.SharexyWidget.Params['723771'] = {'code_id':'723771','publisher_key':'undefined','design':'classic','layout_static':'h','type':'st','mode_float':'','size_float':'55','size_static':'55','buzz':'1',
+            'services':['facebook', 'google_plus', 'twitter', 'linkedin', 'reddit', 'buffer', 'pocket', 'print_page'],
+            'url':'current','allways_show_ads':'0','show_ads_sharing':'0','show_ads_cursor':'0','bg_float':'1','bg_color':'#ffffff','labels':'','counters':'0', 'counters_float':'0'} })(window);</script>
+        <script type='text/javascript' src='http://shuttle.sharexy.com/LoaderLite.js'></script></div><a href='http://sharexy.com/'><img src='http://sharexy.com/statpixel.png' style='border: 0' /></a><!--sharexy code end   -->
 
         <!-- Facebook comments -->
                     <div class="fb-comments" data-href="https://www.zizka.ch/pages/programovani/java/ejb/ejb3-howto.html" data-width="800" data-numposts="5"></div>

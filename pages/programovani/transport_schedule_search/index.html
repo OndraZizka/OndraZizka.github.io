@@ -90,7 +90,7 @@ search paradigm.</p>
 <h3 id="toc-persistent-tables">Persistent tables</h3>
 
 <pre
-class="brush: sql">CREATE TABLE `mhd_jizdy` (
+class="brush: lang-sql brush: sql">CREATE TABLE `mhd_jizdy` (
   `id` smallint(5) unsigned NOT NULL default '0',
   `nazev` varchar(140) NOT NULL,
   `id_trasa` smallint(5) unsigned NOT NULL default '0',
@@ -100,7 +100,7 @@ class="brush: sql">CREATE TABLE `mhd_jizdy` (
 ) ENGINE=InnoDB ROW_FORMAT=FIXED COMMENT='Jizdy - seskupení jednotlivých zastávek na dané trase pr';</pre>
 
 <pre
-class="brush: sql">CREATE TABLE `mhd_jizdy_stani` (
+class="brush: lang-sql brush: sql">CREATE TABLE `mhd_jizdy_stani` (
   `id_jizda` smallint(5) unsigned NOT NULL,
   `poradi` smallint(5) NOT NULL,
   `cas1` time default NULL,
@@ -113,7 +113,7 @@ class="brush: sql">CREATE TABLE `mhd_jizdy_stani` (
 ) ENGINE=InnoDB DEFAULT CHARSET=cp1250 ROW_FORMAT=FIXED COMMENT='Jednotlivé zastávky jízd';</pre>
 
 <pre
-class="brush: sql">CREATE TABLE `mhd_linky` (
+class="brush: lang-sql brush: sql">CREATE TABLE `mhd_linky` (
   `id` smallint(5) unsigned NOT NULL auto_increment,
   `nazev` varchar(60) NOT NULL,
   `cislo` tinyint(3) unsigned default NULL,
@@ -122,7 +122,7 @@ class="brush: sql">CREATE TABLE `mhd_linky` (
 ) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=cp1250;</pre>
 
 <pre
-class="brush: sql">CREATE TABLE `mhd_trasy` (
+class="brush: lang-sql brush: sql">CREATE TABLE `mhd_trasy` (
   `id` smallint(5) unsigned NOT NULL auto_increment,
   `id_linka` smallint(5) unsigned default NULL,
   `popis` char(96) NOT NULL default '',
@@ -134,7 +134,7 @@ class="brush: sql">CREATE TABLE `mhd_trasy` (
 ) ENGINE=InnoDB AUTO_INCREMENT=158 DEFAULT CHARSET=cp1250 COMMENT='Jednotlive verze linek';</pre>
 
 <pre
-class="brush: sql">CREATE TABLE `mhd_trasy_uzly` (
+class="brush: lang-sql brush: sql">CREATE TABLE `mhd_trasy_uzly` (
   `id` int(10) unsigned NOT NULL auto_increment,
   `id_trasa` smallint(5) unsigned NOT NULL default '0',
   `poradi` smallint(5) NOT NULL default '0',
@@ -147,7 +147,7 @@ class="brush: sql">CREATE TABLE `mhd_trasy_uzly` (
 ) ENGINE=InnoDB AUTO_INCREMENT=12555 DEFAULT CHARSET=cp1250 ROW_FORMAT=FIXED COMMENT='Trasy linek (pro kazdou verzi linky a pro kazdy smer)';</pre>
 
 <pre
-class="brush: sql">CREATE TABLE `mhd_zast` (
+class="brush: lang-sql brush: sql">CREATE TABLE `mhd_zast` (
   `id` smallint(5) unsigned NOT NULL auto_increment,
   `nazev` varchar(60) NOT NULL default '',
   `nazev_plny` varchar(60) NOT NULL,
@@ -178,7 +178,8 @@ searching the connection</h4>
 <p>You ask for the fastest connection from the station #115 to the station #465
 from now on, using at the most 2 changes (3 transport vehicles).</p>
 
-<pre class="brush: sql">CALL mhd_VyhledejSpoje(115, 465, NOW(), 3);</pre>
+<pre
+class="brush: lang-sql brush: sql">CALL mhd_VyhledejSpoje(115, 465, NOW(), 3);</pre>
 
 <h4 id="toc-result">Result:</h4>
 
@@ -211,7 +212,7 @@ from now on, using at the most 2 changes (3 transport vehicles).</p>
 <h4 id="toc-source-code">Source code:</h4>
 
 <pre
-class="brush: sql">CREATE DEFINER=`root`@`localhost` PROCEDURE `mhd_VyhledejSpoje`(
+class="brush: lang-sql brush: sql">CREATE DEFINER=`root`@`localhost` PROCEDURE `mhd_VyhledejSpoje`(
   idZastFrom INT UNSIGNED,
   idZastTo INT UNSIGNED,
   whn DATETIME,
@@ -236,6 +237,12 @@ END $$</pre>
 
     <hr />
 
+
+        <!--sharexy code start--><div id='shr_723771'><script type='text/javascript'>(function(w) { if (!w.SharexyWidget) { w.SharexyWidget = {};} if (!w.SharexyWidget.Params) { w.SharexyWidget.Params = {}; }
+        w.SharexyWidget.Params['723771'] = {'code_id':'723771','publisher_key':'undefined','design':'classic','layout_static':'h','type':'st','mode_float':'','size_float':'55','size_static':'55','buzz':'1',
+            'services':['facebook', 'google_plus', 'twitter', 'linkedin', 'reddit', 'buffer', 'pocket', 'print_page'],
+            'url':'current','allways_show_ads':'0','show_ads_sharing':'0','show_ads_cursor':'0','bg_float':'1','bg_color':'#ffffff','labels':'','counters':'0', 'counters_float':'0'} })(window);</script>
+        <script type='text/javascript' src='http://shuttle.sharexy.com/LoaderLite.js'></script></div><a href='http://sharexy.com/'><img src='http://sharexy.com/statpixel.png' style='border: 0' /></a><!--sharexy code end   -->
 
         <!-- Facebook comments -->
                     <div class="fb-comments" data-href="https://www.zizka.ch/pages/programovani/transport_schedule_search/index.html" data-width="800" data-numposts="5"></div>

@@ -84,7 +84,7 @@ this code.</p>
 <h3 id="toc-xml-content-to-read">XML content to read</h3>
 
 <pre
-class="brush: xml">&lt;jawabotConfig&gt;
+class="brush: lang-xml brush: xml">&lt;jawabotConfig&gt;
 
    &lt;settings
       verbose = "true"
@@ -131,7 +131,7 @@ class="brush: xml">&lt;jawabotConfig&gt;
 <h3 id="toc-root-jaxb-bean">Root JAXB bean</h3>
 
 <pre
-class="brush: java">@XmlRootElement(name="jawabotConfig")
+class="brush: lang-java brush: java">@XmlRootElement(name="jawabotConfig")
 public class ConfigBean {
 
    @XmlElement
@@ -159,7 +159,7 @@ public class ConfigBean {
 <code>&lt;resourceGroups&gt;</code></h3>
 
 <pre
-class="brush: java">public class SettingsBean {
+class="brush: lang-java brush: java">public class SettingsBean {
 
    @XmlAttribute public boolean verbose = true;
    @XmlAttribute public boolean acceptInvitation = true;
@@ -176,7 +176,7 @@ class="brush: java">public class SettingsBean {
 }// class</pre>
 
 <pre
-class="brush: java">public class IrcBean implements Serializable {
+class="brush: lang-java brush: java">public class IrcBean implements Serializable {
 
    @XmlElement public String defaultNick;
 
@@ -185,7 +185,7 @@ class="brush: java">public class IrcBean implements Serializable {
 }// class</pre>
 
 <pre
-class="brush: java">public class ServerBean {
+class="brush: lang-java brush: java">public class ServerBean {
 
    @XmlAttribute public String host;
    @XmlAttribute public Integer port;
@@ -196,7 +196,7 @@ class="brush: java">public class ServerBean {
 }// class</pre>
 
 <pre
-class="brush: java">public class ResourceGroupsBean implements Serializable {
+class="brush: lang-java brush: java">public class ResourceGroupsBean implements Serializable {
 
    /*
    &lt;resourceGroups&gt;
@@ -214,7 +214,7 @@ class="brush: java">public class ResourceGroupsBean implements Serializable {
 into the bean</h3>
 
 <pre
-class="brush: java">String filePath = "myFile.xml"
+class="brush: lang-java brush: java">String filePath = "myFile.xml"
 InputStream is = JawaBot.class.getClassLoader().getResourceAsStream(filePath);
 InputStreamReader reader = new InputStreamReader( is );
 
@@ -229,6 +229,12 @@ ConfigBean config = (ConfigBean) mc.unmarshal(reader);</pre>
 
     <hr />
 
+
+        <!--sharexy code start--><div id='shr_723771'><script type='text/javascript'>(function(w) { if (!w.SharexyWidget) { w.SharexyWidget = {};} if (!w.SharexyWidget.Params) { w.SharexyWidget.Params = {}; }
+        w.SharexyWidget.Params['723771'] = {'code_id':'723771','publisher_key':'undefined','design':'classic','layout_static':'h','type':'st','mode_float':'','size_float':'55','size_static':'55','buzz':'1',
+            'services':['facebook', 'google_plus', 'twitter', 'linkedin', 'reddit', 'buffer', 'pocket', 'print_page'],
+            'url':'current','allways_show_ads':'0','show_ads_sharing':'0','show_ads_cursor':'0','bg_float':'1','bg_color':'#ffffff','labels':'','counters':'0', 'counters_float':'0'} })(window);</script>
+        <script type='text/javascript' src='http://shuttle.sharexy.com/LoaderLite.js'></script></div><a href='http://sharexy.com/'><img src='http://sharexy.com/statpixel.png' style='border: 0' /></a><!--sharexy code end   -->
 
         <!-- Facebook comments -->
                     <div class="fb-comments" data-href="https://www.zizka.ch/pages/programovani/java/jaxb/jaxb-howto-introduction-tutorial.html" data-width="800" data-numposts="5"></div>

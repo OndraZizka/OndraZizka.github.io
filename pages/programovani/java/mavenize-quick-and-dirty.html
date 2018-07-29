@@ -99,7 +99,7 @@ of the Sardine library.</p>
 		<code>org.jboss.qa.ews.sardine</code> in this case.</p>
 
 		<pre
-		class="bat">@ECHO off
+		class="lang-bat brush: bat">@ECHO off
 ECHO echo Edit this file before use. Check the -DartifactId and -Dversion params.
 ECHO return
 
@@ -110,7 +110,7 @@ FOR %%f IN ( sardine-80\lib\*.jar) DO ECHO cmd /C mvn install:install-file -Dpac
 		<p>This will create something like this:</p>
 
 		<pre
-		class="bat">echo Edit this file before use. Check the -DartifactId and -Dversion params.
+		class="lang-bat brush: bat">echo Edit this file before use. Check the -DartifactId and -Dversion params.
 return
 
 cmd /C mvn install:install-file -DpomFile=sardine-pom.xml -Dpackaging=jar -DgeneratePom=true -DgroupId=org.jboss.qa.ews.sardine -Dfile=sardine-80\sardine.jar -DartifactId=sardine -Dversion=80
@@ -129,7 +129,7 @@ cmd /C mvn install:install-file -Dpackaging=jar -DgeneratePom=true -DgroupId=org
 </ol>
 
 <pre
-class="brush: xml">&lt;project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+class="brush: lang-xml brush: xml">&lt;project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd"&gt;
   &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
 
@@ -153,7 +153,7 @@ class="brush: xml">&lt;project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:x
 		script.</p>
 
 		<pre
-		class="brush: xml">&lt;dependency&gt;
+		class="brush: lang-xml brush: xml">&lt;dependency&gt;
   &lt;groupId&gt;junit&lt;/groupId&gt;
   &lt;artifactId&gt;junit&lt;/artifactId&gt;
   &lt;version&gt;3.8.1&lt;/version&gt;
@@ -202,7 +202,7 @@ class="brush: xml">&lt;project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:x
 &lt;/dependency&gt;</pre>
 
 		<pre
-		class="bat">cmd /C mvn install:install-file -DpomFile=sardine-pom.xml -Dpackaging=jar -DgeneratePom=true -DgroupId=org.jboss.qa.ews.sardine -Dfile=sardine-80\sardine.jar -DartifactId=sardine -Dversion=80
+		class="lang-bat brush: bat">cmd /C mvn install:install-file -DpomFile=sardine-pom.xml -Dpackaging=jar -DgeneratePom=true -DgroupId=org.jboss.qa.ews.sardine -Dfile=sardine-80\sardine.jar -DartifactId=sardine -Dversion=80
 
 cmd /C mvn install:install-file -Dpackaging=jar -DgeneratePom=true -DgroupId=org.jboss.qa.ews.sardine -Dfile=sardine-80\lib\ant-googlecode-0.0.2.jar -DartifactId=ant-googlecode -Dversion=0.0.2
 @rem cmd /C mvn install:install-file -Dpackaging=jar -DgeneratePom=true -DgroupId=org.jboss.qa.ews.sardine -Dfile=sardine-80\lib\commons-logging-1.1.1.jar -DartifactId=commons-logging -Dversion=1.1.1
@@ -225,7 +225,7 @@ cmd /C mvn install:install-file -Dpackaging=jar -DgeneratePom=true -DgroupId=org
 		<p>So, perform this:</p>
 
 		<pre
-		class="bash">mvn install:install-file -DpomFile=sardine-pom.xml -Dpackaging=jar -DgeneratePom=true -DgroupId=org.jboss.qa.ews.sardine -Dfile=sardine-80\sardine.jar -DartifactId=sardine -Dversion=80</pre>
+		class="lang-bash brush: bash">mvn install:install-file -DpomFile=sardine-pom.xml -Dpackaging=jar -DgeneratePom=true -DgroupId=org.jboss.qa.ews.sardine -Dfile=sardine-80\sardine.jar -DartifactId=sardine -Dversion=80</pre>
 	</li>
 </ol>
 
@@ -250,6 +250,12 @@ cmd /C mvn install:install-file -Dpackaging=jar -DgeneratePom=true -DgroupId=org
 
     <hr />
 
+
+        <!--sharexy code start--><div id='shr_723771'><script type='text/javascript'>(function(w) { if (!w.SharexyWidget) { w.SharexyWidget = {};} if (!w.SharexyWidget.Params) { w.SharexyWidget.Params = {}; }
+        w.SharexyWidget.Params['723771'] = {'code_id':'723771','publisher_key':'undefined','design':'classic','layout_static':'h','type':'st','mode_float':'','size_float':'55','size_static':'55','buzz':'1',
+            'services':['facebook', 'google_plus', 'twitter', 'linkedin', 'reddit', 'buffer', 'pocket', 'print_page'],
+            'url':'current','allways_show_ads':'0','show_ads_sharing':'0','show_ads_cursor':'0','bg_float':'1','bg_color':'#ffffff','labels':'','counters':'0', 'counters_float':'0'} })(window);</script>
+        <script type='text/javascript' src='http://shuttle.sharexy.com/LoaderLite.js'></script></div><a href='http://sharexy.com/'><img src='http://sharexy.com/statpixel.png' style='border: 0' /></a><!--sharexy code end   -->
 
         <!-- Facebook comments -->
                     <div class="fb-comments" data-href="https://www.zizka.ch/pages/programovani/java/mavenize-quick-and-dirty.html" data-width="800" data-numposts="5"></div>

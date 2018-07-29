@@ -82,7 +82,7 @@
 libs)</p>
 
 <pre
-class="brush: php">&lt;?php
+class="brush: lang-php brush: php">&lt;?php
 
 
 
@@ -1911,7 +1911,7 @@ abstract class DwFwIdAndProperties {
 <h3 id="toc-usage-model">Usage – model</h3>
 
 <pre
-class="brush: php">/** ************************************************************************
+class="brush: lang-php brush: php">/** ************************************************************************
 *  Simple class that holds item's ID and a hashmap of parameters.          *
 ***************************************************************************/
 abstract class DwFwIdAndProperties {
@@ -1992,7 +1992,7 @@ class cObjectPersistence_TestClass_Key extends DwFwIdAndProperties {
 <h3 id="toc-usage-data-manipulation">Usage – data manipulation</h3>
 
 <pre
-class="brush: php">// Create DB object
+class="brush: lang-php brush: php">// Create DB object
 $oDB = new cDBAccess_MySQL('localhost:3350', 'test', 'test', 'test', 'cp1250');
 $oDB-&gt;SetSelectMode(CDBA_SELECT_RETURNS_CRESULT_ON_ERROR);
 echo "Connect: ".///
@@ -2009,7 +2009,7 @@ $oOP = new cDwObjectPersistence_DB($oDB);
 <h3 id="toc-example-sql-schema-data">Example SQL schema &amp; data</h3>
 
 <pre
-class="brush: sql">CREATE TABLE `ap_users` (
+class="brush: lang-sql brush: sql">CREATE TABLE `ap_users` (
   `id` int(10) unsigned NOT NULL auto_increment,
   `user` varchar(255) NOT NULL,
   `pass` varchar(40) default NULL,
@@ -2050,7 +2050,7 @@ INSERT INTO ap_keys VALUES
 (10006, 116), (10006, 118);                  -- Satan</pre>
 
 <pre
-class="brush: php">$oClass = new cDwOpClass('cObjectPersistenceTestClass_User', 'ap_users');
+class="brush: lang-php brush: php">$oClass = new cDwOpClass('cObjectPersistenceTestClass_User', 'ap_users');
 //$oProp = $oClass-&gt;AddProperty('id', $oColTypes-&gt;GetColumnType('INT UNSIGNED'));
         $oProp = $oClass-&gt;AddProperty('id', new cDwOpColumnType_INT_UNSIGNED() );
         $oClass-&gt;SetIdProperty($oProp);
@@ -2075,7 +2075,7 @@ $oClass-&gt;SetOrderProperties('lname, +fname, -id');
 <h3 id="toc-usage-data-manipulation-2">Usage – data manipulation</h3>
 
 <pre
-class="brush: php">srand(time());
+class="brush: lang-php brush: php">srand(time());
 
 echo "&lt;div&gt;GetPoolCount(): ".$oOP-&gt;GetPoolCount()."&lt;/div&gt;";
 
@@ -2244,6 +2244,12 @@ echo '&lt;div style="color: red"&gt;Error from the past: '.$oOP-&gt;GetError()."
 
     <hr />
 
+
+        <!--sharexy code start--><div id='shr_723771'><script type='text/javascript'>(function(w) { if (!w.SharexyWidget) { w.SharexyWidget = {};} if (!w.SharexyWidget.Params) { w.SharexyWidget.Params = {}; }
+        w.SharexyWidget.Params['723771'] = {'code_id':'723771','publisher_key':'undefined','design':'classic','layout_static':'h','type':'st','mode_float':'','size_float':'55','size_static':'55','buzz':'1',
+            'services':['facebook', 'google_plus', 'twitter', 'linkedin', 'reddit', 'buffer', 'pocket', 'print_page'],
+            'url':'current','allways_show_ads':'0','show_ads_sharing':'0','show_ads_cursor':'0','bg_float':'1','bg_color':'#ffffff','labels':'','counters':'0', 'counters_float':'0'} })(window);</script>
+        <script type='text/javascript' src='http://shuttle.sharexy.com/LoaderLite.js'></script></div><a href='http://sharexy.com/'><img src='http://sharexy.com/statpixel.png' style='border: 0' /></a><!--sharexy code end   -->
 
         <!-- Facebook comments -->
                     <div class="fb-comments" data-href="https://www.zizka.ch/pages/programovani/php/php-object-persistence-hibernate-doctrine-orm.html" data-width="800" data-numposts="5"></div>

@@ -124,7 +124,7 @@ about „long sentences“:</p>
 <h3 id="toc-workaround">Workaround:</h3>
 
 <pre
-class="brush: java">System.setProperty("com.sun.speech.freetts.audio.AudioPlayer.openFailDelayMs", "100");
+class="brush: lang-java brush: java">System.setProperty("com.sun.speech.freetts.audio.AudioPlayer.openFailDelayMs", "100");
 System.setProperty("com.sun.speech.freetts.audio.AudioPlayer.totalOpenFailDelayMs", "30000");</pre>
 
 <p>Also <a
@@ -197,7 +197,7 @@ help because it did not tell me about JVM's calls to <code>open()</code> for
 some reason, but anyway, here's the command:</p>
 
 <pre
-class="brush: bash">sudo strace -e trace=all -o log.txt \
+class="brush: lang-bash brush: bash">sudo strace -e trace=all -o log.txt \
 java -Xrunjdwp:transport=dt_socket,server=y,address=4000 \
      -Djpda.listen=true -Djpda.address=4000 \
      -Dmbrola.base="`pwd`/../mbrola301"\
@@ -232,7 +232,7 @@ means adding <code>-&lt;version&gt;</code> so it's e.g.
 <p>Then you run a shell command like</p>
 
 <pre
-class="brush: bash">java -Dmbrola.base="`pwd`/../mbrola301"\
+class="brush: lang-bash brush: bash">java -Dmbrola.base="`pwd`/../mbrola301"\
      -Dfreetts.voicespath="`pwd`/../mbrola301/voices"\
      -jar /home/ondra/work/BOTS/SpeechBot/SpeechBot-mavenized/target/SpeechBot-1.0-SNAPSHOT.jar \
      irc.eng.brq.redhat.com '#some'</pre>
@@ -248,19 +248,19 @@ app's MANIFEST.MF as per the explanation above.</p>
 your application, e.g.:</p>
 
 <pre
-class="brush: plain">java -jar myapp.jar -Dmbrola.base="`pwd`/../mbrola301"</pre>
+class="brush: lang-plain brush: plain">java -jar myapp.jar -Dmbrola.base="`pwd`/../mbrola301"</pre>
 
 <p>eventually you can set <code>freetts.voicespath</code> to different dir:</p>
 
 <pre
-class="brush: plain">java -jar myapp.jar -Dmbrola.base="`pwd`/../mbrola301" -Dfreetts.voicespath="`pwd`/../mbrola301/voices"</pre>
+class="brush: lang-plain brush: plain">java -jar myapp.jar -Dmbrola.base="`pwd`/../mbrola301" -Dfreetts.voicespath="`pwd`/../mbrola301/voices"</pre>
 
 <hr />
 
 <p>There are few voices in FreeTTS with MBrola.</p>
 
 <pre
-class="brush: plain">// This is a tiny database, contains only data for time demo app.
+class="brush: lang-plain brush: plain">// This is a tiny database, contains only data for time demo app.
 System.setProperty("freetts.voices","com.sun.speech.freetts.en.us.cmu_time_awb.AlanVoiceDirectory");
 
 // Using this throws the ClassCastException. You need to recompile it.
@@ -286,7 +286,7 @@ FreeTTS's jar's M­ANIFEST.MF's Class-Path value to reflect my jar names
 (mavenized), I started getting this:</p>
 
 <pre
-class="brush: plain">Exception in thread "main" java.lang.ClassCastException: com.sun.speech.freetts.en.us.cmu_us_kal.KevinVoiceDirectory cannot be cast to com.sun.speech.freetts.VoiceDirectory
+class="brush: lang-plain brush: plain">Exception in thread "main" java.lang.ClassCastException: com.sun.speech.freetts.en.us.cmu_us_kal.KevinVoiceDirectory cannot be cast to com.sun.speech.freetts.VoiceDirectory
         at com.sun.speech.freetts.VoiceManager.getVoices(VoiceManager.java:113)
         at cz.dynawest.speechbot.synt.MbrolaSpeaker.&lt;init&gt;(MbrolaSpeaker.java:38)
         at cz.dynawest.speechbot.SpeechBot.&lt;init&gt;(SpeechBot.java:25)
@@ -301,6 +301,12 @@ class="brush: plain">Exception in thread "main" java.lang.ClassCastException: co
 
     <hr />
 
+
+        <!--sharexy code start--><div id='shr_723771'><script type='text/javascript'>(function(w) { if (!w.SharexyWidget) { w.SharexyWidget = {};} if (!w.SharexyWidget.Params) { w.SharexyWidget.Params = {}; }
+        w.SharexyWidget.Params['723771'] = {'code_id':'723771','publisher_key':'undefined','design':'classic','layout_static':'h','type':'st','mode_float':'','size_float':'55','size_static':'55','buzz':'1',
+            'services':['facebook', 'google_plus', 'twitter', 'linkedin', 'reddit', 'buffer', 'pocket', 'print_page'],
+            'url':'current','allways_show_ads':'0','show_ads_sharing':'0','show_ads_cursor':'0','bg_float':'1','bg_color':'#ffffff','labels':'','counters':'0', 'counters_float':'0'} })(window);</script>
+        <script type='text/javascript' src='http://shuttle.sharexy.com/LoaderLite.js'></script></div><a href='http://sharexy.com/'><img src='http://sharexy.com/statpixel.png' style='border: 0' /></a><!--sharexy code end   -->
 
         <!-- Facebook comments -->
                     <div class="fb-comments" data-href="https://www.zizka.ch/pages/programovani/java/misc/freetts-line-unavailable-classcastexception-kevinvoicedirectory-error-opening-zipfile.html" data-width="800" data-numposts="5"></div>

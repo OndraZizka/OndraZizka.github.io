@@ -123,23 +123,23 @@ e.g. MySQL.)</p>
 <h3 id="toc-example">Example:</h3>
 
 <pre
-class="brush: bash">crunch input.csv output.csv "SELECT AVG(duration) AS durAvg FROM (SELECT * FROM indata ORDER BY duration LIMIT 2 OFFSET 6)"`</pre>
+class="brush: lang-bash brush: bash">crunch input.csv output.csv "SELECT AVG(duration) AS durAvg FROM (SELECT * FROM indata ORDER BY duration LIMIT 2 OFFSET 6)"`</pre>
 
 <h3 id="toc-example-2">Example:</h3>
 
 <pre
-class="brush: bash">## jobName, buildNumber, config, ar, arFile, deployDur, warmupDur, scale
+class="brush: lang-bash brush: bash">## jobName, buildNumber, config, ar, arFile, deployDur, warmupDur, scale
 'eap-5.1.0-perf-deployers', 355,'production','testdata/war/hellothere.war','hellothere.war',10282,14804,1000
 'eap-5.1.0-perf-deployers', 355,'production','testdata/ear/EarWithWar-Counter.ear','EarWithWar-Counter.ear',11005,18904,1000
 'eap-5.1.0-perf-deployers', 355,'production','testdata-own/war/war-big-1.0.war','war-big-1.0.war',1966,14800,100
 ...</pre>
 
 <pre
-class="brush: sql">   SELECT jobName, buildNumber, config, ar, arFile, deployDur, warmupDur, scale,"
+class="brush: lang-sql brush: sql">   SELECT jobName, buildNumber, config, ar, arFile, deployDur, warmupDur, scale,"
 + " CAST(warmupDur AS DOUBLE) / CAST(deployDur AS DOUBLE) AS warmupSlower FROM indata ORDER BY deployDur</pre>
 
 <pre
-class="brush: bash">'eap-5.1.0-perf-deployers',355,'production','testdata/war/hellothere.war','hellothere.war',10282,14804,1000,1.4397977047267068E0
+class="brush: lang-bash brush: bash">'eap-5.1.0-perf-deployers',355,'production','testdata/war/hellothere.war','hellothere.war',10282,14804,1000,1.4397977047267068E0
 'eap-5.1.0-perf-deployers',355,'production','testdata/ear/EarWithWar-Counter.ear','EarWithWar-Counter.ear',11005,18904,1000,1.7177646524307133E0
 'eap-5.1.0-perf-deployers',355,'production','testdata-own/war/war-big-1.0.war','war-big-1.0.war',1966,14800,100,7.527975584944048E0</pre>
 
@@ -155,6 +155,12 @@ class="brush: bash">'eap-5.1.0-perf-deployers',355,'production','testdata/war/he
 
     <hr />
 
+
+        <!--sharexy code start--><div id='shr_723771'><script type='text/javascript'>(function(w) { if (!w.SharexyWidget) { w.SharexyWidget = {};} if (!w.SharexyWidget.Params) { w.SharexyWidget.Params = {}; }
+        w.SharexyWidget.Params['723771'] = {'code_id':'723771','publisher_key':'undefined','design':'classic','layout_static':'h','type':'st','mode_float':'','size_float':'55','size_static':'55','buzz':'1',
+            'services':['facebook', 'google_plus', 'twitter', 'linkedin', 'reddit', 'buffer', 'pocket', 'print_page'],
+            'url':'current','allways_show_ads':'0','show_ads_sharing':'0','show_ads_cursor':'0','bg_float':'1','bg_color':'#ffffff','labels':'','counters':'0', 'counters_float':'0'} })(window);</script>
+        <script type='text/javascript' src='http://shuttle.sharexy.com/LoaderLite.js'></script></div><a href='http://sharexy.com/'><img src='http://sharexy.com/statpixel.png' style='border: 0' /></a><!--sharexy code end   -->
 
         <!-- Facebook comments -->
                     <div class="fb-comments" data-href="https://www.zizka.ch/pages/programovani/java/apps/CsvCruncher-csv-manipulation-sql.html" data-width="800" data-numposts="5"></div>

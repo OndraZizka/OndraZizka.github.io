@@ -99,7 +99,7 @@ Does not work.</h3>
 activates the other profile. That does not work.</p>
 
 <pre
-class="brush: xml">&lt;profiles&gt;
+class="brush: lang-xml brush: xml">&lt;profiles&gt;
   &lt;profile&gt;
     &lt;id&gt;foo&lt;/id&gt;
 
@@ -155,7 +155,7 @@ class="brush: xml">&lt;profiles&gt;
 </ul>
 
 <pre
-class="brush: xml">&lt;project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd"&gt;
+class="brush: lang-xml brush: xml">&lt;project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd"&gt;
   &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
 
   &lt;groupId&gt;cz.dynawest.maven.playground&lt;/groupId&gt;
@@ -198,7 +198,7 @@ class="brush: xml">&lt;project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:x
 &lt;/project&gt;</pre>
 
 <pre
-class="brush: plain">ondra@ondra-redhat:~/work-unrelated/MavenPlayground/props$ mvn test -Dfoo
+class="brush: lang-plain brush: plain">ondra@ondra-redhat:~/work-unrelated/MavenPlayground/props$ mvn test -Dfoo
 [INFO] Scanning for projects...
 [INFO] ------------------------------------------------------------------------
 [INFO] Building Maven Playground - props
@@ -210,7 +210,7 @@ class="brush: plain">ondra@ondra-redhat:~/work-unrelated/MavenPlayground/props$ 
 [INFO] Executed tasks</pre>
 
 <pre
-class="brush: plain">ondra@ondra-redhat:~/work-unrelated/MavenPlayground/props$ mvn test -Pfoo
+class="brush: lang-plain brush: plain">ondra@ondra-redhat:~/work-unrelated/MavenPlayground/props$ mvn test -Pfoo
 [INFO] Scanning for projects...
 [INFO] ------------------------------------------------------------------------
 [INFO] Building Maven Playground - props
@@ -222,7 +222,7 @@ class="brush: plain">ondra@ondra-redhat:~/work-unrelated/MavenPlayground/props$ 
 [INFO] Executed tasks</pre>
 
 <pre
-class="brush: plain">[INFO] Scanning for projects...
+class="brush: lang-plain brush: plain">[INFO] Scanning for projects...
 [INFO] ------------------------------------------------------------------------
 [INFO] Building Maven Playground - props
 [INFO]    task-segment: [test]
@@ -236,6 +236,12 @@ class="brush: plain">[INFO] Scanning for projects...
 
     <hr />
 
+
+        <!--sharexy code start--><div id='shr_723771'><script type='text/javascript'>(function(w) { if (!w.SharexyWidget) { w.SharexyWidget = {};} if (!w.SharexyWidget.Params) { w.SharexyWidget.Params = {}; }
+        w.SharexyWidget.Params['723771'] = {'code_id':'723771','publisher_key':'undefined','design':'classic','layout_static':'h','type':'st','mode_float':'','size_float':'55','size_static':'55','buzz':'1',
+            'services':['facebook', 'google_plus', 'twitter', 'linkedin', 'reddit', 'buffer', 'pocket', 'print_page'],
+            'url':'current','allways_show_ads':'0','show_ads_sharing':'0','show_ads_cursor':'0','bg_float':'1','bg_color':'#ffffff','labels':'','counters':'0', 'counters_float':'0'} })(window);</script>
+        <script type='text/javascript' src='http://shuttle.sharexy.com/LoaderLite.js'></script></div><a href='http://sharexy.com/'><img src='http://sharexy.com/statpixel.png' style='border: 0' /></a><!--sharexy code end   -->
 
         <!-- Facebook comments -->
                     <div class="fb-comments" data-href="https://www.zizka.ch/pages/programovani/java/maven/profile-activation-and-properties.html" data-width="800" data-numposts="5"></div>

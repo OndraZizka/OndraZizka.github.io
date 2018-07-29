@@ -81,13 +81,13 @@
 <p>To save user's rating, call <code>rate.php</code>:</p>
 
 <pre
-class="url">rate.php?user=Trapper852@Adelphia.net&amp;song_id=1500&amp;rating=10
+class="lang-url brush: url">rate.php?user=Trapper852@Adelphia.net&amp;song_id=1500&amp;rating=10
 http://d02-0330a.kn.vutbr.cz/winlyrics/real/rate.php?user=Trapper852@Adelphia.net&amp;song_id=1500&amp;rating=10</pre>
 
 <p><strong>Params:</strong></p>
 
 <pre
-class="doc">@param user     string         Identifier - e.g. e-mail - of the user who rates the song.
+class="lang-doc brush: doc">@param user     string         Identifier - e.g. e-mail - of the user who rates the song.
 @param song_id  unsigned int   ID of the rated song.  UNSIGNED INT
 @param rating   signed byte    Rating of the song.</pre>
 
@@ -127,13 +127,14 @@ details.</p>
 	<li>Use the session to rate:</li>
 </ol>
 
-<pre>&gt;&gt; `http://localhost:81/winlyrics/real/rate_sess.php?sess_id=f8675g1390s7dngloohqitsd74&amp;song_id=15&amp;rating=10`
+<pre
+class="lang-text brush: text">&gt;&gt; `http://localhost:81/winlyrics/real/rate_sess.php?sess_id=f8675g1390s7dngloohqitsd74&amp;song_id=15&amp;rating=10`
 &lt;&lt; `OK`</pre>
 
 <p><strong>Params:</strong></p>
 
 <pre
-class="doc">@param sess_id  string         Session ID, previously acquired using authentize.php
+class="lang-doc brush: doc">@param sess_id  string         Session ID, previously acquired using authentize.php
 @param song_id  unsigned int   ID of the rated song.  UNSIGNED INT
 @param rating   signed byte    Rating of the song.</pre>
 
@@ -148,31 +149,32 @@ class="doc">@param sess_id  string         Session ID, previously acquired using
 <code>-10</code>:</p>
 
 <pre
-class="brush: sql">CALL wl2_SetRating( (SELECT id FROM wl2_users WHERE email = 'Trapper852@Adelphia.net'), 1500, -10 );</pre>
+class="brush: lang-sql brush: sql">CALL wl2_SetRating( (SELECT id FROM wl2_users WHERE email = 'Trapper852@Adelphia.net'), 1500, -10 );</pre>
 
 <p>Changes that rating to 50:</p>
 
 <pre
-class="brush: sql">CALL wl2_SetRating( (SELECT id FROM wl2_users WHERE email = 'Trapper852@Adelphia.net'), 1500, 50 );</pre>
+class="brush: lang-sql brush: sql">CALL wl2_SetRating( (SELECT id FROM wl2_users WHERE email = 'Trapper852@Adelphia.net'), 1500, 50 );</pre>
 
 <p>Creates rating for other song and other user:</p>
 
-<pre class="brush: sql">CALL wl2_SetRating( 20, 1700, 40 );</pre>
+<pre
+class="brush: lang-sql brush: sql">CALL wl2_SetRating( 20, 1700, 40 );</pre>
 
 <p>Does nothing (invalid user)</p>
 
 <pre
-class="brush: sql">CALL wl2_SetRating( (SELECT id FROM wl2_users WHERE email = 'non@existent@user'), 200, 30 );</pre>
+class="brush: lang-sql brush: sql">CALL wl2_SetRating( (SELECT id FROM wl2_users WHERE email = 'non@existent@user'), 200, 30 );</pre>
 
 <p>Removes the rating for given user-song tuple:</p>
 
 <pre
-class="brush: sql">CALL wl2_SetRating( (SELECT id FROM wl2_users WHERE email = 'Trapper852@Adelphia.net'), 1500, NULL );</pre>
+class="brush: lang-sql brush: sql">CALL wl2_SetRating( (SELECT id FROM wl2_users WHERE email = 'Trapper852@Adelphia.net'), 1500, NULL );</pre>
 
 <h4 id="toc-tables">Tables</h4>
 
 <pre
-class="brush: sql">CREATE TABLE  `winlyricscom`.`wl2_users` SELECT * FROM users;
+class="brush: lang-sql brush: sql">CREATE TABLE  `winlyricscom`.`wl2_users` SELECT * FROM users;
 ALTER TABLE `winlyricscom`.`wl2_users`
   ADD COLUMN `pass_md5` char(32) character set cp1250 collate cp1250_bin NOT NULL,
   MODIFY `email` `email` varchar(128) character set cp1250 NOT NULL,
@@ -183,7 +185,7 @@ INSERT INTO wl2_users
   SELECT id, '' AS pass, jmeno, adresa, mesto, stat_kod, postal, email FROM reg_users;</pre>
 
 <pre
-class="brush: sql">CREATE TABLE  `winlyricscom`.`wl2_songs_rating` (
+class="brush: lang-sql brush: sql">CREATE TABLE  `winlyricscom`.`wl2_songs_rating` (
   `id_song` int(10) unsigned NOT NULL auto_increment,
   `rating_sum` int(10) unsigned NOT NULL,
   `rating_cnt` int(10) unsigned NOT NULL,
@@ -192,7 +194,7 @@ class="brush: sql">CREATE TABLE  `winlyricscom`.`wl2_songs_rating` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf-8;</pre>
 
 <pre
-class="brush: sql">CREATE TABLE  `winlyricscom`.`wl2_users_ratings` (
+class="brush: lang-sql brush: sql">CREATE TABLE  `winlyricscom`.`wl2_users_ratings` (
   `id_user` int(10) unsigned NOT NULL,
   `id_lyrics` int(10) unsigned NOT NULL,
   `rating` tinyint(4) NOT NULL,
@@ -206,7 +208,7 @@ from one user changes his previous rating. Stores the data in
 <code>wl2_users_ratings</code>.</p>
 
 <pre
-class="brush: sql">DELIMITER $$
+class="brush: lang-sql brush: sql">DELIMITER $$
 
 DROP PROCEDURE IF EXISTS `winlyricscom`.`wl2_SetRating`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE  `winlyricscom`.`wl2_SetRating`(idUser INT UNSIGNED, idSong INT UNSIGNED, iRating TINYINT)
@@ -233,7 +235,7 @@ DELIMITER ;</pre>
 in <code>wl2_users_ratings</code>.</p>
 
 <pre
-class="brush: sql">DELIMITER $$
+class="brush: lang-sql brush: sql">DELIMITER $$
 
 DROP PROCEDURE IF EXISTS `winlyricscom`.`wl2_RebuildRating`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE  `winlyricscom`.`wl2_RebuildRating`()
@@ -260,6 +262,12 @@ DELIMITER ;</pre>
 
     <hr />
 
+
+        <!--sharexy code start--><div id='shr_723771'><script type='text/javascript'>(function(w) { if (!w.SharexyWidget) { w.SharexyWidget = {};} if (!w.SharexyWidget.Params) { w.SharexyWidget.Params = {}; }
+        w.SharexyWidget.Params['723771'] = {'code_id':'723771','publisher_key':'undefined','design':'classic','layout_static':'h','type':'st','mode_float':'','size_float':'55','size_static':'55','buzz':'1',
+            'services':['facebook', 'google_plus', 'twitter', 'linkedin', 'reddit', 'buffer', 'pocket', 'print_page'],
+            'url':'current','allways_show_ads':'0','show_ads_sharing':'0','show_ads_cursor':'0','bg_float':'1','bg_color':'#ffffff','labels':'','counters':'0', 'counters_float':'0'} })(window);</script>
+        <script type='text/javascript' src='http://shuttle.sharexy.com/LoaderLite.js'></script></div><a href='http://sharexy.com/'><img src='http://sharexy.com/statpixel.png' style='border: 0' /></a><!--sharexy code end   -->
 
         <!-- Facebook comments -->
                     <div class="fb-comments" data-href="https://www.zizka.ch/pages/programovani/winlyrics/doc/rating.html" data-width="800" data-numposts="5"></div>

@@ -82,7 +82,7 @@ files from a directory</h1>
 files from a directory</h2>
 
 <pre
-class="brush: java">          Server server = new Server(8080);
+class="brush: lang-java brush: java">          Server server = new Server(8080);
           Context ctx = new Context( server, "/", Context.SESSIONS );
 
           ServletHolder servletHolder = new ServletHolder(new WicketServlet());
@@ -103,7 +103,7 @@ relative path, and setting <code>relativeResourceBase</code> didn't work, I was
 getting this NPE:</p>
 
 <pre
-class="brush: plain">04:49:39.401 DEBUG [main] org.mortbay.log  started org.apache.wicket.protocol.http.WicketServlet-16695559
+class="brush: lang-plain brush: plain">04:49:39.401 DEBUG [main] org.mortbay.log  started org.apache.wicket.protocol.http.WicketServlet-16695559
 04:49:39.404 DEBUG [main] org.mortbay.log  Checking Resource aliases
 04:49:39.405 ERROR [main] org.mortbay.log  EXCEPTION
 java.lang.NullPointerException
@@ -135,6 +135,12 @@ java.lang.NullPointerException
 
     <hr />
 
+
+        <!--sharexy code start--><div id='shr_723771'><script type='text/javascript'>(function(w) { if (!w.SharexyWidget) { w.SharexyWidget = {};} if (!w.SharexyWidget.Params) { w.SharexyWidget.Params = {}; }
+        w.SharexyWidget.Params['723771'] = {'code_id':'723771','publisher_key':'undefined','design':'classic','layout_static':'h','type':'st','mode_float':'','size_float':'55','size_static':'55','buzz':'1',
+            'services':['facebook', 'google_plus', 'twitter', 'linkedin', 'reddit', 'buffer', 'pocket', 'print_page'],
+            'url':'current','allways_show_ads':'0','show_ads_sharing':'0','show_ads_cursor':'0','bg_float':'1','bg_color':'#ffffff','labels':'','counters':'0', 'counters_float':'0'} })(window);</script>
+        <script type='text/javascript' src='http://shuttle.sharexy.com/LoaderLite.js'></script></div><a href='http://sharexy.com/'><img src='http://sharexy.com/statpixel.png' style='border: 0' /></a><!--sharexy code end   -->
 
         <!-- Facebook comments -->
                     <div class="fb-comments" data-href="https://www.zizka.ch/pages/programovani/java/web/jetty-serving-static-files-resourcebase.html" data-width="800" data-numposts="5"></div>

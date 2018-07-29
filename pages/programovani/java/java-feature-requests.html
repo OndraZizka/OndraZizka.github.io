@@ -92,13 +92,13 @@ syntax shortcuts.</p>
 when computing expression's value.</p>
 
 <pre
-class="brush: java">// val will be 0 if getMap() or getKey(String) returned null.
+class="brush: lang-java brush: java">// val will be 0 if getMap() or getKey(String) returned null.
 int val = unreliableMapProvider.getMap()?.get("key")?.getName();</pre>
 
 <p>One use case: Logging performance.</p>
 
 <pre
-class="brush: java">log.info()?.log( timeConsumingCall() );
+class="brush: lang-java brush: java">log.info()?.log( timeConsumingCall() );
 // ... instead of ...
 if( log.isLoggable(Level.INFO) ) log.info( timeConsumingCall() );</pre>
 
@@ -111,14 +111,14 @@ your code.</p>
 about this:</p>
 
 <pre
-class="brush: java">Programmer prog = getJavaProgrammer();
+class="brush: lang-java brush: java">Programmer prog = getJavaProgrammer();
 String anwser = prog.cast(JavaProgrammer).askAboutJava();</pre>
 
 <p>Combined with the above operator, answer would be <code>null</code> if there
 was a <code>ClassCastException</code>:</p>
 
 <pre
-class="brush: java">String anwser = prog.cast(JavaProgrammer)!.askAboutJava();</pre>
+class="brush: lang-java brush: java">String anwser = prog.cast(JavaProgrammer)!.askAboutJava();</pre>
 
 <h3 id="toc-automatic-casting-after-instanceof">Automatic casting after
 <code>instanceof</code></h3>
@@ -127,7 +127,7 @@ class="brush: java">String anwser = prog.cast(JavaProgrammer)!.askAboutJava();</
 and consider the variable as being of the checked type:</p>
 
 <pre
-class="brush: java">if( myObject instanceof String ){
+class="brush: lang-java brush: java">if( myObject instanceof String ){
   // No more redundant casting.
   myObject.length();
   // As myObject is now treated as string, this would cause a compiler error:
@@ -153,7 +153,7 @@ getters and setters too.<br />
 <p>Of course, closures… so instead of</p>
 
 <pre
-class="brush: java">interface RainListener {
+class="brush: lang-java brush: java">interface RainListener {
   void itsRaining();
 }
 
@@ -172,7 +172,7 @@ public void testRain(){
 <p>it would be just</p>
 
 <pre
-class="brush: java">public void announceRain ( void fn() ){  fn();  }
+class="brush: lang-java brush: java">public void announceRain ( void fn() ){  fn();  }
 
 public void testRain(){
   announceRain( { System.out.println("Hey, take your coat!"); } )
@@ -192,7 +192,7 @@ type would create one „anonymous interface“, and each closure implementation
 should be a static final functor implementing that interface.</p>
 
 <pre
-class="brush: java">public String process( List&lt;String&gt; list, String fn(String item) ){
+class="brush: lang-java brush: java">public String process( List&lt;String&gt; list, String fn(String item) ){
   String res = "";
   for( String str:  list )
     res += fn( str );
@@ -208,7 +208,7 @@ public void testClosure(){
 <h4 id="toc-generics">Generics:</h4>
 
 <pre
-class="brush: java">public String process( List&lt;T&gt; list, String fn(T item) ){
+class="brush: lang-java brush: java">public String process( List&lt;T&gt; list, String fn(T item) ){
   String res = "";
   for( T str:  list )
     res += fn( str );
@@ -230,7 +230,7 @@ whether the method fits the type constraints. <strong>This would keep interfaces
 and functors backwards compatible.</strong></p>
 
 <pre
-class="brush: java">public class ClosureExample {
+class="brush: lang-java brush: java">public class ClosureExample {
   public String process( List&lt;T&gt; list, String fn(T item) ){ ... }
 
   String myClosure(String item){ return item.reverse(); }
@@ -243,7 +243,7 @@ class="brush: java">public class ClosureExample {
 <p>… would act like if there was an „anonymous interface“:</p>
 
 <pre
-class="brush: java">private interface AnonInterface01 {  String fn(T item);  }
+class="brush: lang-java brush: java">private interface AnonInterface01 {  String fn(T item);  }
 
 public class ClosureExample {
   public String process( List&lt;T&gt; list, AnonInterface01 fn ){ ... }
@@ -269,7 +269,7 @@ public class ClosureExample {
 (I dislike the hash notation):</p>
 
 <pre
-class="brush: java">public void testClosure(){
+class="brush: lang-java brush: java">public void testClosure(){
   System.out.println( process( list, OtherClass.myClosure ) );
 }</pre>
 
@@ -277,7 +277,7 @@ class="brush: java">public void testClosure(){
 (using <code>this</code> in closures):</h4>
 
 <pre
-class="brush: java">private String concat = "";
+class="brush: lang-java brush: java">private String concat = "";
 
 public void testClosure(){
   List&lt;String&gt; list = Arrays.asList( new String[]{"foo","bar"} );
@@ -296,7 +296,7 @@ abstract some common logic without need of <code>abstract</code> classes
 or AOP.</p>
 
 <pre
-class="brush: java">interface Phone {
+class="brush: lang-java brush: java">interface Phone {
 
   void callNumber( String number );
 
@@ -308,7 +308,7 @@ class="brush: java">interface Phone {
 mix-ins:</p>
 
 <pre
-class="brush: java">interface Sumarizer extends ListIterator&lt;Integer&gt; {
+class="brush: lang-java brush: java">interface Sumarizer extends ListIterator&lt;Integer&gt; {
 
   public int getSum(){
     int ret = 0;
@@ -325,7 +325,7 @@ class="brush: java">interface Sumarizer extends ListIterator&lt;Integer&gt; {
 	<code>if</code>/<code>else</code></h3>
 
 	<pre
-	class="brush: java">String num = switch(4){ case 1: yield "one"; default: yield "more"; }
+	class="brush: lang-java brush: java">String num = switch(4){ case 1: yield "one"; default: yield "more"; }
 
 boolean isSunShining
 String dayPart = if( isSunShining ) yield "day"; else yield "night";</pre>
@@ -363,6 +363,12 @@ href="http://www.linkedin.com/groupAnswers?viewQuestionAndAnswers=&amp;discussio
 
     <hr />
 
+
+        <!--sharexy code start--><div id='shr_723771'><script type='text/javascript'>(function(w) { if (!w.SharexyWidget) { w.SharexyWidget = {};} if (!w.SharexyWidget.Params) { w.SharexyWidget.Params = {}; }
+        w.SharexyWidget.Params['723771'] = {'code_id':'723771','publisher_key':'undefined','design':'classic','layout_static':'h','type':'st','mode_float':'','size_float':'55','size_static':'55','buzz':'1',
+            'services':['facebook', 'google_plus', 'twitter', 'linkedin', 'reddit', 'buffer', 'pocket', 'print_page'],
+            'url':'current','allways_show_ads':'0','show_ads_sharing':'0','show_ads_cursor':'0','bg_float':'1','bg_color':'#ffffff','labels':'','counters':'0', 'counters_float':'0'} })(window);</script>
+        <script type='text/javascript' src='http://shuttle.sharexy.com/LoaderLite.js'></script></div><a href='http://sharexy.com/'><img src='http://sharexy.com/statpixel.png' style='border: 0' /></a><!--sharexy code end   -->
 
         <!-- Facebook comments -->
                     <div class="fb-comments" data-href="https://www.zizka.ch/pages/programovani/java/java-feature-requests.html" data-width="800" data-numposts="5"></div>
