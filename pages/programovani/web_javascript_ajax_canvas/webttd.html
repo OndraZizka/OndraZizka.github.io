@@ -72,13 +72,13 @@ A Browser-based Transport Tycoon Derivate - Ondřej Žižka</title>
     </div>
     <div class="container">
 
-    <div class="document-post">
+    <div class="document document-post">
         <div class="page-header">
             <h1>WebTTD –
 A Browser-based Transport Tycoon Derivate</h1>
         </div>
         <div class="date"><em>2012-12-13</em></div>
-        <div class="doc-body"><h2 id="toc-webttd-a-browser-based-transport-tycoon-derivate">WebTTD –
+        <div class="doc-body"><div><h2 class=" jbakeExtractedTitle" id="toc-webttd-a-browser-based-transport-tycoon-derivate">WebTTD –
 A Browser-based Transport Tycoon Derivate</h2>
 
 <p>I've a fixed idea of creating a web version of Transport Tycoon.</p>
@@ -126,42 +126,39 @@ focus at.</p>
 
 <p>It would be programmed using technologies:</p>
 
-<p>* HTML + CSS, eventually Canvas<br />
-* JavaScript for client logic<br />
-* J2EE backend with JBoss Cache,<br />
+<p>* HTML + CSS, eventually Canvas<br/>
+* JavaScript for client logic<br/>
+* J2EE backend with JBoss Cache,<br/>
 * or perhaps thin PHP layer with stored procedures in PostgreSQL or MySQL</p>
 
 <p>So far, I gave it about two days of work and have some poor
 proofs-of-concept:</p>
 
 <p>1) TTD-like dialogs made in HTML. Currently only layout + some DoJo code to
-make them move.<br />
-This part would need a lot of work: many dialog types + data binding.<br />
-See <a href="/samostatne/ttd/HtmlGUI/TTDdialog.html">the demo</a> .<br />
+make them move.<br/>
+This part would need a lot of work: many dialog types + data binding.<br/>
+See <a href="/samostatne/ttd/HtmlGUI/TTDdialog.html">the demo</a> .<br/>
 (Note that the dialogs are not images, but only HTML+CSS – see the
 page code.)</p>
 
-<div><img src="/samostatne/ttd/HtmlGUI/screenshots/screenshot01.png"
-alt="WebTTD – dialogs" /></div>
+<div><img alt="WebTTD – dialogs" src="/samostatne/ttd/HtmlGUI/screenshots/screenshot01.png"/></div>
 
 <p>2) Isometric landscape drawing and editing, plus client/server communication
-(AJAX).<br />
-I'll add URL of this drawing as soon as I put the database on the server.<br />
-Works quite fine, but there's one big problem: When you click somewhere,<br />
+(AJAX).<br/>
+I'll add URL of this drawing as soon as I put the database on the server.<br/>
+Works quite fine, but there's one big problem: When you click somewhere,<br/>
 it's almost impossible to compute which cell has been clicked, so it's needed
-to store it somewhere.<br />
+to store it somewhere.<br/>
 And since current technologies, including canvas, do not provide such
-functionality,<br />
+functionality,<br/>
 the only solution seems to use only flat landscape, which is kinda boring…</p>
 
-<p>Or, the other option – create the client in .NET or Java or Flash.<br />
+<p>Or, the other option – create the client in .NET or Java or Flash.<br/>
 Since I don't like Flash and .NET is bound to Microsoft, it would be
 Java's WebStart.</p>
 
-<div><img src="/samostatne/ttd/landscape/screenshots/webttd-landscape-01.png"
-alt="WebTTD – landscape" /><br />
-<img src="/samostatne/ttd/landscape/screenshots/webttd-landscape-02.png"
-alt="WebTTD – landscape" /></div>
+<div><img alt="WebTTD – landscape" src="/samostatne/ttd/landscape/screenshots/webttd-landscape-01.png"/><br/>
+<img alt="WebTTD – landscape" src="/samostatne/ttd/landscape/screenshots/webttd-landscape-02.png"/></div>
 
 <p>Next I'd move to drawing of vehicles. That should be quite easy, provided we
 had waypoints of their movement together with their times.</p>
@@ -316,8 +313,7 @@ at most.</p>
 
 <p><code>src/saveload/saveload.cpp</code></p>
 
-<pre
-class="xbrush: lang-cpp brush: cpp">/**
+<pre class="xbrush: lang-cpp brush: cpp">/**
  * Save/Load an array.
  * @param array The array being manipulated
  * @param length The length of the array in elements
@@ -327,8 +323,7 @@ void SlArray(void *array, size_t length, VarType conv){ ... }</pre>
 
 <p><code>src/map.cpp</code></p>
 
-<pre
-class="lang-cpp brush: cpp">uint _map_log_x;     ///&lt; 2^_map_log_x == _map_size_x
+<pre class="lang-cpp brush: cpp">uint _map_log_x;     ///&lt; 2^_map_log_x == _map_size_x
 uint _map_log_y;     ///&lt; 2^_map_log_y == _map_size_y
 uint _map_size_x;    ///&lt; Size of the map along the X
 uint _map_size_y;    ///&lt; Size of the map along the Y
@@ -340,8 +335,7 @@ TileExtended *_me = NULL; ///&lt; Extended Tiles of the map</pre>
 
 <p><code>src/map_type.h</code></p>
 
-<pre
-class="lang-cpp brush: cpp">/**
+<pre class="lang-cpp brush: cpp">/**
  * Data that is stored per tile. Also used TileExtended for this.
  * Look at docs/landscape.html for the exact meaning of the members.
  */
@@ -355,20 +349,13 @@ struct Tile {
         byte   m6;          ///&lt; Primarily used for bridges and rainforest/desert
 };</pre>
 
-<p><a
-href="http://svn.openttd.org/trunk/docs/landscape.html">http://svn.openttd.org/…ndscape.html</a><br
-/>
-<a
-href="http://209.85.135.132/search?q=cache:rgpOtgW-8moJ:svn.openttd.org/branches/0.6/docs/landscape.html+openttd+landscape.html&amp;cd=1&amp;hl=cs&amp;ct=clnk">http://209.85.135.132/search?…</a><br
-/>
-<a
-href="http://209.85.135.132/search?q=cache:LyYGjBMLrogJ:svn.openttd.org/branches/custombridgeheads/docs/landscape_grid.html+site:svn.openttd.org&amp;cd=2&amp;hl=cs&amp;ct=clnk">http://209.85.135.132/search?…</a></p>
+<p><a href="http://svn.openttd.org/trunk/docs/landscape.html">http://svn.openttd.org/…ndscape.html</a><br/>
+<a href="http://209.85.135.132/search?q=cache:rgpOtgW-8moJ:svn.openttd.org/branches/0.6/docs/landscape.html+openttd+landscape.html&amp;cd=1&amp;hl=cs&amp;ct=clnk">http://209.85.135.132/search?…</a><br/>
+<a href="http://209.85.135.132/search?q=cache:LyYGjBMLrogJ:svn.openttd.org/branches/custombridgeheads/docs/landscape_grid.html+site:svn.openttd.org&amp;cd=2&amp;hl=cs&amp;ct=clnk">http://209.85.135.132/search?…</a></p>
 
 <p><a href="/samostatne/ttd/openttd-docs/landscape.html">OpenTTD's docs:
-landscape</a> <a
-href="/samostatne/ttd/openttd-docs/landscape_externals.html">OpenTTD's docs:
-landscape_exter­nals</a> <a
-href="/samostatne/ttd/openttd-docs/landscape_grid.html">OpenTTD's docs:
+landscape</a> <a href="/samostatne/ttd/openttd-docs/landscape_externals.html">OpenTTD's docs:
+landscape_exter­nals</a> <a href="/samostatne/ttd/openttd-docs/landscape_grid.html">OpenTTD's docs:
 landscape_grid</a></p>
 
 <p><a href="SaveTransformer.rar">OpenTTD save file transformer</a></p>
@@ -411,8 +398,7 @@ landscape_grid</a></p>
 
 <h3 id="toc-links">Links</h3>
 
-<p><a
-href="http://www.simugraph.com/simutrans-web/en/history/index.html">Simutrans
+<p><a href="http://www.simugraph.com/simutrans-web/en/history/index.html">Simutrans
 history</a></p>
 
 <p><a href="http://www.tycoonez.com/">Tycoonez</a></p>
@@ -428,23 +414,49 @@ forums</a> – link to my request for OpenTTD map export</p>
 <p>But of course, for one man, this is work for years.</p>
 
 <p>For now, it will just be my humble dream :)</p>
-</div>
+</div></div>
 
-        <!-- Rating widget -->
-        <div class="rw-ui-container"></div>
     </div>
-
     <hr />
+    <!-- Rating widget -->
+    <div class="rw-ui-container"></div>
 
 
-        <!--sharexy code start--><div id='shr_723771'><script type='text/javascript'>(function(w) { if (!w.SharexyWidget) { w.SharexyWidget = {};} if (!w.SharexyWidget.Params) { w.SharexyWidget.Params = {}; }
-        w.SharexyWidget.Params['723771'] = {'code_id':'723771','publisher_key':'undefined','design':'classic','layout_static':'h','type':'st','mode_float':'','size_float':'55','size_static':'55','buzz':'1',
-            'services':['facebook', 'google_plus', 'twitter', 'linkedin', 'reddit', 'buffer', 'pocket', 'print_page'],
-            'url':'current','allways_show_ads':'0','show_ads_sharing':'0','show_ads_cursor':'0','bg_float':'1','bg_color':'#ffffff','labels':'','counters':'0', 'counters_float':'0'} })(window);</script>
-        <script type='text/javascript' src='http://shuttle.sharexy.com/LoaderLite.js'></script></div><a href='http://sharexy.com/'><img src='http://sharexy.com/statpixel.png' style='border: 0' /></a><!--sharexy code end   -->
+        
+        <!-- AddToAny BEGIN -->
+        <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+            <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+            <a class="a2a_button_facebook"></a>
+            <a class="a2a_button_twitter"></a>
+            <a class="a2a_button_google_plus"></a>
+            <a class="a2a_button_google_bookmarks"></a>
+            <a class="a2a_button_google_classroom"></a>
+            <a class="a2a_button_linkedin"></a>
+            <a class="a2a_button_reddit"></a>
+            <a class="a2a_button_buffer"></a>
+            <a class="a2a_button_trello"></a>
+            <a class="a2a_button_slashdot"></a>
+            <a class="a2a_button_hacker_news"></a>
+            <a class="a2a_button_dzone"></a>
+            <a class="a2a_button_pinterest"></a>
+            <a class="a2a_button_vk"></a>
+            <a class="a2a_button_digg"></a>
+            <a class="a2a_button_copy_link"></a>
+            <a class="a2a_button_pocket"></a>
+        </div>
+        <script>
+            var a2a_config = a2a_config || {};
+            a2a_config.linkname = "Ondřej Žižka";
+            a2a_config.linkurl = "https://www.zizka.ch/";
+            a2a_config.num_services = 18;
+        </script>
+        <script async src="https://static.addtoany.com/menu/page.js"></script>
+        <!-- AddToAny END -->
+
+        <div style="clear: both; height: 1ex;"></div>
 
         <!-- Facebook comments -->
-                    <div class="fb-comments" data-href="https://www.zizka.ch/pages/programovani/web_javascript_ajax_canvas/webttd.html" data-width="800" data-numposts="5"></div>
+            <div class="fb-comments" data-href="https://www.zizka.ch/pages/programovani/web_javascript_ajax_canvas/webttd.html" data-width="900" data-numposts="5"></div>
 
     </div>
     <div id="push"></div>

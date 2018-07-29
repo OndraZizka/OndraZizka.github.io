@@ -72,19 +72,18 @@ v jízdních řádech - Ondřej Žižka</title>
     </div>
     <div class="container">
 
-    <div class="document-post">
+    <div class="document document-post">
         <div class="page-header">
             <h1>Vyhledávání spojů
 v jízdních řádech</h1>
         </div>
         <div class="date"><em>2012-12-16</em></div>
-        <div class="doc-body"><h2 id="toc-vyhledavani-spoju-v-jizdnich-radech">Vyhledávání spojů
+        <div class="doc-body"><div><h2 class=" jbakeExtractedTitle" id="toc-vyhledavani-spoju-v-jizdnich-radech">Vyhledávání spojů
 v jízdních řádech</h2>
 
 <h3 id="toc-persistent-tables">Persistent tables</h3>
 
-<pre
-class="brush: lang-sql brush: sql">CREATE TABLE `mhd_jizdy` (
+<pre class="brush: lang-sql brush: sql">CREATE TABLE `mhd_jizdy` (
   `id` smallint(5) unsigned NOT NULL default '0',
   `nazev` varchar(140) NOT NULL,
   `id_trasa` smallint(5) unsigned NOT NULL default '0',
@@ -93,8 +92,7 @@ class="brush: lang-sql brush: sql">CREATE TABLE `mhd_jizdy` (
   CONSTRAINT `fk_jizdy_id_trasa` FOREIGN KEY (`id_trasa`) REFERENCES `mhd_trasy` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB ROW_FORMAT=FIXED COMMENT='Jizdy - seskupení jednotlivých zastávek na dané trase pr';</pre>
 
-<pre
-class="brush: lang-sql brush: sql">CREATE TABLE `mhd_jizdy_stani` (
+<pre class="brush: lang-sql brush: sql">CREATE TABLE `mhd_jizdy_stani` (
   `id_jizda` smallint(5) unsigned NOT NULL,
   `poradi` smallint(5) NOT NULL,
   `cas1` time default NULL,
@@ -106,8 +104,7 @@ class="brush: lang-sql brush: sql">CREATE TABLE `mhd_jizdy_stani` (
   CONSTRAINT `fk_jizdy_stani_id_uzel` FOREIGN KEY (`id_trasa_uzel`) REFERENCES `mhd_trasy_uzly` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=cp1250 ROW_FORMAT=FIXED COMMENT='Jednotlivé zastávky jízd';</pre>
 
-<pre
-class="brush: lang-sql brush: sql">CREATE TABLE `mhd_linky` (
+<pre class="brush: lang-sql brush: sql">CREATE TABLE `mhd_linky` (
   `id` smallint(5) unsigned NOT NULL auto_increment,
   `nazev` varchar(60) NOT NULL,
   `cislo` tinyint(3) unsigned default NULL,
@@ -115,8 +112,7 @@ class="brush: lang-sql brush: sql">CREATE TABLE `mhd_linky` (
   KEY `cislo` (`cislo`)
 ) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=cp1250;</pre>
 
-<pre
-class="brush: lang-sql brush: sql">CREATE TABLE `mhd_trasy` (
+<pre class="brush: lang-sql brush: sql">CREATE TABLE `mhd_trasy` (
   `id` smallint(5) unsigned NOT NULL auto_increment,
   `id_linka` smallint(5) unsigned default NULL,
   `popis` char(96) NOT NULL default '',
@@ -127,8 +123,7 @@ class="brush: lang-sql brush: sql">CREATE TABLE `mhd_trasy` (
   CONSTRAINT `fk_trasy_id_linka` FOREIGN KEY (`id_linka`) REFERENCES `mhd_linky` (`id`) ON DELETE SET NULL ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=158 DEFAULT CHARSET=cp1250 COMMENT='Jednotlive verze linek';</pre>
 
-<pre
-class="brush: lang-sql brush: sql">CREATE TABLE `mhd_trasy_uzly` (
+<pre class="brush: lang-sql brush: sql">CREATE TABLE `mhd_trasy_uzly` (
   `id` int(10) unsigned NOT NULL auto_increment,
   `id_trasa` smallint(5) unsigned NOT NULL default '0',
   `poradi` smallint(5) NOT NULL default '0',
@@ -140,8 +135,7 @@ class="brush: lang-sql brush: sql">CREATE TABLE `mhd_trasy_uzly` (
   CONSTRAINT `fk_trasy_uzly_id_zast` FOREIGN KEY (`id_zast`) REFERENCES `mhd_zast` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=12555 DEFAULT CHARSET=cp1250 ROW_FORMAT=FIXED COMMENT='Trasy linek (pro kazdou verzi linky a pro kazdy smer)';</pre>
 
-<pre
-class="brush: lang-sql brush: sql">CREATE TABLE `mhd_zast` (
+<pre class="brush: lang-sql brush: sql">CREATE TABLE `mhd_zast` (
   `id` smallint(5) unsigned NOT NULL auto_increment,
   `nazev` varchar(60) NOT NULL default '',
   `nazev_plny` varchar(60) NOT NULL,
@@ -163,19 +157,16 @@ class="brush: lang-sql brush: sql">CREATE TABLE `mhd_zast` (
 
 <h3 id="toc-procedures">Procedures</h3>
 
-<h4
-id="toc-mhd-vyhledejspoje-searching-the-connection"><code>mhd_VyhledejSpoje</code> –
+<h4 id="toc-mhd-vyhledejspoje-searching-the-connection"><code>mhd_VyhledejSpoje</code> –
 searching the connection</h4>
 
 <h4 id="toc-usage">Usage:</h4>
 
-<pre
-class="brush: lang-sql brush: sql">CALL mhd_VyhledejSpoje(115, 465, NOW(), 3);</pre>
+<pre class="brush: lang-sql brush: sql">CALL mhd_VyhledejSpoje(115, 465, NOW(), 3);</pre>
 
 <h4 id="toc-result">Result:</h4>
 
-<pre
-class="brush: lang-sql brush: sql">CREATE DEFINER=`root`@`localhost` PROCEDURE `mhd_VyhledejSpoje`(
+<pre class="brush: lang-sql brush: sql">CREATE DEFINER=`root`@`localhost` PROCEDURE `mhd_VyhledejSpoje`(
   idZastFrom INT UNSIGNED,
   idZastTo INT UNSIGNED,
   whn DATETIME,
@@ -192,23 +183,49 @@ BEGIN
 
 
 END $$</pre>
-</div>
+</div></div>
 
-        <!-- Rating widget -->
-        <div class="rw-ui-container"></div>
     </div>
-
     <hr />
+    <!-- Rating widget -->
+    <div class="rw-ui-container"></div>
 
 
-        <!--sharexy code start--><div id='shr_723771'><script type='text/javascript'>(function(w) { if (!w.SharexyWidget) { w.SharexyWidget = {};} if (!w.SharexyWidget.Params) { w.SharexyWidget.Params = {}; }
-        w.SharexyWidget.Params['723771'] = {'code_id':'723771','publisher_key':'undefined','design':'classic','layout_static':'h','type':'st','mode_float':'','size_float':'55','size_static':'55','buzz':'1',
-            'services':['facebook', 'google_plus', 'twitter', 'linkedin', 'reddit', 'buffer', 'pocket', 'print_page'],
-            'url':'current','allways_show_ads':'0','show_ads_sharing':'0','show_ads_cursor':'0','bg_float':'1','bg_color':'#ffffff','labels':'','counters':'0', 'counters_float':'0'} })(window);</script>
-        <script type='text/javascript' src='http://shuttle.sharexy.com/LoaderLite.js'></script></div><a href='http://sharexy.com/'><img src='http://sharexy.com/statpixel.png' style='border: 0' /></a><!--sharexy code end   -->
+        
+        <!-- AddToAny BEGIN -->
+        <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+            <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+            <a class="a2a_button_facebook"></a>
+            <a class="a2a_button_twitter"></a>
+            <a class="a2a_button_google_plus"></a>
+            <a class="a2a_button_google_bookmarks"></a>
+            <a class="a2a_button_google_classroom"></a>
+            <a class="a2a_button_linkedin"></a>
+            <a class="a2a_button_reddit"></a>
+            <a class="a2a_button_buffer"></a>
+            <a class="a2a_button_trello"></a>
+            <a class="a2a_button_slashdot"></a>
+            <a class="a2a_button_hacker_news"></a>
+            <a class="a2a_button_dzone"></a>
+            <a class="a2a_button_pinterest"></a>
+            <a class="a2a_button_vk"></a>
+            <a class="a2a_button_digg"></a>
+            <a class="a2a_button_copy_link"></a>
+            <a class="a2a_button_pocket"></a>
+        </div>
+        <script>
+            var a2a_config = a2a_config || {};
+            a2a_config.linkname = "Ondřej Žižka";
+            a2a_config.linkurl = "https://www.zizka.ch/";
+            a2a_config.num_services = 18;
+        </script>
+        <script async src="https://static.addtoany.com/menu/page.js"></script>
+        <!-- AddToAny END -->
+
+        <div style="clear: both; height: 1ex;"></div>
 
         <!-- Facebook comments -->
-                    <div class="fb-comments" data-href="https://www.zizka.ch/pages/programovani/transport_schedule_search/index.cz.html" data-width="800" data-numposts="5"></div>
+            <div class="fb-comments" data-href="https://www.zizka.ch/pages/programovani/transport_schedule_search/index.cz.html" data-width="900" data-numposts="5"></div>
 
     </div>
     <div id="push"></div>

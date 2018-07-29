@@ -71,12 +71,12 @@
     </div>
     <div class="container">
 
-    <div class="document-post">
+    <div class="document document-post">
         <div class="page-header">
             <h1>SQL procedury pro MySQL 5.0</h1>
         </div>
         <div class="date"><em>2012-12-16</em></div>
-        <div class="doc-body"><h2 id="toc-sql-procedury-pro-mysql-5-0">SQL procedury pro MySQL 5.0</h2>
+        <div class="doc-body"><div><h2 class=" jbakeExtractedTitle" id="toc-sql-procedury-pro-mysql-5-0">SQL procedury pro MySQL 5.0</h2>
 
 <p>V průběhu doby jsem při řešení různých projektů vytvořil
 užitečné procedury a funkce, které usnadňují vývoj procedur pro MySQL a
@@ -89,8 +89,7 @@ v jiné proceduře, osvojil jsem si pravidlo, že výsledek uložím do
 <code>TEMPORARY TABLE</code> se stejným názvem, jako je název procedury. Tedy
 např. takto:</p>
 
-<pre
-class="brush: lang-sql .[brush:] sql brush: sql .[brush:] sql">CALL lib_Explode();
+<pre class="brush: lang-sql .[brush:] sql brush: sql .[brush:] sql">CALL lib_Explode();
 SELECT * FROM lib_Explode;
 DROP TEMPORARY TABLE IF EXISTS lib_Explode; -- Volitelně</pre>
 
@@ -105,8 +104,7 @@ považujte to za chybu a nahlašte.</p>
 <p>Pro pohodlí uvádím procedury s určením oddělovače pro MySQL Query
 Browser. Proto příklady začínají a končí takto:</p>
 
-<pre
-class="brush: lang-sql .[brush:] sql brush: sql .[brush:] sql">DELIMITER $$
+<pre class="brush: lang-sql .[brush:] sql brush: sql .[brush:] sql">DELIMITER $$
 ...
 END; $$</pre>
 
@@ -135,16 +133,14 @@ END; $$</pre>
 
 <h3 id="toc-logging">Logging</h3>
 
-<pre
-class="brush: lang-sql .[brush:] sql brush: sql .[brush:] sql">CREATE TABLE lib_logg (
+<pre class="brush: lang-sql .[brush:] sql brush: sql .[brush:] sql">CREATE TABLE lib_logg (
   `whn` datetime NOT NULL,
   `thread` int(10) unsigned NOT NULL,
   `level` enum('info','warn','error') NOT NULL default 'info',
   `str` text NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;</pre>
 
-<pre
-class="brush: lang-sql brush: sql">DELIMITER $$
+<pre class="brush: lang-sql brush: sql">DELIMITER $$
 CREATE PROCEDURE  Logg( sStr TEXT ) BEGIN
   INSERT DELAYED INTO lib_logg SET str = sStr, whn = NOW(), thread = CONNECTION_ID();
 END; $$
@@ -175,8 +171,7 @@ END $$</pre>
 <h4 id="toc-lib-explode-obdoba-explode-z-php"><code>lib_Explode()</code> –
 obdoba <code>Explode()</code> z PHP</h4>
 
-<pre
-class="brush: lang-sql brush: sql">DELIMITER $$
+<pre class="brush: lang-sql brush: sql">DELIMITER $$
 
 CREATE PROCEDURE lib_Explode( sSepar VARCHAR(255), saVal TEXT )
 body:
@@ -208,8 +203,7 @@ END; $$</pre>
 
 <p>Použití:</p>
 
-<pre
-class="brush: lang-sql brush: sql">CALL lib_Explode( ',' ,  'Ahoj, jak se máte, 212' );</pre>
+<pre class="brush: lang-sql brush: sql">CALL lib_Explode( ',' ,  'Ahoj, jak se máte, 212' );</pre>
 
 <p>Výsledek:</p>
 
@@ -247,8 +241,7 @@ class="brush: lang-sql brush: sql">CALL lib_Explode( ',' ,  'Ahoj, jak se máte,
 ekvivalent k <code>explode()</code>, poohlédněte se po „agregační
 funkci“ <code>GROUP_CONCAT()</code>:</p>
 
-<pre
-class="brush: lang-sql brush: sql">CALL lib_GenerateSequence( 5, 15, 2 );
+<pre class="brush: lang-sql brush: sql">CALL lib_GenerateSequence( 5, 15, 2 );
 SELECT GROUP_CONCAT(i SEPARATOR ' a ') AS vysledek FROM lib_GenerateSequence;</pre>
 
 <p>Výsledek:</p>
@@ -267,15 +260,13 @@ SELECT GROUP_CONCAT(i SEPARATOR ' a ') AS vysledek FROM lib_GenerateSequence;</p
 	</tbody>
 </table>
 
-<h4
-id="toc-f1-f6-obdoba-sprintf-s-1-az-6-parametry"><code>F1() - F6()</code> –
+<h4 id="toc-f1-f6-obdoba-sprintf-s-1-az-6-parametry"><code>F1() - F6()</code> –
 obdoba <code>"sprintf()"</code> s 1 až 6 parametry.</h4>
 
 <p>Ve funkci F1() se nahrazuje string %s, v ostatních <code>{1}</code> až
 <code>{6}</code>.</p>
 
-<pre
-class="brush: lang-sql brush: sql">DELIMITER $$
+<pre class="brush: lang-sql brush: sql">DELIMITER $$
 
 CREATE FUNCTION  F1 ( sFormat TEXT, sPar1 TEXT )
     RETURNS text CHARSET utf8 BEGIN
@@ -312,8 +303,7 @@ END; $$</pre>
 
 <p>Použití:</p>
 
-<pre
-class="brush: lang-sql brush: sql">SELECT F2( 'Ve městě {1} je {2} stupňů.', 'Praha', 31.2 ) FROM DUAL;</pre>
+<pre class="brush: lang-sql brush: sql">SELECT F2( 'Ve městě {1} je {2} stupňů.', 'Praha', 31.2 ) FROM DUAL;</pre>
 
 <p>Výsledek:</p>
 
@@ -353,8 +343,7 @@ Otherwise returns:</p>
 	<li>NSQ(): argument surrounded by quotes.</li>
 </ul>
 
-<pre
-class="brush: lang-sql brush: sql">DELIMITER $$
+<pre class="brush: lang-sql brush: sql">DELIMITER $$
 
 CREATE FUNCTION NS( s VARCHAR(255) )
 RETURNS varchar(255) CHARSET utf8 BEGIN
@@ -375,17 +364,14 @@ DELIMITER ;</pre>
 
 <p>Použití:</p>
 
-<pre
-class="brush: lang-sql brush: sql">CALL Logg( F1('Computing level %s.', NS(@iLevel)) )</pre>
+<pre class="brush: lang-sql brush: sql">CALL Logg( F1('Computing level %s.', NS(@iLevel)) )</pre>
 
 <h3 id="toc-utilities">Utilities</h3>
 
-<h4
-id="toc-lib-generatesequence-generovani-linearni-sekvence-cisel">lib_GenerateSe­quence –
+<h4 id="toc-lib-generatesequence-generovani-linearni-sekvence-cisel">lib_GenerateSe­quence –
 generování lineární sekvence čísel</h4>
 
-<pre
-class="brush: lang-sql brush: sql">DELIMITER $$
+<pre class="brush: lang-sql brush: sql">DELIMITER $$
 
 CREATE PROCEDURE lib_GenerateSequence(
   iFrom INTEGER, iTo INTEGER, iStep INTEGER )
@@ -413,8 +399,7 @@ END; $$</pre>
 
 <p>Použití:</p>
 
-<pre
-class="brush: lang-sql brush: sql">CALL lib_GenerateSequence( 5, 15, 2 )</pre>
+<pre class="brush: lang-sql brush: sql">CALL lib_GenerateSequence( 5, 15, 2 )</pre>
 
 <p>Výsledek:</p>
 
@@ -451,23 +436,49 @@ class="brush: lang-sql brush: sql">CALL lib_GenerateSequence( 5, 15, 2 )</pre>
 		</tr>
 	</tbody>
 </table>
-</div>
+</div></div>
 
-        <!-- Rating widget -->
-        <div class="rw-ui-container"></div>
     </div>
-
     <hr />
+    <!-- Rating widget -->
+    <div class="rw-ui-container"></div>
 
 
-        <!--sharexy code start--><div id='shr_723771'><script type='text/javascript'>(function(w) { if (!w.SharexyWidget) { w.SharexyWidget = {};} if (!w.SharexyWidget.Params) { w.SharexyWidget.Params = {}; }
-        w.SharexyWidget.Params['723771'] = {'code_id':'723771','publisher_key':'undefined','design':'classic','layout_static':'h','type':'st','mode_float':'','size_float':'55','size_static':'55','buzz':'1',
-            'services':['facebook', 'google_plus', 'twitter', 'linkedin', 'reddit', 'buffer', 'pocket', 'print_page'],
-            'url':'current','allways_show_ads':'0','show_ads_sharing':'0','show_ads_cursor':'0','bg_float':'1','bg_color':'#ffffff','labels':'','counters':'0', 'counters_float':'0'} })(window);</script>
-        <script type='text/javascript' src='http://shuttle.sharexy.com/LoaderLite.js'></script></div><a href='http://sharexy.com/'><img src='http://sharexy.com/statpixel.png' style='border: 0' /></a><!--sharexy code end   -->
+        
+        <!-- AddToAny BEGIN -->
+        <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+            <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+            <a class="a2a_button_facebook"></a>
+            <a class="a2a_button_twitter"></a>
+            <a class="a2a_button_google_plus"></a>
+            <a class="a2a_button_google_bookmarks"></a>
+            <a class="a2a_button_google_classroom"></a>
+            <a class="a2a_button_linkedin"></a>
+            <a class="a2a_button_reddit"></a>
+            <a class="a2a_button_buffer"></a>
+            <a class="a2a_button_trello"></a>
+            <a class="a2a_button_slashdot"></a>
+            <a class="a2a_button_hacker_news"></a>
+            <a class="a2a_button_dzone"></a>
+            <a class="a2a_button_pinterest"></a>
+            <a class="a2a_button_vk"></a>
+            <a class="a2a_button_digg"></a>
+            <a class="a2a_button_copy_link"></a>
+            <a class="a2a_button_pocket"></a>
+        </div>
+        <script>
+            var a2a_config = a2a_config || {};
+            a2a_config.linkname = "Ondřej Žižka";
+            a2a_config.linkurl = "https://www.zizka.ch/";
+            a2a_config.num_services = 18;
+        </script>
+        <script async src="https://static.addtoany.com/menu/page.js"></script>
+        <!-- AddToAny END -->
+
+        <div style="clear: both; height: 1ex;"></div>
 
         <!-- Facebook comments -->
-                    <div class="fb-comments" data-href="https://www.zizka.ch/pages/programovani/sql/mysql_stored_procedures.cz.html" data-width="800" data-numposts="5"></div>
+            <div class="fb-comments" data-href="https://www.zizka.ch/pages/programovani/sql/mysql_stored_procedures.cz.html" data-width="900" data-numposts="5"></div>
 
     </div>
     <div id="push"></div>

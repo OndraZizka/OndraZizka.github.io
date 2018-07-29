@@ -72,13 +72,13 @@ framework - Ondřej Žižka</title>
     </div>
     <div class="container">
 
-    <div class="document-post">
+    <div class="document document-post">
         <div class="page-header">
             <h1>Úplné začátky se Spring
 framework</h1>
         </div>
         <div class="date"><em>2012-12-16</em></div>
-        <div class="doc-body"><h2 id="toc-uplne-zacatky-se-spring-framework">Úplné začátky se Spring
+        <div class="doc-body"><div><h2 class=" jbakeExtractedTitle" id="toc-uplne-zacatky-se-spring-framework">Úplné začátky se Spring
 framework</h2>
 
 <h3 id="toc-k-cemu-je-spring">K čemu je Spring?</h3>
@@ -92,8 +92,7 @@ framework</h2>
 	<li><strong>Spring JDBC</strong> – zjednodušení práce s JDBC, něco
 	jako <a href="http://ibatis.apache.org/">iBatis</a></li>
 
-	<li><strong>Spring AOP</strong> – viz článek <a
-	href="navod-spring-aop-zacatky.texy">Začátky se Spring
+	<li><strong>Spring AOP</strong> – viz článek <a href="navod-spring-aop-zacatky.texy">Začátky se Spring
 	AOP – návod</a></li>
 
 	<li><strong>Spring Inversion of Control</strong> (dependency injection,
@@ -118,8 +117,7 @@ především oddělíte konfiguraci od kódu a také oddělíte jednotlivé
 <p>Zprvu se vám může zdát, že stačí normální konfigurace přes
 <code>Properties</code> a dělat to níže popisovaným způsobem je
 složitější. A máte pravdu! Ale vtip je v tom, že pokud děláte J2EE
-aplikaci, postupem času začne váš projekt používat <acronym
-title="Například já teď pracuju na celkem jednoduchém projektu, ale už teď používám Hibernate přes JPA, iBatis, FreeMarker a další.">desítky</acronym>
+aplikaci, postupem času začne váš projekt používat <acronym title="Například já teď pracuju na celkem jednoduchém projektu, ale už teď používám Hibernate přes JPA, iBatis, FreeMarker a další.">desítky</acronym>
 modulů, z nichž každý má vlastní způsob konfigurace.</p>
 
 <p>Se Spring IoC ale dnes už spolupracuje skoro každý významný projekt, a
@@ -138,10 +136,9 @@ Springu.</p>
 <code>ApplicationContext</code> využijete u pokročilejších technik, jako je
 správa transakcí nebo AOP.</p>
 
-<div><img src="spring-beans-factory.png" alt="" /></div>
+<div><img alt="" src="spring-beans-factory.png"/></div>
 
-<p><em>Obrázek je z <a
-href="http://static.springframework.org/spring/docs/2.5.x/reference/beans.html#beans-basics">dokumentace
+<p><em>Obrázek je z <a href="http://static.springframework.org/spring/docs/2.5.x/reference/beans.html#beans-basics">dokumentace
 Springu</a>, kde najdete lepší tutoriál než je tento, ale
 v angličtině.</em></p>
 
@@ -157,7 +154,7 @@ souboru s metadaty pro jeho konfiguraci.</p>
 <p>V podstatě velice jednoduché. Takže nyní ukázka. Předpokládejme
 obecně jakoukoliv aplikaci.</p>
 
-<hr />
+<hr/>
 
 <h4 id="toc-jak-inicializovat-spring">Jak inicializovat spring</h4>
 
@@ -165,8 +162,7 @@ obecně jakoukoliv aplikaci.</p>
 konstruktoru předáte soubor, který se má číst. U newebových aplikací
 můžete XML soubor dát kam chcete a pojmenovat jej jak chcete.</p>
 
-<pre
-class="brush: lang-java brush: java">import org.springframework.beans.factory.xml.XmlBeanFactory;
+<pre class="brush: lang-java brush: java">import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.core.io.ClassPathResource;
 
 public void init() {
@@ -179,8 +175,7 @@ public void init() {
 <code>/WEB-INF/</code>, anžto tam se webový klient nikdy nedostane (zaručeno
 specifikací J2EE).</p>
 
-<pre
-class="brush: lang-java brush: java">import org.springframework.beans.factory.xml.XmlBeanFactory;
+<pre class="brush: lang-java brush: java">import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.web.context.support.ServletContextResource;
 
 public void init() {
@@ -191,14 +186,12 @@ public void init() {
 
 <p>Soubor <code>applicationContext.xml</code> viz dále.</p>
 
-<hr />
+<hr/>
 
-<h4
-id="toc-nyni-jak-si-budete-zadat-o-pripraveny-objekt-pro-ukazku-treba-dao">Nyní
+<h4 id="toc-nyni-jak-si-budete-zadat-o-pripraveny-objekt-pro-ukazku-treba-dao">Nyní
 jak si budete žádat o připravený objekt (pro ukázku třeba DAO):</h4>
 
-<pre
-class="brush: lang-java brush: java">userDAO = (UserDAO) bf.getBean("userDAO");</pre>
+<pre class="brush: lang-java brush: java">userDAO = (UserDAO) bf.getBean("userDAO");</pre>
 
 <p><code>userDAO</code> je jméno konkrétního objektu třídy
 <code>UserDAO</code> – viz dále.</p>
@@ -208,7 +201,7 @@ class="brush: lang-java brush: java">userDAO = (UserDAO) bf.getBean("userDAO");<
 <p>Samozřejmě je to o něco složitější než to udělat přímo v kódu,
 ale zkuste to a uvidíte, že tomu přijdete na chuť.</p>
 
-<hr />
+<hr/>
 
 <h4 id="toc-konfigurace">Konfigurace</h4>
 
@@ -220,8 +213,7 @@ ale zkuste to a uvidíte, že tomu přijdete na chuť.</p>
 <p><em>Poznámka: U newebových aplikací můžete XML soubor dát kam chcete a
 pojmenovat jej jak chcete.</em></p>
 
-<pre
-class="brush: lang-xml brush: xml">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+<pre class="brush: lang-xml brush: xml">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 
 &lt;!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd"&gt;
 
@@ -256,15 +248,14 @@ k nastavení vlastnosti objektu přes setter, tedy přes
 <code>setLocations(...)</code>. Dokáže pracovat s různými typy, zde
 například je to seznam (stringů).</p>
 
-<hr />
+<hr/>
 
 <p>Ještě se podíváme na soubor <code>userDAOs.xml</code>.</p>
 
 <p>//Update 2008/09:// Momentálně trochu nedovysvětlené… časem snad
 připíšu.</p>
 
-<pre
-class="brush: lang-xml brush: xml">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+<pre class="brush: lang-xml brush: xml">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 
 &lt;!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd"&gt;
 
@@ -288,23 +279,49 @@ class="brush: lang-xml brush: xml">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 
 <p>Popisy dalších částí Spring Frameworku budu postupně přidávat,
 najdete je v sekci Java + J2EE.</p>
-</div>
+</div></div>
 
-        <!-- Rating widget -->
-        <div class="rw-ui-container"></div>
     </div>
-
     <hr />
+    <!-- Rating widget -->
+    <div class="rw-ui-container"></div>
 
 
-        <!--sharexy code start--><div id='shr_723771'><script type='text/javascript'>(function(w) { if (!w.SharexyWidget) { w.SharexyWidget = {};} if (!w.SharexyWidget.Params) { w.SharexyWidget.Params = {}; }
-        w.SharexyWidget.Params['723771'] = {'code_id':'723771','publisher_key':'undefined','design':'classic','layout_static':'h','type':'st','mode_float':'','size_float':'55','size_static':'55','buzz':'1',
-            'services':['facebook', 'google_plus', 'twitter', 'linkedin', 'reddit', 'buffer', 'pocket', 'print_page'],
-            'url':'current','allways_show_ads':'0','show_ads_sharing':'0','show_ads_cursor':'0','bg_float':'1','bg_color':'#ffffff','labels':'','counters':'0', 'counters_float':'0'} })(window);</script>
-        <script type='text/javascript' src='http://shuttle.sharexy.com/LoaderLite.js'></script></div><a href='http://sharexy.com/'><img src='http://sharexy.com/statpixel.png' style='border: 0' /></a><!--sharexy code end   -->
+        
+        <!-- AddToAny BEGIN -->
+        <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+            <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+            <a class="a2a_button_facebook"></a>
+            <a class="a2a_button_twitter"></a>
+            <a class="a2a_button_google_plus"></a>
+            <a class="a2a_button_google_bookmarks"></a>
+            <a class="a2a_button_google_classroom"></a>
+            <a class="a2a_button_linkedin"></a>
+            <a class="a2a_button_reddit"></a>
+            <a class="a2a_button_buffer"></a>
+            <a class="a2a_button_trello"></a>
+            <a class="a2a_button_slashdot"></a>
+            <a class="a2a_button_hacker_news"></a>
+            <a class="a2a_button_dzone"></a>
+            <a class="a2a_button_pinterest"></a>
+            <a class="a2a_button_vk"></a>
+            <a class="a2a_button_digg"></a>
+            <a class="a2a_button_copy_link"></a>
+            <a class="a2a_button_pocket"></a>
+        </div>
+        <script>
+            var a2a_config = a2a_config || {};
+            a2a_config.linkname = "Ondřej Žižka";
+            a2a_config.linkurl = "https://www.zizka.ch/";
+            a2a_config.num_services = 18;
+        </script>
+        <script async src="https://static.addtoany.com/menu/page.js"></script>
+        <!-- AddToAny END -->
+
+        <div style="clear: both; height: 1ex;"></div>
 
         <!-- Facebook comments -->
-                    <div class="fb-comments" data-href="https://www.zizka.ch/pages/programovani/java/navod-spring-framework-zacatky.html" data-width="800" data-numposts="5"></div>
+            <div class="fb-comments" data-href="https://www.zizka.ch/pages/programovani/java/navod-spring-framework-zacatky.html" data-width="900" data-numposts="5"></div>
 
     </div>
     <div id="push"></div>

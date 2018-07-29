@@ -72,13 +72,13 @@ Framework Configuration - Ondřej Žižka</title>
     </div>
     <div class="container">
 
-    <div class="document-post">
+    <div class="document document-post">
         <div class="page-header">
             <h1>Profiles in Spring
 Framework Configuration</h1>
         </div>
         <div class="date"><em>2012-12-16</em></div>
-        <div class="doc-body"><h2 id="toc-profiles-in-spring-framework-configuration">Profiles in Spring
+        <div class="doc-body"><div><h2 class=" jbakeExtractedTitle" id="toc-profiles-in-spring-framework-configuration">Profiles in Spring
 Framework Configuration</h2>
 
 <p>Spring is a perfect place to centralize your project's con­figuration.
@@ -97,8 +97,7 @@ in Values – <code>PropertyPlaceholderConfigurer</code></h3>
 „variables“ in bean properties' values. A typical usage example is JDBC
 configuration – one for developement and other for release:</p>
 
-<pre
-class="brush: lang-xml brush: xml">&lt;!-- JDBC Datasource --&gt;
+<pre class="brush: lang-xml brush: xml">&lt;!-- JDBC Datasource --&gt;
 &lt;bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource"&gt;
   &lt;property name="driverClassName" value="${jdbc.driver}" /&gt;
   &lt;property name="url" value="${jdbc.url}" /&gt;
@@ -114,8 +113,7 @@ can use more files, the later overriding the former.</p>
 define „defaults“ and then override some properties in an
 external file.</p>
 
-<pre
-class="brush: lang-xml brush: xml">&lt;context:property-placeholder location="
+<pre class="brush: lang-xml brush: xml">&lt;context:property-placeholder location="
   classpath:properties/database.properties,
   file:conf/database.properties" /&gt;</pre>
 
@@ -123,8 +121,7 @@ class="brush: lang-xml brush: xml">&lt;context:property-placeholder location="
 solely on the defaults, you might use the <code>ignoreResourceNotFound</code>
 attribute:</p>
 
-<pre
-class="brush: lang-xml brush: xml">&lt;context:property-placeholder location="
+<pre class="brush: lang-xml brush: xml">&lt;context:property-placeholder location="
   classpath:properties/database.properties,
   file:conf/database.properties" ignoreResourceNotFound="true" /&gt;</pre>
 
@@ -134,8 +131,7 @@ is supported for <code>&lt;context:property-placeholder/&gt;</code> element
 work in Spring 3.0</a>). So, you need to define it „old way“ – as
 a bean:</p>
 
-<pre
-class="brush: lang-xml brush: xml">&lt;bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"&gt;
+<pre class="brush: lang-xml brush: xml">&lt;bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"&gt;
   &lt;property name="locations" value="
       classpath:properties/database.properties,
       file:conf/database.properties" /&gt;
@@ -162,8 +158,7 @@ is available from <code>System.getProperty(String)</code> and
 <p>So first, we define the system property, either as a JVM <code>-D</code>
 parameter, or programatically:</p>
 
-<pre
-class="brush: lang-bash brush: bash">## in the command line:
+<pre class="brush: lang-bash brush: bash">## in the command line:
 $ java -Dprofile=testing
 
 // Or in Java:
@@ -171,8 +166,7 @@ System.setProperty( "profile", "testing" );</pre>
 
 <p>Then we can set the bean up using all our weapons:</p>
 
-<pre
-class="brush: lang-xml brush: xml">&lt;bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"&gt;
+<pre class="brush: lang-xml brush: xml">&lt;bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"&gt;
   &lt;property name="locations" value="
       classpath:properties/database.properties,
       file:nastaveni.properties,
@@ -185,17 +179,14 @@ class="brush: lang-xml brush: xml">&lt;bean class="org.springframework.beans.fac
 
 <p>The <code>searchSystemEnvironment</code> and
 <code>systemPropertiesModeName</code> have reasonable defaults and can be
-ommited. For more information, see the <a
-href="http://static.springframework.org/spring/docs/2.5.x/api/org/springframework/beans/factory/config/PropertyPlaceholderConfigurer.html">PropertyPlace­holderConfigu­rer
+ommited. For more information, see the <a href="http://static.springframework.org/spring/docs/2.5.x/api/org/springframework/beans/factory/config/PropertyPlaceholderConfigurer.html">PropertyPlace­holderConfigu­rer
 javadoc</a>.</p>
 
 <p>See also the oficial (and up-to-date) Spring guide to placeholders and
-overriding: <a
-href="http://static.springframework.org/spring/docs/2.5.x/reference/beans.html#beans-factory-extension-factory-postprocessors">3.7.2. Customizing
+overriding: <a href="http://static.springframework.org/spring/docs/2.5.x/reference/beans.html#beans-factory-extension-factory-postprocessors">3.7.2. Customizing
 configuration metadata with BeanFactoryPos­tProcessors</a>.</p>
 
-<h3
-id="toc-overriding-or-overwriting-default-values-propertyoverrideconfigurer">Overriding
+<h3 id="toc-overriding-or-overwriting-default-values-propertyoverrideconfigurer">Overriding
 (or Overwriting) default values –
 <code>PropertyOverrideConfigurer</code></h3>
 
@@ -208,8 +199,7 @@ want to keep the defaults right in the custom beans' configuration in Spring's
 <p>That is possible with <code>PropertyOverrideConfigurer</code>. Simply
 configure your bean as usualy:</p>
 
-<pre
-class="brush: lang-xml brush: xml">&lt;bean  name="projectInfo" class="cz.dynawest.springtest.CoolProject"&gt;
+<pre class="brush: lang-xml brush: xml">&lt;bean  name="projectInfo" class="cz.dynawest.springtest.CoolProject"&gt;
   &lt;property name="author" value="Ondřej Žižka" /&gt;
   &lt;property name="maintainer" value="Ondřej Žižka" /&gt;
 &lt;/bean&gt;</pre>
@@ -218,39 +208,61 @@ class="brush: lang-xml brush: xml">&lt;bean  name="projectInfo" class="cz.dynawe
 syntax of the name is
 <code>&lt;bean-name&gt;.&lt;property-name&gt;=&lt;value&gt;</code>.</p>
 
-<pre
-class="brush: lang-properties brush: properties">## newProjectInfo.properties
+<pre class="brush: lang-properties brush: properties">## newProjectInfo.properties
 projectInfo.maintainer="Reese Witherspoon"</pre>
 
 <p>The final piece of the puzzle is to create a bean that will apply the value
 to the bean.</p>
 
-<pre
-class="brush: lang-xml brush: xml">&lt;context:property-override location="classpath:newProjectInfo.properties"/&gt;</pre>
+<pre class="brush: lang-xml brush: xml">&lt;context:property-override location="classpath:newProjectInfo.properties"/&gt;</pre>
 
 <p>More information on overriding can be found in Spring Reference
-Documentation – <a
-href="http://static.springframework.org/spring/docs/2.5.x/reference/beans.html#beans-factory-overrideconfigurer">3.7.2.2. Example:
-the PropertyOverri­deConfigurer</a> or <a
-href="http://static.springframework.org/spring/docs/2.5.x/api/org/springframework/beans/factory/config/PropertyOverrideConfigurer.html">PropertyOverri­deConfigurer
+Documentation – <a href="http://static.springframework.org/spring/docs/2.5.x/reference/beans.html#beans-factory-overrideconfigurer">3.7.2.2. Example:
+the PropertyOverri­deConfigurer</a> or <a href="http://static.springframework.org/spring/docs/2.5.x/api/org/springframework/beans/factory/config/PropertyOverrideConfigurer.html">PropertyOverri­deConfigurer
 JavaDoc</a>.</p>
-</div>
+</div></div>
 
-        <!-- Rating widget -->
-        <div class="rw-ui-container"></div>
     </div>
-
     <hr />
+    <!-- Rating widget -->
+    <div class="rw-ui-container"></div>
 
 
-        <!--sharexy code start--><div id='shr_723771'><script type='text/javascript'>(function(w) { if (!w.SharexyWidget) { w.SharexyWidget = {};} if (!w.SharexyWidget.Params) { w.SharexyWidget.Params = {}; }
-        w.SharexyWidget.Params['723771'] = {'code_id':'723771','publisher_key':'undefined','design':'classic','layout_static':'h','type':'st','mode_float':'','size_float':'55','size_static':'55','buzz':'1',
-            'services':['facebook', 'google_plus', 'twitter', 'linkedin', 'reddit', 'buffer', 'pocket', 'print_page'],
-            'url':'current','allways_show_ads':'0','show_ads_sharing':'0','show_ads_cursor':'0','bg_float':'1','bg_color':'#ffffff','labels':'','counters':'0', 'counters_float':'0'} })(window);</script>
-        <script type='text/javascript' src='http://shuttle.sharexy.com/LoaderLite.js'></script></div><a href='http://sharexy.com/'><img src='http://sharexy.com/statpixel.png' style='border: 0' /></a><!--sharexy code end   -->
+        
+        <!-- AddToAny BEGIN -->
+        <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+            <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+            <a class="a2a_button_facebook"></a>
+            <a class="a2a_button_twitter"></a>
+            <a class="a2a_button_google_plus"></a>
+            <a class="a2a_button_google_bookmarks"></a>
+            <a class="a2a_button_google_classroom"></a>
+            <a class="a2a_button_linkedin"></a>
+            <a class="a2a_button_reddit"></a>
+            <a class="a2a_button_buffer"></a>
+            <a class="a2a_button_trello"></a>
+            <a class="a2a_button_slashdot"></a>
+            <a class="a2a_button_hacker_news"></a>
+            <a class="a2a_button_dzone"></a>
+            <a class="a2a_button_pinterest"></a>
+            <a class="a2a_button_vk"></a>
+            <a class="a2a_button_digg"></a>
+            <a class="a2a_button_copy_link"></a>
+            <a class="a2a_button_pocket"></a>
+        </div>
+        <script>
+            var a2a_config = a2a_config || {};
+            a2a_config.linkname = "Ondřej Žižka";
+            a2a_config.linkurl = "https://www.zizka.ch/";
+            a2a_config.num_services = 18;
+        </script>
+        <script async src="https://static.addtoany.com/menu/page.js"></script>
+        <!-- AddToAny END -->
+
+        <div style="clear: both; height: 1ex;"></div>
 
         <!-- Facebook comments -->
-                    <div class="fb-comments" data-href="https://www.zizka.ch/pages/programovani/java/howto-substitutions_in_spring_configuration-tutorial.html" data-width="800" data-numposts="5"></div>
+            <div class="fb-comments" data-href="https://www.zizka.ch/pages/programovani/java/howto-substitutions_in_spring_configuration-tutorial.html" data-width="900" data-numposts="5"></div>
 
     </div>
     <div id="push"></div>

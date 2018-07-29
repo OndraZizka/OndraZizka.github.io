@@ -71,21 +71,20 @@
     </div>
     <div class="container">
 
-    <div class="document-post">
+    <div class="document document-post">
         <div class="page-header">
             <h1>Přihlašování – login</h1>
         </div>
         <div class="date"><em>2012-12-16</em></div>
-        <div class="doc-body"><h2 id="toc-prihlasovani-login">Přihlašování – login</h2>
+        <div class="doc-body"><div><h2 class=" jbakeExtractedTitle" id="toc-prihlasovani-login">Přihlašování – login</h2>
 
 <h3 id="toc-identifikace">Identifikace</h3>
 
-<p>User bude identifikovaný e-mailem.<br />
+<p>User bude identifikovaný e-mailem.<br/>
 U toho je jeden problém – celkem dost uživatelů má ve WinLyrics více
 účtů s jedním mailem, patrně pro více počítačů. Viz tento dotaz:</p>
 
-<pre
-class="brush: lang-sql brush: sql">SELECT email, COUNT(*) AS cnt FROM wl2_users GROUP BY email HAVING cnt &gt; 1 ORDER BY cnt DESC;</pre>
+<pre class="brush: lang-sql brush: sql">SELECT email, COUNT(*) AS cnt FROM wl2_users GROUP BY email HAVING cnt &gt; 1 ORDER BY cnt DESC;</pre>
 
 <p>Tak těm bychom asi vytvořili jeden účet, který by mogli používat
 kdekoliv, ne?</p>
@@ -103,25 +102,21 @@ autentization</h3>
 
 <p>Pro testování… – nastavíme někomu heslo…</p>
 
-<pre
-class="brush: lang-sql brush: sql">UPDATE wl2_users SET pass_md5 = MD5('') WHERE email='winlyrics@dark-sun.org';</pre>
+<pre class="brush: lang-sql brush: sql">UPDATE wl2_users SET pass_md5 = MD5('') WHERE email='winlyrics@dark-sun.org';</pre>
 
-<pre
-class="lang-text brush: text">&gt;&gt; http://localhost:81/winlyrics/real/authentize.php?action=create_session
+<pre class="lang-text brush: text">&gt;&gt; http://localhost:81/winlyrics/real/authentize.php?action=create_session
 
 &lt;&lt; SESSION_ID f8675g1390s7dngloohqitsd74</pre>
 
-<p><code>sess_id == "f8675g1390s7dngloohqitsd74"</code><br />
-<code>user pass == md5('') == "d41d8cd98f00b204e9800998ecf8427e"</code><br />
+<p><code>sess_id == "f8675g1390s7dngloohqitsd74"</code><br/>
+<code>user pass == md5('') == "d41d8cd98f00b204e9800998ecf8427e"</code><br/>
 <code>hash = md5( "f8675g1390s7dngloohqitsd74" . "d41d8cd98f00b204e9800998ecf8427e" ) == "989bd8a84f9e42b314b3358bb263794e"</code></p>
 
-<pre
-class="lang-text brush: text">&gt;&gt; http://localhost:81/winlyrics/real/authentize.php?action=verify&amp;sess_id=f8675g1390s7dngloohqitsd74&amp;user=winlyrics@dark-sun.org&amp;hash=989bd8a84f9e42b314b3358bb263794e
+<pre class="lang-text brush: text">&gt;&gt; http://localhost:81/winlyrics/real/authentize.php?action=verify&amp;sess_id=f8675g1390s7dngloohqitsd74&amp;user=winlyrics@dark-sun.org&amp;hash=989bd8a84f9e42b314b3358bb263794e
 
 &lt;&lt; AUTH_OK</pre>
 
-<pre
-class="brush: lang-sql brush: sql">SELECT id, MD5( CONCAT('f8675g1390s7dngloohqitsd74', pass_md5)) = '989bd8a84f9e42b314b3358bb263794e' FROM wl2_users WHERE email = 'winlyrics@dark-sun.org';</pre>
+<pre class="brush: lang-sql brush: sql">SELECT id, MD5( CONCAT('f8675g1390s7dngloohqitsd74', pass_md5)) = '989bd8a84f9e42b314b3358bb263794e' FROM wl2_users WHERE email = 'winlyrics@dark-sun.org';</pre>
 
 <table>
 	<thead>
@@ -141,13 +136,11 @@ class="brush: lang-sql brush: sql">SELECT id, MD5( CONCAT('f8675g1390s7dngloohqi
 	</tbody>
 </table>
 
-<pre
-class="lang-text brush: text">&gt;&gt; http://localhost:81/winlyrics/real/authentize.php?action=get_state&amp;sess_id=f8675g1390s7dngloohqitsd74
+<pre class="lang-text brush: text">&gt;&gt; http://localhost:81/winlyrics/real/authentize.php?action=get_state&amp;sess_id=f8675g1390s7dngloohqitsd74
 
 &lt;&lt; VERIFIED</pre>
 
-<pre
-class="lang-php brush: php">print_r( $_SESSION );
+<pre class="lang-php brush: php">print_r( $_SESSION );
 
 Array (
     [valid] =&gt; 1
@@ -160,25 +153,24 @@ Array (
 
 <p><strong>Autenthicates the user.</strong></p>
 
-<p>1) User requests a session ID.<br />
-New session is created and ID is sent to user.<br />
-2) User sends user name and MD5( sess_id . MD5( user_pass ) ).<br />
-Server constructs the same string and checks their equality.<br />
-If they match, a „valid“ flag is set to the session and from that moment,<br
-/>
+<p>1) User requests a session ID.<br/>
+New session is created and ID is sent to user.<br/>
+2) User sends user name and MD5( sess_id . MD5( user_pass ) ).<br/>
+Server constructs the same string and checks their equality.<br/>
+If they match, a „valid“ flag is set to the session and from that moment,<br/>
 session ID can be used to perform user actions.</p>
 
 <h4 id="toc-actions">Actions:</h4>
 
 <p><strong><code>create_session == true</code>:</strong></p>
 
-<p>Creates a session.<br />
+<p>Creates a session.<br/>
 Returns: <code>"SESSION_ERROR"</code> on error or
 <code>"SESSION_ID &lt;&lt;sess_id&gt;&gt;"</code>.</p>
 
 <p><strong><code>verify == true</code>:</strong></p>
 
-<p>Verifies the user for this session.<br />
+<p>Verifies the user for this session.<br/>
 //Params:// sess_id, hash.</p>
 
 <ul>
@@ -194,7 +186,7 @@ Returns: <code>"SESSION_ERROR"</code> on error or
 
 <p><strong><code>get_state == true</code>:</strong></p>
 
-<p>//Params:// <code>sess_id</code>.<br />
+<p>//Params:// <code>sess_id</code>.<br/>
 //Returns://</p>
 
 <ul>
@@ -221,23 +213,49 @@ Returns: <code>"SESSION_ERROR"</code> on error or
 
 	<li><code>user_id</code> – -"-, contains user ID.</li>
 </ul>
-</div>
+</div></div>
 
-        <!-- Rating widget -->
-        <div class="rw-ui-container"></div>
     </div>
-
     <hr />
+    <!-- Rating widget -->
+    <div class="rw-ui-container"></div>
 
 
-        <!--sharexy code start--><div id='shr_723771'><script type='text/javascript'>(function(w) { if (!w.SharexyWidget) { w.SharexyWidget = {};} if (!w.SharexyWidget.Params) { w.SharexyWidget.Params = {}; }
-        w.SharexyWidget.Params['723771'] = {'code_id':'723771','publisher_key':'undefined','design':'classic','layout_static':'h','type':'st','mode_float':'','size_float':'55','size_static':'55','buzz':'1',
-            'services':['facebook', 'google_plus', 'twitter', 'linkedin', 'reddit', 'buffer', 'pocket', 'print_page'],
-            'url':'current','allways_show_ads':'0','show_ads_sharing':'0','show_ads_cursor':'0','bg_float':'1','bg_color':'#ffffff','labels':'','counters':'0', 'counters_float':'0'} })(window);</script>
-        <script type='text/javascript' src='http://shuttle.sharexy.com/LoaderLite.js'></script></div><a href='http://sharexy.com/'><img src='http://sharexy.com/statpixel.png' style='border: 0' /></a><!--sharexy code end   -->
+        
+        <!-- AddToAny BEGIN -->
+        <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+            <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+            <a class="a2a_button_facebook"></a>
+            <a class="a2a_button_twitter"></a>
+            <a class="a2a_button_google_plus"></a>
+            <a class="a2a_button_google_bookmarks"></a>
+            <a class="a2a_button_google_classroom"></a>
+            <a class="a2a_button_linkedin"></a>
+            <a class="a2a_button_reddit"></a>
+            <a class="a2a_button_buffer"></a>
+            <a class="a2a_button_trello"></a>
+            <a class="a2a_button_slashdot"></a>
+            <a class="a2a_button_hacker_news"></a>
+            <a class="a2a_button_dzone"></a>
+            <a class="a2a_button_pinterest"></a>
+            <a class="a2a_button_vk"></a>
+            <a class="a2a_button_digg"></a>
+            <a class="a2a_button_copy_link"></a>
+            <a class="a2a_button_pocket"></a>
+        </div>
+        <script>
+            var a2a_config = a2a_config || {};
+            a2a_config.linkname = "Ondřej Žižka";
+            a2a_config.linkurl = "https://www.zizka.ch/";
+            a2a_config.num_services = 18;
+        </script>
+        <script async src="https://static.addtoany.com/menu/page.js"></script>
+        <!-- AddToAny END -->
+
+        <div style="clear: both; height: 1ex;"></div>
 
         <!-- Facebook comments -->
-                    <div class="fb-comments" data-href="https://www.zizka.ch/pages/programovani/winlyrics/doc/login.html" data-width="800" data-numposts="5"></div>
+            <div class="fb-comments" data-href="https://www.zizka.ch/pages/programovani/winlyrics/doc/login.html" data-width="900" data-numposts="5"></div>
 
     </div>
     <div id="push"></div>

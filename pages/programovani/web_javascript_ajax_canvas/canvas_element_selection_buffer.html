@@ -72,13 +72,13 @@ selection buffer - Ondřej Žižka</title>
     </div>
     <div class="container">
 
-    <div class="document-post">
+    <div class="document document-post">
         <div class="page-header">
             <h1>canvas element
 selection buffer</h1>
         </div>
         <div class="date"><em>2012-12-13</em></div>
-        <div class="doc-body"><h2 id="toc-canvas-element-selection-buffer"><code>canvas</code> element
+        <div class="doc-body"><div><h2 class=" jbakeExtractedTitle" id="toc-canvas-element-selection-buffer"><code>canvas</code> element
 selection buffer</h2>
 
 <p>I wonder whether canvas element can do any kind of „selection buffer“
@@ -101,13 +101,11 @@ object represents.</p>
 </ul>
 
 <p>Does <code>&lt;canvas&gt;</code> offer something? I haven't found anything
-in the docs at Mozilla and the fact that "":<a
-href="http://blog.nihilogic.dk">http://blog.nihilogic.dk</a> also uses keyboard
+in the docs at Mozilla and the fact that "":<a href="http://blog.nihilogic.dk">http://blog.nihilogic.dk</a> also uses keyboard
 selection in <a href="http://blog.nihilogic.dk/search/label/chess">Javascript 3D
 chess</a> also hints that he hasn't found such thing.</p>
 
-<p>Thanks for any tips (<a
-href="mailto:ondra&#64;dynawest.cz">ondra&#64;<!-- -->dynawest.cz</a>).</p>
+<p>Thanks for any tips (<a href="mailto:ondra@dynawest.cz">ondra@<!-- -->dynawest.cz</a>).</p>
 
 <h3 id="toc-update-jacob-seidelin-s-mail-reply">Update – Jacob
 Seidelin's mail reply</h3>
@@ -158,10 +156,8 @@ time to edit.)</p>
 I will consider creating a feature request, if I will not find any existing
 suggestion of such kind.</p>
 
-<p>Thanks also belongs to Martin Hassman for his reply and his <a
-href="http://met.blog.root.cz/2008/05/05/kouzla-s-canvasem-libo-sachy-nebo-wolfensteina/">blogposts</a>,
-<a
-href="http://met.blog.root.cz/2008/06/03/canvas-editace-fotek-a-jezdici-super-mario/">2</a> about
+<p>Thanks also belongs to Martin Hassman for his reply and his <a href="http://met.blog.root.cz/2008/05/05/kouzla-s-canvasem-libo-sachy-nebo-wolfensteina/">blogposts</a>,
+<a href="http://met.blog.root.cz/2008/06/03/canvas-editace-fotek-a-jezdici-super-mario/">2</a> about
 canvas (in Czech), where I found the link to Jacob's work.</p>
 
 <h3 id="toc-suggestion-at-whatwg-mailing-list">Suggestion at WHATWG mailing
@@ -173,15 +169,13 @@ list</h3>
 	<p>I've been looking for something similar to OpenGL's selection buffer –
 	that is, you can get some object ID for the given coordinates.</p>
 
-	<p>E.g., Jacob Seidelin's chess game <a
-	href="http://blog.nihilogic.dk/search/label/chess">http://blog.nihilogic.dk/…/label/chess</a>
+	<p>E.g., Jacob Seidelin's chess game <a href="http://blog.nihilogic.dk/search/label/chess">http://blog.nihilogic.dk/…/label/chess</a>
 	could use it, but instead, keyboard control had to be used.</p>
 
 	<p>isPointInPath() does not solve the problem effectively if the path would be
 	too complex – e.g. pixel-based sprites in several layers.</p>
 
-	<p>For an example of what I want to implement, see e.g. <a
-	href="http://www.openttd.org/screens.php?image=images/screens/0.5.0/japan_national_railway_3_aug_1984">http://www.openttd.org/screens.php?…</a>
+	<p>For an example of what I want to implement, see e.g. <a href="http://www.openttd.org/screens.php?image=images/screens/0.5.0/japan_national_railway_3_aug_1984">http://www.openttd.org/screens.php?…</a>
 	. Mathematical computation of the object is principially impossible (or too
 	complex in best case).</p>
 
@@ -190,8 +184,7 @@ list</h3>
 	pixel. When turned on, these values would be set by every operation that changes
 	the pixel, seting it to the current context's value. Pseudo-code example:</p>
 
-	<pre
-	class="lang-javascript brush: javascript">function DrawCell( iCellId ){
+	<pre class="lang-javascript brush: javascript">function DrawCell( iCellId ){
 
   canvas.selectionBuffer.trackChanges( ON );
   canvas.selectionBuffer.setFillValue( iCellId );
@@ -205,8 +198,7 @@ list</h3>
 	<p>Then, upon user's mouse click on the canvas, you could determine which
 	object was clicked:</p>
 
-	<pre
-	class="lang-javascript brush: javascript">canvas.onclick = function( e ){
+	<pre class="lang-javascript brush: javascript">canvas.onclick = function( e ){
   id = canvas.selectionBuffer.getIdAt( e.x, e.y );
   // eventually:
   id = e.selectionBufferID;
@@ -218,23 +210,49 @@ list</h3>
 
 	<p>Regards, Ondra Zizka</p>
 </blockquote>
-</div>
+</div></div>
 
-        <!-- Rating widget -->
-        <div class="rw-ui-container"></div>
     </div>
-
     <hr />
+    <!-- Rating widget -->
+    <div class="rw-ui-container"></div>
 
 
-        <!--sharexy code start--><div id='shr_723771'><script type='text/javascript'>(function(w) { if (!w.SharexyWidget) { w.SharexyWidget = {};} if (!w.SharexyWidget.Params) { w.SharexyWidget.Params = {}; }
-        w.SharexyWidget.Params['723771'] = {'code_id':'723771','publisher_key':'undefined','design':'classic','layout_static':'h','type':'st','mode_float':'','size_float':'55','size_static':'55','buzz':'1',
-            'services':['facebook', 'google_plus', 'twitter', 'linkedin', 'reddit', 'buffer', 'pocket', 'print_page'],
-            'url':'current','allways_show_ads':'0','show_ads_sharing':'0','show_ads_cursor':'0','bg_float':'1','bg_color':'#ffffff','labels':'','counters':'0', 'counters_float':'0'} })(window);</script>
-        <script type='text/javascript' src='http://shuttle.sharexy.com/LoaderLite.js'></script></div><a href='http://sharexy.com/'><img src='http://sharexy.com/statpixel.png' style='border: 0' /></a><!--sharexy code end   -->
+        
+        <!-- AddToAny BEGIN -->
+        <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+            <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+            <a class="a2a_button_facebook"></a>
+            <a class="a2a_button_twitter"></a>
+            <a class="a2a_button_google_plus"></a>
+            <a class="a2a_button_google_bookmarks"></a>
+            <a class="a2a_button_google_classroom"></a>
+            <a class="a2a_button_linkedin"></a>
+            <a class="a2a_button_reddit"></a>
+            <a class="a2a_button_buffer"></a>
+            <a class="a2a_button_trello"></a>
+            <a class="a2a_button_slashdot"></a>
+            <a class="a2a_button_hacker_news"></a>
+            <a class="a2a_button_dzone"></a>
+            <a class="a2a_button_pinterest"></a>
+            <a class="a2a_button_vk"></a>
+            <a class="a2a_button_digg"></a>
+            <a class="a2a_button_copy_link"></a>
+            <a class="a2a_button_pocket"></a>
+        </div>
+        <script>
+            var a2a_config = a2a_config || {};
+            a2a_config.linkname = "Ondřej Žižka";
+            a2a_config.linkurl = "https://www.zizka.ch/";
+            a2a_config.num_services = 18;
+        </script>
+        <script async src="https://static.addtoany.com/menu/page.js"></script>
+        <!-- AddToAny END -->
+
+        <div style="clear: both; height: 1ex;"></div>
 
         <!-- Facebook comments -->
-                    <div class="fb-comments" data-href="https://www.zizka.ch/pages/programovani/web_javascript_ajax_canvas/canvas_element_selection_buffer.html" data-width="800" data-numposts="5"></div>
+            <div class="fb-comments" data-href="https://www.zizka.ch/pages/programovani/web_javascript_ajax_canvas/canvas_element_selection_buffer.html" data-width="900" data-numposts="5"></div>
 
     </div>
     <div id="push"></div>

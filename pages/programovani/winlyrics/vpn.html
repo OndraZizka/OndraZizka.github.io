@@ -71,12 +71,12 @@
     </div>
     <div class="container">
 
-    <div class="document-post">
+    <div class="document document-post">
         <div class="page-header">
             <h1>Na linuxu:</h1>
         </div>
         <div class="date"><em>2012-12-13</em></div>
-        <div class="doc-body"><p>nainstaluj openvpn, to novsi (2008..)</p>
+        <div class="doc-body"><div><p>nainstaluj openvpn, to novsi (2008..)</p>
 
 <p>(zip)</p>
 
@@ -84,15 +84,14 @@
 
 <p>uprav si etc/hosts ($win / system32 / drivers /etc) pridej tam:</p>
 
-<pre
-class="lang-text brush: text">192.168.77.1 hosting.vpn.rozsnyo.com
+<pre class="lang-text brush: text">192.168.77.1 hosting.vpn.rozsnyo.com
 192.168.77.1 sql.vpn.rozsnyo.com</pre>
 
 <p>muzes zkusit ssh na tu ip/host, port 20202 ondra/on­drazizka a zmen heslo
 (passwd i smbpasswd)</p>
 
-<p>zkus \\hosting.vpn­.rozsnyo.com\on­dra<br />
-ondra/ a heslo ze smbpasswd<br />
+<p>zkus \\hosting.vpn­.rozsnyo.com\on­dra<br/>
+ondra/ a heslo ze smbpasswd<br/>
 a na <a href="http://sql.vpn.rozsnyo.com">http://sql.vpn.rozsnyo.com</a> bys mel
 videt php my admin</p>
 
@@ -102,32 +101,57 @@ videt php my admin</p>
 
 <p>DB: winlyricscom / winlyricscom , heslo vygeneruj (choze: poslu SMSkou)</p>
 
-<h2 id="toc-na-linuxu">Na linuxu:</h2>
+<h2 class=" jbakeExtractedTitle" id="toc-na-linuxu">Na linuxu:</h2>
 
 <p>nainstalujes si openvpn a na tom sdileni je ta slozka .vpn, v ni jsou
 konfiguraky a certifikaty pak to nejak prinutis at to pouzije.. (openvpn
 vyzaduje v jadru povolit „tun/tap“ device, treba jako modul) a pak do
 etc/fstab jede neco takovehoto:</p>
 
-<pre
-class="lang-text brush: text">hosting.vpn.rozsnyo.com:/home/daniel    /home/daniel/hosting  nfs  noatime,noauto,user  0 0</pre>
-</div>
+<pre class="lang-text brush: text">hosting.vpn.rozsnyo.com:/home/daniel    /home/daniel/hosting  nfs  noatime,noauto,user  0 0</pre>
+</div></div>
 
-        <!-- Rating widget -->
-        <div class="rw-ui-container"></div>
     </div>
-
     <hr />
+    <!-- Rating widget -->
+    <div class="rw-ui-container"></div>
 
 
-        <!--sharexy code start--><div id='shr_723771'><script type='text/javascript'>(function(w) { if (!w.SharexyWidget) { w.SharexyWidget = {};} if (!w.SharexyWidget.Params) { w.SharexyWidget.Params = {}; }
-        w.SharexyWidget.Params['723771'] = {'code_id':'723771','publisher_key':'undefined','design':'classic','layout_static':'h','type':'st','mode_float':'','size_float':'55','size_static':'55','buzz':'1',
-            'services':['facebook', 'google_plus', 'twitter', 'linkedin', 'reddit', 'buffer', 'pocket', 'print_page'],
-            'url':'current','allways_show_ads':'0','show_ads_sharing':'0','show_ads_cursor':'0','bg_float':'1','bg_color':'#ffffff','labels':'','counters':'0', 'counters_float':'0'} })(window);</script>
-        <script type='text/javascript' src='http://shuttle.sharexy.com/LoaderLite.js'></script></div><a href='http://sharexy.com/'><img src='http://sharexy.com/statpixel.png' style='border: 0' /></a><!--sharexy code end   -->
+        
+        <!-- AddToAny BEGIN -->
+        <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+            <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+            <a class="a2a_button_facebook"></a>
+            <a class="a2a_button_twitter"></a>
+            <a class="a2a_button_google_plus"></a>
+            <a class="a2a_button_google_bookmarks"></a>
+            <a class="a2a_button_google_classroom"></a>
+            <a class="a2a_button_linkedin"></a>
+            <a class="a2a_button_reddit"></a>
+            <a class="a2a_button_buffer"></a>
+            <a class="a2a_button_trello"></a>
+            <a class="a2a_button_slashdot"></a>
+            <a class="a2a_button_hacker_news"></a>
+            <a class="a2a_button_dzone"></a>
+            <a class="a2a_button_pinterest"></a>
+            <a class="a2a_button_vk"></a>
+            <a class="a2a_button_digg"></a>
+            <a class="a2a_button_copy_link"></a>
+            <a class="a2a_button_pocket"></a>
+        </div>
+        <script>
+            var a2a_config = a2a_config || {};
+            a2a_config.linkname = "Ondřej Žižka";
+            a2a_config.linkurl = "https://www.zizka.ch/";
+            a2a_config.num_services = 18;
+        </script>
+        <script async src="https://static.addtoany.com/menu/page.js"></script>
+        <!-- AddToAny END -->
+
+        <div style="clear: both; height: 1ex;"></div>
 
         <!-- Facebook comments -->
-                    <div class="fb-comments" data-href="https://www.zizka.ch/pages/programovani/winlyrics/vpn.html" data-width="800" data-numposts="5"></div>
+            <div class="fb-comments" data-href="https://www.zizka.ch/pages/programovani/winlyrics/vpn.html" data-width="900" data-numposts="5"></div>
 
     </div>
     <div id="push"></div>

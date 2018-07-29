@@ -72,13 +72,13 @@ mavenization of an existing project - Ondřej Žižka</title>
     </div>
     <div class="container">
 
-    <div class="document-post">
+    <div class="document document-post">
         <div class="page-header">
             <h1>Quick and dirty
 mavenization of an existing project</h1>
         </div>
         <div class="date"><em>2012-12-16</em></div>
-        <div class="doc-body"><h2 id="toc-quick-and-dirty-mavenization-of-an-existing-project">Quick and dirty
+        <div class="doc-body"><div><h2 class=" jbakeExtractedTitle" id="toc-quick-and-dirty-mavenization-of-an-existing-project">Quick and dirty
 mavenization of an existing project</h2>
 
 <p>This is my lazy way to get anything to a Maven repo. Shown on my mavenization
@@ -98,8 +98,7 @@ of the Sardine library.</p>
 		<p>I usually use my project's name with the lib's name appended –
 		<code>org.jboss.qa.ews.sardine</code> in this case.</p>
 
-		<pre
-		class="lang-bat brush: bat">@ECHO off
+		<pre class="lang-bat brush: bat">@ECHO off
 ECHO echo Edit this file before use. Check the -DartifactId and -Dversion params.
 ECHO return
 
@@ -109,8 +108,7 @@ FOR %%f IN ( sardine-80\lib\*.jar) DO ECHO cmd /C mvn install:install-file -Dpac
 
 		<p>This will create something like this:</p>
 
-		<pre
-		class="lang-bat brush: bat">echo Edit this file before use. Check the -DartifactId and -Dversion params.
+		<pre class="lang-bat brush: bat">echo Edit this file before use. Check the -DartifactId and -Dversion params.
 return
 
 cmd /C mvn install:install-file -DpomFile=sardine-pom.xml -Dpackaging=jar -DgeneratePom=true -DgroupId=org.jboss.qa.ews.sardine -Dfile=sardine-80\sardine.jar -DartifactId=sardine -Dversion=80
@@ -128,8 +126,7 @@ cmd /C mvn install:install-file -Dpackaging=jar -DgeneratePom=true -DgroupId=org
 	library's depen­dencies.</li>
 </ol>
 
-<pre
-class="brush: lang-xml brush: xml">&lt;project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<pre class="brush: lang-xml brush: xml">&lt;project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd"&gt;
   &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
 
@@ -152,8 +149,7 @@ class="brush: lang-xml brush: xml">&lt;project xmlns="http://maven.apache.org/PO
 		dependency to the <code>pom.xml</code>, and comment them out from the
 		script.</p>
 
-		<pre
-		class="brush: lang-xml brush: xml">&lt;dependency&gt;
+		<pre class="brush: lang-xml brush: xml">&lt;dependency&gt;
   &lt;groupId&gt;junit&lt;/groupId&gt;
   &lt;artifactId&gt;junit&lt;/artifactId&gt;
   &lt;version&gt;3.8.1&lt;/version&gt;
@@ -201,8 +197,7 @@ class="brush: lang-xml brush: xml">&lt;project xmlns="http://maven.apache.org/PO
   &lt;version&gt;0.0&lt;/version&gt;
 &lt;/dependency&gt;</pre>
 
-		<pre
-		class="lang-bat brush: bat">cmd /C mvn install:install-file -DpomFile=sardine-pom.xml -Dpackaging=jar -DgeneratePom=true -DgroupId=org.jboss.qa.ews.sardine -Dfile=sardine-80\sardine.jar -DartifactId=sardine -Dversion=80
+		<pre class="lang-bat brush: bat">cmd /C mvn install:install-file -DpomFile=sardine-pom.xml -Dpackaging=jar -DgeneratePom=true -DgroupId=org.jboss.qa.ews.sardine -Dfile=sardine-80\sardine.jar -DartifactId=sardine -Dversion=80
 
 cmd /C mvn install:install-file -Dpackaging=jar -DgeneratePom=true -DgroupId=org.jboss.qa.ews.sardine -Dfile=sardine-80\lib\ant-googlecode-0.0.2.jar -DartifactId=ant-googlecode -Dversion=0.0.2
 @rem cmd /C mvn install:install-file -Dpackaging=jar -DgeneratePom=true -DgroupId=org.jboss.qa.ews.sardine -Dfile=sardine-80\lib\commons-logging-1.1.1.jar -DartifactId=commons-logging -Dversion=1.1.1
@@ -224,8 +219,7 @@ cmd /C mvn install:install-file -Dpackaging=jar -DgeneratePom=true -DgroupId=org
 	<li>As you see, only the library itself left for addition to a maven repo.
 		<p>So, perform this:</p>
 
-		<pre
-		class="lang-bash brush: bash">mvn install:install-file -DpomFile=sardine-pom.xml -Dpackaging=jar -DgeneratePom=true -DgroupId=org.jboss.qa.ews.sardine -Dfile=sardine-80\sardine.jar -DartifactId=sardine -Dversion=80</pre>
+		<pre class="lang-bash brush: bash">mvn install:install-file -DpomFile=sardine-pom.xml -Dpackaging=jar -DgeneratePom=true -DgroupId=org.jboss.qa.ews.sardine -Dfile=sardine-80\sardine.jar -DartifactId=sardine -Dversion=80</pre>
 	</li>
 </ol>
 
@@ -242,23 +236,49 @@ cmd /C mvn install:install-file -Dpackaging=jar -DgeneratePom=true -DgroupId=org
 </ol>
 
 <p>Done.</p>
-</div>
+</div></div>
 
-        <!-- Rating widget -->
-        <div class="rw-ui-container"></div>
     </div>
-
     <hr />
+    <!-- Rating widget -->
+    <div class="rw-ui-container"></div>
 
 
-        <!--sharexy code start--><div id='shr_723771'><script type='text/javascript'>(function(w) { if (!w.SharexyWidget) { w.SharexyWidget = {};} if (!w.SharexyWidget.Params) { w.SharexyWidget.Params = {}; }
-        w.SharexyWidget.Params['723771'] = {'code_id':'723771','publisher_key':'undefined','design':'classic','layout_static':'h','type':'st','mode_float':'','size_float':'55','size_static':'55','buzz':'1',
-            'services':['facebook', 'google_plus', 'twitter', 'linkedin', 'reddit', 'buffer', 'pocket', 'print_page'],
-            'url':'current','allways_show_ads':'0','show_ads_sharing':'0','show_ads_cursor':'0','bg_float':'1','bg_color':'#ffffff','labels':'','counters':'0', 'counters_float':'0'} })(window);</script>
-        <script type='text/javascript' src='http://shuttle.sharexy.com/LoaderLite.js'></script></div><a href='http://sharexy.com/'><img src='http://sharexy.com/statpixel.png' style='border: 0' /></a><!--sharexy code end   -->
+        
+        <!-- AddToAny BEGIN -->
+        <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+            <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+            <a class="a2a_button_facebook"></a>
+            <a class="a2a_button_twitter"></a>
+            <a class="a2a_button_google_plus"></a>
+            <a class="a2a_button_google_bookmarks"></a>
+            <a class="a2a_button_google_classroom"></a>
+            <a class="a2a_button_linkedin"></a>
+            <a class="a2a_button_reddit"></a>
+            <a class="a2a_button_buffer"></a>
+            <a class="a2a_button_trello"></a>
+            <a class="a2a_button_slashdot"></a>
+            <a class="a2a_button_hacker_news"></a>
+            <a class="a2a_button_dzone"></a>
+            <a class="a2a_button_pinterest"></a>
+            <a class="a2a_button_vk"></a>
+            <a class="a2a_button_digg"></a>
+            <a class="a2a_button_copy_link"></a>
+            <a class="a2a_button_pocket"></a>
+        </div>
+        <script>
+            var a2a_config = a2a_config || {};
+            a2a_config.linkname = "Ondřej Žižka";
+            a2a_config.linkurl = "https://www.zizka.ch/";
+            a2a_config.num_services = 18;
+        </script>
+        <script async src="https://static.addtoany.com/menu/page.js"></script>
+        <!-- AddToAny END -->
+
+        <div style="clear: both; height: 1ex;"></div>
 
         <!-- Facebook comments -->
-                    <div class="fb-comments" data-href="https://www.zizka.ch/pages/programovani/java/mavenize-quick-and-dirty.html" data-width="800" data-numposts="5"></div>
+            <div class="fb-comments" data-href="https://www.zizka.ch/pages/programovani/java/mavenize-quick-and-dirty.html" data-width="900" data-numposts="5"></div>
 
     </div>
     <div id="push"></div>

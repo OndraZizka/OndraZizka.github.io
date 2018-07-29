@@ -72,13 +72,13 @@ JMX dependencies - Ondřej Žižka</title>
     </div>
     <div class="container">
 
-    <div class="document-post">
+    <div class="document document-post">
         <div class="page-header">
             <h1>Maven and Log4j: Missing
 JMX dependencies</h1>
         </div>
         <div class="date"><em>2012-12-13</em></div>
-        <div class="doc-body"><h2 id="toc-maven-and-log4j-missing-jmx-dependencies">Maven and Log4j: Missing
+        <div class="doc-body"><div><h2 class=" jbakeExtractedTitle" id="toc-maven-and-log4j-missing-jmx-dependencies">Maven and Log4j: Missing
 JMX dependencies</h2>
 
 <h3 id="toc-symptoms">Symptoms</h3>
@@ -86,8 +86,7 @@ JMX dependencies</h2>
 <p>You want to use Log4j, but when performing <code>mvn install</code>,
 you get:</p>
 
-<pre
-class="brush: lang-plain brush: plain">Compilation failure
+<pre class="brush: lang-plain brush: plain">Compilation failure
 
 error: error reading t:\data\.m2\repository\com\sun\jdmk\jmxtools\1.2.1\jmxtools-1.2.1.jar; error in opening zip file
 error: error reading t:\data\.m2\repository\com\sun\jmx\jmxri\1.2.1\jmxri-1.2.1.jar; error in opening zip file</pre>
@@ -96,8 +95,7 @@ error: error reading t:\data\.m2\repository\com\sun\jmx\jmxri\1.2.1\jmxri-1.2.1.
 Maven, to Sun Maven repository, but to a location from where JMX was
 removed:</p>
 
-<pre
-class="brush: lang-html brush: html">&lt;!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN"&gt;
+<pre class="brush: lang-html brush: html">&lt;!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN"&gt;
 &lt;html&gt;&lt;head&gt;
 &lt;title&gt;301 Moved Permanently&lt;/title&gt;
 &lt;/head&gt;&lt;body&gt;
@@ -112,13 +110,11 @@ class="brush: lang-html brush: html">&lt;!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML
 <p>You have two options:</p>
 
 <ol style="list-style-type:upper-alpha">
-	<li>Download them from <a
-	href="http://java.sun.com/javase/technologies/core/mntr-mgmt/javamanagement/download.jsp">Sun
+	<li>Download them from <a href="http://java.sun.com/javase/technologies/core/mntr-mgmt/javamanagement/download.jsp">Sun
 	JMX download page</a>,
 		<p>extract the jar's and perform:</p>
 
-		<pre
-		class="brush: lang-bash brush: bash">mvn install:install-file -DgroupId=com.sun.jmx -DartifactId=jmxri -Dversion=1.2.1 -Dpackaging=jar -Dfile=jmxri.jar
+		<pre class="brush: lang-bash brush: bash">mvn install:install-file -DgroupId=com.sun.jmx -DartifactId=jmxri -Dversion=1.2.1 -Dpackaging=jar -Dfile=jmxri.jar
 mvn install:install-file -DgroupId=com.sun.jdmk -DartifactId=jmxtools -Dversion=1.2.1 -Dpackaging=jar -Dfile=jmxtools.jar</pre>
 	</li>
 
@@ -129,23 +125,49 @@ mvn install:install-file -DgroupId=com.sun.jdmk -DartifactId=jmxtools -Dversion=
 <p>I'd also add C), use <a href="http://download.java.net/maven/2/">Sun Maven
 repository</a>, but <a href="http://download.java.net/maven/2/com/sun/">JMX was
 removed</a> from there.</p>
-</div>
+</div></div>
 
-        <!-- Rating widget -->
-        <div class="rw-ui-container"></div>
     </div>
-
     <hr />
+    <!-- Rating widget -->
+    <div class="rw-ui-container"></div>
 
 
-        <!--sharexy code start--><div id='shr_723771'><script type='text/javascript'>(function(w) { if (!w.SharexyWidget) { w.SharexyWidget = {};} if (!w.SharexyWidget.Params) { w.SharexyWidget.Params = {}; }
-        w.SharexyWidget.Params['723771'] = {'code_id':'723771','publisher_key':'undefined','design':'classic','layout_static':'h','type':'st','mode_float':'','size_float':'55','size_static':'55','buzz':'1',
-            'services':['facebook', 'google_plus', 'twitter', 'linkedin', 'reddit', 'buffer', 'pocket', 'print_page'],
-            'url':'current','allways_show_ads':'0','show_ads_sharing':'0','show_ads_cursor':'0','bg_float':'1','bg_color':'#ffffff','labels':'','counters':'0', 'counters_float':'0'} })(window);</script>
-        <script type='text/javascript' src='http://shuttle.sharexy.com/LoaderLite.js'></script></div><a href='http://sharexy.com/'><img src='http://sharexy.com/statpixel.png' style='border: 0' /></a><!--sharexy code end   -->
+        
+        <!-- AddToAny BEGIN -->
+        <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+            <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+            <a class="a2a_button_facebook"></a>
+            <a class="a2a_button_twitter"></a>
+            <a class="a2a_button_google_plus"></a>
+            <a class="a2a_button_google_bookmarks"></a>
+            <a class="a2a_button_google_classroom"></a>
+            <a class="a2a_button_linkedin"></a>
+            <a class="a2a_button_reddit"></a>
+            <a class="a2a_button_buffer"></a>
+            <a class="a2a_button_trello"></a>
+            <a class="a2a_button_slashdot"></a>
+            <a class="a2a_button_hacker_news"></a>
+            <a class="a2a_button_dzone"></a>
+            <a class="a2a_button_pinterest"></a>
+            <a class="a2a_button_vk"></a>
+            <a class="a2a_button_digg"></a>
+            <a class="a2a_button_copy_link"></a>
+            <a class="a2a_button_pocket"></a>
+        </div>
+        <script>
+            var a2a_config = a2a_config || {};
+            a2a_config.linkname = "Ondřej Žižka";
+            a2a_config.linkurl = "https://www.zizka.ch/";
+            a2a_config.num_services = 18;
+        </script>
+        <script async src="https://static.addtoany.com/menu/page.js"></script>
+        <!-- AddToAny END -->
+
+        <div style="clear: both; height: 1ex;"></div>
 
         <!-- Facebook comments -->
-                    <div class="fb-comments" data-href="https://www.zizka.ch/pages/programovani/java/maven/log4j-missing-jmx-sun-deps.html" data-width="800" data-numposts="5"></div>
+            <div class="fb-comments" data-href="https://www.zizka.ch/pages/programovani/java/maven/log4j-missing-jmx-sun-deps.html" data-width="900" data-numposts="5"></div>
 
     </div>
     <div id="push"></div>

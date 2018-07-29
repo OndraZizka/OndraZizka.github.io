@@ -72,17 +72,16 @@ rodného čísla (RČ) a identifikačního čísla (IČ) - Ondřej Žižka</tit
     </div>
     <div class="container">
 
-    <div class="document-post">
+    <div class="document document-post">
         <div class="page-header">
             <h1>Kontrola
 rodného čísla (RČ) a identifikačního čísla (IČ)</h1>
         </div>
         <div class="date"><em>2018-07-26</em></div>
-        <div class="doc-body"><h2 id="toc-kontrola-rodneho-cisla-rc-a-identifikacniho-cisla-ic">Kontrola
+        <div class="doc-body"><div><h2 class=" jbakeExtractedTitle" id="toc-kontrola-rodneho-cisla-rc-a-identifikacniho-cisla-ic">Kontrola
 rodného čísla (RČ) a identifikačního čísla (IČ)</h2>
 
-<p>Výcuc z <a
-href="http://latrine.dgx.cz/jak-overit-platne-ic-a-rodne-cislo">http://latrine.dgx.cz/…-rodne-cislo</a>
+<p>Výcuc z <a href="http://latrine.dgx.cz/jak-overit-platne-ic-a-rodne-cislo">http://latrine.dgx.cz/…-rodne-cislo</a>
 .</p>
 
 <h3 id="toc-overeni-rodneho-cisla">Ověření rodného čísla</h3>
@@ -100,8 +99,7 @@ jedenácti.</p>
 
 <h4 id="toc-implementace-v-php">Implementace v PHP:</h4>
 
-<pre
-class="brush: lang-php brush: php">function verifyRC($rc)
+<pre class="brush: lang-php brush: php">function verifyRC($rc)
 {
     // "be liberal in what you receive"
     if (!preg_match('#^\s*(\d\d)(\d\d)(\d\d)[ /]*(\d\d\d)(\d?)\s*$#', $rc, $matches)) {
@@ -140,8 +138,7 @@ class="brush: lang-php brush: php">function verifyRC($rc)
 
 <h4 id="toc-rodne-cislo-javascript">Rodné číslo – JavaScript:</h4>
 
-<pre
-class="brush: lang-js brush: js">function testRC(x, age)
+<pre class="brush: lang-js brush: js">function testRC(x, age)
 {
   if(!age) age = 0;
   try
@@ -203,8 +200,7 @@ class="brush: lang-js brush: js">function testRC(x, age)
 
 <h4 id="toc-implementace-v-php-2">Implementace v PHP:</h4>
 
-<pre
-class="brush: lang-php brush: php">function verifyIC($ic)
+<pre class="brush: lang-php brush: php">function verifyIC($ic)
 {
     // "be liberal in what you receive"
     $ic = preg_replace('#\s+#', '', $ic);
@@ -232,8 +228,7 @@ class="brush: lang-php brush: php">function verifyIC($ic)
 
 <h4 id="toc-ic-javascript">IČ – JavaScript:</h4>
 
-<pre
-class="brush: lang-js brush: js">function testICO(x)
+<pre class="brush: lang-js brush: js">function testICO(x)
 {
   try
   {
@@ -260,8 +255,7 @@ class="brush: lang-js brush: js">function testICO(x)
 
 <h4 id="toc-dic-javascript">DIČ – JavaScript:</h4>
 
-<pre
-class="brush: lang-js brush: js">function testDIC(x)
+<pre class="brush: lang-js brush: js">function testDIC(x)
 {
   try
   {
@@ -291,23 +285,49 @@ class="brush: lang-js brush: js">function testDIC(x)
     return false;
   }
 }</pre>
-</div>
+</div></div>
 
-        <!-- Rating widget -->
-        <div class="rw-ui-container"></div>
     </div>
-
     <hr />
+    <!-- Rating widget -->
+    <div class="rw-ui-container"></div>
 
 
-        <!--sharexy code start--><div id='shr_723771'><script type='text/javascript'>(function(w) { if (!w.SharexyWidget) { w.SharexyWidget = {};} if (!w.SharexyWidget.Params) { w.SharexyWidget.Params = {}; }
-        w.SharexyWidget.Params['723771'] = {'code_id':'723771','publisher_key':'undefined','design':'classic','layout_static':'h','type':'st','mode_float':'','size_float':'55','size_static':'55','buzz':'1',
-            'services':['facebook', 'google_plus', 'twitter', 'linkedin', 'reddit', 'buffer', 'pocket', 'print_page'],
-            'url':'current','allways_show_ads':'0','show_ads_sharing':'0','show_ads_cursor':'0','bg_float':'1','bg_color':'#ffffff','labels':'','counters':'0', 'counters_float':'0'} })(window);</script>
-        <script type='text/javascript' src='http://shuttle.sharexy.com/LoaderLite.js'></script></div><a href='http://sharexy.com/'><img src='http://sharexy.com/statpixel.png' style='border: 0' /></a><!--sharexy code end   -->
+        
+        <!-- AddToAny BEGIN -->
+        <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+            <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+            <a class="a2a_button_facebook"></a>
+            <a class="a2a_button_twitter"></a>
+            <a class="a2a_button_google_plus"></a>
+            <a class="a2a_button_google_bookmarks"></a>
+            <a class="a2a_button_google_classroom"></a>
+            <a class="a2a_button_linkedin"></a>
+            <a class="a2a_button_reddit"></a>
+            <a class="a2a_button_buffer"></a>
+            <a class="a2a_button_trello"></a>
+            <a class="a2a_button_slashdot"></a>
+            <a class="a2a_button_hacker_news"></a>
+            <a class="a2a_button_dzone"></a>
+            <a class="a2a_button_pinterest"></a>
+            <a class="a2a_button_vk"></a>
+            <a class="a2a_button_digg"></a>
+            <a class="a2a_button_copy_link"></a>
+            <a class="a2a_button_pocket"></a>
+        </div>
+        <script>
+            var a2a_config = a2a_config || {};
+            a2a_config.linkname = "Ondřej Žižka";
+            a2a_config.linkurl = "https://www.zizka.ch/";
+            a2a_config.num_services = 18;
+        </script>
+        <script async src="https://static.addtoany.com/menu/page.js"></script>
+        <!-- AddToAny END -->
+
+        <div style="clear: both; height: 1ex;"></div>
 
         <!-- Facebook comments -->
-                    <div class="fb-comments" data-href="https://www.zizka.ch/pages/programovani/ruzne/rodne-cislo-identifikacni-cislo-rc-ico-kontrola-validace.html" data-width="800" data-numposts="5"></div>
+            <div class="fb-comments" data-href="https://www.zizka.ch/pages/programovani/ruzne/rodne-cislo-identifikacni-cislo-rc-ico-kontrola-validace.html" data-width="900" data-numposts="5"></div>
 
     </div>
     <div id="push"></div>

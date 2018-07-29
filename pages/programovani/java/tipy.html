@@ -71,12 +71,12 @@
     </div>
     <div class="container">
 
-    <div class="document-post">
+    <div class="document document-post">
         <div class="page-header">
             <h1>Java tipy</h1>
         </div>
         <div class="date"><em>2012-12-16</em></div>
-        <div class="doc-body"><h2 id="toc-java-tipy">Java tipy</h2>
+        <div class="doc-body"><div><h2 class=" jbakeExtractedTitle" id="toc-java-tipy">Java tipy</h2>
 
 <h3 id="toc-co-vsechno-umi-interface">Co všechno umí interface?</h3>
 
@@ -94,8 +94,7 @@ s tím?</p>
 
 <p>Moje nadtřída vypadala takto (zkráceno):</p>
 
-<pre
-class="brush: lang-java brush: java">public abstract class Action {
+<pre class="brush: lang-java brush: java">public abstract class Action {
 
   protected static Logger log;
   static{
@@ -136,8 +135,7 @@ class="brush: lang-java brush: java">public abstract class Action {
 podíval, zdálo se mi, že na to, abych z ní udělal interface je moc
 složitá. Až když jsem zjistil, že nepoužívat <code>JpaTemplate</code> by
 bylo ještě složitější, než se vykašlat na polymorfizmus a tuto
-nad-třídu zcela zrušit, podíval jsem se ještě na <a
-href="http://java.sun.com/docs/books/tutorial/java/IandI/createinterface.html">popis
+nad-třídu zcela zrušit, podíval jsem se ještě na <a href="http://java.sun.com/docs/books/tutorial/java/IandI/createinterface.html">popis
 <code>interface</code> z tutoriálu od Sunu</a>.</p>
 
 <p>Zde stoji:</p>
@@ -163,8 +161,7 @@ třídy pro seskupení funkčnosti vnější třídy</h3>
 <p>Pokud chcete v nějaké třídě uklidit, možná vám pomůže použití
 vnitřní třídy.</p>
 
-<pre
-class="brush: lang-java brush: java">class VnějšíTřída {
+<pre class="brush: lang-java brush: java">class VnějšíTřída {
 
     class VnitřníTřída {
         ...
@@ -176,7 +173,7 @@ class="brush: lang-java brush: java">class VnějšíTřída {
 mají zajímavou vlastnost: Jejich instance je součástí instance
 vnější třídy:</p>
 
-<div><img src="img\tipy\classes-inner.gif" alt="" /></div>
+<div><img alt="" src="img\tipy\classes-inner.gif"/></div>
 
 <p><em>(Vnitřních koleček by mohlo být i více, protože pro daný objekt
 vnější třídy můžete vytvořit libovolný počet instancí vnitřní
@@ -184,8 +181,7 @@ třídy.)</em></p>
 
 <p>Díky tomu z ní můžete přistupovat ke všem jejím prvkům:</p>
 
-<pre
-class="brush: lang-java brush: java">class MujProgram(){
+<pre class="brush: lang-java brush: java">class MujProgram(){
   Logger log;
 
   // inicializace v konstruktoru...
@@ -223,19 +219,16 @@ Proto je třeba spojení přenastavit.</p>
 je třeba MySQL spojení nastavit jinak – a to parametrem v
 „Connection URL“:</p>
 
-<pre
-class="lang-url brush: url">jdbc:mysql://dev:3306/myDatabase?autoReconnect=true&amp;amp;allowMultiQueries=true&amp;amp;characterEncoding=UTF-8&amp;amp;characterSetResults=UTF-8</pre>
+<pre class="lang-url brush: url">jdbc:mysql://dev:3306/myDatabase?autoReconnect=true&amp;amp;allowMultiQueries=true&amp;amp;characterEncoding=UTF-8&amp;amp;characterSetResults=UTF-8</pre>
 
 <p>Pokud byste chtěli kódování <code>Windows-1250</code>, použijte hodnotu
-<code>Cp1250</code>.<br />
-Na stránkách MySQL pak najdete ostatní <a
-href="http://dev.mysql.com/doc/refman/5.0/en/connector-j-reference-charsets.html">kódování,
+<code>Cp1250</code>.<br/>
+Na stránkách MySQL pak najdete ostatní <a href="http://dev.mysql.com/doc/refman/5.0/en/connector-j-reference-charsets.html">kódování,
 která MySQL podporuje</a>.</p>
 
 <p><em>Vyzkoušeno s Connector/J 5.1.6, Java 1.6.x MySQL 5.0.53.</em></p>
 
-<p>Další zajímavé tipy ohledně Unicode a Javy najdete na <a
-href="http://www.macroware.cz/software/unicode/">http://www.macroware.cz/…are/unicode/</a>.</p>
+<p>Další zajímavé tipy ohledně Unicode a Javy najdete na <a href="http://www.macroware.cz/software/unicode/">http://www.macroware.cz/…are/unicode/</a>.</p>
 
 <p>Klíčová slova: databáze, JDBC, MySQL, nastavení, kódování, iBatis,
 Hibernate. Keywords: database, JDBC, character set, setting, charset.</p>
@@ -243,8 +236,7 @@ Hibernate. Keywords: database, JDBC, character set, setting, charset.</p>
 <h3 id="toc-jak-zjistit-zda-cesta-adresar-existuje-a-pokud-ne-vytvorit-jej">Jak
 zjistit, zda cesta (adresář) existuje, a pokud ne, vytvořit jej?</h3>
 
-<pre
-class="brush: lang-java brush: java">try{
+<pre class="brush: lang-java brush: java">try{
   File dir = new File("./spisy_xml");
   if( !dir.exists() &amp;&amp; !dir.mkdirs() )
     throw new Exception("Nepodařilo se vytvořit adresář "+dir.getPath());
@@ -256,23 +248,49 @@ catch( Exception ex ){
 <p>Klíčová slova: java, j2se, adresář, složka, kontrola, existence,
 existuje, vytvoření. Keywords: java, directory, folder, check, existence,
 exists, create.</p>
-</div>
+</div></div>
 
-        <!-- Rating widget -->
-        <div class="rw-ui-container"></div>
     </div>
-
     <hr />
+    <!-- Rating widget -->
+    <div class="rw-ui-container"></div>
 
 
-        <!--sharexy code start--><div id='shr_723771'><script type='text/javascript'>(function(w) { if (!w.SharexyWidget) { w.SharexyWidget = {};} if (!w.SharexyWidget.Params) { w.SharexyWidget.Params = {}; }
-        w.SharexyWidget.Params['723771'] = {'code_id':'723771','publisher_key':'undefined','design':'classic','layout_static':'h','type':'st','mode_float':'','size_float':'55','size_static':'55','buzz':'1',
-            'services':['facebook', 'google_plus', 'twitter', 'linkedin', 'reddit', 'buffer', 'pocket', 'print_page'],
-            'url':'current','allways_show_ads':'0','show_ads_sharing':'0','show_ads_cursor':'0','bg_float':'1','bg_color':'#ffffff','labels':'','counters':'0', 'counters_float':'0'} })(window);</script>
-        <script type='text/javascript' src='http://shuttle.sharexy.com/LoaderLite.js'></script></div><a href='http://sharexy.com/'><img src='http://sharexy.com/statpixel.png' style='border: 0' /></a><!--sharexy code end   -->
+        
+        <!-- AddToAny BEGIN -->
+        <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+            <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+            <a class="a2a_button_facebook"></a>
+            <a class="a2a_button_twitter"></a>
+            <a class="a2a_button_google_plus"></a>
+            <a class="a2a_button_google_bookmarks"></a>
+            <a class="a2a_button_google_classroom"></a>
+            <a class="a2a_button_linkedin"></a>
+            <a class="a2a_button_reddit"></a>
+            <a class="a2a_button_buffer"></a>
+            <a class="a2a_button_trello"></a>
+            <a class="a2a_button_slashdot"></a>
+            <a class="a2a_button_hacker_news"></a>
+            <a class="a2a_button_dzone"></a>
+            <a class="a2a_button_pinterest"></a>
+            <a class="a2a_button_vk"></a>
+            <a class="a2a_button_digg"></a>
+            <a class="a2a_button_copy_link"></a>
+            <a class="a2a_button_pocket"></a>
+        </div>
+        <script>
+            var a2a_config = a2a_config || {};
+            a2a_config.linkname = "Ondřej Žižka";
+            a2a_config.linkurl = "https://www.zizka.ch/";
+            a2a_config.num_services = 18;
+        </script>
+        <script async src="https://static.addtoany.com/menu/page.js"></script>
+        <!-- AddToAny END -->
+
+        <div style="clear: both; height: 1ex;"></div>
 
         <!-- Facebook comments -->
-                    <div class="fb-comments" data-href="https://www.zizka.ch/pages/programovani/java/tipy.html" data-width="800" data-numposts="5"></div>
+            <div class="fb-comments" data-href="https://www.zizka.ch/pages/programovani/java/tipy.html" data-width="900" data-numposts="5"></div>
 
     </div>
     <div id="push"></div>

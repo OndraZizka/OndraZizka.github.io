@@ -71,30 +71,26 @@
     </div>
     <div class="container">
 
-    <div class="document-post">
+    <div class="document document-post">
         <div class="page-header">
             <h1>Výhody a nevýhody PHP</h1>
         </div>
         <div class="date"><em>2012-12-13</em></div>
-        <div class="doc-body"><h2 id="toc-vyhody-a-nevyhody-php">Výhody a nevýhody PHP</h2>
+        <div class="doc-body"><div><h2 class=" jbakeExtractedTitle" id="toc-vyhody-a-nevyhody-php">Výhody a nevýhody PHP</h2>
 
-<p><em>Update: V návaznosti na tento článek vznikl další – <a
-href="/stranky/programovani/java/je_java_jako_linux_nebo_jako_windows.texy">Je
+<p><em>Update: V návaznosti na tento článek vznikl další – <a href="/stranky/programovani/java/je_java_jako_linux_nebo_jako_windows.texy">Je
 Java jako Linux nebo jako Windows?</a></em></p>
 
-<p><em>Update: Abych nezůstal u teorie a subjektivních hodnocení <acronym
-title="Personal Home Page Tools">PHP</acronym>, přidám ukázku jednoho webu
-napsaného v PHP – a to hned <a
-href="vysledek_nasazeni_php_aneb_navrch_huj_uvnitr_fuj.texy">web zabývající
+<p><em>Update: Abych nezůstal u teorie a subjektivních hodnocení <acronym title="Personal Home Page Tools">PHP</acronym>, přidám ukázku jednoho webu
+napsaného v PHP – a to hned <a href="vysledek_nasazeni_php_aneb_navrch_huj_uvnitr_fuj.texy">web zabývající
 se programováním</a>.</em></p>
 
-<p><em>Update: V posledním (aspoň doufám) článku na toto téma <a
-href="nevyhody_php_v_praktickych_prikladech.texy">vysvětluji jednotlivé body
+<p><em>Update: V posledním (aspoň doufám) článku na toto téma <a href="nevyhody_php_v_praktickych_prikladech.texy">vysvětluji jednotlivé body
 ze seznamu nevýhod</a>.</em></p>
 <!-- "Srovnání Java a PHP":srovnani_php_a_javy.texy. -->
-<hr />
+<hr/>
 
-<div><img src="ElePHPant_with_Tiger.jpg" alt="" style="float:right" /></div>
+<div><img alt="" src="ElePHPant_with_Tiger.jpg" style="float:right"/></div>
 
 <p>Na webu je mnoho flejmů, zda je PHP lepší / horší než Java a .NET atd.
 Ostatně, nejjednodušší způsob, jak rozpoutat flejm, je zajít na hodně
@@ -108,8 +104,7 @@ pořádném OOP návrhu.</p>
 moderovanou diskusi, případně článek, o výhodách a
 nevýhodách PHP.</p>
 
-<p>//Update:// Našel jsem celkem dobrý článek na <a
-href="http://spyced.blogspot.com/2005/06/why-php-sucks.html">http://spyced.blogspot.com/…p-sucks.html</a>.
+<p>//Update:// Našel jsem celkem dobrý článek na <a href="http://spyced.blogspot.com/2005/06/why-php-sucks.html">http://spyced.blogspot.com/…p-sucks.html</a>.
 Sice je poněkud starší, ale jádro pudla zůstává. Je o dost ostřejší a
 než tento můj článek, takže PHPčkáři – bacha! :-) A všimněte si,
 že J2EE autor označuje za neelegantní stejně jako PHP.</p>
@@ -227,8 +222,7 @@ přeložit jako „gay incidents“ :) s PHP:</p>
 	<li>Vytváření OOP wrapperů pro procedurální PHP funkce
 	typu <code>mysql_*</code></li>
 
-	<li>Přepisování stohů zdrojáků při refaktoringu, protože PHP je <a
-	href="http://www.php.net/">bordelářský jazyk</a> a programátora vyloženě
+	<li>Přepisování stohů zdrojáků při refaktoringu, protože PHP je <a href="http://www.php.net/">bordelářský jazyk</a> a programátora vyloženě
 	svádí programovat jak prase</li>
 
 	<li>Stovky případů hledání chyby, kdy se ukázalo, že za vším stojí
@@ -334,7 +328,7 @@ zaplesalo nad tím, jak neuvěřitelně hladce to jde od ruky.</p>
 <h3 id="toc-slozitost-programovani-v-j2ee">Složitost programování
 v J2EE</h3>
 
-<p>A ještě ke složitosti J2EE.<br />
+<p>A ještě ke složitosti J2EE.<br/>
 Když srovnám PHP a JSP, tak to jsou zhruba srovnatelné technologie:</p>
 
 <ul>
@@ -396,8 +390,7 @@ protože postupy jsou standardizované a často se věci rovnou řeší
 děláte co chcete – zlepšující se programátoři časem začnou
 vytvářet „vlastní framework“, vlastní normu pro strukturu aplikace,
 vlastní knihovnu pro automatické ukládání objektů do DB, a tak dále,
-zatímco <a
-href="http://blog.maxell-cz.cz/item/zaklady-pouziti-smarty-sablon">naprostí
+zatímco <a href="http://blog.maxell-cz.cz/item/zaklady-pouziti-smarty-sablon">naprostí
 začátečníci – neprogramátoři mohou třeba takto</a> (viz část
 „Přiřazení prvků v šabloně“):</p>
 
@@ -405,18 +398,16 @@ začátečníci – neprogramátoři mohou třeba takto</a> (viz část
 	<p>Často potřebujeme vybrat data z databáze a následně je předat
 	šabloně. Na začátku je tedy SQL dotaz:</p>
 
-	<pre
-	class="lang-php brush: php">$result = mysql_query("SELECT nazev, titulek, text, cena FROM tabulka WHERE id='$id'");</pre>
+	<pre class="lang-php brush: php">$result = mysql_query("SELECT nazev, titulek, text, cena FROM tabulka WHERE id='$id'");</pre>
 
 	<p>Jak nyní předat data šabloně?</p>
 
 	<p>Nejjednodušší řešení je předat rovnou pole:</p>
 
-	<pre
-	class="lang-php brush: php">$smarty-&gt;assign('data',mysql_fetch_assoc($result));</pre>
+	<pre class="lang-php brush: php">$smarty-&gt;assign('data',mysql_fetch_assoc($result));</pre>
 </blockquote>
 
-<hr />
+<hr/>
 
 <p>Nyní se pokusím oprostit od Javy a zaměřit se čistě na PHP. Kdyby se
 někde v dalším textu vyskytlo slovo „Java“, klidně mi dejte virtuální
@@ -427,7 +418,7 @@ tom zaujmout pokud možno nezaujatý postoj, i když případného čtenáře
 o tom po přečtení předchozí kritiky asi nepřesvědčím.</p>
 
 <p>Komentáře nevedu, ale jestli se vám něco v následujícím výčtu
-nezdá, napište mi <a href="mailto:ondra&#64;dynawest.cz">mail</a> a já zde
+nezdá, napište mi <a href="mailto:ondra@dynawest.cz">mail</a> a já zde
 provedu veřejné pokání a omluvu sloníkovi elePHPantovi :)</p>
 
 <p><em>Výhoda</em> a <em>nevýhoda</em> jsou relativní pojmy. Proto navrhuji
@@ -442,7 +433,7 @@ Server Pages (příliš nesmyslná technologie), XML + XSLT + JavaScript
 
 <h3 id="toc-vyhody-php">Výhody PHP</h3>
 
-<div><img src="elePHPant_Front_Tiny.png" alt="" style="float:right" /></div>
+<div><img alt="" src="elePHPant_Front_Tiny.png" style="float:right"/></div>
 
 <p>Technologie PHP má spoustu výhod, díky které se rychle stalo
 populárním. Mezi ně patří např.:</p>
@@ -464,8 +455,7 @@ populárním. Mezi ně patří např.:</p>
 	Linuxu a na Windows.</li>
 
 	<li>Časem vznikla velká celosvětová komunita vývojářů a mnoho dobrých
-	svobodných projektů, zejména publikační systémy a <a
-	href="http://www.texy.info/">Texy!</a> :-)</li>
+	svobodných projektů, zejména publikační systémy a <a href="http://www.texy.info/">Texy!</a> :-)</li>
 
 	<li>Velmi široká nabídka hostingu, levné ceny díky konkurenci</li>
 
@@ -480,8 +470,7 @@ populárním. Mezi ně patří např.:</p>
 
 <h3 id="toc-nevyhody-php">Nevýhody PHP</h3>
 
-<div><img src="elePHPant_RightFront_Tiny.png" alt="" style="float:right"
-/></div>
+<div><img alt="" src="elePHPant_RightFront_Tiny.png" style="float:right"/></div>
 
 <p>Na druhou stranu, PHP má také značné nevýhody, pro které jej mnozí
 kritizují a někdy i opouštějí; mimo jiné tyto:</p>
@@ -490,8 +479,7 @@ kritizují a někdy i opouštějí; mimo jiné tyto:</p>
 	<li>Až do verze PHP 4 nepříliš povedená podpora objektově orientovaného
 	programování s mnoha záludnostmi</li>
 
-	<li>Verze 5 již podporuje OOP lépe (i když stále <a
-	href="http://latrine.dgx.cz/jsem-zdesen-z-php5">velmi mizerně</a>), ale
+	<li>Verze 5 již podporuje OOP lépe (i když stále <a href="http://latrine.dgx.cz/jsem-zdesen-z-php5">velmi mizerně</a>), ale
 	nativní knihovna funkcí nadále používá procedurální paradigma</li>
 
 	<li>Nativní funkce nejen nepoužívají objektový přístup, ale ani
@@ -516,8 +504,7 @@ kritizují a někdy i opouštějí; mimo jiné tyto:</p>
 	mnoha úloh (např. objektově-relační mapování)</li>
 </ul>
 
-<div><img src="elePHPant_LeftFront_Tiny_sad.png" alt="" style="float:right"
-/></div>
+<div><img alt="" src="elePHPant_LeftFront_Tiny_sad.png" style="float:right"/></div>
 
 <ul>
 	<li>PHP nemá danou politiku vývoje, místo toho nadále jen kopíruje prvky
@@ -567,8 +554,7 @@ kritizují a někdy i opouštějí; mimo jiné tyto:</p>
 	nyní <code>PDO</code></li>
 </ul>
 
-<div><img src="elePHPant_RightFront_Tiny_lezi_oci_v_sloup.png" alt=""
-style="float:right" /></div>
+<div><img alt="" src="elePHPant_RightFront_Tiny_lezi_oci_v_sloup.png" style="float:right"/></div>
 
 <ul>
 	<li>Chybí anotace a aspektově orientované programování</li>
@@ -596,8 +582,7 @@ style="float:right" /></div>
 [*  elePHPant_Right_Tiny_jde_pryc.png  >]
 -->
 <p>Jak je vidět, seznam výhod a nevýhod je trochu nevyvážený. Nyní
-čekám polemiku :-) <a
-href="mailto:ondra&#64;dynawest.cz">ondra&#64;<!-- -->dynawest.cz</a></p>
+čekám polemiku :-) <a href="mailto:ondra@dynawest.cz">ondra@<!-- -->dynawest.cz</a></p>
 
 <p>//PS:// Ale pořád ještě to není tak strašné, jako s Caché – kdo
 zkoušel, ví :-)</p>
@@ -609,11 +594,10 @@ tématikou:</h4>
 	<li><a href="http://www.abclinuxu.cz/blog/miloslavponkrac/2006/2/3/119608">Kam
 	kráčíš, PHP?</a> (2006, doporučuji přečíst i komentáře)</li>
 
-	<li><a
-	href="http://www.pestujemeweb.cz/clanky-rozhovory/text-27-david-grudl-rozhovor.html">David
+	<li><a href="http://www.pestujemeweb.cz/clanky-rozhovory/text-27-david-grudl-rozhovor.html">David
 	Grudl o PHP</a>
 		<blockquote>
-			<p>4. Jaká je perspektiva PHP z Vašeho pohledu?<br />
+			<p>4. Jaká je perspektiva PHP z Vašeho pohledu?<br/>
 			Jsem PHP skeptik. PHP jakožto jazyk ztratil koncepci, rozšiřování se děje
 			chaoticky. PHP jakožto knihovna se nehodí na tvorbu webových aplikací.
 			Frameworky se to snaží suplovat.</p>
@@ -621,32 +605,56 @@ tématikou:</h4>
 	</li>
 </ul>
 
-<p><em>Obrázky přejaty z <a
-href="http://www.nexen.net/elephpant/index.php">http://www.nexen.net/…nt/index.php</a>
-a <a
-href="http://shop.yourphppro.com/elePHPant.html">http://shop.yourphppro.com/elePHPant.html</a>.</em></p>
+<p><em>Obrázky přejaty z <a href="http://www.nexen.net/elephpant/index.php">http://www.nexen.net/…nt/index.php</a>
+a <a href="http://shop.yourphppro.com/elePHPant.html">http://shop.yourphppro.com/elePHPant.html</a>.</em></p>
 
 <p><em>(PS: Kdyby někoho zajímalo, proč je tento web v PHP, tak je to kvůli
-Texy! ;-)</em><br />
+Texy! ;-)</em><br/>
 <em>PS pro Jana Škráška: Porty Texy? Ruby nemám rád, python neumím, .NET
 nechci a pro Javu ještě port není.</em></p>
-</div>
+</div></div>
 
-        <!-- Rating widget -->
-        <div class="rw-ui-container"></div>
     </div>
-
     <hr />
+    <!-- Rating widget -->
+    <div class="rw-ui-container"></div>
 
 
-        <!--sharexy code start--><div id='shr_723771'><script type='text/javascript'>(function(w) { if (!w.SharexyWidget) { w.SharexyWidget = {};} if (!w.SharexyWidget.Params) { w.SharexyWidget.Params = {}; }
-        w.SharexyWidget.Params['723771'] = {'code_id':'723771','publisher_key':'undefined','design':'classic','layout_static':'h','type':'st','mode_float':'','size_float':'55','size_static':'55','buzz':'1',
-            'services':['facebook', 'google_plus', 'twitter', 'linkedin', 'reddit', 'buffer', 'pocket', 'print_page'],
-            'url':'current','allways_show_ads':'0','show_ads_sharing':'0','show_ads_cursor':'0','bg_float':'1','bg_color':'#ffffff','labels':'','counters':'0', 'counters_float':'0'} })(window);</script>
-        <script type='text/javascript' src='http://shuttle.sharexy.com/LoaderLite.js'></script></div><a href='http://sharexy.com/'><img src='http://sharexy.com/statpixel.png' style='border: 0' /></a><!--sharexy code end   -->
+        
+        <!-- AddToAny BEGIN -->
+        <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+            <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+            <a class="a2a_button_facebook"></a>
+            <a class="a2a_button_twitter"></a>
+            <a class="a2a_button_google_plus"></a>
+            <a class="a2a_button_google_bookmarks"></a>
+            <a class="a2a_button_google_classroom"></a>
+            <a class="a2a_button_linkedin"></a>
+            <a class="a2a_button_reddit"></a>
+            <a class="a2a_button_buffer"></a>
+            <a class="a2a_button_trello"></a>
+            <a class="a2a_button_slashdot"></a>
+            <a class="a2a_button_hacker_news"></a>
+            <a class="a2a_button_dzone"></a>
+            <a class="a2a_button_pinterest"></a>
+            <a class="a2a_button_vk"></a>
+            <a class="a2a_button_digg"></a>
+            <a class="a2a_button_copy_link"></a>
+            <a class="a2a_button_pocket"></a>
+        </div>
+        <script>
+            var a2a_config = a2a_config || {};
+            a2a_config.linkname = "Ondřej Žižka";
+            a2a_config.linkurl = "https://www.zizka.ch/";
+            a2a_config.num_services = 18;
+        </script>
+        <script async src="https://static.addtoany.com/menu/page.js"></script>
+        <!-- AddToAny END -->
+
+        <div style="clear: both; height: 1ex;"></div>
 
         <!-- Facebook comments -->
-                    <div class="fb-comments" data-href="https://www.zizka.ch/pages/programovani/php/vyhody_a_nevyhody_php.html" data-width="800" data-numposts="5"></div>
+            <div class="fb-comments" data-href="https://www.zizka.ch/pages/programovani/php/vyhody_a_nevyhody_php.html" data-width="900" data-numposts="5"></div>
 
     </div>
     <div id="push"></div>

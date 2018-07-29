@@ -72,22 +72,20 @@ Operation Network 2.3.0: Tomcat not supported on Windows 2003 and 2008 - Ondř
     </div>
     <div class="container">
 
-    <div class="document-post">
+    <div class="document document-post">
         <div class="page-header">
             <h1>JBoss
 Operation Network 2.3.0: Tomcat not supported on Windows 2003 and 2008</h1>
         </div>
         <div class="date"><em>2018-07-26</em></div>
-        <div class="doc-body"><h2
-id="toc-jboss-operation-network-2-3-0-tomcat-not-supported-on-windows-2003-and-2008">JBoss
+        <div class="doc-body"><div><h2 class=" jbakeExtractedTitle" id="toc-jboss-operation-network-2-3-0-tomcat-not-supported-on-windows-2003-and-2008">JBoss
 Operation Network 2.3.0: Tomcat not supported on Windows 2003 and 2008</h2>
 
 <p>For the record: You won't get Tomcat to work on JON 2.3.0. It has problems
 with process scanning, using Sigar. See the log bellow. Note the part
 with <code>Unexpected error occurred while looking up info for [&lt;unknown&gt;] process with pid [288] - call to getProcExe failed. Did the process die? Cause: org.hyperic.sigar.SigarException: Incorrect function.</code></p>
 
-<pre
-class="lang-text brush: text">2010-02-11 20:49:06,562 INFO  [ResourceContainer.invoker.daemon-28] (org.rhq.plugins.apache.ApacheServerComponent)- Initializing server component for server [C:\Program Files\Red Hat\Enterprise Web Server]...
+<pre class="lang-text brush: text">2010-02-11 20:49:06,562 INFO  [ResourceContainer.invoker.daemon-28] (org.rhq.plugins.apache.ApacheServerComponent)- Initializing server component for server [C:\Program Files\Red Hat\Enterprise Web Server]...
 2010-02-11 20:49:06,562 INFO  [ResourceContainer.invoker.daemon-28] (rhq.plugins.www.snmp.SNMPClient)- Initialized SNMP session for agent at /127.0.0.1:1610
 2010-02-11 20:49:06,687 DEBUG [ResourceContainer.invoker.daemon-28] (rhq.plugins.www.snmp.SNMPSession_v2c)- Error while pinging SNMP 1 agent at 127.0.0.1/1610/public. SNMP GETNEXT request for iso(1) failed - org.rhq.plugins.www.snmp.SNMPException: Request for [iso] timed out.
 2010-02-11 20:49:06,687 WARN  [ResourceContainer.invoker.daemon-28] (org.rhq.plugins.apache.ApacheServerComponent)- Failed to connect to SNMP agent at 127.0.0.1/1610/public
@@ -457,23 +455,49 @@ Caused by: org.rhq.core.pluginapi.inventory.InvalidPluginConfigurationException:
 2010-02-11 20:54:08,703 DEBUG [InventoryManager.availability-1] (rhq.core.pc.inventory.InventoryManager)- Availability report content: AV:[jawa14][36][full]
 2010-02-11 20:54:15,390 INFO  [MeasurementManager.sender-1] (rhq.core.pc.measurement.MeasurementCollectorRunner)- Measurement collection for [11] metrics took 0ms - sending report to Server...
 2010-02-11 20:54:45,390 DEBUG [MeasurementManager.sender-1] (rhq.core.pc.measurement.MeasurementCollectorRunner)- Measurement report contains no data - not sending to Server.</pre>
-</div>
+</div></div>
 
-        <!-- Rating widget -->
-        <div class="rw-ui-container"></div>
     </div>
-
     <hr />
+    <!-- Rating widget -->
+    <div class="rw-ui-container"></div>
 
 
-        <!--sharexy code start--><div id='shr_723771'><script type='text/javascript'>(function(w) { if (!w.SharexyWidget) { w.SharexyWidget = {};} if (!w.SharexyWidget.Params) { w.SharexyWidget.Params = {}; }
-        w.SharexyWidget.Params['723771'] = {'code_id':'723771','publisher_key':'undefined','design':'classic','layout_static':'h','type':'st','mode_float':'','size_float':'55','size_static':'55','buzz':'1',
-            'services':['facebook', 'google_plus', 'twitter', 'linkedin', 'reddit', 'buffer', 'pocket', 'print_page'],
-            'url':'current','allways_show_ads':'0','show_ads_sharing':'0','show_ads_cursor':'0','bg_float':'1','bg_color':'#ffffff','labels':'','counters':'0', 'counters_float':'0'} })(window);</script>
-        <script type='text/javascript' src='http://shuttle.sharexy.com/LoaderLite.js'></script></div><a href='http://sharexy.com/'><img src='http://sharexy.com/statpixel.png' style='border: 0' /></a><!--sharexy code end   -->
+        
+        <!-- AddToAny BEGIN -->
+        <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+            <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+            <a class="a2a_button_facebook"></a>
+            <a class="a2a_button_twitter"></a>
+            <a class="a2a_button_google_plus"></a>
+            <a class="a2a_button_google_bookmarks"></a>
+            <a class="a2a_button_google_classroom"></a>
+            <a class="a2a_button_linkedin"></a>
+            <a class="a2a_button_reddit"></a>
+            <a class="a2a_button_buffer"></a>
+            <a class="a2a_button_trello"></a>
+            <a class="a2a_button_slashdot"></a>
+            <a class="a2a_button_hacker_news"></a>
+            <a class="a2a_button_dzone"></a>
+            <a class="a2a_button_pinterest"></a>
+            <a class="a2a_button_vk"></a>
+            <a class="a2a_button_digg"></a>
+            <a class="a2a_button_copy_link"></a>
+            <a class="a2a_button_pocket"></a>
+        </div>
+        <script>
+            var a2a_config = a2a_config || {};
+            a2a_config.linkname = "Ondřej Žižka";
+            a2a_config.linkurl = "https://www.zizka.ch/";
+            a2a_config.num_services = 18;
+        </script>
+        <script async src="https://static.addtoany.com/menu/page.js"></script>
+        <!-- AddToAny END -->
+
+        <div style="clear: both; height: 1ex;"></div>
 
         <!-- Facebook comments -->
-                    <div class="fb-comments" data-href="https://www.zizka.ch/pages/programovani/java/jboss/Tomcat-JON-Windows-2003-2008.html" data-width="800" data-numposts="5"></div>
+            <div class="fb-comments" data-href="https://www.zizka.ch/pages/programovani/java/jboss/Tomcat-JON-Windows-2003-2008.html" data-width="900" data-numposts="5"></div>
 
     </div>
     <div id="push"></div>

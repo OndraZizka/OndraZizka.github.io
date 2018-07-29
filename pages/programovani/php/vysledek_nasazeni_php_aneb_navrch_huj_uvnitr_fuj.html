@@ -72,21 +72,19 @@ nasazení PHP v praxi aneb navrch huj, uvnitř fuj. - Ondřej Žižka</title>
     </div>
     <div class="container">
 
-    <div class="document-post">
+    <div class="document document-post">
         <div class="page-header">
             <h1>Výsledek
 nasazení PHP v praxi aneb navrch huj, uvnitř fuj.</h1>
         </div>
         <div class="date"><em>2012-12-13</em></div>
-        <div class="doc-body"><h2 id="toc-vysledek-nasazeni-php-v-praxi-aneb-navrch-huj-uvnitr-fuj">Výsledek
+        <div class="doc-body"><div><h2 class=" jbakeExtractedTitle" id="toc-vysledek-nasazeni-php-v-praxi-aneb-navrch-huj-uvnitr-fuj">Výsledek
 nasazení PHP v praxi aneb navrch huj, uvnitř fuj.</h2>
 
-<div><img src="elePHPant_Right_Tiny_jde_pryc.png" alt="" style="float:right"
-/></div>
+<div><img alt="" src="elePHPant_Right_Tiny_jde_pryc.png" style="float:right"/></div>
 
 <p>Abych nezůstal u <a href="vyhody_a_nevyhody_php.texy">teorie a
-subjektivních hodnocení <acronym
-title="Personal Home Page Tools">PHP</acronym></a>, přidám ukázku z jednoho
+subjektivních hodnocení <acronym title="Personal Home Page Tools">PHP</acronym></a>, přidám ukázku z jednoho
 webu napsaného v PHP – a to hned web zabývající se programováním.
 Jaký jiný web by měl být technicky dokonalý, ne-li web dávající rady,
 jak dobře programovat?</p>
@@ -102,8 +100,7 @@ kvůli PHP.</p>
 zástupkyně filozofie PHP (tedy předpoklad, že programátor je blbec, a
 místo dobrého návrhu API to fixovat nahodilými obezličkami) –
 <code>magic_quotes_gpc</code>. Jenže na tuhle obezličku je nutné opět
-udělat obezličku, a to vede k <a
-href="http://php.vrana.cz/vypnuti-magic_quotes_gpc.php">takovýmhle
+udělat obezličku, a to vede k <a href="http://php.vrana.cz/vypnuti-magic_quotes_gpc.php">takovýmhle
 komediím</a>, které nijak nesouvisejí s cílenou aplikací. Přesně to
 sedí na můj slogan pro PHP: <em>PHP – the Work-around Language</em>.</p>
 
@@ -127,8 +124,7 @@ stavy. Kudy chodím, tudy říkám, že PHP by mělo veškeré chyby převést
 na výjimky, a tento případ to potvrzuje. Při přidání komentáře se
 zobrazuje Warning:</p>
 
-<pre
-class="lang-text brush: text">Warning: Cannot modify header information - headers already sent by
+<pre class="lang-text brush: text">Warning: Cannot modify header information - headers already sent by
 (output started at /mnt/data/accounts/p/programujte/data/www/www/pridej_kom.php:6)
 in /mnt/data/accounts/p/programujte/data/www/www/pridej_kom.php on line 62</pre>
 
@@ -148,8 +144,7 @@ a nikoli výjimkou.</p>
 <p>Řekněme tedy, že by PHP skriptař viděl místo své stránky takovouto
 děsivou nestvůru:</p>
 
-<pre
-class="lang-text brush: text">500 Internal Server Error
+<pre class="lang-text brush: text">500 Internal Server Error
 java.lang.StringIndexOutOfBoundsException: String index out of range: -1
         at java.lang.String.substring(String.java:1444)
         at org.apache.axis2.builder.XFormURLEncodedBuilder.extractParametersFromRequest(XFormURLEncodedBuilder.java:155)
@@ -188,18 +183,15 @@ ohledu na to, kde se zrovna ve výsledném dokumentu nacházíme!</p>
 <p>Kdepak, primitivní PHP vám třeba ještě před XML prologem
 vystřihne svoje:</p>
 
-<pre
-class="lang-text brush: text">&lt;br /&gt;
+<pre class="lang-text brush: text">&lt;br /&gt;
 &lt;b&gt;Warning&lt;/b&gt;:  Cannot add header information - headers already sent by (output started at /var/www/html/lavoro/downloadIt.php:21 in &lt;b&gt;/var/www/html/lavoro/downloadIt.php&lt;/b&gt; on line &lt;b&gt;21&lt;/b&gt;&lt;br /&gt;</pre>
 
 <p>a bez povšimnutí může proletět dále ke klientovi, ačkoliv chybějící
 hlavičky HTTP mohou zcela zásadně změnit chování webové aplikace. Ale jak
-by řekli tvůrci PHP – <a
-href="http://www.php.net/~derick/meeting-notes.html">„That's the
+by řekli tvůrci PHP – <a href="http://www.php.net/~derick/meeting-notes.html">„That's the
 PHP way.“</a></p>
 
-<h3
-id="toc-reakce-zastupce-php-komunity-redaktora-serveru-o-programovani">Reakce
+<h3 id="toc-reakce-zastupce-php-komunity-redaktora-serveru-o-programovani">Reakce
 zástupce PHP komunity – redaktora serveru o programování</h3>
 
 <p>Ještě lepší jsou reakce reakce autora článku, kde jsem chybu
@@ -231,23 +223,49 @@ takovéto zásadní nedostatky, a nevadí to ani čtenářům, ani autorům
 framework“ – a pak to podle toho vypadá.</p>
 
 <p><em>Klíčové slovo: <strong>PHP sucks</strong>.</em></p>
-</div>
+</div></div>
 
-        <!-- Rating widget -->
-        <div class="rw-ui-container"></div>
     </div>
-
     <hr />
+    <!-- Rating widget -->
+    <div class="rw-ui-container"></div>
 
 
-        <!--sharexy code start--><div id='shr_723771'><script type='text/javascript'>(function(w) { if (!w.SharexyWidget) { w.SharexyWidget = {};} if (!w.SharexyWidget.Params) { w.SharexyWidget.Params = {}; }
-        w.SharexyWidget.Params['723771'] = {'code_id':'723771','publisher_key':'undefined','design':'classic','layout_static':'h','type':'st','mode_float':'','size_float':'55','size_static':'55','buzz':'1',
-            'services':['facebook', 'google_plus', 'twitter', 'linkedin', 'reddit', 'buffer', 'pocket', 'print_page'],
-            'url':'current','allways_show_ads':'0','show_ads_sharing':'0','show_ads_cursor':'0','bg_float':'1','bg_color':'#ffffff','labels':'','counters':'0', 'counters_float':'0'} })(window);</script>
-        <script type='text/javascript' src='http://shuttle.sharexy.com/LoaderLite.js'></script></div><a href='http://sharexy.com/'><img src='http://sharexy.com/statpixel.png' style='border: 0' /></a><!--sharexy code end   -->
+        
+        <!-- AddToAny BEGIN -->
+        <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+            <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+            <a class="a2a_button_facebook"></a>
+            <a class="a2a_button_twitter"></a>
+            <a class="a2a_button_google_plus"></a>
+            <a class="a2a_button_google_bookmarks"></a>
+            <a class="a2a_button_google_classroom"></a>
+            <a class="a2a_button_linkedin"></a>
+            <a class="a2a_button_reddit"></a>
+            <a class="a2a_button_buffer"></a>
+            <a class="a2a_button_trello"></a>
+            <a class="a2a_button_slashdot"></a>
+            <a class="a2a_button_hacker_news"></a>
+            <a class="a2a_button_dzone"></a>
+            <a class="a2a_button_pinterest"></a>
+            <a class="a2a_button_vk"></a>
+            <a class="a2a_button_digg"></a>
+            <a class="a2a_button_copy_link"></a>
+            <a class="a2a_button_pocket"></a>
+        </div>
+        <script>
+            var a2a_config = a2a_config || {};
+            a2a_config.linkname = "Ondřej Žižka";
+            a2a_config.linkurl = "https://www.zizka.ch/";
+            a2a_config.num_services = 18;
+        </script>
+        <script async src="https://static.addtoany.com/menu/page.js"></script>
+        <!-- AddToAny END -->
+
+        <div style="clear: both; height: 1ex;"></div>
 
         <!-- Facebook comments -->
-                    <div class="fb-comments" data-href="https://www.zizka.ch/pages/programovani/php/vysledek_nasazeni_php_aneb_navrch_huj_uvnitr_fuj.html" data-width="800" data-numposts="5"></div>
+            <div class="fb-comments" data-href="https://www.zizka.ch/pages/programovani/php/vysledek_nasazeni_php_aneb_navrch_huj_uvnitr_fuj.html" data-width="900" data-numposts="5"></div>
 
     </div>
     <div id="push"></div>

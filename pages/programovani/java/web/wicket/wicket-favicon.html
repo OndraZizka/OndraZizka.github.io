@@ -71,24 +71,22 @@
     </div>
     <div class="container">
 
-    <div class="document-post">
+    <div class="document document-post">
         <div class="page-header">
             <h1>Wicket: Favicon</h1>
         </div>
         <div class="date"><em>2013-01-18</em></div>
-        <div class="doc-body"><h2 id="toc-wicket-favicon">Wicket: Favicon</h2>
+        <div class="doc-body"><div><h2 class=" jbakeExtractedTitle" id="toc-wicket-favicon">Wicket: Favicon</h2>
 
 <h3 id="toc-option-1-wicket-link">Option 1: &lt;wicket:link&gt;</h3>
 
-<pre
-class="lang-html .brush brush: html .brush">&lt;wicket:link&gt;
+<pre class="lang-html .brush brush: html .brush">&lt;wicket:link&gt;
 &lt;link rel="shortcut icon" type="image/x-icon" href="ico/favicon.ico"/&gt;
 &lt;/wicket:link&gt;</pre>
 
 <p>Put the icon relative to the Page it is in.</p>
 
-<pre
-class="lang-plain brush: plain">com/myapp/Page.html
+<pre class="lang-plain brush: plain">com/myapp/Page.html
 com/myapp/Page.java
 com/myapp/ico/favicon.ico</pre>
 
@@ -96,18 +94,15 @@ com/myapp/ico/favicon.ico</pre>
 
 <h3 id="toc-option-2-faviconlink">Option 2: <code>FavIconLink</code></h3>
 
-<pre
-class="lang-html .brush brush: html .brush">&lt;link wicket:id="favicon" rel="shortcut icon" type="image/x-icon" href="images/ico/Leaf.ico"/&gt;</pre>
+<pre class="lang-html .brush brush: html .brush">&lt;link wicket:id="favicon" rel="shortcut icon" type="image/x-icon" href="images/ico/Leaf.ico"/&gt;</pre>
 
-<pre
-class="lang-java .brush brush: java .brush">public class BaseLayoutPage extends WebPage {
+<pre class="lang-java .brush brush: java .brush">public class BaseLayoutPage extends WebPage {
 
     public BaseLayoutPage() {
 
         add( new FavIconLink("favicon", "favicon.ico") );</pre>
 
-<pre
-class="lang-java .brush brush: java .brush">public class FavIconLink extends ExternalLink
+<pre class="lang-java .brush brush: java .brush">public class FavIconLink extends ExternalLink
 {
     public FavIconLink( String id, String path ){
         super( id, path );
@@ -123,19 +118,16 @@ class="lang-java .brush brush: java .brush">public class FavIconLink extends Ext
 <h3 id="toc-option-3-faviconheadercontributor-behavior">Option 3:
 <code>FavIconHeaderContributor</code> behavior</h3>
 
-<pre
-class="lang-java .brush brush: java .brush">public class WicketJavaEEApplication extends WebApplication {
+<pre class="lang-java .brush brush: java .brush">public class WicketJavaEEApplication extends WebApplication {
 
     @Override protected void init() {
         super.init();
         getSharedResources().add("favicon", new ContextRelativeResource("WEB-INF/classes/Leaf.ico"));
         mountResource("/favicon.ico", new SharedResourceReference("favicon") );</pre>
 
-<pre
-class="lang-java .brush brush: java .brush">add( new FavIconHeaderContributor( new SharedResourceReference("favicon") ) );</pre>
+<pre class="lang-java .brush brush: java .brush">add( new FavIconHeaderContributor( new SharedResourceReference("favicon") ) );</pre>
 
-<pre
-class="lang-java .brush brush: java .brush">public class FavIconHeaderContributor implements IHeaderContributor
+<pre class="lang-java .brush brush: java .brush">public class FavIconHeaderContributor implements IHeaderContributor
 {
     private ResourceReference resRef;
 
@@ -158,23 +150,49 @@ class="lang-java .brush brush: java .brush">public class FavIconHeaderContributo
         return sb.toString();
     }
 }</pre>
-</div>
+</div></div>
 
-        <!-- Rating widget -->
-        <div class="rw-ui-container"></div>
     </div>
-
     <hr />
+    <!-- Rating widget -->
+    <div class="rw-ui-container"></div>
 
 
-        <!--sharexy code start--><div id='shr_723771'><script type='text/javascript'>(function(w) { if (!w.SharexyWidget) { w.SharexyWidget = {};} if (!w.SharexyWidget.Params) { w.SharexyWidget.Params = {}; }
-        w.SharexyWidget.Params['723771'] = {'code_id':'723771','publisher_key':'undefined','design':'classic','layout_static':'h','type':'st','mode_float':'','size_float':'55','size_static':'55','buzz':'1',
-            'services':['facebook', 'google_plus', 'twitter', 'linkedin', 'reddit', 'buffer', 'pocket', 'print_page'],
-            'url':'current','allways_show_ads':'0','show_ads_sharing':'0','show_ads_cursor':'0','bg_float':'1','bg_color':'#ffffff','labels':'','counters':'0', 'counters_float':'0'} })(window);</script>
-        <script type='text/javascript' src='http://shuttle.sharexy.com/LoaderLite.js'></script></div><a href='http://sharexy.com/'><img src='http://sharexy.com/statpixel.png' style='border: 0' /></a><!--sharexy code end   -->
+        
+        <!-- AddToAny BEGIN -->
+        <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+            <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+            <a class="a2a_button_facebook"></a>
+            <a class="a2a_button_twitter"></a>
+            <a class="a2a_button_google_plus"></a>
+            <a class="a2a_button_google_bookmarks"></a>
+            <a class="a2a_button_google_classroom"></a>
+            <a class="a2a_button_linkedin"></a>
+            <a class="a2a_button_reddit"></a>
+            <a class="a2a_button_buffer"></a>
+            <a class="a2a_button_trello"></a>
+            <a class="a2a_button_slashdot"></a>
+            <a class="a2a_button_hacker_news"></a>
+            <a class="a2a_button_dzone"></a>
+            <a class="a2a_button_pinterest"></a>
+            <a class="a2a_button_vk"></a>
+            <a class="a2a_button_digg"></a>
+            <a class="a2a_button_copy_link"></a>
+            <a class="a2a_button_pocket"></a>
+        </div>
+        <script>
+            var a2a_config = a2a_config || {};
+            a2a_config.linkname = "Ondřej Žižka";
+            a2a_config.linkurl = "https://www.zizka.ch/";
+            a2a_config.num_services = 18;
+        </script>
+        <script async src="https://static.addtoany.com/menu/page.js"></script>
+        <!-- AddToAny END -->
+
+        <div style="clear: both; height: 1ex;"></div>
 
         <!-- Facebook comments -->
-                    <div class="fb-comments" data-href="https://www.zizka.ch/pages/programovani/java/web/wicket/wicket-favicon.html" data-width="800" data-numposts="5"></div>
+            <div class="fb-comments" data-href="https://www.zizka.ch/pages/programovani/java/web/wicket/wicket-favicon.html" data-width="900" data-numposts="5"></div>
 
     </div>
     <div id="push"></div>

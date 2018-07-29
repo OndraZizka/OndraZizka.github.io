@@ -72,27 +72,25 @@ WSDL using Axis2 - Ondřej Žižka</title>
     </div>
     <div class="container">
 
-    <div class="document-post">
+    <div class="document document-post">
         <div class="page-header">
             <h1>Web Service Client from
 WSDL using Axis2</h1>
         </div>
         <div class="date"><em>2012-12-16</em></div>
-        <div class="doc-body"><h2 id="toc-web-service-client-from-wsdl-using-axis2">Web Service Client from
+        <div class="doc-body"><div><h2 class=" jbakeExtractedTitle" id="toc-web-service-client-from-wsdl-using-axis2">Web Service Client from
 WSDL using Axis2</h2>
 
 <ul>
 	<li>Download Axis2 (tested with 1.4.1).</li>
 
-	<li>Follow the guide at <a
-	href="http://ws.apache.org/axis2/1_4_1/userguide-creatingclients.html#adb">http://ws.apache.org/…clients.html#adb</a>
+	<li>Follow the guide at <a href="http://ws.apache.org/axis2/1_4_1/userguide-creatingclients.html#adb">http://ws.apache.org/…clients.html#adb</a>
 	:</li>
 
 	<li>Create the client stub with the following command:</li>
 </ul>
 
-<pre
-class="lang-bat brush: bat">%AXIS2_HOME%\bin\WSDL2Java -uri IsirPub001.wsdl -p cz.pohlidame.isir.client -d adb -s</pre>
+<pre class="lang-bat brush: bat">%AXIS2_HOME%\bin\WSDL2Java -uri IsirPub001.wsdl -p cz.pohlidame.isir.client -d adb -s</pre>
 
 <p>That will generate a single java file with a stub for that WSDL.</p>
 
@@ -100,8 +98,7 @@ class="lang-bat brush: bat">%AXIS2_HOME%\bin\WSDL2Java -uri IsirPub001.wsdl -p c
 	<li>This code will use the stub to call the web service:</li>
 </ul>
 
-<pre
-class="lang-text brush: text">try {
+<pre class="lang-text brush: text">try {
 
   IsirPub001Stub stub = new IsirPub001Stub();
   IsirPub001Stub.GetIsirPub0012E e = new IsirPub001Stub.GetIsirPub0012E();
@@ -150,23 +147,49 @@ catch( RemoteException ex ) {
 
 	<li>XmlSchema-1.4.2.jar</li>
 </ul>
-</div>
+</div></div>
 
-        <!-- Rating widget -->
-        <div class="rw-ui-container"></div>
     </div>
-
     <hr />
+    <!-- Rating widget -->
+    <div class="rw-ui-container"></div>
 
 
-        <!--sharexy code start--><div id='shr_723771'><script type='text/javascript'>(function(w) { if (!w.SharexyWidget) { w.SharexyWidget = {};} if (!w.SharexyWidget.Params) { w.SharexyWidget.Params = {}; }
-        w.SharexyWidget.Params['723771'] = {'code_id':'723771','publisher_key':'undefined','design':'classic','layout_static':'h','type':'st','mode_float':'','size_float':'55','size_static':'55','buzz':'1',
-            'services':['facebook', 'google_plus', 'twitter', 'linkedin', 'reddit', 'buffer', 'pocket', 'print_page'],
-            'url':'current','allways_show_ads':'0','show_ads_sharing':'0','show_ads_cursor':'0','bg_float':'1','bg_color':'#ffffff','labels':'','counters':'0', 'counters_float':'0'} })(window);</script>
-        <script type='text/javascript' src='http://shuttle.sharexy.com/LoaderLite.js'></script></div><a href='http://sharexy.com/'><img src='http://sharexy.com/statpixel.png' style='border: 0' /></a><!--sharexy code end   -->
+        
+        <!-- AddToAny BEGIN -->
+        <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+            <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+            <a class="a2a_button_facebook"></a>
+            <a class="a2a_button_twitter"></a>
+            <a class="a2a_button_google_plus"></a>
+            <a class="a2a_button_google_bookmarks"></a>
+            <a class="a2a_button_google_classroom"></a>
+            <a class="a2a_button_linkedin"></a>
+            <a class="a2a_button_reddit"></a>
+            <a class="a2a_button_buffer"></a>
+            <a class="a2a_button_trello"></a>
+            <a class="a2a_button_slashdot"></a>
+            <a class="a2a_button_hacker_news"></a>
+            <a class="a2a_button_dzone"></a>
+            <a class="a2a_button_pinterest"></a>
+            <a class="a2a_button_vk"></a>
+            <a class="a2a_button_digg"></a>
+            <a class="a2a_button_copy_link"></a>
+            <a class="a2a_button_pocket"></a>
+        </div>
+        <script>
+            var a2a_config = a2a_config || {};
+            a2a_config.linkname = "Ondřej Žižka";
+            a2a_config.linkurl = "https://www.zizka.ch/";
+            a2a_config.num_services = 18;
+        </script>
+        <script async src="https://static.addtoany.com/menu/page.js"></script>
+        <!-- AddToAny END -->
+
+        <div style="clear: both; height: 1ex;"></div>
 
         <!-- Facebook comments -->
-                    <div class="fb-comments" data-href="https://www.zizka.ch/pages/programovani/java/web_service_client_from_wsdl_using_axis2.html" data-width="800" data-numposts="5"></div>
+            <div class="fb-comments" data-href="https://www.zizka.ch/pages/programovani/java/web_service_client_from_wsdl_using_axis2.html" data-width="900" data-numposts="5"></div>
 
     </div>
     <div id="push"></div>

@@ -72,19 +72,18 @@ templates via Spring in non-web application - Ondřej Žižka</title>
     </div>
     <div class="container">
 
-    <div class="document-post">
+    <div class="document document-post">
         <div class="page-header">
             <h1>FreeMarker
 templates via Spring in non-web application</h1>
         </div>
         <div class="date"><em>2012-12-16</em></div>
-        <div class="doc-body"><h2 id="toc-freemarker-templates-via-spring-in-non-web-application">FreeMarker
+        <div class="doc-body"><div><h2 class=" jbakeExtractedTitle" id="toc-freemarker-templates-via-spring-in-non-web-application">FreeMarker
 templates via Spring in non-web application</h2>
 
 <h3 id="toc-spring-bean-configuration">Spring bean configuration</h3>
 
-<pre
-class="brush: lang-xml brush: xml">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+<pre class="brush: lang-xml brush: xml">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;!DOCTYPE beans PUBLIC '-//SPRING//DTD BEAN 2.0//EN' 'http://www.springframework.org/dtd/spring-beans-2.0.dtd'&gt;
 &lt;beans&gt;
 
@@ -110,20 +109,17 @@ templates placed in the <code>templates</code> „package“, that is, in
 <p>Also note the way to specify <code>java.util.Properties</code> for
 <code>freemarkerSettings</code> property. Spring can take text representation
 and tries to convert it to a <code>Properties</code> object, as described in the
-<a
-href="http://static.springframework.org/spring/docs/2.5.x/reference/beans.html#beans-value-element">official
+<a href="http://static.springframework.org/spring/docs/2.5.x/reference/beans.html#beans-value-element">official
 Spring 2.5 manual, section 3.3.2.1. Straight values</a>.</p>
 
 <p>To see the list of supported FreeMarker settings, please read the following
 parts of the FreeMarker Java API doc:</p>
 
 <ul>
-	<li><a
-	href="http://freemarker.sourceforge.net/docs/api/freemarker/core/Configurable.html#setSetting(java.lang.String,%20java.lang.String)">freemarker.co­re.Configurable­.setSetting(Strin­g,
+	<li><a href="http://freemarker.sourceforge.net/docs/api/freemarker/core/Configurable.html#setSetting(java.lang.String,%20java.lang.String)">freemarker.co­re.Configurable­.setSetting(Strin­g,
 	String)</a>: Settings that live in all layers.</li>
 
-	<li><a
-	href="http://freemarker.sourceforge.net/docs/api/freemarker/template/Configuration.html#setSetting(java.lang.String,%20java.lang.String)">freemarker.tem­plate.Configu­ration.setSet­ting(String,
+	<li><a href="http://freemarker.sourceforge.net/docs/api/freemarker/template/Configuration.html#setSetting(java.lang.String,%20java.lang.String)">freemarker.tem­plate.Configu­ration.setSet­ting(String,
 	String)</a>: Coniguration layer settings.</li>
 </ul>
 
@@ -136,8 +132,7 @@ so I used <code>defaultEncoding</code>.</p>
 with three variables, <code>package</code>, <code>class</code> and
 <code>user</code>; all supposed to be <code>String</code>s.</p>
 
-<pre
-class="lang-freemarker brush: freemarker">&lt;#if package?? &amp;&amp; package != ""&gt;
+<pre class="lang-freemarker brush: freemarker">&lt;#if package?? &amp;&amp; package != ""&gt;
 package ${package};
 &lt;/#if&gt;
 /**
@@ -150,8 +145,7 @@ package ${package};
 
 <p>Assuming that <code>beanFactory</code> is Spring Bean Factory object:</p>
 
-<pre
-class="brush: lang-java brush: java">Configuration cfg = (Configuration)beanFactory.getBean( "freemarkerConfiguration" );
+<pre class="brush: lang-java brush: java">Configuration cfg = (Configuration)beanFactory.getBean( "freemarkerConfiguration" );
 try {
   Template temp = cfg.getTemplate( "test.template" );
   Map root = new HashMap();
@@ -172,29 +166,54 @@ catch( TemplateException ex ) {
 
 <p>As you expect, the result looks like this:</p>
 
-<pre
-class="lang-freemarker brush: freemarker">/**
+<pre class="lang-freemarker brush: freemarker">/**
  * TopClass
  *
  * @author Andrea Peniaková
  */</pre>
-</div>
+</div></div>
 
-        <!-- Rating widget -->
-        <div class="rw-ui-container"></div>
     </div>
-
     <hr />
+    <!-- Rating widget -->
+    <div class="rw-ui-container"></div>
 
 
-        <!--sharexy code start--><div id='shr_723771'><script type='text/javascript'>(function(w) { if (!w.SharexyWidget) { w.SharexyWidget = {};} if (!w.SharexyWidget.Params) { w.SharexyWidget.Params = {}; }
-        w.SharexyWidget.Params['723771'] = {'code_id':'723771','publisher_key':'undefined','design':'classic','layout_static':'h','type':'st','mode_float':'','size_float':'55','size_static':'55','buzz':'1',
-            'services':['facebook', 'google_plus', 'twitter', 'linkedin', 'reddit', 'buffer', 'pocket', 'print_page'],
-            'url':'current','allways_show_ads':'0','show_ads_sharing':'0','show_ads_cursor':'0','bg_float':'1','bg_color':'#ffffff','labels':'','counters':'0', 'counters_float':'0'} })(window);</script>
-        <script type='text/javascript' src='http://shuttle.sharexy.com/LoaderLite.js'></script></div><a href='http://sharexy.com/'><img src='http://sharexy.com/statpixel.png' style='border: 0' /></a><!--sharexy code end   -->
+        
+        <!-- AddToAny BEGIN -->
+        <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+            <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+            <a class="a2a_button_facebook"></a>
+            <a class="a2a_button_twitter"></a>
+            <a class="a2a_button_google_plus"></a>
+            <a class="a2a_button_google_bookmarks"></a>
+            <a class="a2a_button_google_classroom"></a>
+            <a class="a2a_button_linkedin"></a>
+            <a class="a2a_button_reddit"></a>
+            <a class="a2a_button_buffer"></a>
+            <a class="a2a_button_trello"></a>
+            <a class="a2a_button_slashdot"></a>
+            <a class="a2a_button_hacker_news"></a>
+            <a class="a2a_button_dzone"></a>
+            <a class="a2a_button_pinterest"></a>
+            <a class="a2a_button_vk"></a>
+            <a class="a2a_button_digg"></a>
+            <a class="a2a_button_copy_link"></a>
+            <a class="a2a_button_pocket"></a>
+        </div>
+        <script>
+            var a2a_config = a2a_config || {};
+            a2a_config.linkname = "Ondřej Žižka";
+            a2a_config.linkurl = "https://www.zizka.ch/";
+            a2a_config.num_services = 18;
+        </script>
+        <script async src="https://static.addtoany.com/menu/page.js"></script>
+        <!-- AddToAny END -->
+
+        <div style="clear: both; height: 1ex;"></div>
 
         <!-- Facebook comments -->
-                    <div class="fb-comments" data-href="https://www.zizka.ch/pages/programovani/java/navod-spring_freemarker_in_standalone_application.html" data-width="800" data-numposts="5"></div>
+            <div class="fb-comments" data-href="https://www.zizka.ch/pages/programovani/java/navod-spring_freemarker_in_standalone_application.html" data-width="900" data-numposts="5"></div>
 
     </div>
     <div id="push"></div>

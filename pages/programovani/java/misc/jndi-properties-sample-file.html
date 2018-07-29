@@ -72,13 +72,13 @@ file - Ondřej Žižka</title>
     </div>
     <div class="container">
 
-    <div class="document-post">
+    <div class="document document-post">
         <div class="page-header">
             <h1>JNDI: sample jndi.properties
 file</h1>
         </div>
         <div class="date"><em>2012-12-31</em></div>
-        <div class="doc-body"><h2 id="toc-jndi-sample-jndi-properties-file">JNDI: sample jndi.properties
+        <div class="doc-body"><div><h2 class=" jbakeExtractedTitle" id="toc-jndi-sample-jndi-properties-file">JNDI: sample jndi.properties
 file</h2>
 
 <ul>
@@ -91,21 +91,18 @@ file</h2>
 
 <h3 id="toc-for-jboss-client-app">For JBoss client app:</h3>
 
-<pre
-class="brush: lang-plain brush: plain">java.naming.factory.initial=org.jnp.interfaces.NamingContextFactory
+<pre class="brush: lang-plain brush: plain">java.naming.factory.initial=org.jnp.interfaces.NamingContextFactory
 java.naming.provider.url=jnp://localhost:1099
 java.naming.factory.url.pkgs=org.jboss.naming.client</pre>
 
 <h3 id="toc-for-jetty">For Jetty:</h3>
 
-<pre
-class="brush: lang-plain brush: plain">java.naming.factory.initial=org.mortbay.naming.InitialContextFactory
+<pre class="brush: lang-plain brush: plain">java.naming.factory.initial=org.mortbay.naming.InitialContextFactory
 java.naming.factory.url.pkgs=org.mortbay.naming</pre>
 
 <p>Don't forget to add jetty-naming to your classpath.</p>
 
-<pre
-class="brush: lang-xml brush: xml">&lt;dependency&gt;
+<pre class="brush: lang-xml brush: xml">&lt;dependency&gt;
    &lt;groupId&gt;org.mortbay.jetty&lt;/groupId&gt;
    &lt;artifactId&gt;jetty-naming&lt;/artifactId&gt;
    &lt;version&gt;${jetty.version}&lt;/version&gt;
@@ -114,12 +111,10 @@ class="brush: lang-xml brush: xml">&lt;dependency&gt;
 
 <p>Otherwise you'll get</p>
 
-<pre
-class="brush: lang-plain brush: plain">java.lang.ClassNotFoundException: org.mortbay.naming.InitialContextFactory
+<pre class="brush: lang-plain brush: plain">java.lang.ClassNotFoundException: org.mortbay.naming.InitialContextFactory
     at java.net.URLClassLoader$1.run(URLClassLoader.java:202)</pre>
 
-<p>For advanced setups, e.g. with LDAP, see <a
-href="http://download.oracle.com/javase/jndi/tutorial/trailmap.html">JNDI
+<p>For advanced setups, e.g. with LDAP, see <a href="http://download.oracle.com/javase/jndi/tutorial/trailmap.html">JNDI
 tutorial</a>.</p>
 
 <h3 id="toc-noinitialcontextexception">NoInitialContex­tException</h3>
@@ -128,73 +123,85 @@ tutorial</a>.</p>
 
 <p>00:34:52.752 ERROR [main] org.jboss.jawa­bot.web.RunIn­Jetty Error putting
 BeanManager to JNDI: java.lang.reflec­t.InvocationTar­getException
-java.lang.reflec­t.InvocationTar­getException<br />
+java.lang.reflec­t.InvocationTar­getException<br/>
 at sun.reflect.Na­tiveConstructo­rAccessorImpl­.newInstance0(Na­tive
-Method)<br />
+Method)<br/>
 at
-sun.reflect.Na­tiveConstructo­rAccessorImpl­.newInstance(Na­tiveConstructo­rAccessorImpl­.java:39)<br
-/>
+sun.reflect.Na­tiveConstructo­rAccessorImpl­.newInstance(Na­tiveConstructo­rAccessorImpl­.java:39)<br/>
 at
-sun.reflect.De­legatingConstruc­torAccessorIm­pl.newInstance(De­legatingConstruc­torAccessorIm­pl.java:27)<br
-/>
-at java.lang.reflec­t.Constructor­.newInstance(Con­structor.java:513)<br />
-at org.mortbay.xml­.XmlConfigura­tion.newObj(XmlCon­figuration.ja­va:608)<br
-/>
+sun.reflect.De­legatingConstruc­torAccessorIm­pl.newInstance(De­legatingConstruc­torAccessorIm­pl.java:27)<br/>
+at java.lang.reflec­t.Constructor­.newInstance(Con­structor.java:513)<br/>
+at org.mortbay.xml­.XmlConfigura­tion.newObj(XmlCon­figuration.ja­va:608)<br/>
 at
-org.mortbay.xml­.XmlConfigura­tion.configure(XmlCon­figuration.ja­va:256)<br
-/>
+org.mortbay.xml­.XmlConfigura­tion.configure(XmlCon­figuration.ja­va:256)<br/>
 at
-org.mortbay.xml­.XmlConfigura­tion.configure(XmlCon­figuration.ja­va:190)<br
-/>
-at org.jboss.jawa­bot.web.RunIn­Jetty.run(RunIn­Jetty.java:146)<br />
+org.mortbay.xml­.XmlConfigura­tion.configure(XmlCon­figuration.ja­va:190)<br/>
+at org.jboss.jawa­bot.web.RunIn­Jetty.run(RunIn­Jetty.java:146)<br/>
 at
-org.jboss.jawa­bot.mod.web.Web­ModuleHook.init­Module(WebModu­leHook.java:18)<br
-/>
+org.jboss.jawa­bot.mod.web.Web­ModuleHook.init­Module(WebModu­leHook.java:18)<br/>
 at
-org.jboss.jawa­bot.JawaBotAp­p.initAndStar­tModules(Jawa­BotApp.java:106)<br
-/>
+org.jboss.jawa­bot.JawaBotAp­p.initAndStar­tModules(Jawa­BotApp.java:106)<br/>
 at org.jboss.jawa­bot.JawaBotAp­p.main(JawaBo­tApp.java:53) Caused by:
 javax.naming.No­InitialContex­tException: Need to specify class name in
 environment or system property, or as an applet parameter, or in an application
-resource file: java.naming.fac­tory.initial<br />
+resource file: java.naming.fac­tory.initial<br/>
 at
-javax.naming.spi­.NamingManager­.getInitialCon­text(NamingMa­nager.java:645)<br
-/>
+javax.naming.spi­.NamingManager­.getInitialCon­text(NamingMa­nager.java:645)<br/>
 at
-javax.naming.I­nitialContext­.getDefaultInit­Ctx(InitialCon­text.java:288)<br
-/>
+javax.naming.I­nitialContext­.getDefaultInit­Ctx(InitialCon­text.java:288)<br/>
 at
-javax.naming.I­nitialContext­.getURLOrDefau­ltInitCtx(Ini­tialContext.ja­va:325)<br
-/>
-at javax.naming.I­nitialContext­.getNameParser(I­nitialContext­.java:480)<br
-/>
+javax.naming.I­nitialContext­.getURLOrDefau­ltInitCtx(Ini­tialContext.ja­va:325)<br/>
+at javax.naming.I­nitialContext­.getNameParser(I­nitialContext­.java:480)<br/>
 at
-org.mortbay.jet­ty.plus.namin­g.NamingEntry­.save(NamingEn­try.java:192)<br
-/>
+org.mortbay.jet­ty.plus.namin­g.NamingEntry­.save(NamingEn­try.java:192)<br/>
 at
-org.mortbay.jet­ty.plus.namin­g.NamingEntry­.&lt;init&gt;(Namin­gEntry.java:58)<br
-/>
+org.mortbay.jet­ty.plus.namin­g.NamingEntry­.&lt;init&gt;(Namin­gEntry.java:58)<br/>
 at
-org.mortbay.jet­ty.plus.namin­g.Resource.&lt;i­nit&gt;(Resource­.java:34)<br
-/>
+org.mortbay.jet­ty.plus.namin­g.Resource.&lt;i­nit&gt;(Resource­.java:34)<br/>
 … 11 more</p>
-</div>
+</div></div>
 
-        <!-- Rating widget -->
-        <div class="rw-ui-container"></div>
     </div>
-
     <hr />
+    <!-- Rating widget -->
+    <div class="rw-ui-container"></div>
 
 
-        <!--sharexy code start--><div id='shr_723771'><script type='text/javascript'>(function(w) { if (!w.SharexyWidget) { w.SharexyWidget = {};} if (!w.SharexyWidget.Params) { w.SharexyWidget.Params = {}; }
-        w.SharexyWidget.Params['723771'] = {'code_id':'723771','publisher_key':'undefined','design':'classic','layout_static':'h','type':'st','mode_float':'','size_float':'55','size_static':'55','buzz':'1',
-            'services':['facebook', 'google_plus', 'twitter', 'linkedin', 'reddit', 'buffer', 'pocket', 'print_page'],
-            'url':'current','allways_show_ads':'0','show_ads_sharing':'0','show_ads_cursor':'0','bg_float':'1','bg_color':'#ffffff','labels':'','counters':'0', 'counters_float':'0'} })(window);</script>
-        <script type='text/javascript' src='http://shuttle.sharexy.com/LoaderLite.js'></script></div><a href='http://sharexy.com/'><img src='http://sharexy.com/statpixel.png' style='border: 0' /></a><!--sharexy code end   -->
+        
+        <!-- AddToAny BEGIN -->
+        <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+            <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+            <a class="a2a_button_facebook"></a>
+            <a class="a2a_button_twitter"></a>
+            <a class="a2a_button_google_plus"></a>
+            <a class="a2a_button_google_bookmarks"></a>
+            <a class="a2a_button_google_classroom"></a>
+            <a class="a2a_button_linkedin"></a>
+            <a class="a2a_button_reddit"></a>
+            <a class="a2a_button_buffer"></a>
+            <a class="a2a_button_trello"></a>
+            <a class="a2a_button_slashdot"></a>
+            <a class="a2a_button_hacker_news"></a>
+            <a class="a2a_button_dzone"></a>
+            <a class="a2a_button_pinterest"></a>
+            <a class="a2a_button_vk"></a>
+            <a class="a2a_button_digg"></a>
+            <a class="a2a_button_copy_link"></a>
+            <a class="a2a_button_pocket"></a>
+        </div>
+        <script>
+            var a2a_config = a2a_config || {};
+            a2a_config.linkname = "Ondřej Žižka";
+            a2a_config.linkurl = "https://www.zizka.ch/";
+            a2a_config.num_services = 18;
+        </script>
+        <script async src="https://static.addtoany.com/menu/page.js"></script>
+        <!-- AddToAny END -->
+
+        <div style="clear: both; height: 1ex;"></div>
 
         <!-- Facebook comments -->
-                    <div class="fb-comments" data-href="https://www.zizka.ch/pages/programovani/java/misc/jndi-properties-sample-file.html" data-width="800" data-numposts="5"></div>
+            <div class="fb-comments" data-href="https://www.zizka.ch/pages/programovani/java/misc/jndi-properties-sample-file.html" data-width="900" data-numposts="5"></div>
 
     </div>
     <div id="push"></div>

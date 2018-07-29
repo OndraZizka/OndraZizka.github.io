@@ -71,23 +71,21 @@
     </div>
     <div class="container">
 
-    <div class="document-post">
+    <div class="document document-post">
         <div class="page-header">
             <h1>User Songs Rating</h1>
         </div>
         <div class="date"><em>2012-12-16</em></div>
-        <div class="doc-body"><h2 id="toc-user-songs-rating">User Songs Rating</h2>
+        <div class="doc-body"><div><h2 class=" jbakeExtractedTitle" id="toc-user-songs-rating">User Songs Rating</h2>
 
 <p>To save user's rating, call <code>rate.php</code>:</p>
 
-<pre
-class="lang-url brush: url">rate.php?user=Trapper852@Adelphia.net&amp;song_id=1500&amp;rating=10
+<pre class="lang-url brush: url">rate.php?user=Trapper852@Adelphia.net&amp;song_id=1500&amp;rating=10
 http://d02-0330a.kn.vutbr.cz/winlyrics/real/rate.php?user=Trapper852@Adelphia.net&amp;song_id=1500&amp;rating=10</pre>
 
 <p><strong>Params:</strong></p>
 
-<pre
-class="lang-doc brush: doc">@param user     string         Identifier - e.g. e-mail - of the user who rates the song.
+<pre class="lang-doc brush: doc">@param user     string         Identifier - e.g. e-mail - of the user who rates the song.
 @param song_id  unsigned int   ID of the rated song.  UNSIGNED INT
 @param rating   signed byte    Rating of the song.</pre>
 
@@ -127,14 +125,12 @@ details.</p>
 	<li>Use the session to rate:</li>
 </ol>
 
-<pre
-class="lang-text brush: text">&gt;&gt; `http://localhost:81/winlyrics/real/rate_sess.php?sess_id=f8675g1390s7dngloohqitsd74&amp;song_id=15&amp;rating=10`
+<pre class="lang-text brush: text">&gt;&gt; `http://localhost:81/winlyrics/real/rate_sess.php?sess_id=f8675g1390s7dngloohqitsd74&amp;song_id=15&amp;rating=10`
 &lt;&lt; `OK`</pre>
 
 <p><strong>Params:</strong></p>
 
-<pre
-class="lang-doc brush: doc">@param sess_id  string         Session ID, previously acquired using authentize.php
+<pre class="lang-doc brush: doc">@param sess_id  string         Session ID, previously acquired using authentize.php
 @param song_id  unsigned int   ID of the rated song.  UNSIGNED INT
 @param rating   signed byte    Rating of the song.</pre>
 
@@ -148,33 +144,27 @@ class="lang-doc brush: doc">@param sess_id  string         Session ID, previousl
 <code>Trapper852@Adelphia.net</code> and song <code>1500</code>, rated
 <code>-10</code>:</p>
 
-<pre
-class="brush: lang-sql brush: sql">CALL wl2_SetRating( (SELECT id FROM wl2_users WHERE email = 'Trapper852@Adelphia.net'), 1500, -10 );</pre>
+<pre class="brush: lang-sql brush: sql">CALL wl2_SetRating( (SELECT id FROM wl2_users WHERE email = 'Trapper852@Adelphia.net'), 1500, -10 );</pre>
 
 <p>Changes that rating to 50:</p>
 
-<pre
-class="brush: lang-sql brush: sql">CALL wl2_SetRating( (SELECT id FROM wl2_users WHERE email = 'Trapper852@Adelphia.net'), 1500, 50 );</pre>
+<pre class="brush: lang-sql brush: sql">CALL wl2_SetRating( (SELECT id FROM wl2_users WHERE email = 'Trapper852@Adelphia.net'), 1500, 50 );</pre>
 
 <p>Creates rating for other song and other user:</p>
 
-<pre
-class="brush: lang-sql brush: sql">CALL wl2_SetRating( 20, 1700, 40 );</pre>
+<pre class="brush: lang-sql brush: sql">CALL wl2_SetRating( 20, 1700, 40 );</pre>
 
 <p>Does nothing (invalid user)</p>
 
-<pre
-class="brush: lang-sql brush: sql">CALL wl2_SetRating( (SELECT id FROM wl2_users WHERE email = 'non@existent@user'), 200, 30 );</pre>
+<pre class="brush: lang-sql brush: sql">CALL wl2_SetRating( (SELECT id FROM wl2_users WHERE email = 'non@existent@user'), 200, 30 );</pre>
 
 <p>Removes the rating for given user-song tuple:</p>
 
-<pre
-class="brush: lang-sql brush: sql">CALL wl2_SetRating( (SELECT id FROM wl2_users WHERE email = 'Trapper852@Adelphia.net'), 1500, NULL );</pre>
+<pre class="brush: lang-sql brush: sql">CALL wl2_SetRating( (SELECT id FROM wl2_users WHERE email = 'Trapper852@Adelphia.net'), 1500, NULL );</pre>
 
 <h4 id="toc-tables">Tables</h4>
 
-<pre
-class="brush: lang-sql brush: sql">CREATE TABLE  `winlyricscom`.`wl2_users` SELECT * FROM users;
+<pre class="brush: lang-sql brush: sql">CREATE TABLE  `winlyricscom`.`wl2_users` SELECT * FROM users;
 ALTER TABLE `winlyricscom`.`wl2_users`
   ADD COLUMN `pass_md5` char(32) character set cp1250 collate cp1250_bin NOT NULL,
   MODIFY `email` `email` varchar(128) character set cp1250 NOT NULL,
@@ -184,8 +174,7 @@ ALTER TABLE `winlyricscom`.`wl2_users`
 INSERT INTO wl2_users
   SELECT id, '' AS pass, jmeno, adresa, mesto, stat_kod, postal, email FROM reg_users;</pre>
 
-<pre
-class="brush: lang-sql brush: sql">CREATE TABLE  `winlyricscom`.`wl2_songs_rating` (
+<pre class="brush: lang-sql brush: sql">CREATE TABLE  `winlyricscom`.`wl2_songs_rating` (
   `id_song` int(10) unsigned NOT NULL auto_increment,
   `rating_sum` int(10) unsigned NOT NULL,
   `rating_cnt` int(10) unsigned NOT NULL,
@@ -193,8 +182,7 @@ class="brush: lang-sql brush: sql">CREATE TABLE  `winlyricscom`.`wl2_songs_ratin
   PRIMARY KEY  (`id_song`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf-8;</pre>
 
-<pre
-class="brush: lang-sql brush: sql">CREATE TABLE  `winlyricscom`.`wl2_users_ratings` (
+<pre class="brush: lang-sql brush: sql">CREATE TABLE  `winlyricscom`.`wl2_users_ratings` (
   `id_user` int(10) unsigned NOT NULL,
   `id_lyrics` int(10) unsigned NOT NULL,
   `rating` tinyint(4) NOT NULL,
@@ -207,8 +195,7 @@ class="brush: lang-sql brush: sql">CREATE TABLE  `winlyricscom`.`wl2_users_ratin
 from one user changes his previous rating. Stores the data in
 <code>wl2_users_ratings</code>.</p>
 
-<pre
-class="brush: lang-sql brush: sql">DELIMITER $$
+<pre class="brush: lang-sql brush: sql">DELIMITER $$
 
 DROP PROCEDURE IF EXISTS `winlyricscom`.`wl2_SetRating`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE  `winlyricscom`.`wl2_SetRating`(idUser INT UNSIGNED, idSong INT UNSIGNED, iRating TINYINT)
@@ -234,8 +221,7 @@ DELIMITER ;</pre>
 <p>Rebuilds the average ratings in <code>wl2_songs_rating</code> based on data
 in <code>wl2_users_ratings</code>.</p>
 
-<pre
-class="brush: lang-sql brush: sql">DELIMITER $$
+<pre class="brush: lang-sql brush: sql">DELIMITER $$
 
 DROP PROCEDURE IF EXISTS `winlyricscom`.`wl2_RebuildRating`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE  `winlyricscom`.`wl2_RebuildRating`()
@@ -254,23 +240,49 @@ BEGIN
 END $$
 
 DELIMITER ;</pre>
-</div>
+</div></div>
 
-        <!-- Rating widget -->
-        <div class="rw-ui-container"></div>
     </div>
-
     <hr />
+    <!-- Rating widget -->
+    <div class="rw-ui-container"></div>
 
 
-        <!--sharexy code start--><div id='shr_723771'><script type='text/javascript'>(function(w) { if (!w.SharexyWidget) { w.SharexyWidget = {};} if (!w.SharexyWidget.Params) { w.SharexyWidget.Params = {}; }
-        w.SharexyWidget.Params['723771'] = {'code_id':'723771','publisher_key':'undefined','design':'classic','layout_static':'h','type':'st','mode_float':'','size_float':'55','size_static':'55','buzz':'1',
-            'services':['facebook', 'google_plus', 'twitter', 'linkedin', 'reddit', 'buffer', 'pocket', 'print_page'],
-            'url':'current','allways_show_ads':'0','show_ads_sharing':'0','show_ads_cursor':'0','bg_float':'1','bg_color':'#ffffff','labels':'','counters':'0', 'counters_float':'0'} })(window);</script>
-        <script type='text/javascript' src='http://shuttle.sharexy.com/LoaderLite.js'></script></div><a href='http://sharexy.com/'><img src='http://sharexy.com/statpixel.png' style='border: 0' /></a><!--sharexy code end   -->
+        
+        <!-- AddToAny BEGIN -->
+        <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+            <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+            <a class="a2a_button_facebook"></a>
+            <a class="a2a_button_twitter"></a>
+            <a class="a2a_button_google_plus"></a>
+            <a class="a2a_button_google_bookmarks"></a>
+            <a class="a2a_button_google_classroom"></a>
+            <a class="a2a_button_linkedin"></a>
+            <a class="a2a_button_reddit"></a>
+            <a class="a2a_button_buffer"></a>
+            <a class="a2a_button_trello"></a>
+            <a class="a2a_button_slashdot"></a>
+            <a class="a2a_button_hacker_news"></a>
+            <a class="a2a_button_dzone"></a>
+            <a class="a2a_button_pinterest"></a>
+            <a class="a2a_button_vk"></a>
+            <a class="a2a_button_digg"></a>
+            <a class="a2a_button_copy_link"></a>
+            <a class="a2a_button_pocket"></a>
+        </div>
+        <script>
+            var a2a_config = a2a_config || {};
+            a2a_config.linkname = "Ondřej Žižka";
+            a2a_config.linkurl = "https://www.zizka.ch/";
+            a2a_config.num_services = 18;
+        </script>
+        <script async src="https://static.addtoany.com/menu/page.js"></script>
+        <!-- AddToAny END -->
+
+        <div style="clear: both; height: 1ex;"></div>
 
         <!-- Facebook comments -->
-                    <div class="fb-comments" data-href="https://www.zizka.ch/pages/programovani/winlyrics/doc/rating.html" data-width="800" data-numposts="5"></div>
+            <div class="fb-comments" data-href="https://www.zizka.ch/pages/programovani/winlyrics/doc/rating.html" data-width="900" data-numposts="5"></div>
 
     </div>
     <div id="push"></div>

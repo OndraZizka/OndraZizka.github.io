@@ -71,12 +71,12 @@
     </div>
     <div class="container">
 
-    <div class="document-post">
+    <div class="document document-post">
         <div class="page-header">
             <h1>Tento soubor nenĂ aktuĂˇlnĂ!</h1>
         </div>
         <div class="date"><em>2012-12-13</em></div>
-        <div class="doc-body"><h2 id="toc-tento-soubor-nena-aktua-lna">Tento soubor nenĂ aktuĂˇlnĂ!</h2>
+        <div class="doc-body"><div><h2 class=" jbakeExtractedTitle" id="toc-tento-soubor-nena-aktua-lna">Tento soubor nenĂ aktuĂˇlnĂ!</h2>
 
 <h2 id="toc-texy-is-sexy">Texy! is sexy!</h2>
 
@@ -88,8 +88,7 @@ textovĂ©, formÄ› a Texy! jej automaticky pĹ™evede do validnĂho
 
 <p>Texy! je jednĂm z <strong>nejkomplexnÄ›jĹˇĂch</strong>
 formĂˇtovaÄŤĹŻ. UmĂ zpracovĂˇvat obrĂˇzky, odkazy, vnoĹ™enĂ©
-seznamy, tabulky a mĂˇ takĂ© plnou podporu <acronym
-title="KaskĂˇdovĂ© styly">CSS</acronym>.</p>
+seznamy, tabulky a mĂˇ takĂ© plnou podporu <acronym title="KaskĂˇdovĂ© styly">CSS</acronym>.</p>
 
 <h3 id="toc-titulky">Titulky</h3>
 
@@ -99,9 +98,9 @@ title="KaskĂˇdovĂ© styly">CSS</acronym>.</p>
 
 <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur turpis
 enim, placerat tincidunt, tincidunt ac, fringilla et, mauris. stĂˇle ten
-stejnĂ˝ odstavec<br />
+stejnĂ˝ odstavec<br/>
 stĂˇle ten stejnĂ˝ odstavec, ale Ĺ™Ăˇdek je oddÄ›len elementem
-<code>&lt;br&gt;</code><br />
+<code>&lt;br&gt;</code><br/>
 a druhĂ˝ oddÄ›lenĂ˝ Ĺ™Ăˇdek</p>
 
 <p style="text-align:center">VycentrovĂˇno modifikĂˇtorem</p>
@@ -112,13 +111,12 @@ a druhĂ˝ oddÄ›lenĂ˝ Ĺ™Ăˇdek</p>
 
 <p>ÄŤtyĹ™i linky, ÄŤtyĹ™i zpĹŻsoby zĂˇpisu</p>
 
-<hr />
-<hr />
+<hr/>
+<hr/>
 
 <h3 id="toc-kald">KĂłd</h3>
 
-<pre
-class="lang-php brush: php">function reImage($matches) {
+<pre class="lang-php brush: php">function reImage($matches) {
   $content = $matches[1];
   $align = $matches[5];
   $href = $matches[6];
@@ -176,8 +174,7 @@ class="lang-php brush: php">function reImage($matches) {
 
 	<li>Do you know <a href="http://www.latrine.cz/">La Trine</a>?</li>
 
-	<li>This picture <a href="http://www.texy.info"><img src="image.gif" alt=""
-	/></a> is clickable</li>
+	<li>This picture <a href="http://www.texy.info"><img alt="" src="image.gif"/></a> is clickable</li>
 </ul>
 
 <h4 id="toc-ullitam-referenca">uĹľitĂm referencĂ</h4>
@@ -185,8 +182,7 @@ class="lang-php brush: php">function reImage($matches) {
 <ul>
 	<li>Look at <a href="http://texy.info/" title="this is homepage">Texy!</a></li>
 
-	<li>My address is <a
-	href="mailto:me&#64;example.com">me&#64;<!-- -->example.com</a></li>
+	<li>My address is <a href="mailto:me@example.com">me@<!-- -->example.com</a></li>
 
 	<li>What about <a href="http://texy.info/" title="this is homepage">this</a>
 	site?</li>
@@ -194,39 +190,36 @@ class="lang-php brush: php">function reImage($matches) {
 
 <h3 id="toc-obra-zky">ObrĂˇzky</h3>
 
-<div><img src="image.gif" alt="" /></div>
+<div><img alt="" src="image.gif"/></div>
 
 <h4 id="toc-v-odstavach">v odstavĂch</h4>
 
-<p><img src="image.gif" alt="" style="float:left" /> Left-aligned image. Lorem
+<p><img alt="" src="image.gif" style="float:left"/> Left-aligned image. Lorem
 ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur turpis enim,
 placerat tincidunt, tincidunt ac, fringilla et, mauris.</p>
 
-<p><img src="image.gif" alt="" style="float:right" /> Right-aligned image.
+<p><img alt="" src="image.gif" style="float:right"/> Right-aligned image.
 Curabitur quam justo, hendrerit a, mattis ut, ultrices at, dui. In mollis. Ut
 pellentesque erat vehicula nunc. Ut ultricies. Nulla nunc velit, consequat vel,
 laoreet in, blandit et, eros.</p>
 
 <h4 id="toc-s-uda-losta-on-mouse-over">s udĂˇlostĂ on-mouse-over</h4>
 
-<div><img src="image.gif" alt="" onmouseover="this.src='image-over.gif'"
-onmouseout="this.src='image.gif'"
-onload="var i=new Image();i.src='image-over.gif';if(typeof preload=='undefined')preload=new Array();preload[preload.length]=i;this.onload=''"
-/></div>
+<div><img alt="" onload="var i=new Image();i.src='image-over.gif';if(typeof preload=='undefined')preload=new Array();preload[preload.length]=i;this.onload=''" onmouseout="this.src='image.gif'" onmouseover="this.src='image-over.gif'" src="image.gif"/></div>
 
 <h4 id="toc-s-popiskou">s popiskou</h4>
 
-<div class="figure"><img src="image.gif" alt="" />
+<div class="figure"><img alt="" src="image.gif"/>
 	<p>Toto je popiska pod obrĂˇzkem / fotkou</p>
 </div>
 
 <h4 id="toc-ullitam-referenca-2">uĹľitĂm referencĂ</h4>
 
-<p>What a beautiful logo <img src="image.gif" alt="alternative text" /> :-)</p>
+<p>What a beautiful logo <img alt="alternative text" src="image.gif"/> :-)</p>
 
 <h4 id="toc-s-modifika-torem">s modifikĂˇtorem</h4>
 
-<div><img src="image.gif" style="width:100px" alt="" /></div>
+<div><img alt="" src="image.gif" style="width:100px"/></div>
 
 <h3 id="toc-fra-ze">FrĂˇze</h3>
 
@@ -414,9 +407,7 @@ Dolores</q></p>
 	<li>rozdÄ›lenĂ velmi dlouhĂ˝ch slov podle ÄŤeskĂ˝ch pravidel.
 	PĹ™Ăklad: nejneobhospodaĹ™ovĂˇva­telnÄ›jĹˇĂmi</li>
 
-	<li>klikatelnĂ© adresy <a
-	href="http://www.davidgrudl.com">www.davidgrudl.com</a>, <a
-	href="mailto:david&#64;grudl.com">david&#64;<!-- -->grudl.com</a> (emaily jsou
+	<li>klikatelnĂ© adresy <a href="http://www.davidgrudl.com">www.davidgrudl.com</a>, <a href="mailto:david@grudl.com">david@<!-- -->grudl.com</a> (emaily jsou
 	odolnĂ© vĹŻÄŤi spambotĹŻm)</li>
 
 	<li>„ÄŤeskĂ©“ ‚typografickĂ©‘ uvozovky</li>
@@ -432,8 +423,7 @@ Dolores</q></p>
 	<li>vklĂˇdĂˇnĂ nezalomitelnĂ˝ch mezer za jednopĂsmennĂ©
 	pĹ™edloĹľky</li>
 
-	<li>acronym <acronym
-	title="North Atlantic Treaty Organisation">NATO</acronym></li>
+	<li>acronym <acronym title="North Atlantic Treaty Organisation">NATO</acronym></li>
 
 	<li>abbr <acronym title="a dalĹˇĂ">et al.</acronym></li>
 
@@ -628,23 +618,49 @@ Dolores</q></p>
 
 <p>Texy! © <a href="http://www.davidgrudl.com">David Grudl (dgx)</a>,
 2004–2008</p>
-</div>
+</div></div>
 
-        <!-- Rating widget -->
-        <div class="rw-ui-container"></div>
     </div>
-
     <hr />
+    <!-- Rating widget -->
+    <div class="rw-ui-container"></div>
 
 
-        <!--sharexy code start--><div id='shr_723771'><script type='text/javascript'>(function(w) { if (!w.SharexyWidget) { w.SharexyWidget = {};} if (!w.SharexyWidget.Params) { w.SharexyWidget.Params = {}; }
-        w.SharexyWidget.Params['723771'] = {'code_id':'723771','publisher_key':'undefined','design':'classic','layout_static':'h','type':'st','mode_float':'','size_float':'55','size_static':'55','buzz':'1',
-            'services':['facebook', 'google_plus', 'twitter', 'linkedin', 'reddit', 'buffer', 'pocket', 'print_page'],
-            'url':'current','allways_show_ads':'0','show_ads_sharing':'0','show_ads_cursor':'0','bg_float':'1','bg_color':'#ffffff','labels':'','counters':'0', 'counters_float':'0'} })(window);</script>
-        <script type='text/javascript' src='http://shuttle.sharexy.com/LoaderLite.js'></script></div><a href='http://sharexy.com/'><img src='http://sharexy.com/statpixel.png' style='border: 0' /></a><!--sharexy code end   -->
+        
+        <!-- AddToAny BEGIN -->
+        <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+            <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+            <a class="a2a_button_facebook"></a>
+            <a class="a2a_button_twitter"></a>
+            <a class="a2a_button_google_plus"></a>
+            <a class="a2a_button_google_bookmarks"></a>
+            <a class="a2a_button_google_classroom"></a>
+            <a class="a2a_button_linkedin"></a>
+            <a class="a2a_button_reddit"></a>
+            <a class="a2a_button_buffer"></a>
+            <a class="a2a_button_trello"></a>
+            <a class="a2a_button_slashdot"></a>
+            <a class="a2a_button_hacker_news"></a>
+            <a class="a2a_button_dzone"></a>
+            <a class="a2a_button_pinterest"></a>
+            <a class="a2a_button_vk"></a>
+            <a class="a2a_button_digg"></a>
+            <a class="a2a_button_copy_link"></a>
+            <a class="a2a_button_pocket"></a>
+        </div>
+        <script>
+            var a2a_config = a2a_config || {};
+            a2a_config.linkname = "Ondřej Žižka";
+            a2a_config.linkurl = "https://www.zizka.ch/";
+            a2a_config.num_services = 18;
+        </script>
+        <script async src="https://static.addtoany.com/menu/page.js"></script>
+        <!-- AddToAny END -->
+
+        <div style="clear: both; height: 1ex;"></div>
 
         <!-- Facebook comments -->
-                    <div class="fb-comments" data-href="https://www.zizka.ch/pages/texy/syntax.cs.html" data-width="800" data-numposts="5"></div>
+            <div class="fb-comments" data-href="https://www.zizka.ch/pages/texy/syntax.cs.html" data-width="900" data-numposts="5"></div>
 
     </div>
     <div id="push"></div>

@@ -72,18 +72,16 @@ Insolvenční rejstřík – ISIR WS - Ondřej Žižka</title>
     </div>
     <div class="container">
 
-    <div class="document-post">
+    <div class="document document-post">
         <div class="page-header">
             <h1>Webová služba
 Insolvenční rejstřík – ISIR WS</h1>
         </div>
         <div class="date"><em>2012-12-16</em></div>
-        <div class="doc-body"><h2 id="toc-webova-sluzba-insolvencni-rejstrik-isir-ws">Webová služba
+        <div class="doc-body"><div><h2 class=" jbakeExtractedTitle" id="toc-webova-sluzba-insolvencni-rejstrik-isir-ws">Webová služba
 Insolvenční rejstřík – ISIR WS</h2>
 
-<p>1.1.2008 spustilo Ministerstvo spravedlnosti na svém serveru <a
-href="http://justice.cz/">justice.cz</a> <a
-href="http://portal.justice.cz/ms/ms.aspx?o=1&amp;j=1&amp;k=170&amp;d=209445">webovou
+<p>1.1.2008 spustilo Ministerstvo spravedlnosti na svém serveru <a href="http://justice.cz/">justice.cz</a> <a href="http://portal.justice.cz/ms/ms.aspx?o=1&amp;j=1&amp;k=170&amp;d=209445">webovou
 službu insolvenčního rejsříku</a> , doplněk k informačnímu systému
 ISIR. S touto službou jsem měl tu čest pracovat a zde bych se rád podělil
 o zkušenosti v naději, že na tuto stránku narazí i tvůrce služby,
@@ -95,8 +93,7 @@ dalších nedomyšleností webové služby Insolvenční rejstřík</a>.</p>
 <p>//Update 25.7.2008:// Mám první funkční prototypy aplikace pro
 automatickou kontrolu subjektů v insolvenčním rejstříku.</p>
 
-<p>//Update 8.8.2008:// Přesun projektu: <a
-href="http://www.pohlidame.cz/">insolvenční rejstřík</a>.</p>
+<p>//Update 8.8.2008:// Přesun projektu: <a href="http://www.pohlidame.cz/">insolvenční rejstřík</a>.</p>
 
 <p>//Update 2.9.2008:// Betaverze aplikace pro automatickou kontrolu
 insolvenčního rejstříku.</p>
@@ -108,16 +105,14 @@ události.</p>
 
 <h3 id="toc-wsdl">WSDL</h3>
 
-<p>Asi jako každý jsem začal prohlédnutím definice webové služby WSDL:<a
-href="https://isir.justice.cz:8443/isir_ws/services/IsirPub001?wsdl">https://isir.justice.cz:8443/…s/IsirPub001?wsdl</a>.
+<p>Asi jako každý jsem začal prohlédnutím definice webové služby WSDL:<a href="https://isir.justice.cz:8443/isir_ws/services/IsirPub001?wsdl">https://isir.justice.cz:8443/…s/IsirPub001?wsdl</a>.
 Už ta vás trošku zatahá za oči, protože hledáte nějaké názvy funkcí,
 které budete volat, a typů, se kterými budete pracovat, ale zde najdete
 názvy podobného ražení jako <code>getIsirPub001</code>,
 <code>ns2:IsirPub001Data</code>, <code>IsirPub001SOAP12port_http</code> a
 <code>tns:IsirPub001SEI_getIsirPub001Response</code>:</p>
 
-<pre
-class="brush: lang-xml brush: xml">&lt;wsdl:service name="IsirPub001"&gt;
+<pre class="brush: lang-xml brush: xml">&lt;wsdl:service name="IsirPub001"&gt;
   &lt;wsdl:port name="IsirPub001Httpport1" binding="tns:IsirPub001HttpBinding"&gt;
     &lt;http:address location="https://isir.justice.cz:8443/isir_ws/rest/IsirPub001"/&gt;
   &lt;/wsdl:port&gt;
@@ -153,8 +148,7 @@ poté, co jsem kód přepsal, jak má být, opět klient nefungoval –
 vyhazoval výjimku <code>java.lang.ClassCastException</code>. Chyba byla ovšem
 v knihovně SAAJ. NetBeans 6.0.1 sice obsahují číselně (nominálně)
 nejnovější verzi 1.3, ta je ale přes dva roky stará. Je tedy nutné
-stáhnout nový build SAAJ z adresy <a
-href="https://saaj.dev.java.net/servlets/ProjectDocumentList?folderID=5117&amp;expandFolder=5117&amp;folderID=5116">https://saaj.dev.java.net/…DocumentList?…</a>
+stáhnout nový build SAAJ z adresy <a href="https://saaj.dev.java.net/servlets/ProjectDocumentList?folderID=5117&amp;expandFolder=5117&amp;folderID=5116">https://saaj.dev.java.net/…DocumentList?…</a>
 , v adresáři NetBeans najít JAR saaj-impl.jar a nahradit jej novým ze
 staženého JARka.</p>
 
@@ -163,8 +157,7 @@ v zoufalosti během dvoudenního řešení nejen výše uvedených problémů
 jsem zkoušel volat webovou službu ISIR také z PHP. Výsledkem
 bylo toto:</p>
 
-<pre
-class="lang-text brush: text">500 Internal Server Error
+<pre class="lang-text brush: text">500 Internal Server Error
 java.lang.StringIndexOutOfBoundsException: String index out of range: -1
         at java.lang.String.substring(String.java:1444)
         at org.apache.axis2.builder.XFormURLEncodedBuilder.extractParametersFromRequest(XFormURLEncodedBuilder.java:155)
@@ -229,8 +222,7 @@ týkající se nějakého dlužníka, nejprve v systému klikne na tlačítko
 „Nový spis“. Vyplní jeho značku a stiskne „Vytvořit“. Tím se
 v logu ISIR vytvoří záznam a do výstupu webové služby přibyde:</p>
 
-<pre
-class="lang-text brush: text">ID: 2760
+<pre class="lang-text brush: text">ID: 2760
 Cas: 23.1.2008 9:11:46
 Spis: INS 132/2008 Odd: A  Poradi: 2, Typ: 185 (Vyhláška o zahájení insolvenčního řízení)
 
@@ -251,8 +243,7 @@ v informačním systému přejde do sekce „Návrh – přílohy“, čímž
 nám vznikne tento velice <strong>duchaplný</strong> a <strong>užitečný
 záznam</strong>:</p>
 
-<pre
-class="lang-text brush: text">ID: 2853
+<pre class="lang-text brush: text">ID: 2853
 Cas: 23.1.2008 11:57:20
 Spis: INS 132/2008  Odd: A  Poradi: 3, Typ: 23 (Návrh - přílohy)
 
@@ -270,8 +261,7 @@ soudce vrátí z oběda a v IS klikne na tlačítko „Nový pokyn
 insolvenčního soudu“, a tím vzniká další <strong>velmi užitečný
 záznam</strong>:</p>
 
-<pre
-class="brush: lang-xml brush: xml">ID: 2954
+<pre class="brush: lang-xml brush: xml">ID: 2954
 Cas: 23.1.2008 16:48:44
 Spis: INS 132/2008  Odd: A  Poradi: 4, Typ: 204 (Pokyn insolvenčního soudu)
 
@@ -378,8 +368,7 @@ netuší, co je webová služba) je spokojeno se stavem, kdy se data vůbec
 nějak mohou k někomu dostat, čímž splnilo požadavek zákona, myje si ruce
 a víc jej nezajímá.</p>
 
-<h3
-id="toc-prekladiste-udaju-z-webove-sluzby-insolvencniho-rejstriku">Překladiště
+<h3 id="toc-prekladiste-udaju-z-webove-sluzby-insolvencniho-rejstriku">Překladiště
 údajů z webové služby insolvenčního rejstříku</h3>
 
 <p>Jak jsem uváděl výše, většina lidí si pod pojmem „Webová služba
@@ -392,23 +381,49 @@ zpřístupnit.</p>
 tedy bude <a href="http://isir.dynawest.cz/">klient Webové služby
 Insolvenční rejtřík ISIR</a>. Spuštění plánuji na konci
 července 2008.</p>
-</div>
+</div></div>
 
-        <!-- Rating widget -->
-        <div class="rw-ui-container"></div>
     </div>
-
     <hr />
+    <!-- Rating widget -->
+    <div class="rw-ui-container"></div>
 
 
-        <!--sharexy code start--><div id='shr_723771'><script type='text/javascript'>(function(w) { if (!w.SharexyWidget) { w.SharexyWidget = {};} if (!w.SharexyWidget.Params) { w.SharexyWidget.Params = {}; }
-        w.SharexyWidget.Params['723771'] = {'code_id':'723771','publisher_key':'undefined','design':'classic','layout_static':'h','type':'st','mode_float':'','size_float':'55','size_static':'55','buzz':'1',
-            'services':['facebook', 'google_plus', 'twitter', 'linkedin', 'reddit', 'buffer', 'pocket', 'print_page'],
-            'url':'current','allways_show_ads':'0','show_ads_sharing':'0','show_ads_cursor':'0','bg_float':'1','bg_color':'#ffffff','labels':'','counters':'0', 'counters_float':'0'} })(window);</script>
-        <script type='text/javascript' src='http://shuttle.sharexy.com/LoaderLite.js'></script></div><a href='http://sharexy.com/'><img src='http://sharexy.com/statpixel.png' style='border: 0' /></a><!--sharexy code end   -->
+        
+        <!-- AddToAny BEGIN -->
+        <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+            <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+            <a class="a2a_button_facebook"></a>
+            <a class="a2a_button_twitter"></a>
+            <a class="a2a_button_google_plus"></a>
+            <a class="a2a_button_google_bookmarks"></a>
+            <a class="a2a_button_google_classroom"></a>
+            <a class="a2a_button_linkedin"></a>
+            <a class="a2a_button_reddit"></a>
+            <a class="a2a_button_buffer"></a>
+            <a class="a2a_button_trello"></a>
+            <a class="a2a_button_slashdot"></a>
+            <a class="a2a_button_hacker_news"></a>
+            <a class="a2a_button_dzone"></a>
+            <a class="a2a_button_pinterest"></a>
+            <a class="a2a_button_vk"></a>
+            <a class="a2a_button_digg"></a>
+            <a class="a2a_button_copy_link"></a>
+            <a class="a2a_button_pocket"></a>
+        </div>
+        <script>
+            var a2a_config = a2a_config || {};
+            a2a_config.linkname = "Ondřej Žižka";
+            a2a_config.linkurl = "https://www.zizka.ch/";
+            a2a_config.num_services = 18;
+        </script>
+        <script async src="https://static.addtoany.com/menu/page.js"></script>
+        <!-- AddToAny END -->
+
+        <div style="clear: both; height: 1ex;"></div>
 
         <!-- Facebook comments -->
-                    <div class="fb-comments" data-href="https://www.zizka.ch/pages/programovani/insolvencni_rejstrik-isir_ws/index.html" data-width="800" data-numposts="5"></div>
+            <div class="fb-comments" data-href="https://www.zizka.ch/pages/programovani/insolvencni_rejstrik-isir_ws/index.html" data-width="900" data-numposts="5"></div>
 
     </div>
     <div id="push"></div>

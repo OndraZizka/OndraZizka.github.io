@@ -72,13 +72,13 @@ CSV manipulation through SQL (HSQLDB) - Ondřej Žižka</title>
     </div>
     <div class="container">
 
-    <div class="document-post">
+    <div class="document document-post">
         <div class="page-header">
             <h1>CsvCruncher –
 CSV manipulation through SQL (HSQLDB)</h1>
         </div>
         <div class="date"><em>2012-12-31</em></div>
-        <div class="doc-body"><h2 id="toc-csvcruncher-csv-manipulation-through-sql-hsqldb">CsvCruncher –
+        <div class="doc-body"><div><h2 class=" jbakeExtractedTitle" id="toc-csvcruncher-csv-manipulation-through-sql-hsqldb">CsvCruncher –
 CSV manipulation through SQL (HSQLDB)</h2>
 
 <p>Hi,</p>
@@ -107,14 +107,13 @@ nonetheless, I already shortened my perf test task by ~ 40 minutes of my work
 for each release. Instead of manual shannanigans in OpenOffice, I run a single
 command, and voila ;-)</p>
 
-<p>HSQL's syntax: <a
-href="http://hsqldb.org/doc/2.0/guide/dataaccess-chapt.html">http://hsqldb.org/…s-chapt.html</a>
+<p>HSQL's syntax: <a href="http://hsqldb.org/doc/2.0/guide/dataaccess-chapt.html">http://hsqldb.org/…s-chapt.html</a>
 (I was very surprised by HSQL's features, it supports much more of SQL than
 e.g. MySQL.)</p>
 
 <p>Enjoy :)</p>
 
-<hr />
+<hr/>
 
 <h3 id="toc-usage">Usage:</h3>
 
@@ -122,48 +121,70 @@ e.g. MySQL.)</p>
 
 <h3 id="toc-example">Example:</h3>
 
-<pre
-class="brush: lang-bash brush: bash">crunch input.csv output.csv "SELECT AVG(duration) AS durAvg FROM (SELECT * FROM indata ORDER BY duration LIMIT 2 OFFSET 6)"`</pre>
+<pre class="brush: lang-bash brush: bash">crunch input.csv output.csv "SELECT AVG(duration) AS durAvg FROM (SELECT * FROM indata ORDER BY duration LIMIT 2 OFFSET 6)"`</pre>
 
 <h3 id="toc-example-2">Example:</h3>
 
-<pre
-class="brush: lang-bash brush: bash">## jobName, buildNumber, config, ar, arFile, deployDur, warmupDur, scale
+<pre class="brush: lang-bash brush: bash">## jobName, buildNumber, config, ar, arFile, deployDur, warmupDur, scale
 'eap-5.1.0-perf-deployers', 355,'production','testdata/war/hellothere.war','hellothere.war',10282,14804,1000
 'eap-5.1.0-perf-deployers', 355,'production','testdata/ear/EarWithWar-Counter.ear','EarWithWar-Counter.ear',11005,18904,1000
 'eap-5.1.0-perf-deployers', 355,'production','testdata-own/war/war-big-1.0.war','war-big-1.0.war',1966,14800,100
 ...</pre>
 
-<pre
-class="brush: lang-sql brush: sql">   SELECT jobName, buildNumber, config, ar, arFile, deployDur, warmupDur, scale,"
+<pre class="brush: lang-sql brush: sql">   SELECT jobName, buildNumber, config, ar, arFile, deployDur, warmupDur, scale,"
 + " CAST(warmupDur AS DOUBLE) / CAST(deployDur AS DOUBLE) AS warmupSlower FROM indata ORDER BY deployDur</pre>
 
-<pre
-class="brush: lang-bash brush: bash">'eap-5.1.0-perf-deployers',355,'production','testdata/war/hellothere.war','hellothere.war',10282,14804,1000,1.4397977047267068E0
+<pre class="brush: lang-bash brush: bash">'eap-5.1.0-perf-deployers',355,'production','testdata/war/hellothere.war','hellothere.war',10282,14804,1000,1.4397977047267068E0
 'eap-5.1.0-perf-deployers',355,'production','testdata/ear/EarWithWar-Counter.ear','EarWithWar-Counter.ear',11005,18904,1000,1.7177646524307133E0
 'eap-5.1.0-perf-deployers',355,'production','testdata-own/war/war-big-1.0.war','war-big-1.0.war',1966,14800,100,7.527975584944048E0</pre>
 
 <p>(<code>crunch</code> script yet to be done. Currently you need to call
 <code>java -jar CsvCruncher.jar &lt;args&gt;</code>.)</p>
 
-<hr />
-</div>
+<hr/>
+</div></div>
 
-        <!-- Rating widget -->
-        <div class="rw-ui-container"></div>
     </div>
-
     <hr />
+    <!-- Rating widget -->
+    <div class="rw-ui-container"></div>
 
 
-        <!--sharexy code start--><div id='shr_723771'><script type='text/javascript'>(function(w) { if (!w.SharexyWidget) { w.SharexyWidget = {};} if (!w.SharexyWidget.Params) { w.SharexyWidget.Params = {}; }
-        w.SharexyWidget.Params['723771'] = {'code_id':'723771','publisher_key':'undefined','design':'classic','layout_static':'h','type':'st','mode_float':'','size_float':'55','size_static':'55','buzz':'1',
-            'services':['facebook', 'google_plus', 'twitter', 'linkedin', 'reddit', 'buffer', 'pocket', 'print_page'],
-            'url':'current','allways_show_ads':'0','show_ads_sharing':'0','show_ads_cursor':'0','bg_float':'1','bg_color':'#ffffff','labels':'','counters':'0', 'counters_float':'0'} })(window);</script>
-        <script type='text/javascript' src='http://shuttle.sharexy.com/LoaderLite.js'></script></div><a href='http://sharexy.com/'><img src='http://sharexy.com/statpixel.png' style='border: 0' /></a><!--sharexy code end   -->
+        
+        <!-- AddToAny BEGIN -->
+        <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+            <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+            <a class="a2a_button_facebook"></a>
+            <a class="a2a_button_twitter"></a>
+            <a class="a2a_button_google_plus"></a>
+            <a class="a2a_button_google_bookmarks"></a>
+            <a class="a2a_button_google_classroom"></a>
+            <a class="a2a_button_linkedin"></a>
+            <a class="a2a_button_reddit"></a>
+            <a class="a2a_button_buffer"></a>
+            <a class="a2a_button_trello"></a>
+            <a class="a2a_button_slashdot"></a>
+            <a class="a2a_button_hacker_news"></a>
+            <a class="a2a_button_dzone"></a>
+            <a class="a2a_button_pinterest"></a>
+            <a class="a2a_button_vk"></a>
+            <a class="a2a_button_digg"></a>
+            <a class="a2a_button_copy_link"></a>
+            <a class="a2a_button_pocket"></a>
+        </div>
+        <script>
+            var a2a_config = a2a_config || {};
+            a2a_config.linkname = "Ondřej Žižka";
+            a2a_config.linkurl = "https://www.zizka.ch/";
+            a2a_config.num_services = 18;
+        </script>
+        <script async src="https://static.addtoany.com/menu/page.js"></script>
+        <!-- AddToAny END -->
+
+        <div style="clear: both; height: 1ex;"></div>
 
         <!-- Facebook comments -->
-                    <div class="fb-comments" data-href="https://www.zizka.ch/pages/programovani/java/apps/CsvCruncher-csv-manipulation-sql.html" data-width="800" data-numposts="5"></div>
+            <div class="fb-comments" data-href="https://www.zizka.ch/pages/programovani/java/apps/CsvCruncher-csv-manipulation-sql.html" data-width="900" data-numposts="5"></div>
 
     </div>
     <div id="push"></div>

@@ -72,21 +72,20 @@ properties file in Spring Framework - Ondřej Žižka</title>
     </div>
     <div class="container">
 
-    <div class="document-post">
+    <div class="document document-post">
         <div class="page-header">
             <h1>How to read
 properties file in Spring Framework</h1>
         </div>
         <div class="date"><em>2012-12-16</em></div>
-        <div class="doc-body"><h2 id="toc-how-to-read-properties-file-in-spring-framework">How to read
+        <div class="doc-body"><div><h2 class=" jbakeExtractedTitle" id="toc-how-to-read-properties-file-in-spring-framework">How to read
 properties file in Spring Framework</h2>
 
 <p>I've had a problem with reading <code>.properties</code> file in Spring
 Framework. I needed to inject it into the iBatis'
 <code>SqlMapConfig.xml</code>:</p>
 
-<pre
-class="brush: lang-xml brush: xml">&lt;!-- iBatis --&gt;
+<pre class="brush: lang-xml brush: xml">&lt;!-- iBatis --&gt;
 &lt;bean id="sqlMap" class="org.springframework.orm.ibatis.SqlMapClientFactoryBean"&gt;
   &lt;property name="sqlMapClientProperties" value="file:conf/${profile}/nastaveni.properties" /&gt;
   &lt;property name="configLocation" value="ibatis-maps/SqlMapConfig2.xml"/&gt;
@@ -97,8 +96,7 @@ class="brush: lang-xml brush: xml">&lt;!-- iBatis --&gt;
 resolved. Better said, it behaved like the actual value was the property name,
 thus the code</p>
 
-<pre
-class="brush: lang-xml brush: xml">&lt;transactionManager type="JDBC"&gt;
+<pre class="brush: lang-xml brush: xml">&lt;transactionManager type="JDBC"&gt;
   &lt;dataSource type="SIMPLE"&gt;
     &lt;property name="JDBC.Driver" value="${jdbc.driver}"/&gt;</pre>
 
@@ -113,8 +111,7 @@ property: <code>file = conf/release/nastaveni.properties</code>.</p>
 
 <p>The solution is to use the <code>SqlMapClientFactoryBean</code>:</p>
 
-<pre
-class="brush: lang-xml brush: xml">&lt;!-- iBatis --&gt;
+<pre class="brush: lang-xml brush: xml">&lt;!-- iBatis --&gt;
 &lt;bean id="sqlMap" class="org.springframework.orm.ibatis.SqlMapClientFactoryBean"&gt;
   &lt;property name="sqlMapClientProperties"&gt;
     &lt;bean class="org.springframework.beans.factory.config.PropertiesFactoryBean"&gt;
@@ -125,23 +122,49 @@ class="brush: lang-xml brush: xml">&lt;!-- iBatis --&gt;
 &lt;/bean&gt;</pre>
 
 <p>Of course, this is a trivial think, but not much well documented.</p>
-</div>
+</div></div>
 
-        <!-- Rating widget -->
-        <div class="rw-ui-container"></div>
     </div>
-
     <hr />
+    <!-- Rating widget -->
+    <div class="rw-ui-container"></div>
 
 
-        <!--sharexy code start--><div id='shr_723771'><script type='text/javascript'>(function(w) { if (!w.SharexyWidget) { w.SharexyWidget = {};} if (!w.SharexyWidget.Params) { w.SharexyWidget.Params = {}; }
-        w.SharexyWidget.Params['723771'] = {'code_id':'723771','publisher_key':'undefined','design':'classic','layout_static':'h','type':'st','mode_float':'','size_float':'55','size_static':'55','buzz':'1',
-            'services':['facebook', 'google_plus', 'twitter', 'linkedin', 'reddit', 'buffer', 'pocket', 'print_page'],
-            'url':'current','allways_show_ads':'0','show_ads_sharing':'0','show_ads_cursor':'0','bg_float':'1','bg_color':'#ffffff','labels':'','counters':'0', 'counters_float':'0'} })(window);</script>
-        <script type='text/javascript' src='http://shuttle.sharexy.com/LoaderLite.js'></script></div><a href='http://sharexy.com/'><img src='http://sharexy.com/statpixel.png' style='border: 0' /></a><!--sharexy code end   -->
+        
+        <!-- AddToAny BEGIN -->
+        <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+            <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+            <a class="a2a_button_facebook"></a>
+            <a class="a2a_button_twitter"></a>
+            <a class="a2a_button_google_plus"></a>
+            <a class="a2a_button_google_bookmarks"></a>
+            <a class="a2a_button_google_classroom"></a>
+            <a class="a2a_button_linkedin"></a>
+            <a class="a2a_button_reddit"></a>
+            <a class="a2a_button_buffer"></a>
+            <a class="a2a_button_trello"></a>
+            <a class="a2a_button_slashdot"></a>
+            <a class="a2a_button_hacker_news"></a>
+            <a class="a2a_button_dzone"></a>
+            <a class="a2a_button_pinterest"></a>
+            <a class="a2a_button_vk"></a>
+            <a class="a2a_button_digg"></a>
+            <a class="a2a_button_copy_link"></a>
+            <a class="a2a_button_pocket"></a>
+        </div>
+        <script>
+            var a2a_config = a2a_config || {};
+            a2a_config.linkname = "Ondřej Žižka";
+            a2a_config.linkurl = "https://www.zizka.ch/";
+            a2a_config.num_services = 18;
+        </script>
+        <script async src="https://static.addtoany.com/menu/page.js"></script>
+        <!-- AddToAny END -->
+
+        <div style="clear: both; height: 1ex;"></div>
 
         <!-- Facebook comments -->
-                    <div class="fb-comments" data-href="https://www.zizka.ch/pages/programovani/java/howto-spring-reading_properties_file.html" data-width="800" data-numposts="5"></div>
+            <div class="fb-comments" data-href="https://www.zizka.ch/pages/programovani/java/howto-spring-reading_properties_file.html" data-width="900" data-numposts="5"></div>
 
     </div>
     <div id="push"></div>

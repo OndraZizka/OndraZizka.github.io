@@ -72,13 +72,13 @@ about the Java language - Ondřej Žižka</title>
     </div>
     <div class="container">
 
-    <div class="document-post">
+    <div class="document document-post">
         <div class="page-header">
             <h1>What I would change
 about the Java language</h1>
         </div>
         <div class="date"><em>2012-12-13</em></div>
-        <div class="doc-body"><h2 id="toc-what-i-would-change-about-the-java-language">What I would change
+        <div class="doc-body"><div><h2 class=" jbakeExtractedTitle" id="toc-what-i-would-change-about-the-java-language">What I would change
 about the Java language</h2>
 
 <p>Basically, I am quite happy with Java, exept it could have a little more
@@ -91,14 +91,12 @@ syntax shortcuts.</p>
 <code>NullPointerException</code>, resp. <code>Throwable</code>, would occur
 when computing expression's value.</p>
 
-<pre
-class="brush: lang-java brush: java">// val will be 0 if getMap() or getKey(String) returned null.
+<pre class="brush: lang-java brush: java">// val will be 0 if getMap() or getKey(String) returned null.
 int val = unreliableMapProvider.getMap()?.get("key")?.getName();</pre>
 
 <p>One use case: Logging performance.</p>
 
-<pre
-class="brush: lang-java brush: java">log.info()?.log( timeConsumingCall() );
+<pre class="brush: lang-java brush: java">log.info()?.log( timeConsumingCall() );
 // ... instead of ...
 if( log.isLoggable(Level.INFO) ) log.info( timeConsumingCall() );</pre>
 
@@ -110,15 +108,13 @@ your code.</p>
 <p>Writing <code>((Type)something).useItAsType()</code> is very boring. How
 about this:</p>
 
-<pre
-class="brush: lang-java brush: java">Programmer prog = getJavaProgrammer();
+<pre class="brush: lang-java brush: java">Programmer prog = getJavaProgrammer();
 String anwser = prog.cast(JavaProgrammer).askAboutJava();</pre>
 
 <p>Combined with the above operator, answer would be <code>null</code> if there
 was a <code>ClassCastException</code>:</p>
 
-<pre
-class="brush: lang-java brush: java">String anwser = prog.cast(JavaProgrammer)!.askAboutJava();</pre>
+<pre class="brush: lang-java brush: java">String anwser = prog.cast(JavaProgrammer)!.askAboutJava();</pre>
 
 <h3 id="toc-automatic-casting-after-instanceof">Automatic casting after
 <code>instanceof</code></h3>
@@ -126,8 +122,7 @@ class="brush: lang-java brush: java">String anwser = prog.cast(JavaProgrammer)!.
 <p>The compiler should look for the following usage of <code>instanceof</code>
 and consider the variable as being of the checked type:</p>
 
-<pre
-class="brush: lang-java brush: java">if( myObject instanceof String ){
+<pre class="brush: lang-java brush: java">if( myObject instanceof String ){
   // No more redundant casting.
   myObject.length();
   // As myObject is now treated as string, this would cause a compiler error:
@@ -143,17 +138,16 @@ Except web developement, they are seldom used for custom behavior, anyway.</p>
 <p>I like how it's done in C#. I'd do it similarly in Java.</p>
 
 <p>* Declaring a <code>public property</code> automatically creates default
-getters and setters too.<br />
-* Declaring a <code>private property</code> creates no get/setters.<br />
-* Declaring a <code>readonly property</code> creates a public getter.<br />
+getters and setters too.<br/>
+* Declaring a <code>private property</code> creates no get/setters.<br/>
+* Declaring a <code>readonly property</code> creates a public getter.<br/>
 * Getters and setters are overridable.</p>
 
 <h3 id="toc-closures">Closures</h3>
 
 <p>Of course, closures… so instead of</p>
 
-<pre
-class="brush: lang-java brush: java">interface RainListener {
+<pre class="brush: lang-java brush: java">interface RainListener {
   void itsRaining();
 }
 
@@ -171,8 +165,7 @@ public void testRain(){
 
 <p>it would be just</p>
 
-<pre
-class="brush: lang-java brush: java">public void announceRain ( void fn() ){  fn();  }
+<pre class="brush: lang-java brush: java">public void announceRain ( void fn() ){  fn();  }
 
 public void testRain(){
   announceRain( { System.out.println("Hey, take your coat!"); } )
@@ -180,10 +173,9 @@ public void testRain(){
 
 <p>or similar.</p>
 
-<hr />
+<hr/>
 
-<p>I like the <a
-href="http://www.javac.info/consensus-closures-jsr.html">proposal published
+<p>I like the <a href="http://www.javac.info/consensus-closures-jsr.html">proposal published
 recently on JSR</a>.</p>
 
 <p>Basically, closures ought to be syntax shortcut for functors. So they should
@@ -191,8 +183,7 @@ be backward compatible with interfaces – that means, each closure parameter
 type would create one „anonymous interface“, and each closure implementation
 should be a static final functor implementing that interface.</p>
 
-<pre
-class="brush: lang-java brush: java">public String process( List&lt;String&gt; list, String fn(String item) ){
+<pre class="brush: lang-java brush: java">public String process( List&lt;String&gt; list, String fn(String item) ){
   String res = "";
   for( String str:  list )
     res += fn( str );
@@ -207,8 +198,7 @@ public void testClosure(){
 
 <h4 id="toc-generics">Generics:</h4>
 
-<pre
-class="brush: lang-java brush: java">public String process( List&lt;T&gt; list, String fn(T item) ){
+<pre class="brush: lang-java brush: java">public String process( List&lt;T&gt; list, String fn(T item) ){
   String res = "";
   for( T str:  list )
     res += fn( str );
@@ -229,8 +219,7 @@ objects)</h4>
 whether the method fits the type constraints. <strong>This would keep interfaces
 and functors backwards compatible.</strong></p>
 
-<pre
-class="brush: lang-java brush: java">public class ClosureExample {
+<pre class="brush: lang-java brush: java">public class ClosureExample {
   public String process( List&lt;T&gt; list, String fn(T item) ){ ... }
 
   String myClosure(String item){ return item.reverse(); }
@@ -242,8 +231,7 @@ class="brush: lang-java brush: java">public class ClosureExample {
 
 <p>… would act like if there was an „anonymous interface“:</p>
 
-<pre
-class="brush: lang-java brush: java">private interface AnonInterface01 {  String fn(T item);  }
+<pre class="brush: lang-java brush: java">private interface AnonInterface01 {  String fn(T item);  }
 
 public class ClosureExample {
   public String process( List&lt;T&gt; list, AnonInterface01 fn ){ ... }
@@ -268,16 +256,14 @@ public class ClosureExample {
 <p>The syntax of calling a closure in other class would simply use a dot
 (I dislike the hash notation):</p>
 
-<pre
-class="brush: lang-java brush: java">public void testClosure(){
+<pre class="brush: lang-java brush: java">public void testClosure(){
   System.out.println( process( list, OtherClass.myClosure ) );
 }</pre>
 
 <h4 id="toc-closures-in-a-context-using-this-in-closures">Closures in a context
 (using <code>this</code> in closures):</h4>
 
-<pre
-class="brush: lang-java brush: java">private String concat = "";
+<pre class="brush: lang-java brush: java">private String concat = "";
 
 public void testClosure(){
   List&lt;String&gt; list = Arrays.asList( new String[]{"foo","bar"} );
@@ -295,8 +281,7 @@ public void testClosure(){
 abstract some common logic without need of <code>abstract</code> classes
 or AOP.</p>
 
-<pre
-class="brush: lang-java brush: java">interface Phone {
+<pre class="brush: lang-java brush: java">interface Phone {
 
   void callNumber( String number );
 
@@ -307,8 +292,7 @@ class="brush: lang-java brush: java">interface Phone {
 <p>Combined with inheritance, this could be a very effective way to create
 mix-ins:</p>
 
-<pre
-class="brush: lang-java brush: java">interface Sumarizer extends ListIterator&lt;Integer&gt; {
+<pre class="brush: lang-java brush: java">interface Sumarizer extends ListIterator&lt;Integer&gt; {
 
   public int getSum(){
     int ret = 0;
@@ -324,8 +308,7 @@ class="brush: lang-java brush: java">interface Sumarizer extends ListIterator&lt
 	constructs that return a value – <code>switch</code>,
 	<code>if</code>/<code>else</code></h3>
 
-	<pre
-	class="brush: lang-java brush: java">String num = switch(4){ case 1: yield "one"; default: yield "more"; }
+	<pre class="brush: lang-java brush: java">String num = switch(4){ case 1: yield "one"; default: yield "more"; }
 
 boolean isSunShining
 String dayPart = if( isSunShining ) yield "day"; else yield "night";</pre>
@@ -341,37 +324,61 @@ String dayPart = if( isSunShining ) yield "day"; else yield "night";</pre>
 <h3 id="toc-jdk-standard-library-feature-requests">JDK standard library feature
 requests</h3>
 
-<p>* implement an ordered map.<br />
-* include <code>org.apache.commons.lang.StringUtils</code>.<br />
-* Simpler API for sound.<br />
-* <code>java.util.Properties</code> – rewrite, do not inherit from a map.<br
-/>
+<p>* implement an ordered map.<br/>
+* include <code>org.apache.commons.lang.StringUtils</code>.<br/>
+* Simpler API for sound.<br/>
+* <code>java.util.Properties</code> – rewrite, do not inherit from a map.<br/>
 * <code>java.util.regex</code>: Support for recursion as in PCRE –
 <code>(?0)</code>.</p>
 
 <p><em>More to come later.</em></p>
 
-<hr />
+<hr/>
 
-<p>See also: <a
-href="http://www.linkedin.com/groupAnswers?viewQuestionAndAnswers=&amp;discussionID=10672776&amp;gid=43888&amp;trk=EML_anet_qa_ttle-dnhOon0JumNFomgJt7dBpSBA">http://www.linkedin.com/groupAnswers?…</a></p>
-</div>
+<p>See also: <a href="http://www.linkedin.com/groupAnswers?viewQuestionAndAnswers=&amp;discussionID=10672776&amp;gid=43888&amp;trk=EML_anet_qa_ttle-dnhOon0JumNFomgJt7dBpSBA">http://www.linkedin.com/groupAnswers?…</a></p>
+</div></div>
 
-        <!-- Rating widget -->
-        <div class="rw-ui-container"></div>
     </div>
-
     <hr />
+    <!-- Rating widget -->
+    <div class="rw-ui-container"></div>
 
 
-        <!--sharexy code start--><div id='shr_723771'><script type='text/javascript'>(function(w) { if (!w.SharexyWidget) { w.SharexyWidget = {};} if (!w.SharexyWidget.Params) { w.SharexyWidget.Params = {}; }
-        w.SharexyWidget.Params['723771'] = {'code_id':'723771','publisher_key':'undefined','design':'classic','layout_static':'h','type':'st','mode_float':'','size_float':'55','size_static':'55','buzz':'1',
-            'services':['facebook', 'google_plus', 'twitter', 'linkedin', 'reddit', 'buffer', 'pocket', 'print_page'],
-            'url':'current','allways_show_ads':'0','show_ads_sharing':'0','show_ads_cursor':'0','bg_float':'1','bg_color':'#ffffff','labels':'','counters':'0', 'counters_float':'0'} })(window);</script>
-        <script type='text/javascript' src='http://shuttle.sharexy.com/LoaderLite.js'></script></div><a href='http://sharexy.com/'><img src='http://sharexy.com/statpixel.png' style='border: 0' /></a><!--sharexy code end   -->
+        
+        <!-- AddToAny BEGIN -->
+        <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+            <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+            <a class="a2a_button_facebook"></a>
+            <a class="a2a_button_twitter"></a>
+            <a class="a2a_button_google_plus"></a>
+            <a class="a2a_button_google_bookmarks"></a>
+            <a class="a2a_button_google_classroom"></a>
+            <a class="a2a_button_linkedin"></a>
+            <a class="a2a_button_reddit"></a>
+            <a class="a2a_button_buffer"></a>
+            <a class="a2a_button_trello"></a>
+            <a class="a2a_button_slashdot"></a>
+            <a class="a2a_button_hacker_news"></a>
+            <a class="a2a_button_dzone"></a>
+            <a class="a2a_button_pinterest"></a>
+            <a class="a2a_button_vk"></a>
+            <a class="a2a_button_digg"></a>
+            <a class="a2a_button_copy_link"></a>
+            <a class="a2a_button_pocket"></a>
+        </div>
+        <script>
+            var a2a_config = a2a_config || {};
+            a2a_config.linkname = "Ondřej Žižka";
+            a2a_config.linkurl = "https://www.zizka.ch/";
+            a2a_config.num_services = 18;
+        </script>
+        <script async src="https://static.addtoany.com/menu/page.js"></script>
+        <!-- AddToAny END -->
+
+        <div style="clear: both; height: 1ex;"></div>
 
         <!-- Facebook comments -->
-                    <div class="fb-comments" data-href="https://www.zizka.ch/pages/programovani/java/java-feature-requests.html" data-width="800" data-numposts="5"></div>
+            <div class="fb-comments" data-href="https://www.zizka.ch/pages/programovani/java/java-feature-requests.html" data-width="900" data-numposts="5"></div>
 
     </div>
     <div id="push"></div>

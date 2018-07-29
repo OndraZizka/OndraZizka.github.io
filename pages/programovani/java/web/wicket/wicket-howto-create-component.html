@@ -72,13 +72,13 @@ component - Ondřej Žižka</title>
     </div>
     <div class="container">
 
-    <div class="document-post">
+    <div class="document document-post">
         <div class="page-header">
             <h1>Wicket: How to create a
 component</h1>
         </div>
         <div class="date"><em>2012-12-31</em></div>
-        <div class="doc-body"><h2 id="toc-wicket-how-to-create-a-component">Wicket: How to create a
+        <div class="doc-body"><div><h2 class=" jbakeExtractedTitle" id="toc-wicket-how-to-create-a-component">Wicket: How to create a
 component</h2>
 
 <p>Creating a Wicket component is very easy.</p>
@@ -87,13 +87,12 @@ component</h2>
 component, consisting of several subcomponents, or simply it needs nontrivial
 code to create – that's why you want to wrap it in a component.</p>
 
-<div><img src="img/JawaBot-homepage.png" alt="" style="float:right" /></div>
+<div><img alt="" src="img/JawaBot-homepage.png" style="float:right"/></div>
 
 <p>On this page, you have a table of resources, which have a link with an icon.
 The code to create this link looks like this:</p>
 
-<pre
-class="brush: lang-html brush: html">&lt;tr wicket:id="resources"&gt;
+<pre class="brush: lang-html brush: html">&lt;tr wicket:id="resources"&gt;
    &lt;td&gt;
        &lt;a href="#" wicket:id="reslink"&gt;
           &lt;img wicket:id="icoType" src="ResourceMachine.gif"/&gt;
@@ -103,8 +102,7 @@ class="brush: lang-html brush: html">&lt;tr wicket:id="resources"&gt;
    ...
 &lt;/tr&gt;</pre>
 
-<pre
-class="brush: lang-java brush: java">// Link itself. We're giving the resource as the parameter for the Resource page.
+<pre class="brush: lang-java brush: java">// Link itself. We're giving the resource as the parameter for the Resource page.
 new BookmarkablePageLink("reslink", new ResourcePage( item.getModelObject().getResource() ))
 // Icon.
 .add( new Image( "icoType", "ResourceMachine.gif" ) )
@@ -131,8 +129,7 @@ XHTML-compliant additions.</p>
 <p>The <code>&lt;wicket:extend&gt;</code> element delimits what is going to be
 counted for the component. Everything else is ignored.</p>
 
-<pre
-class="brush: lang-html brush: html">&lt;!DOCTYPE html&gt;
+<pre class="brush: lang-html brush: html">&lt;!DOCTYPE html&gt;
 &lt;html&gt;
    &lt;head&gt;
       &lt;title&gt;JawaBot resource&lt;/title&gt;
@@ -150,8 +147,7 @@ class="brush: lang-html brush: html">&lt;!DOCTYPE html&gt;
 <p>In Java, we simply create a new class extending
 <code>Panel</code> class.</p>
 
-<pre
-class="brush: lang-java brush: java">package org.jboss.jawabot.web._co;
+<pre class="brush: lang-java brush: java">package org.jboss.jawabot.web._co;
 
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.image.Image;
@@ -185,8 +181,7 @@ doesn't have the references initialized yet. You need to override
 <code>onInitialize()</code> and move the code therein. For example, you might
 want not to render the icon if the page's param says to:</p>
 
-<pre
-class="brush: lang-java brush: java">public class ResourceLink extends Panel {
+<pre class="brush: lang-java brush: java">public class ResourceLink extends Panel {
 
    public &lt;C extends Page&gt; ResourceLink( String id, Resource res ) {
       super( id, ResourcePage.class );
@@ -218,8 +213,7 @@ everything.</p>
 expects them in <code>src/main/resources</code> by default. To make it package
 resources from <code>src/main/java</code>, put this to <code>pom.xml</code>:</p>
 
-<pre
-class="brush: lang-xml brush: xml">&lt;build&gt;
+<pre class="brush: lang-xml brush: xml">&lt;build&gt;
    ...
    &lt;resources&gt;
      &lt;!-- Web - Wicket --&gt;
@@ -245,8 +239,7 @@ help the future reader have easier imagination of what's inside of the
 compoment, or even to be able to display the HTML file in a browser. The content
 will be replaced by Wicket, according to it's child components.</p>
 
-<pre
-class="brush: lang-html brush: html">&lt;tr wicket:id="resources"&gt;
+<pre class="brush: lang-html brush: html">&lt;tr wicket:id="resources"&gt;
    &lt;td&gt;
        &lt;a href="#" wicket:id="reslink"&gt;
           &lt;img src="ResourceMachine.gif"/&gt;
@@ -256,28 +249,53 @@ class="brush: lang-html brush: html">&lt;tr wicket:id="resources"&gt;
    ...
 &lt;/tr&gt;</pre>
 
-<pre
-class="brush: lang-java brush: java">// Link itself. We're giving the resource as the parameter for the Resource page.
+<pre class="brush: lang-java brush: java">// Link itself. We're giving the resource as the parameter for the Resource page.
 new ResourceLink("reslink", item.getModelObject().getResource() ))</pre>
 
 <p>That's all.</p>
-</div>
+</div></div>
 
-        <!-- Rating widget -->
-        <div class="rw-ui-container"></div>
     </div>
-
     <hr />
+    <!-- Rating widget -->
+    <div class="rw-ui-container"></div>
 
 
-        <!--sharexy code start--><div id='shr_723771'><script type='text/javascript'>(function(w) { if (!w.SharexyWidget) { w.SharexyWidget = {};} if (!w.SharexyWidget.Params) { w.SharexyWidget.Params = {}; }
-        w.SharexyWidget.Params['723771'] = {'code_id':'723771','publisher_key':'undefined','design':'classic','layout_static':'h','type':'st','mode_float':'','size_float':'55','size_static':'55','buzz':'1',
-            'services':['facebook', 'google_plus', 'twitter', 'linkedin', 'reddit', 'buffer', 'pocket', 'print_page'],
-            'url':'current','allways_show_ads':'0','show_ads_sharing':'0','show_ads_cursor':'0','bg_float':'1','bg_color':'#ffffff','labels':'','counters':'0', 'counters_float':'0'} })(window);</script>
-        <script type='text/javascript' src='http://shuttle.sharexy.com/LoaderLite.js'></script></div><a href='http://sharexy.com/'><img src='http://sharexy.com/statpixel.png' style='border: 0' /></a><!--sharexy code end   -->
+        
+        <!-- AddToAny BEGIN -->
+        <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+            <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+            <a class="a2a_button_facebook"></a>
+            <a class="a2a_button_twitter"></a>
+            <a class="a2a_button_google_plus"></a>
+            <a class="a2a_button_google_bookmarks"></a>
+            <a class="a2a_button_google_classroom"></a>
+            <a class="a2a_button_linkedin"></a>
+            <a class="a2a_button_reddit"></a>
+            <a class="a2a_button_buffer"></a>
+            <a class="a2a_button_trello"></a>
+            <a class="a2a_button_slashdot"></a>
+            <a class="a2a_button_hacker_news"></a>
+            <a class="a2a_button_dzone"></a>
+            <a class="a2a_button_pinterest"></a>
+            <a class="a2a_button_vk"></a>
+            <a class="a2a_button_digg"></a>
+            <a class="a2a_button_copy_link"></a>
+            <a class="a2a_button_pocket"></a>
+        </div>
+        <script>
+            var a2a_config = a2a_config || {};
+            a2a_config.linkname = "Ondřej Žižka";
+            a2a_config.linkurl = "https://www.zizka.ch/";
+            a2a_config.num_services = 18;
+        </script>
+        <script async src="https://static.addtoany.com/menu/page.js"></script>
+        <!-- AddToAny END -->
+
+        <div style="clear: both; height: 1ex;"></div>
 
         <!-- Facebook comments -->
-                    <div class="fb-comments" data-href="https://www.zizka.ch/pages/programovani/java/web/wicket/wicket-howto-create-component.html" data-width="800" data-numposts="5"></div>
+            <div class="fb-comments" data-href="https://www.zizka.ch/pages/programovani/java/web/wicket/wicket-howto-create-component.html" data-width="900" data-numposts="5"></div>
 
     </div>
     <div id="push"></div>

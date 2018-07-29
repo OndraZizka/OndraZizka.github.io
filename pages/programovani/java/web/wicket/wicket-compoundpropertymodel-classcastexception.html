@@ -72,19 +72,18 @@ ClassCastException with CompoundProper­tyModel - Ondřej Žižka</title>
     </div>
     <div class="container">
 
-    <div class="document-post">
+    <div class="document document-post">
         <div class="page-header">
             <h1>Wicket:
 ClassCastException with CompoundProper­tyModel</h1>
         </div>
         <div class="date"><em>2018-07-26</em></div>
-        <div class="doc-body"><h2 id="toc-wicket-classcastexception-with-compoundpropertymodel">Wicket:
+        <div class="doc-body"><div><h2 class=" jbakeExtractedTitle" id="toc-wicket-classcastexception-with-compoundpropertymodel">Wicket:
 ClassCastException with CompoundProper­tyModel</h2>
 
 <h3 id="toc-code">Code</h3>
 
-<pre
-class="brush: lang-java brush: java">public class ReservePage extends BaseLayoutPage {
+<pre class="brush: lang-java brush: java">public class ReservePage extends BaseLayoutPage {
 
    private Resource selectedResource = null;
    private Date dateFrom = null;
@@ -139,8 +138,7 @@ class="brush: lang-java brush: java">public class ReservePage extends BaseLayout
 
 <h3 id="toc-discussion">Discussion</h3>
 
-<pre
-class="brush: lang-plain brush: plain">(12:58:33 AM) OndraZizka: CompoundPropertyModel depends on getters/setters right?
+<pre class="brush: lang-plain brush: plain">(12:58:33 AM) OndraZizka: CompoundPropertyModel depends on getters/setters right?
 (12:58:49 AM) reisi: just like PropertyModel
 (12:58:50 AM) OndraZizka: not enough to have private field
 (12:58:58 AM) OndraZizka: ok thx
@@ -151,8 +149,7 @@ class="brush: lang-plain brush: plain">(12:58:33 AM) OndraZizka: CompoundPropert
 
 <h3 id="toc-stacktrace">Stacktrace</h3>
 
-<pre
-class="lang-text brush: text">WicketMessage: Exception in rendering component: [MarkupContainer [Component id = form]]
+<pre class="lang-text brush: text">WicketMessage: Exception in rendering component: [MarkupContainer [Component id = form]]
 
 Root cause:
 
@@ -256,23 +253,49 @@ at org.apache.wicket.RequestCycle.step(RequestCycle.java:1329)
 at org.apache.wicket.RequestCycle.steps(RequestCycle.java:1436)
 at org.apache.wicket.RequestCycle.request(RequestCycle.java:545)
 at org.apache.wicket.protocol.http.WicketFilter.doGet(WicketFilter.java:486)</pre>
-</div>
+</div></div>
 
-        <!-- Rating widget -->
-        <div class="rw-ui-container"></div>
     </div>
-
     <hr />
+    <!-- Rating widget -->
+    <div class="rw-ui-container"></div>
 
 
-        <!--sharexy code start--><div id='shr_723771'><script type='text/javascript'>(function(w) { if (!w.SharexyWidget) { w.SharexyWidget = {};} if (!w.SharexyWidget.Params) { w.SharexyWidget.Params = {}; }
-        w.SharexyWidget.Params['723771'] = {'code_id':'723771','publisher_key':'undefined','design':'classic','layout_static':'h','type':'st','mode_float':'','size_float':'55','size_static':'55','buzz':'1',
-            'services':['facebook', 'google_plus', 'twitter', 'linkedin', 'reddit', 'buffer', 'pocket', 'print_page'],
-            'url':'current','allways_show_ads':'0','show_ads_sharing':'0','show_ads_cursor':'0','bg_float':'1','bg_color':'#ffffff','labels':'','counters':'0', 'counters_float':'0'} })(window);</script>
-        <script type='text/javascript' src='http://shuttle.sharexy.com/LoaderLite.js'></script></div><a href='http://sharexy.com/'><img src='http://sharexy.com/statpixel.png' style='border: 0' /></a><!--sharexy code end   -->
+        
+        <!-- AddToAny BEGIN -->
+        <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+            <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+            <a class="a2a_button_facebook"></a>
+            <a class="a2a_button_twitter"></a>
+            <a class="a2a_button_google_plus"></a>
+            <a class="a2a_button_google_bookmarks"></a>
+            <a class="a2a_button_google_classroom"></a>
+            <a class="a2a_button_linkedin"></a>
+            <a class="a2a_button_reddit"></a>
+            <a class="a2a_button_buffer"></a>
+            <a class="a2a_button_trello"></a>
+            <a class="a2a_button_slashdot"></a>
+            <a class="a2a_button_hacker_news"></a>
+            <a class="a2a_button_dzone"></a>
+            <a class="a2a_button_pinterest"></a>
+            <a class="a2a_button_vk"></a>
+            <a class="a2a_button_digg"></a>
+            <a class="a2a_button_copy_link"></a>
+            <a class="a2a_button_pocket"></a>
+        </div>
+        <script>
+            var a2a_config = a2a_config || {};
+            a2a_config.linkname = "Ondřej Žižka";
+            a2a_config.linkurl = "https://www.zizka.ch/";
+            a2a_config.num_services = 18;
+        </script>
+        <script async src="https://static.addtoany.com/menu/page.js"></script>
+        <!-- AddToAny END -->
+
+        <div style="clear: both; height: 1ex;"></div>
 
         <!-- Facebook comments -->
-                    <div class="fb-comments" data-href="https://www.zizka.ch/pages/programovani/java/web/wicket/wicket-compoundpropertymodel-classcastexception.html" data-width="800" data-numposts="5"></div>
+            <div class="fb-comments" data-href="https://www.zizka.ch/pages/programovani/java/web/wicket/wicket-compoundpropertymodel-classcastexception.html" data-width="900" data-numposts="5"></div>
 
     </div>
     <div id="push"></div>

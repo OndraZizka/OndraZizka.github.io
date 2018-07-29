@@ -71,12 +71,12 @@
     </div>
     <div class="container">
 
-    <div class="document-post">
+    <div class="document document-post">
         <div class="page-header">
             <h1>Úvod do J2EE</h1>
         </div>
         <div class="date"><em>2012-12-16</em></div>
-        <div class="doc-body"><h2 id="toc-uvod-do-j2ee">Úvod do J2EE</h2>
+        <div class="doc-body"><div><h2 class=" jbakeExtractedTitle" id="toc-uvod-do-j2ee">Úvod do J2EE</h2>
 
 <h3 id="toc-komu-tento-uvod-urcen">Komu tento úvod určen</h3>
 
@@ -100,12 +100,10 @@ vůbec nic.</p>
 
 <p>Úvod je skutečně velmi povrchní a nenaučí vás žádné konkrétní
 postupy – je to zkrátka pomůcka pro zorientování se ve světě J2EE.
-Pokud již základní orientaci máte, potom je pro vás spíše oficiální <a
-href="http://java.sun.com/j2ee/1.4/docs/tutorial/doc/">J2EE tutoriál</a>
+Pokud již základní orientaci máte, potom je pro vás spíše oficiální <a href="http://java.sun.com/j2ee/1.4/docs/tutorial/doc/">J2EE tutoriál</a>
 (v angličtině, rozsahem cca jako 600-stránková kniha).</p>
 
-<p>Fajn, i když trochu starší, je také <a
-href="http://www.myeclipseide.com/documentation/quickstarts/earprojects/">procvičovací
+<p>Fajn, i když trochu starší, je také <a href="http://www.myeclipseide.com/documentation/quickstarts/earprojects/">procvičovací
 tutoriál pro Eclipse IDE</a>.</p>
 
 <h3 id="toc-co-je-j2ee">Co je J2EE</h3>
@@ -144,8 +142,7 @@ přímo program, ale spíše třída, která má určité metody jako
 požadavek volají. V parametrech dostanou informace o požadavku, o session,
 a referenci na objekt odpovědi.</p>
 
-<pre
-class="brush: lang-java brush: java">public class HelloServlet extends HttpServlet {
+<pre class="brush: lang-java brush: java">public class HelloServlet extends HttpServlet {
 
   public void doGet (HttpServletRequest pozadavek, HttpServletResponse odpoved)
     throws ServletException, IOException {
@@ -157,8 +154,7 @@ class="brush: lang-java brush: java">public class HelloServlet extends HttpServl
 <p>Pak takovouto třídu zabalíte do JAR archivu spolu s konfigurákem
 <code>WEB-INF/web.xml</code>:</p>
 
-<pre
-class="brush: lang-xml brush: xml">&lt;web-app xmlns="http://java.sun.com/xml/ns/j2ee" version="2.4"
+<pre class="brush: lang-xml brush: xml">&lt;web-app xmlns="http://java.sun.com/xml/ns/j2ee" version="2.4"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http:/java.sun.com/dtd/web-app_2_3.dtd"&gt;
   &lt;servlet&gt;
@@ -184,8 +180,7 @@ class="brush: lang-xml brush: xml">&lt;web-app xmlns="http://java.sun.com/xml/ns
 <p>Pochopitelně konfigurace každého servletu a generování HTML stránek
 přimo v Java kódu je dost otravné:</p>
 
-<pre
-class="brush: lang-java brush: java">PrintWriter vystup = odpoved.getWriter();
+<pre class="brush: lang-java brush: java">PrintWriter vystup = odpoved.getWriter();
 vystup.write("&lt;h1&gt;Ahoj " + session.getAttribute("name") +"!&lt;/h1&gt;");
 vystup.write("&lt;p&gt;Takhle nějak se generuje stránka ze servletu.&lt;/p&gt;");</pre>
 
@@ -204,24 +199,21 @@ menšina. No a tak vznikla technologie JSP.</p>
 
 <h4 id="toc-jsp-java-server-pages">JSP – Java Server Pages</h4>
 
-<pre
-class="lang-jsp brush: jsp">&lt;h1&gt;Ahoj &lt;%= session.getAttribute("name") %&gt;!&lt;/h1&gt;</pre>
+<pre class="lang-jsp brush: jsp">&lt;h1&gt;Ahoj &lt;%= session.getAttribute("name") %&gt;!&lt;/h1&gt;</pre>
 
 <p>Rovnou při vzniku měla mnohem více možností, než konkureční způsoby
 vkládání kódu do HTML (můj názor). A to především díky zvláštním
 tagům, jejichž interpretaci mají na starosti Java třídy. Takový tag
 vypadá například takto:</p>
 
-<pre
-class="brush: lang-xml brush: xml">&lt;html:link action="/logout"&gt;Odhlásit&lt;/html:link&gt;</pre>
+<pre class="brush: lang-xml brush: xml">&lt;html:link action="/logout"&gt;Odhlásit&lt;/html:link&gt;</pre>
 
 <p>Zrovna tento tag není úplně dobrý příklad, zrovna mi padnul pod ruku.
 ***Dát lepší příklad. Lepší by byl třeba tento: <em>(Poznámka pro
 znalé: Tento kód jsem si z hlavy vymyslel, neodpovídá přesně tagům JSTL
 knihovny.)</em></p>
 
-<pre
-class="brush: lang-xml brush: xml">&lt;cache:cache key="vypis_uzivatelu"&gt;
+<pre class="brush: lang-xml brush: xml">&lt;cache:cache key="vypis_uzivatelu"&gt;
   &lt;sql:query sql="SELECT * FROM users ORDER BY name" var="resultUsers" /&gt;
   &lt;table&gt;
     &lt;c:foreach from="resultUsers" var="i"&gt;
@@ -240,8 +232,7 @@ sami upravit), a knihovna už sama zajistí buď provedení kódu vevnitř, nebo
 vytažení již uloženého výsledku.</p>
 
 <p>V poznámce výše jsem zmínil knihovnu <strong>JSTL</strong> (JSP Standard
-Tag Library). Můžete se podívat na jeji stránky <a
-href="http://jakarta.apache.org/taglibs/doc/standard-doc/intro.html">http://jakarta.apache.org/…c/intro.html</a>.
+Tag Library). Můžete se podívat na jeji stránky <a href="http://jakarta.apache.org/taglibs/doc/standard-doc/intro.html">http://jakarta.apache.org/…c/intro.html</a>.
 Ale to jsme pořád na nejnižší úrovni možností těchto elementů. Opravdu
 pokročilé knihovny (které už jsou obvykle součástí nějakého frameworku
 a spolupracují s jeho zbylými částmi) obvykle poskytují automatizaci
@@ -263,14 +254,14 @@ mohlo připomínat <em>Smarty</em>.)</p>
 <h4 id="toc-zivotni-cyklus-j2ee-aplikace">Životní cyklus J2EE aplikace</h4>
 
 <p>Pro lidi, kteří znají jen PHP, je pojem „životní cyklus“ trochu
-novinkou. PHP má totiž životní cyklus úplně nejjednoduší možný:<br />
+novinkou. PHP má totiž životní cyklus úplně nejjednoduší možný:<br/>
 Přijde požadavek, apache jej předá PHP, to zjistí, který skript má
 načíst, přeparsovat a vykonat, skriptu předá požadavek, pak se řídí
 instrukcemi ve skriptu, a nakonec skončí. Tento postup může být různě
 optimalizovaný, např. PHP může udržovat přeparsované skripty v paměti,
 použít jedno PHP vlákno vícekrát, a podobně.</p>
 
-<p>Oproti tomu J2EE aplikace je opravdu aplikace v pravém slova smyslu:<br />
+<p>Oproti tomu J2EE aplikace je opravdu aplikace v pravém slova smyslu:<br/>
 Na serveru se spustí a běží, dokud ji neukončíte. Jednotlivé požadavky
 potom nejsou jejími jednotlivými spuštěními, ale jen voláním metod
 jejích tříd. Z toho plynou leckteré velké výhody.</p>
@@ -338,8 +329,7 @@ přiklánějí raději.</p>
 	(aplikační server) – nezkoušel jsem.</li>
 </ul>
 
-<p>Více najdete na Wikipedii: <a
-href="http://en.wikipedia.org/wiki/Comparison_of_application_servers">Comparison
+<p>Více najdete na Wikipedii: <a href="http://en.wikipedia.org/wiki/Comparison_of_application_servers">Comparison
 of Application Servers</a>.</p>
 
 <p>V tomto úvodu se budu zabývat asi hlavně kontejnerem
@@ -378,8 +368,7 @@ uvést, že při tomto kroku bývají největší problémy: Na serveru
 kolidují verze knihoven kvůli hierarchii tzv. <em>class-loaderů</em> – to
 jsou nástroje pro načítání tříd do JVM a na serveru je jich hned
 několik. Když stejnou třídu (dokonce i ze stejného souboru) načte více
-classloaderů, z hlediska JVM jsou to jiné třídy, a pak dostanete třeba <a
-href="http://www.jforum.net/posts/list/4121.page">takovéto výjimky</a>.</p>
+classloaderů, z hlediska JVM jsou to jiné třídy, a pak dostanete třeba <a href="http://www.jforum.net/posts/list/4121.page">takovéto výjimky</a>.</p>
 
 <p>Začátečník (jak si dobře pamatuji) s tím může mít velké probémy,
 ale není to zas až tak strašné, pokud nastudujete trochu teorie – např.
@@ -458,8 +447,7 @@ v perzistenci pracujeme, se říká <em>entity</em>.</p>
 jazyk HQL. Pro mapování, tedy k popisu, jak se objekty které třídy
 rozkládají do tabulek v databázi, sloužily dříve XML soubory.</p>
 
-<pre
-class="brush: lang-xml brush: xml">&lt;hibernate-mapping&gt;
+<pre class="brush: lang-xml brush: xml">&lt;hibernate-mapping&gt;
  &lt;class name="ModelPlane" table="model_plane"&gt;
    &lt;id name="id" column="id_model" type="java.lang.Long"&gt;
      &lt;generator class="increment"/&gt;
@@ -470,8 +458,7 @@ class="brush: lang-xml brush: xml">&lt;hibernate-mapping&gt;
 
 <p>V poslední době se ale rozmáhá pohodlnější způsob – @anotace.</p>
 
-<pre
-class="brush: lang-xml brush: xml">@Entity
+<pre class="brush: lang-xml brush: xml">@Entity
 public class ModelPlane {
 
     private Long id;
@@ -487,8 +474,7 @@ public class ModelPlane {
     public void setName(String name) { this.name = name; }
 }</pre>
 
-<p>Manuál k anotacím najdete <a
-href="http://www.hibernate.org/hib_docs/annotations/reference/en/html_single/">zde</a> –
+<p>Manuál k anotacím najdete <a href="http://www.hibernate.org/hib_docs/annotations/reference/en/html_single/">zde</a> –
 ovšem pokud skutečně zrovna začínáte, raději na to vůbec nekoukejte,
 nebo se rychle ztratíte. ***Odstranit? Spíše si přečtěte nadpisy, ať
 chytnete slinu na to vše, co Hibernate umí.</p>
@@ -513,8 +499,7 @@ v podstatě trochu ořezané Hibernare API, ale také přinesl možnost místo
 XML souborů používat @anotace, což jsou (pro ty, co neznají) meta-informace
 zapsané přímo v kódu Java tříd za zavináčem:</p>
 
-<pre
-class="brush: lang-java brush: java">@Entity
+<pre class="brush: lang-java brush: java">@Entity
 @Table(name="users")
 public class User {
   @Id public int id;
@@ -644,11 +629,9 @@ proto vás rovnou odkáži na články</p>
 <h4 id="toc-dalsi">Další</h4>
 
 <p>Pokud hledáte něco pro konkrétní účel, je obvykle dobré podívat se na
-projekty, které zastřešují jiné projekty – jako jsou <a
-href="http://jakarta.apache.org/"><strong>Jakarta</strong></a>, zejména
+projekty, které zastřešují jiné projekty – jako jsou <a href="http://jakarta.apache.org/"><strong>Jakarta</strong></a>, zejména
 v levé části v sekci „Ex-Jakarta“ jsou projekty, které se osvědčily
-a přesunuly pod projekt <a href="http://apache.org/">Apache</a> – <a
-href="http://projects.apache.org/indexes/language.html#Java">seznam
+a přesunuly pod projekt <a href="http://apache.org/">Apache</a> – <a href="http://projects.apache.org/indexes/language.html#Java">seznam
 konkrétních projektů pro Javu</a> je opravdu dlouhý. Z těch
 nejznámějších sem patří:</p>
 
@@ -665,8 +648,7 @@ nejznámějších sem patří:</p>
 nástroj pro správu projektů <em>Maven</em>, práce se soubory MS Office
 <em>POI</em>, a další.</p>
 
-<p>Dalším takovým hnizdem projektů je <a
-href="http://www.jboss.org/"><strong>JBoss</strong></a>, nyní spravovaný
+<p>Dalším takovým hnizdem projektů je <a href="http://www.jboss.org/"><strong>JBoss</strong></a>, nyní spravovaný
 firmou RedHat, kde je <a href="http://www.jboss.org/projects/">projektů opravdu
 hodně</a> – asi 35. Mezi ně patří:</p>
 
@@ -724,28 +706,54 @@ seznámit nováčky s J2EE. Do podrobností zde zacházet nechci, těch je na
 webu velká spousta.</p>
 
 <p>Pokud jste zkušení J2EE harcovníci, uvítám jakékoliv opravy na e-mailu
-<a href="mailto:ondra&#64;dynawest.cz">ondra&#64;<!-- -->dynawest.cz</a>.</p>
+<a href="mailto:ondra@dynawest.cz">ondra@<!-- -->dynawest.cz</a>.</p>
 
-<hr />
+<hr/>
 
 <p>Napsáno 2007–08, aktualizováno tu a tam, naposledy 2008–10.</p>
-</div>
+</div></div>
 
-        <!-- Rating widget -->
-        <div class="rw-ui-container"></div>
     </div>
-
     <hr />
+    <!-- Rating widget -->
+    <div class="rw-ui-container"></div>
 
 
-        <!--sharexy code start--><div id='shr_723771'><script type='text/javascript'>(function(w) { if (!w.SharexyWidget) { w.SharexyWidget = {};} if (!w.SharexyWidget.Params) { w.SharexyWidget.Params = {}; }
-        w.SharexyWidget.Params['723771'] = {'code_id':'723771','publisher_key':'undefined','design':'classic','layout_static':'h','type':'st','mode_float':'','size_float':'55','size_static':'55','buzz':'1',
-            'services':['facebook', 'google_plus', 'twitter', 'linkedin', 'reddit', 'buffer', 'pocket', 'print_page'],
-            'url':'current','allways_show_ads':'0','show_ads_sharing':'0','show_ads_cursor':'0','bg_float':'1','bg_color':'#ffffff','labels':'','counters':'0', 'counters_float':'0'} })(window);</script>
-        <script type='text/javascript' src='http://shuttle.sharexy.com/LoaderLite.js'></script></div><a href='http://sharexy.com/'><img src='http://sharexy.com/statpixel.png' style='border: 0' /></a><!--sharexy code end   -->
+        
+        <!-- AddToAny BEGIN -->
+        <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+            <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+            <a class="a2a_button_facebook"></a>
+            <a class="a2a_button_twitter"></a>
+            <a class="a2a_button_google_plus"></a>
+            <a class="a2a_button_google_bookmarks"></a>
+            <a class="a2a_button_google_classroom"></a>
+            <a class="a2a_button_linkedin"></a>
+            <a class="a2a_button_reddit"></a>
+            <a class="a2a_button_buffer"></a>
+            <a class="a2a_button_trello"></a>
+            <a class="a2a_button_slashdot"></a>
+            <a class="a2a_button_hacker_news"></a>
+            <a class="a2a_button_dzone"></a>
+            <a class="a2a_button_pinterest"></a>
+            <a class="a2a_button_vk"></a>
+            <a class="a2a_button_digg"></a>
+            <a class="a2a_button_copy_link"></a>
+            <a class="a2a_button_pocket"></a>
+        </div>
+        <script>
+            var a2a_config = a2a_config || {};
+            a2a_config.linkname = "Ondřej Žižka";
+            a2a_config.linkurl = "https://www.zizka.ch/";
+            a2a_config.num_services = 18;
+        </script>
+        <script async src="https://static.addtoany.com/menu/page.js"></script>
+        <!-- AddToAny END -->
+
+        <div style="clear: both; height: 1ex;"></div>
 
         <!-- Facebook comments -->
-                    <div class="fb-comments" data-href="https://www.zizka.ch/pages/programovani/java/navod-j2ee_uvod.html" data-width="800" data-numposts="5"></div>
+            <div class="fb-comments" data-href="https://www.zizka.ch/pages/programovani/java/navod-j2ee_uvod.html" data-width="900" data-numposts="5"></div>
 
     </div>
     <div id="push"></div>

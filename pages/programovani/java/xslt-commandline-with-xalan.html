@@ -71,37 +71,33 @@
     </div>
     <div class="container">
 
-    <div class="document-post">
+    <div class="document document-post">
         <div class="page-header">
             <h1>XSLT transformation in Java</h1>
         </div>
         <div class="date"><em>2012-12-13</em></div>
-        <div class="doc-body"><h2 id="toc-xslt-transformation-in-java">XSLT transformation in Java</h2>
+        <div class="doc-body"><div><h2 class=" jbakeExtractedTitle" id="toc-xslt-transformation-in-java">XSLT transformation in Java</h2>
 
 <h3 id="toc-command-line-xslt-transformation-with-xalan">Command-line XSLT
 transformation with Xalan</h3>
 
 <p>Create a script:</p>
 
-<pre
-class="lang-bash [.brush] brush: bash [.brush]">CURPATH=$(dirname $(which $0));
+<pre class="lang-bash [.brush] brush: bash [.brush]">CURPATH=$(dirname $(which $0));
 CP=$(echo `ls $CURPATH/*.jar` | sed -e 's/ /:/g' )
 echo java -cp $CP org.apache.xalan.xslt.Process -IN $1 -XSL $2 -OUT $3
 java -cp $CP org.apache.xalan.xslt.Process -IN $1 -XSL $2 -OUT $3</pre>
 
 <p>Then call it:</p>
 
-<pre
-class="lang-bash [.brush] brush: bash [.brush]">~/scripts/xslt pom.xml test.xsl pom2.xml -PARAM grp net.sourceforge.htmlunit -PARAM art htmlunit -PARAM ver 666</pre>
+<pre class="lang-bash [.brush] brush: bash [.brush]">~/scripts/xslt pom.xml test.xsl pom2.xml -PARAM grp net.sourceforge.htmlunit -PARAM art htmlunit -PARAM ver 666</pre>
 
-<p>Sources: <a
-href="http://xml.apache.org/xalan-j/commandline.html">http://xml.apache.org/…andline.html</a></p>
+<p>Sources: <a href="http://xml.apache.org/xalan-j/commandline.html">http://xml.apache.org/…andline.html</a></p>
 
 <h3 id="toc-simple-class-for-xslt-conversion-using-jdk-s-xslt">Simple class for
 XSLT conversion using JDK's XSLT</h3>
 
-<pre
-class="brush: lang-java brush: java">import javax.xml.transform.ErrorListener;
+<pre class="brush: lang-java brush: java">import javax.xml.transform.ErrorListener;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerConfigurationException;
 import javax.xml.transform.TransformerException;
@@ -175,15 +171,13 @@ class MyErrorListener implements ErrorListener {
     }
 }</pre>
 
-<pre
-class="lang-bash brush: bash">javac Xslt.java
+<pre class="lang-bash brush: bash">javac Xslt.java
 java Xslt data.xml template.xslt output.xml</pre>
 
 <h3 id="toc-template-which-does-some-change-and-copies-all-other-data">Template
 which does some change and copies all other data</h3>
 
-<pre
-class="brush: lang-xml brush: xml">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+<pre class="brush: lang-xml brush: xml">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"&gt;
     &lt;xsl:output method="xml" encoding="UTF-8" omit-xml-declaration="no" indent="yes"/&gt;
 
@@ -200,23 +194,49 @@ class="brush: lang-xml brush: xml">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
     &lt;/xsl:template&gt;
 
 &lt;/xsl:stylesheet&gt;</pre>
-</div>
+</div></div>
 
-        <!-- Rating widget -->
-        <div class="rw-ui-container"></div>
     </div>
-
     <hr />
+    <!-- Rating widget -->
+    <div class="rw-ui-container"></div>
 
 
-        <!--sharexy code start--><div id='shr_723771'><script type='text/javascript'>(function(w) { if (!w.SharexyWidget) { w.SharexyWidget = {};} if (!w.SharexyWidget.Params) { w.SharexyWidget.Params = {}; }
-        w.SharexyWidget.Params['723771'] = {'code_id':'723771','publisher_key':'undefined','design':'classic','layout_static':'h','type':'st','mode_float':'','size_float':'55','size_static':'55','buzz':'1',
-            'services':['facebook', 'google_plus', 'twitter', 'linkedin', 'reddit', 'buffer', 'pocket', 'print_page'],
-            'url':'current','allways_show_ads':'0','show_ads_sharing':'0','show_ads_cursor':'0','bg_float':'1','bg_color':'#ffffff','labels':'','counters':'0', 'counters_float':'0'} })(window);</script>
-        <script type='text/javascript' src='http://shuttle.sharexy.com/LoaderLite.js'></script></div><a href='http://sharexy.com/'><img src='http://sharexy.com/statpixel.png' style='border: 0' /></a><!--sharexy code end   -->
+        
+        <!-- AddToAny BEGIN -->
+        <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+            <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+            <a class="a2a_button_facebook"></a>
+            <a class="a2a_button_twitter"></a>
+            <a class="a2a_button_google_plus"></a>
+            <a class="a2a_button_google_bookmarks"></a>
+            <a class="a2a_button_google_classroom"></a>
+            <a class="a2a_button_linkedin"></a>
+            <a class="a2a_button_reddit"></a>
+            <a class="a2a_button_buffer"></a>
+            <a class="a2a_button_trello"></a>
+            <a class="a2a_button_slashdot"></a>
+            <a class="a2a_button_hacker_news"></a>
+            <a class="a2a_button_dzone"></a>
+            <a class="a2a_button_pinterest"></a>
+            <a class="a2a_button_vk"></a>
+            <a class="a2a_button_digg"></a>
+            <a class="a2a_button_copy_link"></a>
+            <a class="a2a_button_pocket"></a>
+        </div>
+        <script>
+            var a2a_config = a2a_config || {};
+            a2a_config.linkname = "Ondřej Žižka";
+            a2a_config.linkurl = "https://www.zizka.ch/";
+            a2a_config.num_services = 18;
+        </script>
+        <script async src="https://static.addtoany.com/menu/page.js"></script>
+        <!-- AddToAny END -->
+
+        <div style="clear: both; height: 1ex;"></div>
 
         <!-- Facebook comments -->
-                    <div class="fb-comments" data-href="https://www.zizka.ch/pages/programovani/java/xslt-commandline-with-xalan.html" data-width="800" data-numposts="5"></div>
+            <div class="fb-comments" data-href="https://www.zizka.ch/pages/programovani/java/xslt-commandline-with-xalan.html" data-width="900" data-numposts="5"></div>
 
     </div>
     <div id="push"></div>

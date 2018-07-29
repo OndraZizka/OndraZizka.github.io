@@ -71,18 +71,17 @@
     </div>
     <div class="container">
 
-    <div class="document-post">
+    <div class="document document-post">
         <div class="page-header">
             <h1>PHP Object Persistence</h1>
         </div>
         <div class="date"><em>2012-12-31</em></div>
-        <div class="doc-body"><h2 id="toc-php-object-persistence">PHP Object Persistence</h2>
+        <div class="doc-body"><div><h2 class=" jbakeExtractedTitle" id="toc-php-object-persistence">PHP Object Persistence</h2>
 
 <p><a href="lib-docs/index.html">Documentation</a> (together with my other
 libs)</p>
 
-<pre
-class="brush: lang-php brush: php">&lt;?php
+<pre class="brush: lang-php brush: php">&lt;?php
 
 
 
@@ -1910,8 +1909,7 @@ abstract class DwFwIdAndProperties {
 
 <h3 id="toc-usage-model">Usage – model</h3>
 
-<pre
-class="brush: lang-php brush: php">/** ************************************************************************
+<pre class="brush: lang-php brush: php">/** ************************************************************************
 *  Simple class that holds item's ID and a hashmap of parameters.          *
 ***************************************************************************/
 abstract class DwFwIdAndProperties {
@@ -1991,8 +1989,7 @@ class cObjectPersistence_TestClass_Key extends DwFwIdAndProperties {
 
 <h3 id="toc-usage-data-manipulation">Usage – data manipulation</h3>
 
-<pre
-class="brush: lang-php brush: php">// Create DB object
+<pre class="brush: lang-php brush: php">// Create DB object
 $oDB = new cDBAccess_MySQL('localhost:3350', 'test', 'test', 'test', 'cp1250');
 $oDB-&gt;SetSelectMode(CDBA_SELECT_RETURNS_CRESULT_ON_ERROR);
 echo "Connect: ".///
@@ -2008,8 +2005,7 @@ $oOP = new cDwObjectPersistence_DB($oDB);
 
 <h3 id="toc-example-sql-schema-data">Example SQL schema &amp; data</h3>
 
-<pre
-class="brush: lang-sql brush: sql">CREATE TABLE `ap_users` (
+<pre class="brush: lang-sql brush: sql">CREATE TABLE `ap_users` (
   `id` int(10) unsigned NOT NULL auto_increment,
   `user` varchar(255) NOT NULL,
   `pass` varchar(40) default NULL,
@@ -2049,8 +2045,7 @@ INSERT INTO ap_keys VALUES
 (10004, 110), (10004, 330),                  -- Zuzka
 (10006, 116), (10006, 118);                  -- Satan</pre>
 
-<pre
-class="brush: lang-php brush: php">$oClass = new cDwOpClass('cObjectPersistenceTestClass_User', 'ap_users');
+<pre class="brush: lang-php brush: php">$oClass = new cDwOpClass('cObjectPersistenceTestClass_User', 'ap_users');
 //$oProp = $oClass-&gt;AddProperty('id', $oColTypes-&gt;GetColumnType('INT UNSIGNED'));
         $oProp = $oClass-&gt;AddProperty('id', new cDwOpColumnType_INT_UNSIGNED() );
         $oClass-&gt;SetIdProperty($oProp);
@@ -2074,8 +2069,7 @@ $oClass-&gt;SetOrderProperties('lname, +fname, -id');
 
 <h3 id="toc-usage-data-manipulation-2">Usage – data manipulation</h3>
 
-<pre
-class="brush: lang-php brush: php">srand(time());
+<pre class="brush: lang-php brush: php">srand(time());
 
 echo "&lt;div&gt;GetPoolCount(): ".$oOP-&gt;GetPoolCount()."&lt;/div&gt;";
 
@@ -2236,23 +2230,49 @@ echo "&lt;div&gt;\$oClassKey-&gt;GetIdPropertiesSql(\$aoDoors[0]): ".$oClassKey-
 
 if( $oOP-&gt;GetError() )
 echo '&lt;div style="color: red"&gt;Error from the past: '.$oOP-&gt;GetError()."&lt;/div&gt;";</pre>
-</div>
+</div></div>
 
-        <!-- Rating widget -->
-        <div class="rw-ui-container"></div>
     </div>
-
     <hr />
+    <!-- Rating widget -->
+    <div class="rw-ui-container"></div>
 
 
-        <!--sharexy code start--><div id='shr_723771'><script type='text/javascript'>(function(w) { if (!w.SharexyWidget) { w.SharexyWidget = {};} if (!w.SharexyWidget.Params) { w.SharexyWidget.Params = {}; }
-        w.SharexyWidget.Params['723771'] = {'code_id':'723771','publisher_key':'undefined','design':'classic','layout_static':'h','type':'st','mode_float':'','size_float':'55','size_static':'55','buzz':'1',
-            'services':['facebook', 'google_plus', 'twitter', 'linkedin', 'reddit', 'buffer', 'pocket', 'print_page'],
-            'url':'current','allways_show_ads':'0','show_ads_sharing':'0','show_ads_cursor':'0','bg_float':'1','bg_color':'#ffffff','labels':'','counters':'0', 'counters_float':'0'} })(window);</script>
-        <script type='text/javascript' src='http://shuttle.sharexy.com/LoaderLite.js'></script></div><a href='http://sharexy.com/'><img src='http://sharexy.com/statpixel.png' style='border: 0' /></a><!--sharexy code end   -->
+        
+        <!-- AddToAny BEGIN -->
+        <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+            <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+            <a class="a2a_button_facebook"></a>
+            <a class="a2a_button_twitter"></a>
+            <a class="a2a_button_google_plus"></a>
+            <a class="a2a_button_google_bookmarks"></a>
+            <a class="a2a_button_google_classroom"></a>
+            <a class="a2a_button_linkedin"></a>
+            <a class="a2a_button_reddit"></a>
+            <a class="a2a_button_buffer"></a>
+            <a class="a2a_button_trello"></a>
+            <a class="a2a_button_slashdot"></a>
+            <a class="a2a_button_hacker_news"></a>
+            <a class="a2a_button_dzone"></a>
+            <a class="a2a_button_pinterest"></a>
+            <a class="a2a_button_vk"></a>
+            <a class="a2a_button_digg"></a>
+            <a class="a2a_button_copy_link"></a>
+            <a class="a2a_button_pocket"></a>
+        </div>
+        <script>
+            var a2a_config = a2a_config || {};
+            a2a_config.linkname = "Ondřej Žižka";
+            a2a_config.linkurl = "https://www.zizka.ch/";
+            a2a_config.num_services = 18;
+        </script>
+        <script async src="https://static.addtoany.com/menu/page.js"></script>
+        <!-- AddToAny END -->
+
+        <div style="clear: both; height: 1ex;"></div>
 
         <!-- Facebook comments -->
-                    <div class="fb-comments" data-href="https://www.zizka.ch/pages/programovani/php/php-object-persistence-hibernate-doctrine-orm.html" data-width="800" data-numposts="5"></div>
+            <div class="fb-comments" data-href="https://www.zizka.ch/pages/programovani/php/php-object-persistence-hibernate-doctrine-orm.html" data-width="900" data-numposts="5"></div>
 
     </div>
     <div id="push"></div>

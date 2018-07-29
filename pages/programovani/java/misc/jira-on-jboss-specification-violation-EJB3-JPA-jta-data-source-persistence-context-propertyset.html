@@ -71,22 +71,20 @@
     </div>
     <div class="container">
 
-    <div class="document-post">
+    <div class="document document-post">
         <div class="page-header">
             <h1>Trying Jira on JBoss?</h1>
         </div>
         <div class="date"><em>2012-12-31</em></div>
-        <div class="doc-body"><h2 id="toc-trying-jira-on-jboss">Trying Jira on JBoss?</h2>
+        <div class="doc-body"><div><h2 class=" jbakeExtractedTitle" id="toc-trying-jira-on-jboss">Trying Jira on JBoss?</h2>
 
 <p>I've tried Jira on JBoss EAP 5.1.1 and encountered some errors…</p>
 
-<h3
-id="toc-specification-violation-ejb3-jpa-6-2-1-2-you-have-not-defined-a-jta-data-source-for-a-jta-enabled-persistence-context-named-propertyset">Specification
+<h3 id="toc-specification-violation-ejb3-jpa-6-2-1-2-you-have-not-defined-a-jta-data-source-for-a-jta-enabled-persistence-context-named-propertyset">Specification
 violation [EJB3 JPA 6.2.1.2] – You have not defined a jta-data-source for a
 JTA enabled persistence context named: propertyset</h3>
 
-<p>It's a known problem, see <a
-href="https://issues.jboss.org/browse/EJBTHREE-1166">EJBTHREE-1166</a>.</p>
+<p>It's a known problem, see <a href="https://issues.jboss.org/browse/EJBTHREE-1166">EJBTHREE-1166</a>.</p>
 
 <p>I searched but google's results are cluttered with solution for Spring +
 JBoss problem with <code>RESOURCE_LOCAL</code>.</p>
@@ -95,8 +93,7 @@ JBoss problem with <code>RESOURCE_LOCAL</code>.</p>
 <code>jira.war/WEB-INF/lib/propertyset-1.5.jar!/META-INF/persistence.xml</code>
 which contains:</p>
 
-<pre
-class="brush: lang-xml brush: xml">&lt;persistence xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0"&gt;
+<pre class="brush: lang-xml brush: xml">&lt;persistence xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0"&gt;
   &lt;persistence-unit name="propertyset" transaction-type="JTA"&gt;
     &lt;description&gt;Persistence Unit for OSPropertySet&lt;/description&gt;
     &lt;class&gt;com.opensymphony.module.propertyset.ejb3.PropertyEntry&lt;/class&gt;
@@ -108,8 +105,7 @@ class="brush: lang-xml brush: xml">&lt;persistence xmlns="http://java.sun.com/xm
 <code>&lt;jboss&gt;/server/&lt;conf&gt;/hsqldb-ds.xml</code> which defines
 <code>&lt;local-tx-datasource&gt;</code>.</p>
 
-<pre
-class="brush: lang-plain brush: plain">03:52:20,472 INFO  [PersistenceUnitDeployment] Starting persistence unit persistence.unit:unitName=#propertyset
+<pre class="brush: lang-plain brush: plain">03:52:20,472 INFO  [PersistenceUnitDeployment] Starting persistence unit persistence.unit:unitName=#propertyset
 03:52:21,444 ERROR [AbstractKernelController] Error installing to Start: name=persistence.unit:unitName=#propertyset state=Create
 java.lang.RuntimeException: Specification violation [EJB3 JPA 6.2.1.2] - You have not defined a jta-data-source for a JTA enabled persistence context named: propertyset
         at org.jboss.jpa.deployment.PersistenceUnitInfoImpl.&lt;init&gt;(PersistenceUnitInfoImpl.java:115)
@@ -185,16 +181,14 @@ java.lang.RuntimeException: Specification violation [EJB3 JPA 6.2.1.2] - You hav
         at java.lang.Thread.run(Thread.java:662)
 03:52:53,767 INFO  [TomcatDeployment] deploy, ctxPath=/atlassian-jira-4.3.2</pre>
 
-<h3
-id="toc-classcastexception-org-apache-xerces-jaxp-saxparserfactoryimpl-cannot-be-cast-to-javax-xml-parsers-saxparserfactory">ClassCastException:
+<h3 id="toc-classcastexception-org-apache-xerces-jaxp-saxparserfactoryimpl-cannot-be-cast-to-javax-xml-parsers-saxparserfactory">ClassCastException:
 org.apache.xer­ces.jaxp.SAXPar­serFactoryImpl cannot be cast to
 javax.xml.par­sers.SAXParser­Factory</h3>
 
 <p>Another problem I run into. That can probably be solved by removing log4j
 from Jira's WAR.</p>
 
-<pre
-class="brush: lang-plain brush: plain">03:52:54,448 ERROR [STDERR] log4j:ERROR A "org.jboss.logging.util.OnlyOnceErrorHandler" object is not assignable to a "org.apache.log4j.spi.ErrorHandler" variable.
+<pre class="brush: lang-plain brush: plain">03:52:54,448 ERROR [STDERR] log4j:ERROR A "org.jboss.logging.util.OnlyOnceErrorHandler" object is not assignable to a "org.apache.log4j.spi.ErrorHandler" variable.
 03:52:54,448 ERROR [STDERR] log4j:ERROR The class "org.apache.log4j.spi.ErrorHandler" was loaded by
 03:52:54,448 ERROR [STDERR] log4j:ERROR [BaseClassLoader@172f1b4e{vfszip:/mnt/ssd1/_projekty/JBoss/EAP/eap/server/all/deploy/atlassian-jira-4.3.2.war/}] whereas object of type
 03:52:54,448 ERROR [STDERR] log4j:ERROR "org.jboss.logging.util.OnlyOnceErrorHandler" was loaded by [org.jboss.bootstrap.NoAnnotationURLClassLoader@187a84e4].
@@ -288,23 +282,49 @@ java.lang.ClassCastException: org.apache.xerces.jaxp.SAXParserFactoryImpl cannot
 03:52:54,703 ERROR [STDERR] SLF4J: Class path contains multiple SLF4J bindings.
 03:52:54,703 ERROR [STDERR] SLF4J: Found binding in [vfszip:/mnt/ssd1/_projekty/JBoss/EAP/eap/common/lib/slf4j-jboss-logging.jar/org/slf4j/impl/StaticLoggerBinder.class]
 03:52:54,703 ERROR [STDERR] SLF4J: Found binding in [vfszip:/mnt/ssd1/_projekty/JBoss/EAP/eap/server/all/deploy/atlassian-jira-4.3.2.war/WEB-INF/lib/slf4j-log4j12-1.5.8.jar/org/slf4j/impl/StaticLoggerBinder.class]</pre>
-</div>
+</div></div>
 
-        <!-- Rating widget -->
-        <div class="rw-ui-container"></div>
     </div>
-
     <hr />
+    <!-- Rating widget -->
+    <div class="rw-ui-container"></div>
 
 
-        <!--sharexy code start--><div id='shr_723771'><script type='text/javascript'>(function(w) { if (!w.SharexyWidget) { w.SharexyWidget = {};} if (!w.SharexyWidget.Params) { w.SharexyWidget.Params = {}; }
-        w.SharexyWidget.Params['723771'] = {'code_id':'723771','publisher_key':'undefined','design':'classic','layout_static':'h','type':'st','mode_float':'','size_float':'55','size_static':'55','buzz':'1',
-            'services':['facebook', 'google_plus', 'twitter', 'linkedin', 'reddit', 'buffer', 'pocket', 'print_page'],
-            'url':'current','allways_show_ads':'0','show_ads_sharing':'0','show_ads_cursor':'0','bg_float':'1','bg_color':'#ffffff','labels':'','counters':'0', 'counters_float':'0'} })(window);</script>
-        <script type='text/javascript' src='http://shuttle.sharexy.com/LoaderLite.js'></script></div><a href='http://sharexy.com/'><img src='http://sharexy.com/statpixel.png' style='border: 0' /></a><!--sharexy code end   -->
+        
+        <!-- AddToAny BEGIN -->
+        <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+            <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+            <a class="a2a_button_facebook"></a>
+            <a class="a2a_button_twitter"></a>
+            <a class="a2a_button_google_plus"></a>
+            <a class="a2a_button_google_bookmarks"></a>
+            <a class="a2a_button_google_classroom"></a>
+            <a class="a2a_button_linkedin"></a>
+            <a class="a2a_button_reddit"></a>
+            <a class="a2a_button_buffer"></a>
+            <a class="a2a_button_trello"></a>
+            <a class="a2a_button_slashdot"></a>
+            <a class="a2a_button_hacker_news"></a>
+            <a class="a2a_button_dzone"></a>
+            <a class="a2a_button_pinterest"></a>
+            <a class="a2a_button_vk"></a>
+            <a class="a2a_button_digg"></a>
+            <a class="a2a_button_copy_link"></a>
+            <a class="a2a_button_pocket"></a>
+        </div>
+        <script>
+            var a2a_config = a2a_config || {};
+            a2a_config.linkname = "Ondřej Žižka";
+            a2a_config.linkurl = "https://www.zizka.ch/";
+            a2a_config.num_services = 18;
+        </script>
+        <script async src="https://static.addtoany.com/menu/page.js"></script>
+        <!-- AddToAny END -->
+
+        <div style="clear: both; height: 1ex;"></div>
 
         <!-- Facebook comments -->
-                    <div class="fb-comments" data-href="https://www.zizka.ch/pages/programovani/java/misc/jira-on-jboss-specification-violation-EJB3-JPA-jta-data-source-persistence-context-propertyset.html" data-width="800" data-numposts="5"></div>
+            <div class="fb-comments" data-href="https://www.zizka.ch/pages/programovani/java/misc/jira-on-jboss-specification-violation-EJB3-JPA-jta-data-source-persistence-context-propertyset.html" data-width="900" data-numposts="5"></div>
 
     </div>
     <div id="push"></div>

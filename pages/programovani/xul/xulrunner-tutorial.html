@@ -71,12 +71,12 @@
     </div>
     <div class="container">
 
-    <div class="document-post">
+    <div class="document document-post">
         <div class="page-header">
             <h1>XULRunner tutorial</h1>
         </div>
         <div class="date"><em>2012-12-31</em></div>
-        <div class="doc-body"><h2 id="toc-xulrunner-tutorial">XULRunner tutorial</h2>
+        <div class="doc-body"><div><h2 class=" jbakeExtractedTitle" id="toc-xulrunner-tutorial">XULRunner tutorial</h2>
 
 <p>I've been playing recently with a time-keeping tool, written in XUL, open in
 a popup window. The application is pretty simple, just allowing me to enter a
@@ -86,19 +86,15 @@ my time.</p>
 
 <p>I was having a problem though, because clicking links from emails or IMs
 would open up into my popup window, and not a new tab in Firefox, making me lose
-my data. <a title="Nathan's blog"
-href="http://blogs.acceleration.net/birdman/">Nathan</a> suggested <a
-href="http://wiki.mozilla.org/XUL:Xul_Runner">XULRunner</a>, and after losing my
+my data. <a href="http://blogs.acceleration.net/birdman/" title="Nathan's blog">Nathan</a> suggested <a href="http://wiki.mozilla.org/XUL:Xul_Runner">XULRunner</a>, and after losing my
 data 3 more times, I broke down and figured out how to set it up. XULRunner is
 a command-line app to run XUL applications, essentially starting another gecko
 instance and running your code in that. That way Outlook won't think that's a
 good place to load windows, and if Firefox crashes, my XULRunner instance is
 still fine and dandy.</p>
 
-<p>Documentation on XULRunner is a bit <a
-href="http://developer-test.mozilla.org/docs/XULRunner">scant</a>, but googling
-revealed a <a
-href="http://friedfish.homeip.net/~darinf/xulrunner/xulmine.html">xulmine
+<p>Documentation on XULRunner is a bit <a href="http://developer-test.mozilla.org/docs/XULRunner">scant</a>, but googling
+revealed a <a href="http://friedfish.homeip.net/~darinf/xulrunner/xulmine.html">xulmine
 sample</a>, and from that I was able to reverse engineer what the hell
 XULRunner wanted me to do. And, now that I review some of these links, I see
 <a href="http://weblogs.mozillazine.org/darin/">Darin</a> has more information
@@ -112,8 +108,7 @@ structure</h3>
 
 <p>Set up your application like so:</p>
 
-<pre
-class="brush: lang-plain brush: plain">/applicationName
+<pre class="brush: lang-plain brush: plain">/applicationName
    /chrome
       /applicationName
          your app files
@@ -123,8 +118,7 @@ class="brush: lang-plain brush: plain">/applicationName
          prefs.js
    application.ini</pre>
 
-<pre
-class="brush: lang-bash brush: bash">appName=myXulApp
+<pre class="brush: lang-bash brush: bash">appName=myXulApp
 mkdir -p $appName/chrome/$appName
    touch $appName/chrome/chrome.manifest
 mkdir -p $appName/defaults/preferences
@@ -141,8 +135,7 @@ bones. Now let's set up all the configuration fi­les.</p>
 loading things up by looking at specific directories. Here's a sample
 <code>application.ini</code>:</p>
 
-<pre
-class="brush: lang-plain brush: plain">[App]
+<pre class="brush: lang-plain brush: plain">[App]
 Vendor=company
 Name=applicationName
 Version=0.1
@@ -163,8 +156,7 @@ with your app, and XULRunner will fail if those lines aren't there.</p>
 gecko engine settings or application specific settings. All we need
 here is:</p>
 
-<pre
-class="brush: lang-plain brush: plain">pref("toolkit.defaultChromeURI", "chrome://&lt;em&gt;applicationName&lt;/em&gt;/content/&lt;em&gt;startPage&lt;/em&gt;.xul");</pre>
+<pre class="brush: lang-plain brush: plain">pref("toolkit.defaultChromeURI", "chrome://&lt;em&gt;applicationName&lt;/em&gt;/content/&lt;em&gt;startPage&lt;/em&gt;.xul");</pre>
 
 <p>The <em>startPage</em> is what XUL page you want to view initially.</p>
 
@@ -174,15 +166,14 @@ class="brush: lang-plain brush: plain">pref("toolkit.defaultChromeURI", "chrome:
 <p>This file performs the mapping between a chrome:// url and your
 application files:</p>
 
-<pre
-class="brush: lang-plain brush: plain">content &lt;em&gt;applicationName&lt;/em&gt; file:&lt;em&gt;applicationName&lt;/em&gt;/</pre>
+<pre class="brush: lang-plain brush: plain">content &lt;em&gt;applicationName&lt;/em&gt; file:&lt;em&gt;applicationName&lt;/em&gt;/</pre>
 
 <p>That effectively tells XULRunner to look at <em>applicationName</em>/ in the
 chrome directory when it encounters a
 <code>chrome://&lt;em&gt;applicationName&lt;/em&gt;/content/</code> URI.</p>
 
 <p>Most XUL apps I've seen are distributed as a .jar file, rather than a
-subfolder of chrome/ with all the files scattered about.<br />
+subfolder of chrome/ with all the files scattered about.<br/>
 Having your application unpacked is much easier for development, but when you do
 want to deploy it as a jar:</p>
 
@@ -194,8 +185,7 @@ want to deploy it as a jar:</p>
 
 	<li>Change the <code>chrome.manifest</code> to point to
 	<em>applicationNa­me</em>.jar:
-		<pre
-		class="brush: lang-plain brush: plain">content &lt;em&gt;applicationName&lt;/em&gt; jar:&lt;em&gt;applicationName&lt;/em&gt;.jar!/</pre>
+		<pre class="brush: lang-plain brush: plain">content &lt;em&gt;applicationName&lt;/em&gt; jar:&lt;em&gt;applicationName&lt;/em&gt;.jar!/</pre>
 
 		<p>The <code>jar:</code> protocol tells XULRunner that this is a jar file, the
 		the <code>!</code> after the filename tells it to look inside the jar file.</p>
@@ -206,8 +196,7 @@ want to deploy it as a jar:</p>
 XULRunner</h3>
 
 <p>Now all the prep work has been done, and your application is ready to be run.
-After you <a
-href="http://ftp.mozilla.org/pub/mozilla.org/xulrunner/nightly/latest-trunk/">download
+After you <a href="http://ftp.mozilla.org/pub/mozilla.org/xulrunner/nightly/latest-trunk/">download
 XULRunner</a>, this is just a matter of a command line:</p>
 
 <pre class="brush: lang-plain brush: plain">xulrunner application.ini</pre>
@@ -222,15 +211,14 @@ desktop app.</p>
 <code>chrome.manifest</code> format is something used for Firefox extensions, so
 it makes sense to re-use that functionality, but needing to specify your start
 page in <code>prefs.js</code> seems arbitrary. There are some proposals for a
-different method of <a
-href="http://wiki.mozilla.org/XUL:XUL_Application_Packaging">XUL Application
+different method of <a href="http://wiki.mozilla.org/XUL:XUL_Application_Packaging">XUL Application
 Packaging</a>, but that's about a week old right now, and there's no code to
 support it.</p>
 
 <p>A XULRunner-based app seems like a good solution when you want to avoid
 Firefox. I want to avoid Firefox because of outlook, but in general I don't
 see much of an advantage over just making an extension, its just a series of
-trade offs.<br />
+trade offs.<br/>
 </p>
 
 <h4 id="toc-pros">Pros:</h4>
@@ -262,23 +250,49 @@ to a Firefox extension? Then you could auto-update with Firefox, and still get
 the benefits of XULRunner.</p>
 
 <p>Friday, May 06, 2005 3:29 PM</p>
-</div>
+</div></div>
 
-        <!-- Rating widget -->
-        <div class="rw-ui-container"></div>
     </div>
-
     <hr />
+    <!-- Rating widget -->
+    <div class="rw-ui-container"></div>
 
 
-        <!--sharexy code start--><div id='shr_723771'><script type='text/javascript'>(function(w) { if (!w.SharexyWidget) { w.SharexyWidget = {};} if (!w.SharexyWidget.Params) { w.SharexyWidget.Params = {}; }
-        w.SharexyWidget.Params['723771'] = {'code_id':'723771','publisher_key':'undefined','design':'classic','layout_static':'h','type':'st','mode_float':'','size_float':'55','size_static':'55','buzz':'1',
-            'services':['facebook', 'google_plus', 'twitter', 'linkedin', 'reddit', 'buffer', 'pocket', 'print_page'],
-            'url':'current','allways_show_ads':'0','show_ads_sharing':'0','show_ads_cursor':'0','bg_float':'1','bg_color':'#ffffff','labels':'','counters':'0', 'counters_float':'0'} })(window);</script>
-        <script type='text/javascript' src='http://shuttle.sharexy.com/LoaderLite.js'></script></div><a href='http://sharexy.com/'><img src='http://sharexy.com/statpixel.png' style='border: 0' /></a><!--sharexy code end   -->
+        
+        <!-- AddToAny BEGIN -->
+        <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+            <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+            <a class="a2a_button_facebook"></a>
+            <a class="a2a_button_twitter"></a>
+            <a class="a2a_button_google_plus"></a>
+            <a class="a2a_button_google_bookmarks"></a>
+            <a class="a2a_button_google_classroom"></a>
+            <a class="a2a_button_linkedin"></a>
+            <a class="a2a_button_reddit"></a>
+            <a class="a2a_button_buffer"></a>
+            <a class="a2a_button_trello"></a>
+            <a class="a2a_button_slashdot"></a>
+            <a class="a2a_button_hacker_news"></a>
+            <a class="a2a_button_dzone"></a>
+            <a class="a2a_button_pinterest"></a>
+            <a class="a2a_button_vk"></a>
+            <a class="a2a_button_digg"></a>
+            <a class="a2a_button_copy_link"></a>
+            <a class="a2a_button_pocket"></a>
+        </div>
+        <script>
+            var a2a_config = a2a_config || {};
+            a2a_config.linkname = "Ondřej Žižka";
+            a2a_config.linkurl = "https://www.zizka.ch/";
+            a2a_config.num_services = 18;
+        </script>
+        <script async src="https://static.addtoany.com/menu/page.js"></script>
+        <!-- AddToAny END -->
+
+        <div style="clear: both; height: 1ex;"></div>
 
         <!-- Facebook comments -->
-                    <div class="fb-comments" data-href="https://www.zizka.ch/pages/programovani/xul/xulrunner-tutorial.html" data-width="800" data-numposts="5"></div>
+            <div class="fb-comments" data-href="https://www.zizka.ch/pages/programovani/xul/xulrunner-tutorial.html" data-width="900" data-numposts="5"></div>
 
     </div>
     <div id="push"></div>

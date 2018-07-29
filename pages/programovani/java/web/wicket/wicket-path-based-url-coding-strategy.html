@@ -72,29 +72,26 @@ URLs – URL coding strategies - Ondřej Žižka</title>
     </div>
     <div class="container">
 
-    <div class="document-post">
+    <div class="document document-post">
         <div class="page-header">
             <h1>Wicket and nice
 URLs – URL coding strategies</h1>
         </div>
         <div class="date"><em>2012-12-13</em></div>
-        <div class="doc-body"><h2 id="toc-wicket-and-nice-urls-url-coding-strategies">Wicket and nice
+        <div class="doc-body"><div><h2 class=" jbakeExtractedTitle" id="toc-wicket-and-nice-urls-url-coding-strategies">Wicket and nice
 URLs – URL coding strategies</h2>
 
-<p>Intro: <a
-href="http://www.javalobby.org/java/forums/t68753.html">http://www.javalobby.org/…/t68753.html</a></p>
+<p>Intro: <a href="http://www.javalobby.org/java/forums/t68753.html">http://www.javalobby.org/…/t68753.html</a></p>
 
 <p><a href="https://cwiki.apache.org/WICKET/url-coding-strategies.html">Not much
 nice wiki page</a> – almost useless, just aggregated JavaDoc's</p>
 
 <h3 id="toc-url-coding-strategies">URL coding strategies</h3>
 
-<h4
-id="toc-bookmarkablepagerequesttargeturlcodingstrategy-example">BookmarkablePa­geRequestTarge­tUrlCodingStra­tegy
+<h4 id="toc-bookmarkablepagerequesttargeturlcodingstrategy-example">BookmarkablePa­geRequestTarge­tUrlCodingStra­tegy
 example</h4>
 
-<pre
-class="brush: lang-plain brush: plain">http://localhost/app/mountPath/param1/value1/param2/value2
+<pre class="brush: lang-plain brush: plain">http://localhost/app/mountPath/param1/value1/param2/value2
 
 // [in AlohaApplication.init()]
 mountBookmarkablePage("/mountPath", MyPage.class);
@@ -102,12 +99,10 @@ mountBookmarkablePage("/mountPath", MyPage.class);
 pageParameters.getString("param1"); // "value1"
 pageParameters.getString("param2"); // "value2"</pre>
 
-<h4
-id="toc-indexedparamurlcodingstrategy-example">IndexedParamUr­lCodingStrate­gy
+<h4 id="toc-indexedparamurlcodingstrategy-example">IndexedParamUr­lCodingStrate­gy
 example</h4>
 
-<pre
-class="brush: lang-plain brush: plain">http://localhost/app/mountPath/value1/value2
+<pre class="brush: lang-plain brush: plain">http://localhost/app/mountPath/value1/value2
 
 pageParameters.getString("0"); // "value1"
 pageParameters.getString("1"); // "value2"</pre>
@@ -120,18 +115,15 @@ example</h4>
 <code>/mount/path/param1/value1.3.2</code> where <code>3</code> is page ID and
 <code>2</code> is version number.“ I haven't tried this yet.</p>
 
-<pre
-class="brush: lang-plain brush: plain">http://localhost/app/mountPath/param1/value1.3.2
+<pre class="brush: lang-plain brush: plain">http://localhost/app/mountPath/param1/value1.3.2
 
 pageParameters.getString("param1"); // "value1"
 // what else?</pre>
 
-<h4
-id="toc-packagerequesttargeturlcodingstrategy-example">PackageReques­tTargetUrlCodin­gStrategy
+<h4 id="toc-packagerequesttargeturlcodingstrategy-example">PackageReques­tTargetUrlCodin­gStrategy
 example</h4>
 
-<pre
-class="brush: lang-plain brush: plain"> + cz.dynawest.wicketdemo
+<pre class="brush: lang-plain brush: plain"> + cz.dynawest.wicketdemo
  |--HomePage.class
  |--HomePage.html
  |--Contacts.class
@@ -148,15 +140,12 @@ http://localhost/app/mountPath/Contacts/param1/value1/param2/value2
 pageParameters.getString("param1"); // "value1"
 pageParameters.getString("param2"); // "value2"</pre>
 
-<h4
-id="toc-querystringurlcodingstrategy-example">QueryStringUr­lCodingStrate­gy
+<h4 id="toc-querystringurlcodingstrategy-example">QueryStringUr­lCodingStrate­gy
 example</h4>
 
-<p>The PHP way. <a
-href="http://wicket.apache.org/docs/1.4/org/apache/wicket/request/target/coding/QueryStringUrlCodingStrategy.html">JavaDoc</a></p>
+<p>The PHP way. <a href="http://wicket.apache.org/docs/1.4/org/apache/wicket/request/target/coding/QueryStringUrlCodingStrategy.html">JavaDoc</a></p>
 
-<pre
-class="brush: lang-plain brush: plain">http://localhost/app/mountPath?param1=value1&amp;param2=value2
+<pre class="brush: lang-plain brush: plain">http://localhost/app/mountPath?param1=value1&amp;param2=value2
 
 // [in AlohaApplication.init()]
 private &lt;C extends Page&gt; void mountBookmarkablePageWithUrlCoding(String path, Class&lt;C&gt; pageClass)
@@ -168,10 +157,8 @@ private &lt;C extends Page&gt; void mountBookmarkablePageWithUrlCoding(String pa
 pageParameters.getString("param1"); // "value1"
 pageParameters.getString("param2"); // "value2"</pre>
 
-<h4
-id="toc-mixedparamurlcodingstrategy-example-javadoc">MixedParamUrlCo­dingStrategy
-example (<a
-href="http://wicket.apache.org/docs/1.4/org/apache/wicket/request/target/coding/MixedParamUrlCodingStrategy.html">JavaDoc</a>)</h4>
+<h4 id="toc-mixedparamurlcodingstrategy-example-javadoc">MixedParamUrlCo­dingStrategy
+example (<a href="http://wicket.apache.org/docs/1.4/org/apache/wicket/request/target/coding/MixedParamUrlCodingStrategy.html">JavaDoc</a>)</h4>
 
 <p>Url coding strategy for bookmarkable pages that encodes a set of given
 parameters in the url's path and the rest in the query-string.</p>
@@ -180,8 +167,7 @@ parameters in the url's path and the rest in the query-string.</p>
 e.g. [„param0“, „param1“]. Found parameters will be appended to the url
 in the form</p>
 
-<pre
-class="brush: lang-plain brush: plain">http://localhost/app/mountPath/paramvalue0/valueA/valueB?param1=value1&amp;param2=value2
+<pre class="brush: lang-plain brush: plain">http://localhost/app/mountPath/paramvalue0/valueA/valueB?param1=value1&amp;param2=value2
 
 // [in AlohaApplication.init()]
 
@@ -192,38 +178,62 @@ pageParameters.getString("paramB"); // "valueB"
 pageParameters.getString("param1"); // "value1"
 pageParameters.getString("param2"); // "value2"</pre>
 
-<p>JavaDoc errata:<br />
+<p>JavaDoc errata:<br/>
 „When both "b“ and „c“ are missing on encode, the<strong>y</strong> will
 not get a value during decode."</p>
 
-<h4
-id="toc-cryptedurlwebrequestcodingstrategy-example">CryptedUrlWeb­RequestCodingStra­tegy
+<h4 id="toc-cryptedurlwebrequestcodingstrategy-example">CryptedUrlWeb­RequestCodingStra­tegy
 example</h4>
 
 <p>TBD</p>
 
-<pre
-class="brush: lang-plain brush: plain">http://localhost/app/mountPath/value1/value2
+<pre class="brush: lang-plain brush: plain">http://localhost/app/mountPath/value1/value2
 
 pageParameters.getString("0"); // "value1"
 pageParameters.getString("1"); // "value2"</pre>
-</div>
+</div></div>
 
-        <!-- Rating widget -->
-        <div class="rw-ui-container"></div>
     </div>
-
     <hr />
+    <!-- Rating widget -->
+    <div class="rw-ui-container"></div>
 
 
-        <!--sharexy code start--><div id='shr_723771'><script type='text/javascript'>(function(w) { if (!w.SharexyWidget) { w.SharexyWidget = {};} if (!w.SharexyWidget.Params) { w.SharexyWidget.Params = {}; }
-        w.SharexyWidget.Params['723771'] = {'code_id':'723771','publisher_key':'undefined','design':'classic','layout_static':'h','type':'st','mode_float':'','size_float':'55','size_static':'55','buzz':'1',
-            'services':['facebook', 'google_plus', 'twitter', 'linkedin', 'reddit', 'buffer', 'pocket', 'print_page'],
-            'url':'current','allways_show_ads':'0','show_ads_sharing':'0','show_ads_cursor':'0','bg_float':'1','bg_color':'#ffffff','labels':'','counters':'0', 'counters_float':'0'} })(window);</script>
-        <script type='text/javascript' src='http://shuttle.sharexy.com/LoaderLite.js'></script></div><a href='http://sharexy.com/'><img src='http://sharexy.com/statpixel.png' style='border: 0' /></a><!--sharexy code end   -->
+        
+        <!-- AddToAny BEGIN -->
+        <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+            <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+            <a class="a2a_button_facebook"></a>
+            <a class="a2a_button_twitter"></a>
+            <a class="a2a_button_google_plus"></a>
+            <a class="a2a_button_google_bookmarks"></a>
+            <a class="a2a_button_google_classroom"></a>
+            <a class="a2a_button_linkedin"></a>
+            <a class="a2a_button_reddit"></a>
+            <a class="a2a_button_buffer"></a>
+            <a class="a2a_button_trello"></a>
+            <a class="a2a_button_slashdot"></a>
+            <a class="a2a_button_hacker_news"></a>
+            <a class="a2a_button_dzone"></a>
+            <a class="a2a_button_pinterest"></a>
+            <a class="a2a_button_vk"></a>
+            <a class="a2a_button_digg"></a>
+            <a class="a2a_button_copy_link"></a>
+            <a class="a2a_button_pocket"></a>
+        </div>
+        <script>
+            var a2a_config = a2a_config || {};
+            a2a_config.linkname = "Ondřej Žižka";
+            a2a_config.linkurl = "https://www.zizka.ch/";
+            a2a_config.num_services = 18;
+        </script>
+        <script async src="https://static.addtoany.com/menu/page.js"></script>
+        <!-- AddToAny END -->
+
+        <div style="clear: both; height: 1ex;"></div>
 
         <!-- Facebook comments -->
-                    <div class="fb-comments" data-href="https://www.zizka.ch/pages/programovani/java/web/wicket/wicket-path-based-url-coding-strategy.html" data-width="800" data-numposts="5"></div>
+            <div class="fb-comments" data-href="https://www.zizka.ch/pages/programovani/java/web/wicket/wicket-path-based-url-coding-strategy.html" data-width="900" data-numposts="5"></div>
 
     </div>
     <div id="push"></div>

@@ -72,21 +72,21 @@ request discussion: Result sets stored in @variables - Ondřej Žižka</title>
     </div>
     <div class="container">
 
-    <div class="document-post">
+    <div class="document document-post">
         <div class="page-header">
             <h1>Feature
 request discussion: Result sets stored in @variables</h1>
         </div>
         <div class="date"><em>2012-12-13</em></div>
-        <div class="doc-body"><h2 id="toc-feature-request-discussion-result-sets-stored-in-variables">Feature
+        <div class="doc-body"><div><h2 class=" jbakeExtractedTitle" id="toc-feature-request-discussion-result-sets-stored-in-variables">Feature
 request discussion: Result sets stored in @variables</h2>
 
 <p>Hello,</p>
 
 <p>I got over several weeks of stored routines developement, and the most
-missed feature was a seamless mechanism for<br />
-- calling routines with a resultset in a parameter,<br />
-- retrieving a result set coming stored procedure,<br />
+missed feature was a seamless mechanism for<br/>
+- calling routines with a resultset in a parameter,<br/>
+- retrieving a result set coming stored procedure,<br/>
 - and eventually, for keeping a resultset somewhere without need to create
 a table.</p>
 
@@ -104,7 +104,7 @@ procedures programming.</p>
 <h2 id="toc-create-the-result-set-and-store-it-in-a-variable">Create the result
 set and store it in a variable.</h2>
 
-<p>SELECT * FROM table1 INTO @resultset;<br />
+<p>SELECT * FROM table1 INTO @resultset;<br/>
 – or – SET @resultset = (SELECT * FROM table1);</p>
 
 <h2 id="toc-pass-the-result-set-into-a-stored-procedure">Pass the result set
@@ -118,30 +118,55 @@ set from a stored procedure</h2>
 <p>CALL StoredProcedure() INTO @result; – or – SET @result = (CALL
 StoredProcedure());</p>
 
-<p>More detailed formatted draft is here: <a
-href="http://ondra.zizka.cz/stranky/programovani/sql/mysql_wishlist/result_set_in_variable.texy">http://ondra.zizka.cz/…ariable.texy</a></p>
+<p>More detailed formatted draft is here: <a href="http://ondra.zizka.cz/stranky/programovani/sql/mysql_wishlist/result_set_in_variable.texy">http://ondra.zizka.cz/…ariable.texy</a></p>
 
 <p>Now – what do you think? Would this ease your SP developement? Is there
 some better concept?</p>
 
 <p>Thanks for comments.</p>
-</div>
+</div></div>
 
-        <!-- Rating widget -->
-        <div class="rw-ui-container"></div>
     </div>
-
     <hr />
+    <!-- Rating widget -->
+    <div class="rw-ui-container"></div>
 
 
-        <!--sharexy code start--><div id='shr_723771'><script type='text/javascript'>(function(w) { if (!w.SharexyWidget) { w.SharexyWidget = {};} if (!w.SharexyWidget.Params) { w.SharexyWidget.Params = {}; }
-        w.SharexyWidget.Params['723771'] = {'code_id':'723771','publisher_key':'undefined','design':'classic','layout_static':'h','type':'st','mode_float':'','size_float':'55','size_static':'55','buzz':'1',
-            'services':['facebook', 'google_plus', 'twitter', 'linkedin', 'reddit', 'buffer', 'pocket', 'print_page'],
-            'url':'current','allways_show_ads':'0','show_ads_sharing':'0','show_ads_cursor':'0','bg_float':'1','bg_color':'#ffffff','labels':'','counters':'0', 'counters_float':'0'} })(window);</script>
-        <script type='text/javascript' src='http://shuttle.sharexy.com/LoaderLite.js'></script></div><a href='http://sharexy.com/'><img src='http://sharexy.com/statpixel.png' style='border: 0' /></a><!--sharexy code end   -->
+        
+        <!-- AddToAny BEGIN -->
+        <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+            <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+            <a class="a2a_button_facebook"></a>
+            <a class="a2a_button_twitter"></a>
+            <a class="a2a_button_google_plus"></a>
+            <a class="a2a_button_google_bookmarks"></a>
+            <a class="a2a_button_google_classroom"></a>
+            <a class="a2a_button_linkedin"></a>
+            <a class="a2a_button_reddit"></a>
+            <a class="a2a_button_buffer"></a>
+            <a class="a2a_button_trello"></a>
+            <a class="a2a_button_slashdot"></a>
+            <a class="a2a_button_hacker_news"></a>
+            <a class="a2a_button_dzone"></a>
+            <a class="a2a_button_pinterest"></a>
+            <a class="a2a_button_vk"></a>
+            <a class="a2a_button_digg"></a>
+            <a class="a2a_button_copy_link"></a>
+            <a class="a2a_button_pocket"></a>
+        </div>
+        <script>
+            var a2a_config = a2a_config || {};
+            a2a_config.linkname = "Ondřej Žižka";
+            a2a_config.linkurl = "https://www.zizka.ch/";
+            a2a_config.num_services = 18;
+        </script>
+        <script async src="https://static.addtoany.com/menu/page.js"></script>
+        <!-- AddToAny END -->
+
+        <div style="clear: both; height: 1ex;"></div>
 
         <!-- Facebook comments -->
-                    <div class="fb-comments" data-href="https://www.zizka.ch/pages/programovani/sql/mysql_wishlist/forum_post.html" data-width="800" data-numposts="5"></div>
+            <div class="fb-comments" data-href="https://www.zizka.ch/pages/programovani/sql/mysql_wishlist/forum_post.html" data-width="900" data-numposts="5"></div>
 
     </div>
     <div id="push"></div>

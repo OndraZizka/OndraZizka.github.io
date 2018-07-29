@@ -72,13 +72,13 @@ to add existing project's jar to SVN-based Maven repository - Ondřej Žižka</t
     </div>
     <div class="container">
 
-    <div class="document-post">
+    <div class="document document-post">
         <div class="page-header">
             <h1>How
 to add existing project's jar to SVN-based Maven repository</h1>
         </div>
         <div class="date"><em>2012-12-13</em></div>
-        <div class="doc-body"><h2 id="toc-how-to-add-existing-project-s-jar-to-svn-based-maven-repository">How
+        <div class="doc-body"><div><h2 class=" jbakeExtractedTitle" id="toc-how-to-add-existing-project-s-jar-to-svn-based-maven-repository">How
 to add existing project's <code>jar</code> to SVN-based Maven repository</h2>
 
 <p><em>See also</em>: <a href="mavenize-quick-and-dirty.texy">Quick and dirty
@@ -86,8 +86,7 @@ mavenization of an existing project</a></p>
 
 <h3 id="toc-bash-script-for-the-impatient">Bash script for the impatient</h3>
 
-<pre
-class="brush: lang-bash brush: bash">#
+<pre class="brush: lang-bash brush: bash">#
 #  Creates two files:
 #
 #    1) A bash script with mvn install:install-file commands to push the .jar's to a repository.
@@ -141,16 +140,14 @@ chmod u+x stuffTheRepo.sh</pre>
 
 <p>This is a maven repository of the Sardine project.</p>
 
-<p>To add a new version, do the following:<br />
+<p>To add a new version, do the following:<br/>
 <strong>Note:</strong> This is not a copy-paste code – edit it according to
-your situation.<br />
+your situation.<br/>
 <strong>Note:</strong> The preferred way is to use the Wagon-SCM Maven plugin,
-as described on <a
-href="http://community.jboss.org/wiki/MavenReleaseRepository">JBoss
+as described on <a href="http://community.jboss.org/wiki/MavenReleaseRepository">JBoss
 wiki</a>.</p>
 
-<pre
-class="brush: lang-bash brush: bash"># First, create the sources and javadoc jar's.
+<pre class="brush: lang-bash brush: bash"># First, create the sources and javadoc jar's.
 zip -9 -b sardine-XX/javadoc/* &gt; sardine-XX/javadoc.jar
 zip -9 -b sardine-XX/src/* &gt; sardine-XX/sources.jar
 
@@ -181,23 +178,49 @@ svn commit -m "Maven repo: Added version XX"</pre>
 	<li>The <code>pom.xml</code> is there because it contains dependency
 	definitions.</li>
 </ul>
-</div>
+</div></div>
 
-        <!-- Rating widget -->
-        <div class="rw-ui-container"></div>
     </div>
-
     <hr />
+    <!-- Rating widget -->
+    <div class="rw-ui-container"></div>
 
 
-        <!--sharexy code start--><div id='shr_723771'><script type='text/javascript'>(function(w) { if (!w.SharexyWidget) { w.SharexyWidget = {};} if (!w.SharexyWidget.Params) { w.SharexyWidget.Params = {}; }
-        w.SharexyWidget.Params['723771'] = {'code_id':'723771','publisher_key':'undefined','design':'classic','layout_static':'h','type':'st','mode_float':'','size_float':'55','size_static':'55','buzz':'1',
-            'services':['facebook', 'google_plus', 'twitter', 'linkedin', 'reddit', 'buffer', 'pocket', 'print_page'],
-            'url':'current','allways_show_ads':'0','show_ads_sharing':'0','show_ads_cursor':'0','bg_float':'1','bg_color':'#ffffff','labels':'','counters':'0', 'counters_float':'0'} })(window);</script>
-        <script type='text/javascript' src='http://shuttle.sharexy.com/LoaderLite.js'></script></div><a href='http://sharexy.com/'><img src='http://sharexy.com/statpixel.png' style='border: 0' /></a><!--sharexy code end   -->
+        
+        <!-- AddToAny BEGIN -->
+        <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+            <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+            <a class="a2a_button_facebook"></a>
+            <a class="a2a_button_twitter"></a>
+            <a class="a2a_button_google_plus"></a>
+            <a class="a2a_button_google_bookmarks"></a>
+            <a class="a2a_button_google_classroom"></a>
+            <a class="a2a_button_linkedin"></a>
+            <a class="a2a_button_reddit"></a>
+            <a class="a2a_button_buffer"></a>
+            <a class="a2a_button_trello"></a>
+            <a class="a2a_button_slashdot"></a>
+            <a class="a2a_button_hacker_news"></a>
+            <a class="a2a_button_dzone"></a>
+            <a class="a2a_button_pinterest"></a>
+            <a class="a2a_button_vk"></a>
+            <a class="a2a_button_digg"></a>
+            <a class="a2a_button_copy_link"></a>
+            <a class="a2a_button_pocket"></a>
+        </div>
+        <script>
+            var a2a_config = a2a_config || {};
+            a2a_config.linkname = "Ondřej Žižka";
+            a2a_config.linkurl = "https://www.zizka.ch/";
+            a2a_config.num_services = 18;
+        </script>
+        <script async src="https://static.addtoany.com/menu/page.js"></script>
+        <!-- AddToAny END -->
+
+        <div style="clear: both; height: 1ex;"></div>
 
         <!-- Facebook comments -->
-                    <div class="fb-comments" data-href="https://www.zizka.ch/pages/programovani/java/maven/how-to-add-existing-project-jar-to-maven-repository.html" data-width="800" data-numposts="5"></div>
+            <div class="fb-comments" data-href="https://www.zizka.ch/pages/programovani/java/maven/how-to-add-existing-project-jar-to-maven-repository.html" data-width="900" data-numposts="5"></div>
 
     </div>
     <div id="push"></div>

@@ -72,13 +72,13 @@ Implementation project - Ondřej Žižka</title>
     </div>
     <div class="container">
 
-    <div class="document-post">
+    <div class="document document-post">
         <div class="page-header">
             <h1>JTexy! – Texy! Java
 Implementation project</h1>
         </div>
         <div class="date"><em>2012-12-16</em></div>
-        <div class="doc-body"><h2 id="toc-jtexy-texy-java-implementation-project">JTexy! – Texy! Java
+        <div class="doc-body"><div><h2 class=" jbakeExtractedTitle" id="toc-jtexy-texy-java-implementation-project">JTexy! – Texy! Java
 Implementation project</h2>
 
 <p>I am about to port <a href="http://www.texy.info/">Texy!</a> to Java.</p>
@@ -89,8 +89,7 @@ placeholder.</p>
 <p>Texy! author, David Grudl, created a test suite of several Texy! formatted
 files, which can be used to validate the implementation.</p>
 
-<p>Available at <a
-href="http://download.texy.info/refs.zip">http://download.texy.info/refs.zip</a>
+<p>Available at <a href="http://download.texy.info/refs.zip">http://download.texy.info/refs.zip</a>
 .</p>
 
 <h3 id="toc-notes">Notes…</h3>
@@ -99,20 +98,17 @@ href="http://download.texy.info/refs.zip">http://download.texy.info/refs.zip</a>
 no – JDK6's regular expressions do not support recursion :(</h4>
 
 <p>I am looking for a Java regexp lib with support for recursion, like:
-<code>&lt;a+(?0)&gt;</code>. See <a
-href="http://www.php.net/manual/en/regexp.reference.recursive.php">http://www.php.net/…ecursive.php</a>.
+<code>&lt;a+(?0)&gt;</code>. See <a href="http://www.php.net/manual/en/regexp.reference.recursive.php">http://www.php.net/…ecursive.php</a>.
 I need it for this expression:</p>
 
-<pre
-class="lang-regex brush: regex">(?:mUi)^/--++ *+(.*)(?: *(?&lt;= |^)\\.((?:\\([^)\\n]+\\)|\\[[^\\]\\n]+\\]|\\{[^}\\n]+\\}|&lt;&gt;|&gt;|=|&lt;){1,4}?))?$((?:\\n.*+)*)(?:\\n(?0)|\\n\\\\--.*$|\\z)</pre>
+<pre class="lang-regex brush: regex">(?:mUi)^/--++ *+(.*)(?: *(?&lt;= |^)\\.((?:\\([^)\\n]+\\)|\\[[^\\]\\n]+\\]|\\{[^}\\n]+\\}|&lt;&gt;|&gt;|=|&lt;){1,4}?))?$((?:\\n.*+)*)(?:\\n(?0)|\\n\\\\--.*$|\\z)</pre>
 
 <p>JDK does not support it, ORO does neither, nor Stevesoft Pat does.</p>
 
 <h4 id="toc-dev-java-net-is-sooooo-slooow"><code>dev.java.net</code> is sooooo
 slooow…</h4>
 
-<p>Gone to Google Code: <a
-href="http://code.google.com/p/jtexy/">http://code.google.com/p/jtexy/</a></p>
+<p>Gone to Google Code: <a href="http://code.google.com/p/jtexy/">http://code.google.com/p/jtexy/</a></p>
 
 <h4 id="toc-what-s-the-relation-between-oro-and-jakarta-regexp">What's the
 relation between ORO and Jakarta Regexp?</h4>
@@ -123,11 +119,9 @@ Regexp PERL compatible? ORO claims so, Regexp does not.</p>
 <h4 id="toc-parsing-core-texyparser-php-152">Parsing core: TexyParser.php @
 152</h4>
 
-<p><a
-href="http://php.net/manual/en/function.preg-match-all.php">PHP's preg_mat­ch_all</a></p>
+<p><a href="http://php.net/manual/en/function.preg-match-all.php">PHP's preg_mat­ch_all</a></p>
 
-<pre
-class="lang-php brush: php">// parse loop
+<pre class="lang-php brush: php">// parse loop
 $matches = array();
 $priority = 0;
 foreach ($this-&gt;patterns as $name =&gt; $pattern)
@@ -159,45 +153,33 @@ breadth-first).</p>
 
 <blockquote>
 	<p>You could also make ALL the quantifiers in a regular expression
-	„ungreedy“ by using the U modifier. <a
-	href="http://www.skdevelopment.com/php-regular-expressions.php">http://www.skdevelopment.com/…ressions.php</a></p>
+	„ungreedy“ by using the U modifier. <a href="http://www.skdevelopment.com/php-regular-expressions.php">http://www.skdevelopment.com/…ressions.php</a></p>
 </blockquote>
 
 <h4 id="toc-aaaaaaaaaa"><strong>AAAAaaaaaa!</strong></h4>
 
-<p>No Java library supports global ungreediness! :-((<br />
-* <a
-href="http://stackoverflow.com/questions/1552198/java-regexp-ungreedy-flag">StackOverflow
-post:</a><br />
+<p>No Java library supports global ungreediness! :-((<br/>
+* <a href="http://stackoverflow.com/questions/1552198/java-regexp-ungreedy-flag">StackOverflow
+post:</a><br/>
 * <a href="http://forums.sun.com/thread.jspa?threadID=730126">Java forums
-post:</a><br />
-* <a
-href="http://forums.sun.com/thread.jspa?messageID=10836887&amp;#10836887">Java
-forums archive:</a><br />
-* Ales Novak – ales A netbeans.com<br />
-* java.util.regex JavaDoc: <a
-href="http://java.sun.com/javase/7/docs/api/java/util/regex/Pattern.html">http://java.sun.com/…Pattern.html</a><br
-/>
-* java.util.regex tester: <a
-href="http://www.regexplanet.com/simple/index.html">http://www.regexplanet.com/…e/index.html</a></p>
+post:</a><br/>
+* <a href="http://forums.sun.com/thread.jspa?messageID=10836887&amp;#10836887">Java
+forums archive:</a><br/>
+* Ales Novak – ales A netbeans.com<br/>
+* java.util.regex JavaDoc: <a href="http://java.sun.com/javase/7/docs/api/java/util/regex/Pattern.html">http://java.sun.com/…Pattern.html</a><br/>
+* java.util.regex tester: <a href="http://www.regexplanet.com/simple/index.html">http://www.regexplanet.com/…e/index.html</a></p>
 
 <h4 id="toc-promising-clues">Promising clues:</h4>
 
-<p>* OpenJDK should support LAZY<br />
-* There's a PHP port to Java: <a
-href="http://www.java2s.com/Open-Source/Java-Document/EJB-Server-resin-3.1.5/quercus/com/caucho/quercus/lib/regexp/JavaRegexpModule.java.java-doc.htm">http://www.java2s.com/…java-doc.htm</a><br
-/>
-* I could hack the JDK code: <a
-href="http://hg.openjdk.java.net/jdk7/2d/jdk/file/3b6d7e15ccd9/src/share/classes/java/util/regex/Pattern.java">http://hg.openjdk.java.net/…Pattern.java</a><br
-/>
-* <a
-href="http://hg.openjdk.java.net/jdk7/2d/jdk/file/3b6d7e15ccd9/src/share/classes/java/util/regex/Pattern.java">http://hg.openjdk.java.net/…Pattern.java</a><br
-/>
+<p>* OpenJDK should support LAZY<br/>
+* There's a PHP port to Java: <a href="http://www.java2s.com/Open-Source/Java-Document/EJB-Server-resin-3.1.5/quercus/com/caucho/quercus/lib/regexp/JavaRegexpModule.java.java-doc.htm">http://www.java2s.com/…java-doc.htm</a><br/>
+* I could hack the JDK code: <a href="http://hg.openjdk.java.net/jdk7/2d/jdk/file/3b6d7e15ccd9/src/share/classes/java/util/regex/Pattern.java">http://hg.openjdk.java.net/…Pattern.java</a><br/>
+* <a href="http://hg.openjdk.java.net/jdk7/2d/jdk/file/3b6d7e15ccd9/src/share/classes/java/util/regex/Pattern.java">http://hg.openjdk.java.net/…Pattern.java</a><br/>
 * 2721 private void addFlag(), 2760 private void subFlag()</p>
 
 <h4 id="toc-preg-match-all"><code>preg_match_all()</code>:</h4>
 
-<p>Is this the same as multiple calls to <code>preg_match()</code>?<br />
+<p>Is this the same as multiple calls to <code>preg_match()</code>?<br/>
 → <code>preg_match()</code> returns the number of times pattern matches. That
 will be either 0 times (no match) or 1 time because <code>preg_match()</code>
 will stop searching after the first match. <code>preg_match_all()</code> on the
@@ -207,8 +189,8 @@ contrary will continue until it reaches the end of subject.</p>
 
 <h4 id="toc-need-to-re-design">Need to re-design…</h4>
 
-<p>Original design is, despite of author's credits,… not perfect.<br />
-* The way modules are registered<br />
+<p>Original design is, despite of author's credits,… not perfect.<br/>
+* The way modules are registered<br/>
 * and whole callback system</p>
 
 <h4 id="toc-questions">Questions</h4>
@@ -249,8 +231,7 @@ higher priority? <em>No, the other way.</em></p>
 	<p><strong>1) Zavést třídu pro patterny; handlery uložit k patternům
 	rovnou jako referenci funkce.</strong></p>
 
-	<pre
-	class="lang-php brush: php">public class RegexpInfo {
+	<pre class="lang-php brush: php">public class RegexpInfo {
 
         public String name;
         public String perlRegexp;
@@ -270,8 +251,7 @@ higher priority? <em>No, the other way.</em></p>
 	pole objektů, místo pole polí (… polí polí, jak je zvykem
 	v PHP).</strong></p>
 
-	<pre
-	class="lang-php brush: php">class ParserMatchInfo implements Comparable&lt;ParserMatchInfo&gt;
+	<pre class="lang-php brush: php">class ParserMatchInfo implements Comparable&lt;ParserMatchInfo&gt;
 {
         public final RegexpInfo pattern;
         public final List&lt;MatchWithOffset&gt; groups;
@@ -283,16 +263,15 @@ higher priority? <em>No, the other way.</em></p>
 	<code>cmp()</code>.</p>
 
 	<p><strong>3) Při vytváření objektu s informacemi o matchnutí rovnou
-	uložit referenci na použitý patten, místo jeho jména.</strong><br />
+	uložit referenci na použitý patten, místo jeho jména.</strong><br/>
 	Zaprvé se tak ušetří jeden lookup, zadruhé to zpřehlední kód.</p>
 
 	<p><strong>4) V názvech proměnných zavést pojem <code>group</code> pro
 	skupiny matchnutí reg. výrazu. „Match“ ponechat pro celý
-	match.</strong><br />
+	match.</strong><br/>
 	Aneb:</p>
 
-	<pre
-	class="lang-php brush: php">preg_match_all( $pattern['pattern'],  $text,  $ms,  PREG_SET_ORDER );
+	<pre class="lang-php brush: php">preg_match_all( $pattern['pattern'],  $text,  $ms,  PREG_SET_ORDER );
 $matches[0];    // --&gt; First match
 $matches[0][0]; // --&gt; Group - matched text of the whole first match.
 $matches[0][1]; // --&gt; First sub-group of the first match.</pre>
@@ -305,7 +284,7 @@ $matches[0][1]; // --&gt; First sub-group of the first match.</pre>
 	<p>**6) Zavést třídu ParserEvent, dědit od ní a tyto používat pro model
 	událostí.</p>
 
-	<hr />
+	<hr/>
 
 	<p>Jsou to všechno interní věci, takže to nikoho moc netrápí, ale když
 	už je to ten opensource a někdo by to mohl chtít časem hackovat… ;-)</p>
@@ -351,13 +330,13 @@ release.</p>
 <p>Regex: „.*foo“ with UNGREEDY flag or „(?U).*foo“ String:
 „AAAfooBBBfoo“</p>
 
-<p>Desired result:<br />
-group(1): AAAfoo<br />
+<p>Desired result:<br/>
+group(1): AAAfoo<br/>
 group(2): BBBfoo</p>
 
 <h4 id="toc-actual-behavior">Actual Behavior:</h4>
 
-<p>Current result:<br />
+<p>Current result:<br/>
 group(1): AAAfooBBBfoo</p>
 
 <h4 id="toc-source-code-for-an-executable-test-case">Source code for an
@@ -376,7 +355,7 @@ pattern.matcher(in­putStr);</p>
 
 <h4 id="toc-user-info">User Info</h4>
 
-<p><a href="mailto:ozizka&#64;redhat.com">ozizka&#64;<!-- -->redhat.com</a></p>
+<p><a href="mailto:ozizka@redhat.com">ozizka@<!-- -->redhat.com</a></p>
 
 <h3 id="toc-java-implementace-prekladace-texy">Java implementace překladače
 Texy!</h3>
@@ -396,36 +375,60 @@ zatím jen pro PHP.</p>
 	<p>Java komunita by vás jistě oslavovala :-)</p>
 	Ondra</blockquote>
 
-<hr />
+<hr/>
 
 <blockquote>
 	<p>Autor Texy David Grudl sestavil sadu testovacích souborů, na kterých lze
-	ověřit implementaci překladače. K dispozici na <a
-	href="http://download.texy.info/refs.zip">http://download.texy.info/refs.zip</a></p>
+	ověřit implementaci překladače. K dispozici na <a href="http://download.texy.info/refs.zip">http://download.texy.info/refs.zip</a></p>
 
 	<p>Algou a omegou původní PHP imiplementace jsou PCRE. Knihovna pro Javu,
-	která zvládá PCRE podle Perl 5, je na <a
-	href="http://jakarta.apache.org/oro/">http://jakarta.apache.org/oro/</a> .</p>
+	která zvládá PCRE podle Perl 5, je na <a href="http://jakarta.apache.org/oro/">http://jakarta.apache.org/oro/</a> .</p>
 
 	<p>Ondra Žižka</p>
 </blockquote>
-</div>
+</div></div>
 
-        <!-- Rating widget -->
-        <div class="rw-ui-container"></div>
     </div>
-
     <hr />
+    <!-- Rating widget -->
+    <div class="rw-ui-container"></div>
 
 
-        <!--sharexy code start--><div id='shr_723771'><script type='text/javascript'>(function(w) { if (!w.SharexyWidget) { w.SharexyWidget = {};} if (!w.SharexyWidget.Params) { w.SharexyWidget.Params = {}; }
-        w.SharexyWidget.Params['723771'] = {'code_id':'723771','publisher_key':'undefined','design':'classic','layout_static':'h','type':'st','mode_float':'','size_float':'55','size_static':'55','buzz':'1',
-            'services':['facebook', 'google_plus', 'twitter', 'linkedin', 'reddit', 'buffer', 'pocket', 'print_page'],
-            'url':'current','allways_show_ads':'0','show_ads_sharing':'0','show_ads_cursor':'0','bg_float':'1','bg_color':'#ffffff','labels':'','counters':'0', 'counters_float':'0'} })(window);</script>
-        <script type='text/javascript' src='http://shuttle.sharexy.com/LoaderLite.js'></script></div><a href='http://sharexy.com/'><img src='http://sharexy.com/statpixel.png' style='border: 0' /></a><!--sharexy code end   -->
+        
+        <!-- AddToAny BEGIN -->
+        <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+            <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+            <a class="a2a_button_facebook"></a>
+            <a class="a2a_button_twitter"></a>
+            <a class="a2a_button_google_plus"></a>
+            <a class="a2a_button_google_bookmarks"></a>
+            <a class="a2a_button_google_classroom"></a>
+            <a class="a2a_button_linkedin"></a>
+            <a class="a2a_button_reddit"></a>
+            <a class="a2a_button_buffer"></a>
+            <a class="a2a_button_trello"></a>
+            <a class="a2a_button_slashdot"></a>
+            <a class="a2a_button_hacker_news"></a>
+            <a class="a2a_button_dzone"></a>
+            <a class="a2a_button_pinterest"></a>
+            <a class="a2a_button_vk"></a>
+            <a class="a2a_button_digg"></a>
+            <a class="a2a_button_copy_link"></a>
+            <a class="a2a_button_pocket"></a>
+        </div>
+        <script>
+            var a2a_config = a2a_config || {};
+            a2a_config.linkname = "Ondřej Žižka";
+            a2a_config.linkurl = "https://www.zizka.ch/";
+            a2a_config.num_services = 18;
+        </script>
+        <script async src="https://static.addtoany.com/menu/page.js"></script>
+        <!-- AddToAny END -->
+
+        <div style="clear: both; height: 1ex;"></div>
 
         <!-- Facebook comments -->
-                    <div class="fb-comments" data-href="https://www.zizka.ch/pages/programovani/java/texy_java_implementation.html" data-width="800" data-numposts="5"></div>
+            <div class="fb-comments" data-href="https://www.zizka.ch/pages/programovani/java/texy_java_implementation.html" data-width="900" data-numposts="5"></div>
 
     </div>
     <div id="push"></div>

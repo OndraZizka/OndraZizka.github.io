@@ -72,13 +72,13 @@ Library - Ondřej Žižka</title>
     </div>
     <div class="container">
 
-    <div class="document-post">
+    <div class="document document-post">
         <div class="page-header">
             <h1>MySQL Stored Procedures
 Library</h1>
         </div>
         <div class="date"><em>2012-12-13</em></div>
-        <div class="doc-body"><h2 id="toc-mysql-stored-procedures-library">MySQL Stored Procedures
+        <div class="doc-body"><div><h2 class=" jbakeExtractedTitle" id="toc-mysql-stored-procedures-library">MySQL Stored Procedures
 Library</h2>
 
 <p>Solution of common elementary tasks that MySQL does not solve natively.</p>
@@ -90,9 +90,7 @@ and functions, which ease the developement of procedures for MySQL and somebody
 could find it handy. So I publish them here.</p>
 
 <p>The goal of this library is not to force MySQL to be as much Perl-ish as
-possible (nothing against Perl itself and nothing against <a
-href="http://datacharmer.blogspot.com/">Giuseppe Maxia</a>'s <a
-href="http://mysql-sr-lib.sourceforge.net/">MySQL General Purpose Stored
+possible (nothing against Perl itself and nothing against <a href="http://datacharmer.blogspot.com/">Giuseppe Maxia</a>'s <a href="http://mysql-sr-lib.sourceforge.net/">MySQL General Purpose Stored
 Routines Library</a>). That is, by the way, a reason why do I not implement any
 „array“ (means hash) stuff</p>
 
@@ -136,8 +134,7 @@ should anyone bother with another vast non-standard API? Thus, anything that
 could be done easily with existing MySQL's tools is left outside the scope of
 this library.</p>
 
-<p>I do not use the support of <acronym
-title="User Defined Functions">UDFs</acronym> (not that I would not like to).
+<p>I do not use the support of <acronym title="User Defined Functions">UDFs</acronym> (not that I would not like to).
 Most hosting providers are not likely compile/install custom C code into their
 production MySQL server.</p>
 
@@ -154,8 +151,7 @@ support for direct passing the result set between procedures, I've got used to a
 custom of storing the result into a TEMPORARY TABLE named exactly like the
 procedure name. E.g:</p>
 
-<pre
-class="brush: lang-sql brush: sql">CALL lib_Explode(',', 'coma, separated, data, 3.14');
+<pre class="brush: lang-sql brush: sql">CALL lib_Explode(',', 'coma, separated, data, 3.14');
 SELECT * FROM lib_Explode;
 DROP TEMPORARY TABLE IF EXISTS lib_Explode; -- Optional, read below.</pre>
 
@@ -215,7 +211,7 @@ the code this way:</p>
 ...
 END; $$</pre>
 
-<p>The code may be cluttered with some debug calls commented out.<br />
+<p>The code may be cluttered with some debug calls commented out.<br/>
 Generally, procedures should be bug-free, as I use them quite much.</p>
 
 <h3 id="toc-stored-procedures-library-categories">Stored procedures library
@@ -264,19 +260,17 @@ categories</h3>
 	coordinates between geographic coordinate systems, compute distances between
 	places on earth. (Not available yet).</li>
 </ul>
-<a name="Logging"></a>
+<a name="Logging"/>
 <h3 id="toc-logging">Logging</h3>
 
-<pre
-class="brush: lang-sql brush: sql">CREATE TABLE lib_logg (
+<pre class="brush: lang-sql brush: sql">CREATE TABLE lib_logg (
   `whn` datetime NOT NULL,
   `thread` int(10) unsigned NOT NULL,
   `level` enum('info','warn','error') NOT NULL default 'info',
   `str` text NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;</pre>
 
-<pre
-class="brush: lang-sql brush: sql">DELIMITER $$
+<pre class="brush: lang-sql brush: sql">DELIMITER $$
 CREATE PROCEDURE  Logg( sStr TEXT ) BEGIN
   INSERT DELAYED INTO lib_logg SET str = sStr, whn = NOW(), thread = CONNECTION_ID();
 END; $$
@@ -301,17 +295,15 @@ END $$
 CREATE PROCEDURE LoggLeave(sRout VARCHAR(255)) BEGIN
  INSERT INTO lib_logg SET rout = sRout, level='leave', str = NULL, whn = NOW(), thread = CONNECTION_ID();
 END $$</pre>
-<a name="String_functions"></a>
+<a name="String_functions"/>
 <h3 id="toc-string-functions">String functions</h3>
 
-<h4
-id="toc-lib-explode-similar-to-php-s-explode"><code>lib_Explode()</code> –
+<h4 id="toc-lib-explode-similar-to-php-s-explode"><code>lib_Explode()</code> –
 similar to PHP's <code>Explode()</code></h4>
 
 <p><strong>Usage:</strong></p>
 
-<pre
-class="brush: lang-sql brush: sql">CALL lib_Explode( ',' ,  'Ahoj, jak se máte, 212' );</pre>
+<pre class="brush: lang-sql brush: sql">CALL lib_Explode( ',' ,  'Ahoj, jak se máte, 212' );</pre>
 
 <p><strong>Result:</strong></p>
 
@@ -347,8 +339,7 @@ class="brush: lang-sql brush: sql">CALL lib_Explode( ',' ,  'Ahoj, jak se máte,
 
 <p><strong>Source code:</strong></p>
 
-<pre
-class="brush: lang-sql brush: sql">CREATE PROCEDURE lib_Explode( sSepar VARCHAR(255), saVal TEXT )
+<pre class="brush: lang-sql brush: sql">CREATE PROCEDURE lib_Explode( sSepar VARCHAR(255), saVal TEXT )
 body:
 BEGIN
 
@@ -380,8 +371,7 @@ END; $$</pre>
 is, PHP's <code>explode()</code> equivalent, see MySQL's „aggregate
 functioni“ <code>GROUP_CONCAT()</code>:</p>
 
-<pre
-class="brush: lang-sql brush: sql">CALL lib_GenerateSequence( 5, 15, 2 );
+<pre class="brush: lang-sql brush: sql">CALL lib_GenerateSequence( 5, 15, 2 );
 SELECT GROUP_CONCAT(i SEPARATOR ' a ') AS vysledek FROM lib_GenerateSequence;</pre>
 
 <p>Výsledek:</p>
@@ -408,8 +398,7 @@ replace strings <code>{1}</code> to <code>{6}</code>.</p>
 
 <p><strong>Usage:</strong></p>
 
-<pre
-class="brush: lang-sql brush: sql">SELECT F2( 'Ve městě {1} je {2} stupňů.', 'Praha', 31.2 ) FROM DUAL;</pre>
+<pre class="brush: lang-sql brush: sql">SELECT F2( 'Ve městě {1} je {2} stupňů.', 'Praha', 31.2 ) FROM DUAL;</pre>
 
 <p><strong>Result:</strong></p>
 
@@ -423,8 +412,7 @@ class="brush: lang-sql brush: sql">SELECT F2( 'Ve městě {1} je {2} stupňů.',
 
 <p><strong>Source code:</strong></p>
 
-<pre
-class="brush: lang-sql brush: sql">CREATE FUNCTION  F1 ( sFormat TEXT, sPar1 TEXT )
+<pre class="brush: lang-sql brush: sql">CREATE FUNCTION  F1 ( sFormat TEXT, sPar1 TEXT )
     RETURNS text CHARSET utf8 BEGIN
   RETURN REPLACE(sFormat, '%s', sPar1);
 END; $$
@@ -456,7 +444,7 @@ CREATE FUNCTION  F6 ( sFormat TEXT, sPar1 TEXT, sPar2 TEXT,  sPar3 TEXT,
   RETURN REPLACE( REPLACE( REPLACE( REPLACE( REPLACE( REPLACE( sFormat,
     '{1}', sPar1), '{2}', sPar2), '{3}', sPar3), '{4}', sPar4), '{5}', sPar5), '{6}', sPar6);
 END; $$</pre>
-<a name="NULL-safe_functions"></a>
+<a name="NULL-safe_functions"/>
 <h3 id="toc-null-safe-functions">NULL-safe functions</h3>
 
 <p>Somethimes you need to ensure that no parameter of a function is
@@ -487,13 +475,11 @@ Otherwise returns:</p>
 
 <p><strong>Usage:</strong></p>
 
-<pre
-class="brush: lang-sql brush: sql">CALL Logg( F1('Computing level %s.', NS(@iLevel)) )</pre>
+<pre class="brush: lang-sql brush: sql">CALL Logg( F1('Computing level %s.', NS(@iLevel)) )</pre>
 
 <p><strong>Source code:</strong></p>
 
-<pre
-class="brush: lang-sql brush: sql">CREATE FUNCTION NS( s VARCHAR(255) )
+<pre class="brush: lang-sql brush: sql">CREATE FUNCTION NS( s VARCHAR(255) )
 RETURNS varchar(255) CHARSET utf8 BEGIN
   RETURN IF( s IS NULL, 'NULL', CONCAT('"',s,'"') );
 END $$
@@ -507,17 +493,15 @@ CREATE FUNCTION NSQ(s VARCHAR(255)) RETURNS varchar(255)
 CHARSET utf8 NO SQL DETERMINISTIC BEGIN
   RETURN IF( s IS NULL, 'NULL', CONCAT('"',s,'"') );
 END  $$</pre>
-<a name="Utilities"></a>
+<a name="Utilities"/>
 <h3 id="toc-utilities">Utilities</h3>
 
-<h4
-id="toc-lib-generatesequence-linear-sequence-generator">lib_GenerateSe­quence –
+<h4 id="toc-lib-generatesequence-linear-sequence-generator">lib_GenerateSe­quence –
 linear sequence generator</h4>
 
 <p><strong>Usage:</strong></p>
 
-<pre
-class="brush: lang-sql brush: sql">CALL lib_GenerateSequence( 5, 15, 2 )</pre>
+<pre class="brush: lang-sql brush: sql">CALL lib_GenerateSequence( 5, 15, 2 )</pre>
 
 <p><strong>Result:</strong></p>
 
@@ -557,8 +541,7 @@ class="brush: lang-sql brush: sql">CALL lib_GenerateSequence( 5, 15, 2 )</pre>
 
 <p><strong>Source code:</strong></p>
 
-<pre
-class="brush: lang-sql brush: sql">DELIMITER $$
+<pre class="brush: lang-sql brush: sql">DELIMITER $$
 
 CREATE PROCEDURE lib_GenerateSequence(
   iFrom INTEGER, iTo INTEGER, iStep INTEGER )
@@ -584,22 +567,19 @@ BEGIN
 
 END; $$</pre>
 
-<h4
-id="toc-lib-temporarytablehascolumns-stable-sacolumns-out-bool-bhas-temp-table-checking">lib_Temporary­TableHasColum­ns(
+<h4 id="toc-lib-temporarytablehascolumns-stable-sacolumns-out-bool-bhas-temp-table-checking">lib_Temporary­TableHasColum­ns(
 sTable, saColumns, OUT BOOL bHas ) – TEMP TABLE checking</h4>
 
 <p>Checks whether a TEMP TABLE exists and has the given columns.</p>
 
 <p><strong>Usage:</strong></p>
 
-<pre
-class="brush: lang-sql brush: sql">CALL lib_TemporaryTableHasColumns('table', 'col1,col2,col3', @bHas);
+<pre class="brush: lang-sql brush: sql">CALL lib_TemporaryTableHasColumns('table', 'col1,col2,col3', @bHas);
 SELECT @bHas;</pre>
 
 <p><strong>Source code:</strong></p>
 
-<pre
-class="brush: lang-sql brush: sql">CREATE lib_TemporaryTableHasColumns (
+<pre class="brush: lang-sql brush: sql">CREATE lib_TemporaryTableHasColumns (
   IN sTable VARCHAR(255), IN saColumns VARCHAR(255), OUT bHas BOOLEAN)
 BEGIN
 
@@ -632,8 +612,7 @@ BEGIN
 
 END $$</pre>
 
-<h4
-id="toc-lib-raiseerror-similar-to-raiseerror-in-other-dbs"><code>lib_RaiseError()</code> –
+<h4 id="toc-lib-raiseerror-similar-to-raiseerror-in-other-dbs"><code>lib_RaiseError()</code> –
 Similar to <code>RaiseError()</code> in other DBs</h4>
 
 <p>Raises an error („throws an exception“) with a message containing the
@@ -641,14 +620,12 @@ given string.</p>
 
 <p><strong>Usage:</strong></p>
 
-<pre
-class="brush: lang-sql brush: sql">CALL lib_RaiseError('Disaster!');
+<pre class="brush: lang-sql brush: sql">CALL lib_RaiseError('Disaster!');
 ##  Says:   PROCEDURE neural_network.error: Disaster! You're doomed, solution does not exist</pre>
 
 <p><strong>Source code:</strong></p>
 
-<pre
-class="brush: lang-sql brush: sql">CREATE DEFINER=`root`@`localhost` PROCEDURE `lib_RaiseError`( sError VARCHAR(255) )
+<pre class="brush: lang-sql brush: sql">CREATE DEFINER=`root`@`localhost` PROCEDURE `lib_RaiseError`( sError VARCHAR(255) )
 BEGIN
   ## PROCEDURE neural_network.Ahoj lidi does not exist
   CALL ExecuteQuery(F1('CALL `error: %s   You\'re doomed, solution`', sError));
@@ -656,23 +633,49 @@ BEGIN
   ##  Usage:
 
 END $$</pre>
-</div>
+</div></div>
 
-        <!-- Rating widget -->
-        <div class="rw-ui-container"></div>
     </div>
-
     <hr />
+    <!-- Rating widget -->
+    <div class="rw-ui-container"></div>
 
 
-        <!--sharexy code start--><div id='shr_723771'><script type='text/javascript'>(function(w) { if (!w.SharexyWidget) { w.SharexyWidget = {};} if (!w.SharexyWidget.Params) { w.SharexyWidget.Params = {}; }
-        w.SharexyWidget.Params['723771'] = {'code_id':'723771','publisher_key':'undefined','design':'classic','layout_static':'h','type':'st','mode_float':'','size_float':'55','size_static':'55','buzz':'1',
-            'services':['facebook', 'google_plus', 'twitter', 'linkedin', 'reddit', 'buffer', 'pocket', 'print_page'],
-            'url':'current','allways_show_ads':'0','show_ads_sharing':'0','show_ads_cursor':'0','bg_float':'1','bg_color':'#ffffff','labels':'','counters':'0', 'counters_float':'0'} })(window);</script>
-        <script type='text/javascript' src='http://shuttle.sharexy.com/LoaderLite.js'></script></div><a href='http://sharexy.com/'><img src='http://sharexy.com/statpixel.png' style='border: 0' /></a><!--sharexy code end   -->
+        
+        <!-- AddToAny BEGIN -->
+        <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+            <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+            <a class="a2a_button_facebook"></a>
+            <a class="a2a_button_twitter"></a>
+            <a class="a2a_button_google_plus"></a>
+            <a class="a2a_button_google_bookmarks"></a>
+            <a class="a2a_button_google_classroom"></a>
+            <a class="a2a_button_linkedin"></a>
+            <a class="a2a_button_reddit"></a>
+            <a class="a2a_button_buffer"></a>
+            <a class="a2a_button_trello"></a>
+            <a class="a2a_button_slashdot"></a>
+            <a class="a2a_button_hacker_news"></a>
+            <a class="a2a_button_dzone"></a>
+            <a class="a2a_button_pinterest"></a>
+            <a class="a2a_button_vk"></a>
+            <a class="a2a_button_digg"></a>
+            <a class="a2a_button_copy_link"></a>
+            <a class="a2a_button_pocket"></a>
+        </div>
+        <script>
+            var a2a_config = a2a_config || {};
+            a2a_config.linkname = "Ondřej Žižka";
+            a2a_config.linkurl = "https://www.zizka.ch/";
+            a2a_config.num_services = 18;
+        </script>
+        <script async src="https://static.addtoany.com/menu/page.js"></script>
+        <!-- AddToAny END -->
+
+        <div style="clear: both; height: 1ex;"></div>
 
         <!-- Facebook comments -->
-                    <div class="fb-comments" data-href="https://www.zizka.ch/pages/programovani/sql/mysql_stored_procedures.html" data-width="800" data-numposts="5"></div>
+            <div class="fb-comments" data-href="https://www.zizka.ch/pages/programovani/sql/mysql_stored_procedures.html" data-width="900" data-numposts="5"></div>
 
     </div>
     <div id="push"></div>

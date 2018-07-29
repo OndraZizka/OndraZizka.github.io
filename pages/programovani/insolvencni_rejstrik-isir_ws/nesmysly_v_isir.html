@@ -72,18 +72,17 @@ webové služby Insolvenčním rejstříku - Ondřej Žižka</title>
     </div>
     <div class="container">
 
-    <div class="document-post">
+    <div class="document document-post">
         <div class="page-header">
             <h1>Nedomyšlenost
 webové služby Insolvenčním rejstříku</h1>
         </div>
         <div class="date"><em>2012-12-16</em></div>
-        <div class="doc-body"><h2 id="toc-nedomyslenost-webove-sluzby-insolvencnim-rejstriku">Nedomyšlenost
+        <div class="doc-body"><div><h2 class=" jbakeExtractedTitle" id="toc-nedomyslenost-webove-sluzby-insolvencnim-rejstriku">Nedomyšlenost
 webové služby Insolvenčním rejstříku</h2>
 
 <p>S webovou službou Insolvenčního rejstříku pracuji již asi měsíc, ale
-stále nevycházím z údivu, jak hloupá tato služba je. Již jsem psal o <a
-href="index.texy">prapodivném konceptu celé webové služby</a>, ale jak je
+stále nevycházím z údivu, jak hloupá tato služba je. Již jsem psal o <a href="index.texy">prapodivném konceptu celé webové služby</a>, ale jak je
 vidět, oním článkem jsem popis jejích velice četných nedostatků ještě
 zdaleka nevyčerpal.</p>
 
@@ -98,8 +97,7 @@ Insolvenční rejstřík funguje jako internetový záznam událostí, které se
 staly během existence systému ISIR. To znamená, že nežádáte
 o konkrétní informace, ale výstup tohoto typu:</p>
 
-<pre
-class="brush: lang-xml brush: xml">&lt;tns:udalost ... &gt;
+<pre class="brush: lang-xml brush: xml">&lt;tns:udalost ... &gt;
   &lt;info cas="2008-01-22 00:00:00.0" id="2644" oddil="A" poradi="1" typ="6"
          typ_text="Insolvenční návrh spojený s návrhem na povolení oddlužení"/&gt;
   &lt;idOsobyPuvodce&gt;KSVYCHK&lt;/idOsobyPuvodce&gt;
@@ -143,8 +141,7 @@ jindy událostí typu <code>5 - Insolvenční návrh</code>, a jindy zase typu
 
 <p>Dále vám přijde událost s osobou:</p>
 
-<pre
-class="brush: lang-xml brush: xml">&lt;tns:udalost&gt;
+<pre class="brush: lang-xml brush: xml">&lt;tns:udalost&gt;
   &lt;info cas="2008-02-18 00:00:00.0" id="7859" oddil="" poradi="-1" typ="1" typ_text="Změna osoby"/&gt;
   &lt;idOsobyPuvodce&gt;KSJICCB&lt;/idOsobyPuvodce&gt;
     &lt;osoba&gt;
@@ -159,8 +156,7 @@ class="brush: lang-xml brush: xml">&lt;tns:udalost&gt;
 <p>A o chvíli později přide další událost, která se liží <em>pouze
 v ID události</em>!</p>
 
-<pre
-class="brush: lang-xml brush: xml">&lt;tns:udalost&gt;
+<pre class="brush: lang-xml brush: xml">&lt;tns:udalost&gt;
   &lt;info cas="2008-02-18 00:00:00.0" id="7863" oddil="" poradi="-1" typ="1" typ_text="Změna osoby"/&gt;
   &lt;idOsobyPuvodce&gt;KSJICCB&lt;/idOsobyPuvodce&gt;
   &lt;osoba&gt;
@@ -192,8 +188,7 @@ nicneříkající události</h3>
 <p>Velká spousta (ne-li většina) události nenesou jakoukoliv použitelnou
 informaci. Jako příklad vezměme třeba tuto:</p>
 
-<pre
-class="brush: lang-xml brush: xml">&lt;tns:udalost ... &gt;
+<pre class="brush: lang-xml brush: xml">&lt;tns:udalost ... &gt;
   &lt;info cas="2008-02-18 00:00:00.0" id="7865" oddil="A" poradi="2" typ="23" typ_text="Návrh - přílohy"/&gt;
   &lt;idOsobyPuvodce&gt;KSJICCB&lt;/idOsobyPuvodce&gt;
   &lt;vec&gt; &lt;druhStavRizeni&gt;NEVYRIZENA&lt;/druhStavRizeni&gt; &lt;/vec&gt;
@@ -205,8 +200,7 @@ neobjeví. <em>K čemu je taková událost?</em></p>
 
 <p>Moje naprosto nejoblíbenější událost je typ „Jiné“:</p>
 
-<pre
-class="brush: lang-xml brush: xml">&lt;tns:udalost ... &gt;
+<pre class="brush: lang-xml brush: xml">&lt;tns:udalost ... &gt;
   &lt;info cas="2008-04-04 12:14:48.0" id="29563" oddil="P19" poradi="2" typ="239" typ_text="Jiné"/&gt;
   &lt;idOsobyPuvodce&gt;KSJICCB&lt;/idOsobyPuvodce&gt;
   &lt;vec&gt; &lt;druhStavRizeni&gt;KONKURS&lt;/druhStavRizeni&gt; &lt;/vec&gt;
@@ -217,7 +211,7 @@ zdálo, že jde o tu položku KONKURS, tak nikoliv – ta již je ve spisu od
 přiřazení správce konkursu.</p>
 
 <p>Zde si můžete prohlédnout <a href="isir_spis.htm">typický obsah spisu
-Insolvenčního rejstříku</a> (zde spis <code>INS 116~2008</code>).<br />
+Insolvenčního rejstříku</a> (zde spis <code>INS 116~2008</code>).<br/>
 Další takovéto dokumenty dám zájemcům k dispozici.</p>
 
 <h3 id="toc-nesmysl-treti-chaos-v-datech">Nesmysl třetí: chaos v datech</h3>
@@ -265,23 +259,49 @@ státních zakázek:</p>
 	remcat, jak chtějí, ale dokud nebude zhotovitel nějakým způsobem motivován
 	k tomu, aby byla webová služba kvalitní, do té doby mají smůlu.</li>
 </ul>
-</div>
+</div></div>
 
-        <!-- Rating widget -->
-        <div class="rw-ui-container"></div>
     </div>
-
     <hr />
+    <!-- Rating widget -->
+    <div class="rw-ui-container"></div>
 
 
-        <!--sharexy code start--><div id='shr_723771'><script type='text/javascript'>(function(w) { if (!w.SharexyWidget) { w.SharexyWidget = {};} if (!w.SharexyWidget.Params) { w.SharexyWidget.Params = {}; }
-        w.SharexyWidget.Params['723771'] = {'code_id':'723771','publisher_key':'undefined','design':'classic','layout_static':'h','type':'st','mode_float':'','size_float':'55','size_static':'55','buzz':'1',
-            'services':['facebook', 'google_plus', 'twitter', 'linkedin', 'reddit', 'buffer', 'pocket', 'print_page'],
-            'url':'current','allways_show_ads':'0','show_ads_sharing':'0','show_ads_cursor':'0','bg_float':'1','bg_color':'#ffffff','labels':'','counters':'0', 'counters_float':'0'} })(window);</script>
-        <script type='text/javascript' src='http://shuttle.sharexy.com/LoaderLite.js'></script></div><a href='http://sharexy.com/'><img src='http://sharexy.com/statpixel.png' style='border: 0' /></a><!--sharexy code end   -->
+        
+        <!-- AddToAny BEGIN -->
+        <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+            <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+            <a class="a2a_button_facebook"></a>
+            <a class="a2a_button_twitter"></a>
+            <a class="a2a_button_google_plus"></a>
+            <a class="a2a_button_google_bookmarks"></a>
+            <a class="a2a_button_google_classroom"></a>
+            <a class="a2a_button_linkedin"></a>
+            <a class="a2a_button_reddit"></a>
+            <a class="a2a_button_buffer"></a>
+            <a class="a2a_button_trello"></a>
+            <a class="a2a_button_slashdot"></a>
+            <a class="a2a_button_hacker_news"></a>
+            <a class="a2a_button_dzone"></a>
+            <a class="a2a_button_pinterest"></a>
+            <a class="a2a_button_vk"></a>
+            <a class="a2a_button_digg"></a>
+            <a class="a2a_button_copy_link"></a>
+            <a class="a2a_button_pocket"></a>
+        </div>
+        <script>
+            var a2a_config = a2a_config || {};
+            a2a_config.linkname = "Ondřej Žižka";
+            a2a_config.linkurl = "https://www.zizka.ch/";
+            a2a_config.num_services = 18;
+        </script>
+        <script async src="https://static.addtoany.com/menu/page.js"></script>
+        <!-- AddToAny END -->
+
+        <div style="clear: both; height: 1ex;"></div>
 
         <!-- Facebook comments -->
-                    <div class="fb-comments" data-href="https://www.zizka.ch/pages/programovani/insolvencni_rejstrik-isir_ws/nesmysly_v_isir.html" data-width="800" data-numposts="5"></div>
+            <div class="fb-comments" data-href="https://www.zizka.ch/pages/programovani/insolvencni_rejstrik-isir_ws/nesmysly_v_isir.html" data-width="900" data-numposts="5"></div>
 
     </div>
     <div id="push"></div>

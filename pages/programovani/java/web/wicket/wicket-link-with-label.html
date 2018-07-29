@@ -71,16 +71,16 @@
     </div>
     <div class="container">
 
-    <div class="document-post">
+    <div class="document document-post">
         <div class="page-header">
             <h1>Wicket: Link with a Label</h1>
         </div>
         <div class="date"><em>2012-12-31</em></div>
-        <div class="doc-body"><h2 id="toc-wicket-link-with-a-label">Wicket: Link with a Label</h2>
+        <div class="doc-body"><div><h2 class=" jbakeExtractedTitle" id="toc-wicket-link-with-a-label">Wicket: Link with a Label</h2>
 
 <p>Wicket does not have exactly a „link with label“ component out of the
-box.<br />
-Remember Wicket tries to hide the HTTP from you (and is quite good at it).<br />
+box.<br/>
+Remember Wicket tries to hide the HTTP from you (and is quite good at it).<br/>
 It has a <code>Link</code>, which can react to <code>onClick()</code>, and can
 contain anything (a simple <code>&lt;span&gt;</code> or a whole
 <code>&lt;div&gt;</code> with everything inside).</p>
@@ -88,13 +88,11 @@ contain anything (a simple <code>&lt;span&gt;</code> or a whole
 <p>But some people, me included, would like to have a simple link with text,
 to get:</p>
 
-<pre
-class="brush: lang-html brush: html">&lt;a href="..."&gt;Text&lt;/a&gt;</pre>
+<pre class="brush: lang-html brush: html">&lt;a href="..."&gt;Text&lt;/a&gt;</pre>
 
 <p>To get this, you need to prepare such component:</p>
 
-<pre
-class="brush: lang-java brush: java">public abstract class LinkWithText extends Link {
+<pre class="brush: lang-java brush: java">public abstract class LinkWithText extends Link {
 
     private IModel labelModel;
 
@@ -114,24 +112,20 @@ class="brush: lang-java brush: java">public abstract class LinkWithText extends 
 
 <p>Then you can have:</p>
 
-<pre
-class="brush: lang-html brush: html">&lt;a wicket:id="foo" href="..."&gt;Text&lt;/a&gt;</pre>
+<pre class="brush: lang-html brush: html">&lt;a wicket:id="foo" href="..."&gt;Text&lt;/a&gt;</pre>
 
-<pre
-class="brush: lang-java brush: java">this.add( new LinkWithText("foo", "http://pohlidame.cz/", "Insolven�n� rejst��k - Pohl�d�me.cz") );</pre>
+<pre class="brush: lang-java brush: java">this.add( new LinkWithText("foo", "http://pohlidame.cz/", "Insolven�n� rejst��k - Pohl�d�me.cz") );</pre>
 
-<p>So far, this is achievable with <a
-href="http://stackoverflow.com/questions/3070485/how-to-make-a-wicket-link-appear-as-an-image/3072286#3072286"><code>ExternalLink</code></a>.
+<p>So far, this is achievable with <a href="http://stackoverflow.com/questions/3070485/how-to-make-a-wicket-link-appear-as-an-image/3072286#3072286"><code>ExternalLink</code></a>.
 Now you can combine it with <code>BookmarkablePageLink</code> and make it
 integrated with your mapped bookmarkable pages.</p>
 
-<hr />
+<hr/>
 
 <p>Or this, not as good solution, needing you to put the extra
 <code>&lt;span&gt;</code> inside <code>&lt;a&gt;</code>:</p>
 
-<pre
-class="brush: lang-java brush: java">protected class MenuLink extends Fragment
+<pre class="brush: lang-java brush: java">protected class MenuLink extends Fragment
 {
   public LinkWithLabel(String id, Class&lt;? extends WebPage&gt; targetPage,
 IModel&lt;String&gt; labelModel)
@@ -151,23 +145,49 @@ In your markup, you'll have:
 
 This code is off the top of my head, so there may be some compiler
 errors, but you get the idea.</pre>
-</div>
+</div></div>
 
-        <!-- Rating widget -->
-        <div class="rw-ui-container"></div>
     </div>
-
     <hr />
+    <!-- Rating widget -->
+    <div class="rw-ui-container"></div>
 
 
-        <!--sharexy code start--><div id='shr_723771'><script type='text/javascript'>(function(w) { if (!w.SharexyWidget) { w.SharexyWidget = {};} if (!w.SharexyWidget.Params) { w.SharexyWidget.Params = {}; }
-        w.SharexyWidget.Params['723771'] = {'code_id':'723771','publisher_key':'undefined','design':'classic','layout_static':'h','type':'st','mode_float':'','size_float':'55','size_static':'55','buzz':'1',
-            'services':['facebook', 'google_plus', 'twitter', 'linkedin', 'reddit', 'buffer', 'pocket', 'print_page'],
-            'url':'current','allways_show_ads':'0','show_ads_sharing':'0','show_ads_cursor':'0','bg_float':'1','bg_color':'#ffffff','labels':'','counters':'0', 'counters_float':'0'} })(window);</script>
-        <script type='text/javascript' src='http://shuttle.sharexy.com/LoaderLite.js'></script></div><a href='http://sharexy.com/'><img src='http://sharexy.com/statpixel.png' style='border: 0' /></a><!--sharexy code end   -->
+        
+        <!-- AddToAny BEGIN -->
+        <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+            <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+            <a class="a2a_button_facebook"></a>
+            <a class="a2a_button_twitter"></a>
+            <a class="a2a_button_google_plus"></a>
+            <a class="a2a_button_google_bookmarks"></a>
+            <a class="a2a_button_google_classroom"></a>
+            <a class="a2a_button_linkedin"></a>
+            <a class="a2a_button_reddit"></a>
+            <a class="a2a_button_buffer"></a>
+            <a class="a2a_button_trello"></a>
+            <a class="a2a_button_slashdot"></a>
+            <a class="a2a_button_hacker_news"></a>
+            <a class="a2a_button_dzone"></a>
+            <a class="a2a_button_pinterest"></a>
+            <a class="a2a_button_vk"></a>
+            <a class="a2a_button_digg"></a>
+            <a class="a2a_button_copy_link"></a>
+            <a class="a2a_button_pocket"></a>
+        </div>
+        <script>
+            var a2a_config = a2a_config || {};
+            a2a_config.linkname = "Ondřej Žižka";
+            a2a_config.linkurl = "https://www.zizka.ch/";
+            a2a_config.num_services = 18;
+        </script>
+        <script async src="https://static.addtoany.com/menu/page.js"></script>
+        <!-- AddToAny END -->
+
+        <div style="clear: both; height: 1ex;"></div>
 
         <!-- Facebook comments -->
-                    <div class="fb-comments" data-href="https://www.zizka.ch/pages/programovani/java/web/wicket/wicket-link-with-label.html" data-width="800" data-numposts="5"></div>
+            <div class="fb-comments" data-href="https://www.zizka.ch/pages/programovani/java/web/wicket/wicket-link-with-label.html" data-width="900" data-numposts="5"></div>
 
     </div>
     <div id="push"></div>
