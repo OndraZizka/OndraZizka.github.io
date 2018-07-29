@@ -50,7 +50,7 @@ body { background: linear-gradient(350deg,#fff,#fff,#eaeaea) no-repeat; }
 }
 .navbar-default { box-shadow: gray 0px 0px 2px; }
 
-#wrap > .container .credit {
+#footer > .container .credit {
   margin: 20px 0;
 }
 
@@ -64,7 +64,7 @@ a { color: #0366d6; }
 #wrap > .container { padding-top: 51px; }  /* No space between banner and menu. */
 #banner, .banner {
     background: url("../img/bgHeader-BrnoVyhledHady.jpg");
-    background-position: 46% -261px;
+    background-position: 46% -320px;
     background-attachment: fixed;
     background-size: cover;
     height: 200px;
@@ -76,21 +76,39 @@ a { color: #0366d6; }
   margin: 0;
   border-bottom: none;
 }
+.page-header h1 { line-height: 1.2; }
 .page-header h1,
 .page-header h2 {
   border-bottom: 1px solid limegreen; /* dodgerblue */
 }
-.page-header h1 { line-height: 1.2; }
+
+/** No top margin for the first heading.
+.document .doc-body > h1:not(.jbakeExtractedTitle) { margin-top: 0; }
+.document .doc-body > h2:not(.jbakeExtractedTitle) { margin-top: 0; }
+.document .doc-body > h3:not(.jbakeExtractedTitle) { margin-top: 0; }
+.document .doc-body > h1:nth-child(n+1) { margin-top: 20px; }
+.document .doc-body > h2:nth-child(n+1) { margin-top: 20px; }
+.document .doc-body > h3:nth-child(n+1) { margin-top: 20px; }
+ */
+/** No top margin for the first heading, attempt 2. */
+.document .doc-body > *:nth-child(n+1),
+.document .doc-body > .jbakeExtractedTitle ~ h1,
+.document .doc-body > .jbakeExtractedTitle ~ h2,
+.document .doc-body > .jbakeExtractedTitle ~ h3 { margin-top: 0; }
+
 
 /** Position the date left of the title. */
+.document { position: relative; }
 .document .date {
-    font-style: italic;
-    float: left;
-    position: relative;
-    left: -80px;
-    display: inline-block;
-    width: 1px;
+    position: absolute;
+    left: -90px;
     top: 3px;
+
+    border: 1px solid #e1e1e1;
+    background-color: #fbffd6;
+    box-shadow: gray 0 0 1px;
+    border-radius: 5px;
+    padding: 2px 1ex;
 }
 
 /** --- General document body styles. */
