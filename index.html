@@ -1,7 +1,4 @@
 
-<script type="text/javascript">
-    var photos = [  'DSC_0005.jpg',  'DSC_0008.jpg',  'DSC_0013.jpg',  'DSC_0020.jpg',  'DSC_0043_1.jpg',  'DSC_0043.jpg',  'DSC_0062b.jpg',  'DSC_0062.jpg',  'DSC_0062-PANO.jpg',  'DSC_0066.jpg',  'DSC_0068.jpg',  'DSC_0075-PANO.jpg',  'DSC_0085-PANO.jpg',  'DSC_0086-PANO.jpg',  'DSC_0091-PANO.jpg',  'DSC_0096.jpg',  'DSC_0097.jpg',  'DSC_0099.jpg',  'DSC_0133.jpg',  'DSC_0154-PANO.jpg',  'DSC_0164-PANO.jpg',  'DSC_0174.jpg',  'DSC_0178.jpg',  'DSC_0190.jpg',  'DSC_0197-PANO.jpg',  'DSC_0216-PANO.jpg',  'DSC_0354.jpg',  'DSC_0375-PANO.jpg',  'DSC_0391-PANO.jpg',  'DSC1_0106.jpg',  'DSC1_0289.jpg',  'DSC1_0375.jpg',  'DSC1_0498.jpg',  'DSC4_0782.jpg',  'DSC4_0846.jpg',  'DSC4_1068.jpg',  'DSC4_1105.jpg',  'DSC4_1551.jpg',  'IMAG0112.jpg',  'IMAG0127.jpg',  'IMAG0456.jpg',  'IMAG0478.jpg',  'IMAG1100.jpg',  'IMAG1302.jpg',  'IMAG1403.jpg',  'IMAG1417.jpg',  'IMAG3009.jpg',  'IMAG3644.jpg',  'IMAG3655.jpg',  'IMAG4346.jpg',  'IMAG4554.jpg',  'IMAG4555.jpg',  'IMAG4573.jpg',  'IMAG4776.jpg',  'IMAG4802.jpg',  'IMAG5583.jpg',  'IMAG6409.jpg',  'Photo-2017-05-27-15-45-46_4318.jpg',  ];
-</script>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -82,126 +79,102 @@
                     </div>
                     ... <a href="blog/2018/07-25-site-work-in-progress.html"> read more &rarr;</a>
                 </div>
-                <div class="banner post-separator" style="background-image: url(photos/panoramas/IMAG1403.jpg);"></div>
+                <div class="banner post-separator" style="background-image: url(photos/panoramas/IMAG4573.jpg);"></div>
                 <div class="document post">
                     <div class="date"><span>2018-07-30</span></div>
 
-                    <a href="pages/programovani/java/hibernate/firstResult-maxResults-specified-with-collection-fetch.html"><h2 class="title">Hibernate
-HHH000104: firstResult/max­Results specified with collection fetch; applying
-in memory</h2></a>
+                    <a href="pages/programovani/java/maven/mavenhoe-fake-jar-repository.html"><h2 class="title">Mavenhoe –
+fake Maven repository from .jar's in local directory tree</h2></a>
 
                     <div class="doc-body">
-                        <h2 class=" jbakeExtractedTitle" id="toc-hibernate-hhh000104-firstresult-maxresults-specified-with-collection-fetch-applying-in-memory">Hibernate HHH000104: firstResult/max­Results specified with collection fetch; applying in&nbsp;memory</h2> 
-<h3 id="toc-symptoms">Symptoms</h3> 
-<pre class="lang-text brush: text">15:08:58,096 WARN  [org.hibernate.hql.internal.ast.QueryTranslatorImpl] (http-/127.0.0.1:8080-1)
-  HHH000104: firstResult/maxResults specified with collection fetch; applying in memory!</pre> 
-<h3 id="toc-cause">Cause</h3> 
-<p>Not necessarily by <code>firstResult()</code> or <code>maxResults</code>. Can also happen with <code>getSingleResult()</code>.</p> 
-<p>The reason is that Hibernate used <code>JOIN</code> to fetch collection, so database's&nbsp;support for limits can't be used (e.g. MySQL's <code>LIMIT</code> and <code>OFFSET</code>).</p> 
-<pre class="brush lang-java brush: java">public Release getRelease( String prodName, String version, boolean withDeps ) {
-    return this.em.createQuery("SELECT rel FROM Release rel "
-            + " LEFT JOIN FETCH rel.product pr "
-            + " WHERE rel.product.name = ?1 AND rel.version = ?2", Release.class)
-            .setParameter(1, prodName)
-            .setParameter(2, version)
-            .getSingleResult(); // Causes "firstResult/maxResults specified with collection fetch; applying in memory!"
-}</pre> 
-<h3 id="toc-solutions">Solutions</h3> 
-<ol> 
- <li>Use <code>SELECT</code> JOIN strategy.</li> 
- <li>Use <code>getResultsList()</code> instead:</li> 
-</ol> 
-<pre class="brush lang-java brush: java">public Release getRelease( String prodName, String version, boolean withDeps ) {
-    List result = this.em.createQuery("SELECT rel FROM Release rel "
-            + " LEFT JOIN FETCH rel.product pr "
-            + " WHERE rel.product.name = ?1 AND rel.version = ?2", Release.class)
-            .setParameter(1, prodName)
-            .setParameter(2, version)
-            .setMaxResults(1)
-            .getResultList();
+                        <h2 class=" jbakeExtractedTitle" id="toc-mavenhoe-fake-maven-repository-from-jar-s-in-local-directory-tree">Mavenhoe&nbsp;– fake Maven repository from .jar's&nbsp;in local directory&nbsp;tree</h2> 
+<h3 id="toc-purpose">Purpose</h3> 
+<p>QA dept often needs to run a maven project with „faked“ dependencies&nbsp;– the actual .jar files must be taken from a product's&nbsp;dis­tribution, which are not in any Maven repository (like EAP's .zip or RPM distribution).</p> 
+<p>This utility is one of the ways to solve this problem. It scans a given directory for .jar files, indexes them, and opens a server acting as a Maven repository, in the sense of serving the indexed .jar&nbsp;files.</p> 
+<p>Which file will be server is determined by match of strings in the provided Maven URL path (localhost:17283/&lt;grou­p&gt;/&lt;artifact&gt;/&lt;ver­sion&gt;/&lt;filena­me&gt;.jar). This algorithm is a matter of future improvement. Using static mapping file is a possibility.</p> 
+<h3 id="toc-where-is-the-code">Where is the code?</h3> 
+<p><a href="https://github.com/OndraZizka/MavenHoe/">MavenHoe at GitHub</a>.</p> 
+<h3 id="toc-usage">Usage</h3> 
+<h4 id="toc-configuration">Configuration</h4> 
+<p>Prepare a mapping file, see e.g. extracted-metadata.txt.zip attached to <a href="https://docspace.corp.redhat.com/docs/DOC-53554">https://docspace.corp.redhat.com/docs/DOC-53554</a>&nbsp;:</p> 
+<pre class="brush: lang-plain brush: plain">jboss-managed.jar      org/jboss/man/             jboss-managed      2.1.0.SP1     jboss-managed-2.1.0.SP1.jar
+getopt.jar             gnu-getopt/                getopt             1.0.12-brew   getopt-1.0.12-brew.jar
+jboss-kernel.jar       org/jboss/microcontainer/  jboss-kernel       2.0.6.GA      jboss-kernel-2.0.6.GA.jar
+jboss-logging-spi.jar  org/jboss/logging/         jboss-logging-spi  2.1.0.GA      jboss-logging-spi-2.1.0.GA.jar
+...</pre> 
+<p>The first column is the filename in the .zip; Then groupId (with either slashes or dots), artifactId, version, artifact file name, respectively.</p> 
+<p>You're expected to check the first column against the .zip&nbsp;file.</p> 
+<p>This is a temporary solution, later this info will be acquired from an online database.</p> 
+<h4 id="toc-maven-project-preparation">Maven project preparation</h4> 
+<p>Disable the central repository; see <a href="http://community.jboss.org/thread/89912">http://community.jboss.org/thread/89912</a> . One (IMO the best) option is to override it in <code>pom.xml</code>:</p> 
+<pre class="brush: lang-xml brush: xml">&lt;repository&gt;
+  &lt;id&gt;central&lt;/id&gt;
+  &lt;url&gt;http://some.url&lt;/url&gt;
+  &lt;snapshots&gt;&lt;enabled&gt;false&lt;/enabled&gt;&lt;/snapshots&gt;
+  &lt;releases&gt;&lt;enabled&gt;false&lt;/enabled&gt;&lt;/releases&gt;
+&lt;/repository&gt;</pre> 
+<p>Add this to your .pom:</p> 
+<pre class="brush: lang-xml brush: xml">&lt;repository&gt;
+    &lt;id&gt;mavenhoe-repo&lt;/id&gt;
+    &lt;url&gt;http://localhost:17283/jars?mvnPath=&lt;/url&gt;
+&lt;/repository&gt;</pre> 
+<p>Alternatively, you can also add the repo to ~/.m2/settings.xml (or any path and use <code>mvn -s settings-local.xml</code>):</p> 
+<pre class="brush: lang-xml brush: xml">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;settings&gt;
 
-    if (result.isEmpty())  return null;
-    return result.get(0);
-}</pre>
+  &lt;localRepository&gt;/home/ondra/work/hbn/runner/EAP-5.1/work-space/m2repo&lt;/localRepository&gt;
+
+  &lt;profiles&gt;
+    &lt;!-- Mavenhoe fake repository --&gt;
+    &lt;profile&gt;
+      &lt;id&gt;mavenhoe-repo&lt;/id&gt;
+      &lt;activation&gt;&lt;activeByDefault&gt;true&lt;/activeByDefault&gt;&lt;/activation&gt;
+      &lt;repositories&gt;
+        &lt;repository&gt;
+          &lt;id&gt;mavenhoe&lt;/id&gt;
+          &lt;url&gt;http://localhost:17283/jars?mvnPath=&lt;/url&gt;
+        &lt;/repository&gt;
+      &lt;/repositories&gt;
+    &lt;/profile&gt;
+  &lt;/profiles&gt;
+
+&lt;/settings&gt;</pre> 
+<h4 id="toc-tryout-debugging">Tryout / debugging</h4> 
+<p>Run Mavenhoe:</p> 
+<pre class="brush: lang-xml brush: xml">java -jar Mavenhoe.jar  &lt;path-to-EAP&gt;</pre> 
+<p>and try:</p> 
+<pre class="brush: lang-xml brush: xml">http://localhost:17283/status</pre> 
+<p>– Will list all indexed jars.</p> 
+<pre class="brush: lang-xml brush: xml">http://localhost:17283/jars?mvnPath=org/jboss/whatever/whatever/5.1.0.GA/whatever-5.1.0.GA.jar</pre> 
+<p>– Should give 404</p> 
+<pre class="brush: lang-xml brush: xml">http://localhost:17283/jars?mvnPath=org/jboss/whatever/hibernate-core/3.3.2.GA_CP03/hibernate-core-3.3.2.GA_CP03.jar</pre> 
+<p>– Should let you download the hibernate-core-3.3.2.GA_CP03.jar</p> 
+<pre class="brush: lang-xml brush: xml">http://localhost:17283/jars?mvnPath=foo/revolver/5.1.0.GA/foobar-5.1.0.GA.jar</pre> 
+<p>* Note how Mavenhoe (cur.ver.) only cares about the artifact name part of the Maven-style path, revolver.<br> Should let you download the resolver.jar<br> Also note that it looks for the best match. That's&nbsp;because the name in the product may differ from the Maven artifact name.<br> * „Best match“ removed, didn't provide good results.<br> * Currently, it's&nbsp;an OR combination of<br> 1.&nbsp;FileBasedMapper&nbsp;– see the mapping file above<br> 2.&nbsp;ArtifactId­Mapper&nbsp;– looks for &lt;artifactId&gt;.jar .<br> * This is a subject to become configurable in some simple&nbsp;way</p> 
+<pre class="brush: lang-xml brush: xml">http://localhost:17283/shutdown</pre> 
+<p>– Shuts the server down.</p> 
+<p><strong>Sample log output:</strong></p> 
+<pre class="brush: lang-plain brush: plain">DEBUG org.jboss.qa.mavenhoe.mappers.OrMapper   Looking for: jdom:jdom:1.0 = jdom-1.0.jar
+DEBUG org.jboss.qa.mavenhoe.mappers.FileBasedMapper   Looking for: jdom:jdom:1.0 = jdom-1.0.jar
+DEBUG org.jboss.qa.mavenhoe.mappers.FileBasedMapper     Thus  for: 'jdom:jdom'
+DEBUG org.jboss.qa.mavenhoe.mappers.FileBasedMapper     Supposed file name: null
+DEBUG org.jboss.qa.mavenhoe.mappers.ArtifactIdMapper   Looking for: jdom:jdom:1.0:jar = jdom-1.0.jar
+DEBUG org.jboss.qa.mavenhoe.mappers.ArtifactIdMapper     Supposed file name: jdom
+DEBUG org.jboss.qa.mavenhoe.MavenHoeApp
+  Found: JarInfo{ name: jdom, version: 5.1.0 (build: SVNTag=JBPAPP_5_1_0 date=201009150028),
+     group: null,
+     path: eap/jboss-eap-5.1/jboss-as/server/deploy/admin-console.war/WEB-INF/lib/jdom.jar
+     base: eap }</pre> 
+<h3 id="toc-todo-s">TODO's</h3> 
+<ul> 
+ <li><code>normalizeName()</code>&nbsp;– split by dashes and <code>_</code>'s, remove numbers and dots; then compare these parts. Esp. first&nbsp;ones.</li> 
+</ul>
                     </div>
-                    ... <a href="pages/programovani/java/hibernate/firstResult-maxResults-specified-with-collection-fetch.html"> read more &rarr;</a>
+                    ... <a href="pages/programovani/java/maven/mavenhoe-fake-jar-repository.html"> read more &rarr;</a>
                 </div>
-                <div class="banner post-separator" style="background-image: url(photos/panoramas/IMAG6409.jpg);"></div>
+                <div class="banner post-separator" style="background-image: url(photos/panoramas/IMAG1100.jpg);"></div>
                 <div class="document post">
                     <div class="date"><span>2018-07-30</span></div>
-
-                    <a href="blog/2018/07-27-PeterThielPumpDumpBitcoinSong.html"><h2 class="title">Bitcoin Pump'n'Dump Song by
-Peter Thiel</h2></a>
-
-                    <div class="doc-body">
-                        <h2 class=" jbakeExtractedTitle" id="toc-bitcoin-pump-n-dump-song-by-peter-thiel">Bitcoin Pump'n'Dump Song by Peter Thiel</h2> 
-<p>I&nbsp;know one song by Peter Thiel called Bitcoin, it goes like&nbsp;this:</p> 
-<p>Buy, pump, hype, dump<br> buy, pump, hype, dump<br> now I&nbsp;am rich<br> and you are dumb.<br> I&nbsp;tricked you again<br> now go vote for&nbsp;Trump.</p>
-                    </div>
-                    ... <a href="blog/2018/07-27-PeterThielPumpDumpBitcoinSong.html"> read more &rarr;</a>
-                </div>
-                <div class="banner post-separator" style="background-image: url(photos/panoramas/DSC_0068.jpg);"></div>
-                <div class="document post">
-                    <div class="date"><span>2018-07-27</span></div>
-
-                    <a href="pages/programovani/FreemarkerTips.html"><h2 class="title">FreeMarker Tricks</h2></a>
-
-                    <div class="doc-body">
-                        <h2 class=" jbakeExtractedTitle" id="toc-freemarker-tricks">FreeMarker Tricks</h2> 
-<h3 id="toc-how-to-split-text-by-lines-in-freemarker">How to split text by lines in FreeMarker</h3> 
-<pre class="lang-html brush: html">&lt;#assign photos&gt;
-DSC_0005.jpg
-DSC_0008.jpg
-DSC_0013.jpg
-DSC_0020.jpg
-&lt;/#assign&gt;
-&lt;#assign photos = photos?split('\\n', 'rmc') &gt;</pre> 
-<h3 id="toc-how-to-get-random-numbers-in-freemarker">How to get random numbers in FreeMarker</h3> 
-<pre class="lang-html brush: html">&lt;#assign nextRandom = .now?string["HHmmssSSS"]?number&gt;
-&lt;#list posts[0..*MAX_POSTS] as posts&gt;
-    &lt;img src="${photos[nextRandom % photos?size]}"&gt;
-    &lt;#assign nextRandom = nextRandom * 13 % 104729&gt;
-&lt;/#list&gt;</pre>
-                    </div>
-                    ... <a href="pages/programovani/FreemarkerTips.html"> read more &rarr;</a>
-                </div>
-                <div class="banner post-separator" style="background-image: url(photos/panoramas/DSC1_0289.jpg);"></div>
-                <div class="document post">
-                    <div class="date"><span>2018-07-26</span></div>
-
-                    <a href="pages/programovani/java/web/wicket/index.html"><h2 class="title">Wicket</h2></a>
-
-                    <div class="doc-body">
-                        <h2 class=" jbakeExtractedTitle" id="toc-wicket">Wicket</h2> 
-<h3 id="toc-tutorials-examples-tips">Tutorials, examples, tips</h3> 
-<ul> 
- <li><a href="http://www.javalobby.org/java/forums/t60786.html">Wicket: A&nbsp;Little Bit About Wicket</a> (A&nbsp;tutorial at&nbsp;DZone)</li> 
- <li><a href="http://day-to-day-stuff.blogspot.com/2008/05/wicket-internationalization.html">Wicket i18n</a></li> 
- <li><a href="http://wicketbyexample.com/">Wicket by Example</a></li> 
-</ul> 
-<h3 id="toc-links">Links:</h3> 
-<ul> 
- <li><a href="http://www.wicket-library.com/">Wicket-Library</a></li> 
- <li><a href="http://www.wicketframework.org/wicket-extensions/index.html">Wicket Extensions</a></li> 
- <li><a href="http://wicketstuff.org/confluence/display/STUFFWEB/Home">Wicket Stuff</a></li> 
-</ul> 
-<h3 id="toc-random-wicket-stuff">Random Wicket Stuff</h3> 
-<ul> 
- <li><a href="http://www.jroller.com/karthikg/entry/wicket_and_ajax">Wicket and Ajax I: Basic Wicket Form validation</a></li> 
- <li><a href="wicket-path-based-url-coding-strategy.texy">Filesystem-path-based UrlCodingStrategy</a></li> 
- <li><a href="wicket-url-coding-strategy.texy">Wicket's&nbsp;UrlCo­dingStrategy's</a></li> 
- <li><a href="wicket-servlet-filter-jetty-embedded.texy">Wicket servlet and filter in an embedded Jetty</a></li> 
- <li><a href="wicket-pagestore-jbosscache-infinispan-integration.texy">Wicket IPageStore implementation with Infinispan (formerly JBoss&nbsp;Cache)</a></li> 
-</ul> 
-<h3 id="toc-debugging-wicket-in-maven">Debugging Wicket in Maven</h3> 
-<pre class="brush: lang-bash brush: bash">MAVEN_OPTS="-Xdebug -Xrunjdwp:transport=dt_socket,address=4000,server=y,suspend=y" mvn clean install jetty:run-exploded</pre> 
-<p>TODO: Use <a href="http://www.developer.com/java/other/article.php/10936_3673576_6/Wicket-The-First-Steps.htm">this</a></p>
-                    </div>
-                    ... <a href="pages/programovani/java/web/wicket/index.html"> read more &rarr;</a>
-                </div>
-                <div class="banner post-separator" style="background-image: url(photos/panoramas/IMAG0127.jpg);"></div>
-                <div class="document post">
-                    <div class="date"><span>2018-07-26</span></div>
 
                     <a href="pages/programovani/java/index.html"><h2 class="title">Java + J2EE</h2></a>
 
@@ -223,6 +196,8 @@ DSC_0020.jpg
  <li><a href="jboss/web-services.texy">JBoss WebServices (JBossWS) notes</a></li> 
  <li><a href="jboss/clustering-session-replication.texy">Simple JBoss AS clustering example</a> (2&nbsp;nodes, JSP session replication).</li> 
 </ul> 
+<p>My usual MySQL JDBC params:</p> 
+<pre class="brush: lang-plain brush: plain">jdbc:mysql://localhost/test?characterEncoding=UTF-8&amp;characterSetResults=UTF-8&amp;autoReconnect=true&amp;zeroDateTimeBehavior=convertToNull</pre> 
 <h3 id="toc-maven-tips">Maven Tips</h3> 
 <ul> 
  <li><a href="maven/log4j-missing-jmx-sun-deps.texy">Maven and Log4j: Missing JMX dependencies</a>&nbsp;– mavenized jmxri and jmxtools.</li> 
@@ -397,7 +372,7 @@ or implicitly (using e.g. Spring AOP).
 <p><strong>Generally speaking:</strong></p> 
 <p>If you load an entity using a DAO, usualy you have a transaction in that DAO's&nbsp;methods. Thus when changing the entity inside DAO, use <code>persist()</code>; When you change it outside DAO and then call some DAO method to save it, call <code>merge()</code>.</p> 
 <h3 id="toc-zacatky-se-spring-aop-aspect-oriented-programming">Začátky se Spring AOP (Aspect Oriented Programming)</h3> 
-<p>Rozchodil jsem Spring AOP a zde dávám <a href="navod-spring-aop-zacatky.texy">stručný núvod, jak si Spring AOP</a> rozchodíte&nbsp;taky.</p> 
+<p>Rozchodil jsem Spring AOP a zde dávám <a href="navod-spring-aop-zacatky.texy">stručný návod, jak si Spring AOP</a> rozchodíte&nbsp;taky.</p> 
 <h3 id="toc-freemarker-templates-via-spring-in-non-web-application">FreeMarker templates via Spring in non-web application</h3> 
 <p>Note on how to use <a href="navod-spring_freemarker_in_standalone_application.texy">FreeMarker configured by Spring Dependency Injection in a standalone (non-web) application</a>.</p> 
 <h3 id="toc-ibatis-inline-map-format-empty-string-in-nullvalue">iBatis inline map format: empty String in nullValue</h3> 
@@ -532,7 +507,124 @@ INFO:   Test2</pre>
                     </div>
                     ... <a href="pages/programovani/java/index.html"> read more &rarr;</a>
                 </div>
+                <div class="banner post-separator" style="background-image: url(photos/panoramas/DSC_0197-PANO.jpg);"></div>
+                <div class="document post">
+                    <div class="date"><span>2018-07-30</span></div>
+
+                    <a href="pages/programovani/java/web/wicket/index.html"><h2 class="title">Wicket</h2></a>
+
+                    <div class="doc-body">
+                        <h2 class=" jbakeExtractedTitle" id="toc-wicket">Wicket</h2> 
+<h3 id="toc-tutorials-examples-tips">Tutorials, examples, tips</h3> 
+<ul> 
+ <li><a href="http://www.javalobby.org/java/forums/t60786.html">Wicket: A&nbsp;Little Bit About Wicket</a> (A&nbsp;tutorial at&nbsp;DZone)</li> 
+ <li><a href="http://day-to-day-stuff.blogspot.com/2008/05/wicket-internationalization.html">Wicket i18n</a></li> 
+ <li><a href="http://wicketbyexample.com/">Wicket by Example</a></li> 
+</ul> 
+<h3 id="toc-links">Links:</h3> 
+<ul> 
+ <li><a href="http://www.wicket-library.com/">Wicket-Library</a></li> 
+ <li><a href="http://www.wicketframework.org/wicket-extensions/index.html">Wicket Extensions</a></li> 
+ <li><a href="http://wicketstuff.org/confluence/display/STUFFWEB/Home">Wicket Stuff</a></li> 
+</ul> 
+<h3 id="toc-random-wicket-stuff">Random Wicket Stuff</h3> 
+<ul> 
+ <li><a href="http://www.jroller.com/karthikg/entry/wicket_and_ajax">Wicket and Ajax I: Basic Wicket Form validation</a></li> 
+ <li><a href="wicket-path-based-url-coding-strategy.texy">Filesystem-path-based UrlCodingStrategy</a></li> 
+ <li><a href="wicket-url-coding-strategy.texy">Wicket's&nbsp;UrlCo­dingStrategy's</a></li> 
+ <li><a href="wicket-servlet-filter-jetty-embedded.texy">Wicket servlet and filter in an embedded Jetty</a></li> 
+ <li><a href="wicket-pagestore-jbosscache-infinispan-integration.texy">Wicket IPageStore implementation with Infinispan (formerly JBoss&nbsp;Cache)</a></li> 
+</ul> 
+<h3 id="toc-debugging-wicket-in-maven">Debugging Wicket in Maven</h3> 
+<pre class="brush: lang-bash brush: bash">MAVEN_OPTS="-Xdebug -Xrunjdwp:transport=dt_socket,address=4000,server=y,suspend=y" mvn clean install jetty:run-exploded</pre> 
+<p>TODO: Use <a href="http://www.developer.com/java/other/article.php/10936_3673576_6/Wicket-The-First-Steps.htm">this</a></p>
+                    </div>
+                    ... <a href="pages/programovani/java/web/wicket/index.html"> read more &rarr;</a>
+                </div>
                 <div class="banner post-separator" style="background-image: url(photos/panoramas/DSC_0174.jpg);"></div>
+                <div class="document post">
+                    <div class="date"><span>2018-07-30</span></div>
+
+                    <a href="pages/programovani/java/hibernate/firstResult-maxResults-specified-with-collection-fetch.html"><h2 class="title">Hibernate
+HHH000104: firstResult/max­Results specified with collection fetch; applying
+in memory</h2></a>
+
+                    <div class="doc-body">
+                        <h2 class=" jbakeExtractedTitle" id="toc-hibernate-hhh000104-firstresult-maxresults-specified-with-collection-fetch-applying-in-memory">Hibernate HHH000104: firstResult/max­Results specified with collection fetch; applying in&nbsp;memory</h2> 
+<h3 id="toc-symptoms">Symptoms</h3> 
+<pre class="lang-text brush: text">15:08:58,096 WARN  [org.hibernate.hql.internal.ast.QueryTranslatorImpl] (http-/127.0.0.1:8080-1)
+  HHH000104: firstResult/maxResults specified with collection fetch; applying in memory!</pre> 
+<h3 id="toc-cause">Cause</h3> 
+<p>Not necessarily by <code>firstResult()</code> or <code>maxResults</code>. Can also happen with <code>getSingleResult()</code>.</p> 
+<p>The reason is that Hibernate used <code>JOIN</code> to fetch collection, so database's&nbsp;support for limits can't be used (e.g. MySQL's <code>LIMIT</code> and <code>OFFSET</code>).</p> 
+<pre class="brush lang-java brush: java">public Release getRelease( String prodName, String version, boolean withDeps ) {
+    return this.em.createQuery("SELECT rel FROM Release rel "
+            + " LEFT JOIN FETCH rel.product pr "
+            + " WHERE rel.product.name = ?1 AND rel.version = ?2", Release.class)
+            .setParameter(1, prodName)
+            .setParameter(2, version)
+            .getSingleResult(); // Causes "firstResult/maxResults specified with collection fetch; applying in memory!"
+}</pre> 
+<h3 id="toc-solutions">Solutions</h3> 
+<ol> 
+ <li>Use <code>SELECT</code> JOIN strategy.</li> 
+ <li>Use <code>getResultsList()</code> instead:</li> 
+</ol> 
+<pre class="brush lang-java brush: java">public Release getRelease( String prodName, String version, boolean withDeps ) {
+    List result = this.em.createQuery("SELECT rel FROM Release rel "
+            + " LEFT JOIN FETCH rel.product pr "
+            + " WHERE rel.product.name = ?1 AND rel.version = ?2", Release.class)
+            .setParameter(1, prodName)
+            .setParameter(2, version)
+            .setMaxResults(1)
+            .getResultList();
+
+    if (result.isEmpty())  return null;
+    return result.get(0);
+}</pre>
+                    </div>
+                    ... <a href="pages/programovani/java/hibernate/firstResult-maxResults-specified-with-collection-fetch.html"> read more &rarr;</a>
+                </div>
+                <div class="banner post-separator" style="background-image: url(photos/panoramas/Photo-2017-05-27-15-45-46_4318.jpg);"></div>
+                <div class="document post">
+                    <div class="date"><span>2018-07-30</span></div>
+
+                    <a href="blog/2018/07-27-PeterThielPumpDumpBitcoinSong.html"><h2 class="title">Bitcoin Pump'n'Dump Song by
+Peter Thiel</h2></a>
+
+                    <div class="doc-body">
+                        <h2 class=" jbakeExtractedTitle" id="toc-bitcoin-pump-n-dump-song-by-peter-thiel">Bitcoin Pump'n'Dump Song by Peter Thiel</h2> 
+<p>I&nbsp;know one song by Peter Thiel called Bitcoin, it goes like&nbsp;this:</p> 
+<p>Buy, pump, hype, dump<br> buy, pump, hype, dump<br> now I&nbsp;am rich<br> and you are dumb.<br> I&nbsp;tricked you again<br> now go vote for&nbsp;Trump.</p>
+                    </div>
+                    ... <a href="blog/2018/07-27-PeterThielPumpDumpBitcoinSong.html"> read more &rarr;</a>
+                </div>
+                <div class="banner post-separator" style="background-image: url(photos/panoramas/DSC_0043_1.jpg);"></div>
+                <div class="document post">
+                    <div class="date"><span>2018-07-27</span></div>
+
+                    <a href="pages/programovani/FreemarkerTips.html"><h2 class="title">FreeMarker Tricks</h2></a>
+
+                    <div class="doc-body">
+                        <h2 class=" jbakeExtractedTitle" id="toc-freemarker-tricks">FreeMarker Tricks</h2> 
+<h3 id="toc-how-to-split-text-by-lines-in-freemarker">How to split text by lines in FreeMarker</h3> 
+<pre class="lang-html brush: html">&lt;#assign photos&gt;
+DSC_0005.jpg
+DSC_0008.jpg
+DSC_0013.jpg
+DSC_0020.jpg
+&lt;/#assign&gt;
+&lt;#assign photos = photos?split('\\n', 'rmc') &gt;</pre> 
+<h3 id="toc-how-to-get-random-numbers-in-freemarker">How to get random numbers in FreeMarker</h3> 
+<pre class="lang-html brush: html">&lt;#assign nextRandom = .now?string["HHmmssSSS"]?number&gt;
+&lt;#list posts[0..*MAX_POSTS] as posts&gt;
+    &lt;img src="${photos[nextRandom % photos?size]}"&gt;
+    &lt;#assign nextRandom = nextRandom * 13 % 104729&gt;
+&lt;/#list&gt;</pre>
+                    </div>
+                    ... <a href="pages/programovani/FreemarkerTips.html"> read more &rarr;</a>
+                </div>
+                <div class="banner post-separator" style="background-image: url(photos/panoramas/DSC_0086-PANO.jpg);"></div>
                 <div class="document post">
                     <div class="date"><span>2018-07-26</span></div>
 
@@ -596,7 +688,7 @@ echo 1 &gt; /proc/sys/vm/drop_caches</pre>
                     </div>
                     ... <a href="pages/programovani/index.html"> read more &rarr;</a>
                 </div>
-                <div class="banner post-separator" style="background-image: url(photos/panoramas/DSC_0005.jpg);"></div>
+                <div class="banner post-separator" style="background-image: url(photos/panoramas/IMAG4346.jpg);"></div>
                 <div class="document post">
                     <div class="date"><span>2018-07-26</span></div>
 
@@ -979,7 +1071,7 @@ Caused by: org.rhq.core.pluginapi.inventory.InvalidPluginConfigurationException:
                     </div>
                     ... <a href="pages/programovani/java/jboss/Tomcat-JON-Windows-2003-2008.html"> read more &rarr;</a>
                 </div>
-                <div class="banner post-separator" style="background-image: url(photos/panoramas/Photo-2017-05-27-15-45-46_4318.jpg);"></div>
+                <div class="banner post-separator" style="background-image: url(photos/panoramas/DSC4_1551.jpg);"></div>
                 <div class="document post">
                     <div class="date"><span>2018-07-26</span></div>
 
@@ -1048,7 +1140,7 @@ Caused by: org.rhq.core.pluginapi.inventory.InvalidPluginConfigurationException:
                     </div>
                     ... <a href="pages/osobni/windsurfing-bol.html"> read more &rarr;</a>
                 </div>
-                <div class="banner post-separator" style="background-image: url(photos/panoramas/IMAG1403.jpg);"></div>
+                <div class="banner post-separator" style="background-image: url(photos/panoramas/DSC4_1068.jpg);"></div>
                 <div class="document post">
                     <div class="date"><span>2018-07-26</span></div>
 
@@ -1235,7 +1327,7 @@ rodného čísla (RČ) a identifikačního čísla (IČ)</h2></a>
                     </div>
                     ... <a href="pages/programovani/ruzne/rodne-cislo-identifikacni-cislo-rc-ico-kontrola-validace.html"> read more &rarr;</a>
                 </div>
-                <div class="banner post-separator" style="background-image: url(photos/panoramas/DSC_0391-PANO.jpg);"></div>
+                <div class="banner post-separator" style="background-image: url(photos/panoramas/IMAG1417.jpg);"></div>
                 <div class="document post">
                     <div class="date"><span>2018-07-26</span></div>
 
@@ -1341,7 +1433,7 @@ rodného čísla (RČ) a identifikačního čísla (IČ)</h2></a>
                     </div>
                     ... <a href="pages/programovani/artificial_intelligence/neural_networks/pongai_doc/package.html"> read more &rarr;</a>
                 </div>
-                <div class="banner post-separator" style="background-image: url(photos/panoramas/DSC1_0498.jpg);"></div>
+                <div class="banner post-separator" style="background-image: url(photos/panoramas/DSC_0178.jpg);"></div>
                 <div class="document post">
                     <div class="date"><span>2018-07-26</span></div>
 
@@ -1520,7 +1612,7 @@ at org.apache.wicket.protocol.http.WicketFilter.doGet(WicketFilter.java:486)</pr
                     </div>
                     ... <a href="pages/programovani/java/web/wicket/wicket-compoundpropertymodel-classcastexception.html"> read more &rarr;</a>
                 </div>
-                <div class="banner post-separator" style="background-image: url(photos/panoramas/DSC_0062.jpg);"></div>
+                <div class="banner post-separator" style="background-image: url(photos/panoramas/DSC_0096.jpg);"></div>
                 <div class="document post">
                     <div class="date"><span>2018-07-25</span></div>
 
@@ -1566,7 +1658,7 @@ public class MyEntity {
                     </div>
                     ... <a href="pages/programovani/java/hibernate/Hibernate-MySQL-ErrorCode1005-Cant-create-table-%23sql-4cb_35-errno-150.html"> read more &rarr;</a>
                 </div>
-                <div class="banner post-separator" style="background-image: url(photos/panoramas/DSC_0085-PANO.jpg);"></div>
+                <div class="banner post-separator" style="background-image: url(photos/panoramas/DSC_0164-PANO.jpg);"></div>
                 <div class="document post">
                     <div class="date"><span>2013-01-18</span></div>
 
@@ -1634,7 +1726,7 @@ com/myapp/ico/favicon.ico</pre>
                     </div>
                     ... <a href="pages/programovani/java/web/wicket/wicket-favicon.html"> read more &rarr;</a>
                 </div>
-                <div class="banner post-separator" style="background-image: url(photos/panoramas/IMAG0127.jpg);"></div>
+                <div class="banner post-separator" style="background-image: url(photos/panoramas/DSC_0062.jpg);"></div>
                 <div class="document post">
                     <div class="date"><span>2013-01-17</span></div>
 
@@ -1664,7 +1756,7 @@ protected IDataStore newDataStore() {
                     </div>
                     ... <a href="pages/programovani/java/web/wicket/wicket-disable-page-caching.html"> read more &rarr;</a>
                 </div>
-                <div class="banner post-separator" style="background-image: url(photos/panoramas/IMAG0456.jpg);"></div>
+                <div class="banner post-separator" style="background-image: url(photos/panoramas/DSC_0085-PANO.jpg);"></div>
                 <div class="document post">
                     <div class="date"><span>2012-12-31</span></div>
 
@@ -1713,7 +1805,7 @@ page to a string</h2></a>
                     </div>
                     ... <a href="pages/programovani/java/web/wicket/wicket-rendering-page-to-string.html"> read more &rarr;</a>
                 </div>
-                <div class="banner post-separator" style="background-image: url(photos/panoramas/DSC4_1105.jpg);"></div>
+                <div class="banner post-separator" style="background-image: url(photos/panoramas/IMAG0456.jpg);"></div>
                 <div class="document post">
                     <div class="date"><span>2012-12-31</span></div>
 
@@ -1770,7 +1862,7 @@ at org.mortbay.thread.QueuedThreadPool$PoolThread.run(QueuedThreadPool.java:582)
                     </div>
                     ... <a href="pages/programovani/java/web/wicket/wicket-html-markup-not-found.html"> read more &rarr;</a>
                 </div>
-                <div class="banner post-separator" style="background-image: url(photos/panoramas/IMAG0127.jpg);"></div>
+                <div class="banner post-separator" style="background-image: url(photos/panoramas/IMAG4802.jpg);"></div>
                 <div class="document post">
                     <div class="date"><span>2012-12-31</span></div>
 
@@ -1828,74 +1920,7 @@ errors, but you get the idea.</pre>
                     </div>
                     ... <a href="pages/programovani/java/web/wicket/wicket-link-with-label.html"> read more &rarr;</a>
                 </div>
-                <div class="banner post-separator" style="background-image: url(photos/panoramas/DSC_0190.jpg);"></div>
-                <div class="document post">
-                    <div class="date"><span>2012-12-31</span></div>
-
-                    <a href="pages/programovani/java/web/wicket/wicket-extend-child-inheritance-include-example.html"><h2 class="title">Example
-of Wicket's markup inheritance –
-wicket:child and wicket:extend</h2></a>
-
-                    <div class="doc-body">
-                        <h2 class=" jbakeExtractedTitle" id="toc-example-of-wicket-s-markup-inheritance-wicket-child-and-wicket-extend">Example of Wicket's&nbsp;markup inheritance&nbsp;–<br> <code>wicket:child</code> and&nbsp;<code>wicket:extend</code></h2> 
-<p>This is the most clean way of composing the pages content in Wicket.</p> 
-<h3 id="toc-base-page">Base page</h3> 
-<p><code>BaseLayoutPage.html</code>:</p> 
-<pre class="brush: lang-html brush: html">&lt;html&gt;
-  &lt;body&gt;
-    &lt;h1&gt;My Web&lt;/h1&gt;
-
-    &lt;div class="content"&gt;
-      &lt;wicket:child /&gt;
-    &lt;/div&gt;
-
-    &lt;div&gt;(c) 2010 Ondra.Zizka.cz&lt;/div&gt;
-  &lt;/body&gt;
-&lt;/html&gt;</pre> 
-<p><code>BaseLayoutPage.java</code>:</p> 
-<pre class="brush: lang-java brush: java">public class BaseLayoutPage extends WebPage { ... }</pre> 
-<h3 id="toc-child-page">Child page</h3> 
-<p><code>NewsPageContent.html</code>:</p> 
-<pre class="brush: lang-html brush: html">&lt;html&gt;
-  &lt;body&gt;
-    &lt;h1&gt;Child page&lt;/h1&gt;
-
-    DON'T get disturbed by this content, it's usually in examples only to confuse you
-    (or, to remind you that the child page file will be previewable in browser).
-    *** Everything outside "wicket:extend" will be ignored. ***
-
-    &lt;wicket:extend&gt;
-      &lt;h2&gt;News&lt;/h2&gt;
-      So this is the real content to be included into the base page.
-
-      Here we have some component container:
-
-      &lt;div wicket:id="news"&gt;Works like usual, so this will be replaced by the component's stuff.&lt;/div&gt;
-
-    &lt;wicket:extend&gt;
-
-    *** Again, everything outside the wicket:extend is ignored. ***
-
-    &lt;div&gt;(c) 2010 Ondra.Zizka.cz&lt;/div&gt;
-  &lt;/body&gt;
-&lt;/html&gt;</pre> 
-<p><code>NewsPageContent.java</code>:</p> 
-<pre class="brush: lang-java brush: java">public class NewsPageContent extends BaseLayoutPage {
-  public NewsPageContent(){
-    add( new Label("news", "Good news everyone!" ) );
-  }
-}</pre> 
-<h3 id="toc-how-to-use-it-just-for-case-you-don-t-know-yet">How to use it (just for case you don't know yet :)</h3> 
-<p>In your <code>WicketApplication.java</code>:</p> 
-<pre class="brush: lang-java brush: java">public class WicketApplication extends WebApplication {
-  public WicketApplication(){
-    mountBookmarkablePage( "news", NewsPageContent.class );
-  }
-}</pre>
-                    </div>
-                    ... <a href="pages/programovani/java/web/wicket/wicket-extend-child-inheritance-include-example.html"> read more &rarr;</a>
-                </div>
-                <div class="banner post-separator" style="background-image: url(photos/panoramas/IMAG1403.jpg);"></div>
+                <div class="banner post-separator" style="background-image: url(photos/panoramas/IMAG0478.jpg);"></div>
                 <div class="document post">
                     <div class="date"><span>2012-12-31</span></div>
 
@@ -2027,7 +2052,7 @@ new ResourceLink("reslink", item.getModelObject().getResource() ))</pre>
                     </div>
                     ... <a href="pages/programovani/java/web/wicket/wicket-howto-create-component.html"> read more &rarr;</a>
                 </div>
-                <div class="banner post-separator" style="background-image: url(photos/panoramas/DSC1_0106.jpg);"></div>
+                <div class="banner post-separator" style="background-image: url(photos/panoramas/DSC_0075-PANO.jpg);"></div>
                 <div class="document post">
                     <div class="date"><span>2012-12-31</span></div>
 
@@ -2097,87 +2122,74 @@ at org.mortbay.thread.QueuedThreadPool$PoolThread.run(QueuedThreadPool.java:582)
                     </div>
                     ... <a href="pages/programovani/java/web/wicket/wicket-component-below-failed-to-render-extend.html"> read more &rarr;</a>
                 </div>
-                <div class="banner post-separator" style="background-image: url(photos/panoramas/DSC_0391-PANO.jpg);"></div>
+                <div class="banner post-separator" style="background-image: url(photos/panoramas/DSC_0190.jpg);"></div>
                 <div class="document post">
                     <div class="date"><span>2012-12-31</span></div>
 
-                    <a href="pages/programovani/java/web/wicket/tmp-paste.html"><h2 class="title">Wicket component</h2></a>
+                    <a href="pages/programovani/java/web/wicket/wicket-extend-child-inheritance-include-example.html"><h2 class="title">Example
+of Wicket's markup inheritance –
+wicket:child and wicket:extend</h2></a>
 
                     <div class="doc-body">
-                        <h2 class=" jbakeExtractedTitle" id="toc-wicket-component">Wicket component</h2> 
-<p>Originally I&nbsp;had:</p> 
-<pre class="brush: lang-html brush: html">&lt;tr wicket:id="resources"&gt;
-   &lt;td&gt;
-       &lt;a href="#" wicket:id="reslink"&gt;
-          &lt;img wicket:id="icoType" src="ResourceMachine.gif"/&gt;
-          &lt;span wicket:id="label"&gt;jawa01&lt;/span&gt;
-       &lt;/a&gt;
-   &lt;/td&gt;
-   ...
-&lt;/tr&gt;</pre> 
-<pre class="brush: lang-java brush: java">// Link itself. We're giving the resource as the parameter for the Resource page.
-new BookmarkablePageLink("reslink", new ResourcePage( item.getModelObject().getResource() ))
-// Icon.
-.add( new Image( "icoType", "ResourceMachine.gif" ) )
-// Link's kabel
-.add( new Label("label", item.getModelObject().getResource().getName() ))</pre> 
-<p>I&nbsp;tried to turn it into a component:</p> 
-<pre class="brush: lang-html brush: html">&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-   &lt;head&gt;
-      &lt;title&gt;JawaBot resource&lt;/title&gt;
-      &lt;meta http-equiv="Content-Type" content="text/html; charset=UTF-8"&gt;
-   &lt;/head&gt;
-   &lt;body&gt;
+                        <h2 class=" jbakeExtractedTitle" id="toc-example-of-wicket-s-markup-inheritance-wicket-child-and-wicket-extend">Example of Wicket's&nbsp;markup inheritance&nbsp;–<br> <code>wicket:child</code> and&nbsp;<code>wicket:extend</code></h2> 
+<p>This is the most clean way of composing the pages content in Wicket.</p> 
+<h3 id="toc-base-page">Base page</h3> 
+<p><code>BaseLayoutPage.html</code>:</p> 
+<pre class="brush: lang-html brush: html">&lt;html&gt;
+  &lt;body&gt;
+    &lt;h1&gt;My Web&lt;/h1&gt;
 
-   &lt;a href="#"&gt;
-   &lt;wicket:extend&gt;
-      &lt;img wicket:id="icoType" src="ResourceMachine.gif"/&gt;&lt;span wicket:id="label"&gt;jawa01&lt;/span&gt;
-   &lt;/wicket:extend&gt;
-   &lt;/a&gt;
+    &lt;div class="content"&gt;
+      &lt;wicket:child /&gt;
+    &lt;/div&gt;
 
-   &lt;/body&gt;
+    &lt;div&gt;(c) 2010 Ondra.Zizka.cz&lt;/div&gt;
+  &lt;/body&gt;
 &lt;/html&gt;</pre> 
-<pre class="brush: lang-java brush: java">package org.jboss.jawabot.web._co;
+<p><code>BaseLayoutPage.java</code>:</p> 
+<pre class="brush: lang-java brush: java">public class BaseLayoutPage extends WebPage { ... }</pre> 
+<h3 id="toc-child-page">Child page</h3> 
+<p><code>NewsPageContent.html</code>:</p> 
+<pre class="brush: lang-html brush: html">&lt;html&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Child page&lt;/h1&gt;
 
-import org.apache.wicket.Page;
-import org.apache.wicket.PageParameters;
-import org.apache.wicket.markup.html.basic.Label;
-import org.apache.wicket.markup.html.image.Image;
-import org.apache.wicket.markup.html.link.BookmarkablePageLink;
-import org.jboss.jawabot.Resource;
-import org.jboss.jawabot.web._pg.ResourcePage;
+    DON'T get disturbed by this content, it's usually in examples only to confuse you
+    (or, to remind you that the child page file will be previewable in browser).
+    *** Everything outside "wicket:extend" will be ignored. ***
 
-/**
- *  A Bookmarkable resource link leading to the ResourcePage.
- *  @author OndrejZizka
- */
-public class ResourceLink extends BookmarkablePageLink&lt;Resource&gt; {
+    &lt;wicket:extend&gt;
+      &lt;h2&gt;News&lt;/h2&gt;
+      So this is the real content to be included into the base page.
 
-   public &lt;C extends Page&gt; ResourceLink( String id, Resource res ) {
-      super( id, ResourcePage.class );
-      this.add( new Image( "icoType", "ResourceMachine.gif" ) );
-      this.add( new Label("label", this.getModelObject().getName() ));
-   }
+      Here we have some component container:
 
+      &lt;div wicket:id="news"&gt;Works like usual, so this will be replaced by the component's stuff.&lt;/div&gt;
+
+    &lt;wicket:extend&gt;
+
+    *** Again, everything outside the wicket:extend is ignored. ***
+
+    &lt;div&gt;(c) 2010 Ondra.Zizka.cz&lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</pre> 
+<p><code>NewsPageContent.java</code>:</p> 
+<pre class="brush: lang-java brush: java">public class NewsPageContent extends BaseLayoutPage {
+  public NewsPageContent(){
+    add( new Label("news", "Good news everyone!" ) );
+  }
 }</pre> 
-<h3 id="toc-using-the-component-in-a-page">Using the component in a page</h3> 
-<pre class="brush: lang-html brush: html">&lt;tr wicket:id="resources"&gt;
-   &lt;td&gt;
-       &lt;a href="#" wicket:id="reslink"&gt;
-          &lt;img src="ResourceMachine.gif"/&gt;
-          &lt;span&gt;jawa01&lt;/span&gt;
-       &lt;/a&gt;
-   &lt;/td&gt;
-   ...
-&lt;/tr&gt;</pre> 
-<pre class="brush: lang-java brush: java">// Link itself. We're giving the resource as the parameter for the Resource page.
-new ResourceLink("reslink", item.getModelObject().getResource() ))</pre> 
-<p>That's&nbsp;all.</p>
+<h3 id="toc-how-to-use-it-just-for-case-you-don-t-know-yet">How to use it (just for case you don't know yet :)</h3> 
+<p>In your <code>WicketApplication.java</code>:</p> 
+<pre class="brush: lang-java brush: java">public class WicketApplication extends WebApplication {
+  public WicketApplication(){
+    mountBookmarkablePage( "news", NewsPageContent.class );
+  }
+}</pre>
                     </div>
-                    ... <a href="pages/programovani/java/web/wicket/tmp-paste.html"> read more &rarr;</a>
+                    ... <a href="pages/programovani/java/web/wicket/wicket-extend-child-inheritance-include-example.html"> read more &rarr;</a>
                 </div>
-                <div class="banner post-separator" style="background-image: url(photos/panoramas/DSC_0086-PANO.jpg);"></div>
+                <div class="banner post-separator" style="background-image: url(photos/panoramas/DSC_0062-PANO.jpg);"></div>
                 <div class="document post">
                     <div class="date"><span>2012-12-31</span></div>
 
@@ -2196,7 +2208,7 @@ new ResourceLink("reslink", item.getModelObject().getResource() ))</pre>
                     </div>
                     ... <a href="pages/programovani/java/web/wicket/whats-new-in-wicket-1.5.html"> read more &rarr;</a>
                 </div>
-                <div class="banner post-separator" style="background-image: url(photos/panoramas/IMAG4346.jpg);"></div>
+                <div class="banner post-separator" style="background-image: url(photos/panoramas/IMAG3009.jpg);"></div>
                 <div class="document post">
                     <div class="date"><span>2012-12-31</span></div>
 
@@ -2281,7 +2293,7 @@ java.lang.NoClassDefFoundError: org/apache/wicket/util/lang/PropertyResolver
                     </div>
                     ... <a href="pages/programovani/java/web/wicket/wicket-NoClassDefFoundError-PropertyResolver.html"> read more &rarr;</a>
                 </div>
-                <div class="banner post-separator" style="background-image: url(photos/panoramas/IMAG4776.jpg);"></div>
+                <div class="banner post-separator" style="background-image: url(photos/panoramas/IMAG5583.jpg);"></div>
                 <div class="document post">
                     <div class="date"><span>2012-12-31</span></div>
 
@@ -2316,7 +2328,7 @@ java.lang.NoClassDefFoundError: org/apache/wicket/util/lang/PropertyResolver
                     </div>
                     ... <a href="pages/programovani/java/web/wicket/wicket-cheatsheet.html"> read more &rarr;</a>
                 </div>
-                <div class="banner post-separator" style="background-image: url(photos/panoramas/DSC1_0289.jpg);"></div>
+                <div class="banner post-separator" style="background-image: url(photos/panoramas/DSC_0097.jpg);"></div>
                 <div class="document post">
                     <div class="date"><span>2012-12-31</span></div>
 
@@ -2334,7 +2346,87 @@ list</h2></a>
                     </div>
                     ... <a href="pages/programovani/java/web/wicket/netbeans-wicket-support-wishlist.html"> read more &rarr;</a>
                 </div>
-                <div class="banner post-separator" style="background-image: url(photos/panoramas/DSC_0178.jpg);"></div>
+                <div class="banner post-separator" style="background-image: url(photos/panoramas/DSC_0086-PANO.jpg);"></div>
+                <div class="document post">
+                    <div class="date"><span>2012-12-31</span></div>
+
+                    <a href="pages/programovani/java/web/wicket/tmp-paste.html"><h2 class="title">Wicket component</h2></a>
+
+                    <div class="doc-body">
+                        <h2 class=" jbakeExtractedTitle" id="toc-wicket-component">Wicket component</h2> 
+<p>Originally I&nbsp;had:</p> 
+<pre class="brush: lang-html brush: html">&lt;tr wicket:id="resources"&gt;
+   &lt;td&gt;
+       &lt;a href="#" wicket:id="reslink"&gt;
+          &lt;img wicket:id="icoType" src="ResourceMachine.gif"/&gt;
+          &lt;span wicket:id="label"&gt;jawa01&lt;/span&gt;
+       &lt;/a&gt;
+   &lt;/td&gt;
+   ...
+&lt;/tr&gt;</pre> 
+<pre class="brush: lang-java brush: java">// Link itself. We're giving the resource as the parameter for the Resource page.
+new BookmarkablePageLink("reslink", new ResourcePage( item.getModelObject().getResource() ))
+// Icon.
+.add( new Image( "icoType", "ResourceMachine.gif" ) )
+// Link's kabel
+.add( new Label("label", item.getModelObject().getResource().getName() ))</pre> 
+<p>I&nbsp;tried to turn it into a component:</p> 
+<pre class="brush: lang-html brush: html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+   &lt;head&gt;
+      &lt;title&gt;JawaBot resource&lt;/title&gt;
+      &lt;meta http-equiv="Content-Type" content="text/html; charset=UTF-8"&gt;
+   &lt;/head&gt;
+   &lt;body&gt;
+
+   &lt;a href="#"&gt;
+   &lt;wicket:extend&gt;
+      &lt;img wicket:id="icoType" src="ResourceMachine.gif"/&gt;&lt;span wicket:id="label"&gt;jawa01&lt;/span&gt;
+   &lt;/wicket:extend&gt;
+   &lt;/a&gt;
+
+   &lt;/body&gt;
+&lt;/html&gt;</pre> 
+<pre class="brush: lang-java brush: java">package org.jboss.jawabot.web._co;
+
+import org.apache.wicket.Page;
+import org.apache.wicket.PageParameters;
+import org.apache.wicket.markup.html.basic.Label;
+import org.apache.wicket.markup.html.image.Image;
+import org.apache.wicket.markup.html.link.BookmarkablePageLink;
+import org.jboss.jawabot.Resource;
+import org.jboss.jawabot.web._pg.ResourcePage;
+
+/**
+ *  A Bookmarkable resource link leading to the ResourcePage.
+ *  @author OndrejZizka
+ */
+public class ResourceLink extends BookmarkablePageLink&lt;Resource&gt; {
+
+   public &lt;C extends Page&gt; ResourceLink( String id, Resource res ) {
+      super( id, ResourcePage.class );
+      this.add( new Image( "icoType", "ResourceMachine.gif" ) );
+      this.add( new Label("label", this.getModelObject().getName() ));
+   }
+
+}</pre> 
+<h3 id="toc-using-the-component-in-a-page">Using the component in a page</h3> 
+<pre class="brush: lang-html brush: html">&lt;tr wicket:id="resources"&gt;
+   &lt;td&gt;
+       &lt;a href="#" wicket:id="reslink"&gt;
+          &lt;img src="ResourceMachine.gif"/&gt;
+          &lt;span&gt;jawa01&lt;/span&gt;
+       &lt;/a&gt;
+   &lt;/td&gt;
+   ...
+&lt;/tr&gt;</pre> 
+<pre class="brush: lang-java brush: java">// Link itself. We're giving the resource as the parameter for the Resource page.
+new ResourceLink("reslink", item.getModelObject().getResource() ))</pre> 
+<p>That's&nbsp;all.</p>
+                    </div>
+                    ... <a href="pages/programovani/java/web/wicket/tmp-paste.html"> read more &rarr;</a>
+                </div>
+                <div class="banner post-separator" style="background-image: url(photos/panoramas/IMAG4776.jpg);"></div>
                 <div class="document post">
                     <div class="date"><span>2012-12-31</span></div>
 
@@ -2362,7 +2454,7 @@ pom.xml</h2></a>
                     </div>
                     ... <a href="pages/programovani/java/maven/xslt-transformation-of-pom-xml-namespaces.html"> read more &rarr;</a>
                 </div>
-                <div class="banner post-separator" style="background-image: url(photos/panoramas/IMAG4802.jpg);"></div>
+                <div class="banner post-separator" style="background-image: url(photos/panoramas/DSC_0068.jpg);"></div>
                 <div class="document post">
                     <div class="date"><span>2012-12-31</span></div>
 
@@ -2537,19 +2629,7 @@ pom.xml for standalone application</h2></a>
                     </div>
                     ... <a href="pages/programovani/java/maven/maven-standard-pom.xml-for-standalone-application.html"> read more &rarr;</a>
                 </div>
-                <div class="banner post-separator" style="background-image: url(photos/panoramas/DSC_0062b.jpg);"></div>
-                <div class="document post">
-                    <div class="date"><span>2012-12-31</span></div>
-
-                    <a href="pages/programovani/java/maven/mavenhoe-fake-jar-repository.html"><h2 class="title">Mavenhoe</h2></a>
-
-                    <div class="doc-body">
-                        <h2 class=" jbakeExtractedTitle" id="toc-mavenhoe">Mavenhoe</h2> 
-<p>Soon to come.</p>
-                    </div>
-                    ... <a href="pages/programovani/java/maven/mavenhoe-fake-jar-repository.html"> read more &rarr;</a>
-                </div>
-                <div class="banner post-separator" style="background-image: url(photos/panoramas/IMAG5583.jpg);"></div>
+                <div class="banner post-separator" style="background-image: url(photos/panoramas/DSC_0091-PANO.jpg);"></div>
         </div>
 
 

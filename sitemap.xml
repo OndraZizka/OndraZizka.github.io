@@ -13,6 +13,18 @@
         <lastmod>2050-01-01</lastmod>
     </url>
     <url>
+        <loc>https://www.zizka.ch/pages/programovani/java/maven/mavenhoe-fake-jar-repository.html</loc>
+        <lastmod>2018-07-30</lastmod>
+    </url>
+    <url>
+        <loc>https://www.zizka.ch/pages/programovani/java/index.html</loc>
+        <lastmod>2018-07-30</lastmod>
+    </url>
+    <url>
+        <loc>https://www.zizka.ch/pages/programovani/java/web/wicket/index.html</loc>
+        <lastmod>2018-07-30</lastmod>
+    </url>
+    <url>
         <loc>https://www.zizka.ch/pages/programovani/java/hibernate/firstResult-maxResults-specified-with-collection-fetch.html</loc>
         <lastmod>2018-07-30</lastmod>
     </url>
@@ -23,14 +35,6 @@
     <url>
         <loc>https://www.zizka.ch/pages/programovani/FreemarkerTips.html</loc>
         <lastmod>2018-07-27</lastmod>
-    </url>
-    <url>
-        <loc>https://www.zizka.ch/pages/programovani/java/web/wicket/index.html</loc>
-        <lastmod>2018-07-26</lastmod>
-    </url>
-    <url>
-        <loc>https://www.zizka.ch/pages/programovani/java/index.html</loc>
-        <lastmod>2018-07-26</lastmod>
     </url>
     <url>
         <loc>https://www.zizka.ch/pages/programovani/index.html</loc>
@@ -81,10 +85,6 @@
         <lastmod>2012-12-31</lastmod>
     </url>
     <url>
-        <loc>https://www.zizka.ch/pages/programovani/java/web/wicket/wicket-extend-child-inheritance-include-example.html</loc>
-        <lastmod>2012-12-31</lastmod>
-    </url>
-    <url>
         <loc>https://www.zizka.ch/pages/programovani/java/web/wicket/wicket-howto-create-component.html</loc>
         <lastmod>2012-12-31</lastmod>
     </url>
@@ -93,7 +93,7 @@
         <lastmod>2012-12-31</lastmod>
     </url>
     <url>
-        <loc>https://www.zizka.ch/pages/programovani/java/web/wicket/tmp-paste.html</loc>
+        <loc>https://www.zizka.ch/pages/programovani/java/web/wicket/wicket-extend-child-inheritance-include-example.html</loc>
         <lastmod>2012-12-31</lastmod>
     </url>
     <url>
@@ -113,19 +113,15 @@
         <lastmod>2012-12-31</lastmod>
     </url>
     <url>
+        <loc>https://www.zizka.ch/pages/programovani/java/web/wicket/tmp-paste.html</loc>
+        <lastmod>2012-12-31</lastmod>
+    </url>
+    <url>
         <loc>https://www.zizka.ch/pages/programovani/java/maven/xslt-transformation-of-pom-xml-namespaces.html</loc>
         <lastmod>2012-12-31</lastmod>
     </url>
     <url>
         <loc>https://www.zizka.ch/pages/programovani/java/maven/maven-standard-pom.xml-for-standalone-application.html</loc>
-        <lastmod>2012-12-31</lastmod>
-    </url>
-    <url>
-        <loc>https://www.zizka.ch/pages/programovani/java/maven/mavenhoe-fake-jar-repository.html</loc>
-        <lastmod>2012-12-31</lastmod>
-    </url>
-    <url>
-        <loc>https://www.zizka.ch/pages/programovani/java/maven/mavenhoe-fake-jar-repository_.html</loc>
         <lastmod>2012-12-31</lastmod>
     </url>
     <url>
@@ -161,15 +157,15 @@
         <lastmod>2012-12-31</lastmod>
     </url>
     <url>
-        <loc>https://www.zizka.ch/pages/programovani/java/web/gzip-servlet-filter.html</loc>
-        <lastmod>2012-12-31</lastmod>
-    </url>
-    <url>
         <loc>https://www.zizka.ch/pages/programovani/java/rhq/rhq-how-to-set-transaction-timeout.html</loc>
         <lastmod>2012-12-31</lastmod>
     </url>
     <url>
         <loc>https://www.zizka.ch/pages/programovani/java/misc/web-services-over-ssl-jbossws.html</loc>
+        <lastmod>2012-12-31</lastmod>
+    </url>
+    <url>
+        <loc>https://www.zizka.ch/pages/programovani/java/web/gzip-servlet-filter.html</loc>
         <lastmod>2012-12-31</lastmod>
     </url>
     <url>
@@ -193,11 +189,11 @@
         <lastmod>2012-12-31</lastmod>
     </url>
     <url>
-        <loc>https://www.zizka.ch/pages/programovani/java/misc/freetts-line-unavailable-classcastexception-kevinvoicedirectory-error-opening-zipfile.html</loc>
+        <loc>https://www.zizka.ch/pages/programovani/java/misc/how-to-get-jar-location.html</loc>
         <lastmod>2012-12-31</lastmod>
     </url>
     <url>
-        <loc>https://www.zizka.ch/pages/programovani/java/misc/how-to-get-jar-location.html</loc>
+        <loc>https://www.zizka.ch/pages/programovani/java/misc/freetts-line-unavailable-classcastexception-kevinvoicedirectory-error-opening-zipfile.html</loc>
         <lastmod>2012-12-31</lastmod>
     </url>
     <url>
@@ -301,10 +297,6 @@
         <lastmod>2012-12-16</lastmod>
     </url>
     <url>
-        <loc>https://www.zizka.ch/pages/programovani/winlyrics/doc/rating.html</loc>
-        <lastmod>2012-12-16</lastmod>
-    </url>
-    <url>
         <loc>https://www.zizka.ch/pages/programovani/sql/mysql_wishlist/result_set_in_variable.html</loc>
         <lastmod>2012-12-16</lastmod>
     </url>
@@ -314,6 +306,10 @@
     </url>
     <url>
         <loc>https://www.zizka.ch/pages/programovani/transport_schedule_search/index.html</loc>
+        <lastmod>2012-12-16</lastmod>
+    </url>
+    <url>
+        <loc>https://www.zizka.ch/pages/programovani/winlyrics/doc/rating.html</loc>
         <lastmod>2012-12-16</lastmod>
     </url>
     <url>
@@ -341,14 +337,6 @@
         <lastmod>2012-12-16</lastmod>
     </url>
     <url>
-        <loc>https://www.zizka.ch/pages/programovani/java/modifier-and-concurent-readers.html</loc>
-        <lastmod>2012-12-16</lastmod>
-    </url>
-    <url>
-        <loc>https://www.zizka.ch/pages/programovani/java/navod_logovani_java.util.logging.html</loc>
-        <lastmod>2012-12-16</lastmod>
-    </url>
-    <url>
         <loc>https://www.zizka.ch/pages/programovani/java/navod-java_zacatky.html</loc>
         <lastmod>2012-12-16</lastmod>
     </url>
@@ -366,6 +354,14 @@
     </url>
     <url>
         <loc>https://www.zizka.ch/pages/programovani/java/hibernate-common-errors-and-exceptions.html</loc>
+        <lastmod>2012-12-16</lastmod>
+    </url>
+    <url>
+        <loc>https://www.zizka.ch/pages/programovani/java/modifier-and-concurent-readers.html</loc>
+        <lastmod>2012-12-16</lastmod>
+    </url>
+    <url>
+        <loc>https://www.zizka.ch/pages/programovani/java/navod_logovani_java.util.logging.html</loc>
         <lastmod>2012-12-16</lastmod>
     </url>
     <url>
@@ -465,10 +461,6 @@
         <lastmod>2012-12-16</lastmod>
     </url>
     <url>
-        <loc>https://www.zizka.ch/pages/programovani/sql/mysql_wishlist/call_stack_in_information_schema.html</loc>
-        <lastmod>2012-12-16</lastmod>
-    </url>
-    <url>
         <loc>https://www.zizka.ch/pages/programovani/sql/mysql_wishlist/java_objects_in_stored_procedures.html</loc>
         <lastmod>2012-12-16</lastmod>
     </url>
@@ -482,6 +474,10 @@
     </url>
     <url>
         <loc>https://www.zizka.ch/pages/programovani/sql/mysql_wishlist/alter_table_rename_overwrite.html</loc>
+        <lastmod>2012-12-16</lastmod>
+    </url>
+    <url>
+        <loc>https://www.zizka.ch/pages/programovani/sql/mysql_wishlist/call_stack_in_information_schema.html</loc>
         <lastmod>2012-12-16</lastmod>
     </url>
     <url>
@@ -521,14 +517,6 @@
         <lastmod>2012-12-13</lastmod>
     </url>
     <url>
-        <loc>https://www.zizka.ch/pages/programovani/java/jaxb-json-jackson-howto.html</loc>
-        <lastmod>2012-12-13</lastmod>
-    </url>
-    <url>
-        <loc>https://www.zizka.ch/pages/programovani/java/jboss/jboss-as-startup-run-sh-java-system-variables.html</loc>
-        <lastmod>2012-12-13</lastmod>
-    </url>
-    <url>
         <loc>https://www.zizka.ch/pages/programovani/java/maven/profile-activation-and-properties.html</loc>
         <lastmod>2012-12-13</lastmod>
     </url>
@@ -541,6 +529,18 @@
         <lastmod>2012-12-13</lastmod>
     </url>
     <url>
+        <loc>https://www.zizka.ch/pages/programovani/java/jaxb-json-jackson-howto.html</loc>
+        <lastmod>2012-12-13</lastmod>
+    </url>
+    <url>
+        <loc>https://www.zizka.ch/pages/programovani/java/jboss/jboss-as-startup-run-sh-java-system-variables.html</loc>
+        <lastmod>2012-12-13</lastmod>
+    </url>
+    <url>
+        <loc>https://www.zizka.ch/pages/programovani/winlyrics/vpn.html</loc>
+        <lastmod>2012-12-13</lastmod>
+    </url>
+    <url>
         <loc>https://www.zizka.ch/pages/programovani/java/jaxb-list-with-inherited-classes.html</loc>
         <lastmod>2012-12-13</lastmod>
     </url>
@@ -549,7 +549,7 @@
         <lastmod>2012-12-13</lastmod>
     </url>
     <url>
-        <loc>https://www.zizka.ch/pages/programovani/winlyrics/vpn.html</loc>
+        <loc>https://www.zizka.ch/pages/programovani/java/sardine-java-webdav-client-library.html</loc>
         <lastmod>2012-12-13</lastmod>
     </url>
     <url>
@@ -577,10 +577,6 @@
         <lastmod>2012-12-13</lastmod>
     </url>
     <url>
-        <loc>https://www.zizka.ch/pages/programovani/java/sardine-java-webdav-client-library.html</loc>
-        <lastmod>2012-12-13</lastmod>
-    </url>
-    <url>
         <loc>https://www.zizka.ch/pages/programovani/artificial_intelligence/covering_ai_theory.html</loc>
         <lastmod>2012-12-13</lastmod>
     </url>
@@ -593,6 +589,14 @@
         <lastmod>2012-12-13</lastmod>
     </url>
     <url>
+        <loc>https://www.zizka.ch/pages/programovani/java/maven2-presentation-for-redhat.html</loc>
+        <lastmod>2012-12-13</lastmod>
+    </url>
+    <url>
+        <loc>https://www.zizka.ch/pages/programovani/java/xslt-commandline-with-xalan.html</loc>
+        <lastmod>2012-12-13</lastmod>
+    </url>
+    <url>
         <loc>https://www.zizka.ch/pages/programovani/artificial_intelligence/developement_plan_of_artificial_cogitation.html</loc>
         <lastmod>2012-12-13</lastmod>
     </url>
@@ -602,14 +606,6 @@
     </url>
     <url>
         <loc>https://www.zizka.ch/pages/programovani/java/maven/maven2-presentation-for-redhat.html</loc>
-        <lastmod>2012-12-13</lastmod>
-    </url>
-    <url>
-        <loc>https://www.zizka.ch/pages/programovani/java/maven2-presentation-for-redhat.html</loc>
-        <lastmod>2012-12-13</lastmod>
-    </url>
-    <url>
-        <loc>https://www.zizka.ch/pages/programovani/java/xslt-commandline-with-xalan.html</loc>
         <lastmod>2012-12-13</lastmod>
     </url>
     <url>
@@ -665,19 +661,19 @@
         <lastmod>2012-12-13</lastmod>
     </url>
     <url>
-        <loc>https://www.zizka.ch/pages/programovani/java/web/wicket/wicket-quartz-scheduler-example.html</loc>
+        <loc>https://www.zizka.ch/pages/programovani/java/nabidka_levny_j2ee_jsp_hosting.html</loc>
         <lastmod>2012-12-13</lastmod>
     </url>
     <url>
-        <loc>https://www.zizka.ch/pages/programovani/php/dalsi_nesmysl_v_php.html</loc>
+        <loc>https://www.zizka.ch/pages/programovani/php/je_java_jako_linux_nebo_jako_windows.html</loc>
         <lastmod>2012-12-13</lastmod>
     </url>
     <url>
-        <loc>https://www.zizka.ch/pages/programovani/vybiram_jazyk_pro_systemove_skriptovani.html</loc>
+        <loc>https://www.zizka.ch/pages/programovani/sql/mysql_wishlist/forum_post.html</loc>
         <lastmod>2012-12-13</lastmod>
     </url>
     <url>
-        <loc>https://www.zizka.ch/pages/texy/syntax.html</loc>
+        <loc>https://www.zizka.ch/pages/programovani/web_javascript_ajax_canvas/canvas_element_selection_buffer.cz.html</loc>
         <lastmod>2012-12-13</lastmod>
     </url>
     <url>
@@ -697,19 +693,15 @@
         <lastmod>2012-12-13</lastmod>
     </url>
     <url>
-        <loc>https://www.zizka.ch/pages/programovani/java/nabidka_levny_j2ee_jsp_hosting.html</loc>
+        <loc>https://www.zizka.ch/pages/programovani/java/web/wicket/wicket-servlet-filter-jetty-embedded.html</loc>
         <lastmod>2012-12-13</lastmod>
     </url>
     <url>
-        <loc>https://www.zizka.ch/pages/programovani/php/je_java_jako_linux_nebo_jako_windows.html</loc>
+        <loc>https://www.zizka.ch/pages/programovani/spolecne_vlastnosti_php_java_linux_windows.html</loc>
         <lastmod>2012-12-13</lastmod>
     </url>
     <url>
-        <loc>https://www.zizka.ch/pages/programovani/sql/mysql_wishlist/forum_post.html</loc>
-        <lastmod>2012-12-13</lastmod>
-    </url>
-    <url>
-        <loc>https://www.zizka.ch/pages/programovani/web_javascript_ajax_canvas/canvas_element_selection_buffer.cz.html</loc>
+        <loc>https://www.zizka.ch/pages/programovani/web_javascript_ajax_canvas/canvas_element_selection_buffer.html</loc>
         <lastmod>2012-12-13</lastmod>
     </url>
     <url>
@@ -729,15 +721,15 @@
         <lastmod>2012-12-13</lastmod>
     </url>
     <url>
-        <loc>https://www.zizka.ch/pages/programovani/java/web/wicket/wicket-servlet-filter-jetty-embedded.html</loc>
+        <loc>https://www.zizka.ch/pages/programovani/java/web/wicket/wicket-url-coding-strategy.html</loc>
         <lastmod>2012-12-13</lastmod>
     </url>
     <url>
-        <loc>https://www.zizka.ch/pages/programovani/spolecne_vlastnosti_php_java_linux_windows.html</loc>
+        <loc>https://www.zizka.ch/pages/programovani/sql/index.cz.html</loc>
         <lastmod>2012-12-13</lastmod>
     </url>
     <url>
-        <loc>https://www.zizka.ch/pages/programovani/web_javascript_ajax_canvas/canvas_element_selection_buffer.html</loc>
+        <loc>https://www.zizka.ch/pages/programovani/web_javascript_ajax_canvas/index.html</loc>
         <lastmod>2012-12-13</lastmod>
     </url>
     <url>
@@ -753,30 +745,6 @@
         <lastmod>2012-12-13</lastmod>
     </url>
     <url>
-        <loc>https://www.zizka.ch/pages/programovani/java/web/wicket/wicket-url-coding-strategy.html</loc>
-        <lastmod>2012-12-13</lastmod>
-    </url>
-    <url>
-        <loc>https://www.zizka.ch/pages/programovani/sql/index.cz.html</loc>
-        <lastmod>2012-12-13</lastmod>
-    </url>
-    <url>
-        <loc>https://www.zizka.ch/pages/programovani/web_javascript_ajax_canvas/index.html</loc>
-        <lastmod>2012-12-13</lastmod>
-    </url>
-    <url>
-        <loc>https://www.zizka.ch/pages/osobni/kontakty.html</loc>
-        <lastmod>2012-12-13</lastmod>
-    </url>
-    <url>
-        <loc>https://www.zizka.ch/pages/osobni/prodavam_shanim.html</loc>
-        <lastmod>2012-12-13</lastmod>
-    </url>
-    <url>
-        <loc>https://www.zizka.ch/pages/programovani/insolvencni_rejstrik-isir_ws/isir_typy_akci.html</loc>
-        <lastmod>2012-12-13</lastmod>
-    </url>
-    <url>
         <loc>https://www.zizka.ch/pages/programovani/sql/index.html</loc>
         <lastmod>2012-12-13</lastmod>
     </url>
@@ -789,19 +757,15 @@
         <lastmod>2012-12-13</lastmod>
     </url>
     <url>
-        <loc>https://www.zizka.ch/pages/index.html</loc>
+        <loc>https://www.zizka.ch/pages/osobni/kontakty.html</loc>
         <lastmod>2012-12-13</lastmod>
     </url>
     <url>
-        <loc>https://www.zizka.ch/pages/osobni/bydleni/index.html</loc>
+        <loc>https://www.zizka.ch/pages/osobni/prodavam_shanim.html</loc>
         <lastmod>2012-12-13</lastmod>
     </url>
     <url>
-        <loc>https://www.zizka.ch/pages/programovani/java/java_javaw_difference.html</loc>
-        <lastmod>2012-12-13</lastmod>
-    </url>
-    <url>
-        <loc>https://www.zizka.ch/pages/programovani/java/jboss-vs-spring.html</loc>
+        <loc>https://www.zizka.ch/pages/programovani/insolvencni_rejstrik-isir_ws/isir_typy_akci.html</loc>
         <lastmod>2012-12-13</lastmod>
     </url>
     <url>
@@ -821,11 +785,19 @@
         <lastmod>2012-12-13</lastmod>
     </url>
     <url>
-        <loc>https://www.zizka.ch/pages/osobni/bydleni/komin.html</loc>
+        <loc>https://www.zizka.ch/pages/index.html</loc>
         <lastmod>2012-12-13</lastmod>
     </url>
     <url>
-        <loc>https://www.zizka.ch/pages/programovani/java/jaxb/jaxb-howto-introduction-tutorial.html</loc>
+        <loc>https://www.zizka.ch/pages/osobni/bydleni/index.html</loc>
+        <lastmod>2012-12-13</lastmod>
+    </url>
+    <url>
+        <loc>https://www.zizka.ch/pages/programovani/java/java_javaw_difference.html</loc>
+        <lastmod>2012-12-13</lastmod>
+    </url>
+    <url>
+        <loc>https://www.zizka.ch/pages/programovani/java/jboss-vs-spring.html</loc>
         <lastmod>2012-12-13</lastmod>
     </url>
     <url>
@@ -853,6 +825,30 @@
         <lastmod>2012-12-13</lastmod>
     </url>
     <url>
+        <loc>https://www.zizka.ch/pages/osobni/bydleni/komin.html</loc>
+        <lastmod>2012-12-13</lastmod>
+    </url>
+    <url>
+        <loc>https://www.zizka.ch/pages/programovani/java/jaxb/jaxb-howto-introduction-tutorial.html</loc>
+        <lastmod>2012-12-13</lastmod>
+    </url>
+    <url>
+        <loc>https://www.zizka.ch/pages/programovani/java/vyhody_a_nevyhody_java.html</loc>
+        <lastmod>2012-12-13</lastmod>
+    </url>
+    <url>
+        <loc>https://www.zizka.ch/pages/programovani/java/web/wicket/wicket-extend-child-inheritance-example.html</loc>
+        <lastmod>2012-12-13</lastmod>
+    </url>
+    <url>
+        <loc>https://www.zizka.ch/pages/programovani/java/web/wicket/wicket-path-based-url-coding-strategy.html</loc>
+        <lastmod>2012-12-13</lastmod>
+    </url>
+    <url>
+        <loc>https://www.zizka.ch/pages/texy/syntax.cs.html</loc>
+        <lastmod>2012-12-13</lastmod>
+    </url>
+    <url>
         <loc>https://www.zizka.ch/pages/osobni/bydleni/nove.html</loc>
         <lastmod>2012-12-13</lastmod>
     </url>
@@ -873,19 +869,19 @@
         <lastmod>2012-12-13</lastmod>
     </url>
     <url>
-        <loc>https://www.zizka.ch/pages/programovani/java/vyhody_a_nevyhody_java.html</loc>
+        <loc>https://www.zizka.ch/pages/programovani/java/web/wicket/wicket-quartz-scheduler-example.html</loc>
         <lastmod>2012-12-13</lastmod>
     </url>
     <url>
-        <loc>https://www.zizka.ch/pages/programovani/java/web/wicket/wicket-extend-child-inheritance-example.html</loc>
+        <loc>https://www.zizka.ch/pages/programovani/php/dalsi_nesmysl_v_php.html</loc>
         <lastmod>2012-12-13</lastmod>
     </url>
     <url>
-        <loc>https://www.zizka.ch/pages/programovani/java/web/wicket/wicket-path-based-url-coding-strategy.html</loc>
+        <loc>https://www.zizka.ch/pages/programovani/vybiram_jazyk_pro_systemove_skriptovani.html</loc>
         <lastmod>2012-12-13</lastmod>
     </url>
     <url>
-        <loc>https://www.zizka.ch/pages/texy/syntax.cs.html</loc>
+        <loc>https://www.zizka.ch/pages/texy/syntax.html</loc>
         <lastmod>2012-12-13</lastmod>
     </url>
     <url>
