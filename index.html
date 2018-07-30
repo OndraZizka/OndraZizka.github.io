@@ -72,7 +72,7 @@
                 <div class="document post">
                     <div class="date"><span>2050-01-01</span></div>
 
-                    <a href="blog/2018/07-25-site-work-in-progress.html"><h3>Work on this site in progress</h3></a>
+                    <a href="blog/2018/07-25-site-work-in-progress.html"><h2 class="title">Work on this site in progress</h2></a>
 
                     <div class="doc-body">
                         <h2 class=" jbakeExtractedTitle" id="toc-work-on-this-site-in-progress">Work on this site in progress</h2> 
@@ -82,12 +82,56 @@
                     </div>
                     ... <a href="blog/2018/07-25-site-work-in-progress.html"> read more &rarr;</a>
                 </div>
-                <div class="banner post-separator" style="background-image: url(photos/panoramas/DSC4_0846.jpg);"></div>
+                <div class="banner post-separator" style="background-image: url(photos/panoramas/IMAG1403.jpg);"></div>
                 <div class="document post">
                     <div class="date"><span>2018-07-30</span></div>
 
-                    <a href="blog/2018/07-27-PeterThielPumpDumpBitcoinSong.html"><h3>Bitcoin Pump'n'Dump Song by
-Peter Thiel</h3></a>
+                    <a href="pages/programovani/java/hibernate/firstResult-maxResults-specified-with-collection-fetch.html"><h2 class="title">Hibernate
+HHH000104: firstResult/max­Results specified with collection fetch; applying
+in memory</h2></a>
+
+                    <div class="doc-body">
+                        <h2 class=" jbakeExtractedTitle" id="toc-hibernate-hhh000104-firstresult-maxresults-specified-with-collection-fetch-applying-in-memory">Hibernate HHH000104: firstResult/max­Results specified with collection fetch; applying in&nbsp;memory</h2> 
+<h3 id="toc-symptoms">Symptoms</h3> 
+<pre class="lang-text brush: text">15:08:58,096 WARN  [org.hibernate.hql.internal.ast.QueryTranslatorImpl] (http-/127.0.0.1:8080-1)
+  HHH000104: firstResult/maxResults specified with collection fetch; applying in memory!</pre> 
+<h3 id="toc-cause">Cause</h3> 
+<p>Not necessarily by <code>firstResult()</code> or <code>maxResults</code>. Can also happen with <code>getSingleResult()</code>.</p> 
+<p>The reason is that Hibernate used <code>JOIN</code> to fetch collection, so database's&nbsp;support for limits can't be used (e.g. MySQL's <code>LIMIT</code> and <code>OFFSET</code>).</p> 
+<pre class="brush lang-java brush: java">public Release getRelease( String prodName, String version, boolean withDeps ) {
+    return this.em.createQuery("SELECT rel FROM Release rel "
+            + " LEFT JOIN FETCH rel.product pr "
+            + " WHERE rel.product.name = ?1 AND rel.version = ?2", Release.class)
+            .setParameter(1, prodName)
+            .setParameter(2, version)
+            .getSingleResult(); // Causes "firstResult/maxResults specified with collection fetch; applying in memory!"
+}</pre> 
+<h3 id="toc-solutions">Solutions</h3> 
+<ol> 
+ <li>Use <code>SELECT</code> JOIN strategy.</li> 
+ <li>Use <code>getResultsList()</code> instead:</li> 
+</ol> 
+<pre class="brush lang-java brush: java">public Release getRelease( String prodName, String version, boolean withDeps ) {
+    List result = this.em.createQuery("SELECT rel FROM Release rel "
+            + " LEFT JOIN FETCH rel.product pr "
+            + " WHERE rel.product.name = ?1 AND rel.version = ?2", Release.class)
+            .setParameter(1, prodName)
+            .setParameter(2, version)
+            .setMaxResults(1)
+            .getResultList();
+
+    if (result.isEmpty())  return null;
+    return result.get(0);
+}</pre>
+                    </div>
+                    ... <a href="pages/programovani/java/hibernate/firstResult-maxResults-specified-with-collection-fetch.html"> read more &rarr;</a>
+                </div>
+                <div class="banner post-separator" style="background-image: url(photos/panoramas/IMAG6409.jpg);"></div>
+                <div class="document post">
+                    <div class="date"><span>2018-07-30</span></div>
+
+                    <a href="blog/2018/07-27-PeterThielPumpDumpBitcoinSong.html"><h2 class="title">Bitcoin Pump'n'Dump Song by
+Peter Thiel</h2></a>
 
                     <div class="doc-body">
                         <h2 class=" jbakeExtractedTitle" id="toc-bitcoin-pump-n-dump-song-by-peter-thiel">Bitcoin Pump'n'Dump Song by Peter Thiel</h2> 
@@ -96,11 +140,11 @@ Peter Thiel</h3></a>
                     </div>
                     ... <a href="blog/2018/07-27-PeterThielPumpDumpBitcoinSong.html"> read more &rarr;</a>
                 </div>
-                <div class="banner post-separator" style="background-image: url(photos/panoramas/IMAG6409.jpg);"></div>
+                <div class="banner post-separator" style="background-image: url(photos/panoramas/DSC_0068.jpg);"></div>
                 <div class="document post">
                     <div class="date"><span>2018-07-27</span></div>
 
-                    <a href="pages/programovani/FreemarkerTips.html"><h3>FreeMarker Tricks</h3></a>
+                    <a href="pages/programovani/FreemarkerTips.html"><h2 class="title">FreeMarker Tricks</h2></a>
 
                     <div class="doc-body">
                         <h2 class=" jbakeExtractedTitle" id="toc-freemarker-tricks">FreeMarker Tricks</h2> 
@@ -121,11 +165,11 @@ DSC_0020.jpg
                     </div>
                     ... <a href="pages/programovani/FreemarkerTips.html"> read more &rarr;</a>
                 </div>
-                <div class="banner post-separator" style="background-image: url(photos/panoramas/DSC_0066.jpg);"></div>
+                <div class="banner post-separator" style="background-image: url(photos/panoramas/DSC1_0289.jpg);"></div>
                 <div class="document post">
                     <div class="date"><span>2018-07-26</span></div>
 
-                    <a href="pages/programovani/java/web/wicket/index.html"><h3>Wicket</h3></a>
+                    <a href="pages/programovani/java/web/wicket/index.html"><h2 class="title">Wicket</h2></a>
 
                     <div class="doc-body">
                         <h2 class=" jbakeExtractedTitle" id="toc-wicket">Wicket</h2> 
@@ -155,11 +199,11 @@ DSC_0020.jpg
                     </div>
                     ... <a href="pages/programovani/java/web/wicket/index.html"> read more &rarr;</a>
                 </div>
-                <div class="banner post-separator" style="background-image: url(photos/panoramas/DSC4_1105.jpg);"></div>
+                <div class="banner post-separator" style="background-image: url(photos/panoramas/IMAG0127.jpg);"></div>
                 <div class="document post">
                     <div class="date"><span>2018-07-26</span></div>
 
-                    <a href="pages/programovani/java/index.html"><h3>Java + J2EE</h3></a>
+                    <a href="pages/programovani/java/index.html"><h2 class="title">Java + J2EE</h2></a>
 
                     <div class="doc-body">
                         <h2 class=" jbakeExtractedTitle" id="toc-java-j2ee">Java + J2EE</h2> 
@@ -492,7 +536,7 @@ INFO:   Test2</pre>
                 <div class="document post">
                     <div class="date"><span>2018-07-26</span></div>
 
-                    <a href="pages/programovani/index.html"><h3>Programování</h3></a>
+                    <a href="pages/programovani/index.html"><h2 class="title">Programování</h2></a>
 
                     <div class="doc-body">
                         <h2 class=" jbakeExtractedTitle" id="toc-programovani">Programování</h2> 
@@ -552,12 +596,12 @@ echo 1 &gt; /proc/sys/vm/drop_caches</pre>
                     </div>
                     ... <a href="pages/programovani/index.html"> read more &rarr;</a>
                 </div>
-                <div class="banner post-separator" style="background-image: url(photos/panoramas/DSC4_1551.jpg);"></div>
+                <div class="banner post-separator" style="background-image: url(photos/panoramas/DSC_0005.jpg);"></div>
                 <div class="document post">
                     <div class="date"><span>2018-07-26</span></div>
 
-                    <a href="pages/programovani/java/jboss/Tomcat-JON-Windows-2003-2008.html"><h3>JBoss
-Operation Network 2.3.0: Tomcat not supported on Windows 2003 and 2008</h3></a>
+                    <a href="pages/programovani/java/jboss/Tomcat-JON-Windows-2003-2008.html"><h2 class="title">JBoss
+Operation Network 2.3.0: Tomcat not supported on Windows 2003 and 2008</h2></a>
 
                     <div class="doc-body">
                         <h2 class=" jbakeExtractedTitle" id="toc-jboss-operation-network-2-3-0-tomcat-not-supported-on-windows-2003-and-2008">JBoss Operation Network 2.3.0: Tomcat not supported on Windows 2003&nbsp;and&nbsp;2008</h2> 
@@ -935,11 +979,11 @@ Caused by: org.rhq.core.pluginapi.inventory.InvalidPluginConfigurationException:
                     </div>
                     ... <a href="pages/programovani/java/jboss/Tomcat-JON-Windows-2003-2008.html"> read more &rarr;</a>
                 </div>
-                <div class="banner post-separator" style="background-image: url(photos/panoramas/DSC_0091-PANO.jpg);"></div>
+                <div class="banner post-separator" style="background-image: url(photos/panoramas/Photo-2017-05-27-15-45-46_4318.jpg);"></div>
                 <div class="document post">
                     <div class="date"><span>2018-07-26</span></div>
 
-                    <a href="pages/osobni/windsurfing-bol.html"><h3>Windsurfing Chorvatsko – Bol</h3></a>
+                    <a href="pages/osobni/windsurfing-bol.html"><h2 class="title">Windsurfing Chorvatsko – Bol</h2></a>
 
                     <div class="doc-body">
                         <h2 class=" jbakeExtractedTitle" id="toc-windsurfing-chorvatsko-bol">Windsurfing Chorvatsko&nbsp;– Bol</h2> 
@@ -1004,12 +1048,12 @@ Caused by: org.rhq.core.pluginapi.inventory.InvalidPluginConfigurationException:
                     </div>
                     ... <a href="pages/osobni/windsurfing-bol.html"> read more &rarr;</a>
                 </div>
-                <div class="banner post-separator" style="background-image: url(photos/panoramas/IMAG1302.jpg);"></div>
+                <div class="banner post-separator" style="background-image: url(photos/panoramas/IMAG1403.jpg);"></div>
                 <div class="document post">
                     <div class="date"><span>2018-07-26</span></div>
 
-                    <a href="pages/programovani/ruzne/rodne-cislo-identifikacni-cislo-rc-ico-kontrola-validace.html"><h3>Kontrola
-rodného čísla (RČ) a identifikačního čísla (IČ)</h3></a>
+                    <a href="pages/programovani/ruzne/rodne-cislo-identifikacni-cislo-rc-ico-kontrola-validace.html"><h2 class="title">Kontrola
+rodného čísla (RČ) a identifikačního čísla (IČ)</h2></a>
 
                     <div class="doc-body">
                         <h2 class=" jbakeExtractedTitle" id="toc-kontrola-rodneho-cisla-rc-a-identifikacniho-cisla-ic">Kontrola rodného čísla (RČ) a identifikačního čísla&nbsp;(IČ)</h2> 
@@ -1191,11 +1235,11 @@ rodného čísla (RČ) a identifikačního čísla (IČ)</h3></a>
                     </div>
                     ... <a href="pages/programovani/ruzne/rodne-cislo-identifikacni-cislo-rc-ico-kontrola-validace.html"> read more &rarr;</a>
                 </div>
-                <div class="banner post-separator" style="background-image: url(photos/panoramas/DSC4_1068.jpg);"></div>
+                <div class="banner post-separator" style="background-image: url(photos/panoramas/DSC_0391-PANO.jpg);"></div>
                 <div class="document post">
                     <div class="date"><span>2018-07-26</span></div>
 
-                    <a href="pages/programovani/artificial_intelligence/neural_networks/pongai_doc/package.html"><h3>Pong AI dokumentace</h3></a>
+                    <a href="pages/programovani/artificial_intelligence/neural_networks/pongai_doc/package.html"><h2 class="title">Pong AI dokumentace</h2></a>
 
                     <div class="doc-body">
                         <!--
@@ -1297,12 +1341,12 @@ rodného čísla (RČ) a identifikačního čísla (IČ)</h3></a>
                     </div>
                     ... <a href="pages/programovani/artificial_intelligence/neural_networks/pongai_doc/package.html"> read more &rarr;</a>
                 </div>
-                <div class="banner post-separator" style="background-image: url(photos/panoramas/DSC_0068.jpg);"></div>
+                <div class="banner post-separator" style="background-image: url(photos/panoramas/DSC1_0498.jpg);"></div>
                 <div class="document post">
                     <div class="date"><span>2018-07-26</span></div>
 
-                    <a href="pages/programovani/java/web/wicket/wicket-compoundpropertymodel-classcastexception.html"><h3>Wicket:
-ClassCastException with CompoundProper­tyModel</h3></a>
+                    <a href="pages/programovani/java/web/wicket/wicket-compoundpropertymodel-classcastexception.html"><h2 class="title">Wicket:
+ClassCastException with CompoundProper­tyModel</h2></a>
 
                     <div class="doc-body">
                         <h2 class=" jbakeExtractedTitle" id="toc-wicket-classcastexception-with-compoundpropertymodel">Wicket: ClassCastException with CompoundProper­tyModel</h2> 
@@ -1476,13 +1520,13 @@ at org.apache.wicket.protocol.http.WicketFilter.doGet(WicketFilter.java:486)</pr
                     </div>
                     ... <a href="pages/programovani/java/web/wicket/wicket-compoundpropertymodel-classcastexception.html"> read more &rarr;</a>
                 </div>
-                <div class="banner post-separator" style="background-image: url(photos/panoramas/DSC_0085-PANO.jpg);"></div>
+                <div class="banner post-separator" style="background-image: url(photos/panoramas/DSC_0062.jpg);"></div>
                 <div class="document post">
                     <div class="date"><span>2018-07-25</span></div>
 
-                    <a href="pages/programovani/java/hibernate/Hibernate-MySQL-ErrorCode1005-Cant-create-table-%23sql-4cb_35-errno-150.html"><h3>MySQL:
+                    <a href="pages/programovani/java/hibernate/Hibernate-MySQL-ErrorCode1005-Cant-create-table-%23sql-4cb_35-errno-150.html"><h2 class="title">MySQL:
 Error Code: 1005. Can't create table ‚essc.#sql-4cb35‘
-(errno: 150)</h3></a>
+(errno: 150)</h2></a>
 
                     <div class="doc-body">
                         <h2 class=" jbakeExtractedTitle" id="toc-mysql-error-code-1005-can-t-create-table-essc-sql-4cb35-errno-150">MySQL: Error Code: 1005.&nbsp;Can't create table ‚essc.#sql-4cb<sub>35</sub>‘ (errno:&nbsp;150)</h2> 
@@ -1522,54 +1566,11 @@ public class MyEntity {
                     </div>
                     ... <a href="pages/programovani/java/hibernate/Hibernate-MySQL-ErrorCode1005-Cant-create-table-%23sql-4cb_35-errno-150.html"> read more &rarr;</a>
                 </div>
-                <div class="banner post-separator" style="background-image: url(photos/panoramas/DSC_0099.jpg);"></div>
-                <div class="document post">
-                    <div class="date"><span>2013-02-03</span></div>
-
-                    <a href="pages/programovani/java/hibernate/firstResult-maxResults-specified-with-collection-fetch.html"><h3>HHH000104:
-firstResult/max­Results specified with collection fetch; applying in
-memory!</h3></a>
-
-                    <div class="doc-body">
-                        <h2 class=" jbakeExtractedTitle" id="toc-hhh000104-firstresult-maxresults-specified-with-collection-fetch-applying-in-memory">HHH000104: firstResult/max­Results specified with collection fetch; applying in memory!</h2> 
-<h3 id="toc-symptoms">Symptoms</h3> 
-<pre class="lang-text brush: text">15:08:58,096 WARN  [org.hibernate.hql.internal.ast.QueryTranslatorImpl] (http-/127.0.0.1:8080-1) HHH000104: firstResult/maxResults specified with collection fetch; applying in memory!</pre> 
-<h3 id="toc-cause">Cause</h3> 
-<p>Not necessarily by <code>firstResult()</code> or <code>maxResults</code>. Can also happen with <code>getSingleResult()</code>.</p> 
-<p>The reason is that Hibernate used <code>JOIN</code> to fetch collection, so database's&nbsp;support for limits can't be used (e.g. MySQL's <code>LIMIT</code> and <code>OFFSET</code>).</p> 
-<pre class="brush lang-java brush: java">public Release getRelease( String prodName, String version, boolean withDeps ) {
-    return this.em.createQuery("SELECT rel FROM Release rel "
-            + " LEFT JOIN FETCH rel.product pr "
-            + " WHERE rel.product.name = ?1 AND rel.version = ?2", Release.class)
-            .setParameter(1, prodName)
-            .setParameter(2, version)
-            .getSingleResult(); // Causes "firstResult/maxResults specified with collection fetch; applying in memory!"
-}</pre> 
-<h3 id="toc-solutions">Solutions</h3> 
-<ol> 
- <li>Use <code>SELECT</code> JOIN strategy.</li> 
- <li>Use <code>getResultsList()</code> instead:</li> 
-</ol> 
-<pre class="brush lang-java brush: java">public Release getRelease( String prodName, String version, boolean withDeps ) {
-    List result = this.em.createQuery("SELECT rel FROM Release rel "
-            + " LEFT JOIN FETCH rel.product pr "
-            + " WHERE rel.product.name = ?1 AND rel.version = ?2", Release.class)
-            .setParameter(1, prodName)
-            .setParameter(2, version)
-            .setMaxResults(1)
-            .getResultList();
-
-    if (result.isEmpty())  return null;
-    return result.get(0);
-}</pre>
-                    </div>
-                    ... <a href="pages/programovani/java/hibernate/firstResult-maxResults-specified-with-collection-fetch.html"> read more &rarr;</a>
-                </div>
-                <div class="banner post-separator" style="background-image: url(photos/panoramas/DSC_0216-PANO.jpg);"></div>
+                <div class="banner post-separator" style="background-image: url(photos/panoramas/DSC_0085-PANO.jpg);"></div>
                 <div class="document post">
                     <div class="date"><span>2013-01-18</span></div>
 
-                    <a href="pages/programovani/java/web/wicket/wicket-favicon.html"><h3>Wicket: Favicon</h3></a>
+                    <a href="pages/programovani/java/web/wicket/wicket-favicon.html"><h2 class="title">Wicket: Favicon</h2></a>
 
                     <div class="doc-body">
                         <h2 class=" jbakeExtractedTitle" id="toc-wicket-favicon">Wicket: Favicon</h2> 
@@ -1633,12 +1634,12 @@ com/myapp/ico/favicon.ico</pre>
                     </div>
                     ... <a href="pages/programovani/java/web/wicket/wicket-favicon.html"> read more &rarr;</a>
                 </div>
-                <div class="banner post-separator" style="background-image: url(photos/panoramas/IMAG4555.jpg);"></div>
+                <div class="banner post-separator" style="background-image: url(photos/panoramas/IMAG0127.jpg);"></div>
                 <div class="document post">
                     <div class="date"><span>2013-01-17</span></div>
 
-                    <a href="pages/programovani/java/web/wicket/wicket-disable-page-caching.html"><h3>Wicket: How to disable page
-caching</h3></a>
+                    <a href="pages/programovani/java/web/wicket/wicket-disable-page-caching.html"><h2 class="title">Wicket: How to disable page
+caching</h2></a>
 
                     <div class="doc-body">
                         <h2 class=" jbakeExtractedTitle" id="toc-wicket-how-to-disable-page-caching">Wicket: How to disable page caching</h2> 
@@ -1663,12 +1664,12 @@ protected IDataStore newDataStore() {
                     </div>
                     ... <a href="pages/programovani/java/web/wicket/wicket-disable-page-caching.html"> read more &rarr;</a>
                 </div>
-                <div class="banner post-separator" style="background-image: url(photos/panoramas/IMAG0478.jpg);"></div>
+                <div class="banner post-separator" style="background-image: url(photos/panoramas/IMAG0456.jpg);"></div>
                 <div class="document post">
                     <div class="date"><span>2012-12-31</span></div>
 
-                    <a href="pages/programovani/java/web/wicket/wicket-rendering-page-to-string.html"><h3>Wicket: How to render a
-page to a string</h3></a>
+                    <a href="pages/programovani/java/web/wicket/wicket-rendering-page-to-string.html"><h2 class="title">Wicket: How to render a
+page to a string</h2></a>
 
                     <div class="doc-body">
                         <h2 class=" jbakeExtractedTitle" id="toc-wicket-how-to-render-a-page-to-a-string">Wicket: How to render a page to a string</h2> 
@@ -1712,12 +1713,12 @@ page to a string</h3></a>
                     </div>
                     ... <a href="pages/programovani/java/web/wicket/wicket-rendering-page-to-string.html"> read more &rarr;</a>
                 </div>
-                <div class="banner post-separator" style="background-image: url(photos/panoramas/DSC_0075-PANO.jpg);"></div>
+                <div class="banner post-separator" style="background-image: url(photos/panoramas/DSC4_1105.jpg);"></div>
                 <div class="document post">
                     <div class="date"><span>2012-12-31</span></div>
 
-                    <a href="pages/programovani/java/web/wicket/wicket-html-markup-not-found.html"><h3>WicketMessage:
-Markup of type ‚html‘ for component not found</h3></a>
+                    <a href="pages/programovani/java/web/wicket/wicket-html-markup-not-found.html"><h2 class="title">WicketMessage:
+Markup of type ‚html‘ for component not found</h2></a>
 
                     <div class="doc-body">
                         <h2 class=" jbakeExtractedTitle" id="toc-wicketmessage-markup-of-type-html-for-component-not-found">WicketMessage: Markup of type ‚html‘ for component not&nbsp;found</h2> 
@@ -1769,11 +1770,11 @@ at org.mortbay.thread.QueuedThreadPool$PoolThread.run(QueuedThreadPool.java:582)
                     </div>
                     ... <a href="pages/programovani/java/web/wicket/wicket-html-markup-not-found.html"> read more &rarr;</a>
                 </div>
-                <div class="banner post-separator" style="background-image: url(photos/panoramas/DSC_0197-PANO.jpg);"></div>
+                <div class="banner post-separator" style="background-image: url(photos/panoramas/IMAG0127.jpg);"></div>
                 <div class="document post">
                     <div class="date"><span>2012-12-31</span></div>
 
-                    <a href="pages/programovani/java/web/wicket/wicket-link-with-label.html"><h3>Wicket: Link with a Label</h3></a>
+                    <a href="pages/programovani/java/web/wicket/wicket-link-with-label.html"><h2 class="title">Wicket: Link with a Label</h2></a>
 
                     <div class="doc-body">
                         <h2 class=" jbakeExtractedTitle" id="toc-wicket-link-with-a-label">Wicket: Link with a Label</h2> 
@@ -1827,13 +1828,13 @@ errors, but you get the idea.</pre>
                     </div>
                     ... <a href="pages/programovani/java/web/wicket/wicket-link-with-label.html"> read more &rarr;</a>
                 </div>
-                <div class="banner post-separator" style="background-image: url(photos/panoramas/IMAG0127.jpg);"></div>
+                <div class="banner post-separator" style="background-image: url(photos/panoramas/DSC_0190.jpg);"></div>
                 <div class="document post">
                     <div class="date"><span>2012-12-31</span></div>
 
-                    <a href="pages/programovani/java/web/wicket/wicket-extend-child-inheritance-include-example.html"><h3>Example
+                    <a href="pages/programovani/java/web/wicket/wicket-extend-child-inheritance-include-example.html"><h2 class="title">Example
 of Wicket's markup inheritance –
-wicket:child and wicket:extend</h3></a>
+wicket:child and wicket:extend</h2></a>
 
                     <div class="doc-body">
                         <h2 class=" jbakeExtractedTitle" id="toc-example-of-wicket-s-markup-inheritance-wicket-child-and-wicket-extend">Example of Wicket's&nbsp;markup inheritance&nbsp;–<br> <code>wicket:child</code> and&nbsp;<code>wicket:extend</code></h2> 
@@ -1894,12 +1895,12 @@ wicket:child and wicket:extend</h3></a>
                     </div>
                     ... <a href="pages/programovani/java/web/wicket/wicket-extend-child-inheritance-include-example.html"> read more &rarr;</a>
                 </div>
-                <div class="banner post-separator" style="background-image: url(photos/panoramas/IMAG0127.jpg);"></div>
+                <div class="banner post-separator" style="background-image: url(photos/panoramas/IMAG1403.jpg);"></div>
                 <div class="document post">
                     <div class="date"><span>2012-12-31</span></div>
 
-                    <a href="pages/programovani/java/web/wicket/wicket-howto-create-component.html"><h3>Wicket: How to create a
-component</h3></a>
+                    <a href="pages/programovani/java/web/wicket/wicket-howto-create-component.html"><h2 class="title">Wicket: How to create a
+component</h2></a>
 
                     <div class="doc-body">
                         <h2 class=" jbakeExtractedTitle" id="toc-wicket-how-to-create-a-component">Wicket: How to create a component</h2> 
@@ -2026,13 +2027,13 @@ new ResourceLink("reslink", item.getModelObject().getResource() ))</pre>
                     </div>
                     ... <a href="pages/programovani/java/web/wicket/wicket-howto-create-component.html"> read more &rarr;</a>
                 </div>
-                <div class="banner post-separator" style="background-image: url(photos/panoramas/DSC_0013.jpg);"></div>
+                <div class="banner post-separator" style="background-image: url(photos/panoramas/DSC1_0106.jpg);"></div>
                 <div class="document post">
                     <div class="date"><span>2012-12-31</span></div>
 
-                    <a href="pages/programovani/java/web/wicket/wicket-component-below-failed-to-render-extend.html"><h3>Wicket:
+                    <a href="pages/programovani/java/web/wicket/wicket-component-below-failed-to-render-extend.html"><h2 class="title">Wicket:
 The component(s) below failed to render when
-using wicket:extend</h3></a>
+using wicket:extend</h2></a>
 
                     <div class="doc-body">
                         <h2 class=" jbakeExtractedTitle" id="toc-wicket-the-component-s-below-failed-to-render-when-using-wicket-extend">Wicket: The component(s) below failed to render when using&nbsp;<code>wicket:extend</code></h2> 
@@ -2096,11 +2097,11 @@ at org.mortbay.thread.QueuedThreadPool$PoolThread.run(QueuedThreadPool.java:582)
                     </div>
                     ... <a href="pages/programovani/java/web/wicket/wicket-component-below-failed-to-render-extend.html"> read more &rarr;</a>
                 </div>
-                <div class="banner post-separator" style="background-image: url(photos/panoramas/DSC_0062b.jpg);"></div>
+                <div class="banner post-separator" style="background-image: url(photos/panoramas/DSC_0391-PANO.jpg);"></div>
                 <div class="document post">
                     <div class="date"><span>2012-12-31</span></div>
 
-                    <a href="pages/programovani/java/web/wicket/tmp-paste.html"><h3>Wicket component</h3></a>
+                    <a href="pages/programovani/java/web/wicket/tmp-paste.html"><h2 class="title">Wicket component</h2></a>
 
                     <div class="doc-body">
                         <h2 class=" jbakeExtractedTitle" id="toc-wicket-component">Wicket component</h2> 
@@ -2176,11 +2177,11 @@ new ResourceLink("reslink", item.getModelObject().getResource() ))</pre>
                     </div>
                     ... <a href="pages/programovani/java/web/wicket/tmp-paste.html"> read more &rarr;</a>
                 </div>
-                <div class="banner post-separator" style="background-image: url(photos/panoramas/DSC4_1551.jpg);"></div>
+                <div class="banner post-separator" style="background-image: url(photos/panoramas/DSC_0086-PANO.jpg);"></div>
                 <div class="document post">
                     <div class="date"><span>2012-12-31</span></div>
 
-                    <a href="pages/programovani/java/web/wicket/whats-new-in-wicket-1.5.html"><h3>What's new in Wicket 1.5</h3></a>
+                    <a href="pages/programovani/java/web/wicket/whats-new-in-wicket-1.5.html"><h2 class="title">What's new in Wicket 1.5</h2></a>
 
                     <div class="doc-body">
                         <h2 class=" jbakeExtractedTitle" id="toc-what-s-new-in-wicket-1-5">What's&nbsp;new in Wicket 1.5</h2> 
@@ -2195,13 +2196,13 @@ new ResourceLink("reslink", item.getModelObject().getResource() ))</pre>
                     </div>
                     ... <a href="pages/programovani/java/web/wicket/whats-new-in-wicket-1.5.html"> read more &rarr;</a>
                 </div>
-                <div class="banner post-separator" style="background-image: url(photos/panoramas/DSC4_1068.jpg);"></div>
+                <div class="banner post-separator" style="background-image: url(photos/panoramas/IMAG4346.jpg);"></div>
                 <div class="document post">
                     <div class="date"><span>2012-12-31</span></div>
 
-                    <a href="pages/programovani/java/web/wicket/wicket-NoClassDefFoundError-PropertyResolver.html"><h3>Wicket
+                    <a href="pages/programovani/java/web/wicket/wicket-NoClassDefFoundError-PropertyResolver.html"><h2 class="title">Wicket
 exception on shutdown – java.lang.NoClas­sDefFoundError:
-org/apache/wic­ket/util/lang/Pro­pertyResolver</h3></a>
+org/apache/wic­ket/util/lang/Pro­pertyResolver</h2></a>
 
                     <div class="doc-body">
                         <h2 class=" jbakeExtractedTitle" id="toc-wicket-exception-on-shutdown-java-lang-noclassdeffounderror-org-apache-wicket-util-lang-propertyresolver">Wicket exception on shutdown&nbsp;– java.lang.NoClas­sDefFoundError: org/apache/wic­ket/util/lang/Pro­pertyResolver</h2> 
@@ -2280,11 +2281,11 @@ java.lang.NoClassDefFoundError: org/apache/wicket/util/lang/PropertyResolver
                     </div>
                     ... <a href="pages/programovani/java/web/wicket/wicket-NoClassDefFoundError-PropertyResolver.html"> read more &rarr;</a>
                 </div>
-                <div class="banner post-separator" style="background-image: url(photos/panoramas/DSC1_0106.jpg);"></div>
+                <div class="banner post-separator" style="background-image: url(photos/panoramas/IMAG4776.jpg);"></div>
                 <div class="document post">
                     <div class="date"><span>2012-12-31</span></div>
 
-                    <a href="pages/programovani/java/web/wicket/wicket-cheatsheet.html"><h3>My Wicket Cheat-sheet</h3></a>
+                    <a href="pages/programovani/java/web/wicket/wicket-cheatsheet.html"><h2 class="title">My Wicket Cheat-sheet</h2></a>
 
                     <div class="doc-body">
                         <h2 class=" jbakeExtractedTitle" id="toc-my-wicket-cheat-sheet">My Wicket Cheat-sheet</h2> 
@@ -2315,12 +2316,12 @@ java.lang.NoClassDefFoundError: org/apache/wicket/util/lang/PropertyResolver
                     </div>
                     ... <a href="pages/programovani/java/web/wicket/wicket-cheatsheet.html"> read more &rarr;</a>
                 </div>
-                <div class="banner post-separator" style="background-image: url(photos/panoramas/DSC_0375-PANO.jpg);"></div>
+                <div class="banner post-separator" style="background-image: url(photos/panoramas/DSC1_0289.jpg);"></div>
                 <div class="document post">
                     <div class="date"><span>2012-12-31</span></div>
 
-                    <a href="pages/programovani/java/web/wicket/netbeans-wicket-support-wishlist.html"><h3>NetBeans Wicket support wish
-list</h3></a>
+                    <a href="pages/programovani/java/web/wicket/netbeans-wicket-support-wishlist.html"><h2 class="title">NetBeans Wicket support wish
+list</h2></a>
 
                     <div class="doc-body">
                         <h2 class=" jbakeExtractedTitle" id="toc-netbeans-wicket-support-wish-list">NetBeans Wicket support wish list</h2> 
@@ -2333,12 +2334,12 @@ list</h3></a>
                     </div>
                     ... <a href="pages/programovani/java/web/wicket/netbeans-wicket-support-wishlist.html"> read more &rarr;</a>
                 </div>
-                <div class="banner post-separator" style="background-image: url(photos/panoramas/IMAG0112.jpg);"></div>
+                <div class="banner post-separator" style="background-image: url(photos/panoramas/DSC_0178.jpg);"></div>
                 <div class="document post">
                     <div class="date"><span>2012-12-31</span></div>
 
-                    <a href="pages/programovani/java/maven/xslt-transformation-of-pom-xml-namespaces.html"><h3>Maven: XSLT transformation of
-pom.xml</h3></a>
+                    <a href="pages/programovani/java/maven/xslt-transformation-of-pom-xml-namespaces.html"><h2 class="title">Maven: XSLT transformation of
+pom.xml</h2></a>
 
                     <div class="doc-body">
                         <h2 class=" jbakeExtractedTitle" id="toc-maven-xslt-transformation-of-pom-xml">Maven: XSLT transformation of pom.xml</h2> 
@@ -2361,12 +2362,12 @@ pom.xml</h3></a>
                     </div>
                     ... <a href="pages/programovani/java/maven/xslt-transformation-of-pom-xml-namespaces.html"> read more &rarr;</a>
                 </div>
-                <div class="banner post-separator" style="background-image: url(photos/panoramas/IMAG3009.jpg);"></div>
+                <div class="banner post-separator" style="background-image: url(photos/panoramas/IMAG4802.jpg);"></div>
                 <div class="document post">
                     <div class="date"><span>2012-12-31</span></div>
 
-                    <a href="pages/programovani/java/maven/maven-standard-pom.xml-for-standalone-application.html"><h3>Standard Maven
-pom.xml for standalone application</h3></a>
+                    <a href="pages/programovani/java/maven/maven-standard-pom.xml-for-standalone-application.html"><h2 class="title">Standard Maven
+pom.xml for standalone application</h2></a>
 
                     <div class="doc-body">
                         <h2 class=" jbakeExtractedTitle" id="toc-standard-maven-pom-xml-for-standalone-application">Standard Maven pom.xml for standalone application</h2> 
@@ -2536,11 +2537,11 @@ pom.xml for standalone application</h3></a>
                     </div>
                     ... <a href="pages/programovani/java/maven/maven-standard-pom.xml-for-standalone-application.html"> read more &rarr;</a>
                 </div>
-                <div class="banner post-separator" style="background-image: url(photos/panoramas/IMAG5583.jpg);"></div>
+                <div class="banner post-separator" style="background-image: url(photos/panoramas/DSC_0062b.jpg);"></div>
                 <div class="document post">
                     <div class="date"><span>2012-12-31</span></div>
 
-                    <a href="pages/programovani/java/maven/mavenhoe-fake-jar-repository.html"><h3>Mavenhoe</h3></a>
+                    <a href="pages/programovani/java/maven/mavenhoe-fake-jar-repository.html"><h2 class="title">Mavenhoe</h2></a>
 
                     <div class="doc-body">
                         <h2 class=" jbakeExtractedTitle" id="toc-mavenhoe">Mavenhoe</h2> 
@@ -2548,7 +2549,7 @@ pom.xml for standalone application</h3></a>
                     </div>
                     ... <a href="pages/programovani/java/maven/mavenhoe-fake-jar-repository.html"> read more &rarr;</a>
                 </div>
-                <div class="banner post-separator" style="background-image: url(photos/panoramas/DSC4_1068.jpg);"></div>
+                <div class="banner post-separator" style="background-image: url(photos/panoramas/IMAG5583.jpg);"></div>
         </div>
 
 

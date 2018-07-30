@@ -6,8 +6,8 @@
         <atom:link href="https://www.zizka.ch/feed.xml" rel="self" type="application/rss+xml"/>
         <description>JBake Bootstrap Template</description>
         <language>en-gb</language>
-        <pubDate>Mon, 30 Jul 2018 01:40:08 +0200</pubDate>
-        <lastBuildDate>Mon, 30 Jul 2018 01:40:08 +0200</lastBuildDate>
+        <pubDate>Mon, 30 Jul 2018 02:18:21 +0200</pubDate>
+        <lastBuildDate>Mon, 30 Jul 2018 02:18:21 +0200</lastBuildDate>
 
         <item>
             <title>Work on this site in progress</title>
@@ -19,6 +19,48 @@
 &lt;p&gt;After about a year offline, the site was just re-born from the former platform.&lt;br&gt; The current solution still has a few annoyances, but I&apos;m fixing it&amp;nbsp;:)&lt;/p&gt; 
 &lt;p&gt;The most important thing is so sort out the pages that I&amp;nbsp;brought from the former site.&lt;br&gt; That needs me to implement auto-generated directory indexes in the JBake platform this uses.&lt;br&gt; Until then, the blog below will contain all&amp;nbsp;pages.&lt;/p&gt; 
 &lt;p&gt;Another thing is the duplicated titles. That will go away&amp;nbsp;soon.&lt;/p&gt; 
+            </description>
+        </item>
+        <item>
+            <title>Hibernate
+HHH000104: firstResult/max­Results specified with collection fetch; applying
+in memory</title>
+            <link>https://www.zizka.ch/pages/programovani/java/hibernate/firstResult-maxResults-specified-with-collection-fetch.html</link>
+            <pubDate>Mon, 30 Jul 2018 02:03:02 +0200</pubDate>
+            <guid isPermaLink="false">pages/programovani/java/hibernate/firstResult-maxResults-specified-with-collection-fetch.html</guid>
+            <description>
+                 &lt;h2 class=&quot; jbakeExtractedTitle&quot; id=&quot;toc-hibernate-hhh000104-firstresult-maxresults-specified-with-collection-fetch-applying-in-memory&quot;&gt;Hibernate HHH000104: firstResult/max­Results specified with collection fetch; applying in&amp;nbsp;memory&lt;/h2&gt; 
+&lt;h3 id=&quot;toc-symptoms&quot;&gt;Symptoms&lt;/h3&gt; 
+&lt;pre class=&quot;lang-text brush: text&quot;&gt;15:08:58,096 WARN  [org.hibernate.hql.internal.ast.QueryTranslatorImpl] (http-/127.0.0.1:8080-1)
+  HHH000104: firstResult/maxResults specified with collection fetch; applying in memory!&lt;/pre&gt; 
+&lt;h3 id=&quot;toc-cause&quot;&gt;Cause&lt;/h3&gt; 
+&lt;p&gt;Not necessarily by &lt;code&gt;firstResult()&lt;/code&gt; or &lt;code&gt;maxResults&lt;/code&gt;. Can also happen with &lt;code&gt;getSingleResult()&lt;/code&gt;.&lt;/p&gt; 
+&lt;p&gt;The reason is that Hibernate used &lt;code&gt;JOIN&lt;/code&gt; to fetch collection, so database&apos;s&amp;nbsp;support for limits can&apos;t be used (e.g. MySQL&apos;s &lt;code&gt;LIMIT&lt;/code&gt; and &lt;code&gt;OFFSET&lt;/code&gt;).&lt;/p&gt; 
+&lt;pre class=&quot;brush lang-java brush: java&quot;&gt;public Release getRelease( String prodName, String version, boolean withDeps ) {
+    return this.em.createQuery(&quot;SELECT rel FROM Release rel &quot;
+            + &quot; LEFT JOIN FETCH rel.product pr &quot;
+            + &quot; WHERE rel.product.name = ?1 AND rel.version = ?2&quot;, Release.class)
+            .setParameter(1, prodName)
+            .setParameter(2, version)
+            .getSingleResult(); // Causes &quot;firstResult/maxResults specified with collection fetch; applying in memory!&quot;
+}&lt;/pre&gt; 
+&lt;h3 id=&quot;toc-solutions&quot;&gt;Solutions&lt;/h3&gt; 
+&lt;ol&gt; 
+ &lt;li&gt;Use &lt;code&gt;SELECT&lt;/code&gt; JOIN strategy.&lt;/li&gt; 
+ &lt;li&gt;Use &lt;code&gt;getResultsList()&lt;/code&gt; instead:&lt;/li&gt; 
+&lt;/ol&gt; 
+&lt;pre class=&quot;brush lang-java brush: java&quot;&gt;public Release getRelease( String prodName, String version, boolean withDeps ) {
+    List result = this.em.createQuery(&quot;SELECT rel FROM Release rel &quot;
+            + &quot; LEFT JOIN FETCH rel.product pr &quot;
+            + &quot; WHERE rel.product.name = ?1 AND rel.version = ?2&quot;, Release.class)
+            .setParameter(1, prodName)
+            .setParameter(2, version)
+            .setMaxResults(1)
+            .getResultList();
+
+    if (result.isEmpty())  return null;
+    return result.get(0);
+}&lt;/pre&gt; 
             </description>
         </item>
         <item>
@@ -1436,47 +1478,6 @@ public class MyEntity {
     @Id @Generated(GenerationStrategy.IDENTITY)
     @Column(columnDefinition = &quot;INT UNSIGNED&quot;)
     Long id;
-}&lt;/pre&gt; 
-            </description>
-        </item>
-        <item>
-            <title>HHH000104:
-firstResult/max­Results specified with collection fetch; applying in
-memory!</title>
-            <link>https://www.zizka.ch/pages/programovani/java/hibernate/firstResult-maxResults-specified-with-collection-fetch.html</link>
-            <pubDate>Sun, 3 Feb 2013 15:18:36 +0100</pubDate>
-            <guid isPermaLink="false">pages/programovani/java/hibernate/firstResult-maxResults-specified-with-collection-fetch.html</guid>
-            <description>
-                 &lt;h2 class=&quot; jbakeExtractedTitle&quot; id=&quot;toc-hhh000104-firstresult-maxresults-specified-with-collection-fetch-applying-in-memory&quot;&gt;HHH000104: firstResult/max­Results specified with collection fetch; applying in memory!&lt;/h2&gt; 
-&lt;h3 id=&quot;toc-symptoms&quot;&gt;Symptoms&lt;/h3&gt; 
-&lt;pre class=&quot;lang-text brush: text&quot;&gt;15:08:58,096 WARN  [org.hibernate.hql.internal.ast.QueryTranslatorImpl] (http-/127.0.0.1:8080-1) HHH000104: firstResult/maxResults specified with collection fetch; applying in memory!&lt;/pre&gt; 
-&lt;h3 id=&quot;toc-cause&quot;&gt;Cause&lt;/h3&gt; 
-&lt;p&gt;Not necessarily by &lt;code&gt;firstResult()&lt;/code&gt; or &lt;code&gt;maxResults&lt;/code&gt;. Can also happen with &lt;code&gt;getSingleResult()&lt;/code&gt;.&lt;/p&gt; 
-&lt;p&gt;The reason is that Hibernate used &lt;code&gt;JOIN&lt;/code&gt; to fetch collection, so database&apos;s&amp;nbsp;support for limits can&apos;t be used (e.g. MySQL&apos;s &lt;code&gt;LIMIT&lt;/code&gt; and &lt;code&gt;OFFSET&lt;/code&gt;).&lt;/p&gt; 
-&lt;pre class=&quot;brush lang-java brush: java&quot;&gt;public Release getRelease( String prodName, String version, boolean withDeps ) {
-    return this.em.createQuery(&quot;SELECT rel FROM Release rel &quot;
-            + &quot; LEFT JOIN FETCH rel.product pr &quot;
-            + &quot; WHERE rel.product.name = ?1 AND rel.version = ?2&quot;, Release.class)
-            .setParameter(1, prodName)
-            .setParameter(2, version)
-            .getSingleResult(); // Causes &quot;firstResult/maxResults specified with collection fetch; applying in memory!&quot;
-}&lt;/pre&gt; 
-&lt;h3 id=&quot;toc-solutions&quot;&gt;Solutions&lt;/h3&gt; 
-&lt;ol&gt; 
- &lt;li&gt;Use &lt;code&gt;SELECT&lt;/code&gt; JOIN strategy.&lt;/li&gt; 
- &lt;li&gt;Use &lt;code&gt;getResultsList()&lt;/code&gt; instead:&lt;/li&gt; 
-&lt;/ol&gt; 
-&lt;pre class=&quot;brush lang-java brush: java&quot;&gt;public Release getRelease( String prodName, String version, boolean withDeps ) {
-    List result = this.em.createQuery(&quot;SELECT rel FROM Release rel &quot;
-            + &quot; LEFT JOIN FETCH rel.product pr &quot;
-            + &quot; WHERE rel.product.name = ?1 AND rel.version = ?2&quot;, Release.class)
-            .setParameter(1, prodName)
-            .setParameter(2, version)
-            .setMaxResults(1)
-            .getResultList();
-
-    if (result.isEmpty())  return null;
-    return result.get(0);
 }&lt;/pre&gt; 
             </description>
         </item>
