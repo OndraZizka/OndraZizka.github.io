@@ -6,8 +6,8 @@
         <atom:link href="https://www.zizka.ch/feed.xml" rel="self" type="application/rss+xml"/>
         <description>JBake Bootstrap Template</description>
         <language>en-gb</language>
-        <pubDate>Mon, 30 Jul 2018 03:35:45 +0200</pubDate>
-        <lastBuildDate>Mon, 30 Jul 2018 03:35:45 +0200</lastBuildDate>
+        <pubDate>Mon, 30 Jul 2018 05:55:21 +0200</pubDate>
+        <lastBuildDate>Mon, 30 Jul 2018 05:55:21 +0200</lastBuildDate>
 
         <item>
             <title>Work on this site in progress</title>
@@ -19,6 +19,27 @@
 &lt;p&gt;After about a year offline, the site was just re-born from the former platform.&lt;br&gt; The current solution still has a few annoyances, but I&apos;m fixing it&amp;nbsp;:)&lt;/p&gt; 
 &lt;p&gt;The most important thing is so sort out the pages that I&amp;nbsp;brought from the former site.&lt;br&gt; That needs me to implement auto-generated directory indexes in the JBake platform this uses.&lt;br&gt; Until then, the blog below will contain all&amp;nbsp;pages.&lt;/p&gt; 
 &lt;p&gt;Another thing is the duplicated titles. That will go away&amp;nbsp;soon.&lt;/p&gt; 
+            </description>
+        </item>
+        <item>
+            <title>Thank You!</title>
+            <link>https://www.zizka.ch/site/donationThankYou.html</link>
+            <pubDate>Mon, 30 Jul 2018 05:44:37 +0200</pubDate>
+            <guid isPermaLink="false">site/donationThankYou.html</guid>
+            <description>
+                 &lt;p&gt;type=page title=Thank you for the donation.&lt;/p&gt; 
+&lt;h2 class=&quot; jbakeExtractedTitle&quot; id=&quot;toc-thank-you&quot;&gt;Thank You!&lt;/h2&gt; 
+&lt;p&gt;I&amp;nbsp;appreciate any donation and acknowledge it as a confirmation that the work I&amp;nbsp;put into the site is valuable for someone.&lt;/p&gt; 
+            </description>
+        </item>
+        <item>
+            <title>Never mind :)</title>
+            <link>https://www.zizka.ch/site/donationCancelled.html</link>
+            <pubDate>Mon, 30 Jul 2018 05:42:32 +0200</pubDate>
+            <guid isPermaLink="false">site/donationCancelled.html</guid>
+            <description>
+                 &lt;h2 class=&quot; jbakeExtractedTitle&quot; id=&quot;toc-never-mind&quot;&gt;Never mind :)&lt;/h2&gt; 
+&lt;p&gt;No problem, if you change your mind and want to share a penny, the „Donate“ button will be&amp;nbsp;there.&lt;/p&gt; 
             </description>
         </item>
         <item>
