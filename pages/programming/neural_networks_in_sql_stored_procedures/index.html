@@ -62,7 +62,7 @@ Networks SQL implementation – Stored Procedures - Ondřej Žižka</title>
             <h1>Neural
 Networks SQL implementation – Stored Procedures</h1>
         </div>
-        <div class="date"><span>2012-12-16</span></div>
+        <div class="date"><span>2018-07-31</span></div>
         <div class="doc-body"><h2 class=" jbakeExtractedTitle" id="toc-neural-networks-sql-implementation-stored-procedures">Neural
 Networks SQL implementation – Stored Procedures</h2>
 <!--
@@ -155,7 +155,7 @@ networks.</p>
 	<li>Code is full of debugging logs (<code>CALL LoggP(...)</code>) and commented
 	statements, which can be safely deleted.</li>
 
-	<li>Procedures listed below use the procedures and functions listed on the <a href="../sql/mysql_stored_procedures.texy">MySQL Stored
+	<li>Procedures listed below use the procedures and functions listed on the <a href="../sql/mysql_stored_procedures.html">MySQL Stored
 	Procedures</a> page.</li>
 
 	<li>I also have versions of stored procedures that work with multiple networks
@@ -745,7 +745,7 @@ neurons' values; we asked to do so by setting the third parameter to
 <pre class="brush: lang-sql brush: sql">CALL nn_ComputeNet( iNetID, '1, -1', TRUE );  ##  Be sure to set to TRUE!</pre>
 
 <p>Then we have to rename the tables, because MySQL does not allow to pass the
-result set in any other way. (At least one row could be spared… see my <a href="../sql/mysql_wishlist/alter_table_rename_overwrite.texy">MySQL
+result set in any other way. (At least one row could be spared… see my <a href="../sql/mysql_wishlist/alter_table_rename_overwrite.html">MySQL
 wish-list</a>.)</p>
 
 <pre class="brush: lang-sql brush: sql">DROP TEMPORARY TABLE IF EXISTS nn_CorrectWeights, nn_CorrectWeights_InternalValues;
@@ -1330,7 +1330,7 @@ plug-in engine, experimental).</p>
 	FAQ</a></li>
 </ul>
 
-<p>Questions? See <a href="../../osobni/kontakty.texy">contacts</a>.</p>
+<p>Questions? See <a href="../../osobni/kontakty.html">contacts</a>.</p>
 
 <p>Keywords: Neural networks stored procedures mysql sql MyISAM InnoDB
 PBXT PBTX.</p>
