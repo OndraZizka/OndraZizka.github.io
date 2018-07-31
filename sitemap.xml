@@ -5,6 +5,14 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
     <url>
+        <loc>https://www.zizka.ch/site/donationCancelled.html</loc>
+        <lastmod>2018-07-31</lastmod>
+    </url>
+    <url>
+        <loc>https://www.zizka.ch/site/donationThankYou.html</loc>
+        <lastmod>2018-07-31</lastmod>
+    </url>
+    <url>
         <loc>https://www.zizka.ch/about.html</loc>
         <lastmod>2018-07-21</lastmod>
     </url>
@@ -13,15 +21,11 @@
         <lastmod>2050-01-01</lastmod>
     </url>
     <url>
+        <loc>https://www.zizka.ch/pages/odkazy/pratele.html</loc>
+        <lastmod>2018-07-31</lastmod>
+    </url>
+    <url>
         <loc>https://www.zizka.ch/pages/economy/bitcoin/BitcoinPropaganda-MarketValue.html</loc>
-        <lastmod>2018-07-30</lastmod>
-    </url>
-    <url>
-        <loc>https://www.zizka.ch/site/donationThankYou.html</loc>
-        <lastmod>2018-07-30</lastmod>
-    </url>
-    <url>
-        <loc>https://www.zizka.ch/site/donationCancelled.html</loc>
         <lastmod>2018-07-30</lastmod>
     </url>
     <url>
@@ -757,10 +761,6 @@
         <lastmod>2012-12-13</lastmod>
     </url>
     <url>
-        <loc>https://www.zizka.ch/pages/odkazy/pratele.html</loc>
-        <lastmod>2012-12-13</lastmod>
-    </url>
-    <url>
         <loc>https://www.zizka.ch/pages/osobni/facebook-group-generator.html</loc>
         <lastmod>2012-12-13</lastmod>
     </url>
@@ -778,10 +778,6 @@
     </url>
     <url>
         <loc>https://www.zizka.ch/pages/programming/web_javascript_ajax_canvas/index.html</loc>
-        <lastmod>2012-12-13</lastmod>
-    </url>
-    <url>
-        <loc>https://www.zizka.ch/pages/odkazy/software.html</loc>
         <lastmod>2012-12-13</lastmod>
     </url>
     <url>
@@ -899,6 +895,10 @@
     <url>
         <loc>https://www.zizka.ch/pages/test.html</loc>
         <lastmod>2012-11-13</lastmod>
+    </url>
+    <url>
+        <loc>https://www.zizka.ch/pages/odkazy/software.html</loc>
+        <lastmod>2008-01-01</lastmod>
     </url>
 </urlset>
 

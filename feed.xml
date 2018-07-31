@@ -6,8 +6,8 @@
         <atom:link href="https://www.zizka.ch/feed.xml" rel="self" type="application/rss+xml"/>
         <description>JBake Bootstrap Template</description>
         <language>en-gb</language>
-        <pubDate>Mon, 30 Jul 2018 07:39:35 +0200</pubDate>
-        <lastBuildDate>Mon, 30 Jul 2018 07:39:35 +0200</lastBuildDate>
+        <pubDate>Tue, 31 Jul 2018 04:09:47 +0200</pubDate>
+        <lastBuildDate>Tue, 31 Jul 2018 04:09:47 +0200</lastBuildDate>
 
         <item>
             <title>Work on this site in progress</title>
@@ -19,6 +19,23 @@
 &lt;p&gt;After about a year offline, the site was just re-born from the former platform.&lt;br&gt; The current solution still has a few annoyances, but I&apos;m fixing it&amp;nbsp;:)&lt;/p&gt; 
 &lt;p&gt;The most important thing is so sort out the pages that I&amp;nbsp;brought from the former site.&lt;br&gt; That needs me to implement auto-generated directory indexes in the JBake platform this uses.&lt;br&gt; Until then, the blog below will contain all&amp;nbsp;pages.&lt;/p&gt; 
 &lt;p&gt;Another thing is the duplicated titles. That will go away&amp;nbsp;soon.&lt;/p&gt; 
+            </description>
+        </item>
+        <item>
+            <title>Přátelé a známí</title>
+            <link>https://www.zizka.ch/pages/odkazy/pratele.html</link>
+            <pubDate>Tue, 31 Jul 2018 03:34:07 +0200</pubDate>
+            <guid isPermaLink="false">pages/odkazy/pratele.html</guid>
+            <description>
+                 &lt;h2 class=&quot; jbakeExtractedTitle&quot; id=&quot;toc-pratele-a-znami&quot;&gt;Přátelé a známí&lt;/h2&gt; 
+&lt;p&gt;Kdo z&amp;nbsp;mých známých a přátel má webovky, toho zde uvedu&amp;nbsp;– samozřejmě hlavně kvůli backlinkům&amp;nbsp;:-)&lt;/p&gt; 
+&lt;ul&gt; 
+ &lt;li&gt;Petr Záveský&amp;nbsp;– skvělý 2D a 3D grafik&amp;nbsp;– &lt;a href=&quot;http://zavesky.d2.cz/&quot;&gt;http://zavesky.d2.cz/&lt;/a&gt;&lt;/li&gt; 
+ &lt;li&gt;Martin Steigl&amp;nbsp;– &lt;a href=&quot;http://www.steigl.com/&quot;&gt;http://www.steigl.com/&lt;/a&gt;&lt;/li&gt; 
+ &lt;li&gt;Daniel Rozsnyó&amp;nbsp;– &lt;a href=&quot;http://www.rozsnyo.com/&quot;&gt;http://www.rozsnyo.com/&lt;/a&gt;&lt;/li&gt; 
+ &lt;li&gt;Zdeněk Žižka&amp;nbsp;– kupte si židli, nechte si ozdobit oslavu :-)&amp;nbsp;&lt;a href=&quot;http://www.zizka.cz/&quot;&gt;http://www.zizka.cz/&lt;/a&gt;&lt;/li&gt; 
+&lt;/ul&gt; 
+&lt;p&gt;O&amp;nbsp;nikom jiném nevím :-)&lt;/p&gt; 
             </description>
         </item>
         <item>
@@ -42,27 +59,6 @@ propaganda: „Market value“ is larger than XY</title>
 &lt;p&gt;Many people then follow this logic: If there is a small chance that Bitcoin will cost 30-times more in few years, I&amp;nbsp;will put some small amount of money to it which I&amp;nbsp;won&apos;t regret if I&amp;nbsp;loose them completely, and if it works out, I&amp;nbsp;will have 30&amp;nbsp;times&amp;nbsp;more.&lt;/p&gt; 
 &lt;p&gt;The two things above combined lead to a global demand for a semi-constant supply (currently 12.5&amp;nbsp;BTC every 10&amp;nbsp;minutes on average), which drives the price to the ridiculous levels.&lt;/p&gt; 
 &lt;p&gt;Finally, this ridiculous price is multiplied with the number of Bitcoins mined so far, and you get a nonsensical number which is then presented as „value of all Bitcoins“. Don&apos;t get fooled - in the future, everyone will want their money back, and expect to sell at those ridiculous prices. The fall will be even faster than the rise - and the reason why is described in another post: „Bitcoin propaganda: Bitcoin is a storage of value“.&lt;/p&gt; 
-            </description>
-        </item>
-        <item>
-            <title>Thank You!</title>
-            <link>https://www.zizka.ch/site/donationThankYou.html</link>
-            <pubDate>Mon, 30 Jul 2018 05:44:37 +0200</pubDate>
-            <guid isPermaLink="false">site/donationThankYou.html</guid>
-            <description>
-                 &lt;p&gt;type=page title=Thank you for the donation.&lt;/p&gt; 
-&lt;h2 class=&quot; jbakeExtractedTitle&quot; id=&quot;toc-thank-you&quot;&gt;Thank You!&lt;/h2&gt; 
-&lt;p&gt;I&amp;nbsp;appreciate any donation and acknowledge it as a confirmation that the work I&amp;nbsp;put into the site is valuable for someone.&lt;/p&gt; 
-            </description>
-        </item>
-        <item>
-            <title>Never mind :)</title>
-            <link>https://www.zizka.ch/site/donationCancelled.html</link>
-            <pubDate>Mon, 30 Jul 2018 05:42:32 +0200</pubDate>
-            <guid isPermaLink="false">site/donationCancelled.html</guid>
-            <description>
-                 &lt;h2 class=&quot; jbakeExtractedTitle&quot; id=&quot;toc-never-mind&quot;&gt;Never mind :)&lt;/h2&gt; 
-&lt;p&gt;No problem, if you change your mind and want to share a penny, the „Donate“ button will be&amp;nbsp;there.&lt;/p&gt; 
             </description>
         </item>
         <item>
@@ -18370,22 +18366,6 @@ selection buffer</title>
             </description>
         </item>
         <item>
-            <title>Přátelé a známí</title>
-            <link>https://www.zizka.ch/pages/odkazy/pratele.html</link>
-            <pubDate>Thu, 13 Dec 2012 13:39:20 +0100</pubDate>
-            <guid isPermaLink="false">pages/odkazy/pratele.html</guid>
-            <description>
-                 &lt;h2 class=&quot; jbakeExtractedTitle&quot; id=&quot;toc-pratele-a-znami&quot;&gt;Přátelé a známí&lt;/h2&gt; 
-&lt;p&gt;Kdo z&amp;nbsp;mých známých a přátel má webovky, toho zde uvedu&amp;nbsp;– samozřejmě hlavně kvůli backlinkům&amp;nbsp;:-)&lt;/p&gt; 
-&lt;p&gt;Petr Záveský&amp;nbsp;– skvělý 2D a 3D grafik&amp;nbsp;– &lt;a href=&quot;http://zavesky.d2.cz/&quot;&gt;http://zavesky.d2.cz/&lt;/a&gt;&lt;/p&gt; 
-&lt;p&gt;Martin Steigl&amp;nbsp;– &lt;a href=&quot;http://www.steigl.com/&quot;&gt;http://www.steigl.com/&lt;/a&gt;&lt;/p&gt; 
-&lt;p&gt;Daniel Rozsnyó&amp;nbsp;– &lt;a href=&quot;http://www.rozsnyo.com/&quot;&gt;http://www.rozsnyo.com/&lt;/a&gt;&lt;/p&gt; 
-&lt;p&gt;Zdeněk Žižka&amp;nbsp;– kupte si židli, nechte si ozdobit oslavu :-)&amp;nbsp;&lt;a href=&quot;http://www.zizka.cz/&quot;&gt;http://www.zizka.cz/&lt;/a&gt;&lt;/p&gt; 
-&lt;p&gt;„Kamarádka“ &lt;a href=&quot;../osobni/barbora_svetlikova.texy&quot;&gt;Barbora Světlíková, Semily&lt;/a&gt;&lt;/p&gt; 
-&lt;p&gt;O&amp;nbsp;nikom jiném nevím :-)&lt;/p&gt; 
-            </description>
-        </item>
-        <item>
             <title>Facebook Group Generator</title>
             <link>https://www.zizka.ch/pages/osobni/facebook-group-generator.html</link>
             <pubDate>Thu, 13 Dec 2012 13:39:20 +0100</pubDate>
@@ -18734,92 +18714,6 @@ Canvas</title>
 &lt;h3 id=&quot;toc-webttd-browser-based-transport-tycoon-clone-idea&quot;&gt;&lt;a href=&quot;web_javascript_ajax_canvas/webttd.texy&quot;&gt;WebTTD&lt;/a&gt;&amp;nbsp;– browser-based Transport Tycoon clone&amp;nbsp;idea.&lt;/h3&gt; 
 &lt;h3 id=&quot;toc-canvas-element-selection-buffer&quot;&gt;&lt;code&gt;canvas&lt;/code&gt; element selection buffer&lt;/h3&gt; 
 &lt;p&gt;&lt;a href=&quot;canvas_element_selection_buffer.texy&quot;&gt;English&lt;/a&gt;, &lt;a href=&quot;canvas_element_selection_buffer.cz.texy&quot;&gt;česky&lt;/a&gt;&lt;/p&gt; 
-            </description>
-        </item>
-        <item>
-            <title>Zajímavý software</title>
-            <link>https://www.zizka.ch/pages/odkazy/software.html</link>
-            <pubDate>Thu, 13 Dec 2012 13:39:20 +0100</pubDate>
-            <guid isPermaLink="false">pages/odkazy/software.html</guid>
-            <description>
-                 &lt;h2 class=&quot; jbakeExtractedTitle&quot; id=&quot;toc-zajimavy-software&quot;&gt;Zajímavý software&lt;/h2&gt; 
-&lt;p&gt;Po nějaké době se každý ustálí na nějakých oblíbených programech. Já používám a doporučuji&amp;nbsp;tyto:&lt;/p&gt; 
-&lt;table&gt; 
- &lt;tbody&gt; 
-  &lt;tr&gt; 
-   &lt;th&gt;Účel&lt;/th&gt; 
-   &lt;th&gt;programy na Windows XP&lt;/th&gt; 
-   &lt;th&gt;programy na Ubuntu 8&lt;/th&gt; 
-  &lt;/tr&gt; 
-  &lt;tr&gt; 
-   &lt;th colspan=&quot;3&quot;&gt;Komunikace&lt;/th&gt; 
-  &lt;/tr&gt; 
-  &lt;tr&gt; 
-   &lt;td&gt;On-line komunikace&amp;nbsp;– ICQ, Jabber, IRC&lt;/td&gt; 
-   &lt;td&gt;&lt;a href=&quot;http://www.miranda-im.org&amp;quot;&quot;&gt;Miranda&amp;nbsp;– základní balíček&lt;/a&gt;&lt;/td&gt; 
-   &lt;td&gt;Miranda přes Wine&amp;nbsp;– super; Pidgin&amp;nbsp;– trochu padá, jinak ujde; Kopete je napytel.&lt;/td&gt; 
-  &lt;/tr&gt; 
-  &lt;tr&gt; 
-   &lt;td&gt;RSS čtečka&lt;/td&gt; 
-   &lt;td colspan=&quot;2&quot;&gt;Miranda&amp;nbsp;– RSS plugin&lt;/td&gt; 
-  &lt;/tr&gt; 
-  &lt;tr&gt; 
-   &lt;td&gt;Budíčky&lt;/td&gt; 
-   &lt;td colspan=&quot;2&quot;&gt;&lt;a href=&quot;http://www.scottellis.com.au/miranda_plugins/&quot;&gt;Miranda&amp;nbsp;– plugin Alarms&lt;/a&gt;&lt;/td&gt; 
-  &lt;/tr&gt; 
-  &lt;tr&gt; 
-   &lt;td&gt;Spam filtr&lt;/td&gt; 
-   &lt;td colspan=&quot;2&quot;&gt;&lt;a href=&quot;http://getpopfile.org/docs/index.php&quot;&gt;POPfile&lt;/a&gt;&lt;/td&gt; 
-  &lt;/tr&gt; 
-  &lt;tr&gt; 
-   &lt;td&gt;Prohlížeč&lt;/td&gt; 
-   &lt;td colspan=&quot;2&quot;&gt;&lt;a href=&quot;http://www.firefox.com&quot;&gt;Firefox&lt;/a&gt;&lt;/td&gt; 
-  &lt;/tr&gt; 
-  &lt;tr&gt; 
-   &lt;th colspan=&quot;3&quot;&gt;Programování&lt;/th&gt; 
-  &lt;/tr&gt; 
-  &lt;tr&gt; 
-   &lt;td&gt;XML &amp;amp; XSLT editor&lt;/td&gt; 
-   &lt;td&gt;Visual Studio (legální :-)&lt;/td&gt; 
-   &lt;td&gt;NetBeans IDE&lt;/td&gt; 
-  &lt;/tr&gt; 
-  &lt;tr&gt; 
-   &lt;td&gt;Java &amp;amp; JSP editor&lt;/td&gt; 
-   &lt;td colspan=&quot;2&quot;&gt;&lt;a href=&quot;http://www.netbeans.org&quot;&gt;NetBeans IDE&lt;/a&gt;&lt;/td&gt; 
-  &lt;/tr&gt; 
-  &lt;tr&gt; 
-   &lt;td&gt;PHP &amp;amp; HTML &amp;amp; CSS editor&lt;/td&gt; 
-   &lt;td&gt;HomeSite&amp;nbsp;– stará šunka, ale pořád nejlepší&lt;/td&gt; 
-   &lt;td&gt;Na linuxu nic moc, takže taky HomeSite přes Wine&lt;/td&gt; 
-  &lt;/tr&gt; 
-  &lt;tr&gt; 
-   &lt;td&gt;SQL editor pro MySQL&lt;/td&gt; 
-   &lt;td&gt;&lt;a href=&quot;http://dev.mysql.com/downloads/gui-tools/5.0.html&quot;&gt;MySQL Query Browser&lt;/a&gt;&lt;/td&gt; 
-   &lt;td&gt;Linuxová verze Query Browseru je napytel, takže opět Win verze přes&amp;nbsp;Wine&lt;/td&gt; 
-  &lt;/tr&gt; 
-  &lt;tr&gt; 
-   &lt;th colspan=&quot;3&quot;&gt;Ostatní&lt;/th&gt; 
-  &lt;/tr&gt; 
-  &lt;tr&gt; 
-   &lt;td&gt;Správa souborů&lt;/td&gt; 
-   &lt;td rowspan=&quot;2&quot;&gt;&lt;a href=&quot;http://www.ghisler.com/&quot;&gt;Total Commander&lt;/a&gt;&lt;/td&gt; 
-   &lt;td&gt;Krusader&amp;nbsp;– za poslední dva roky se hodně moc zlepšil&lt;/td&gt; 
-  &lt;/tr&gt; 
-  &lt;tr&gt; 
-   &lt;td&gt;FTP klient&lt;/td&gt; 
-   &lt;td&gt;– nic&amp;nbsp;–&lt;/td&gt; 
-  &lt;/tr&gt; 
-  &lt;tr&gt; 
-   &lt;td&gt;Síťová jednotka z&amp;nbsp;FTP účtu&lt;/td&gt; 
-   &lt;td&gt;&lt;a href=&quot;http://www.killprog.com/fdrve.html&quot;&gt;FTPDrive&lt;/a&gt; (stránka působí nedůvěryhodně, ale program funguje skvěle)&lt;/td&gt; 
-   &lt;td&gt;nějaký FTP filesystem, nevzpomenu si na jméno&lt;/td&gt; 
-  &lt;/tr&gt; 
-  &lt;tr&gt; 
-   &lt;td&gt;Zjišťování, kam mizí místo na disku&lt;/td&gt; 
-   &lt;td colspan=&quot;2&quot;&gt;&lt;a href=&quot;http://www.jgoodies.com/freeware/jdiskreport/&quot;&gt;JGoodies JDiskReport&lt;/a&gt;&lt;/td&gt; 
-  &lt;/tr&gt; 
- &lt;/tbody&gt; 
-&lt;/table&gt; 
             </description>
         </item>
         <item>
@@ -22820,6 +22714,92 @@ pageParameters.getString(&quot;1&quot;); // &quot;value2&quot;&lt;/pre&gt;
  &lt;li&gt;two&lt;/li&gt; 
 &lt;/ul&gt; 
 &lt;p&gt;That&apos;s&amp;nbsp;all, &lt;a href=&quot;http://google.com&quot;&gt;folks&lt;/a&gt;.&lt;/p&gt; 
+            </description>
+        </item>
+        <item>
+            <title>Zajímavý software (2008)</title>
+            <link>https://www.zizka.ch/pages/odkazy/software.html</link>
+            <pubDate>Tue, 1 Jan 2008 00:00:00 +0100</pubDate>
+            <guid isPermaLink="false">pages/odkazy/software.html</guid>
+            <description>
+                 &lt;h2 class=&quot; jbakeExtractedTitle&quot; id=&quot;toc-zajimavy-software-2008&quot;&gt;Zajímavý software (2008)&lt;/h2&gt; 
+&lt;p&gt;Po nějaké době se každý ustálí na nějakých oblíbených programech. Já používám a doporučuji&amp;nbsp;tyto:&lt;/p&gt; 
+&lt;table&gt; 
+ &lt;tbody&gt; 
+  &lt;tr&gt; 
+   &lt;th&gt;Účel&lt;/th&gt; 
+   &lt;th&gt;programy na Windows XP&lt;/th&gt; 
+   &lt;th&gt;programy na Ubuntu 8&lt;/th&gt; 
+  &lt;/tr&gt; 
+  &lt;tr&gt; 
+   &lt;th colspan=&quot;3&quot;&gt;Komunikace&lt;/th&gt; 
+  &lt;/tr&gt; 
+  &lt;tr&gt; 
+   &lt;td&gt;On-line komunikace&amp;nbsp;– ICQ, Jabber, IRC&lt;/td&gt; 
+   &lt;td&gt;&lt;a href=&quot;http://www.miranda-im.org&amp;quot;&quot;&gt;Miranda&amp;nbsp;– základní balíček&lt;/a&gt;&lt;/td&gt; 
+   &lt;td&gt;Miranda přes Wine&amp;nbsp;– super; Pidgin&amp;nbsp;– trochu padá, jinak ujde; Kopete je napytel.&lt;/td&gt; 
+  &lt;/tr&gt; 
+  &lt;tr&gt; 
+   &lt;td&gt;RSS čtečka&lt;/td&gt; 
+   &lt;td colspan=&quot;2&quot;&gt;Miranda&amp;nbsp;– RSS plugin&lt;/td&gt; 
+  &lt;/tr&gt; 
+  &lt;tr&gt; 
+   &lt;td&gt;Budíčky&lt;/td&gt; 
+   &lt;td colspan=&quot;2&quot;&gt;&lt;a href=&quot;http://www.scottellis.com.au/miranda_plugins/&quot;&gt;Miranda&amp;nbsp;– plugin Alarms&lt;/a&gt;&lt;/td&gt; 
+  &lt;/tr&gt; 
+  &lt;tr&gt; 
+   &lt;td&gt;Spam filtr&lt;/td&gt; 
+   &lt;td colspan=&quot;2&quot;&gt;&lt;a href=&quot;http://getpopfile.org/docs/index.php&quot;&gt;POPfile&lt;/a&gt;&lt;/td&gt; 
+  &lt;/tr&gt; 
+  &lt;tr&gt; 
+   &lt;td&gt;Prohlížeč&lt;/td&gt; 
+   &lt;td colspan=&quot;2&quot;&gt;&lt;a href=&quot;http://www.firefox.com&quot;&gt;Firefox&lt;/a&gt;&lt;/td&gt; 
+  &lt;/tr&gt; 
+  &lt;tr&gt; 
+   &lt;th colspan=&quot;3&quot;&gt;Programování&lt;/th&gt; 
+  &lt;/tr&gt; 
+  &lt;tr&gt; 
+   &lt;td&gt;XML &amp;amp; XSLT editor&lt;/td&gt; 
+   &lt;td&gt;Visual Studio (legální :-)&lt;/td&gt; 
+   &lt;td&gt;NetBeans IDE&lt;/td&gt; 
+  &lt;/tr&gt; 
+  &lt;tr&gt; 
+   &lt;td&gt;Java &amp;amp; JSP editor&lt;/td&gt; 
+   &lt;td colspan=&quot;2&quot;&gt;&lt;a href=&quot;http://www.netbeans.org&quot;&gt;NetBeans IDE&lt;/a&gt;&lt;/td&gt; 
+  &lt;/tr&gt; 
+  &lt;tr&gt; 
+   &lt;td&gt;PHP &amp;amp; HTML &amp;amp; CSS editor&lt;/td&gt; 
+   &lt;td&gt;HomeSite&amp;nbsp;– stará šunka, ale pořád nejlepší&lt;/td&gt; 
+   &lt;td&gt;Na linuxu nic moc, takže taky HomeSite přes Wine&lt;/td&gt; 
+  &lt;/tr&gt; 
+  &lt;tr&gt; 
+   &lt;td&gt;SQL editor pro MySQL&lt;/td&gt; 
+   &lt;td&gt;&lt;a href=&quot;http://dev.mysql.com/downloads/gui-tools/5.0.html&quot;&gt;MySQL Query Browser&lt;/a&gt;&lt;/td&gt; 
+   &lt;td&gt;Linuxová verze Query Browseru je napytel, takže opět Win verze přes&amp;nbsp;Wine&lt;/td&gt; 
+  &lt;/tr&gt; 
+  &lt;tr&gt; 
+   &lt;th colspan=&quot;3&quot;&gt;Ostatní&lt;/th&gt; 
+  &lt;/tr&gt; 
+  &lt;tr&gt; 
+   &lt;td&gt;Správa souborů&lt;/td&gt; 
+   &lt;td rowspan=&quot;2&quot;&gt;&lt;a href=&quot;http://www.ghisler.com/&quot;&gt;Total Commander&lt;/a&gt;&lt;/td&gt; 
+   &lt;td&gt;Krusader&amp;nbsp;– za poslední dva roky se hodně moc zlepšil&lt;/td&gt; 
+  &lt;/tr&gt; 
+  &lt;tr&gt; 
+   &lt;td&gt;FTP klient&lt;/td&gt; 
+   &lt;td&gt;– nic&amp;nbsp;–&lt;/td&gt; 
+  &lt;/tr&gt; 
+  &lt;tr&gt; 
+   &lt;td&gt;Síťová jednotka z&amp;nbsp;FTP účtu&lt;/td&gt; 
+   &lt;td&gt;&lt;a href=&quot;http://www.killprog.com/fdrve.html&quot;&gt;FTPDrive&lt;/a&gt; (stránka působí nedůvěryhodně, ale program funguje skvěle)&lt;/td&gt; 
+   &lt;td&gt;FUSE ftpfs&lt;/td&gt; 
+  &lt;/tr&gt; 
+  &lt;tr&gt; 
+   &lt;td&gt;Zjišťování, kam mizí místo na disku&lt;/td&gt; 
+   &lt;td colspan=&quot;2&quot;&gt;&lt;a href=&quot;http://www.jgoodies.com/freeware/jdiskreport/&quot;&gt;JGoodies JDiskReport&lt;/a&gt;&lt;/td&gt; 
+  &lt;/tr&gt; 
+ &lt;/tbody&gt; 
+&lt;/table&gt; 
             </description>
         </item>
 
