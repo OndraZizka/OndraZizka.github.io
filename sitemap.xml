@@ -21,27 +21,11 @@
         <lastmod>2050-01-01</lastmod>
     </url>
     <url>
-        <loc>https://www.zizka.ch/pages/linux/dojmy_z_ubuntu_8.html</loc>
-        <lastmod>2018-07-31</lastmod>
-    </url>
-    <url>
-        <loc>https://www.zizka.ch/pages/programming/java/je_java_jako_linux_nebo_jako_windows.html</loc>
-        <lastmod>2018-07-31</lastmod>
-    </url>
-    <url>
-        <loc>https://www.zizka.ch/pages/programming/java/maven/mavenize-quick-and-dirty.html</loc>
-        <lastmod>2018-07-31</lastmod>
-    </url>
-    <url>
         <loc>https://www.zizka.ch/pages/programming/java/misc/freetts-line-unavailable-classcastexception-kevinvoicedirectory-error-opening-zipfile.html</loc>
         <lastmod>2018-07-31</lastmod>
     </url>
     <url>
-        <loc>https://www.zizka.ch/pages/programming/vybiram_jazyk_pro_systemove_skriptovani.html</loc>
-        <lastmod>2018-07-31</lastmod>
-    </url>
-    <url>
-        <loc>https://www.zizka.ch/pages/programming/java/jboss/jboss-aop-howto-example-standalone-app.html</loc>
+        <loc>https://www.zizka.ch/pages/programming/java/je_java_jako_linux_nebo_jako_windows.html</loc>
         <lastmod>2018-07-31</lastmod>
     </url>
     <url>
@@ -50,6 +34,42 @@
     </url>
     <url>
         <loc>https://www.zizka.ch/pages/programming/php/je_java_jako_linux_nebo_jako_windows.html</loc>
+        <lastmod>2018-07-31</lastmod>
+    </url>
+    <url>
+        <loc>https://www.zizka.ch/pages/programming/sql/mysql_wishlist/forum_post.html</loc>
+        <lastmod>2018-07-31</lastmod>
+    </url>
+    <url>
+        <loc>https://www.zizka.ch/pages/programming/index.html</loc>
+        <lastmod>2018-07-31</lastmod>
+    </url>
+    <url>
+        <loc>https://www.zizka.ch/pages/diplomka/diplomka-navod_na_zprovozneni.html</loc>
+        <lastmod>2018-07-31</lastmod>
+    </url>
+    <url>
+        <loc>https://www.zizka.ch/pages/programming/php/vyhody_a_nevyhody_php.html</loc>
+        <lastmod>2018-07-31</lastmod>
+    </url>
+    <url>
+        <loc>https://www.zizka.ch/pages/index.html</loc>
+        <lastmod>2018-07-31</lastmod>
+    </url>
+    <url>
+        <loc>https://www.zizka.ch/pages/linux/dojmy_z_ubuntu_8.html</loc>
+        <lastmod>2018-07-31</lastmod>
+    </url>
+    <url>
+        <loc>https://www.zizka.ch/pages/programming/java/maven/mavenize-quick-and-dirty.html</loc>
+        <lastmod>2018-07-31</lastmod>
+    </url>
+    <url>
+        <loc>https://www.zizka.ch/pages/programming/vybiram_jazyk_pro_systemove_skriptovani.html</loc>
+        <lastmod>2018-07-31</lastmod>
+    </url>
+    <url>
+        <loc>https://www.zizka.ch/pages/programming/java/jboss/jboss-aop-howto-example-standalone-app.html</loc>
         <lastmod>2018-07-31</lastmod>
     </url>
     <url>
@@ -73,10 +93,6 @@
         <lastmod>2018-07-31</lastmod>
     </url>
     <url>
-        <loc>https://www.zizka.ch/pages/programming/index.html</loc>
-        <lastmod>2018-07-31</lastmod>
-    </url>
-    <url>
         <loc>https://www.zizka.ch/pages/programming/java/jboss-aop-howto-example-standalone-app.html</loc>
         <lastmod>2018-07-31</lastmod>
     </url>
@@ -90,10 +106,6 @@
     </url>
     <url>
         <loc>https://www.zizka.ch/pages/programming/web_javascript_ajax_canvas/index.html</loc>
-        <lastmod>2018-07-31</lastmod>
-    </url>
-    <url>
-        <loc>https://www.zizka.ch/pages/diplomka/diplomka-navod_na_zprovozneni.html</loc>
         <lastmod>2018-07-31</lastmod>
     </url>
     <url>
@@ -129,15 +141,7 @@
         <lastmod>2018-07-31</lastmod>
     </url>
     <url>
-        <loc>https://www.zizka.ch/pages/programming/php/vyhody_a_nevyhody_php.html</loc>
-        <lastmod>2018-07-31</lastmod>
-    </url>
-    <url>
         <loc>https://www.zizka.ch/pages/realitni_kancelar/chaty_a_chalupy.html</loc>
-        <lastmod>2018-07-31</lastmod>
-    </url>
-    <url>
-        <loc>https://www.zizka.ch/pages/index.html</loc>
         <lastmod>2018-07-31</lastmod>
     </url>
     <url>
@@ -754,10 +758,6 @@
     </url>
     <url>
         <loc>https://www.zizka.ch/pages/programming/java/jaxb/jaxb-list-with-inherited-classes.html</loc>
-        <lastmod>2012-12-13</lastmod>
-    </url>
-    <url>
-        <loc>https://www.zizka.ch/pages/programming/sql/mysql_wishlist/forum_post.html</loc>
         <lastmod>2012-12-13</lastmod>
     </url>
     <url>

@@ -190,7 +190,7 @@ the real peak of stupidity. So if you Mavenize such library, it ends up in
 different directories. So it will not usually work in IDE.</p>
 
 <p>You need to flatten the dependencies to a single dir, using e.g.
-<code>mvn dependencies:copy</code>, see <a href="http://ondra.zizka.cz/stranky/programovani/java/maven/maven-create-distribution-package.html">this
+<code>mvn dependencies:copy</code>, see <a href="http://ondra.zizka.cz/stranky/programming/java/maven/maven-create-distribution-package.html">this
 example</a>. You also need to set Maven to put all app's dependencies to
 it's jar's <code>MANIFEST.MF</code>'s <code>Class-Path</code> – here
 it's ok because it's an app, not a library.</p>

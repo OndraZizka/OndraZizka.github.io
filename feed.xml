@@ -6,8 +6,8 @@
         <atom:link href="https://www.zizka.ch/feed.xml" rel="self" type="application/rss+xml"/>
         <description>JBake Bootstrap Template</description>
         <language>en-gb</language>
-        <pubDate>Tue, 31 Jul 2018 04:29:36 +0200</pubDate>
-        <lastBuildDate>Tue, 31 Jul 2018 04:29:36 +0200</lastBuildDate>
+        <pubDate>Tue, 31 Jul 2018 07:44:13 +0200</pubDate>
+        <lastBuildDate>Tue, 31 Jul 2018 07:44:13 +0200</lastBuildDate>
 
         <item>
             <title>Work on this site in progress</title>
@@ -19,6 +19,880 @@
 &lt;p&gt;After about a year offline, the site was just re-born from the former platform.&lt;br&gt; The current solution still has a few annoyances, but I&apos;m fixing it&amp;nbsp;:)&lt;/p&gt; 
 &lt;p&gt;The most important thing is so sort out the pages that I&amp;nbsp;brought from the former site.&lt;br&gt; That needs me to implement auto-generated directory indexes in the JBake platform this uses.&lt;br&gt; Until then, the blog below will contain all&amp;nbsp;pages.&lt;/p&gt; 
 &lt;p&gt;Another thing is the duplicated titles. That will go away&amp;nbsp;soon.&lt;/p&gt; 
+            </description>
+        </item>
+        <item>
+            <title>FreeTTS Troubleshooting</title>
+            <link>https://www.zizka.ch/pages/programming/java/misc/freetts-line-unavailable-classcastexception-kevinvoicedirectory-error-opening-zipfile.html</link>
+            <pubDate>Tue, 31 Jul 2018 07:43:09 +0200</pubDate>
+            <guid isPermaLink="false">pages/programming/java/misc/freetts-line-unavailable-classcastexception-kevinvoicedirectory-error-opening-zipfile.html</guid>
+            <description>
+                 &lt;h2 class=&quot; jbakeExtractedTitle&quot; id=&quot;toc-freetts-troubleshooting&quot;&gt;FreeTTS Troubleshooting&lt;/h2&gt; 
+&lt;h2 id=&quot;toc-java-sound-problems-in-linux-line-unavailable&quot;&gt;Java sound problems in Linux&amp;nbsp;– LINE UNAVAILABLE&lt;/h2&gt; 
+&lt;p&gt;It&apos;s&amp;nbsp;a JVM bug described &lt;a href=&quot;http://bugs.sun.com/bugdatabase/view_bug.do?bug_id=4498848&quot;&gt;here&lt;/a&gt;&lt;/p&gt; 
+&lt;p&gt;Also &lt;a href=&quot;http://sourceforge.net/projects/freetts/forums/forum/137669/topic/722735?message=1659298&quot;&gt;here&lt;/a&gt; :&lt;/p&gt; 
+&lt;blockquote&gt; 
+ &lt;ol start=&quot;2&quot;&gt; 
+  &lt;li&gt;Another possibility, which I&amp;nbsp;have not verified, might be due to a delay that we put it to the closing of the currentClip. &lt;p&gt;We put in this delay to workaround a Java Sound bug in&amp;nbsp;Linux.&lt;/p&gt; &lt;p&gt;The resulting scenario is: because the last clip was not closed before the next clip attempts to&amp;nbsp;play,&lt;/p&gt; &lt;p&gt;the audio device is still occupied, thus generating a LineUnavailable­Exception.&lt;/p&gt; &lt;p&gt;Though, we&apos;ve hardly experienced any problems with the JavaClipAudio­Player, so I&amp;nbsp;doubt this is the problem.&lt;/p&gt; &lt;/li&gt; 
+ &lt;/ol&gt; 
+&lt;/blockquote&gt; 
+&lt;p&gt;Also &lt;a href=&quot;http://sourceforge.net/projects/freetts/forums/forum/137669/topic/930844?message=2221602&quot;&gt;here&lt;/a&gt; about „long sentences“:&lt;/p&gt; 
+&lt;blockquote&gt; 
+ &lt;p&gt;The problem, it seems is in the code that breaks up a very long sentence. FreeTTS is designed to synthesize text with low latency. When given a very long sentence, such as in your example, it will decide that the sentence is too long to be synthesized in a timely fashion and break it up into smaller bits. This logic is rarely (if every executed) since it only is invoked when very long sentences occur. If I&amp;nbsp;change your sample code to concatenate a period instead of a comma after every „Number xx“, things are synthesized just fine with no line unavailable&amp;nbsp;error.&lt;/p&gt; 
+&lt;/blockquote&gt; 
+&lt;h3 id=&quot;toc-workaround&quot;&gt;Workaround:&lt;/h3&gt; 
+&lt;pre class=&quot;brush: lang-java brush: java&quot;&gt;System.setProperty(&quot;com.sun.speech.freetts.audio.AudioPlayer.openFailDelayMs&quot;, &quot;100&quot;);
+System.setProperty(&quot;com.sun.speech.freetts.audio.AudioPlayer.totalOpenFailDelayMs&quot;, &quot;30000&quot;);&lt;/pre&gt; 
+&lt;p&gt;Also &lt;a href=&quot;http://sourceforge.net/projects/freetts/forums/forum/137669/topic/1293759?message=3178304&quot;&gt;here&lt;/a&gt; :&lt;/p&gt; 
+&lt;blockquote&gt; 
+ &lt;p&gt;If you disable the ARts sound daemon under KDE FreeTTS will work and not give the error:&lt;br&gt; &lt;code&gt;LINE UNAVAILABLE: Format is PCM_SIGNED 16000.0 Hz, 16 bit, mono, 2 bytes/frame, big-endian&lt;/code&gt; Or something simular to t he error above. I&amp;nbsp;believe the issue (and reply if I&apos;m wrong) is the ARts daemon grabs the /dev/dsp device and prevents FreeTTS from using it. Though I&amp;nbsp;don&apos;t run ETS (Enlightenment sound daemon) this daemon too, could be a problem for fellow FreeTTS users/developers. I&amp;nbsp;believe this daemon too grabs on to /dev/dsp and prevents others from using&amp;nbsp;it.&lt;/p&gt; 
+&lt;/blockquote&gt; 
+&lt;p&gt;Also, &lt;a href=&quot;http://sourceforge.net/projects/freetts/forums/forum/137669/topic/686662?message=1582276&quot;&gt;testing the line availability&lt;/a&gt; :&lt;/p&gt; 
+&lt;blockquote&gt; 
+ &lt;ol start=&quot;2&quot;&gt; 
+  &lt;li&gt;To test if an environment supports sound, copy the code in&amp;nbsp;&lt;code&gt;com.sun.speech.freetts.audio.JavaStreamingAudioPlayer.openLine()&lt;/code&gt; &lt;p&gt;to a method in your application (remember to include the javax.sound.sam­pled.* packages).&lt;/p&gt; &lt;p&gt;Before you call FreeTTS methods, call this method to see if your environment supports&amp;nbsp;sound.&lt;/p&gt; &lt;p&gt;If it does, remember to close the audio line, since FreeTTS will try to open it&amp;nbsp;again.&lt;/p&gt; &lt;/li&gt; 
+ &lt;/ol&gt; 
+&lt;/blockquote&gt; 
+&lt;h3 id=&quot;toc-solution&quot;&gt;Solution:&lt;/h3&gt; 
+&lt;p&gt;Fix FreeTTS according to &lt;a href=&quot;http://forums.sun.com/thread.jspa?threadID=5189363&quot;&gt;this link&lt;/a&gt;, which is now unavailable because Oracle fucked it up. That page supposedly contained a fix for FreeTTS making it not vulnerable to that JVM&apos;s&amp;nbsp;bug.&lt;/p&gt; 
+&lt;h3 id=&quot;toc-also-see&quot;&gt;Also see:&lt;/h3&gt; 
+&lt;ul&gt; 
+ &lt;li&gt;&lt;a href=&quot;http://sourceforge.net/search/?group_id=42080&amp;amp;type_of_search=forums&amp;amp;words=LINE+UNAVAILABLE&amp;amp;search=Search&quot;&gt;FreeTTS forum search&lt;/a&gt;&lt;/li&gt; 
+ &lt;li&gt;&lt;a href=&quot;http://freetts.sourceforge.net/docs/index.php#What_does_the_message_Line_unavailable&quot;&gt;FreeTTS FAQ&lt;/a&gt;&lt;/li&gt; 
+ &lt;li&gt;&lt;a href=&quot;http://www.ryan-h.com/uncategorized/java-speech-jsapi-freetts&quot;&gt;Useful howto&lt;/a&gt; at ryan-h&apos;s&amp;nbsp;blog.&lt;/li&gt; 
+&lt;/ul&gt; 
+&lt;h2 id=&quot;toc-problem-finding-dependencies-zipexception-error-opening-zip-file&quot;&gt;Problem finding dependencies&amp;nbsp;– ZipException` „Error opening ZIP&amp;nbsp;file“&lt;/h2&gt; 
+&lt;p&gt;After I&amp;nbsp;mavenized FreeTTS, I&amp;nbsp;started getting an exception from JDK saying it can&apos;t read ZIP file somewhere in &lt;code&gt;VoiceManager.java&lt;/code&gt;.&lt;/p&gt; 
+&lt;p&gt;I&amp;nbsp;used strace to figure out a „Error opening ZIP file“. That did not help because it did not tell me about JVM&apos;s&amp;nbsp;calls to &lt;code&gt;open()&lt;/code&gt; for some reason, but anyway, here&apos;s&amp;nbsp;the command:&lt;/p&gt; 
+&lt;pre class=&quot;brush: lang-bash brush: bash&quot;&gt;sudo strace -e trace=all -o log.txt \
+java -Xrunjdwp:transport=dt_socket,server=y,address=4000 \
+     -Djpda.listen=true -Djpda.address=4000 \
+     -Dmbrola.base=&quot;`pwd`/../mbrola301&quot;\
+     -Dfreetts.voicespath=&quot;`pwd`/../mbrola301/voices&quot;\
+     -jar /home/ondra/work/BOTS/SpeechBot/SpeechBot-mavenized/target/SpeechBot-1.0-SNAPSHOT.jar \
+     irc.eng.brq.redhat.com &apos;#some&apos;&lt;/pre&gt; 
+&lt;h3 id=&quot;toc-the-cause&quot;&gt;The cause&lt;/h3&gt; 
+&lt;p&gt;The problem was that mavenization of FreeTTS and MBrola involved re-naming the .jar&amp;nbsp;files.&lt;/p&gt; 
+&lt;p&gt;But FreeTTS not only has hard-coded dependencies in it&apos;s &lt;code&gt;MANIFEST.MF&lt;/code&gt;&apos;s &lt;code&gt;Class-Path&lt;/code&gt;, which is quite stupid for a library, it also has code inside which actually relies on these data, which is the real peak of stupidity. So if you Mavenize such library, it ends up in different directories. So it will not usually work in&amp;nbsp;IDE.&lt;/p&gt; 
+&lt;p&gt;You need to flatten the dependencies to a single dir, using e.g. &lt;code&gt;mvn dependencies:copy&lt;/code&gt;, see &lt;a href=&quot;http://ondra.zizka.cz/stranky/programming/java/maven/maven-create-distribution-package.html&quot;&gt;this example&lt;/a&gt;. You also need to set Maven to put all app&apos;s&amp;nbsp;dependencies to it&apos;s&amp;nbsp;jar&apos;s &lt;code&gt;MANIFEST.MF&lt;/code&gt;&apos;s &lt;code&gt;Class-Path&lt;/code&gt;&amp;nbsp;– here it&apos;s&amp;nbsp;ok because it&apos;s&amp;nbsp;an app, not a library.&lt;/p&gt; 
+&lt;p&gt;Then you need to manually rewrite all FreeTTS libraries&apos; MANIFEST.MF in the local repository, so that you can rebuild your application. Change the &lt;code&gt;Class-Path&lt;/code&gt; to reflect the names of the jar files; Usually, that means adding &lt;code&gt;-&amp;lt;version&amp;gt;&lt;/code&gt; so it&apos;s&amp;nbsp;e.g. &lt;code&gt;cmulex-1.2.jar:freetts-1.2.jar:...&lt;/code&gt;.&lt;/p&gt; 
+&lt;p&gt;Then you run a shell command like&lt;/p&gt; 
+&lt;pre class=&quot;brush: lang-bash brush: bash&quot;&gt;java -Dmbrola.base=&quot;`pwd`/../mbrola301&quot;\
+     -Dfreetts.voicespath=&quot;`pwd`/../mbrola301/voices&quot;\
+     -jar /home/ondra/work/BOTS/SpeechBot/SpeechBot-mavenized/target/SpeechBot-1.0-SNAPSHOT.jar \
+     irc.eng.brq.redhat.com &apos;#some&apos;&lt;/pre&gt; 
+&lt;p&gt;Here you don&apos;t need to specify -cp because the deps are in the app&apos;s&amp;nbsp;MANIFEST.MF as per the explanation&amp;nbsp;above.&lt;/p&gt; 
+&lt;h2 id=&quot;toc-problems-finding-voices&quot;&gt;Problems finding Voices&lt;/h2&gt; 
+&lt;p&gt;I&amp;nbsp;had some troubles make FreeTTS find MBrola&apos;s&amp;nbsp;voices.&lt;/p&gt; 
+&lt;p&gt;Don&apos;t forget to set the &lt;code&gt;mbrola.base&lt;/code&gt; system property when you run your application,&amp;nbsp;e.g.:&lt;/p&gt; 
+&lt;pre class=&quot;brush: lang-plain brush: plain&quot;&gt;java -jar myapp.jar -Dmbrola.base=&quot;`pwd`/../mbrola301&quot;&lt;/pre&gt; 
+&lt;p&gt;eventually you can set &lt;code&gt;freetts.voicespath&lt;/code&gt; to different&amp;nbsp;dir:&lt;/p&gt; 
+&lt;pre class=&quot;brush: lang-plain brush: plain&quot;&gt;java -jar myapp.jar -Dmbrola.base=&quot;`pwd`/../mbrola301&quot; -Dfreetts.voicespath=&quot;`pwd`/../mbrola301/voices&quot;&lt;/pre&gt; 
+&lt;hr&gt; 
+&lt;p&gt;There are few voices in FreeTTS with MBrola.&lt;/p&gt; 
+&lt;pre class=&quot;brush: lang-plain brush: plain&quot;&gt;// This is a tiny database, contains only data for time demo app.
+System.setProperty(&quot;freetts.voices&quot;,&quot;com.sun.speech.freetts.en.us.cmu_time_awb.AlanVoiceDirectory&quot;);
+
+// Using this throws the ClassCastException. You need to recompile it.
+System.setProperty(&quot;freetts.voices&quot;, &quot;com.sun.speech.freetts.en.us.cmu_us_kal.KevinVoiceDirectory&quot;);
+
+// MBrola voices.
+System.setProperty(&quot;freetts.voices&quot;, &quot;de.dfki.lt.freetts.en.us.MbrolaVoiceDirectory&quot;);&lt;/pre&gt; 
+&lt;p&gt;Even after setting &lt;code&gt;mbrola.voices&lt;/code&gt;, it kept finding only &lt;code&gt;mbrola_us1&lt;/code&gt;, &lt;code&gt;mbrola_us2&lt;/code&gt;, &lt;code&gt;mbrola_us3&lt;/code&gt;. I&amp;nbsp;added some voices from their web, but these were not listed as available. I&amp;nbsp;guess I&amp;nbsp;need some other &lt;code&gt;VoiceDirectory&lt;/code&gt; implementation because the voices are hardcoded in &lt;code&gt;KevinVoiceDirectory&lt;/code&gt; so I&amp;nbsp;guess there&apos;s&amp;nbsp;no dynamic loading despite all that mess in &lt;code&gt;VoiceDirectory.java&lt;/code&gt;.&lt;/p&gt; 
+&lt;h2 id=&quot;toc-weird-classcastexception-for-kevinvoicedirectory-gone-after-re-compiling&quot;&gt;Weird ClassCastException for KevinVoiceDirec­tory, gone after re-compiling&lt;/h2&gt; 
+&lt;p&gt;After solving „Error reading ZIP“ by changing FreeTTS&apos;s&amp;nbsp;jar&apos;s&amp;nbsp;M­ANIFEST.MF&apos;s&amp;nbsp;Class-Path value to reflect my jar names (mavenized), I&amp;nbsp;started getting&amp;nbsp;this:&lt;/p&gt; 
+&lt;pre class=&quot;brush: lang-plain brush: plain&quot;&gt;Exception in thread &quot;main&quot; java.lang.ClassCastException: com.sun.speech.freetts.en.us.cmu_us_kal.KevinVoiceDirectory cannot be cast to com.sun.speech.freetts.VoiceDirectory
+        at com.sun.speech.freetts.VoiceManager.getVoices(VoiceManager.java:113)
+        at cz.dynawest.speechbot.synt.MbrolaSpeaker.&amp;lt;init&amp;gt;(MbrolaSpeaker.java:38)
+        at cz.dynawest.speechbot.SpeechBot.&amp;lt;init&amp;gt;(SpeechBot.java:25)
+        at cz.dynawest.speechbot.SpeechBot.main(SpeechBot.java:65)&lt;/pre&gt; 
+&lt;p&gt;After re-compiling KevinVoiceDirectory and storing it in jar, it&amp;nbsp;works.&lt;/p&gt; 
+            </description>
+        </item>
+        <item>
+            <title>Je Java jako Linux nebo jako
+Windows?</title>
+            <link>https://www.zizka.ch/pages/programming/java/je_java_jako_linux_nebo_jako_windows.html</link>
+            <pubDate>Tue, 31 Jul 2018 07:43:08 +0200</pubDate>
+            <guid isPermaLink="false">pages/programming/java/je_java_jako_linux_nebo_jako_windows.html</guid>
+            <description>
+                 &lt;h2 class=&quot; jbakeExtractedTitle&quot; id=&quot;toc-je-java-jako-linux-nebo-jako-windows&quot;&gt;Je Java jako Linux nebo jako Windows?&lt;/h2&gt; 
+&lt;!-- //Článek momentálně upravuji.// --&gt; 
+&lt;p&gt;Po napsání předchozího článku &lt;a href=&quot;/stranky/programming/php/vyhody_a_nevyhody_php.html&quot;&gt;Výhody a nevýhody PHP&lt;/a&gt; se ozval Jakub Vrána a chvíli jsme si mailovali nad některými body článku, což se, jak to bývá, stočilo na srovnání PHP s&amp;nbsp;technologií, kterou já preferuji&amp;nbsp;– tedy s&amp;nbsp;Javou.&lt;/p&gt; 
+&lt;p&gt;V&amp;nbsp;závěru jsme se dostali k&amp;nbsp;tomu, zda je Java nebo PHP podobnější Linuxu nebo Windows. Zde je část z&amp;nbsp;mailu:&lt;/p&gt; 
+&lt;blockquote&gt; 
+ &lt;p&gt;Jednu věc nechápu a budu rád, když mi jako (předpokládám) fanda Linuxu vysvětlíš:&lt;/p&gt; 
+ &lt;p&gt;Jak je možné, že lidé, kteří preferují Linux před Windows, zároveň preferují PHP před Javou. Protože pokud bychom zobecnili vlastnosti a požadavky na systémy a plaformy, potom právě Java oproti PHP by byla jako Linux oproti Windows&amp;nbsp;– technologicky vyspělejší, vývojově stabilnější, zpětně kompatibilnější, modulárnější, konfigurovatel­nější, víceúčelovější, a druhé ideologicky vykrádá první, přičemž to ani nezvládne dotáhnout do konce a zbyde jenom nedotažený hybrid zatížený historií svého vývoje.&lt;/p&gt; 
+ &lt;p&gt;PHP se mi zdá jako takový rozjetý mnohakilometrový vlak tažený slabou mašinkou, ke kterému stále napojují další a další vagóny&amp;nbsp;– některé velice moderní, přepychové, a pokud jedete po rovince, vše je ok&amp;nbsp;– ale pak přijde kopeček a mašinka se sotva vleče; a pak i&amp;nbsp;v&amp;nbsp;těch nejpřepychovějších vagónech poznáte, že je něco špatně. (Mašinka zde nepředstavuje výkonnost, ale právě ono „jádro“.)&lt;/p&gt; 
+ &lt;p&gt;Co je tedy podle tebe na PHP lepšího? Co tě k&amp;nbsp;němu táhne kromě citové vazby? (Tvoje zásluhy v&amp;nbsp;PHP komunitě zhruba znám a oceňuji, a chápu a znám z&amp;nbsp;vlastní zkušenosti, že z&amp;nbsp;takového rozjetého vlaku se velmi těžko vyskakuje.) Zkoušels někdy proniknout do J2EE? Znáš základní konceptuální rozdíly? Nechci tě nijak shazovat, jen mě zajímá, jestli se dokážeš vžít do mojí situace a pochopit tak, proč PHP tak „haním“.&lt;/p&gt; 
+ &lt;p&gt;Zdraví Ondra Žižka&lt;/p&gt; 
+&lt;/blockquote&gt; 
+&lt;p&gt;Dovolím si zkopírovat Jakubovo resumé z&amp;nbsp;článku &lt;a href=&quot;http://php.vrana.cz/je-php-jako-linux-nebo-jako-windows.php&quot;&gt;Je PHP jako Linux nebo jako Windows?&lt;/a&gt;:&lt;/p&gt; 
+&lt;blockquote&gt; 
+ &lt;h4 id=&quot;toc-jakub-vrana&quot;&gt;Jakub Vrána:&lt;/h4&gt; 
+ &lt;p&gt;&lt;strong&gt;PHP a Linux&lt;/strong&gt;&amp;nbsp;– malé jádro, k&amp;nbsp;tomu volitelné jednoúčelové knihovny s&amp;nbsp;jednoduchým rozhraním.&lt;/p&gt; 
+ &lt;p&gt;&lt;strong&gt;Java a Windows&lt;/strong&gt;&amp;nbsp;– vše v&amp;nbsp;jednom spravované přes komplexní objektové rozhraní.&lt;/p&gt; 
+ &lt;h4 id=&quot;toc-ondrej-zizka&quot;&gt;Ondřej Žižka:&lt;/h4&gt; 
+ &lt;p&gt;&lt;strong&gt;PHP a Windows&lt;/strong&gt; (z&amp;nbsp;pohledu programátora WinAPI): Silně proměnlivá technologie, v&amp;nbsp;lecčems zpětně nekompatibilní, počáteční návrh špatný a směřující k&amp;nbsp;lepšímu po vzoru lepších technologií, mnohé významné featury dodělávané ad hoc a nepřirozeně vmontované do návrhu.&lt;/p&gt; 
+ &lt;p&gt;&lt;strong&gt;Java a Linux&lt;/strong&gt;: Stabilní technologie stavěná velmi rozvážně podle promyšleného návrhu dlouho laděného a diskutovaného mnoha IT firmami, silná a zaručená zpětná kompatibilita, standardizované API, mnoho různých použití (od embedded zařízení až po clusterované farmy serverů). Nejčastěji používaná rozšíření časem projdou procesem standardizace a začlení se do jádra, resp.&amp;nbsp;JRE.&lt;/p&gt; 
+&lt;/blockquote&gt; 
+&lt;p&gt;Jak někdo poznamenal v&amp;nbsp;tamějších komentářích, Jakub posuzuje z&amp;nbsp;pohledu technického, zatímco já se snažím spíše o&amp;nbsp;ideologické srovnání&amp;nbsp;– zkrátka principy, na kterých vývojáři a komunita dané technologie (ne)staví.&lt;/p&gt; 
+&lt;p&gt;A&amp;nbsp;to je z&amp;nbsp;dlouhodobého hlediska mnohem důležitější&amp;nbsp;– jistě chcete vyvíjet bez obav, že by příští major verze opět přinesla další sadu vlastností z&amp;nbsp;jiných jazyků chaoticky splácaných dohromady se stávající&amp;nbsp;verzí.&lt;/p&gt; 
+&lt;hr&gt; 
+&lt;p&gt;Aby byla debata co k&amp;nbsp;čemu, měli bychom tato hesla něčím podpořit, případně vyvrátit. Pusťme se do toho&amp;nbsp;:-)&lt;/p&gt; 
+&lt;h3 id=&quot;toc-male-jadro&quot;&gt;Malé jádro&lt;/h3&gt; 
+&lt;p&gt;Jak změřit velikost jádra? A&amp;nbsp;co je vůbec jádro? Řekněme, že je to ta část technologie, která je nezbytně nutná pro její&amp;nbsp;běh.&lt;/p&gt; 
+&lt;ul&gt; 
+ &lt;li&gt;Binárky pro Java Virtual Machine (interpret Javy) nejnovější verze mají cca 6&amp;nbsp;MB, což zahrnuje mimo jiné nativní knihovny pro zobrazování desktop aplikací, práci se zvukem, fonty&amp;nbsp;atd.&lt;/li&gt; 
+ &lt;li&gt;K&amp;nbsp;Javě patří ještě &lt;code&gt;rt.jar&lt;/code&gt;, což je balík, ve kterém jsou knihovny obsažené ve standardní distribuci. Z&amp;nbsp;toho se dá jako jádro počítat maximálně část z&amp;nbsp;nich.&lt;/li&gt; 
+ &lt;li&gt;Jádro PHP, &lt;code&gt;php6ts.dll&lt;/code&gt;, má cca. 14&amp;nbsp;MB (standardní distribuce windows), a tento modul je dále nedělitelný.&lt;/li&gt; 
+ &lt;li&gt;S&amp;nbsp;okolními knihovnami (kromě API pro Apache, ISAPI a NSAPI) má kolem 20&amp;nbsp;MB.&lt;/li&gt; 
+ &lt;li&gt;&lt;code&gt;php5ts.dll&lt;/code&gt; má cca. 5&amp;nbsp;MB, a spolu s&amp;nbsp;okolními &lt;code&gt;.dll&lt;/code&gt; má asi 10&amp;nbsp;MB.&lt;/li&gt; 
+&lt;/ul&gt; 
+&lt;p&gt;Ale velikost dat není nejlepší ukazatel. Vyberme tedy jiné kritérium. Nabízí se možnost miniaturizace jádra technologie a složitost syntaxe, a Jakubem uvedená „komplexnost jádra“.&lt;/p&gt; 
+&lt;h3 id=&quot;toc-komplexnost-jadra&quot;&gt;Komplexnost jádra&lt;/h3&gt; 
+&lt;p&gt;Co se týká „ne/komplexnosti“ jádra, tak si nejsem zcela jist, jak rozlišit, co v&amp;nbsp;jádru je či&amp;nbsp;není.&lt;/p&gt; 
+&lt;p&gt;Pokud vím, v&amp;nbsp;jádru Javy je jen několik tříd typu Object, String, Throwable, dále nativní metody základních systémových tříd, a tím to hasne; drtivá většina funkcionality JRE je již implementovaná v&amp;nbsp;Javě a je oddělitelná.&lt;/p&gt; 
+&lt;p&gt;V&amp;nbsp;PHP je mnoho knihoven instalovatelných z&amp;nbsp;repozitáře PEAR, a většina těch, které jsou ve Windows verzi v&amp;nbsp;phpXts.dll, jsou na linuxu volitelné za cenu vlastní kompilace PHP. Nicméně nevolitelnou součástí jádra jsou funkce jako &lt;code&gt;money_format()&lt;/code&gt;, &lt;code&gt;apache_note()&lt;/code&gt; nebo &lt;code&gt;highlight_file()&lt;/code&gt;, na kterých jistě technologie závislá&amp;nbsp;není.&lt;/p&gt; 
+&lt;p&gt;V&amp;nbsp;tomto je tedy Linuxu podobnější Java, který v&amp;nbsp;jádru obsahuje pouze to nutné (ať už pro funkčnost systému nebo kvůli výkonu).&lt;/p&gt; 
+&lt;p&gt;Že by Java obsahovala vše v&amp;nbsp;jednom je vyvráceno, a za „all-in-one“ technologii se dá považovat spíše&amp;nbsp;PHP.&lt;/p&gt; 
+&lt;h4 id=&quot;toc-windows-a-vse-v-jednom&quot;&gt;Windows a „vše v&amp;nbsp;jednom“&lt;/h4&gt; 
+&lt;p&gt;U&amp;nbsp;té architektury Windows bych řekl, že se Jakub seknul;
+ &lt;!-- Dovolil bych si polemizovat i o &quot;komplexnosti&quot; jádra Windows --&gt; od verzí NT až po XP (Visty neznám) je systém poměrně modulárni a dá se očesat skoro až na&amp;nbsp;HAL.&lt;/p&gt; 
+&lt;p&gt;Stejně tak předchozí verze Windows&amp;nbsp;– existuje mnoho různých amatérských minidistribucí Windows 98 (bohužel teď je nenajdu).&lt;/p&gt; 
+&lt;p&gt;„spravované přes komplexní objektové rozhraní“&amp;nbsp;– to nevím, co tím Jakub u&amp;nbsp;Windows myslel. Na WinAPI není objektového nic, to je čisté&amp;nbsp;C.&lt;/p&gt; 
+&lt;h3 id=&quot;toc-moznost-miniaturizace-jadra&quot;&gt;Možnost miniaturizace jádra&lt;/h3&gt; 
+&lt;p&gt;Až teprve v&amp;nbsp;extrémních podmínkách se ukáže, co vše lze z „jádra“ vypustit, aby technologie stále byla sama&amp;nbsp;sebou.&lt;/p&gt; 
+&lt;p&gt;Takovými podmínkami jsou například mobilní telefony. Java šlape i&amp;nbsp;na telefonech jako jsou několik let staré mobily Nokia. Zde se velikost jádra těžko určí, protože implementace je do jisté míry hardwarová.&lt;/p&gt; 
+&lt;p&gt;Naproti tomu nejmenší mě známý výskyt PHP je verze PHP pro servery Novell, která je osekaná o&amp;nbsp;leccos, a přesto má hlavní knihovna stále několik&amp;nbsp;MB.&lt;/p&gt; 
+&lt;p&gt;Řekl bych, že tím je v&amp;nbsp;tomto bodě jasno&amp;nbsp;– malé jádro a mnoho volitelných knihoven jednoznačně pasuje spíše na&amp;nbsp;Javu.&lt;/p&gt; 
+&lt;p&gt;//Update:// O&amp;nbsp;tom, že Java je skutečně univerzální, se můžete přesvědčit např. na &lt;a href=&quot;http://www.knihy.cpress.cz/BookDoc.asp?BookID=160&amp;amp;DocID=626&amp;amp;DownloadSection=12&quot;&gt;http://www.knihy.cpress.cz/BookDoc.asp?…&lt;/a&gt;, kde najdete publikaci pro grafiky, která se věnuje se programování skeneru pomocí&amp;nbsp;Javy.&lt;/p&gt; 
+&lt;h3 id=&quot;toc-slozitost-syntaxe-php-a-javy&quot;&gt;Složitost syntaxe PHP a Javy&lt;/h3&gt; 
+&lt;p&gt;Syntaxe Java oproti syntaxi PHP:&lt;/p&gt; 
+&lt;ul&gt; 
+ &lt;li&gt;Nemá &amp;amp; reference&lt;/li&gt; 
+ &lt;li&gt;Není zde @ na umlčení&lt;/li&gt; 
+ &lt;li&gt;Nenahrazují se proměnné ve stringu&lt;/li&gt; 
+ &lt;li&gt;Nejsou zde věci typu __call, __autoload a další __*&lt;/li&gt; 
+ &lt;li&gt;Nemá # komentáře&lt;/li&gt; 
+ &lt;li&gt;Nemá &lt;code&gt;systémová volání&lt;/code&gt;&lt;/li&gt; 
+ &lt;li&gt;Nemá podivné konstrukce typu Array($objekt, „VolanáMetoda“)&lt;/li&gt; 
+ &lt;li&gt;Nemá konstrukty, které se tváří jako funkce, ale nejsou&amp;nbsp;funkce&lt;/li&gt; 
+ &lt;li&gt;Nemá operátory and, or, xor, !==, ===&lt;/li&gt; 
+ &lt;li&gt;Nemá konstrukty require, require_once, include_once, declare&lt;/li&gt; 
+ &lt;li&gt;Nemá alternativní zápis kontrolních struktur s&amp;nbsp;dvojtečkou&lt;/li&gt; 
+ &lt;li&gt;Nemá &lt;code&gt;global&lt;/code&gt;&lt;/li&gt; 
+ &lt;li&gt;Nemá &lt;code&gt;$GLOBALS&lt;/code&gt;, &lt;code&gt;$_GET&lt;/code&gt;, &lt;code&gt;$_POST&lt;/code&gt;, &lt;code&gt;$_COOKIE&lt;/code&gt;, &lt;code&gt;$_FILES&lt;/code&gt;, &lt;code&gt;$_ENV&lt;/code&gt;,&amp;nbsp;&lt;code&gt;$_REQUEST&lt;/code&gt;&lt;/li&gt; 
+&lt;/ul&gt; 
+&lt;p&gt;Naopak:&lt;/p&gt; 
+&lt;ul&gt; 
+ &lt;li&gt;Má @anotace&lt;/li&gt; 
+ &lt;li&gt;Má generické &amp;lt;typy&amp;gt;&lt;/li&gt; 
+ &lt;li&gt;Má navíc klíčová slova pro různé účely (synchronized, transient, enum, volatile a&amp;nbsp;další)&lt;/li&gt; 
+&lt;/ul&gt; 
+&lt;p&gt;Java syntaxe je jednodušší než syntaxe PHP.&lt;/p&gt; 
+&lt;h3 id=&quot;toc-zaver&quot;&gt;Závěr&lt;/h3&gt; 
+&lt;p&gt;Co se tedy týký připodobnění Javy a PHP k&amp;nbsp;Linuxu a Windows, není mnoho argumentů, proč PHP připodobňovat k&amp;nbsp;Linuxu a Javu k&amp;nbsp;Windows&amp;nbsp;– spíše naopak.&lt;/p&gt; 
+&lt;p&gt;PHP je prostě na ocasu vývoje a s&amp;nbsp;velkými obtížemi adoptuje vymoženosti jiných technologií (OOP, Unicode, výjimky, synchronizaci a sdílení, …)&amp;nbsp;– stejně jako Windows.&lt;/p&gt; 
+&lt;p&gt;Naproti tomu Java je spolu s&amp;nbsp;C# a .NET na špičce vývoje na poli IT, podobně jako Linux na poli&amp;nbsp;OS.&lt;/p&gt; 
+&lt;hr&gt; 
+&lt;p&gt;Jako tečku cituji člověka, který má PHP opravdu v&amp;nbsp;malíku (a autora skvělého Texy!)&amp;nbsp;– Davida Grudla:&lt;/p&gt; 
+&lt;blockquote&gt; 
+ &lt;p&gt;Programovat v&amp;nbsp;Javě umí kdekdo. O&amp;nbsp;ASP.NET ani nemluvě. Jen v&amp;nbsp;PHP píši skuteční hrdinové. Renesanční bytosti. Fascinující a neskutečně trpěliví lidé. Trpěliví od slova trpět. Třeba jako&amp;nbsp;já.&lt;/p&gt; 
+ &lt;p style=&quot;text-align:right&quot;&gt;-- David Grudl, &lt;a href=&quot;http://latrine.dgx.cz/php-surprise&quot;&gt;http://latrine.dgx.cz/php-surprise&lt;/a&gt;&lt;/p&gt; 
+&lt;/blockquote&gt; 
+            </description>
+        </item>
+        <item>
+            <title>Nabídka: Levný Java/JSP/J2EE
+hosting</title>
+            <link>https://www.zizka.ch/pages/programming/java/nabidka_levny_j2ee_jsp_hosting.html</link>
+            <pubDate>Tue, 31 Jul 2018 07:43:08 +0200</pubDate>
+            <guid isPermaLink="false">pages/programming/java/nabidka_levny_j2ee_jsp_hosting.html</guid>
+            <description>
+                 &lt;h2 class=&quot; jbakeExtractedTitle&quot; id=&quot;toc-nabidka-levny-java-jsp-j2ee-hosting&quot;&gt;Nabídka: Levný Java/JSP/J2EE hosting&lt;/h2&gt; 
+&lt;p&gt;S&amp;nbsp;pozvolným přechodem od PHP k&amp;nbsp;Javě a J2EE jsem narazil na problém&amp;nbsp;– kam s&amp;nbsp;ním?&lt;/p&gt; 
+&lt;p&gt;Řeč je o&amp;nbsp;nedostečné nabídce Java EE hostingů, a tedy nízká konkurence a z&amp;nbsp;toho plynoucí vysoké ceny. Nejsem si zcela jist, zda java hosting je na správu náročnější než např. &lt;acronym title=&quot;Linux, Apache, MySQL, PHP&quot;&gt;LAMP&lt;/acronym&gt;&amp;nbsp;– podle zkušeností kamaráda, který si hostuje sám, je to jednodušší&amp;nbsp;– prostě nainstalujete Apache Tomcat a hotovo.&lt;/p&gt; 
+&lt;p&gt;Pro upřesnění&amp;nbsp;– kamarádovi příliš nesedly aplikační servery (JBoss, IBM WebSphere, BEA WebLogic a další mamuti&amp;nbsp;– zjistil, že pro něj je lepší řešení Tomcat a všechny featury z&amp;nbsp;aplikačních serverů instaluje do Tomcatu jako jednotlivé moduly, případně je vkládá přímo do webové aplikace.&lt;/p&gt; 
+&lt;p&gt;Mě samotnému se ovšem o&amp;nbsp;server starat nechce&amp;nbsp;– znamenalo by to najít server housing, koupit server, naučit se dobře administrovat Linux, … a jak říká Honza Svoboda&amp;nbsp;– není možné dobře umět a dobře dělat všechno.&lt;/p&gt; 
+&lt;h3 id=&quot;toc-jak-jsem-k-java-hostingu-prisel&quot;&gt;Jak jsem k&amp;nbsp;Java hostingu přišel&lt;/h3&gt; 
+&lt;p&gt;S&amp;nbsp;jedním kamarádem, zavilým Céčkařem a PHPčkářem, jsme (také :-) vedli debatu o&amp;nbsp;&lt;a href=&quot;http://ondra.zizka.cz/stranky/programming/php/vyhody_a_nevyhody_php.html&quot;&gt;výhodách a nevýhodách PHP&lt;/a&gt;. Tak jsme se dostali k&amp;nbsp;tomu, že já vyvíjím nějaké projektíky v&amp;nbsp;Javě, ale nemám je kam&amp;nbsp;dát.&lt;/p&gt; 
+&lt;p&gt;Kamarád měl tehdy zakoupený docela silný stroj (nějaké čtyřjádro s&amp;nbsp;8&amp;nbsp;GB paměti a čtyřmi SAS disky @ 10k RMP), který ovšem neměl jak využít, tak jsem na něm aspoň učil nějaké ty neuronové sítě z&amp;nbsp;mojí diplomky&amp;nbsp;:-)&lt;/p&gt; 
+&lt;p&gt;Později jsem se dozvěděl od několika známých, že s&amp;nbsp;Javou a J2EE mají podobný problém&amp;nbsp;– mají J2EE backend, k&amp;nbsp;němu by chtěli J2EE frontend, ale nenašli výhodný hosting a sami si hostovat nechtějí, a tak pro ně bylo cenově výhodnější sáhnout po &lt;a href=&quot;http://www.php.net&quot;&gt;nouzovém řešení&lt;/a&gt;.&lt;/p&gt; 
+&lt;p&gt;Využit kamarádův stroj a znalosti ke zřízení Java hostingu se samo nabízelo. Netrvalo dlouho a stroj se přesunul do server-housingové společnosti a objevila se na něm Java a Tomcat. Zatím na něm běží jen moje J2EE „pokusy“, a stroj lačně čeká na další využití&amp;nbsp;:-)&lt;/p&gt; 
+&lt;h3 id=&quot;toc-co-tedy-nabizim&quot;&gt;Co tedy nabízím?&lt;/h3&gt; 
+&lt;p&gt;Pokud byste chtěli na výše zmíněném serveru zkusit hostovat svoji J2EE aplikaci, můžete se ozvat a zprostředkuji kontakt.&lt;/p&gt; 
+&lt;p&gt;Možná by se někomu mohlo po přečtení předchozích odstavců zdát nedůvěryhodné dávat hosting „ke kamarádovi nějakého Ondry Žižky“&amp;nbsp;– ale tento kamarád pracuje jako správce sítě v&amp;nbsp;organizaci s&amp;nbsp;řádově několika tisíci počítači a programátor systému automatické správy této&amp;nbsp;sítě.&lt;/p&gt; 
+&lt;p&gt;Nemá však zkušenosti s&amp;nbsp;administrací Java hostingu, a proto to momentálně řešíme tak, že mám plný přístup k&amp;nbsp;Tomcatu a spravuji si&amp;nbsp;sám.&lt;/p&gt; 
+&lt;p&gt;Řešení vašeho hostingu by vypadalo podobně&amp;nbsp;– server by se nejspíše rozdělil na virtuální hostingy, ať už na úrovni Linuxu nebo Javy, a svůj virtuální hosting byste si spravovali&amp;nbsp;sami.&lt;/p&gt; 
+&lt;p&gt;Zkouška bude nejspíše zdarma&amp;nbsp;– podle dohody.&lt;/p&gt; 
+&lt;p&gt;Máte-li zájem, ozvěte se na &lt;a href=&quot;mailto:ondra@dynawest.cz&quot;&gt;ondra@
+  &lt;!-- --&gt;dynawest.cz&lt;/a&gt;, kamarád mě pověřil zpracováním „úvodního kontaktu“&amp;nbsp;:-)&lt;/p&gt; 
+            </description>
+        </item>
+        <item>
+            <title>Je Java jako Linux nebo jako
+Windows?</title>
+            <link>https://www.zizka.ch/pages/programming/php/je_java_jako_linux_nebo_jako_windows.html</link>
+            <pubDate>Tue, 31 Jul 2018 07:43:08 +0200</pubDate>
+            <guid isPermaLink="false">pages/programming/php/je_java_jako_linux_nebo_jako_windows.html</guid>
+            <description>
+                 &lt;h2 class=&quot; jbakeExtractedTitle&quot; id=&quot;toc-je-java-jako-linux-nebo-jako-windows&quot;&gt;Je Java jako Linux nebo jako Windows?&lt;/h2&gt; 
+&lt;!-- //Článek momentálně upravuji.// --&gt; 
+&lt;p&gt;&lt;em&gt;Přesunuto &lt;a href=&quot;/stranky/programming/java/je_java_jako_linux_nebo_jako_windows.html&quot;&gt;sem&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt; 
+&lt;p&gt;Po napsání předchozího článku &lt;a href=&quot;vyhody_a_nevyhody_php.html&quot;&gt;Výhody a nevýhody PHP&lt;/a&gt; se ozval Jakub Vrána a chvíli jsme si mailovali nad některými body článku, což se, jak to bývá, stočilo na srovnání PHP s&amp;nbsp;technologií, kterou já preferuji&amp;nbsp;– tedy s&amp;nbsp;Javou.&lt;/p&gt; 
+&lt;p&gt;V&amp;nbsp;závěru jsme se dostali k&amp;nbsp;tomu, zda je Java nebo PHP podobnější Linuxu nebo Windows. Zde je část z&amp;nbsp;mailu:&lt;/p&gt; 
+&lt;blockquote&gt; 
+ &lt;p&gt;Jednu věc nechápu a budu rád, když mi jako (předpokládám) fanda Linuxu vysvětlíš:&lt;/p&gt; 
+ &lt;p&gt;Jak je možné, že lidé, kteří preferují Linux před Windows, zároveň preferují PHP před Javou. Protože pokud bychom zobecnili vlastnosti a požadavky na systémy a plaformy, potom právě Java oproti PHP by byla jako Linux oproti Windows&amp;nbsp;– technologicky vyspělejší, vývojově stabilnější, zpětně kompatibilnější, modulárnější, konfigurovatel­nější, víceúčelovější, a druhé ideologicky vykrádá první, přičemž to ani nezvládne dotáhnout do konce a zbyde jenom nedotažený hybrid zatížený historií svého vývoje.&lt;/p&gt; 
+ &lt;p&gt;PHP se mi zdá jako takový rozjetý mnohakilometrový vlak tažený slabou mašinkou, ke kterému stále napojují další a další vagóny&amp;nbsp;– některé velice moderní, přepychové, a pokud jedete po rovince, vše je ok&amp;nbsp;– ale pak přijde kopeček a mašinka se sotva vleče; a pak i&amp;nbsp;v&amp;nbsp;těch nejpřepychovějších vagónech poznáte, že je něco špatně. (Mašinka zde nepředstavuje výkonnost, ale právě ono „jádro“.)&lt;/p&gt; 
+ &lt;p&gt;Co je tedy podle tebe na PHP lepšího? Co tě k&amp;nbsp;němu táhne kromě citové vazby? (Tvoje zásluhy v&amp;nbsp;PHP komunitě zhruba znám a oceňuji, a chápu a znám z&amp;nbsp;vlastní zkušenosti, že z&amp;nbsp;takového rozjetého vlaku se velmi těžko vyskakuje.) Zkoušels někdy proniknout do J2EE? Znáš základní konceptuální rozdíly? Nechci tě nijak shazovat, jen mě zajímá, jestli se dokážeš vžít do mojí situace a pochopit tak, proč PHP tak „haním“.&lt;/p&gt; 
+ &lt;p&gt;Zdraví Ondra Žižka&lt;/p&gt; 
+&lt;/blockquote&gt; 
+&lt;p&gt;Dovolím si zkopírovat Jakubovo resumé z&amp;nbsp;článku &lt;a href=&quot;http://php.vrana.cz/je-php-jako-linux-nebo-jako-windows.php&quot;&gt;Je PHP jako Linux nebo jako Windows?&lt;/a&gt;:&lt;/p&gt; 
+&lt;blockquote&gt; 
+ &lt;h4 id=&quot;toc-jakub-vrana&quot;&gt;Jakub Vrána:&lt;/h4&gt; 
+ &lt;p&gt;&lt;strong&gt;PHP a Linux&lt;/strong&gt;&amp;nbsp;– malé jádro, k&amp;nbsp;tomu volitelné jednoúčelové knihovny s&amp;nbsp;jednoduchým rozhraním.&lt;/p&gt; 
+ &lt;p&gt;&lt;strong&gt;Java a Windows&lt;/strong&gt;&amp;nbsp;– vše v&amp;nbsp;jednom spravované přes komplexní objektové rozhraní.&lt;/p&gt; 
+ &lt;h4 id=&quot;toc-ondrej-zizka&quot;&gt;Ondřej Žižka:&lt;/h4&gt; 
+ &lt;p&gt;&lt;strong&gt;PHP a Windows&lt;/strong&gt; (z&amp;nbsp;pohledu programátora WinAPI): Silně proměnlivá technologie, v&amp;nbsp;lecčems zpětně nekompatibilní, počáteční návrh špatný a směřující k&amp;nbsp;lepšímu po vzoru lepších technologií, mnohé významné featury dodělávané ad hoc a nepřirozeně vmontované do návrhu.&lt;/p&gt; 
+ &lt;p&gt;&lt;strong&gt;Java a Linux&lt;/strong&gt;: Stabilní technologie stavěná velmi rozvážně podle promyšleného návrhu dlouho laděného a diskutovaného mnoha IT firmami, silná a zaručená zpětná kompatibilita, standardizované API, mnoho různých použití (od embedded zařízení až po clusterované farmy serverů). Nejčastěji používaná rozšíření časem projdou procesem standardizace a začlení se do jádra, resp.&amp;nbsp;JRE.&lt;/p&gt; 
+&lt;/blockquote&gt; 
+&lt;p&gt;Jak někdo poznamenal v&amp;nbsp;tamějších komentářích, Jakub posuzuje z&amp;nbsp;pohledu technického, zatímco já se snažím spíše o&amp;nbsp;ideologické srovnání&amp;nbsp;– zkrátka principy, na kterých vývojáři a komunita dané technologie (ne)staví.&lt;/p&gt; 
+&lt;p&gt;A&amp;nbsp;to je z&amp;nbsp;dlouhodobého hlediska mnohem důležitější&amp;nbsp;– jistě chcete vyvíjet bez obav, že by příští major verze opět přinesla další sadu vlastností z&amp;nbsp;jiných jazyků chaoticky splácaných dohromady se stávající&amp;nbsp;verzí.&lt;/p&gt; 
+&lt;hr&gt; 
+&lt;p&gt;Aby byla debata co k&amp;nbsp;čemu, měli bychom tato hesla něčím podpořit, případně vyvrátit. Pusťme se do toho&amp;nbsp;:-)&lt;/p&gt; 
+&lt;h3 id=&quot;toc-male-jadro&quot;&gt;Malé jádro&lt;/h3&gt; 
+&lt;p&gt;Jak změřit velikost jádra? A&amp;nbsp;co je vůbec jádro? Řekněme, že je to ta část technologie, která je nezbytně nutná pro její&amp;nbsp;běh.&lt;/p&gt; 
+&lt;ul&gt; 
+ &lt;li&gt;Binárky pro Java Virtual Machine (interpret Javy) nejnovější verze mají cca 6&amp;nbsp;MB, což zahrnuje mimo jiné nativní knihovny pro zobrazování desktop aplikací, práci se zvukem, fonty&amp;nbsp;atd.&lt;/li&gt; 
+ &lt;li&gt;K&amp;nbsp;Javě patří ještě &lt;code&gt;rt.jar&lt;/code&gt;, což je balík, ve kterém jsou knihovny obsažené ve standardní distribuci. Z&amp;nbsp;toho se dá jako jádro počítat maximálně část z&amp;nbsp;nich.&lt;/li&gt; 
+ &lt;li&gt;Jádro PHP, &lt;code&gt;php6ts.dll&lt;/code&gt;, má cca. 14&amp;nbsp;MB (standardní distribuce windows), a tento modul je dále nedělitelný.&lt;/li&gt; 
+ &lt;li&gt;S&amp;nbsp;okolními knihovnami (kromě API pro Apache, ISAPI a NSAPI) má kolem 20&amp;nbsp;MB.&lt;/li&gt; 
+ &lt;li&gt;&lt;code&gt;php5ts.dll&lt;/code&gt; má cca. 5&amp;nbsp;MB, a spolu s&amp;nbsp;okolními &lt;code&gt;.dll&lt;/code&gt; má asi 10&amp;nbsp;MB.&lt;/li&gt; 
+&lt;/ul&gt; 
+&lt;p&gt;Ale velikost dat není nejlepší ukazatel. Vyberme tedy jiné kritérium. Nabízí se možnost miniaturizace jádra technologie a složitost syntaxe, a Jakubem uvedená „komplexnost jádra“.&lt;/p&gt; 
+&lt;h3 id=&quot;toc-komplexnost-jadra&quot;&gt;Komplexnost jádra&lt;/h3&gt; 
+&lt;p&gt;Co se týká „ne/komplexnosti“ jádra, tak si nejsem zcela jist, jak rozlišit, co v&amp;nbsp;jádru je či&amp;nbsp;není.&lt;/p&gt; 
+&lt;p&gt;Pokud vím, v&amp;nbsp;jádru Javy je jen několik tříd typu Object, String, Throwable, dále nativní metody základních systémových tříd, a tím to hasne; drtivá většina funkcionality JRE je již implementovaná v&amp;nbsp;Javě a je oddělitelná.&lt;/p&gt; 
+&lt;p&gt;V&amp;nbsp;PHP je mnoho knihoven instalovatelných z&amp;nbsp;repozitáře PEAR, a většina těch, které jsou ve Windows verzi v&amp;nbsp;phpXts.dll, jsou na linuxu volitelné za cenu vlastní kompilace PHP. Nicméně nevolitelnou součástí jádra jsou funkce jako &lt;code&gt;money_format()&lt;/code&gt;, &lt;code&gt;apache_note()&lt;/code&gt; nebo &lt;code&gt;highlight_file()&lt;/code&gt;, na kterých jistě technologie závislá&amp;nbsp;není.&lt;/p&gt; 
+&lt;p&gt;V&amp;nbsp;tomto je tedy Linuxu podobnější Java, který v&amp;nbsp;jádru obsahuje pouze to nutné (ať už pro funkčnost systému nebo kvůli výkonu).&lt;/p&gt; 
+&lt;p&gt;Že by Java obsahovala vše v&amp;nbsp;jednom je vyvráceno, a za „all-in-one“ technologii se dá považovat spíše&amp;nbsp;PHP.&lt;/p&gt; 
+&lt;h4 id=&quot;toc-windows-a-vse-v-jednom&quot;&gt;Windows a „vše v&amp;nbsp;jednom“&lt;/h4&gt; 
+&lt;p&gt;U&amp;nbsp;té architektury Windows bych řekl, že se Jakub seknul;
+ &lt;!-- Dovolil bych si polemizovat i o &quot;komplexnosti&quot; jádra Windows --&gt; od verzí NT až po XP (Visty neznám) je systém poměrně modulárni a dá se očesat skoro až na&amp;nbsp;HAL.&lt;/p&gt; 
+&lt;p&gt;Stejně tak předchozí verze Windows&amp;nbsp;– existuje mnoho různých amatérských minidistribucí Windows 98 (bohužel teď je nenajdu).&lt;/p&gt; 
+&lt;p&gt;„spravované přes komplexní objektové rozhraní“&amp;nbsp;– to nevím, co tím Jakub u&amp;nbsp;Windows myslel. Na WinAPI není objektového nic, to je čisté&amp;nbsp;C.&lt;/p&gt; 
+&lt;h3 id=&quot;toc-moznost-miniaturizace-jadra&quot;&gt;Možnost miniaturizace jádra&lt;/h3&gt; 
+&lt;p&gt;Až teprve v&amp;nbsp;extrémních podmínkách se ukáže, co vše lze z „jádra“ vypustit, aby technologie stále byla sama&amp;nbsp;sebou.&lt;/p&gt; 
+&lt;p&gt;Takovými podmínkami jsou například mobilní telefony. Java šlape i&amp;nbsp;na telefonech jako jsou několik let staré mobily Nokia. Zde se velikost jádra těžko určí, protože implementace je do jisté míry hardwarová.&lt;/p&gt; 
+&lt;p&gt;Naproti tomu nejmenší mě známý výskyt PHP je verze PHP pro servery Novell, která je osekaná o&amp;nbsp;leccos, a přesto má hlavní knihovna stále několik&amp;nbsp;MB.&lt;/p&gt; 
+&lt;p&gt;Řekl bych, že tím je v&amp;nbsp;tomto bodě jasno&amp;nbsp;– malé jádro a mnoho volitelných knihoven jednoznačně pasuje spíše na&amp;nbsp;Javu.&lt;/p&gt; 
+&lt;p&gt;//Update:// O&amp;nbsp;tom, že Java je skutečně univerzální, se můžete přesvědčit např. na &lt;a href=&quot;http://www.knihy.cpress.cz/BookDoc.asp?BookID=160&amp;amp;DocID=626&amp;amp;DownloadSection=12&quot;&gt;http://www.knihy.cpress.cz/BookDoc.asp?…&lt;/a&gt;, kde najdete publikaci pro grafiky, která se věnuje se programování skeneru pomocí&amp;nbsp;Javy.&lt;/p&gt; 
+&lt;h3 id=&quot;toc-slozitost-syntaxe-php-a-javy&quot;&gt;Složitost syntaxe PHP a Javy&lt;/h3&gt; 
+&lt;p&gt;Syntaxe Java oproti syntaxi PHP:&lt;/p&gt; 
+&lt;ul&gt; 
+ &lt;li&gt;Nemá &amp;amp; reference&lt;/li&gt; 
+ &lt;li&gt;Není zde @ na umlčení&lt;/li&gt; 
+ &lt;li&gt;Nenahrazují se proměnné ve stringu&lt;/li&gt; 
+ &lt;li&gt;Nejsou zde věci typu __call, __autoload a další __*&lt;/li&gt; 
+ &lt;li&gt;Nemá # komentáře&lt;/li&gt; 
+ &lt;li&gt;Nemá &lt;code&gt;systémová volání&lt;/code&gt;&lt;/li&gt; 
+ &lt;li&gt;Nemá podivné konstrukce typu Array($objekt, „VolanáMetoda“)&lt;/li&gt; 
+ &lt;li&gt;Nemá konstrukty, které se tváří jako funkce, ale nejsou&amp;nbsp;funkce&lt;/li&gt; 
+ &lt;li&gt;Nemá operátory and, or, xor, !==, ===&lt;/li&gt; 
+ &lt;li&gt;Nemá konstrukty require, require_once, include_once, declare&lt;/li&gt; 
+ &lt;li&gt;Nemá alternativní zápis kontrolních struktur s&amp;nbsp;dvojtečkou&lt;/li&gt; 
+ &lt;li&gt;Nemá &lt;code&gt;global&lt;/code&gt;&lt;/li&gt; 
+ &lt;li&gt;Nemá &lt;code&gt;$GLOBALS&lt;/code&gt;, &lt;code&gt;$_GET&lt;/code&gt;, &lt;code&gt;$_POST&lt;/code&gt;, &lt;code&gt;$_COOKIE&lt;/code&gt;, &lt;code&gt;$_FILES&lt;/code&gt;, &lt;code&gt;$_ENV&lt;/code&gt;,&amp;nbsp;&lt;code&gt;$_REQUEST&lt;/code&gt;&lt;/li&gt; 
+&lt;/ul&gt; 
+&lt;p&gt;Naopak:&lt;/p&gt; 
+&lt;ul&gt; 
+ &lt;li&gt;Má @anotace&lt;/li&gt; 
+ &lt;li&gt;Má generické &amp;lt;typy&amp;gt;&lt;/li&gt; 
+ &lt;li&gt;Má navíc klíčová slova pro různé účely (synchronized, transient, enum, volatile a&amp;nbsp;další)&lt;/li&gt; 
+&lt;/ul&gt; 
+&lt;p&gt;Java syntaxe je jednodušší než syntaxe PHP.&lt;/p&gt; 
+&lt;h3 id=&quot;toc-zaver&quot;&gt;Závěr&lt;/h3&gt; 
+&lt;p&gt;Co se tedy týký připodobnění Javy a PHP k&amp;nbsp;Linuxu a Windows, není mnoho argumentů, proč PHP připodobňovat k&amp;nbsp;Linuxu a Javu k&amp;nbsp;Windows&amp;nbsp;– spíše naopak.&lt;/p&gt; 
+&lt;p&gt;PHP je prostě na ocasu vývoje a s&amp;nbsp;velkými obtížemi adoptuje vymoženosti jiných technologií (OOP, Unicode, výjimky, synchronizaci a sdílení, …)&amp;nbsp;– stejně jako Windows.&lt;/p&gt; 
+&lt;p&gt;Naproti tomu Java je spolu s&amp;nbsp;C# a .NET na špičce vývoje na poli IT, podobně jako Linux na poli&amp;nbsp;OS.&lt;/p&gt; 
+&lt;hr&gt; 
+&lt;p&gt;Jako tečku cituji člověka, který má PHP opravdu v&amp;nbsp;malíku (a autora skvělého Texy!)&amp;nbsp;– Davida Grudla:&lt;/p&gt; 
+&lt;blockquote&gt; 
+ &lt;p&gt;Programovat v&amp;nbsp;Javě umí kdekdo. O&amp;nbsp;ASP.NET ani nemluvě. Jen v&amp;nbsp;PHP píši skuteční hrdinové. Renesanční bytosti. Fascinující a neskutečně trpěliví lidé. Trpěliví od slova trpět. Třeba jako&amp;nbsp;já.&lt;/p&gt; 
+ &lt;p style=&quot;text-align:right&quot;&gt;-- David Grudl, &lt;a href=&quot;http://latrine.dgx.cz/php-surprise&quot;&gt;http://latrine.dgx.cz/php-surprise&lt;/a&gt;&lt;/p&gt; 
+&lt;/blockquote&gt; 
+            </description>
+        </item>
+        <item>
+            <title>Feature
+request discussion: Result sets stored in @variables</title>
+            <link>https://www.zizka.ch/pages/programming/sql/mysql_wishlist/forum_post.html</link>
+            <pubDate>Tue, 31 Jul 2018 07:43:08 +0200</pubDate>
+            <guid isPermaLink="false">pages/programming/sql/mysql_wishlist/forum_post.html</guid>
+            <description>
+                 &lt;h2 class=&quot; jbakeExtractedTitle&quot; id=&quot;toc-feature-request-discussion-result-sets-stored-in-variables&quot;&gt;Feature request discussion: Result sets stored in @variables&lt;/h2&gt; 
+&lt;p&gt;Hello,&lt;/p&gt; 
+&lt;p&gt;I&amp;nbsp;got over several weeks of stored routines developement, and the most missed feature was a seamless mechanism for&lt;br&gt; - calling routines with a resultset in a parameter,&lt;br&gt; - retrieving a result set coming stored procedure,&lt;br&gt; - and eventually, for keeping a resultset somewhere without need to create a&amp;nbsp;table.&lt;/p&gt; 
+&lt;p&gt;All of this would be possible if we could store a resultset in a variable. So I&amp;nbsp;have stated a feature request, not yet submitted to a buglist. First I&amp;nbsp;would like to know others&apos; oppinions and suggestions, because I&amp;nbsp;am not much familiar with other&amp;nbsp;DBMS.&lt;/p&gt; 
+&lt;p&gt;I&amp;nbsp;guess that such functionality would not be easy to implement and is not likely to appear soon. But it would be a giant leap for MySQL&apos;s&amp;nbsp;stored procedures programming.&lt;/p&gt; 
+&lt;p&gt;Here is a brief overview:&lt;/p&gt; 
+&lt;h2 id=&quot;toc-create-the-result-set-and-store-it-in-a-variable&quot;&gt;Create the result set and store it in a variable.&lt;/h2&gt; 
+&lt;p&gt;SELECT * FROM table1 INTO @resultset;&lt;br&gt; – or&amp;nbsp;– SET @resultset = (SELECT * FROM table1);&lt;/p&gt; 
+&lt;h2 id=&quot;toc-pass-the-result-set-into-a-stored-procedure&quot;&gt;Pass the result set into a stored procedure.&lt;/h2&gt; 
+&lt;p&gt;CALL StoredProcedure( @resultset );&lt;/p&gt; 
+&lt;h2 id=&quot;toc-retrieving-a-result-set-from-a-stored-procedure&quot;&gt;Retrieving a result set from a stored procedure&lt;/h2&gt; 
+&lt;p&gt;CALL StoredProcedure() INTO @result;&amp;nbsp;– or&amp;nbsp;– SET @result = (CALL StoredProcedure());&lt;/p&gt; 
+&lt;p&gt;More detailed formatted draft is here: &lt;a href=&quot;http://ondra.zizka.cz/stranky/programming/sql/mysql_wishlist/result_set_in_variable.texy&quot;&gt;http://ondra.zizka.cz/…ariable.texy&lt;/a&gt;&lt;/p&gt; 
+&lt;p&gt;Now&amp;nbsp;– what do you think? Would this ease your SP developement? Is there some better concept?&lt;/p&gt; 
+&lt;p&gt;Thanks for comments.&lt;/p&gt; 
+            </description>
+        </item>
+        <item>
+            <title>Programování</title>
+            <link>https://www.zizka.ch/pages/programming/index.html</link>
+            <pubDate>Tue, 31 Jul 2018 07:43:08 +0200</pubDate>
+            <guid isPermaLink="false">pages/programming/index.html</guid>
+            <description>
+                 &lt;h2 class=&quot; jbakeExtractedTitle&quot; id=&quot;toc-programovani&quot;&gt;Programování&lt;/h2&gt; 
+&lt;p&gt;V&amp;nbsp;sekci &lt;em&gt;Programování&lt;/em&gt; najdete texty, které vyprodukuji na toto téma. To zahrnuje nejen jazyky a technologie jako PHP, Java a J2EE, C# a .NET, XSLT, SQL, ale i&amp;nbsp;různá paradigmata (OOP, AOP) a oblasti výzkumu (neuronové&amp;nbsp;sítě).&lt;/p&gt; 
+&lt;h3 id=&quot;toc-obecne&quot;&gt;Obecně&lt;/h3&gt; 
+&lt;ul&gt; 
+ &lt;li&gt;&lt;a href=&quot;web_javascript_ajax_canvas/webttd.html&quot;&gt;WebTTD&lt;/a&gt;&amp;nbsp;– browser-based Transport Tycoon clone&amp;nbsp;idea.&lt;/li&gt; 
+ &lt;li&gt;&lt;a href=&quot;insolvencni_rejstrik-isir_ws/index.html&quot;&gt;Insolvenční rejstřík&amp;nbsp;– ISIR WS&lt;/a&gt;&amp;nbsp;– Zkušenosti s&amp;nbsp;webovou službou Insolvenčního rejstříku.&lt;/li&gt; 
+ &lt;li&gt;&lt;a href=&quot;vybiram_jazyk_pro_systemove_skriptovani.html&quot;&gt;Hledám jazyk pro systémové skriptování.&lt;/a&gt;&lt;/li&gt; 
+ &lt;li&gt;&lt;a href=&quot;linux-switch-script-alternatives-eselect.html&quot;&gt;Linux: Bash generic script to switch versions&lt;/a&gt;&amp;nbsp;– (like &lt;code&gt;alternatives&lt;/code&gt; and Gentoo&apos;s &lt;code&gt;eselect&lt;/code&gt;)&lt;/li&gt; 
+&lt;/ul&gt; 
+&lt;h4 id=&quot;toc-linux-filesystem-cache-flush&quot;&gt;Linux filesystem cache flush&lt;/h4&gt; 
+&lt;pre class=&quot;lang-text brush: text&quot;&gt;# Will clear all the fs cache. Do a ’sync’ before to flush more caches.
+echo 1 &amp;gt; /proc/sys/vm/drop_caches&lt;/pre&gt; 
+&lt;p&gt;&lt;a href=&quot;http://mtj.wordpress.com/2006/10/18/clearing-linux-filesystem-read-cache/&quot;&gt;http://mtj.wordpress.com/…-read-cache/&lt;/a&gt;&lt;/p&gt; 
+&lt;h3 id=&quot;toc-java&quot;&gt;Java&lt;/h3&gt; 
+&lt;ul&gt; 
+ &lt;li&gt;&lt;a href=&quot;java/index.html&quot;&gt;Novinky, postřehy&lt;/a&gt;&lt;/li&gt; 
+ &lt;li&gt;&lt;a href=&quot;java/navod-java_zacatky.html&quot;&gt;Úplné začátky v&amp;nbsp;Javě&lt;/a&gt;&amp;nbsp;– návod na přeložení &lt;code&gt;.java&lt;/code&gt; zdrojáku na &lt;code&gt;.class&lt;/code&gt; a jeho spuštění.&lt;/li&gt; 
+ &lt;li&gt;&lt;a href=&quot;java/navod-j2ee_uvod.html&quot;&gt;Úvod do J2EE&lt;/a&gt;&amp;nbsp;– zde se dozvíte, co je J2EE.&lt;/li&gt; 
+ &lt;li&gt;&lt;a href=&quot;java/hibernate_netbeans_howto_tutorial.html&quot;&gt;Hibernate super-quick start in NetBeans&lt;/a&gt;&lt;/li&gt; 
+ &lt;li&gt;&lt;a href=&quot;java/navod-spring-framework-zacatky.html&quot;&gt;Úplné začátky s&amp;nbsp;frameworkem Spring&lt;/a&gt;&amp;nbsp;– návod, jak začít se Springem a ukázka, k&amp;nbsp;čemu Spring&amp;nbsp;je.&lt;/li&gt; 
+ &lt;li&gt;&lt;a href=&quot;java/tipy.html&quot;&gt;Tipy pro Java technologie&lt;/a&gt;&lt;/li&gt; 
+ &lt;li&gt;&lt;a href=&quot;java/texy_java_implementation.html&quot;&gt;JTexy!&amp;nbsp;– Java Texy! Implementation&lt;/a&gt;&lt;/li&gt; 
+ &lt;li&gt;Moje historická &lt;a href=&quot;/java&quot;&gt;Java stránka&lt;/a&gt;&lt;/li&gt; 
+&lt;/ul&gt; 
+&lt;h3 id=&quot;toc-php&quot;&gt;PHP&lt;/h3&gt; 
+&lt;ul&gt; 
+ &lt;li&gt;&lt;a href=&quot;php/vyhody_a_nevyhody_php.html&quot;&gt;Výhody a nevýhody PHP&lt;/a&gt;&amp;nbsp;– pokus o&amp;nbsp;souhrn výhod a nevýhod&amp;nbsp;PHP.&lt;/li&gt; 
+ &lt;li&gt;&lt;a href=&quot;php/je_java_jako_linux_nebo_jako_windows.html&quot;&gt;Je Java jako Linux nebo jako Windows?&lt;/a&gt;&amp;nbsp;– polemika s&amp;nbsp;článkem Jakuba&amp;nbsp;Vrány.&lt;/li&gt; 
+ &lt;li&gt;&lt;a href=&quot;php/vysledek_nasazeni_php_aneb_navrch_huj_uvnitr_fuj.html&quot;&gt;Výsledek nasazení PHP aneb Navrch huj, uvnitř fuj&lt;/a&gt;&amp;nbsp;– ukázka přímých důsledků nedostatků PHP v&amp;nbsp;praxi.&lt;/li&gt; 
+ &lt;li&gt;&lt;a href=&quot;php/nevyhody_php_v_praktickych_prikladech.html&quot;&gt;Nevýhody PHP v&amp;nbsp;praktických příkladech&lt;/a&gt;&amp;nbsp;– konkrétní rozvedení některých bodů ze seznamu nevýhod&amp;nbsp;PHP.&lt;/li&gt; 
+ &lt;li&gt;&lt;a href=&quot;php/dalsi_nesmysl_v_php.html&quot;&gt;Další ukázka ‚krás‘ PHP&lt;/a&gt;&lt;/li&gt; 
+&lt;/ul&gt; 
+&lt;h3 id=&quot;toc-sql-a-mysql&quot;&gt;SQL a MySQL&lt;/h3&gt; 
+&lt;ul&gt; 
+ &lt;li&gt;&lt;a href=&quot;http://ondra.zizka.cz/stranky/programming/sql/index.html&quot;&gt;SQL Corner&lt;/a&gt; (mostly in english)&lt;/li&gt; 
+&lt;/ul&gt; 
+&lt;h3 id=&quot;toc-web-javascript-ajax-canvas&quot;&gt;Web, JavaScript, AJAX, Canvas&lt;/h3&gt; 
+&lt;ul&gt; 
+ &lt;li&gt;&lt;a href=&quot;web_javascript_ajax_canvas/index.html&quot;&gt;Index page&lt;/a&gt;&lt;/li&gt; 
+ &lt;li&gt;&lt;a href=&quot;web_javascript_ajax_canvas/webttd.html&quot;&gt;WebTTD&lt;/a&gt;&amp;nbsp;– browser-based Transport Tycoon clone&amp;nbsp;idea.&lt;/li&gt; 
+ &lt;li&gt;I&apos;ve made up a &lt;a href=&quot;javascript-isometric-libraries.html&quot;&gt;list of JavaScript libs for isometric rendering&lt;/a&gt;.&lt;/li&gt; 
+ &lt;li&gt;&lt;a href=&quot;web_javascript_ajax_canvas/canvas_element_selection_buffer.html&quot;&gt;Canvas element selection buffer&lt;/a&gt;&lt;/li&gt; 
+ &lt;li&gt;&lt;a href=&quot;/tools&quot;&gt;Text tools&lt;/a&gt;&amp;nbsp;– Very simple interface for several text functions like &lt;code&gt;md5()&lt;/code&gt;&amp;nbsp;etc.&lt;/li&gt; 
+&lt;/ul&gt; 
+&lt;h3 id=&quot;toc-neural-networks-and-artifical-intelligence-in-general&quot;&gt;Neural Networks and Artifical Intelligence in General&lt;/h3&gt; 
+&lt;ul&gt; 
+ &lt;li&gt;&lt;a href=&quot;programming/artificial_intelligence/index.html&quot;&gt;Neural Networks&lt;/a&gt;&lt;/li&gt; 
+ &lt;li&gt;&lt;a href=&quot;/projekty/ai/piskvorky/overview.html&quot;&gt;Criss-cross&lt;/a&gt;&amp;nbsp;– a school project. An attempt for a AI for the criss-cross game, with re-inforcement learning.&lt;/li&gt; 
+ &lt;li&gt;&lt;a href=&quot;/projekty/imagenetics/index.html&quot;&gt;Imagenetics&lt;/a&gt;&amp;nbsp;– Images generated by genetic algorithms, rated by the user (that means, you&amp;nbsp;:-)&lt;/li&gt; 
+&lt;/ul&gt; 
+&lt;h3 id=&quot;toc-ruzne&quot;&gt;Různé&lt;/h3&gt; 
+&lt;ul&gt; 
+ &lt;li&gt;&lt;a href=&quot;cache_objectscript_nejhorsi_jazyk_na_svete.html&quot;&gt;Caché ObjectScript&amp;nbsp;– nejhorší jazyk na světě&lt;/a&gt;&lt;/li&gt; 
+&lt;/ul&gt; 
+            </description>
+        </item>
+        <item>
+            <title>Ondřej
+Žižka – Diplomová práce – Návod na zprovoznění</title>
+            <link>https://www.zizka.ch/pages/diplomka/diplomka-navod_na_zprovozneni.html</link>
+            <pubDate>Tue, 31 Jul 2018 07:43:08 +0200</pubDate>
+            <guid isPermaLink="false">pages/diplomka/diplomka-navod_na_zprovozneni.html</guid>
+            <description>
+                 &lt;h2 class=&quot; jbakeExtractedTitle&quot; id=&quot;toc-ondrej-zizka-diplomova-prace-navod-na-zprovozneni&quot;&gt;Ondřej Žižka&amp;nbsp;– Diplomová práce&amp;nbsp;– Návod na zprovoznění&lt;/h2&gt; 
+&lt;h3 id=&quot;toc-sql-skripty&quot;&gt;SQL skripty&lt;/h3&gt; 
+&lt;p&gt;Všechen SQL kód potřebný ke vytvoření databáze je v&amp;nbsp;adresáři sql/ v&amp;nbsp;těchto souborech:&lt;/p&gt; 
+&lt;ul&gt; 
+ &lt;li&gt;&lt;code&gt;JR - Procedury a funkce pro DP.sql&lt;/code&gt;&lt;/li&gt; 
+ &lt;li&gt;&lt;code&gt;JR - Tabulky s importovanými daty pro DP.sql&lt;/code&gt;&lt;/li&gt; 
+ &lt;li&gt;&lt;code&gt;JR - Tabulky s převedenými daty pro DP.sql&lt;/code&gt;&lt;/li&gt; 
+ &lt;li&gt;&lt;code&gt;NN - Procedury a funkce pro DP.sql&lt;/code&gt;&lt;/li&gt; 
+ &lt;li&gt;&lt;code&gt;NN - Tabulky s daty.sql&lt;/code&gt;&lt;/li&gt; 
+&lt;/ul&gt; 
+&lt;p&gt;Soubory s&amp;nbsp;předponou &lt;code&gt;NN&lt;/code&gt; obsahují SQL pro rekonstrukci implementace neuronových sítí. Soubory s&amp;nbsp;předponou &lt;code&gt;JR&lt;/code&gt; obsahují SQL pro vytvoření databáze jízdních řádů a příslušných uložených procedur.&lt;/p&gt; 
+&lt;p&gt;Další dva soubory obsahují ukázkové naučené neuronové&amp;nbsp;sítě:&lt;/p&gt; 
+&lt;ul&gt; 
+ &lt;li&gt;&lt;code&gt;JR NN - Naučená síť pro zastávku 5.sql&lt;/code&gt;&lt;/li&gt; 
+ &lt;li&gt;&lt;code&gt;NN - Naučená síť XOR.sql&lt;/code&gt;&lt;/li&gt; 
+&lt;/ul&gt; 
+&lt;h3 id=&quot;toc-instalace-mysql-vytvoreni-databazi-a-nastaveni-prav&quot;&gt;Instalace MySQL, vytvoření databází a nastavení práv&lt;/h3&gt; 
+&lt;p&gt;Nejprve je třeba nainstalovat standardní distribuci MySQL 5.0&amp;nbsp;nebo vyšší (&lt;a href=&quot;http://dev.mysql.com/downloads/mysql/5.0.html#downloads&quot;&gt;stahujte zde&lt;/a&gt;).&lt;/p&gt; 
+&lt;p&gt;Poté je třeba vytvořit dvě databáze a nastavit uživatelská práva pro uživatele, který je bude používat. Následující kód vytvoří databáze &lt;code&gt;neural_network&lt;/code&gt; a &lt;code&gt;jizdnirady_cb&lt;/code&gt; a nastaví veškerá práva k&amp;nbsp;nim uživateli &lt;code&gt;OndrejZizka&lt;/code&gt;, který se může připojit odkudkoliv&amp;nbsp;(‚%‘):&lt;/p&gt; 
+&lt;pre class=&quot;brush: lang-sql brush: sql&quot;&gt;CREATE DATABASE neural_network;
+CREATE DATABASE jizdnirady_cb;
+GRANT ALL ON neural_network.* TO OndrejZizka@&apos;%&apos; IDENTIFIED BY &apos;BezpecneHeslo&apos;;
+GRANT ALL ON jizdnirady_cb.*  TO OndrejZizka@&apos;%&apos; IDENTIFIED BY &apos;BezpecneHeslo&apos;;&lt;/pre&gt; 
+&lt;p&gt;Tyto úkony lze pohodlně provést v&amp;nbsp;GUI nástroji MySQL Administrator, případně vykonat SQL příkazy v&amp;nbsp;nástroji MySQL Query Browser, viz&amp;nbsp;níže.&lt;/p&gt; 
+&lt;h3 id=&quot;toc-rekonstrukce-databaze-z-sql-souboru&quot;&gt;Rekonstrukce databáze z&amp;nbsp;SQL souborů&lt;/h3&gt; 
+&lt;p&gt;SQL skripty jsou vytvořené nástrojem MySQL Administator, oficiálním nástrojem pro administraci databázového systému MySQL (&lt;a href=&quot;http://dev.mysql.com/downloads/gui-tools/5.0.html&quot;&gt;stahujte zde&lt;/a&gt;).&lt;/p&gt; 
+&lt;p&gt;Nejsnazší cesta, jak z&amp;nbsp;nich vytvořit svoji kopii databáze, je použít právě tento nástroj. Nezkoušejte načíst procedury v&amp;nbsp;nástroji &lt;em&gt;phpMyAdmin&lt;/em&gt;&amp;nbsp;– ten je plný chyb a nezvládne skripty správně přeparsovat.&lt;/p&gt; 
+&lt;p&gt;&lt;strong&gt;Pozor!&lt;/strong&gt; Pokud se vaše databáze pro neuronové sítě nejmenuje &lt;code&gt;neural_network&lt;/code&gt;, &lt;strong&gt;je nutné ručně upravit SQL skript ukládaných procedur pro databázi jízdní řády!&lt;/strong&gt; Toto se bohužel nedá v&amp;nbsp;současné verzi MySQL nijak obejít.&lt;/p&gt; 
+&lt;p&gt;Úpravu proveďte takto:&lt;/p&gt; 
+&lt;ol&gt; 
+ &lt;li&gt;Otevřete soubor &lt;code&gt;JR - Procedury a funkce pro DP.sql&lt;/code&gt; v&amp;nbsp;editoru, který zvládá kódování UTF-8&amp;nbsp;bez signatury (pro Windows např. Visual Studio nebo PSpad).&lt;/li&gt; 
+ &lt;li&gt;Nahraďte veškeré výskyty řetězce &lt;code&gt;neural_network.&lt;/code&gt; názvem vaší databáze a tečkou.&lt;/li&gt; 
+ &lt;li&gt;Uložte soubor v&amp;nbsp;kódování UTF-8&amp;nbsp;bez signatury (na obrázku je ukázka uložení ve Visual Studiu).&lt;/li&gt; 
+&lt;/ol&gt; 
+&lt;div&gt;
+ &lt;img alt=&quot;&quot; src=&quot;https://www.zizka.ch/pages/diplomka/navod/MSVS-Uprava_SQL_Skriptu_JR-ramecky.png&quot;&gt;
+&lt;/div&gt; 
+&lt;p&gt;Poté upravenou verzi skriptu načtěte do MySQL místo původní&amp;nbsp;verze.&lt;/p&gt; 
+&lt;div&gt;
+ &lt;img alt=&quot;&quot; src=&quot;https://www.zizka.ch/pages/diplomka/navod/MySQL_Administrator-01.png&quot;&gt; 
+ &lt;img alt=&quot;&quot; src=&quot;https://www.zizka.ch/pages/diplomka/navod/MySQL_Administrator-02.png&quot;&gt;
+&lt;/div&gt; 
+&lt;h3 id=&quot;toc-prohlizeni-dat&quot;&gt;Prohlížení dat&lt;/h3&gt; 
+&lt;p&gt;Výše jmenovaný balík GUI nástrojů zahrnuje také MySQL Query Browser, šikovný nástroj pro práci s&amp;nbsp;databázovým systémem&amp;nbsp;MySQL.&lt;/p&gt; 
+&lt;div&gt;
+ &lt;img alt=&quot;&quot; src=&quot;https://www.zizka.ch/pages/diplomka/navod/MySQL_Query_Browser-01-B.png&quot;&gt;
+&lt;/div&gt; 
+&lt;p&gt;Výčet jeho vlastností a dovedností je dlouhý. My se pro účely demonstrace kódu této diplomové práce omezíme na podstatné.&lt;/p&gt; 
+&lt;p&gt;Po spuštění stiskněte &lt;code&gt;F11&lt;/code&gt;&amp;nbsp;– to zvětší konzoli pro SQL příkazy.&lt;/p&gt; 
+&lt;p&gt;Nejprve předznamenejme, že MySQL používá koncept „aktuálně vybrané databáze“. Pokud voláte nějakou proceduru nebo pracujete s&amp;nbsp;tabulkou, ujistěte se, že buď používáte plně kvalifikované jméno, nebo se daný objekt nachází ve vybrané databázi.&lt;/p&gt; 
+&lt;p&gt;SQL příkazy vykonáváte tak, že na něj najedete kurzorem (nikoliv ukazatelem myši) a stisknete Ctrl + Enter. Výsledek (resultset) se zobrazí v&amp;nbsp;dolní&amp;nbsp;části&lt;/p&gt; 
+&lt;p&gt;Můžete prozkoumat obsah tabulek jízdních řádů těmito SQL příkazy:&lt;/p&gt; 
+&lt;pre class=&quot;brush: lang-sql brush: sql&quot;&gt;SELECT * FROM mhd_jizdy LIMIT 100;
+SELECT * FROM mhd_jizdy_stani LIMIT 100;
+SELECT * FROM mhd_linky;
+SELECT * FROM mhd_kody;
+SELECT * FROM mhd_trasy LIMIT 100;
+SELECT * FROM mhd_trasy_uzly LIMIT 100;
+SELECT * FROM mhd_zast LIMIT 100;&lt;/pre&gt; 
+&lt;p&gt;Zde je například výpis zastávek a jejich geografických&amp;nbsp;po­zic:&lt;/p&gt; 
+&lt;div&gt;
+ &lt;img alt=&quot;&quot; src=&quot;https://www.zizka.ch/pages/diplomka/navod/QB-Zastavky.png&quot;&gt;
+&lt;/div&gt; 
+&lt;p&gt;Po importu dat z&amp;nbsp;výše uvedených souborů obsahují tabulky všechna data jízdních řádů, na kterých jsme kód testovali.&lt;/p&gt; 
+&lt;p&gt;Z&amp;nbsp;tabulek je možné vhodnými SELECTy získat jakékoliv informace, které chceme znát&amp;nbsp;– například:&lt;/p&gt; 
+&lt;ul&gt; 
+ &lt;li&gt;trasy projíždějící danou zastávkou a počet zastávek do konce příslušné&amp;nbsp;trasy&lt;/li&gt; 
+ &lt;li&gt;zastávky dané trasy&lt;/li&gt; 
+ &lt;li&gt;zastávky a časy stání dané jíždy&lt;/li&gt; 
+ &lt;li&gt;odjezdy spojů dané linky z&amp;nbsp;dané zastávky&lt;/li&gt; 
+ &lt;li&gt;první následující jízda přijízdějící do dané zastávky od daného okamžiku&lt;/li&gt; 
+&lt;/ul&gt; 
+&lt;p&gt;Zde je ukázka výpisu všech linek projíždějících zastávkou Žižkova:&lt;/p&gt; 
+&lt;div&gt;
+ &lt;img alt=&quot;&quot; src=&quot;https://www.zizka.ch/pages/diplomka/navod/QB-Linky_projizdejici_zastavkou_Zizkova.png&quot;&gt;
+&lt;/div&gt; 
+&lt;p&gt;Tabulky neuronových sítí prozkoumáte takto:&lt;/p&gt; 
+&lt;pre class=&quot;brush: lang-sql brush: sql&quot;&gt;SELECT * FROM neural_network.nn_networks;
+SELECT * FROM neural_network.nn_net_neurons;
+SELECT * FROM neural_network.nn_net_synapses;&lt;/pre&gt; 
+&lt;p&gt;Po importu obsahují tabulky několik testovacích neuronových&amp;nbsp;sítí.&lt;/p&gt; 
+&lt;p&gt;Ladící zprávy pro algoritmy jízdních řádů, resp. neuronových sítí, najdete v&amp;nbsp;tabulkách &lt;code&gt;neural_network.lib_logg&lt;/code&gt;, resp. &lt;code&gt;jizdnirady_cb.lib_logg&lt;/code&gt;:&lt;/p&gt; 
+&lt;pre class=&quot;brush: lang-sql brush: sql&quot;&gt;SELECT * FROM neural_network.lib_logg;
+SELECT * FROM jizdnirady_cb.lib_logg;&lt;/pre&gt; 
+&lt;h3 id=&quot;toc-volani-api&quot;&gt;Volání API&lt;/h3&gt; 
+&lt;p&gt;Jak se konkrétní procedury používají je popsáno jednak v&amp;nbsp;technické zprávě diplomové práce, jednak v&amp;nbsp;komentářích v&amp;nbsp;kódu jednotlivých procedur, a také na webu autora&amp;nbsp;– &lt;a href=&quot;http://ondra.zizka.cz/stranky/programming/transport_schedule_search/index.html&quot;&gt;jízdní řády&lt;/a&gt;, &lt;a href=&quot;http://ondra.zizka.cz/stranky/programming/neural_networks_in_sql_stored_procedures/index.html&quot;&gt;neuronové sítě&lt;/a&gt;.&lt;/p&gt; 
+&lt;p&gt;Proto zde jen několik příkladů, jak SQL příkazy používat.&lt;/p&gt; 
+&lt;p&gt;Standardně Query Browser po každém dotazu uzavře spojení s&amp;nbsp;DB. Proto nejprve spusťte transakci&amp;nbsp;– dočasné tabulky tak zůstanou k&amp;nbsp;dispozici po volání procedury. Transakci spustíte buď příkazem &lt;code&gt;START TRANSACTION;&lt;/code&gt; (a stisknutím &lt;code&gt;Ctrl+Enter&lt;/code&gt;) nebo tlačítkem &lt;em&gt;Transaction&lt;/em&gt; v&amp;nbsp;horním pruhu programu. Vedle něj se po spustění transakce objeví tlačítka pro potvrzení nebo zrušení transakce. Stejného efektu lze docílit provedením příkazů &lt;code&gt;COMMIT;&lt;/code&gt; nebo &lt;code&gt;ROLLBACK;&lt;/code&gt;.&lt;/p&gt; 
+&lt;h4 id=&quot;toc-kod-pro-vyhledavani-v-jizdnich-radech&quot;&gt;Kód pro vyhledávání v&amp;nbsp;jízdních řádech&lt;/h4&gt; 
+&lt;pre class=&quot;brush: lang-sql brush: sql&quot;&gt;-- Vyhledání spoje ze zastávky 115 do zastávky 465, maximálně 2 přestupy.
+CALL mhd_VyhledejSpoje(115, 465, NOW(), 3);
+SELECT * FROM mhd_VyhledejSpoje ORDER BY pos;&lt;/pre&gt; 
+&lt;p&gt;Zde je ukázka vyhledání spojů mezi zastávkami &lt;em&gt;Žižkova&amp;nbsp;– Budvar&amp;nbsp;– U&amp;nbsp;pily&amp;nbsp;– Nemocnice&amp;nbsp;– U&amp;nbsp;chromých&lt;/em&gt;:&lt;/p&gt; 
+&lt;div&gt;
+ &lt;img alt=&quot;&quot; src=&quot;https://www.zizka.ch/pages/diplomka/navod/QB-Spoje-Zizkova-U_Chromych.png&quot;&gt;
+&lt;/div&gt; 
+&lt;h4 id=&quot;toc-kod-pro-neuronove-site&quot;&gt;Kód pro neuronové sítě&lt;/h4&gt; 
+&lt;p&gt;Se sítěmi lze provádět v&amp;nbsp;podstatě tři operace: Vytvářet je, provést jejich výpočet, a učit&amp;nbsp;je.&lt;/p&gt; 
+&lt;p&gt;Na následujícím obrázku jsou zachycené první dva kroky.&lt;/p&gt; 
+&lt;div&gt;
+ &lt;img alt=&quot;&quot; src=&quot;https://www.zizka.ch/pages/diplomka/navod/QB-Vypocet_site_XOR_s_logem.png&quot;&gt;
+&lt;/div&gt; 
+&lt;p&gt;Nejprve vytváříme neuronovou síť s&amp;nbsp;architekturou &lt;code&gt;2,2,1&lt;/code&gt; (vhodná pro řešení&amp;nbsp;XOR):&lt;/p&gt; 
+&lt;pre class=&quot;brush: lang-sql brush: sql&quot;&gt;-- Vytvoření neuronové sítě
+CALL nn_CreatePerceptron(&apos;2,2,1&apos;,&apos;XOR&apos;, 0.10, 0.5, @out_NetID);&lt;/pre&gt; 
+&lt;p&gt;Pro vzniklou síť provádíme její výpočet a uchováváme hodnoty vnitřních neuronů:&lt;/p&gt; 
+&lt;pre class=&quot;brush: lang-sql brush: sql&quot;&gt;-- Výpočet neuronové sítě
+CALL nn_ComputeNet(1, &apos;-1, 1&apos;, TRUE);
+
+-- Zjistění výsledků výpočtu
+SELECT * FROM nn_ComputeNet;
+
+-- Výstupní hodnoty všech neuronů
+SELECT * FROM nn_ComputeNet_InternalValues;&lt;/pre&gt; 
+&lt;p&gt;Výsledkem jsou tyto struktury:&lt;/p&gt; 
+&lt;table&gt; 
+ &lt;thead&gt; 
+  &lt;tr&gt; 
+   &lt;th&gt;id_neuron&lt;/th&gt; 
+   &lt;th&gt;val&lt;/th&gt; 
+  &lt;/tr&gt; 
+ &lt;/thead&gt; 
+ &lt;tbody&gt; 
+  &lt;tr&gt; 
+   &lt;td&gt;5&lt;/td&gt; 
+   &lt;td&gt;0.984122623404696&lt;/td&gt; 
+  &lt;/tr&gt; 
+ &lt;/tbody&gt; 
+&lt;/table&gt; 
+&lt;table&gt; 
+ &lt;thead&gt; 
+  &lt;tr&gt; 
+   &lt;th&gt;id_neuron&lt;/th&gt; 
+   &lt;th&gt;val&lt;/th&gt; 
+  &lt;/tr&gt; 
+ &lt;/thead&gt; 
+ &lt;tbody&gt; 
+  &lt;tr&gt; 
+   &lt;td&gt;1&lt;/td&gt; 
+   &lt;td&gt;–1&lt;/td&gt; 
+  &lt;/tr&gt; 
+  &lt;tr&gt; 
+   &lt;td&gt;2&lt;/td&gt; 
+   &lt;td&gt;1&lt;/td&gt; 
+  &lt;/tr&gt; 
+  &lt;tr&gt; 
+   &lt;td&gt;3&lt;/td&gt; 
+   &lt;td&gt;0.0166427942550775&lt;/td&gt; 
+  &lt;/tr&gt; 
+  &lt;tr&gt; 
+   &lt;td&gt;4&lt;/td&gt; 
+   &lt;td&gt;0.972952595778587&lt;/td&gt; 
+  &lt;/tr&gt; 
+  &lt;tr&gt; 
+   &lt;td&gt;5&lt;/td&gt; 
+   &lt;td&gt;0.984122623404696&lt;/td&gt; 
+  &lt;/tr&gt; 
+ &lt;/tbody&gt; 
+&lt;/table&gt; 
+&lt;p&gt;Na základě vzniklých hodnot můžeme provést jeden krok&amp;nbsp;učení:&lt;/p&gt; 
+&lt;pre class=&quot;brush: lang-sql brush: sql&quot;&gt;-- Učení neuronové sítě
+ALTER TABLE nn_ComputeNet RENAME TO nn_CorrectWeights;
+ALTER TABLE nn_ComputeNet_InternalValues RENAME TO nn_CorrectWeights_InternalValues;
+CALL nn_CorrectWeights(iNetID, &apos;1&apos;, @dLearn, @out_dErrorSum);&lt;/pre&gt; 
+&lt;p&gt;Po provedení procedury (a případně potvrzení transakce) jsou váhy sítě upravené algoritmem backpropagation podle předchozího stavu sítě, dočasně uložených výstupních hodnot všech neuronů sítě a požadovaných hodnot výstupní vrstvy.&lt;/p&gt; 
+&lt;p&gt;Pro pohodlné vyzkoušení učení neuronové sítě je k&amp;nbsp;dispozici procedra &lt;code&gt;nn_TeachXOR_Dynamic( //ID//, //cílová úroveň chyby//, //maximum kroků//)&lt;/code&gt;. Kód v&amp;nbsp;následující ukázce učí síť vytvořenou výše uvedeným postupem na cílovou úroveň chyby 0,0001&amp;nbsp;v&amp;nbsp;maximálním počtu 10&amp;nbsp;000&amp;nbsp;kroků:&lt;/p&gt; 
+&lt;pre class=&quot;brush: lang-sql brush: sql&quot;&gt;-- Učení neuronové sítě pro XOR
+CALL nn_TeachXOR_Dynamic(3, 0.0001, 10000);&lt;/pre&gt; 
+&lt;h4 id=&quot;toc-kod-uceni-neuronovych-siti-pro-heuristiku-vyhledavani-spoju&quot;&gt;Kód učení neuronových sítí pro heuristiku vyhledávání&amp;nbsp;spojů&lt;/h4&gt; 
+&lt;p&gt;V&amp;nbsp;diplomové práci používáme neuronové sítě k&amp;nbsp;určení vhodné trasy pro dosažení cílové zastávky v&amp;nbsp;nejlepším čase.&lt;br&gt; Zde je kód pro vytvoření a učení neuronové sítě pro zastávku&amp;nbsp;5:&lt;/p&gt; 
+&lt;pre class=&quot;brush: lang-sql brush: sql&quot;&gt;-- Vytvoření sítě pro zastávku 5 se třiceti neurony v jedné skryté vrstvě:
+CALL mhd_nn_CreateNetForStation(5, &apos;30&apos;);
+
+-- Učení právě vzniklé sítě pro zastávku 5 do cílové
+-- úrovně chyby 0.0001, maximálně po 40 000 kol učení:
+CALL mhd_nn_TeachStationNet(5, LAST_INSERT_ID(), 0.0001, 40000);&lt;/pre&gt; 
+&lt;p&gt;Všechny procesy se v&amp;nbsp;naší implementaci zaznamenávají do logu. To je užitečné zejména pokud něco nepracuje podle očekávání. Většinou je chyba na straně uživatele a v&amp;nbsp;logu je zapsán její příčina (ve sloupci &lt;code&gt;level&lt;/code&gt; je hodnota &lt;code&gt;error&lt;/code&gt; nebo &lt;code&gt;warning&lt;/code&gt;).&lt;/p&gt; 
+&lt;p&gt;Zde je ukázka záznamů z&amp;nbsp;učení neuronové sítě zastávky s&amp;nbsp;ID&amp;nbsp;530:&lt;/p&gt; 
+&lt;div&gt;
+ &lt;img alt=&quot;&quot; src=&quot;https://www.zizka.ch/pages/diplomka/navod/QB-Log_uceni_neuronove_site_zastavky.png&quot;&gt;
+&lt;/div&gt; 
+&lt;p&gt;Další vysvětlení najdete ve výše jmenovaných zdrojích&amp;nbsp;– v&amp;nbsp;diplomové prácí, ve zdrojových kódech jednotlivých procedur a na webu autora.&lt;/p&gt; 
+&lt;p&gt;Případné dotazy směřujte na mail &lt;a href=&quot;mailto:ondra@dynawest.cz&quot;&gt;ondra@
+  &lt;!-- --&gt;dynawest.cz&lt;/a&gt; nebo JabberID &lt;code&gt;ondra.zizka@jabber.cz&lt;/code&gt;.&lt;/p&gt; 
+            </description>
+        </item>
+        <item>
+            <title>Výhody a nevýhody PHP</title>
+            <link>https://www.zizka.ch/pages/programming/php/vyhody_a_nevyhody_php.html</link>
+            <pubDate>Tue, 31 Jul 2018 07:43:08 +0200</pubDate>
+            <guid isPermaLink="false">pages/programming/php/vyhody_a_nevyhody_php.html</guid>
+            <description>
+                 &lt;h2 class=&quot; jbakeExtractedTitle&quot; id=&quot;toc-vyhody-a-nevyhody-php&quot;&gt;Výhody a nevýhody PHP&lt;/h2&gt; 
+&lt;p&gt;&lt;em&gt;Update: V&amp;nbsp;návaznosti na tento článek vznikl další&amp;nbsp;– &lt;a href=&quot;/stranky/programming/java/je_java_jako_linux_nebo_jako_windows.html&quot;&gt;Je Java jako Linux nebo jako Windows?&lt;/a&gt;&lt;/em&gt;&lt;/p&gt; 
+&lt;p&gt;&lt;em&gt;Update: Abych nezůstal u&amp;nbsp;teorie a subjektivních hodnocení &lt;acronym title=&quot;Personal Home Page Tools&quot;&gt;PHP&lt;/acronym&gt;, přidám ukázku jednoho webu napsaného v&amp;nbsp;PHP&amp;nbsp;– a to hned &lt;a href=&quot;vysledek_nasazeni_php_aneb_navrch_huj_uvnitr_fuj.html&quot;&gt;web zabývající se programováním&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt; 
+&lt;p&gt;&lt;em&gt;Update: V&amp;nbsp;posledním (aspoň doufám) článku na toto téma &lt;a href=&quot;nevyhody_php_v_praktickych_prikladech.html&quot;&gt;vysvětluji jednotlivé body ze seznamu nevýhod&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt; 
+&lt;!-- &quot;Srovnání Java a PHP&quot;:srovnani_php_a_javy.html. --&gt; 
+&lt;hr&gt; 
+&lt;div&gt;
+ &lt;img alt=&quot;&quot; src=&quot;https://www.zizka.ch/pages/programming/php/ElePHPant_with_Tiger.jpg&quot; style=&quot;float:right&quot;&gt;
+&lt;/div&gt; 
+&lt;p&gt;Na webu je mnoho flejmů, zda je PHP lepší / horší než Java a .NET atd. Ostatně, nejjednodušší způsob, jak rozpoutat flejm, je zajít na hodně čtený blog nějakého PHPčkáře a zeptat se místních, že jste nováček a jestli je PHP lepší než Java. Mimojiné se na tom otestuje složení čtenářů&amp;nbsp;– tj. nakolik jsou zastoupeni čistokrevní PHPčkáři s&amp;nbsp;klapkami na očích, kteří nemají šajna o&amp;nbsp;MVC, O/R a kolikrát ani pořádném OOP návrhu.&lt;/p&gt; 
+&lt;p&gt;Nicméně nenašel jsem (pravda, zas tolik jsem nehledal) nějakou pořádnou moderovanou diskusi, případně článek, o&amp;nbsp;výhodách a nevýhodách&amp;nbsp;PHP.&lt;/p&gt; 
+&lt;p&gt;//Update:// Našel jsem celkem dobrý článek na &lt;a href=&quot;http://spyced.blogspot.com/2005/06/why-php-sucks.html&quot;&gt;http://spyced.blogspot.com/…p-sucks.html&lt;/a&gt;. Sice je poněkud starší, ale jádro pudla zůstává. Je o&amp;nbsp;dost ostřejší a než tento můj článek, takže PHPčkáři&amp;nbsp;– bacha! :-) A&amp;nbsp;všimněte si, že J2EE autor označuje za neelegantní stejně jako&amp;nbsp;PHP.&lt;/p&gt; 
+&lt;p&gt;Trochu se porozhlížím, kamže půjdu pracovat na fulltime. Do toho mě oslovil bývalý spolužák, že prý si mě všimnul na přednáškách Seznam.cz a že jejich firma naléhavě hledá programátory PHP a jestli bych k&amp;nbsp;nim nešel. Já na to, jestli dělají v&amp;nbsp;Javě, a že prý ano, ale hledají PHP programátory. Slíbil jsem, že se tedy ozvu jeho šéfovi a pokecáme. Pak jsem na to ale pozapomněl a šéf se ozval sám (asi hledají opravdu naléhavě&amp;nbsp;:-)&lt;/p&gt; 
+&lt;p&gt;Popravdě jsem mu vyložil, že PHP umím dobře, prakticky do detailů, no což to budu opisovat&amp;nbsp;– zde je má odpověď:&lt;/p&gt; 
+&lt;blockquote&gt; 
+ &lt;p&gt;Dobrý den,&lt;/p&gt; 
+ &lt;p&gt;Vaše nabídka mě zaujala. Shrnu svoji situaci:&lt;/p&gt; 
+ &lt;p&gt;V&amp;nbsp;PHP vyvíjím (komerčně) už několik let. Možná právě proto mě to ale velice silně táhne k&amp;nbsp;Javě a J2EE […]. Dále mám zkušenosti s [… … …]&amp;nbsp;.&lt;/p&gt; 
+ &lt;p&gt;Kolega XY mi už také psal, zvažoval jsem, že se ozvu, ale říkal, že váš J2EE tým je asi spíše&amp;nbsp;plný.&lt;/p&gt; 
+ &lt;p&gt;Mohl bych tedy pracovat jak jako vývojář PHP, tak J2EE, nicméne druhé o&amp;nbsp;mnoho raději […]. Nabídku pracovního místa už mám, proto by mě zajímaly další podmínky&amp;nbsp;– můžeme je případně probrat po telefonu.&lt;/p&gt; 
+ &lt;p&gt;V&amp;nbsp;příloze posílám své CV, pokud by bylo třeba.&lt;/p&gt; 
+ &lt;p&gt;S&amp;nbsp;pozdravem Ing. Ondřej Žižka&lt;/p&gt; 
+&lt;/blockquote&gt; 
+&lt;p&gt;Asi půl hodinu na to se mi šéfík ozval po telefonu a domluvili jsme si schůzku. Na té jsem se dozvěděl, že získali kontrakt od firmy ABC, jíž dělají pokladní systém v&amp;nbsp;J2EE a registrační web v&amp;nbsp;PHP. A&amp;nbsp;že na PHPkové weby mají svůj PHP framework (a v&amp;nbsp;tu chvíli jsem si říkal&amp;nbsp;– ajejej, další „svůj PHP framework…“) a že jej chtějí rozvinout. Ptal jsem se, co umí, jak funguje a oč jej chtějí rozvinout. A&amp;nbsp;dozvěděl jsem se,&amp;nbsp;že:&lt;/p&gt; 
+&lt;ul&gt; 
+ &lt;li&gt;začali jej vyvíjet jako redakční systém&lt;/li&gt; 
+ &lt;li&gt;přesto to ale nyní není něco jako Joomla, naopak, něco diametrálně odlišného (jestli jo, tak jedině&amp;nbsp;dobře)&lt;/li&gt; 
+ &lt;li&gt;umí trochu MVC ve stylu Struts&lt;/li&gt; 
+ &lt;li&gt;zkoušeli dělat O/R mapování, ale je to moc složité&lt;/li&gt; 
+ &lt;li&gt;chtějí framework refaktorovat (oddělit moduly, zmenšit velikost a snížit počet styčných ploch, redesign)&lt;/li&gt; 
+ &lt;li&gt;chtějí zapracovat na Ajaxové části&lt;/li&gt; 
+ &lt;li&gt;chtějí zabudovat podporu webových služeb&lt;/li&gt; 
+ &lt;li&gt;chtějí zabudovat mechanismus šablon&lt;/li&gt; 
+ &lt;li&gt;atd atd.&lt;/li&gt; 
+&lt;/ul&gt; 
+&lt;p&gt;Potom se stočila řeč na to, jestli bych mohl dělat Java juniora, a později, proč bych nemohl, respektive proč chtějí vyvíjet v&amp;nbsp;PHP a poč vyvíjet framework pro PHP,&amp;nbsp;který:&lt;/p&gt; 
+&lt;ul&gt; 
+ &lt;li&gt;který bude pokrývat 2% funkčnosti existujících (Java a J2EE) frameworků&lt;/li&gt; 
+ &lt;li&gt;který budou vyvíjet jejich vlastní programátoři za v&amp;nbsp;součtu slušnou&amp;nbsp;částku&lt;/li&gt; 
+ &lt;li&gt;který nehodlají uvolnit jako opensource ani prodávat (vyplynulo)&lt;/li&gt; 
+ &lt;li&gt;který bude po dlouhou dobu neodladěný a bude mít „dětské nemoci“&lt;/li&gt; 
+&lt;/ul&gt; 
+&lt;p&gt;a nakonec&amp;nbsp;– a to především&amp;nbsp;–&lt;/p&gt; 
+&lt;ul&gt; 
+ &lt;li&gt;proč vůbec vyvíjet v&amp;nbsp;PHP.&lt;/li&gt; 
+&lt;/ul&gt; 
+&lt;p&gt;No diskuse to byla těžká, protože šéfík (nic proti němu, zdál se jako moc fajn chlap) je programátor&amp;nbsp;– teoretik z&amp;nbsp;Masarykovy univerzity, který zná PHP i&amp;nbsp;J2EE „z&amp;nbsp;manažerského pohledu“, a třetí účastník&amp;nbsp;– jejich PHP senior&amp;nbsp;– neví o&amp;nbsp;Javě a J2EE nic (také nic proti němu, fajn kluk&amp;nbsp;:-)&lt;/p&gt; 
+&lt;p&gt;Zkrátka jejich postoj je takový, že PHP je skvělá technologie na jednodušší věci, jako je frontend pro Javovský backend, resp. nad databází. Inu dobrá, já jim to neberu, ale během celého rozhovoru mi hlavou běhaly vzpomínky na nejrůznější veselé příhody (dalo by se přeložit jako „gay incidents“ :) s&amp;nbsp;PHP:&lt;/p&gt; 
+&lt;h3 id=&quot;toc-proc-neprogramovat-v-php&quot;&gt;Proč neprogramovat v&amp;nbsp;PHP&lt;/h3&gt; 
+&lt;ul&gt; 
+ &lt;li&gt;Záhadné chyby mezi minor verzemi&lt;/li&gt; 
+ &lt;li&gt;Nutnost překopat celý systém při přechodu na novou major&amp;nbsp;verzi&lt;/li&gt; 
+ &lt;li&gt;„Krása“ procesu deployování uploadem na FTP či obdobným&lt;/li&gt; 
+ &lt;li&gt;Dlouhé hodiny hledání obezliček a work-aroundů, jak obejít tu kterou vlastnost&amp;nbsp;PHP&lt;/li&gt; 
+ &lt;li&gt;Vytváření OOP wrapperů pro procedurální PHP funkce typu&amp;nbsp;&lt;code&gt;mysql_*&lt;/code&gt;&lt;/li&gt; 
+ &lt;li&gt;Přepisování stohů zdrojáků při refaktoringu, protože PHP je &lt;a href=&quot;http://www.php.net/&quot;&gt;bordelářský jazyk&lt;/a&gt; a programátora vyloženě svádí programovat jak&amp;nbsp;prase&lt;/li&gt; 
+ &lt;li&gt;Stovky případů hledání chyby, kdy se ukázalo, že za vším stojí přepis v&amp;nbsp;názvu proměnné&lt;/li&gt; 
+ &lt;li&gt;Ošetřování rozdílnosti implementace ve Windows a na&amp;nbsp;Linuxu&lt;/li&gt; 
+ &lt;li&gt;Desítky zbytečných řádek kódu pro převod z/do UNICODE při práci s&amp;nbsp;UNICODE stringy&lt;/li&gt; 
+ &lt;li&gt;AAAAAAAAAAAAA­AAAAAAAAA!!!!!!! Už nééééééé!&lt;/li&gt; 
+&lt;/ul&gt; 
+&lt;p&gt;Prostě při pomyšlení, že bych měl jít vyvíjet framework v&amp;nbsp;PHP, se mě jímaly úzkostné pocity. Jasně, potenciální PHP-fanatik mi bude oponovat, že kdybych psal rovnou dobrý kód, tak jsem v&amp;nbsp;pohodě. Ale &lt;em&gt;není to pravda&lt;/em&gt;, a to hned několikrát:&lt;/p&gt; 
+&lt;ul&gt; 
+ &lt;li&gt;PHP dobrý OOP kód nedovoluje, protože všechny core funkce jsou procedurální a mixovat je s&amp;nbsp;OOP je&amp;nbsp;hnus.&lt;/li&gt; 
+ &lt;li&gt;PHP hezký kód nedovoluje, protože core funkce nevyhazují výjimky, a &lt;code&gt;if&lt;/code&gt;y jen kvůli ošetření chyby je pravěká metoda táhnoucí se snad ještě z&amp;nbsp;dob Alana Turinga.&lt;/li&gt; 
+ &lt;li&gt;&lt;a href=&quot;http://latrine.dgx.cz/jsem-zdesen-z-php5&quot;&gt;Nekvalitní zpracování OOP v&amp;nbsp;PHP&lt;/a&gt; zásadně podkopává možnost používat zcela základní OOP principy.&lt;/li&gt; 
+ &lt;li&gt;PHP vás přímo tlačí do kouta s&amp;nbsp;imperativem „Delej hnusný kód!“, když zcela ignoruje možnost naprogramovat kolekce objektově a v&amp;nbsp;návaznosti na teoretický rozbor věci, a místo toho naprosto vše cpe do Array: pole, hash, frontu, zásobník, množinu… což ještě někteří vydávají za výhodu.&lt;/li&gt; 
+ &lt;li&gt;I&amp;nbsp;kdybych psal krásný kód, nikde není žádná záruka, že v&amp;nbsp;příští verzi budu muset vše opět přepisovat&amp;nbsp;– neexistuje norma PHP ani oficiální plán vývoje! PHP prostě jen bude vykrádat Javu, takže v&amp;nbsp;PHP 7&amp;nbsp;nabeton budou anotace.&lt;/li&gt; 
+&lt;/ul&gt; 
+&lt;h3 id=&quot;toc-srovnani-s-javou&quot;&gt;Srovnání s&amp;nbsp;Javou&lt;/h3&gt; 
+&lt;p&gt;Naproti tomu, když programuji v&amp;nbsp;Javě, dobrý kód vzniká skoro sám (už se neubráním srovnání):&lt;/p&gt; 
+&lt;ul&gt; 
+ &lt;li&gt;Vyplatí se pro sebemenší blbinu vytvořit třídu.&lt;/li&gt; 
+ &lt;li&gt;Pokud dělám třídu pro potřebu jiné, dám ji do souboru k&amp;nbsp;ní a zůstane tedy skrytá a nezabordelim si adresář (balíček).&lt;/li&gt; 
+ &lt;li&gt;Pokud ji ale potřebuju jinde, přesunu ji do zvláštního souboru a už je k&amp;nbsp;dispozici.&lt;/li&gt; 
+ &lt;li&gt;Samotné JRE je vzorem dobrého návrhu, a čistě jeho používáním se podvědomě naučíte návrhu: 
+  &lt;ul&gt; 
+   &lt;li&gt;Abstrahovat problémy (úlohy) a tvořit jim rozhraní&amp;nbsp;– viz &lt;code&gt;interface List&lt;/code&gt; a implementaci&amp;nbsp;&lt;code&gt;ArrayList&lt;/code&gt;&lt;/li&gt; 
+   &lt;li&gt;Rozdělovat svoji aplikaci do namespace (balíčků)&amp;nbsp;– viz např. &lt;code&gt;java.util&lt;/code&gt; a&amp;nbsp;&lt;code&gt;java.lang&lt;/code&gt;&lt;/li&gt; 
+   &lt;li&gt;Využívat výjimky tam, kde je to vhodné, a zjednodušovat jimi API jednotlivých&amp;nbsp;modulů&lt;/li&gt; 
+  &lt;/ul&gt; &lt;/li&gt; 
+ &lt;li&gt;Co naprogramujete s&amp;nbsp;jedním JDK, je skoro na 100% jisté, že přeložíte i&amp;nbsp;v&amp;nbsp;další&amp;nbsp;verzi 
+  &lt;ul&gt; 
+   &lt;li&gt;JRE má totiž narozdíl od PHP promyšlený návrh a nemusí se zásadní věci měnit každou major&amp;nbsp;verzi&lt;/li&gt; 
+   &lt;li&gt;Pokud už se stane, že cosi nevyhovuje, je to označeno za „deprecated“, ale ponecháno a nová verze je v&amp;nbsp;jiném namespace;&lt;/li&gt; 
+   &lt;li&gt;Přesto však nová verze využívá maximum ze staré verze, a vy tak při dalším vývoji můžete snáze navázat a začít používat nové možnosti (viz &lt;em&gt;AWT&lt;/em&gt; a &lt;em&gt;Swing&lt;/em&gt;) místo totálního přepsání (viz &lt;code&gt;mysql_*&lt;/code&gt; a &lt;code&gt;PDO&lt;/code&gt;)&lt;/li&gt; 
+   &lt;li&gt;Když už by se náhodou stalo, že byste něco nepřeložili (jako se mi stalo v&amp;nbsp;případě &lt;em&gt;MySQL Connector/J&lt;/em&gt;), můžete aspoň používat binárky a vesele psát pro novou&amp;nbsp;verzi.&lt;/li&gt; 
+  &lt;/ul&gt; &lt;/li&gt; 
+ &lt;li&gt;Nové verze různých projektů (knihoven a frameworků) využívají anotace, takže kód je ještě čistší a zářivější&lt;/li&gt; 
+ &lt;li&gt;S&amp;nbsp;využitím „injection“ (např. ze Springu) vám navíc ještě odpadají desítky jednotlivých řádků kódu, které jsou jaksi samozřejmé, ale přesto musí být (získání spojení, otevření transakce, ověření přístupových&amp;nbsp;práv…)&lt;/li&gt; 
+&lt;/ul&gt; 
+&lt;p&gt;Prostě při prvním komerčním projektu v&amp;nbsp;Javě moje srdénko jen zaplesalo nad tím, jak neuvěřitelně hladce to jde od&amp;nbsp;ruky.&lt;/p&gt; 
+&lt;h3 id=&quot;toc-slozitost-programovani-v-j2ee&quot;&gt;Složitost programování v&amp;nbsp;J2EE&lt;/h3&gt; 
+&lt;p&gt;A&amp;nbsp;ještě ke složitosti J2EE.&lt;br&gt; Když srovnám PHP a JSP, tak to jsou zhruba srovnatelné technologie:&lt;/p&gt; 
+&lt;ul&gt; 
+ &lt;li&gt;nějaká core knihovna funkcí,&lt;/li&gt; 
+ &lt;li&gt;a nějaký jazyk vkládaný do HTML.&lt;/li&gt; 
+&lt;/ul&gt; 
+&lt;p&gt;Jenže tam, kde PHP končí, tam J2EE teprve začíná. Pokud skutečně rezignujete na leta vývoje a nechcete se učit tagy ze Struts nebo anotace z&amp;nbsp;JPA / Hibernate, prosím&amp;nbsp;– můžete vše poctivě datlovat jako v&amp;nbsp;PHP, psát si SQL dotazy (jednoduchost přístupu k&amp;nbsp;výsledkům dotazu v&amp;nbsp;PHP přes pole zajistí iBatis) a třeba si i&amp;nbsp;prasit kód rovnou do HTML souborů.&lt;/p&gt; 
+&lt;p&gt;Jenže v&amp;nbsp;J2EE máte &lt;strong&gt;možnost&lt;/strong&gt; jít dál. Co máte v&amp;nbsp;PHP? Ano, je zde pár povedených věcí… Smarty, Zend Framework, CakePHP. Ale ty stejně jedou nad shnilým jádrem.&lt;/p&gt; 
+&lt;p&gt;Pokud někdo říká, že PHP se naučíte rychleji než J2EE, tak já říkám ano, protože v&amp;nbsp;PHP skoro není co se&amp;nbsp;učit.&lt;/p&gt; 
+&lt;p&gt;Když jsem s&amp;nbsp;J2EE začínal, také jsem se zalekl té neuvěřitelné haldy nových pojmů, specifikací, zkratek, XML konfiguračních souborů a postupů; dále nutnosti použít IDE nebo aspoň buildovací nástroj (Ant), naučit se spravovat něco jiného než Apache&amp;nbsp;HTTPD…&lt;/p&gt; 
+&lt;p&gt;Ono totiž PHP je jen taková lehká nadstavba nad CGI&amp;nbsp;– nad něj dává jen relativně jednoduchou syntaxi a spoustu knihoven použitelných z&amp;nbsp;této syntaxe. Jenže když jde do tuhého a úroveň vašich projektů se vznese nad příklady z&amp;nbsp;manuálu PHP, stejně musite začít řešit (hodně na přeskáčku):&lt;/p&gt; 
+&lt;ul&gt; 
+ &lt;li&gt;Fyzickou strukturu webové aplikace&amp;nbsp;– aneb adresáře, kam co&amp;nbsp;dát&lt;/li&gt; 
+ &lt;li&gt;Zjednodušení správy obsahu v&amp;nbsp;databázi&lt;/li&gt; 
+ &lt;li&gt;Verzování záznamů v&amp;nbsp;databázi&lt;/li&gt; 
+ &lt;li&gt;Konfiguraci chování a struktury webu nad úrovní kódu&lt;/li&gt; 
+ &lt;li&gt;Abstrakci nad různými databázemi&lt;/li&gt; 
+ &lt;li&gt;Interakci s&amp;nbsp;backendem, případně sjednocení API s&amp;nbsp;GUI částí enterprise aplikace&lt;/li&gt; 
+ &lt;li&gt;Možnosti pokročilé konfigurace aplikace&lt;/li&gt; 
+ &lt;li&gt;Centrální repozitář objektů poskytujících nějaké služby&lt;/li&gt; 
+ &lt;li&gt;Clusterování&lt;/li&gt; 
+&lt;/ul&gt; 
+&lt;p&gt;atd.&lt;/p&gt; 
+&lt;p&gt;A&amp;nbsp;zatímco J2EE vás těmito „nesmysly“ zavalí hned zpočátku, protože postupy jsou standardizované a často se věci rovnou řeší „složitě“ s&amp;nbsp;výhledem na budoucí rozvoj, PHP vás nechá, ať si děláte co chcete&amp;nbsp;– zlepšující se programátoři časem začnou vytvářet „vlastní framework“, vlastní normu pro strukturu aplikace, vlastní knihovnu pro automatické ukládání objektů do DB, a tak dále, zatímco &lt;a href=&quot;http://blog.maxell-cz.cz/item/zaklady-pouziti-smarty-sablon&quot;&gt;naprostí začátečníci&amp;nbsp;– neprogramátoři mohou třeba takto&lt;/a&gt; (viz část „Přiřazení prvků v&amp;nbsp;šabloně“):&lt;/p&gt; 
+&lt;blockquote&gt; 
+ &lt;p&gt;Často potřebujeme vybrat data z&amp;nbsp;databáze a následně je předat šabloně. Na začátku je tedy SQL&amp;nbsp;dotaz:&lt;/p&gt; 
+ &lt;pre class=&quot;lang-php brush: php&quot;&gt;$result = mysql_query(&quot;SELECT nazev, titulek, text, cena FROM tabulka WHERE id=&apos;$id&apos;&quot;);&lt;/pre&gt; 
+ &lt;p&gt;Jak nyní předat data šabloně?&lt;/p&gt; 
+ &lt;p&gt;Nejjednodušší řešení je předat rovnou pole:&lt;/p&gt; 
+ &lt;pre class=&quot;lang-php brush: php&quot;&gt;$smarty-&amp;gt;assign(&apos;data&apos;,mysql_fetch_assoc($result));&lt;/pre&gt; 
+&lt;/blockquote&gt; 
+&lt;hr&gt; 
+&lt;p&gt;Nyní se pokusím oprostit od Javy a zaměřit se čistě na PHP. Kdyby se někde v&amp;nbsp;dalším textu vyskytlo slovo „Java“, klidně mi dejte virtuální facku&amp;nbsp;:)&lt;/p&gt; 
+&lt;p&gt;Zkusím tedy shrnout, jaké má PHP výhody a jaké nevýhody. Zkusím při tom zaujmout pokud možno nezaujatý postoj, i&amp;nbsp;když případného čtenáře o&amp;nbsp;tom po přečtení předchozí kritiky asi nepřesvědčím.&lt;/p&gt; 
+&lt;p&gt;Komentáře nevedu, ale jestli se vám něco v&amp;nbsp;následujícím výčtu nezdá, napište mi &lt;a href=&quot;mailto:ondra@dynawest.cz&quot;&gt;mail&lt;/a&gt; a já zde provedu veřejné pokání a omluvu sloníkovi elePHPantovi&amp;nbsp;:)&lt;/p&gt; 
+&lt;p&gt;&lt;em&gt;Výhoda&lt;/em&gt; a &lt;em&gt;nevýhoda&lt;/em&gt; jsou relativní pojmy. Proto navrhuji jako „baseline“ pro srovnání použít ostatní technologie použitelné na podobné účely jako PHP, tedy: ASP.NET, ColdFusion, Java EE, Perl, Python, Ruby (on Rails). Naopak neuvažoval bych kombinace typu C + CGI (příliš složité programování), Apache SSI (příliš omezená funkčnost), Caché Server Pages (příliš nesmyslná technologie), XML + XSLT + JavaScript (principiálně příliš jinde), ASP (zastaralé) a podobně.&lt;/p&gt; 
+&lt;p&gt;Takže&amp;nbsp;– posuďte sami:&lt;/p&gt; 
+&lt;h3 id=&quot;toc-vyhody-php&quot;&gt;Výhody PHP&lt;/h3&gt; 
+&lt;div&gt;
+ &lt;img alt=&quot;&quot; src=&quot;https://www.zizka.ch/pages/programming/php/elePHPant_Front_Tiny.png&quot; style=&quot;float:right&quot;&gt;
+&lt;/div&gt; 
+&lt;p&gt;Technologie PHP má spoustu výhod, díky které se rychle stalo populárním. Mezi ně patří&amp;nbsp;např.:&lt;/p&gt; 
+&lt;ul&gt; 
+ &lt;li&gt;Velká rozsáhlost funkcí k&amp;nbsp;dispozici přímo v&amp;nbsp;základní instalaci&lt;/li&gt; 
+ &lt;li&gt;Další nativně implementované funkční celky snadno instalovatelné z&amp;nbsp;repozitáře&amp;nbsp;PEAR&lt;/li&gt; 
+ &lt;li&gt;Další knihovny instalovatelné z&amp;nbsp;repozitáře PECL&lt;/li&gt; 
+ &lt;li&gt;Nativní podpora mnoha databázových systémů&lt;/li&gt; 
+ &lt;li&gt;Zpočátku strmá křivka učení&lt;/li&gt; 
+ &lt;li&gt;--Je multiplaforní– S&amp;nbsp;tou multiplatformností to není tak žhavé. Zkuste si třeba PHP na Novellu. Spíše bych řekl: Jede víceméně stejně na Linuxu a na Windows.&lt;/li&gt; 
+ &lt;li&gt;Časem vznikla velká celosvětová komunita vývojářů a mnoho dobrých svobodných projektů, zejména publikační systémy a &lt;a href=&quot;http://www.html.info/&quot;&gt;Texy!&lt;/a&gt;&amp;nbsp;:-)&lt;/li&gt; 
+ &lt;li&gt;Velmi široká nabídka hostingu, levné ceny díky konkurenci&lt;/li&gt; 
+ &lt;li&gt;Dobrý, aktuální a úplný manuál s&amp;nbsp;příklady&lt;/li&gt; 
+ &lt;li&gt;Někdy se hodí stručný model zpracování nedefinovaných hodnot a&amp;nbsp;&lt;code&gt;null&lt;/code&gt;&lt;/li&gt; 
+ &lt;li&gt;Stručný přístup k&amp;nbsp;prvkům hash-mapy přes operátor &lt;code&gt;[]&lt;/code&gt;&lt;/li&gt; 
+&lt;/ul&gt; 
+&lt;h3 id=&quot;toc-nevyhody-php&quot;&gt;Nevýhody PHP&lt;/h3&gt; 
+&lt;div&gt;
+ &lt;img alt=&quot;&quot; src=&quot;https://www.zizka.ch/pages/programming/php/elePHPant_RightFront_Tiny.png&quot; style=&quot;float:right&quot;&gt;
+&lt;/div&gt; 
+&lt;p&gt;Na druhou stranu, PHP má také značné nevýhody, pro které jej mnozí kritizují a někdy i&amp;nbsp;opouštějí; mimo jiné&amp;nbsp;tyto:&lt;/p&gt; 
+&lt;ul&gt; 
+ &lt;li&gt;Až do verze PHP 4&amp;nbsp;nepříliš povedená podpora objektově orientovaného programování s&amp;nbsp;mnoha záludnostmi&lt;/li&gt; 
+ &lt;li&gt;Verze 5&amp;nbsp;již podporuje OOP lépe (i&amp;nbsp;když stále &lt;a href=&quot;http://latrine.dgx.cz/jsem-zdesen-z-php5&quot;&gt;velmi mizerně&lt;/a&gt;), ale nativní knihovna funkcí nadále používá procedurální paradigma&lt;/li&gt; 
+ &lt;li&gt;Nativní funkce nejen nepoužívají objektový přístup, ale ani nepodporují výjimky (&lt;code&gt;set_error_handler()&lt;/code&gt; je pouze slabá náplast)&lt;/li&gt; 
+ &lt;li&gt;Některé rysy jazyka svádějí ke špatným stylům programování (např. přílišné užívání polí a hash-map)&lt;/li&gt; 
+ &lt;li&gt;Nekonzistentní pojmenování nativních funkcí a nejednotnost v&amp;nbsp;logice pořadí parametrů&lt;/li&gt; 
+ &lt;li&gt;Nativně nepodporuje UNICODE (připravuje se pro verzi 6&amp;nbsp;– už skoro tři&amp;nbsp;roky)&lt;/li&gt; 
+ &lt;li&gt;Dosud neexistuje formální specifikace syntaxe jazyka a jeho chování (jedinou úplnou definicí je interpreter)&lt;/li&gt; 
+ &lt;li&gt;Tím pádem existuje jediný interpreter&lt;/li&gt; 
+ &lt;li&gt;Způsob, jakým PHP funguje, principiálně brání efektivnímu řešení mnoha úloh (např. objektově-relační mapování)&lt;/li&gt; 
+&lt;/ul&gt; 
+&lt;div&gt;
+ &lt;img alt=&quot;&quot; src=&quot;https://www.zizka.ch/pages/programming/php/elePHPant_LeftFront_Tiny_sad.png&quot; style=&quot;float:right&quot;&gt;
+&lt;/div&gt; 
+&lt;ul&gt; 
+ &lt;li&gt;PHP nemá danou politiku vývoje, místo toho nadále jen kopíruje prvky jiných&amp;nbsp;jazyků&lt;/li&gt; 
+ &lt;li&gt;Je značně zatížené svým vlastním historickým vývojem&lt;/li&gt; 
+ &lt;li&gt;Oficiálně není zaručena zpětná kompatibilita&lt;/li&gt; 
+ &lt;li&gt;Programátor nemá zaručené cílové prostředí, mnoho věcí přímo ovlivňujících chování PHP lze změnit pouze mimo soubory projektu (v&amp;nbsp;konfiguračním souboru php.ini)&lt;/li&gt; 
+&lt;/ul&gt; 
+&lt;!-- * Pro PHP není mnoho kvalitních vývojových prostředí (IDE) s podporou vlasností běžných pro jiné jazyky (generování a refaktorizace kódu, automatické dokončování, on-line nápověda, automatizované testování a validace, automatické nasazení na server, a další) --&gt; 
+&lt;ul&gt; 
+ &lt;li&gt;Nepodporuje paralelní výpočet a synchronizaci (vlákna)&lt;/li&gt; 
+ &lt;li&gt;Nepodporuje škálování pomocí prostředí sdíleného na více serverech&lt;/li&gt; 
+ &lt;li&gt;Ve standardní sadě nástrojů není nástroj pro tvorbu dokumentace&lt;/li&gt; 
+ &lt;li&gt;--Nedostatek– Nemnoho kvalitních frameworků (Pozor! Drupal, Joomla, WordPress a spol. nejsou frameworky, ale publikační systémy /&amp;nbsp;CMS).&lt;/li&gt; 
+ &lt;li&gt;Nelze snadno integrovat s&amp;nbsp;jinými technologiemi (znovupoužití knihoven napsaných v&amp;nbsp;PHP v&amp;nbsp;jiném jazyce)&lt;/li&gt; 
+ &lt;li&gt;Ve standardní distribuci chybí ladící (debugovací) nástroj&lt;/li&gt; 
+ &lt;li&gt;Relativně složitá syntaxe oproti jiným technologiím použitelným na stejný&amp;nbsp;účel&lt;/li&gt; 
+ &lt;li&gt;Po zpracování požadavku se „ztrácí“ kontext aplikace a při příštím je vytvářen&amp;nbsp;jiný&lt;/li&gt; 
+ &lt;li&gt;Mimo jiné z&amp;nbsp;toho plyne relativně slabý výkon&lt;/li&gt; 
+ &lt;li&gt;Velký počet zásadních chyb v&amp;nbsp;počátcích nových verzí&lt;/li&gt; 
+ &lt;li&gt;Nepodporuje jmenné prostory (Skutečně, stále ještě mohou existovat obrovské projekty, kde se knihovny rozlišují prefixem.)&lt;/li&gt; 
+ &lt;li&gt;Podivné fungování referencí&amp;nbsp;– asi nejzrádnější askept&amp;nbsp;PHP&lt;/li&gt; 
+ &lt;li&gt;Donedávna chybělo rozumné jednotné rozhraní pro práci s&amp;nbsp;databázemi, nyní&amp;nbsp;&lt;code&gt;PDO&lt;/code&gt;&lt;/li&gt; 
+&lt;/ul&gt; 
+&lt;div&gt;
+ &lt;img alt=&quot;&quot; src=&quot;https://www.zizka.ch/pages/programming/php/elePHPant_RightFront_Tiny_lezi_oci_v_sloup.png&quot; style=&quot;float:right&quot;&gt;
+&lt;/div&gt; 
+&lt;ul&gt; 
+ &lt;li&gt;Chybí anotace a aspektově orientované programování&lt;/li&gt; 
+ &lt;li&gt;Chybí možnost vynutit deklaraci proměnných, takže se dá omylem zapsat něco do jiné (nové) proměnné. Taková chyba se hledá VELMI&amp;nbsp;těžko.&lt;/li&gt; 
+ &lt;li&gt;Nedostatečná sebereflexe&amp;nbsp;– datové typy „Třída“/„Funce“, místo toho se na ně odkazujete přes stringy&lt;/li&gt; 
+ &lt;li&gt;Nemožnost odkazovat se na metody objektů jinak než neohrabanou konstrukcí s&amp;nbsp;&lt;code&gt;Array()&lt;/code&gt;&lt;/li&gt; 
+ &lt;li&gt;Kvůli slabé typovosti neobratné přetěžování funkcí a metod a jejich překrytí při&amp;nbsp;dědění&lt;/li&gt; 
+ &lt;li&gt;Projekty se musí šířit výhradně formou zdrojových kódů&lt;/li&gt; 
+ &lt;li&gt;Neexistuje přímá podpora pro webové služby a pro vzdálené volání procedur&amp;nbsp;obecně&lt;/li&gt; 
+ &lt;li&gt;Chybí solidní knihovna / nástroj pro logování&lt;/li&gt; 
+&lt;/ul&gt; 
+&lt;!--
+[*  elePHPant_Right_Tiny_jde_pryc.png  &gt;]
+--&gt; 
+&lt;p&gt;Jak je vidět, seznam výhod a nevýhod je trochu nevyvážený. Nyní čekám polemiku :-)&amp;nbsp;&lt;a href=&quot;mailto:ondra@dynawest.cz&quot;&gt;ondra@
+  &lt;!-- --&gt;dynawest.cz&lt;/a&gt;&lt;/p&gt; 
+&lt;p&gt;//PS:// Ale pořád ještě to není tak strašné, jako s&amp;nbsp;Caché&amp;nbsp;– kdo zkoušel, ví&amp;nbsp;:-)&lt;/p&gt; 
+&lt;h4 id=&quot;toc-dalsi-clanky-s-podobnou-tematikou&quot;&gt;Další články s&amp;nbsp;podobnou tématikou:&lt;/h4&gt; 
+&lt;ul&gt; 
+ &lt;li&gt;&lt;a href=&quot;http://www.abclinuxu.cz/blog/miloslavponkrac/2006/2/3/119608&quot;&gt;Kam kráčíš, PHP?&lt;/a&gt; (2006, doporučuji přečíst i&amp;nbsp;komentáře)&lt;/li&gt; 
+ &lt;li&gt;&lt;a href=&quot;http://www.pestujemeweb.cz/clanky-rozhovory/text-27-david-grudl-rozhovor.html&quot;&gt;David Grudl o&amp;nbsp;PHP&lt;/a&gt; 
+  &lt;blockquote&gt; 
+   &lt;p&gt;4.&amp;nbsp;Jaká je perspektiva PHP z&amp;nbsp;Vašeho pohledu?&lt;br&gt; Jsem PHP skeptik. PHP jakožto jazyk ztratil koncepci, rozšiřování se děje chaoticky. PHP jakožto knihovna se nehodí na tvorbu webových aplikací. Frameworky se to snaží suplovat.&lt;/p&gt; 
+  &lt;/blockquote&gt; &lt;/li&gt; 
+&lt;/ul&gt; 
+&lt;p&gt;&lt;em&gt;Obrázky přejaty z &lt;a href=&quot;http://www.nexen.net/elephpant/index.php&quot;&gt;http://www.nexen.net/…nt/index.php&lt;/a&gt; a &lt;a href=&quot;http://shop.yourphppro.com/elePHPant.html&quot;&gt;http://shop.yourphppro.com/elePHPant.html&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt; 
+&lt;p&gt;&lt;em&gt;(PS: Kdyby někoho zajímalo, proč je tento web v&amp;nbsp;PHP, tak je to kvůli Texy! ;-)&lt;/em&gt;&lt;br&gt; &lt;em&gt;PS pro Jana Škráška: Porty Texy? Ruby nemám rád, python neumím, .NET nechci a pro Javu ještě port&amp;nbsp;není.&lt;/em&gt;&lt;/p&gt; 
+            </description>
+        </item>
+        <item>
+            <title>Ondra Žižka – personal
+website</title>
+            <link>https://www.zizka.ch/pages/index.html</link>
+            <pubDate>Tue, 31 Jul 2018 07:43:08 +0200</pubDate>
+            <guid isPermaLink="false">pages/index.html</guid>
+            <description>
+                 &lt;h2 class=&quot; jbakeExtractedTitle&quot; id=&quot;toc-ondra-zizka-personal-website&quot;&gt;Ondra Žižka&amp;nbsp;– personal website&lt;/h2&gt; 
+&lt;p&gt;Welcome to my web page.&lt;/p&gt; 
+&lt;p&gt;This is not a blog&amp;nbsp;– rather a „private publication“&amp;nbsp;place.&lt;/p&gt; 
+&lt;p&gt;No comments here&amp;nbsp;– I&amp;nbsp;don&apos;t want to spend my time deleting dumb post and spam. If you have anything to say or ask, just send me an&amp;nbsp;email.&lt;/p&gt; 
+&lt;h2 id=&quot;toc-ondra-zizka-osobni-web&quot;&gt;Ondra Žižka&amp;nbsp;– osobní web&lt;/h2&gt; 
+&lt;p&gt;Vítám vás na své webové nástěnce.&lt;/p&gt; 
+&lt;p&gt;Zas jednou jsem už nevydržel dávat věci dokola někam na FTP a rozhodl se pro potřeby zveřejňování lecčehos zřídit&amp;nbsp;web.&lt;/p&gt; 
+&lt;p&gt;Nečekejte blog. Berte to jako moje soukromé „zveřejniště“.&lt;/p&gt; 
+&lt;h3 id=&quot;toc-proc-tu-nejsou-komentare&quot;&gt;Proč tu nejsou komentáře?&lt;/h3&gt; 
+&lt;p&gt;Za krátkou dobu obnovené existence webu už mi přišel pár mailů, kde se autor ptal, proč nemám u&amp;nbsp;článků komentáře. Důvod je jednoduchý:&lt;/p&gt; 
+&lt;ol style=&quot;list-style-type:lower-alpha&quot;&gt; 
+ &lt;li&gt;Komentáře bych nečetl.&lt;/li&gt; 
+ &lt;li&gt;Spam.&lt;/li&gt; 
+ &lt;li&gt;Kvůli časové souslednosti.&lt;/li&gt; 
+ &lt;li&gt;Buď na web nikdo chodit nebude, a pak budou komentáře zet prázdnotou, a to je trapné&amp;nbsp;:-)&lt;/li&gt; 
+ &lt;li&gt;nebo na něj lidé chodit budou, a pak se tu časem nutně objeví zástupy truhlíků s&amp;nbsp;opravdu dementními komentáři.&lt;/li&gt; 
+&lt;/ol&gt; 
+&lt;h4 id=&quot;toc-ad-a&quot;&gt;ad a)&lt;/h4&gt; 
+&lt;p&gt;Nemám ještě pořádný redakční systém, který by mi je někde pohodlně seštosoval, a možná ani mít nebudu, protože se pravděpodobně od webařiny přesunu k&amp;nbsp;programování.&lt;/p&gt; 
+&lt;h4 id=&quot;toc-ad-c&quot;&gt;ad c)&lt;/h4&gt; 
+&lt;p&gt;Jelikož toto není blog, ale prostor pro publikování, literární útvary se zde čas od času mění. Zakládat nový článek místo úpravy dokumentu podle mě není vhodné. Případné komentáře by tedy komentovaly staré verze, a zatímco dokument by se v&amp;nbsp;čase vyvíjel a odrážel aktuální stav věcí, komentáře by se s&amp;nbsp;ním táhly jako Gott a Vondráčková s&amp;nbsp;hudebním průmyslem (fuj, to bylo ale politicky nekorektní).&lt;/p&gt; 
+&lt;h4 id=&quot;toc-ad-d-e&quot;&gt;ad d), e)&lt;/h4&gt; 
+&lt;p&gt;Zatímco na „blozích“ se to řeší karmami, přihlašováním, hodnocením kvality, banováním a dalšími marnými technikami, já jednoduše komentáře nevedu.&lt;/p&gt; 
+&lt;p&gt;Pokud někdo chcete komentovat, napište mi mail na &lt;a href=&quot;mailto:ondra@dynawest.cz&quot;&gt;ondra@
+  &lt;!-- --&gt;dynawest.cz&lt;/a&gt;. Efekt to bude mít stejný&amp;nbsp;– nadávky mě hluboce urazí a půjdu trucovat do kouta, zajímavé a relevantní tipy do článků přidám. Akorát spam takto vyfiltruju lépe&amp;nbsp;:-)&lt;/p&gt; 
+&lt;h3 id=&quot;toc-co-zrovna-delam&quot;&gt;Co zrovna dělám&lt;/h3&gt; 
+&lt;p&gt;Pokud zrovna nepracuji pro JBoss, zkoumám různé technologie:&lt;/p&gt; 
+&lt;ul&gt; 
+ &lt;li&gt;&lt;a href=&quot;stranky/programming/java/jboss-aop-howto-example-standalone-app.html&quot;&gt;JBoss AOP&lt;/a&gt;&lt;/li&gt; 
+ &lt;li&gt;&lt;a href=&quot;stranky/programming/web_javascript_ajax_canvas/canvas_element_selection_buffer.html&quot;&gt;&lt;code&gt;canvas&lt;/code&gt;&lt;/a&gt;&lt;/li&gt; 
+&lt;/ul&gt; 
+&lt;p&gt;V&amp;nbsp;mezičase se prokousávám webovými Java technologiemi (J2EE).&lt;/p&gt; 
+&lt;!--
+Nedávno jsem dopřekládal IT knihu pro CPress,
+a dodělal CMS a systém správy práv pro &quot;FSI VUT&quot;:www.fme.vutbr.cz,
+a dodělal proof-of-concept vyhledávání spojů v jízdních řádech.
+
+Momentálně pracuji na projektech:
+
+ * ISIR překladiště
+
+
+&quot;**Vyhledávání spojů v jízdních řádech s využitím umělé inteligence k optimalizaci**&quot;:/projekty/diplomka/DiplomovaPrace-OndrejZizka.pdf
+ - 
+
+Součástí je implementace neuronových sítí v SQL/SP,
+což dává vznik většině obsahu v sekci &quot;Programování / SQL&quot;:stranky/programming/sql/index.html.
+
+--&gt; 
+&lt;h3 id=&quot;toc-na-co-se-chystam&quot;&gt;Na co se chystám&lt;/h3&gt; 
+&lt;ul&gt; 
+ &lt;li&gt;&lt;strong&gt;Texy Java implementation&lt;/strong&gt;&lt;/li&gt; 
+&lt;/ul&gt; 
+&lt;!-- * **ISIR WS Relay** - překladiště insolvenčního rejstříku --&gt; 
+&lt;ul&gt; 
+ &lt;li&gt;&lt;strong&gt;Gravity Road&lt;/strong&gt;&amp;nbsp;– tajný projekt ;-)&lt;/li&gt; 
+&lt;/ul&gt; 
             </description>
         </item>
         <item>
@@ -147,100 +1021,6 @@ Heron</title>
             </description>
         </item>
         <item>
-            <title>Je Java jako Linux nebo jako
-Windows?</title>
-            <link>https://www.zizka.ch/pages/programming/java/je_java_jako_linux_nebo_jako_windows.html</link>
-            <pubDate>Tue, 31 Jul 2018 04:28:11 +0200</pubDate>
-            <guid isPermaLink="false">pages/programming/java/je_java_jako_linux_nebo_jako_windows.html</guid>
-            <description>
-                 &lt;h2 class=&quot; jbakeExtractedTitle&quot; id=&quot;toc-je-java-jako-linux-nebo-jako-windows&quot;&gt;Je Java jako Linux nebo jako Windows?&lt;/h2&gt; 
-&lt;!-- //Článek momentálně upravuji.// --&gt; 
-&lt;p&gt;Po napsání předchozího článku &lt;a href=&quot;/stranky/programovani/php/vyhody_a_nevyhody_php.html&quot;&gt;Výhody a nevýhody PHP&lt;/a&gt; se ozval Jakub Vrána a chvíli jsme si mailovali nad některými body článku, což se, jak to bývá, stočilo na srovnání PHP s&amp;nbsp;technologií, kterou já preferuji&amp;nbsp;– tedy s&amp;nbsp;Javou.&lt;/p&gt; 
-&lt;p&gt;V&amp;nbsp;závěru jsme se dostali k&amp;nbsp;tomu, zda je Java nebo PHP podobnější Linuxu nebo Windows. Zde je část z&amp;nbsp;mailu:&lt;/p&gt; 
-&lt;blockquote&gt; 
- &lt;p&gt;Jednu věc nechápu a budu rád, když mi jako (předpokládám) fanda Linuxu vysvětlíš:&lt;/p&gt; 
- &lt;p&gt;Jak je možné, že lidé, kteří preferují Linux před Windows, zároveň preferují PHP před Javou. Protože pokud bychom zobecnili vlastnosti a požadavky na systémy a plaformy, potom právě Java oproti PHP by byla jako Linux oproti Windows&amp;nbsp;– technologicky vyspělejší, vývojově stabilnější, zpětně kompatibilnější, modulárnější, konfigurovatel­nější, víceúčelovější, a druhé ideologicky vykrádá první, přičemž to ani nezvládne dotáhnout do konce a zbyde jenom nedotažený hybrid zatížený historií svého vývoje.&lt;/p&gt; 
- &lt;p&gt;PHP se mi zdá jako takový rozjetý mnohakilometrový vlak tažený slabou mašinkou, ke kterému stále napojují další a další vagóny&amp;nbsp;– některé velice moderní, přepychové, a pokud jedete po rovince, vše je ok&amp;nbsp;– ale pak přijde kopeček a mašinka se sotva vleče; a pak i&amp;nbsp;v&amp;nbsp;těch nejpřepychovějších vagónech poznáte, že je něco špatně. (Mašinka zde nepředstavuje výkonnost, ale právě ono „jádro“.)&lt;/p&gt; 
- &lt;p&gt;Co je tedy podle tebe na PHP lepšího? Co tě k&amp;nbsp;němu táhne kromě citové vazby? (Tvoje zásluhy v&amp;nbsp;PHP komunitě zhruba znám a oceňuji, a chápu a znám z&amp;nbsp;vlastní zkušenosti, že z&amp;nbsp;takového rozjetého vlaku se velmi těžko vyskakuje.) Zkoušels někdy proniknout do J2EE? Znáš základní konceptuální rozdíly? Nechci tě nijak shazovat, jen mě zajímá, jestli se dokážeš vžít do mojí situace a pochopit tak, proč PHP tak „haním“.&lt;/p&gt; 
- &lt;p&gt;Zdraví Ondra Žižka&lt;/p&gt; 
-&lt;/blockquote&gt; 
-&lt;p&gt;Dovolím si zkopírovat Jakubovo resumé z&amp;nbsp;článku &lt;a href=&quot;http://php.vrana.cz/je-php-jako-linux-nebo-jako-windows.php&quot;&gt;Je PHP jako Linux nebo jako Windows?&lt;/a&gt;:&lt;/p&gt; 
-&lt;blockquote&gt; 
- &lt;h4 id=&quot;toc-jakub-vrana&quot;&gt;Jakub Vrána:&lt;/h4&gt; 
- &lt;p&gt;&lt;strong&gt;PHP a Linux&lt;/strong&gt;&amp;nbsp;– malé jádro, k&amp;nbsp;tomu volitelné jednoúčelové knihovny s&amp;nbsp;jednoduchým rozhraním.&lt;/p&gt; 
- &lt;p&gt;&lt;strong&gt;Java a Windows&lt;/strong&gt;&amp;nbsp;– vše v&amp;nbsp;jednom spravované přes komplexní objektové rozhraní.&lt;/p&gt; 
- &lt;h4 id=&quot;toc-ondrej-zizka&quot;&gt;Ondřej Žižka:&lt;/h4&gt; 
- &lt;p&gt;&lt;strong&gt;PHP a Windows&lt;/strong&gt; (z&amp;nbsp;pohledu programátora WinAPI): Silně proměnlivá technologie, v&amp;nbsp;lecčems zpětně nekompatibilní, počáteční návrh špatný a směřující k&amp;nbsp;lepšímu po vzoru lepších technologií, mnohé významné featury dodělávané ad hoc a nepřirozeně vmontované do návrhu.&lt;/p&gt; 
- &lt;p&gt;&lt;strong&gt;Java a Linux&lt;/strong&gt;: Stabilní technologie stavěná velmi rozvážně podle promyšleného návrhu dlouho laděného a diskutovaného mnoha IT firmami, silná a zaručená zpětná kompatibilita, standardizované API, mnoho různých použití (od embedded zařízení až po clusterované farmy serverů). Nejčastěji používaná rozšíření časem projdou procesem standardizace a začlení se do jádra, resp.&amp;nbsp;JRE.&lt;/p&gt; 
-&lt;/blockquote&gt; 
-&lt;p&gt;Jak někdo poznamenal v&amp;nbsp;tamějších komentářích, Jakub posuzuje z&amp;nbsp;pohledu technického, zatímco já se snažím spíše o&amp;nbsp;ideologické srovnání&amp;nbsp;– zkrátka principy, na kterých vývojáři a komunita dané technologie (ne)staví.&lt;/p&gt; 
-&lt;p&gt;A&amp;nbsp;to je z&amp;nbsp;dlouhodobého hlediska mnohem důležitější&amp;nbsp;– jistě chcete vyvíjet bez obav, že by příští major verze opět přinesla další sadu vlastností z&amp;nbsp;jiných jazyků chaoticky splácaných dohromady se stávající&amp;nbsp;verzí.&lt;/p&gt; 
-&lt;hr&gt; 
-&lt;p&gt;Aby byla debata co k&amp;nbsp;čemu, měli bychom tato hesla něčím podpořit, případně vyvrátit. Pusťme se do toho&amp;nbsp;:-)&lt;/p&gt; 
-&lt;h3 id=&quot;toc-male-jadro&quot;&gt;Malé jádro&lt;/h3&gt; 
-&lt;p&gt;Jak změřit velikost jádra? A&amp;nbsp;co je vůbec jádro? Řekněme, že je to ta část technologie, která je nezbytně nutná pro její&amp;nbsp;běh.&lt;/p&gt; 
-&lt;ul&gt; 
- &lt;li&gt;Binárky pro Java Virtual Machine (interpret Javy) nejnovější verze mají cca 6&amp;nbsp;MB, což zahrnuje mimo jiné nativní knihovny pro zobrazování desktop aplikací, práci se zvukem, fonty&amp;nbsp;atd.&lt;/li&gt; 
- &lt;li&gt;K&amp;nbsp;Javě patří ještě &lt;code&gt;rt.jar&lt;/code&gt;, což je balík, ve kterém jsou knihovny obsažené ve standardní distribuci. Z&amp;nbsp;toho se dá jako jádro počítat maximálně část z&amp;nbsp;nich.&lt;/li&gt; 
- &lt;li&gt;Jádro PHP, &lt;code&gt;php6ts.dll&lt;/code&gt;, má cca. 14&amp;nbsp;MB (standardní distribuce windows), a tento modul je dále nedělitelný.&lt;/li&gt; 
- &lt;li&gt;S&amp;nbsp;okolními knihovnami (kromě API pro Apache, ISAPI a NSAPI) má kolem 20&amp;nbsp;MB.&lt;/li&gt; 
- &lt;li&gt;&lt;code&gt;php5ts.dll&lt;/code&gt; má cca. 5&amp;nbsp;MB, a spolu s&amp;nbsp;okolními &lt;code&gt;.dll&lt;/code&gt; má asi 10&amp;nbsp;MB.&lt;/li&gt; 
-&lt;/ul&gt; 
-&lt;p&gt;Ale velikost dat není nejlepší ukazatel. Vyberme tedy jiné kritérium. Nabízí se možnost miniaturizace jádra technologie a složitost syntaxe, a Jakubem uvedená „komplexnost jádra“.&lt;/p&gt; 
-&lt;h3 id=&quot;toc-komplexnost-jadra&quot;&gt;Komplexnost jádra&lt;/h3&gt; 
-&lt;p&gt;Co se týká „ne/komplexnosti“ jádra, tak si nejsem zcela jist, jak rozlišit, co v&amp;nbsp;jádru je či&amp;nbsp;není.&lt;/p&gt; 
-&lt;p&gt;Pokud vím, v&amp;nbsp;jádru Javy je jen několik tříd typu Object, String, Throwable, dále nativní metody základních systémových tříd, a tím to hasne; drtivá většina funkcionality JRE je již implementovaná v&amp;nbsp;Javě a je oddělitelná.&lt;/p&gt; 
-&lt;p&gt;V&amp;nbsp;PHP je mnoho knihoven instalovatelných z&amp;nbsp;repozitáře PEAR, a většina těch, které jsou ve Windows verzi v&amp;nbsp;phpXts.dll, jsou na linuxu volitelné za cenu vlastní kompilace PHP. Nicméně nevolitelnou součástí jádra jsou funkce jako &lt;code&gt;money_format()&lt;/code&gt;, &lt;code&gt;apache_note()&lt;/code&gt; nebo &lt;code&gt;highlight_file()&lt;/code&gt;, na kterých jistě technologie závislá&amp;nbsp;není.&lt;/p&gt; 
-&lt;p&gt;V&amp;nbsp;tomto je tedy Linuxu podobnější Java, který v&amp;nbsp;jádru obsahuje pouze to nutné (ať už pro funkčnost systému nebo kvůli výkonu).&lt;/p&gt; 
-&lt;p&gt;Že by Java obsahovala vše v&amp;nbsp;jednom je vyvráceno, a za „all-in-one“ technologii se dá považovat spíše&amp;nbsp;PHP.&lt;/p&gt; 
-&lt;h4 id=&quot;toc-windows-a-vse-v-jednom&quot;&gt;Windows a „vše v&amp;nbsp;jednom“&lt;/h4&gt; 
-&lt;p&gt;U&amp;nbsp;té architektury Windows bych řekl, že se Jakub seknul;
- &lt;!-- Dovolil bych si polemizovat i o &quot;komplexnosti&quot; jádra Windows --&gt; od verzí NT až po XP (Visty neznám) je systém poměrně modulárni a dá se očesat skoro až na&amp;nbsp;HAL.&lt;/p&gt; 
-&lt;p&gt;Stejně tak předchozí verze Windows&amp;nbsp;– existuje mnoho různých amatérských minidistribucí Windows 98 (bohužel teď je nenajdu).&lt;/p&gt; 
-&lt;p&gt;„spravované přes komplexní objektové rozhraní“&amp;nbsp;– to nevím, co tím Jakub u&amp;nbsp;Windows myslel. Na WinAPI není objektového nic, to je čisté&amp;nbsp;C.&lt;/p&gt; 
-&lt;h3 id=&quot;toc-moznost-miniaturizace-jadra&quot;&gt;Možnost miniaturizace jádra&lt;/h3&gt; 
-&lt;p&gt;Až teprve v&amp;nbsp;extrémních podmínkách se ukáže, co vše lze z „jádra“ vypustit, aby technologie stále byla sama&amp;nbsp;sebou.&lt;/p&gt; 
-&lt;p&gt;Takovými podmínkami jsou například mobilní telefony. Java šlape i&amp;nbsp;na telefonech jako jsou několik let staré mobily Nokia. Zde se velikost jádra těžko určí, protože implementace je do jisté míry hardwarová.&lt;/p&gt; 
-&lt;p&gt;Naproti tomu nejmenší mě známý výskyt PHP je verze PHP pro servery Novell, která je osekaná o&amp;nbsp;leccos, a přesto má hlavní knihovna stále několik&amp;nbsp;MB.&lt;/p&gt; 
-&lt;p&gt;Řekl bych, že tím je v&amp;nbsp;tomto bodě jasno&amp;nbsp;– malé jádro a mnoho volitelných knihoven jednoznačně pasuje spíše na&amp;nbsp;Javu.&lt;/p&gt; 
-&lt;p&gt;//Update:// O&amp;nbsp;tom, že Java je skutečně univerzální, se můžete přesvědčit např. na &lt;a href=&quot;http://www.knihy.cpress.cz/BookDoc.asp?BookID=160&amp;amp;DocID=626&amp;amp;DownloadSection=12&quot;&gt;http://www.knihy.cpress.cz/BookDoc.asp?…&lt;/a&gt;, kde najdete publikaci pro grafiky, která se věnuje se programování skeneru pomocí&amp;nbsp;Javy.&lt;/p&gt; 
-&lt;h3 id=&quot;toc-slozitost-syntaxe-php-a-javy&quot;&gt;Složitost syntaxe PHP a Javy&lt;/h3&gt; 
-&lt;p&gt;Syntaxe Java oproti syntaxi PHP:&lt;/p&gt; 
-&lt;ul&gt; 
- &lt;li&gt;Nemá &amp;amp; reference&lt;/li&gt; 
- &lt;li&gt;Není zde @ na umlčení&lt;/li&gt; 
- &lt;li&gt;Nenahrazují se proměnné ve stringu&lt;/li&gt; 
- &lt;li&gt;Nejsou zde věci typu __call, __autoload a další __*&lt;/li&gt; 
- &lt;li&gt;Nemá # komentáře&lt;/li&gt; 
- &lt;li&gt;Nemá &lt;code&gt;systémová volání&lt;/code&gt;&lt;/li&gt; 
- &lt;li&gt;Nemá podivné konstrukce typu Array($objekt, „VolanáMetoda“)&lt;/li&gt; 
- &lt;li&gt;Nemá konstrukty, které se tváří jako funkce, ale nejsou&amp;nbsp;funkce&lt;/li&gt; 
- &lt;li&gt;Nemá operátory and, or, xor, !==, ===&lt;/li&gt; 
- &lt;li&gt;Nemá konstrukty require, require_once, include_once, declare&lt;/li&gt; 
- &lt;li&gt;Nemá alternativní zápis kontrolních struktur s&amp;nbsp;dvojtečkou&lt;/li&gt; 
- &lt;li&gt;Nemá &lt;code&gt;global&lt;/code&gt;&lt;/li&gt; 
- &lt;li&gt;Nemá &lt;code&gt;$GLOBALS&lt;/code&gt;, &lt;code&gt;$_GET&lt;/code&gt;, &lt;code&gt;$_POST&lt;/code&gt;, &lt;code&gt;$_COOKIE&lt;/code&gt;, &lt;code&gt;$_FILES&lt;/code&gt;, &lt;code&gt;$_ENV&lt;/code&gt;,&amp;nbsp;&lt;code&gt;$_REQUEST&lt;/code&gt;&lt;/li&gt; 
-&lt;/ul&gt; 
-&lt;p&gt;Naopak:&lt;/p&gt; 
-&lt;ul&gt; 
- &lt;li&gt;Má @anotace&lt;/li&gt; 
- &lt;li&gt;Má generické &amp;lt;typy&amp;gt;&lt;/li&gt; 
- &lt;li&gt;Má navíc klíčová slova pro různé účely (synchronized, transient, enum, volatile a&amp;nbsp;další)&lt;/li&gt; 
-&lt;/ul&gt; 
-&lt;p&gt;Java syntaxe je jednodušší než syntaxe PHP.&lt;/p&gt; 
-&lt;h3 id=&quot;toc-zaver&quot;&gt;Závěr&lt;/h3&gt; 
-&lt;p&gt;Co se tedy týký připodobnění Javy a PHP k&amp;nbsp;Linuxu a Windows, není mnoho argumentů, proč PHP připodobňovat k&amp;nbsp;Linuxu a Javu k&amp;nbsp;Windows&amp;nbsp;– spíše naopak.&lt;/p&gt; 
-&lt;p&gt;PHP je prostě na ocasu vývoje a s&amp;nbsp;velkými obtížemi adoptuje vymoženosti jiných technologií (OOP, Unicode, výjimky, synchronizaci a sdílení, …)&amp;nbsp;– stejně jako Windows.&lt;/p&gt; 
-&lt;p&gt;Naproti tomu Java je spolu s&amp;nbsp;C# a .NET na špičce vývoje na poli IT, podobně jako Linux na poli&amp;nbsp;OS.&lt;/p&gt; 
-&lt;hr&gt; 
-&lt;p&gt;Jako tečku cituji člověka, který má PHP opravdu v&amp;nbsp;malíku (a autora skvělého Texy!)&amp;nbsp;– Davida Grudla:&lt;/p&gt; 
-&lt;blockquote&gt; 
- &lt;p&gt;Programovat v&amp;nbsp;Javě umí kdekdo. O&amp;nbsp;ASP.NET ani nemluvě. Jen v&amp;nbsp;PHP píši skuteční hrdinové. Renesanční bytosti. Fascinující a neskutečně trpěliví lidé. Trpěliví od slova trpět. Třeba jako&amp;nbsp;já.&lt;/p&gt; 
- &lt;p style=&quot;text-align:right&quot;&gt;-- David Grudl, &lt;a href=&quot;http://latrine.dgx.cz/php-surprise&quot;&gt;http://latrine.dgx.cz/php-surprise&lt;/a&gt;&lt;/p&gt; 
-&lt;/blockquote&gt; 
-            </description>
-        </item>
-        <item>
             <title>Quick and dirty
 mavenization of an existing project</title>
             <link>https://www.zizka.ch/pages/programming/java/maven/mavenize-quick-and-dirty.html</link>
@@ -354,94 +1134,6 @@ cmd /C mvn install:install-file -Dpackaging=jar -DgeneratePom=true -DgroupId=org
  &lt;li&gt;Go to your local maven repo and find the installed library there (&lt;code&gt;t:\data\.m2\repository\org\jboss\qa\ews\sardine\sardine&lt;/code&gt; in my&amp;nbsp;case). &lt;p&gt;Copy it to some publicly accessible site, where it can be downloaded from using plain&amp;nbsp;HTTP.&lt;/p&gt; &lt;p&gt;I&amp;nbsp;used &lt;a href=&quot;http://jtexy.googlecode.com/svn/maven/&quot;&gt;Google Code SVN&lt;/a&gt;. &lt;code&gt;svn --non-recursive&lt;/code&gt; might help you with this&amp;nbsp;task.&lt;/p&gt; &lt;/li&gt; 
 &lt;/ol&gt; 
 &lt;p&gt;Done.&lt;/p&gt; 
-            </description>
-        </item>
-        <item>
-            <title>FreeTTS Troubleshooting</title>
-            <link>https://www.zizka.ch/pages/programming/java/misc/freetts-line-unavailable-classcastexception-kevinvoicedirectory-error-opening-zipfile.html</link>
-            <pubDate>Tue, 31 Jul 2018 04:28:11 +0200</pubDate>
-            <guid isPermaLink="false">pages/programming/java/misc/freetts-line-unavailable-classcastexception-kevinvoicedirectory-error-opening-zipfile.html</guid>
-            <description>
-                 &lt;h2 class=&quot; jbakeExtractedTitle&quot; id=&quot;toc-freetts-troubleshooting&quot;&gt;FreeTTS Troubleshooting&lt;/h2&gt; 
-&lt;h2 id=&quot;toc-java-sound-problems-in-linux-line-unavailable&quot;&gt;Java sound problems in Linux&amp;nbsp;– LINE UNAVAILABLE&lt;/h2&gt; 
-&lt;p&gt;It&apos;s&amp;nbsp;a JVM bug described &lt;a href=&quot;http://bugs.sun.com/bugdatabase/view_bug.do?bug_id=4498848&quot;&gt;here&lt;/a&gt;&lt;/p&gt; 
-&lt;p&gt;Also &lt;a href=&quot;http://sourceforge.net/projects/freetts/forums/forum/137669/topic/722735?message=1659298&quot;&gt;here&lt;/a&gt; :&lt;/p&gt; 
-&lt;blockquote&gt; 
- &lt;ol start=&quot;2&quot;&gt; 
-  &lt;li&gt;Another possibility, which I&amp;nbsp;have not verified, might be due to a delay that we put it to the closing of the currentClip. &lt;p&gt;We put in this delay to workaround a Java Sound bug in&amp;nbsp;Linux.&lt;/p&gt; &lt;p&gt;The resulting scenario is: because the last clip was not closed before the next clip attempts to&amp;nbsp;play,&lt;/p&gt; &lt;p&gt;the audio device is still occupied, thus generating a LineUnavailable­Exception.&lt;/p&gt; &lt;p&gt;Though, we&apos;ve hardly experienced any problems with the JavaClipAudio­Player, so I&amp;nbsp;doubt this is the problem.&lt;/p&gt; &lt;/li&gt; 
- &lt;/ol&gt; 
-&lt;/blockquote&gt; 
-&lt;p&gt;Also &lt;a href=&quot;http://sourceforge.net/projects/freetts/forums/forum/137669/topic/930844?message=2221602&quot;&gt;here&lt;/a&gt; about „long sentences“:&lt;/p&gt; 
-&lt;blockquote&gt; 
- &lt;p&gt;The problem, it seems is in the code that breaks up a very long sentence. FreeTTS is designed to synthesize text with low latency. When given a very long sentence, such as in your example, it will decide that the sentence is too long to be synthesized in a timely fashion and break it up into smaller bits. This logic is rarely (if every executed) since it only is invoked when very long sentences occur. If I&amp;nbsp;change your sample code to concatenate a period instead of a comma after every „Number xx“, things are synthesized just fine with no line unavailable&amp;nbsp;error.&lt;/p&gt; 
-&lt;/blockquote&gt; 
-&lt;h3 id=&quot;toc-workaround&quot;&gt;Workaround:&lt;/h3&gt; 
-&lt;pre class=&quot;brush: lang-java brush: java&quot;&gt;System.setProperty(&quot;com.sun.speech.freetts.audio.AudioPlayer.openFailDelayMs&quot;, &quot;100&quot;);
-System.setProperty(&quot;com.sun.speech.freetts.audio.AudioPlayer.totalOpenFailDelayMs&quot;, &quot;30000&quot;);&lt;/pre&gt; 
-&lt;p&gt;Also &lt;a href=&quot;http://sourceforge.net/projects/freetts/forums/forum/137669/topic/1293759?message=3178304&quot;&gt;here&lt;/a&gt; :&lt;/p&gt; 
-&lt;blockquote&gt; 
- &lt;p&gt;If you disable the ARts sound daemon under KDE FreeTTS will work and not give the error:&lt;br&gt; &lt;code&gt;LINE UNAVAILABLE: Format is PCM_SIGNED 16000.0 Hz, 16 bit, mono, 2 bytes/frame, big-endian&lt;/code&gt; Or something simular to t he error above. I&amp;nbsp;believe the issue (and reply if I&apos;m wrong) is the ARts daemon grabs the /dev/dsp device and prevents FreeTTS from using it. Though I&amp;nbsp;don&apos;t run ETS (Enlightenment sound daemon) this daemon too, could be a problem for fellow FreeTTS users/developers. I&amp;nbsp;believe this daemon too grabs on to /dev/dsp and prevents others from using&amp;nbsp;it.&lt;/p&gt; 
-&lt;/blockquote&gt; 
-&lt;p&gt;Also, &lt;a href=&quot;http://sourceforge.net/projects/freetts/forums/forum/137669/topic/686662?message=1582276&quot;&gt;testing the line availability&lt;/a&gt; :&lt;/p&gt; 
-&lt;blockquote&gt; 
- &lt;ol start=&quot;2&quot;&gt; 
-  &lt;li&gt;To test if an environment supports sound, copy the code in&amp;nbsp;&lt;code&gt;com.sun.speech.freetts.audio.JavaStreamingAudioPlayer.openLine()&lt;/code&gt; &lt;p&gt;to a method in your application (remember to include the javax.sound.sam­pled.* packages).&lt;/p&gt; &lt;p&gt;Before you call FreeTTS methods, call this method to see if your environment supports&amp;nbsp;sound.&lt;/p&gt; &lt;p&gt;If it does, remember to close the audio line, since FreeTTS will try to open it&amp;nbsp;again.&lt;/p&gt; &lt;/li&gt; 
- &lt;/ol&gt; 
-&lt;/blockquote&gt; 
-&lt;h3 id=&quot;toc-solution&quot;&gt;Solution:&lt;/h3&gt; 
-&lt;p&gt;Fix FreeTTS according to &lt;a href=&quot;http://forums.sun.com/thread.jspa?threadID=5189363&quot;&gt;this link&lt;/a&gt;, which is now unavailable because Oracle fucked it up. That page supposedly contained a fix for FreeTTS making it not vulnerable to that JVM&apos;s&amp;nbsp;bug.&lt;/p&gt; 
-&lt;h3 id=&quot;toc-also-see&quot;&gt;Also see:&lt;/h3&gt; 
-&lt;ul&gt; 
- &lt;li&gt;&lt;a href=&quot;http://sourceforge.net/search/?group_id=42080&amp;amp;type_of_search=forums&amp;amp;words=LINE+UNAVAILABLE&amp;amp;search=Search&quot;&gt;FreeTTS forum search&lt;/a&gt;&lt;/li&gt; 
- &lt;li&gt;&lt;a href=&quot;http://freetts.sourceforge.net/docs/index.php#What_does_the_message_Line_unavailable&quot;&gt;FreeTTS FAQ&lt;/a&gt;&lt;/li&gt; 
- &lt;li&gt;&lt;a href=&quot;http://www.ryan-h.com/uncategorized/java-speech-jsapi-freetts&quot;&gt;Useful howto&lt;/a&gt; at ryan-h&apos;s&amp;nbsp;blog.&lt;/li&gt; 
-&lt;/ul&gt; 
-&lt;h2 id=&quot;toc-problem-finding-dependencies-zipexception-error-opening-zip-file&quot;&gt;Problem finding dependencies&amp;nbsp;– ZipException` „Error opening ZIP&amp;nbsp;file“&lt;/h2&gt; 
-&lt;p&gt;After I&amp;nbsp;mavenized FreeTTS, I&amp;nbsp;started getting an exception from JDK saying it can&apos;t read ZIP file somewhere in &lt;code&gt;VoiceManager.java&lt;/code&gt;.&lt;/p&gt; 
-&lt;p&gt;I&amp;nbsp;used strace to figure out a „Error opening ZIP file“. That did not help because it did not tell me about JVM&apos;s&amp;nbsp;calls to &lt;code&gt;open()&lt;/code&gt; for some reason, but anyway, here&apos;s&amp;nbsp;the command:&lt;/p&gt; 
-&lt;pre class=&quot;brush: lang-bash brush: bash&quot;&gt;sudo strace -e trace=all -o log.txt \
-java -Xrunjdwp:transport=dt_socket,server=y,address=4000 \
-     -Djpda.listen=true -Djpda.address=4000 \
-     -Dmbrola.base=&quot;`pwd`/../mbrola301&quot;\
-     -Dfreetts.voicespath=&quot;`pwd`/../mbrola301/voices&quot;\
-     -jar /home/ondra/work/BOTS/SpeechBot/SpeechBot-mavenized/target/SpeechBot-1.0-SNAPSHOT.jar \
-     irc.eng.brq.redhat.com &apos;#some&apos;&lt;/pre&gt; 
-&lt;h3 id=&quot;toc-the-cause&quot;&gt;The cause&lt;/h3&gt; 
-&lt;p&gt;The problem was that mavenization of FreeTTS and MBrola involved re-naming the .jar&amp;nbsp;files.&lt;/p&gt; 
-&lt;p&gt;But FreeTTS not only has hard-coded dependencies in it&apos;s &lt;code&gt;MANIFEST.MF&lt;/code&gt;&apos;s &lt;code&gt;Class-Path&lt;/code&gt;, which is quite stupid for a library, it also has code inside which actually relies on these data, which is the real peak of stupidity. So if you Mavenize such library, it ends up in different directories. So it will not usually work in&amp;nbsp;IDE.&lt;/p&gt; 
-&lt;p&gt;You need to flatten the dependencies to a single dir, using e.g. &lt;code&gt;mvn dependencies:copy&lt;/code&gt;, see &lt;a href=&quot;http://ondra.zizka.cz/stranky/programovani/java/maven/maven-create-distribution-package.html&quot;&gt;this example&lt;/a&gt;. You also need to set Maven to put all app&apos;s&amp;nbsp;dependencies to it&apos;s&amp;nbsp;jar&apos;s &lt;code&gt;MANIFEST.MF&lt;/code&gt;&apos;s &lt;code&gt;Class-Path&lt;/code&gt;&amp;nbsp;– here it&apos;s&amp;nbsp;ok because it&apos;s&amp;nbsp;an app, not a library.&lt;/p&gt; 
-&lt;p&gt;Then you need to manually rewrite all FreeTTS libraries&apos; MANIFEST.MF in the local repository, so that you can rebuild your application. Change the &lt;code&gt;Class-Path&lt;/code&gt; to reflect the names of the jar files; Usually, that means adding &lt;code&gt;-&amp;lt;version&amp;gt;&lt;/code&gt; so it&apos;s&amp;nbsp;e.g. &lt;code&gt;cmulex-1.2.jar:freetts-1.2.jar:...&lt;/code&gt;.&lt;/p&gt; 
-&lt;p&gt;Then you run a shell command like&lt;/p&gt; 
-&lt;pre class=&quot;brush: lang-bash brush: bash&quot;&gt;java -Dmbrola.base=&quot;`pwd`/../mbrola301&quot;\
-     -Dfreetts.voicespath=&quot;`pwd`/../mbrola301/voices&quot;\
-     -jar /home/ondra/work/BOTS/SpeechBot/SpeechBot-mavenized/target/SpeechBot-1.0-SNAPSHOT.jar \
-     irc.eng.brq.redhat.com &apos;#some&apos;&lt;/pre&gt; 
-&lt;p&gt;Here you don&apos;t need to specify -cp because the deps are in the app&apos;s&amp;nbsp;MANIFEST.MF as per the explanation&amp;nbsp;above.&lt;/p&gt; 
-&lt;h2 id=&quot;toc-problems-finding-voices&quot;&gt;Problems finding Voices&lt;/h2&gt; 
-&lt;p&gt;I&amp;nbsp;had some troubles make FreeTTS find MBrola&apos;s&amp;nbsp;voices.&lt;/p&gt; 
-&lt;p&gt;Don&apos;t forget to set the &lt;code&gt;mbrola.base&lt;/code&gt; system property when you run your application,&amp;nbsp;e.g.:&lt;/p&gt; 
-&lt;pre class=&quot;brush: lang-plain brush: plain&quot;&gt;java -jar myapp.jar -Dmbrola.base=&quot;`pwd`/../mbrola301&quot;&lt;/pre&gt; 
-&lt;p&gt;eventually you can set &lt;code&gt;freetts.voicespath&lt;/code&gt; to different&amp;nbsp;dir:&lt;/p&gt; 
-&lt;pre class=&quot;brush: lang-plain brush: plain&quot;&gt;java -jar myapp.jar -Dmbrola.base=&quot;`pwd`/../mbrola301&quot; -Dfreetts.voicespath=&quot;`pwd`/../mbrola301/voices&quot;&lt;/pre&gt; 
-&lt;hr&gt; 
-&lt;p&gt;There are few voices in FreeTTS with MBrola.&lt;/p&gt; 
-&lt;pre class=&quot;brush: lang-plain brush: plain&quot;&gt;// This is a tiny database, contains only data for time demo app.
-System.setProperty(&quot;freetts.voices&quot;,&quot;com.sun.speech.freetts.en.us.cmu_time_awb.AlanVoiceDirectory&quot;);
-
-// Using this throws the ClassCastException. You need to recompile it.
-System.setProperty(&quot;freetts.voices&quot;, &quot;com.sun.speech.freetts.en.us.cmu_us_kal.KevinVoiceDirectory&quot;);
-
-// MBrola voices.
-System.setProperty(&quot;freetts.voices&quot;, &quot;de.dfki.lt.freetts.en.us.MbrolaVoiceDirectory&quot;);&lt;/pre&gt; 
-&lt;p&gt;Even after setting &lt;code&gt;mbrola.voices&lt;/code&gt;, it kept finding only &lt;code&gt;mbrola_us1&lt;/code&gt;, &lt;code&gt;mbrola_us2&lt;/code&gt;, &lt;code&gt;mbrola_us3&lt;/code&gt;. I&amp;nbsp;added some voices from their web, but these were not listed as available. I&amp;nbsp;guess I&amp;nbsp;need some other &lt;code&gt;VoiceDirectory&lt;/code&gt; implementation because the voices are hardcoded in &lt;code&gt;KevinVoiceDirectory&lt;/code&gt; so I&amp;nbsp;guess there&apos;s&amp;nbsp;no dynamic loading despite all that mess in &lt;code&gt;VoiceDirectory.java&lt;/code&gt;.&lt;/p&gt; 
-&lt;h2 id=&quot;toc-weird-classcastexception-for-kevinvoicedirectory-gone-after-re-compiling&quot;&gt;Weird ClassCastException for KevinVoiceDirec­tory, gone after re-compiling&lt;/h2&gt; 
-&lt;p&gt;After solving „Error reading ZIP“ by changing FreeTTS&apos;s&amp;nbsp;jar&apos;s&amp;nbsp;M­ANIFEST.MF&apos;s&amp;nbsp;Class-Path value to reflect my jar names (mavenized), I&amp;nbsp;started getting&amp;nbsp;this:&lt;/p&gt; 
-&lt;pre class=&quot;brush: lang-plain brush: plain&quot;&gt;Exception in thread &quot;main&quot; java.lang.ClassCastException: com.sun.speech.freetts.en.us.cmu_us_kal.KevinVoiceDirectory cannot be cast to com.sun.speech.freetts.VoiceDirectory
-        at com.sun.speech.freetts.VoiceManager.getVoices(VoiceManager.java:113)
-        at cz.dynawest.speechbot.synt.MbrolaSpeaker.&amp;lt;init&amp;gt;(MbrolaSpeaker.java:38)
-        at cz.dynawest.speechbot.SpeechBot.&amp;lt;init&amp;gt;(SpeechBot.java:25)
-        at cz.dynawest.speechbot.SpeechBot.main(SpeechBot.java:65)&lt;/pre&gt; 
-&lt;p&gt;After re-compiling KevinVoiceDirectory and storing it in jar, it&amp;nbsp;works.&lt;/p&gt; 
             </description>
         </item>
         <item>
@@ -687,128 +1379,6 @@ public class FuelInterceptor implements Interceptor, Untransformable {
 I have a garage: Garage with a car: Car &quot;Red Devil&quot; with 2 litres of fuel.&lt;/pre&gt; 
 &lt;h3 id=&quot;toc-sample-application&quot;&gt;Sample application&lt;/h3&gt; 
 &lt;p&gt;The application created in the examples above can be downloaded here: &lt;a href=&quot;download/JBossAOPsample.zip&quot;&gt;JBossAOPsample­.zip&lt;/a&gt;&lt;/p&gt; 
-            </description>
-        </item>
-        <item>
-            <title>Nabídka: Levný Java/JSP/J2EE
-hosting</title>
-            <link>https://www.zizka.ch/pages/programming/java/nabidka_levny_j2ee_jsp_hosting.html</link>
-            <pubDate>Tue, 31 Jul 2018 04:28:11 +0200</pubDate>
-            <guid isPermaLink="false">pages/programming/java/nabidka_levny_j2ee_jsp_hosting.html</guid>
-            <description>
-                 &lt;h2 class=&quot; jbakeExtractedTitle&quot; id=&quot;toc-nabidka-levny-java-jsp-j2ee-hosting&quot;&gt;Nabídka: Levný Java/JSP/J2EE hosting&lt;/h2&gt; 
-&lt;p&gt;S&amp;nbsp;pozvolným přechodem od PHP k&amp;nbsp;Javě a J2EE jsem narazil na problém&amp;nbsp;– kam s&amp;nbsp;ním?&lt;/p&gt; 
-&lt;p&gt;Řeč je o&amp;nbsp;nedostečné nabídce Java EE hostingů, a tedy nízká konkurence a z&amp;nbsp;toho plynoucí vysoké ceny. Nejsem si zcela jist, zda java hosting je na správu náročnější než např. &lt;acronym title=&quot;Linux, Apache, MySQL, PHP&quot;&gt;LAMP&lt;/acronym&gt;&amp;nbsp;– podle zkušeností kamaráda, který si hostuje sám, je to jednodušší&amp;nbsp;– prostě nainstalujete Apache Tomcat a hotovo.&lt;/p&gt; 
-&lt;p&gt;Pro upřesnění&amp;nbsp;– kamarádovi příliš nesedly aplikační servery (JBoss, IBM WebSphere, BEA WebLogic a další mamuti&amp;nbsp;– zjistil, že pro něj je lepší řešení Tomcat a všechny featury z&amp;nbsp;aplikačních serverů instaluje do Tomcatu jako jednotlivé moduly, případně je vkládá přímo do webové aplikace.&lt;/p&gt; 
-&lt;p&gt;Mě samotnému se ovšem o&amp;nbsp;server starat nechce&amp;nbsp;– znamenalo by to najít server housing, koupit server, naučit se dobře administrovat Linux, … a jak říká Honza Svoboda&amp;nbsp;– není možné dobře umět a dobře dělat všechno.&lt;/p&gt; 
-&lt;h3 id=&quot;toc-jak-jsem-k-java-hostingu-prisel&quot;&gt;Jak jsem k&amp;nbsp;Java hostingu přišel&lt;/h3&gt; 
-&lt;p&gt;S&amp;nbsp;jedním kamarádem, zavilým Céčkařem a PHPčkářem, jsme (také :-) vedli debatu o&amp;nbsp;&lt;a href=&quot;http://ondra.zizka.cz/stranky/programovani/php/vyhody_a_nevyhody_php.html&quot;&gt;výhodách a nevýhodách PHP&lt;/a&gt;. Tak jsme se dostali k&amp;nbsp;tomu, že já vyvíjím nějaké projektíky v&amp;nbsp;Javě, ale nemám je kam&amp;nbsp;dát.&lt;/p&gt; 
-&lt;p&gt;Kamarád měl tehdy zakoupený docela silný stroj (nějaké čtyřjádro s&amp;nbsp;8&amp;nbsp;GB paměti a čtyřmi SAS disky @ 10k RMP), který ovšem neměl jak využít, tak jsem na něm aspoň učil nějaké ty neuronové sítě z&amp;nbsp;mojí diplomky&amp;nbsp;:-)&lt;/p&gt; 
-&lt;p&gt;Později jsem se dozvěděl od několika známých, že s&amp;nbsp;Javou a J2EE mají podobný problém&amp;nbsp;– mají J2EE backend, k&amp;nbsp;němu by chtěli J2EE frontend, ale nenašli výhodný hosting a sami si hostovat nechtějí, a tak pro ně bylo cenově výhodnější sáhnout po &lt;a href=&quot;http://www.php.net&quot;&gt;nouzovém řešení&lt;/a&gt;.&lt;/p&gt; 
-&lt;p&gt;Využit kamarádův stroj a znalosti ke zřízení Java hostingu se samo nabízelo. Netrvalo dlouho a stroj se přesunul do server-housingové společnosti a objevila se na něm Java a Tomcat. Zatím na něm běží jen moje J2EE „pokusy“, a stroj lačně čeká na další využití&amp;nbsp;:-)&lt;/p&gt; 
-&lt;h3 id=&quot;toc-co-tedy-nabizim&quot;&gt;Co tedy nabízím?&lt;/h3&gt; 
-&lt;p&gt;Pokud byste chtěli na výše zmíněném serveru zkusit hostovat svoji J2EE aplikaci, můžete se ozvat a zprostředkuji kontakt.&lt;/p&gt; 
-&lt;p&gt;Možná by se někomu mohlo po přečtení předchozích odstavců zdát nedůvěryhodné dávat hosting „ke kamarádovi nějakého Ondry Žižky“&amp;nbsp;– ale tento kamarád pracuje jako správce sítě v&amp;nbsp;organizaci s&amp;nbsp;řádově několika tisíci počítači a programátor systému automatické správy této&amp;nbsp;sítě.&lt;/p&gt; 
-&lt;p&gt;Nemá však zkušenosti s&amp;nbsp;administrací Java hostingu, a proto to momentálně řešíme tak, že mám plný přístup k&amp;nbsp;Tomcatu a spravuji si&amp;nbsp;sám.&lt;/p&gt; 
-&lt;p&gt;Řešení vašeho hostingu by vypadalo podobně&amp;nbsp;– server by se nejspíše rozdělil na virtuální hostingy, ať už na úrovni Linuxu nebo Javy, a svůj virtuální hosting byste si spravovali&amp;nbsp;sami.&lt;/p&gt; 
-&lt;p&gt;Zkouška bude nejspíše zdarma&amp;nbsp;– podle dohody.&lt;/p&gt; 
-&lt;p&gt;Máte-li zájem, ozvěte se na &lt;a href=&quot;mailto:ondra@dynawest.cz&quot;&gt;ondra@
-  &lt;!-- --&gt;dynawest.cz&lt;/a&gt;, kamarád mě pověřil zpracováním „úvodního kontaktu“&amp;nbsp;:-)&lt;/p&gt; 
-            </description>
-        </item>
-        <item>
-            <title>Je Java jako Linux nebo jako
-Windows?</title>
-            <link>https://www.zizka.ch/pages/programming/php/je_java_jako_linux_nebo_jako_windows.html</link>
-            <pubDate>Tue, 31 Jul 2018 04:28:11 +0200</pubDate>
-            <guid isPermaLink="false">pages/programming/php/je_java_jako_linux_nebo_jako_windows.html</guid>
-            <description>
-                 &lt;h2 class=&quot; jbakeExtractedTitle&quot; id=&quot;toc-je-java-jako-linux-nebo-jako-windows&quot;&gt;Je Java jako Linux nebo jako Windows?&lt;/h2&gt; 
-&lt;!-- //Článek momentálně upravuji.// --&gt; 
-&lt;p&gt;&lt;em&gt;Přesunuto &lt;a href=&quot;/stranky/programovani/java/je_java_jako_linux_nebo_jako_windows.html&quot;&gt;sem&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt; 
-&lt;p&gt;Po napsání předchozího článku &lt;a href=&quot;vyhody_a_nevyhody_php.html&quot;&gt;Výhody a nevýhody PHP&lt;/a&gt; se ozval Jakub Vrána a chvíli jsme si mailovali nad některými body článku, což se, jak to bývá, stočilo na srovnání PHP s&amp;nbsp;technologií, kterou já preferuji&amp;nbsp;– tedy s&amp;nbsp;Javou.&lt;/p&gt; 
-&lt;p&gt;V&amp;nbsp;závěru jsme se dostali k&amp;nbsp;tomu, zda je Java nebo PHP podobnější Linuxu nebo Windows. Zde je část z&amp;nbsp;mailu:&lt;/p&gt; 
-&lt;blockquote&gt; 
- &lt;p&gt;Jednu věc nechápu a budu rád, když mi jako (předpokládám) fanda Linuxu vysvětlíš:&lt;/p&gt; 
- &lt;p&gt;Jak je možné, že lidé, kteří preferují Linux před Windows, zároveň preferují PHP před Javou. Protože pokud bychom zobecnili vlastnosti a požadavky na systémy a plaformy, potom právě Java oproti PHP by byla jako Linux oproti Windows&amp;nbsp;– technologicky vyspělejší, vývojově stabilnější, zpětně kompatibilnější, modulárnější, konfigurovatel­nější, víceúčelovější, a druhé ideologicky vykrádá první, přičemž to ani nezvládne dotáhnout do konce a zbyde jenom nedotažený hybrid zatížený historií svého vývoje.&lt;/p&gt; 
- &lt;p&gt;PHP se mi zdá jako takový rozjetý mnohakilometrový vlak tažený slabou mašinkou, ke kterému stále napojují další a další vagóny&amp;nbsp;– některé velice moderní, přepychové, a pokud jedete po rovince, vše je ok&amp;nbsp;– ale pak přijde kopeček a mašinka se sotva vleče; a pak i&amp;nbsp;v&amp;nbsp;těch nejpřepychovějších vagónech poznáte, že je něco špatně. (Mašinka zde nepředstavuje výkonnost, ale právě ono „jádro“.)&lt;/p&gt; 
- &lt;p&gt;Co je tedy podle tebe na PHP lepšího? Co tě k&amp;nbsp;němu táhne kromě citové vazby? (Tvoje zásluhy v&amp;nbsp;PHP komunitě zhruba znám a oceňuji, a chápu a znám z&amp;nbsp;vlastní zkušenosti, že z&amp;nbsp;takového rozjetého vlaku se velmi těžko vyskakuje.) Zkoušels někdy proniknout do J2EE? Znáš základní konceptuální rozdíly? Nechci tě nijak shazovat, jen mě zajímá, jestli se dokážeš vžít do mojí situace a pochopit tak, proč PHP tak „haním“.&lt;/p&gt; 
- &lt;p&gt;Zdraví Ondra Žižka&lt;/p&gt; 
-&lt;/blockquote&gt; 
-&lt;p&gt;Dovolím si zkopírovat Jakubovo resumé z&amp;nbsp;článku &lt;a href=&quot;http://php.vrana.cz/je-php-jako-linux-nebo-jako-windows.php&quot;&gt;Je PHP jako Linux nebo jako Windows?&lt;/a&gt;:&lt;/p&gt; 
-&lt;blockquote&gt; 
- &lt;h4 id=&quot;toc-jakub-vrana&quot;&gt;Jakub Vrána:&lt;/h4&gt; 
- &lt;p&gt;&lt;strong&gt;PHP a Linux&lt;/strong&gt;&amp;nbsp;– malé jádro, k&amp;nbsp;tomu volitelné jednoúčelové knihovny s&amp;nbsp;jednoduchým rozhraním.&lt;/p&gt; 
- &lt;p&gt;&lt;strong&gt;Java a Windows&lt;/strong&gt;&amp;nbsp;– vše v&amp;nbsp;jednom spravované přes komplexní objektové rozhraní.&lt;/p&gt; 
- &lt;h4 id=&quot;toc-ondrej-zizka&quot;&gt;Ondřej Žižka:&lt;/h4&gt; 
- &lt;p&gt;&lt;strong&gt;PHP a Windows&lt;/strong&gt; (z&amp;nbsp;pohledu programátora WinAPI): Silně proměnlivá technologie, v&amp;nbsp;lecčems zpětně nekompatibilní, počáteční návrh špatný a směřující k&amp;nbsp;lepšímu po vzoru lepších technologií, mnohé významné featury dodělávané ad hoc a nepřirozeně vmontované do návrhu.&lt;/p&gt; 
- &lt;p&gt;&lt;strong&gt;Java a Linux&lt;/strong&gt;: Stabilní technologie stavěná velmi rozvážně podle promyšleného návrhu dlouho laděného a diskutovaného mnoha IT firmami, silná a zaručená zpětná kompatibilita, standardizované API, mnoho různých použití (od embedded zařízení až po clusterované farmy serverů). Nejčastěji používaná rozšíření časem projdou procesem standardizace a začlení se do jádra, resp.&amp;nbsp;JRE.&lt;/p&gt; 
-&lt;/blockquote&gt; 
-&lt;p&gt;Jak někdo poznamenal v&amp;nbsp;tamějších komentářích, Jakub posuzuje z&amp;nbsp;pohledu technického, zatímco já se snažím spíše o&amp;nbsp;ideologické srovnání&amp;nbsp;– zkrátka principy, na kterých vývojáři a komunita dané technologie (ne)staví.&lt;/p&gt; 
-&lt;p&gt;A&amp;nbsp;to je z&amp;nbsp;dlouhodobého hlediska mnohem důležitější&amp;nbsp;– jistě chcete vyvíjet bez obav, že by příští major verze opět přinesla další sadu vlastností z&amp;nbsp;jiných jazyků chaoticky splácaných dohromady se stávající&amp;nbsp;verzí.&lt;/p&gt; 
-&lt;hr&gt; 
-&lt;p&gt;Aby byla debata co k&amp;nbsp;čemu, měli bychom tato hesla něčím podpořit, případně vyvrátit. Pusťme se do toho&amp;nbsp;:-)&lt;/p&gt; 
-&lt;h3 id=&quot;toc-male-jadro&quot;&gt;Malé jádro&lt;/h3&gt; 
-&lt;p&gt;Jak změřit velikost jádra? A&amp;nbsp;co je vůbec jádro? Řekněme, že je to ta část technologie, která je nezbytně nutná pro její&amp;nbsp;běh.&lt;/p&gt; 
-&lt;ul&gt; 
- &lt;li&gt;Binárky pro Java Virtual Machine (interpret Javy) nejnovější verze mají cca 6&amp;nbsp;MB, což zahrnuje mimo jiné nativní knihovny pro zobrazování desktop aplikací, práci se zvukem, fonty&amp;nbsp;atd.&lt;/li&gt; 
- &lt;li&gt;K&amp;nbsp;Javě patří ještě &lt;code&gt;rt.jar&lt;/code&gt;, což je balík, ve kterém jsou knihovny obsažené ve standardní distribuci. Z&amp;nbsp;toho se dá jako jádro počítat maximálně část z&amp;nbsp;nich.&lt;/li&gt; 
- &lt;li&gt;Jádro PHP, &lt;code&gt;php6ts.dll&lt;/code&gt;, má cca. 14&amp;nbsp;MB (standardní distribuce windows), a tento modul je dále nedělitelný.&lt;/li&gt; 
- &lt;li&gt;S&amp;nbsp;okolními knihovnami (kromě API pro Apache, ISAPI a NSAPI) má kolem 20&amp;nbsp;MB.&lt;/li&gt; 
- &lt;li&gt;&lt;code&gt;php5ts.dll&lt;/code&gt; má cca. 5&amp;nbsp;MB, a spolu s&amp;nbsp;okolními &lt;code&gt;.dll&lt;/code&gt; má asi 10&amp;nbsp;MB.&lt;/li&gt; 
-&lt;/ul&gt; 
-&lt;p&gt;Ale velikost dat není nejlepší ukazatel. Vyberme tedy jiné kritérium. Nabízí se možnost miniaturizace jádra technologie a složitost syntaxe, a Jakubem uvedená „komplexnost jádra“.&lt;/p&gt; 
-&lt;h3 id=&quot;toc-komplexnost-jadra&quot;&gt;Komplexnost jádra&lt;/h3&gt; 
-&lt;p&gt;Co se týká „ne/komplexnosti“ jádra, tak si nejsem zcela jist, jak rozlišit, co v&amp;nbsp;jádru je či&amp;nbsp;není.&lt;/p&gt; 
-&lt;p&gt;Pokud vím, v&amp;nbsp;jádru Javy je jen několik tříd typu Object, String, Throwable, dále nativní metody základních systémových tříd, a tím to hasne; drtivá většina funkcionality JRE je již implementovaná v&amp;nbsp;Javě a je oddělitelná.&lt;/p&gt; 
-&lt;p&gt;V&amp;nbsp;PHP je mnoho knihoven instalovatelných z&amp;nbsp;repozitáře PEAR, a většina těch, které jsou ve Windows verzi v&amp;nbsp;phpXts.dll, jsou na linuxu volitelné za cenu vlastní kompilace PHP. Nicméně nevolitelnou součástí jádra jsou funkce jako &lt;code&gt;money_format()&lt;/code&gt;, &lt;code&gt;apache_note()&lt;/code&gt; nebo &lt;code&gt;highlight_file()&lt;/code&gt;, na kterých jistě technologie závislá&amp;nbsp;není.&lt;/p&gt; 
-&lt;p&gt;V&amp;nbsp;tomto je tedy Linuxu podobnější Java, který v&amp;nbsp;jádru obsahuje pouze to nutné (ať už pro funkčnost systému nebo kvůli výkonu).&lt;/p&gt; 
-&lt;p&gt;Že by Java obsahovala vše v&amp;nbsp;jednom je vyvráceno, a za „all-in-one“ technologii se dá považovat spíše&amp;nbsp;PHP.&lt;/p&gt; 
-&lt;h4 id=&quot;toc-windows-a-vse-v-jednom&quot;&gt;Windows a „vše v&amp;nbsp;jednom“&lt;/h4&gt; 
-&lt;p&gt;U&amp;nbsp;té architektury Windows bych řekl, že se Jakub seknul;
- &lt;!-- Dovolil bych si polemizovat i o &quot;komplexnosti&quot; jádra Windows --&gt; od verzí NT až po XP (Visty neznám) je systém poměrně modulárni a dá se očesat skoro až na&amp;nbsp;HAL.&lt;/p&gt; 
-&lt;p&gt;Stejně tak předchozí verze Windows&amp;nbsp;– existuje mnoho různých amatérských minidistribucí Windows 98 (bohužel teď je nenajdu).&lt;/p&gt; 
-&lt;p&gt;„spravované přes komplexní objektové rozhraní“&amp;nbsp;– to nevím, co tím Jakub u&amp;nbsp;Windows myslel. Na WinAPI není objektového nic, to je čisté&amp;nbsp;C.&lt;/p&gt; 
-&lt;h3 id=&quot;toc-moznost-miniaturizace-jadra&quot;&gt;Možnost miniaturizace jádra&lt;/h3&gt; 
-&lt;p&gt;Až teprve v&amp;nbsp;extrémních podmínkách se ukáže, co vše lze z „jádra“ vypustit, aby technologie stále byla sama&amp;nbsp;sebou.&lt;/p&gt; 
-&lt;p&gt;Takovými podmínkami jsou například mobilní telefony. Java šlape i&amp;nbsp;na telefonech jako jsou několik let staré mobily Nokia. Zde se velikost jádra těžko určí, protože implementace je do jisté míry hardwarová.&lt;/p&gt; 
-&lt;p&gt;Naproti tomu nejmenší mě známý výskyt PHP je verze PHP pro servery Novell, která je osekaná o&amp;nbsp;leccos, a přesto má hlavní knihovna stále několik&amp;nbsp;MB.&lt;/p&gt; 
-&lt;p&gt;Řekl bych, že tím je v&amp;nbsp;tomto bodě jasno&amp;nbsp;– malé jádro a mnoho volitelných knihoven jednoznačně pasuje spíše na&amp;nbsp;Javu.&lt;/p&gt; 
-&lt;p&gt;//Update:// O&amp;nbsp;tom, že Java je skutečně univerzální, se můžete přesvědčit např. na &lt;a href=&quot;http://www.knihy.cpress.cz/BookDoc.asp?BookID=160&amp;amp;DocID=626&amp;amp;DownloadSection=12&quot;&gt;http://www.knihy.cpress.cz/BookDoc.asp?…&lt;/a&gt;, kde najdete publikaci pro grafiky, která se věnuje se programování skeneru pomocí&amp;nbsp;Javy.&lt;/p&gt; 
-&lt;h3 id=&quot;toc-slozitost-syntaxe-php-a-javy&quot;&gt;Složitost syntaxe PHP a Javy&lt;/h3&gt; 
-&lt;p&gt;Syntaxe Java oproti syntaxi PHP:&lt;/p&gt; 
-&lt;ul&gt; 
- &lt;li&gt;Nemá &amp;amp; reference&lt;/li&gt; 
- &lt;li&gt;Není zde @ na umlčení&lt;/li&gt; 
- &lt;li&gt;Nenahrazují se proměnné ve stringu&lt;/li&gt; 
- &lt;li&gt;Nejsou zde věci typu __call, __autoload a další __*&lt;/li&gt; 
- &lt;li&gt;Nemá # komentáře&lt;/li&gt; 
- &lt;li&gt;Nemá &lt;code&gt;systémová volání&lt;/code&gt;&lt;/li&gt; 
- &lt;li&gt;Nemá podivné konstrukce typu Array($objekt, „VolanáMetoda“)&lt;/li&gt; 
- &lt;li&gt;Nemá konstrukty, které se tváří jako funkce, ale nejsou&amp;nbsp;funkce&lt;/li&gt; 
- &lt;li&gt;Nemá operátory and, or, xor, !==, ===&lt;/li&gt; 
- &lt;li&gt;Nemá konstrukty require, require_once, include_once, declare&lt;/li&gt; 
- &lt;li&gt;Nemá alternativní zápis kontrolních struktur s&amp;nbsp;dvojtečkou&lt;/li&gt; 
- &lt;li&gt;Nemá &lt;code&gt;global&lt;/code&gt;&lt;/li&gt; 
- &lt;li&gt;Nemá &lt;code&gt;$GLOBALS&lt;/code&gt;, &lt;code&gt;$_GET&lt;/code&gt;, &lt;code&gt;$_POST&lt;/code&gt;, &lt;code&gt;$_COOKIE&lt;/code&gt;, &lt;code&gt;$_FILES&lt;/code&gt;, &lt;code&gt;$_ENV&lt;/code&gt;,&amp;nbsp;&lt;code&gt;$_REQUEST&lt;/code&gt;&lt;/li&gt; 
-&lt;/ul&gt; 
-&lt;p&gt;Naopak:&lt;/p&gt; 
-&lt;ul&gt; 
- &lt;li&gt;Má @anotace&lt;/li&gt; 
- &lt;li&gt;Má generické &amp;lt;typy&amp;gt;&lt;/li&gt; 
- &lt;li&gt;Má navíc klíčová slova pro různé účely (synchronized, transient, enum, volatile a&amp;nbsp;další)&lt;/li&gt; 
-&lt;/ul&gt; 
-&lt;p&gt;Java syntaxe je jednodušší než syntaxe PHP.&lt;/p&gt; 
-&lt;h3 id=&quot;toc-zaver&quot;&gt;Závěr&lt;/h3&gt; 
-&lt;p&gt;Co se tedy týký připodobnění Javy a PHP k&amp;nbsp;Linuxu a Windows, není mnoho argumentů, proč PHP připodobňovat k&amp;nbsp;Linuxu a Javu k&amp;nbsp;Windows&amp;nbsp;– spíše naopak.&lt;/p&gt; 
-&lt;p&gt;PHP je prostě na ocasu vývoje a s&amp;nbsp;velkými obtížemi adoptuje vymoženosti jiných technologií (OOP, Unicode, výjimky, synchronizaci a sdílení, …)&amp;nbsp;– stejně jako Windows.&lt;/p&gt; 
-&lt;p&gt;Naproti tomu Java je spolu s&amp;nbsp;C# a .NET na špičce vývoje na poli IT, podobně jako Linux na poli&amp;nbsp;OS.&lt;/p&gt; 
-&lt;hr&gt; 
-&lt;p&gt;Jako tečku cituji člověka, který má PHP opravdu v&amp;nbsp;malíku (a autora skvělého Texy!)&amp;nbsp;– Davida Grudla:&lt;/p&gt; 
-&lt;blockquote&gt; 
- &lt;p&gt;Programovat v&amp;nbsp;Javě umí kdekdo. O&amp;nbsp;ASP.NET ani nemluvě. Jen v&amp;nbsp;PHP píši skuteční hrdinové. Renesanční bytosti. Fascinující a neskutečně trpěliví lidé. Trpěliví od slova trpět. Třeba jako&amp;nbsp;já.&lt;/p&gt; 
- &lt;p style=&quot;text-align:right&quot;&gt;-- David Grudl, &lt;a href=&quot;http://latrine.dgx.cz/php-surprise&quot;&gt;http://latrine.dgx.cz/php-surprise&lt;/a&gt;&lt;/p&gt; 
-&lt;/blockquote&gt; 
             </description>
         </item>
         <item>
@@ -1599,68 +2169,6 @@ catch( IOException ex ){
             </description>
         </item>
         <item>
-            <title>Programování</title>
-            <link>https://www.zizka.ch/pages/programming/index.html</link>
-            <pubDate>Tue, 31 Jul 2018 04:28:11 +0200</pubDate>
-            <guid isPermaLink="false">pages/programming/index.html</guid>
-            <description>
-                 &lt;h2 class=&quot; jbakeExtractedTitle&quot; id=&quot;toc-programovani&quot;&gt;Programování&lt;/h2&gt; 
-&lt;p&gt;V&amp;nbsp;sekci &lt;em&gt;Programování&lt;/em&gt; najdete texty, které vyprodukuji na toto téma. To zahrnuje nejen jazyky a technologie jako PHP, Java a J2EE, C# a .NET, XSLT, SQL, ale i&amp;nbsp;různá paradigmata (OOP, AOP) a oblasti výzkumu (neuronové&amp;nbsp;sítě).&lt;/p&gt; 
-&lt;h3 id=&quot;toc-obecne&quot;&gt;Obecně&lt;/h3&gt; 
-&lt;ul&gt; 
- &lt;li&gt;&lt;a href=&quot;web_javascript_ajax_canvas/webttd.html&quot;&gt;WebTTD&lt;/a&gt;&amp;nbsp;– browser-based Transport Tycoon clone&amp;nbsp;idea.&lt;/li&gt; 
- &lt;li&gt;&lt;a href=&quot;insolvencni_rejstrik-isir_ws/index.html&quot;&gt;Insolvenční rejstřík&amp;nbsp;– ISIR WS&lt;/a&gt;&amp;nbsp;– Zkušenosti s&amp;nbsp;webovou službou Insolvenčního rejstříku.&lt;/li&gt; 
- &lt;li&gt;&lt;a href=&quot;vybiram_jazyk_pro_systemove_skriptovani.html&quot;&gt;Hledám jazyk pro systémové skriptování.&lt;/a&gt;&lt;/li&gt; 
- &lt;li&gt;&lt;a href=&quot;linux-switch-script-alternatives-eselect.html&quot;&gt;Linux: Bash generic script to switch versions&lt;/a&gt;&amp;nbsp;– (like &lt;code&gt;alternatives&lt;/code&gt; and Gentoo&apos;s &lt;code&gt;eselect&lt;/code&gt;)&lt;/li&gt; 
-&lt;/ul&gt; 
-&lt;h4 id=&quot;toc-linux-filesystem-cache-flush&quot;&gt;Linux filesystem cache flush&lt;/h4&gt; 
-&lt;pre class=&quot;lang-text brush: text&quot;&gt;# Will clear all the fs cache. Do a ’sync’ before to flush more caches.
-echo 1 &amp;gt; /proc/sys/vm/drop_caches&lt;/pre&gt; 
-&lt;p&gt;&lt;a href=&quot;http://mtj.wordpress.com/2006/10/18/clearing-linux-filesystem-read-cache/&quot;&gt;http://mtj.wordpress.com/…-read-cache/&lt;/a&gt;&lt;/p&gt; 
-&lt;h3 id=&quot;toc-java&quot;&gt;Java&lt;/h3&gt; 
-&lt;ul&gt; 
- &lt;li&gt;&lt;a href=&quot;java/index.html&quot;&gt;Novinky, postřehy&lt;/a&gt;&lt;/li&gt; 
- &lt;li&gt;&lt;a href=&quot;java/navod-java_zacatky.html&quot;&gt;Úplné začátky v&amp;nbsp;Javě&lt;/a&gt;&amp;nbsp;– návod na přeložení &lt;code&gt;.java&lt;/code&gt; zdrojáku na &lt;code&gt;.class&lt;/code&gt; a jeho spuštění.&lt;/li&gt; 
- &lt;li&gt;&lt;a href=&quot;java/navod-j2ee_uvod.html&quot;&gt;Úvod do J2EE&lt;/a&gt;&amp;nbsp;– zde se dozvíte, co je J2EE.&lt;/li&gt; 
- &lt;li&gt;&lt;a href=&quot;java/hibernate_netbeans_howto_tutorial.html&quot;&gt;Hibernate super-quick start in NetBeans&lt;/a&gt;&lt;/li&gt; 
- &lt;li&gt;&lt;a href=&quot;java/navod-spring-framework-zacatky.html&quot;&gt;Úplné začátky s&amp;nbsp;frameworkem Spring&lt;/a&gt;&amp;nbsp;– návod, jak začít se Springem a ukázka, k&amp;nbsp;čemu Spring&amp;nbsp;je.&lt;/li&gt; 
- &lt;li&gt;&lt;a href=&quot;java/tipy.html&quot;&gt;Tipy pro Java technologie&lt;/a&gt;&lt;/li&gt; 
- &lt;li&gt;&lt;a href=&quot;java/texy_java_implementation.html&quot;&gt;JTexy!&amp;nbsp;– Java Texy! Implementation&lt;/a&gt;&lt;/li&gt; 
- &lt;li&gt;Moje historická &lt;a href=&quot;/java&quot;&gt;Java stránka&lt;/a&gt;&lt;/li&gt; 
-&lt;/ul&gt; 
-&lt;h3 id=&quot;toc-php&quot;&gt;PHP&lt;/h3&gt; 
-&lt;ul&gt; 
- &lt;li&gt;&lt;a href=&quot;php/vyhody_a_nevyhody_php.html&quot;&gt;Výhody a nevýhody PHP&lt;/a&gt;&amp;nbsp;– pokus o&amp;nbsp;souhrn výhod a nevýhod&amp;nbsp;PHP.&lt;/li&gt; 
- &lt;li&gt;&lt;a href=&quot;php/je_java_jako_linux_nebo_jako_windows.html&quot;&gt;Je Java jako Linux nebo jako Windows?&lt;/a&gt;&amp;nbsp;– polemika s&amp;nbsp;článkem Jakuba&amp;nbsp;Vrány.&lt;/li&gt; 
- &lt;li&gt;&lt;a href=&quot;php/vysledek_nasazeni_php_aneb_navrch_huj_uvnitr_fuj.html&quot;&gt;Výsledek nasazení PHP aneb Navrch huj, uvnitř fuj&lt;/a&gt;&amp;nbsp;– ukázka přímých důsledků nedostatků PHP v&amp;nbsp;praxi.&lt;/li&gt; 
- &lt;li&gt;&lt;a href=&quot;php/nevyhody_php_v_praktickych_prikladech.html&quot;&gt;Nevýhody PHP v&amp;nbsp;praktických příkladech&lt;/a&gt;&amp;nbsp;– konkrétní rozvedení některých bodů ze seznamu nevýhod&amp;nbsp;PHP.&lt;/li&gt; 
- &lt;li&gt;&lt;a href=&quot;php/dalsi_nesmysl_v_php.html&quot;&gt;Další ukázka ‚krás‘ PHP&lt;/a&gt;&lt;/li&gt; 
-&lt;/ul&gt; 
-&lt;h3 id=&quot;toc-sql-a-mysql&quot;&gt;SQL a MySQL&lt;/h3&gt; 
-&lt;ul&gt; 
- &lt;li&gt;&lt;a href=&quot;http://ondra.zizka.cz/stranky/programovani/sql/index.html&quot;&gt;SQL Corner&lt;/a&gt; (mostly in english)&lt;/li&gt; 
-&lt;/ul&gt; 
-&lt;h3 id=&quot;toc-web-javascript-ajax-canvas&quot;&gt;Web, JavaScript, AJAX, Canvas&lt;/h3&gt; 
-&lt;ul&gt; 
- &lt;li&gt;&lt;a href=&quot;web_javascript_ajax_canvas/index.html&quot;&gt;Index page&lt;/a&gt;&lt;/li&gt; 
- &lt;li&gt;&lt;a href=&quot;web_javascript_ajax_canvas/webttd.html&quot;&gt;WebTTD&lt;/a&gt;&amp;nbsp;– browser-based Transport Tycoon clone&amp;nbsp;idea.&lt;/li&gt; 
- &lt;li&gt;I&apos;ve made up a &lt;a href=&quot;javascript-isometric-libraries.html&quot;&gt;list of JavaScript libs for isometric rendering&lt;/a&gt;.&lt;/li&gt; 
- &lt;li&gt;&lt;a href=&quot;web_javascript_ajax_canvas/canvas_element_selection_buffer.html&quot;&gt;Canvas element selection buffer&lt;/a&gt;&lt;/li&gt; 
- &lt;li&gt;&lt;a href=&quot;/tools&quot;&gt;Text tools&lt;/a&gt;&amp;nbsp;– Very simple interface for several text functions like &lt;code&gt;md5()&lt;/code&gt;&amp;nbsp;etc.&lt;/li&gt; 
-&lt;/ul&gt; 
-&lt;h3 id=&quot;toc-neural-networks-and-artifical-intelligence-in-general&quot;&gt;Neural Networks and Artifical Intelligence in General&lt;/h3&gt; 
-&lt;ul&gt; 
- &lt;li&gt;&lt;a href=&quot;programovani/artificial_intelligence/index.html&quot;&gt;Neural Networks&lt;/a&gt;&lt;/li&gt; 
- &lt;li&gt;&lt;a href=&quot;/projekty/ai/piskvorky/overview.html&quot;&gt;Criss-cross&lt;/a&gt;&amp;nbsp;– a school project. An attempt for a AI for the criss-cross game, with re-inforcement learning.&lt;/li&gt; 
- &lt;li&gt;&lt;a href=&quot;/projekty/imagenetics/index.html&quot;&gt;Imagenetics&lt;/a&gt;&amp;nbsp;– Images generated by genetic algorithms, rated by the user (that means, you&amp;nbsp;:-)&lt;/li&gt; 
-&lt;/ul&gt; 
-&lt;h3 id=&quot;toc-ruzne&quot;&gt;Různé&lt;/h3&gt; 
-&lt;ul&gt; 
- &lt;li&gt;&lt;a href=&quot;cache_objectscript_nejhorsi_jazyk_na_svete.html&quot;&gt;Caché ObjectScript&amp;nbsp;– nejhorší jazyk na světě&lt;/a&gt;&lt;/li&gt; 
-&lt;/ul&gt; 
-            </description>
-        </item>
-        <item>
             <title>JBoss
 Microcontainer with JBoss AOP – Howto with sample application</title>
             <link>https://www.zizka.ch/pages/programming/java/jboss-aop-howto-example-standalone-app.html</link>
@@ -1998,199 +2506,6 @@ Canvas</title>
 &lt;h3 id=&quot;toc-webttd-browser-based-transport-tycoon-clone-idea&quot;&gt;&lt;a href=&quot;web_javascript_ajax_canvas/webttd.html&quot;&gt;WebTTD&lt;/a&gt;&amp;nbsp;– browser-based Transport Tycoon clone&amp;nbsp;idea.&lt;/h3&gt; 
 &lt;h3 id=&quot;toc-canvas-element-selection-buffer&quot;&gt;&lt;code&gt;canvas&lt;/code&gt; element selection buffer&lt;/h3&gt; 
 &lt;p&gt;&lt;a href=&quot;canvas_element_selection_buffer.texy&quot;&gt;English&lt;/a&gt;, &lt;a href=&quot;canvas_element_selection_buffer.cz.html&quot;&gt;česky&lt;/a&gt;&lt;/p&gt; 
-            </description>
-        </item>
-        <item>
-            <title>Ondřej
-Žižka – Diplomová práce – Návod na zprovoznění</title>
-            <link>https://www.zizka.ch/pages/diplomka/diplomka-navod_na_zprovozneni.html</link>
-            <pubDate>Tue, 31 Jul 2018 04:28:11 +0200</pubDate>
-            <guid isPermaLink="false">pages/diplomka/diplomka-navod_na_zprovozneni.html</guid>
-            <description>
-                 &lt;h2 class=&quot; jbakeExtractedTitle&quot; id=&quot;toc-ondrej-zizka-diplomova-prace-navod-na-zprovozneni&quot;&gt;Ondřej Žižka&amp;nbsp;– Diplomová práce&amp;nbsp;– Návod na zprovoznění&lt;/h2&gt; 
-&lt;h3 id=&quot;toc-sql-skripty&quot;&gt;SQL skripty&lt;/h3&gt; 
-&lt;p&gt;Všechen SQL kód potřebný ke vytvoření databáze je v&amp;nbsp;adresáři sql/ v&amp;nbsp;těchto souborech:&lt;/p&gt; 
-&lt;ul&gt; 
- &lt;li&gt;&lt;code&gt;JR - Procedury a funkce pro DP.sql&lt;/code&gt;&lt;/li&gt; 
- &lt;li&gt;&lt;code&gt;JR - Tabulky s importovanými daty pro DP.sql&lt;/code&gt;&lt;/li&gt; 
- &lt;li&gt;&lt;code&gt;JR - Tabulky s převedenými daty pro DP.sql&lt;/code&gt;&lt;/li&gt; 
- &lt;li&gt;&lt;code&gt;NN - Procedury a funkce pro DP.sql&lt;/code&gt;&lt;/li&gt; 
- &lt;li&gt;&lt;code&gt;NN - Tabulky s daty.sql&lt;/code&gt;&lt;/li&gt; 
-&lt;/ul&gt; 
-&lt;p&gt;Soubory s&amp;nbsp;předponou &lt;code&gt;NN&lt;/code&gt; obsahují SQL pro rekonstrukci implementace neuronových sítí. Soubory s&amp;nbsp;předponou &lt;code&gt;JR&lt;/code&gt; obsahují SQL pro vytvoření databáze jízdních řádů a příslušných uložených procedur.&lt;/p&gt; 
-&lt;p&gt;Další dva soubory obsahují ukázkové naučené neuronové&amp;nbsp;sítě:&lt;/p&gt; 
-&lt;ul&gt; 
- &lt;li&gt;&lt;code&gt;JR NN - Naučená síť pro zastávku 5.sql&lt;/code&gt;&lt;/li&gt; 
- &lt;li&gt;&lt;code&gt;NN - Naučená síť XOR.sql&lt;/code&gt;&lt;/li&gt; 
-&lt;/ul&gt; 
-&lt;h3 id=&quot;toc-instalace-mysql-vytvoreni-databazi-a-nastaveni-prav&quot;&gt;Instalace MySQL, vytvoření databází a nastavení práv&lt;/h3&gt; 
-&lt;p&gt;Nejprve je třeba nainstalovat standardní distribuci MySQL 5.0&amp;nbsp;nebo vyšší (&lt;a href=&quot;http://dev.mysql.com/downloads/mysql/5.0.html#downloads&quot;&gt;stahujte zde&lt;/a&gt;).&lt;/p&gt; 
-&lt;p&gt;Poté je třeba vytvořit dvě databáze a nastavit uživatelská práva pro uživatele, který je bude používat. Následující kód vytvoří databáze &lt;code&gt;neural_network&lt;/code&gt; a &lt;code&gt;jizdnirady_cb&lt;/code&gt; a nastaví veškerá práva k&amp;nbsp;nim uživateli &lt;code&gt;OndrejZizka&lt;/code&gt;, který se může připojit odkudkoliv&amp;nbsp;(‚%‘):&lt;/p&gt; 
-&lt;pre class=&quot;brush: lang-sql brush: sql&quot;&gt;CREATE DATABASE neural_network;
-CREATE DATABASE jizdnirady_cb;
-GRANT ALL ON neural_network.* TO OndrejZizka@&apos;%&apos; IDENTIFIED BY &apos;BezpecneHeslo&apos;;
-GRANT ALL ON jizdnirady_cb.*  TO OndrejZizka@&apos;%&apos; IDENTIFIED BY &apos;BezpecneHeslo&apos;;&lt;/pre&gt; 
-&lt;p&gt;Tyto úkony lze pohodlně provést v&amp;nbsp;GUI nástroji MySQL Administrator, případně vykonat SQL příkazy v&amp;nbsp;nástroji MySQL Query Browser, viz&amp;nbsp;níže.&lt;/p&gt; 
-&lt;h3 id=&quot;toc-rekonstrukce-databaze-z-sql-souboru&quot;&gt;Rekonstrukce databáze z&amp;nbsp;SQL souborů&lt;/h3&gt; 
-&lt;p&gt;SQL skripty jsou vytvořené nástrojem MySQL Administator, oficiálním nástrojem pro administraci databázového systému MySQL (&lt;a href=&quot;http://dev.mysql.com/downloads/gui-tools/5.0.html&quot;&gt;stahujte zde&lt;/a&gt;).&lt;/p&gt; 
-&lt;p&gt;Nejsnazší cesta, jak z&amp;nbsp;nich vytvořit svoji kopii databáze, je použít právě tento nástroj. Nezkoušejte načíst procedury v&amp;nbsp;nástroji &lt;em&gt;phpMyAdmin&lt;/em&gt;&amp;nbsp;– ten je plný chyb a nezvládne skripty správně přeparsovat.&lt;/p&gt; 
-&lt;p&gt;&lt;strong&gt;Pozor!&lt;/strong&gt; Pokud se vaše databáze pro neuronové sítě nejmenuje &lt;code&gt;neural_network&lt;/code&gt;, &lt;strong&gt;je nutné ručně upravit SQL skript ukládaných procedur pro databázi jízdní řády!&lt;/strong&gt; Toto se bohužel nedá v&amp;nbsp;současné verzi MySQL nijak obejít.&lt;/p&gt; 
-&lt;p&gt;Úpravu proveďte takto:&lt;/p&gt; 
-&lt;ol&gt; 
- &lt;li&gt;Otevřete soubor &lt;code&gt;JR - Procedury a funkce pro DP.sql&lt;/code&gt; v&amp;nbsp;editoru, který zvládá kódování UTF-8&amp;nbsp;bez signatury (pro Windows např. Visual Studio nebo PSpad).&lt;/li&gt; 
- &lt;li&gt;Nahraďte veškeré výskyty řetězce &lt;code&gt;neural_network.&lt;/code&gt; názvem vaší databáze a tečkou.&lt;/li&gt; 
- &lt;li&gt;Uložte soubor v&amp;nbsp;kódování UTF-8&amp;nbsp;bez signatury (na obrázku je ukázka uložení ve Visual Studiu).&lt;/li&gt; 
-&lt;/ol&gt; 
-&lt;div&gt;
- &lt;img alt=&quot;&quot; src=&quot;https://www.zizka.ch/pages/diplomka/navod/MSVS-Uprava_SQL_Skriptu_JR-ramecky.png&quot;&gt;
-&lt;/div&gt; 
-&lt;p&gt;Poté upravenou verzi skriptu načtěte do MySQL místo původní&amp;nbsp;verze.&lt;/p&gt; 
-&lt;div&gt;
- &lt;img alt=&quot;&quot; src=&quot;https://www.zizka.ch/pages/diplomka/navod/MySQL_Administrator-01.png&quot;&gt; 
- &lt;img alt=&quot;&quot; src=&quot;https://www.zizka.ch/pages/diplomka/navod/MySQL_Administrator-02.png&quot;&gt;
-&lt;/div&gt; 
-&lt;h3 id=&quot;toc-prohlizeni-dat&quot;&gt;Prohlížení dat&lt;/h3&gt; 
-&lt;p&gt;Výše jmenovaný balík GUI nástrojů zahrnuje také MySQL Query Browser, šikovný nástroj pro práci s&amp;nbsp;databázovým systémem&amp;nbsp;MySQL.&lt;/p&gt; 
-&lt;div&gt;
- &lt;img alt=&quot;&quot; src=&quot;https://www.zizka.ch/pages/diplomka/navod/MySQL_Query_Browser-01-B.png&quot;&gt;
-&lt;/div&gt; 
-&lt;p&gt;Výčet jeho vlastností a dovedností je dlouhý. My se pro účely demonstrace kódu této diplomové práce omezíme na podstatné.&lt;/p&gt; 
-&lt;p&gt;Po spuštění stiskněte &lt;code&gt;F11&lt;/code&gt;&amp;nbsp;– to zvětší konzoli pro SQL příkazy.&lt;/p&gt; 
-&lt;p&gt;Nejprve předznamenejme, že MySQL používá koncept „aktuálně vybrané databáze“. Pokud voláte nějakou proceduru nebo pracujete s&amp;nbsp;tabulkou, ujistěte se, že buď používáte plně kvalifikované jméno, nebo se daný objekt nachází ve vybrané databázi.&lt;/p&gt; 
-&lt;p&gt;SQL příkazy vykonáváte tak, že na něj najedete kurzorem (nikoliv ukazatelem myši) a stisknete Ctrl + Enter. Výsledek (resultset) se zobrazí v&amp;nbsp;dolní&amp;nbsp;části&lt;/p&gt; 
-&lt;p&gt;Můžete prozkoumat obsah tabulek jízdních řádů těmito SQL příkazy:&lt;/p&gt; 
-&lt;pre class=&quot;brush: lang-sql brush: sql&quot;&gt;SELECT * FROM mhd_jizdy LIMIT 100;
-SELECT * FROM mhd_jizdy_stani LIMIT 100;
-SELECT * FROM mhd_linky;
-SELECT * FROM mhd_kody;
-SELECT * FROM mhd_trasy LIMIT 100;
-SELECT * FROM mhd_trasy_uzly LIMIT 100;
-SELECT * FROM mhd_zast LIMIT 100;&lt;/pre&gt; 
-&lt;p&gt;Zde je například výpis zastávek a jejich geografických&amp;nbsp;po­zic:&lt;/p&gt; 
-&lt;div&gt;
- &lt;img alt=&quot;&quot; src=&quot;https://www.zizka.ch/pages/diplomka/navod/QB-Zastavky.png&quot;&gt;
-&lt;/div&gt; 
-&lt;p&gt;Po importu dat z&amp;nbsp;výše uvedených souborů obsahují tabulky všechna data jízdních řádů, na kterých jsme kód testovali.&lt;/p&gt; 
-&lt;p&gt;Z&amp;nbsp;tabulek je možné vhodnými SELECTy získat jakékoliv informace, které chceme znát&amp;nbsp;– například:&lt;/p&gt; 
-&lt;ul&gt; 
- &lt;li&gt;trasy projíždějící danou zastávkou a počet zastávek do konce příslušné&amp;nbsp;trasy&lt;/li&gt; 
- &lt;li&gt;zastávky dané trasy&lt;/li&gt; 
- &lt;li&gt;zastávky a časy stání dané jíždy&lt;/li&gt; 
- &lt;li&gt;odjezdy spojů dané linky z&amp;nbsp;dané zastávky&lt;/li&gt; 
- &lt;li&gt;první následující jízda přijízdějící do dané zastávky od daného okamžiku&lt;/li&gt; 
-&lt;/ul&gt; 
-&lt;p&gt;Zde je ukázka výpisu všech linek projíždějících zastávkou Žižkova:&lt;/p&gt; 
-&lt;div&gt;
- &lt;img alt=&quot;&quot; src=&quot;https://www.zizka.ch/pages/diplomka/navod/QB-Linky_projizdejici_zastavkou_Zizkova.png&quot;&gt;
-&lt;/div&gt; 
-&lt;p&gt;Tabulky neuronových sítí prozkoumáte takto:&lt;/p&gt; 
-&lt;pre class=&quot;brush: lang-sql brush: sql&quot;&gt;SELECT * FROM neural_network.nn_networks;
-SELECT * FROM neural_network.nn_net_neurons;
-SELECT * FROM neural_network.nn_net_synapses;&lt;/pre&gt; 
-&lt;p&gt;Po importu obsahují tabulky několik testovacích neuronových&amp;nbsp;sítí.&lt;/p&gt; 
-&lt;p&gt;Ladící zprávy pro algoritmy jízdních řádů, resp. neuronových sítí, najdete v&amp;nbsp;tabulkách &lt;code&gt;neural_network.lib_logg&lt;/code&gt;, resp. &lt;code&gt;jizdnirady_cb.lib_logg&lt;/code&gt;:&lt;/p&gt; 
-&lt;pre class=&quot;brush: lang-sql brush: sql&quot;&gt;SELECT * FROM neural_network.lib_logg;
-SELECT * FROM jizdnirady_cb.lib_logg;&lt;/pre&gt; 
-&lt;h3 id=&quot;toc-volani-api&quot;&gt;Volání API&lt;/h3&gt; 
-&lt;p&gt;Jak se konkrétní procedury používají je popsáno jednak v&amp;nbsp;technické zprávě diplomové práce, jednak v&amp;nbsp;komentářích v&amp;nbsp;kódu jednotlivých procedur, a také na webu autora&amp;nbsp;– &lt;a href=&quot;http://ondra.zizka.cz/stranky/programovani/transport_schedule_search/index.html&quot;&gt;jízdní řády&lt;/a&gt;, &lt;a href=&quot;http://ondra.zizka.cz/stranky/programovani/neural_networks_in_sql_stored_procedures/index.html&quot;&gt;neuronové sítě&lt;/a&gt;.&lt;/p&gt; 
-&lt;p&gt;Proto zde jen několik příkladů, jak SQL příkazy používat.&lt;/p&gt; 
-&lt;p&gt;Standardně Query Browser po každém dotazu uzavře spojení s&amp;nbsp;DB. Proto nejprve spusťte transakci&amp;nbsp;– dočasné tabulky tak zůstanou k&amp;nbsp;dispozici po volání procedury. Transakci spustíte buď příkazem &lt;code&gt;START TRANSACTION;&lt;/code&gt; (a stisknutím &lt;code&gt;Ctrl+Enter&lt;/code&gt;) nebo tlačítkem &lt;em&gt;Transaction&lt;/em&gt; v&amp;nbsp;horním pruhu programu. Vedle něj se po spustění transakce objeví tlačítka pro potvrzení nebo zrušení transakce. Stejného efektu lze docílit provedením příkazů &lt;code&gt;COMMIT;&lt;/code&gt; nebo &lt;code&gt;ROLLBACK;&lt;/code&gt;.&lt;/p&gt; 
-&lt;h4 id=&quot;toc-kod-pro-vyhledavani-v-jizdnich-radech&quot;&gt;Kód pro vyhledávání v&amp;nbsp;jízdních řádech&lt;/h4&gt; 
-&lt;pre class=&quot;brush: lang-sql brush: sql&quot;&gt;-- Vyhledání spoje ze zastávky 115 do zastávky 465, maximálně 2 přestupy.
-CALL mhd_VyhledejSpoje(115, 465, NOW(), 3);
-SELECT * FROM mhd_VyhledejSpoje ORDER BY pos;&lt;/pre&gt; 
-&lt;p&gt;Zde je ukázka vyhledání spojů mezi zastávkami &lt;em&gt;Žižkova&amp;nbsp;– Budvar&amp;nbsp;– U&amp;nbsp;pily&amp;nbsp;– Nemocnice&amp;nbsp;– U&amp;nbsp;chromých&lt;/em&gt;:&lt;/p&gt; 
-&lt;div&gt;
- &lt;img alt=&quot;&quot; src=&quot;https://www.zizka.ch/pages/diplomka/navod/QB-Spoje-Zizkova-U_Chromych.png&quot;&gt;
-&lt;/div&gt; 
-&lt;h4 id=&quot;toc-kod-pro-neuronove-site&quot;&gt;Kód pro neuronové sítě&lt;/h4&gt; 
-&lt;p&gt;Se sítěmi lze provádět v&amp;nbsp;podstatě tři operace: Vytvářet je, provést jejich výpočet, a učit&amp;nbsp;je.&lt;/p&gt; 
-&lt;p&gt;Na následujícím obrázku jsou zachycené první dva kroky.&lt;/p&gt; 
-&lt;div&gt;
- &lt;img alt=&quot;&quot; src=&quot;https://www.zizka.ch/pages/diplomka/navod/QB-Vypocet_site_XOR_s_logem.png&quot;&gt;
-&lt;/div&gt; 
-&lt;p&gt;Nejprve vytváříme neuronovou síť s&amp;nbsp;architekturou &lt;code&gt;2,2,1&lt;/code&gt; (vhodná pro řešení&amp;nbsp;XOR):&lt;/p&gt; 
-&lt;pre class=&quot;brush: lang-sql brush: sql&quot;&gt;-- Vytvoření neuronové sítě
-CALL nn_CreatePerceptron(&apos;2,2,1&apos;,&apos;XOR&apos;, 0.10, 0.5, @out_NetID);&lt;/pre&gt; 
-&lt;p&gt;Pro vzniklou síť provádíme její výpočet a uchováváme hodnoty vnitřních neuronů:&lt;/p&gt; 
-&lt;pre class=&quot;brush: lang-sql brush: sql&quot;&gt;-- Výpočet neuronové sítě
-CALL nn_ComputeNet(1, &apos;-1, 1&apos;, TRUE);
-
--- Zjistění výsledků výpočtu
-SELECT * FROM nn_ComputeNet;
-
--- Výstupní hodnoty všech neuronů
-SELECT * FROM nn_ComputeNet_InternalValues;&lt;/pre&gt; 
-&lt;p&gt;Výsledkem jsou tyto struktury:&lt;/p&gt; 
-&lt;table&gt; 
- &lt;thead&gt; 
-  &lt;tr&gt; 
-   &lt;th&gt;id_neuron&lt;/th&gt; 
-   &lt;th&gt;val&lt;/th&gt; 
-  &lt;/tr&gt; 
- &lt;/thead&gt; 
- &lt;tbody&gt; 
-  &lt;tr&gt; 
-   &lt;td&gt;5&lt;/td&gt; 
-   &lt;td&gt;0.984122623404696&lt;/td&gt; 
-  &lt;/tr&gt; 
- &lt;/tbody&gt; 
-&lt;/table&gt; 
-&lt;table&gt; 
- &lt;thead&gt; 
-  &lt;tr&gt; 
-   &lt;th&gt;id_neuron&lt;/th&gt; 
-   &lt;th&gt;val&lt;/th&gt; 
-  &lt;/tr&gt; 
- &lt;/thead&gt; 
- &lt;tbody&gt; 
-  &lt;tr&gt; 
-   &lt;td&gt;1&lt;/td&gt; 
-   &lt;td&gt;–1&lt;/td&gt; 
-  &lt;/tr&gt; 
-  &lt;tr&gt; 
-   &lt;td&gt;2&lt;/td&gt; 
-   &lt;td&gt;1&lt;/td&gt; 
-  &lt;/tr&gt; 
-  &lt;tr&gt; 
-   &lt;td&gt;3&lt;/td&gt; 
-   &lt;td&gt;0.0166427942550775&lt;/td&gt; 
-  &lt;/tr&gt; 
-  &lt;tr&gt; 
-   &lt;td&gt;4&lt;/td&gt; 
-   &lt;td&gt;0.972952595778587&lt;/td&gt; 
-  &lt;/tr&gt; 
-  &lt;tr&gt; 
-   &lt;td&gt;5&lt;/td&gt; 
-   &lt;td&gt;0.984122623404696&lt;/td&gt; 
-  &lt;/tr&gt; 
- &lt;/tbody&gt; 
-&lt;/table&gt; 
-&lt;p&gt;Na základě vzniklých hodnot můžeme provést jeden krok&amp;nbsp;učení:&lt;/p&gt; 
-&lt;pre class=&quot;brush: lang-sql brush: sql&quot;&gt;-- Učení neuronové sítě
-ALTER TABLE nn_ComputeNet RENAME TO nn_CorrectWeights;
-ALTER TABLE nn_ComputeNet_InternalValues RENAME TO nn_CorrectWeights_InternalValues;
-CALL nn_CorrectWeights(iNetID, &apos;1&apos;, @dLearn, @out_dErrorSum);&lt;/pre&gt; 
-&lt;p&gt;Po provedení procedury (a případně potvrzení transakce) jsou váhy sítě upravené algoritmem backpropagation podle předchozího stavu sítě, dočasně uložených výstupních hodnot všech neuronů sítě a požadovaných hodnot výstupní vrstvy.&lt;/p&gt; 
-&lt;p&gt;Pro pohodlné vyzkoušení učení neuronové sítě je k&amp;nbsp;dispozici procedra &lt;code&gt;nn_TeachXOR_Dynamic( //ID//, //cílová úroveň chyby//, //maximum kroků//)&lt;/code&gt;. Kód v&amp;nbsp;následující ukázce učí síť vytvořenou výše uvedeným postupem na cílovou úroveň chyby 0,0001&amp;nbsp;v&amp;nbsp;maximálním počtu 10&amp;nbsp;000&amp;nbsp;kroků:&lt;/p&gt; 
-&lt;pre class=&quot;brush: lang-sql brush: sql&quot;&gt;-- Učení neuronové sítě pro XOR
-CALL nn_TeachXOR_Dynamic(3, 0.0001, 10000);&lt;/pre&gt; 
-&lt;h4 id=&quot;toc-kod-uceni-neuronovych-siti-pro-heuristiku-vyhledavani-spoju&quot;&gt;Kód učení neuronových sítí pro heuristiku vyhledávání&amp;nbsp;spojů&lt;/h4&gt; 
-&lt;p&gt;V&amp;nbsp;diplomové práci používáme neuronové sítě k&amp;nbsp;určení vhodné trasy pro dosažení cílové zastávky v&amp;nbsp;nejlepším čase.&lt;br&gt; Zde je kód pro vytvoření a učení neuronové sítě pro zastávku&amp;nbsp;5:&lt;/p&gt; 
-&lt;pre class=&quot;brush: lang-sql brush: sql&quot;&gt;-- Vytvoření sítě pro zastávku 5 se třiceti neurony v jedné skryté vrstvě:
-CALL mhd_nn_CreateNetForStation(5, &apos;30&apos;);
-
--- Učení právě vzniklé sítě pro zastávku 5 do cílové
--- úrovně chyby 0.0001, maximálně po 40 000 kol učení:
-CALL mhd_nn_TeachStationNet(5, LAST_INSERT_ID(), 0.0001, 40000);&lt;/pre&gt; 
-&lt;p&gt;Všechny procesy se v&amp;nbsp;naší implementaci zaznamenávají do logu. To je užitečné zejména pokud něco nepracuje podle očekávání. Většinou je chyba na straně uživatele a v&amp;nbsp;logu je zapsán její příčina (ve sloupci &lt;code&gt;level&lt;/code&gt; je hodnota &lt;code&gt;error&lt;/code&gt; nebo &lt;code&gt;warning&lt;/code&gt;).&lt;/p&gt; 
-&lt;p&gt;Zde je ukázka záznamů z&amp;nbsp;učení neuronové sítě zastávky s&amp;nbsp;ID&amp;nbsp;530:&lt;/p&gt; 
-&lt;div&gt;
- &lt;img alt=&quot;&quot; src=&quot;https://www.zizka.ch/pages/diplomka/navod/QB-Log_uceni_neuronove_site_zastavky.png&quot;&gt;
-&lt;/div&gt; 
-&lt;p&gt;Další vysvětlení najdete ve výše jmenovaných zdrojích&amp;nbsp;– v&amp;nbsp;diplomové prácí, ve zdrojových kódech jednotlivých procedur a na webu autora.&lt;/p&gt; 
-&lt;p&gt;Případné dotazy směřujte na mail &lt;a href=&quot;mailto:ondra@dynawest.cz&quot;&gt;ondra@
-  &lt;!-- --&gt;dynawest.cz&lt;/a&gt; nebo JabberID &lt;code&gt;ondra.zizka@jabber.cz&lt;/code&gt;.&lt;/p&gt; 
             </description>
         </item>
         <item>
@@ -3874,231 +4189,6 @@ public void init() {
             </description>
         </item>
         <item>
-            <title>Výhody a nevýhody PHP</title>
-            <link>https://www.zizka.ch/pages/programming/php/vyhody_a_nevyhody_php.html</link>
-            <pubDate>Tue, 31 Jul 2018 04:28:11 +0200</pubDate>
-            <guid isPermaLink="false">pages/programming/php/vyhody_a_nevyhody_php.html</guid>
-            <description>
-                 &lt;h2 class=&quot; jbakeExtractedTitle&quot; id=&quot;toc-vyhody-a-nevyhody-php&quot;&gt;Výhody a nevýhody PHP&lt;/h2&gt; 
-&lt;p&gt;&lt;em&gt;Update: V&amp;nbsp;návaznosti na tento článek vznikl další&amp;nbsp;– &lt;a href=&quot;/stranky/programovani/java/je_java_jako_linux_nebo_jako_windows.html&quot;&gt;Je Java jako Linux nebo jako Windows?&lt;/a&gt;&lt;/em&gt;&lt;/p&gt; 
-&lt;p&gt;&lt;em&gt;Update: Abych nezůstal u&amp;nbsp;teorie a subjektivních hodnocení &lt;acronym title=&quot;Personal Home Page Tools&quot;&gt;PHP&lt;/acronym&gt;, přidám ukázku jednoho webu napsaného v&amp;nbsp;PHP&amp;nbsp;– a to hned &lt;a href=&quot;vysledek_nasazeni_php_aneb_navrch_huj_uvnitr_fuj.html&quot;&gt;web zabývající se programováním&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt; 
-&lt;p&gt;&lt;em&gt;Update: V&amp;nbsp;posledním (aspoň doufám) článku na toto téma &lt;a href=&quot;nevyhody_php_v_praktickych_prikladech.html&quot;&gt;vysvětluji jednotlivé body ze seznamu nevýhod&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt; 
-&lt;!-- &quot;Srovnání Java a PHP&quot;:srovnani_php_a_javy.html. --&gt; 
-&lt;hr&gt; 
-&lt;div&gt;
- &lt;img alt=&quot;&quot; src=&quot;https://www.zizka.ch/pages/programming/php/ElePHPant_with_Tiger.jpg&quot; style=&quot;float:right&quot;&gt;
-&lt;/div&gt; 
-&lt;p&gt;Na webu je mnoho flejmů, zda je PHP lepší / horší než Java a .NET atd. Ostatně, nejjednodušší způsob, jak rozpoutat flejm, je zajít na hodně čtený blog nějakého PHPčkáře a zeptat se místních, že jste nováček a jestli je PHP lepší než Java. Mimojiné se na tom otestuje složení čtenářů&amp;nbsp;– tj. nakolik jsou zastoupeni čistokrevní PHPčkáři s&amp;nbsp;klapkami na očích, kteří nemají šajna o&amp;nbsp;MVC, O/R a kolikrát ani pořádném OOP návrhu.&lt;/p&gt; 
-&lt;p&gt;Nicméně nenašel jsem (pravda, zas tolik jsem nehledal) nějakou pořádnou moderovanou diskusi, případně článek, o&amp;nbsp;výhodách a nevýhodách&amp;nbsp;PHP.&lt;/p&gt; 
-&lt;p&gt;//Update:// Našel jsem celkem dobrý článek na &lt;a href=&quot;http://spyced.blogspot.com/2005/06/why-php-sucks.html&quot;&gt;http://spyced.blogspot.com/…p-sucks.html&lt;/a&gt;. Sice je poněkud starší, ale jádro pudla zůstává. Je o&amp;nbsp;dost ostřejší a než tento můj článek, takže PHPčkáři&amp;nbsp;– bacha! :-) A&amp;nbsp;všimněte si, že J2EE autor označuje za neelegantní stejně jako&amp;nbsp;PHP.&lt;/p&gt; 
-&lt;p&gt;Trochu se porozhlížím, kamže půjdu pracovat na fulltime. Do toho mě oslovil bývalý spolužák, že prý si mě všimnul na přednáškách Seznam.cz a že jejich firma naléhavě hledá programátory PHP a jestli bych k&amp;nbsp;nim nešel. Já na to, jestli dělají v&amp;nbsp;Javě, a že prý ano, ale hledají PHP programátory. Slíbil jsem, že se tedy ozvu jeho šéfovi a pokecáme. Pak jsem na to ale pozapomněl a šéf se ozval sám (asi hledají opravdu naléhavě&amp;nbsp;:-)&lt;/p&gt; 
-&lt;p&gt;Popravdě jsem mu vyložil, že PHP umím dobře, prakticky do detailů, no což to budu opisovat&amp;nbsp;– zde je má odpověď:&lt;/p&gt; 
-&lt;blockquote&gt; 
- &lt;p&gt;Dobrý den,&lt;/p&gt; 
- &lt;p&gt;Vaše nabídka mě zaujala. Shrnu svoji situaci:&lt;/p&gt; 
- &lt;p&gt;V&amp;nbsp;PHP vyvíjím (komerčně) už několik let. Možná právě proto mě to ale velice silně táhne k&amp;nbsp;Javě a J2EE […]. Dále mám zkušenosti s [… … …]&amp;nbsp;.&lt;/p&gt; 
- &lt;p&gt;Kolega XY mi už také psal, zvažoval jsem, že se ozvu, ale říkal, že váš J2EE tým je asi spíše&amp;nbsp;plný.&lt;/p&gt; 
- &lt;p&gt;Mohl bych tedy pracovat jak jako vývojář PHP, tak J2EE, nicméne druhé o&amp;nbsp;mnoho raději […]. Nabídku pracovního místa už mám, proto by mě zajímaly další podmínky&amp;nbsp;– můžeme je případně probrat po telefonu.&lt;/p&gt; 
- &lt;p&gt;V&amp;nbsp;příloze posílám své CV, pokud by bylo třeba.&lt;/p&gt; 
- &lt;p&gt;S&amp;nbsp;pozdravem Ing. Ondřej Žižka&lt;/p&gt; 
-&lt;/blockquote&gt; 
-&lt;p&gt;Asi půl hodinu na to se mi šéfík ozval po telefonu a domluvili jsme si schůzku. Na té jsem se dozvěděl, že získali kontrakt od firmy ABC, jíž dělají pokladní systém v&amp;nbsp;J2EE a registrační web v&amp;nbsp;PHP. A&amp;nbsp;že na PHPkové weby mají svůj PHP framework (a v&amp;nbsp;tu chvíli jsem si říkal&amp;nbsp;– ajejej, další „svůj PHP framework…“) a že jej chtějí rozvinout. Ptal jsem se, co umí, jak funguje a oč jej chtějí rozvinout. A&amp;nbsp;dozvěděl jsem se,&amp;nbsp;že:&lt;/p&gt; 
-&lt;ul&gt; 
- &lt;li&gt;začali jej vyvíjet jako redakční systém&lt;/li&gt; 
- &lt;li&gt;přesto to ale nyní není něco jako Joomla, naopak, něco diametrálně odlišného (jestli jo, tak jedině&amp;nbsp;dobře)&lt;/li&gt; 
- &lt;li&gt;umí trochu MVC ve stylu Struts&lt;/li&gt; 
- &lt;li&gt;zkoušeli dělat O/R mapování, ale je to moc složité&lt;/li&gt; 
- &lt;li&gt;chtějí framework refaktorovat (oddělit moduly, zmenšit velikost a snížit počet styčných ploch, redesign)&lt;/li&gt; 
- &lt;li&gt;chtějí zapracovat na Ajaxové části&lt;/li&gt; 
- &lt;li&gt;chtějí zabudovat podporu webových služeb&lt;/li&gt; 
- &lt;li&gt;chtějí zabudovat mechanismus šablon&lt;/li&gt; 
- &lt;li&gt;atd atd.&lt;/li&gt; 
-&lt;/ul&gt; 
-&lt;p&gt;Potom se stočila řeč na to, jestli bych mohl dělat Java juniora, a později, proč bych nemohl, respektive proč chtějí vyvíjet v&amp;nbsp;PHP a poč vyvíjet framework pro PHP,&amp;nbsp;který:&lt;/p&gt; 
-&lt;ul&gt; 
- &lt;li&gt;který bude pokrývat 2% funkčnosti existujících (Java a J2EE) frameworků&lt;/li&gt; 
- &lt;li&gt;který budou vyvíjet jejich vlastní programátoři za v&amp;nbsp;součtu slušnou&amp;nbsp;částku&lt;/li&gt; 
- &lt;li&gt;který nehodlají uvolnit jako opensource ani prodávat (vyplynulo)&lt;/li&gt; 
- &lt;li&gt;který bude po dlouhou dobu neodladěný a bude mít „dětské nemoci“&lt;/li&gt; 
-&lt;/ul&gt; 
-&lt;p&gt;a nakonec&amp;nbsp;– a to především&amp;nbsp;–&lt;/p&gt; 
-&lt;ul&gt; 
- &lt;li&gt;proč vůbec vyvíjet v&amp;nbsp;PHP.&lt;/li&gt; 
-&lt;/ul&gt; 
-&lt;p&gt;No diskuse to byla těžká, protože šéfík (nic proti němu, zdál se jako moc fajn chlap) je programátor&amp;nbsp;– teoretik z&amp;nbsp;Masarykovy univerzity, který zná PHP i&amp;nbsp;J2EE „z&amp;nbsp;manažerského pohledu“, a třetí účastník&amp;nbsp;– jejich PHP senior&amp;nbsp;– neví o&amp;nbsp;Javě a J2EE nic (také nic proti němu, fajn kluk&amp;nbsp;:-)&lt;/p&gt; 
-&lt;p&gt;Zkrátka jejich postoj je takový, že PHP je skvělá technologie na jednodušší věci, jako je frontend pro Javovský backend, resp. nad databází. Inu dobrá, já jim to neberu, ale během celého rozhovoru mi hlavou běhaly vzpomínky na nejrůznější veselé příhody (dalo by se přeložit jako „gay incidents“ :) s&amp;nbsp;PHP:&lt;/p&gt; 
-&lt;h3 id=&quot;toc-proc-neprogramovat-v-php&quot;&gt;Proč neprogramovat v&amp;nbsp;PHP&lt;/h3&gt; 
-&lt;ul&gt; 
- &lt;li&gt;Záhadné chyby mezi minor verzemi&lt;/li&gt; 
- &lt;li&gt;Nutnost překopat celý systém při přechodu na novou major&amp;nbsp;verzi&lt;/li&gt; 
- &lt;li&gt;„Krása“ procesu deployování uploadem na FTP či obdobným&lt;/li&gt; 
- &lt;li&gt;Dlouhé hodiny hledání obezliček a work-aroundů, jak obejít tu kterou vlastnost&amp;nbsp;PHP&lt;/li&gt; 
- &lt;li&gt;Vytváření OOP wrapperů pro procedurální PHP funkce typu&amp;nbsp;&lt;code&gt;mysql_*&lt;/code&gt;&lt;/li&gt; 
- &lt;li&gt;Přepisování stohů zdrojáků při refaktoringu, protože PHP je &lt;a href=&quot;http://www.php.net/&quot;&gt;bordelářský jazyk&lt;/a&gt; a programátora vyloženě svádí programovat jak&amp;nbsp;prase&lt;/li&gt; 
- &lt;li&gt;Stovky případů hledání chyby, kdy se ukázalo, že za vším stojí přepis v&amp;nbsp;názvu proměnné&lt;/li&gt; 
- &lt;li&gt;Ošetřování rozdílnosti implementace ve Windows a na&amp;nbsp;Linuxu&lt;/li&gt; 
- &lt;li&gt;Desítky zbytečných řádek kódu pro převod z/do UNICODE při práci s&amp;nbsp;UNICODE stringy&lt;/li&gt; 
- &lt;li&gt;AAAAAAAAAAAAA­AAAAAAAAA!!!!!!! Už nééééééé!&lt;/li&gt; 
-&lt;/ul&gt; 
-&lt;p&gt;Prostě při pomyšlení, že bych měl jít vyvíjet framework v&amp;nbsp;PHP, se mě jímaly úzkostné pocity. Jasně, potenciální PHP-fanatik mi bude oponovat, že kdybych psal rovnou dobrý kód, tak jsem v&amp;nbsp;pohodě. Ale &lt;em&gt;není to pravda&lt;/em&gt;, a to hned několikrát:&lt;/p&gt; 
-&lt;ul&gt; 
- &lt;li&gt;PHP dobrý OOP kód nedovoluje, protože všechny core funkce jsou procedurální a mixovat je s&amp;nbsp;OOP je&amp;nbsp;hnus.&lt;/li&gt; 
- &lt;li&gt;PHP hezký kód nedovoluje, protože core funkce nevyhazují výjimky, a &lt;code&gt;if&lt;/code&gt;y jen kvůli ošetření chyby je pravěká metoda táhnoucí se snad ještě z&amp;nbsp;dob Alana Turinga.&lt;/li&gt; 
- &lt;li&gt;&lt;a href=&quot;http://latrine.dgx.cz/jsem-zdesen-z-php5&quot;&gt;Nekvalitní zpracování OOP v&amp;nbsp;PHP&lt;/a&gt; zásadně podkopává možnost používat zcela základní OOP principy.&lt;/li&gt; 
- &lt;li&gt;PHP vás přímo tlačí do kouta s&amp;nbsp;imperativem „Delej hnusný kód!“, když zcela ignoruje možnost naprogramovat kolekce objektově a v&amp;nbsp;návaznosti na teoretický rozbor věci, a místo toho naprosto vše cpe do Array: pole, hash, frontu, zásobník, množinu… což ještě někteří vydávají za výhodu.&lt;/li&gt; 
- &lt;li&gt;I&amp;nbsp;kdybych psal krásný kód, nikde není žádná záruka, že v&amp;nbsp;příští verzi budu muset vše opět přepisovat&amp;nbsp;– neexistuje norma PHP ani oficiální plán vývoje! PHP prostě jen bude vykrádat Javu, takže v&amp;nbsp;PHP 7&amp;nbsp;nabeton budou anotace.&lt;/li&gt; 
-&lt;/ul&gt; 
-&lt;h3 id=&quot;toc-srovnani-s-javou&quot;&gt;Srovnání s&amp;nbsp;Javou&lt;/h3&gt; 
-&lt;p&gt;Naproti tomu, když programuji v&amp;nbsp;Javě, dobrý kód vzniká skoro sám (už se neubráním srovnání):&lt;/p&gt; 
-&lt;ul&gt; 
- &lt;li&gt;Vyplatí se pro sebemenší blbinu vytvořit třídu.&lt;/li&gt; 
- &lt;li&gt;Pokud dělám třídu pro potřebu jiné, dám ji do souboru k&amp;nbsp;ní a zůstane tedy skrytá a nezabordelim si adresář (balíček).&lt;/li&gt; 
- &lt;li&gt;Pokud ji ale potřebuju jinde, přesunu ji do zvláštního souboru a už je k&amp;nbsp;dispozici.&lt;/li&gt; 
- &lt;li&gt;Samotné JRE je vzorem dobrého návrhu, a čistě jeho používáním se podvědomě naučíte návrhu: 
-  &lt;ul&gt; 
-   &lt;li&gt;Abstrahovat problémy (úlohy) a tvořit jim rozhraní&amp;nbsp;– viz &lt;code&gt;interface List&lt;/code&gt; a implementaci&amp;nbsp;&lt;code&gt;ArrayList&lt;/code&gt;&lt;/li&gt; 
-   &lt;li&gt;Rozdělovat svoji aplikaci do namespace (balíčků)&amp;nbsp;– viz např. &lt;code&gt;java.util&lt;/code&gt; a&amp;nbsp;&lt;code&gt;java.lang&lt;/code&gt;&lt;/li&gt; 
-   &lt;li&gt;Využívat výjimky tam, kde je to vhodné, a zjednodušovat jimi API jednotlivých&amp;nbsp;modulů&lt;/li&gt; 
-  &lt;/ul&gt; &lt;/li&gt; 
- &lt;li&gt;Co naprogramujete s&amp;nbsp;jedním JDK, je skoro na 100% jisté, že přeložíte i&amp;nbsp;v&amp;nbsp;další&amp;nbsp;verzi 
-  &lt;ul&gt; 
-   &lt;li&gt;JRE má totiž narozdíl od PHP promyšlený návrh a nemusí se zásadní věci měnit každou major&amp;nbsp;verzi&lt;/li&gt; 
-   &lt;li&gt;Pokud už se stane, že cosi nevyhovuje, je to označeno za „deprecated“, ale ponecháno a nová verze je v&amp;nbsp;jiném namespace;&lt;/li&gt; 
-   &lt;li&gt;Přesto však nová verze využívá maximum ze staré verze, a vy tak při dalším vývoji můžete snáze navázat a začít používat nové možnosti (viz &lt;em&gt;AWT&lt;/em&gt; a &lt;em&gt;Swing&lt;/em&gt;) místo totálního přepsání (viz &lt;code&gt;mysql_*&lt;/code&gt; a &lt;code&gt;PDO&lt;/code&gt;)&lt;/li&gt; 
-   &lt;li&gt;Když už by se náhodou stalo, že byste něco nepřeložili (jako se mi stalo v&amp;nbsp;případě &lt;em&gt;MySQL Connector/J&lt;/em&gt;), můžete aspoň používat binárky a vesele psát pro novou&amp;nbsp;verzi.&lt;/li&gt; 
-  &lt;/ul&gt; &lt;/li&gt; 
- &lt;li&gt;Nové verze různých projektů (knihoven a frameworků) využívají anotace, takže kód je ještě čistší a zářivější&lt;/li&gt; 
- &lt;li&gt;S&amp;nbsp;využitím „injection“ (např. ze Springu) vám navíc ještě odpadají desítky jednotlivých řádků kódu, které jsou jaksi samozřejmé, ale přesto musí být (získání spojení, otevření transakce, ověření přístupových&amp;nbsp;práv…)&lt;/li&gt; 
-&lt;/ul&gt; 
-&lt;p&gt;Prostě při prvním komerčním projektu v&amp;nbsp;Javě moje srdénko jen zaplesalo nad tím, jak neuvěřitelně hladce to jde od&amp;nbsp;ruky.&lt;/p&gt; 
-&lt;h3 id=&quot;toc-slozitost-programovani-v-j2ee&quot;&gt;Složitost programování v&amp;nbsp;J2EE&lt;/h3&gt; 
-&lt;p&gt;A&amp;nbsp;ještě ke složitosti J2EE.&lt;br&gt; Když srovnám PHP a JSP, tak to jsou zhruba srovnatelné technologie:&lt;/p&gt; 
-&lt;ul&gt; 
- &lt;li&gt;nějaká core knihovna funkcí,&lt;/li&gt; 
- &lt;li&gt;a nějaký jazyk vkládaný do HTML.&lt;/li&gt; 
-&lt;/ul&gt; 
-&lt;p&gt;Jenže tam, kde PHP končí, tam J2EE teprve začíná. Pokud skutečně rezignujete na leta vývoje a nechcete se učit tagy ze Struts nebo anotace z&amp;nbsp;JPA / Hibernate, prosím&amp;nbsp;– můžete vše poctivě datlovat jako v&amp;nbsp;PHP, psát si SQL dotazy (jednoduchost přístupu k&amp;nbsp;výsledkům dotazu v&amp;nbsp;PHP přes pole zajistí iBatis) a třeba si i&amp;nbsp;prasit kód rovnou do HTML souborů.&lt;/p&gt; 
-&lt;p&gt;Jenže v&amp;nbsp;J2EE máte &lt;strong&gt;možnost&lt;/strong&gt; jít dál. Co máte v&amp;nbsp;PHP? Ano, je zde pár povedených věcí… Smarty, Zend Framework, CakePHP. Ale ty stejně jedou nad shnilým jádrem.&lt;/p&gt; 
-&lt;p&gt;Pokud někdo říká, že PHP se naučíte rychleji než J2EE, tak já říkám ano, protože v&amp;nbsp;PHP skoro není co se&amp;nbsp;učit.&lt;/p&gt; 
-&lt;p&gt;Když jsem s&amp;nbsp;J2EE začínal, také jsem se zalekl té neuvěřitelné haldy nových pojmů, specifikací, zkratek, XML konfiguračních souborů a postupů; dále nutnosti použít IDE nebo aspoň buildovací nástroj (Ant), naučit se spravovat něco jiného než Apache&amp;nbsp;HTTPD…&lt;/p&gt; 
-&lt;p&gt;Ono totiž PHP je jen taková lehká nadstavba nad CGI&amp;nbsp;– nad něj dává jen relativně jednoduchou syntaxi a spoustu knihoven použitelných z&amp;nbsp;této syntaxe. Jenže když jde do tuhého a úroveň vašich projektů se vznese nad příklady z&amp;nbsp;manuálu PHP, stejně musite začít řešit (hodně na přeskáčku):&lt;/p&gt; 
-&lt;ul&gt; 
- &lt;li&gt;Fyzickou strukturu webové aplikace&amp;nbsp;– aneb adresáře, kam co&amp;nbsp;dát&lt;/li&gt; 
- &lt;li&gt;Zjednodušení správy obsahu v&amp;nbsp;databázi&lt;/li&gt; 
- &lt;li&gt;Verzování záznamů v&amp;nbsp;databázi&lt;/li&gt; 
- &lt;li&gt;Konfiguraci chování a struktury webu nad úrovní kódu&lt;/li&gt; 
- &lt;li&gt;Abstrakci nad různými databázemi&lt;/li&gt; 
- &lt;li&gt;Interakci s&amp;nbsp;backendem, případně sjednocení API s&amp;nbsp;GUI částí enterprise aplikace&lt;/li&gt; 
- &lt;li&gt;Možnosti pokročilé konfigurace aplikace&lt;/li&gt; 
- &lt;li&gt;Centrální repozitář objektů poskytujících nějaké služby&lt;/li&gt; 
- &lt;li&gt;Clusterování&lt;/li&gt; 
-&lt;/ul&gt; 
-&lt;p&gt;atd.&lt;/p&gt; 
-&lt;p&gt;A&amp;nbsp;zatímco J2EE vás těmito „nesmysly“ zavalí hned zpočátku, protože postupy jsou standardizované a často se věci rovnou řeší „složitě“ s&amp;nbsp;výhledem na budoucí rozvoj, PHP vás nechá, ať si děláte co chcete&amp;nbsp;– zlepšující se programátoři časem začnou vytvářet „vlastní framework“, vlastní normu pro strukturu aplikace, vlastní knihovnu pro automatické ukládání objektů do DB, a tak dále, zatímco &lt;a href=&quot;http://blog.maxell-cz.cz/item/zaklady-pouziti-smarty-sablon&quot;&gt;naprostí začátečníci&amp;nbsp;– neprogramátoři mohou třeba takto&lt;/a&gt; (viz část „Přiřazení prvků v&amp;nbsp;šabloně“):&lt;/p&gt; 
-&lt;blockquote&gt; 
- &lt;p&gt;Často potřebujeme vybrat data z&amp;nbsp;databáze a následně je předat šabloně. Na začátku je tedy SQL&amp;nbsp;dotaz:&lt;/p&gt; 
- &lt;pre class=&quot;lang-php brush: php&quot;&gt;$result = mysql_query(&quot;SELECT nazev, titulek, text, cena FROM tabulka WHERE id=&apos;$id&apos;&quot;);&lt;/pre&gt; 
- &lt;p&gt;Jak nyní předat data šabloně?&lt;/p&gt; 
- &lt;p&gt;Nejjednodušší řešení je předat rovnou pole:&lt;/p&gt; 
- &lt;pre class=&quot;lang-php brush: php&quot;&gt;$smarty-&amp;gt;assign(&apos;data&apos;,mysql_fetch_assoc($result));&lt;/pre&gt; 
-&lt;/blockquote&gt; 
-&lt;hr&gt; 
-&lt;p&gt;Nyní se pokusím oprostit od Javy a zaměřit se čistě na PHP. Kdyby se někde v&amp;nbsp;dalším textu vyskytlo slovo „Java“, klidně mi dejte virtuální facku&amp;nbsp;:)&lt;/p&gt; 
-&lt;p&gt;Zkusím tedy shrnout, jaké má PHP výhody a jaké nevýhody. Zkusím při tom zaujmout pokud možno nezaujatý postoj, i&amp;nbsp;když případného čtenáře o&amp;nbsp;tom po přečtení předchozí kritiky asi nepřesvědčím.&lt;/p&gt; 
-&lt;p&gt;Komentáře nevedu, ale jestli se vám něco v&amp;nbsp;následujícím výčtu nezdá, napište mi &lt;a href=&quot;mailto:ondra@dynawest.cz&quot;&gt;mail&lt;/a&gt; a já zde provedu veřejné pokání a omluvu sloníkovi elePHPantovi&amp;nbsp;:)&lt;/p&gt; 
-&lt;p&gt;&lt;em&gt;Výhoda&lt;/em&gt; a &lt;em&gt;nevýhoda&lt;/em&gt; jsou relativní pojmy. Proto navrhuji jako „baseline“ pro srovnání použít ostatní technologie použitelné na podobné účely jako PHP, tedy: ASP.NET, ColdFusion, Java EE, Perl, Python, Ruby (on Rails). Naopak neuvažoval bych kombinace typu C + CGI (příliš složité programování), Apache SSI (příliš omezená funkčnost), Caché Server Pages (příliš nesmyslná technologie), XML + XSLT + JavaScript (principiálně příliš jinde), ASP (zastaralé) a podobně.&lt;/p&gt; 
-&lt;p&gt;Takže&amp;nbsp;– posuďte sami:&lt;/p&gt; 
-&lt;h3 id=&quot;toc-vyhody-php&quot;&gt;Výhody PHP&lt;/h3&gt; 
-&lt;div&gt;
- &lt;img alt=&quot;&quot; src=&quot;https://www.zizka.ch/pages/programming/php/elePHPant_Front_Tiny.png&quot; style=&quot;float:right&quot;&gt;
-&lt;/div&gt; 
-&lt;p&gt;Technologie PHP má spoustu výhod, díky které se rychle stalo populárním. Mezi ně patří&amp;nbsp;např.:&lt;/p&gt; 
-&lt;ul&gt; 
- &lt;li&gt;Velká rozsáhlost funkcí k&amp;nbsp;dispozici přímo v&amp;nbsp;základní instalaci&lt;/li&gt; 
- &lt;li&gt;Další nativně implementované funkční celky snadno instalovatelné z&amp;nbsp;repozitáře&amp;nbsp;PEAR&lt;/li&gt; 
- &lt;li&gt;Další knihovny instalovatelné z&amp;nbsp;repozitáře PECL&lt;/li&gt; 
- &lt;li&gt;Nativní podpora mnoha databázových systémů&lt;/li&gt; 
- &lt;li&gt;Zpočátku strmá křivka učení&lt;/li&gt; 
- &lt;li&gt;--Je multiplaforní– S&amp;nbsp;tou multiplatformností to není tak žhavé. Zkuste si třeba PHP na Novellu. Spíše bych řekl: Jede víceméně stejně na Linuxu a na Windows.&lt;/li&gt; 
- &lt;li&gt;Časem vznikla velká celosvětová komunita vývojářů a mnoho dobrých svobodných projektů, zejména publikační systémy a &lt;a href=&quot;http://www.html.info/&quot;&gt;Texy!&lt;/a&gt;&amp;nbsp;:-)&lt;/li&gt; 
- &lt;li&gt;Velmi široká nabídka hostingu, levné ceny díky konkurenci&lt;/li&gt; 
- &lt;li&gt;Dobrý, aktuální a úplný manuál s&amp;nbsp;příklady&lt;/li&gt; 
- &lt;li&gt;Někdy se hodí stručný model zpracování nedefinovaných hodnot a&amp;nbsp;&lt;code&gt;null&lt;/code&gt;&lt;/li&gt; 
- &lt;li&gt;Stručný přístup k&amp;nbsp;prvkům hash-mapy přes operátor &lt;code&gt;[]&lt;/code&gt;&lt;/li&gt; 
-&lt;/ul&gt; 
-&lt;h3 id=&quot;toc-nevyhody-php&quot;&gt;Nevýhody PHP&lt;/h3&gt; 
-&lt;div&gt;
- &lt;img alt=&quot;&quot; src=&quot;https://www.zizka.ch/pages/programming/php/elePHPant_RightFront_Tiny.png&quot; style=&quot;float:right&quot;&gt;
-&lt;/div&gt; 
-&lt;p&gt;Na druhou stranu, PHP má také značné nevýhody, pro které jej mnozí kritizují a někdy i&amp;nbsp;opouštějí; mimo jiné&amp;nbsp;tyto:&lt;/p&gt; 
-&lt;ul&gt; 
- &lt;li&gt;Až do verze PHP 4&amp;nbsp;nepříliš povedená podpora objektově orientovaného programování s&amp;nbsp;mnoha záludnostmi&lt;/li&gt; 
- &lt;li&gt;Verze 5&amp;nbsp;již podporuje OOP lépe (i&amp;nbsp;když stále &lt;a href=&quot;http://latrine.dgx.cz/jsem-zdesen-z-php5&quot;&gt;velmi mizerně&lt;/a&gt;), ale nativní knihovna funkcí nadále používá procedurální paradigma&lt;/li&gt; 
- &lt;li&gt;Nativní funkce nejen nepoužívají objektový přístup, ale ani nepodporují výjimky (&lt;code&gt;set_error_handler()&lt;/code&gt; je pouze slabá náplast)&lt;/li&gt; 
- &lt;li&gt;Některé rysy jazyka svádějí ke špatným stylům programování (např. přílišné užívání polí a hash-map)&lt;/li&gt; 
- &lt;li&gt;Nekonzistentní pojmenování nativních funkcí a nejednotnost v&amp;nbsp;logice pořadí parametrů&lt;/li&gt; 
- &lt;li&gt;Nativně nepodporuje UNICODE (připravuje se pro verzi 6&amp;nbsp;– už skoro tři&amp;nbsp;roky)&lt;/li&gt; 
- &lt;li&gt;Dosud neexistuje formální specifikace syntaxe jazyka a jeho chování (jedinou úplnou definicí je interpreter)&lt;/li&gt; 
- &lt;li&gt;Tím pádem existuje jediný interpreter&lt;/li&gt; 
- &lt;li&gt;Způsob, jakým PHP funguje, principiálně brání efektivnímu řešení mnoha úloh (např. objektově-relační mapování)&lt;/li&gt; 
-&lt;/ul&gt; 
-&lt;div&gt;
- &lt;img alt=&quot;&quot; src=&quot;https://www.zizka.ch/pages/programming/php/elePHPant_LeftFront_Tiny_sad.png&quot; style=&quot;float:right&quot;&gt;
-&lt;/div&gt; 
-&lt;ul&gt; 
- &lt;li&gt;PHP nemá danou politiku vývoje, místo toho nadále jen kopíruje prvky jiných&amp;nbsp;jazyků&lt;/li&gt; 
- &lt;li&gt;Je značně zatížené svým vlastním historickým vývojem&lt;/li&gt; 
- &lt;li&gt;Oficiálně není zaručena zpětná kompatibilita&lt;/li&gt; 
- &lt;li&gt;Programátor nemá zaručené cílové prostředí, mnoho věcí přímo ovlivňujících chování PHP lze změnit pouze mimo soubory projektu (v&amp;nbsp;konfiguračním souboru php.ini)&lt;/li&gt; 
-&lt;/ul&gt; 
-&lt;!-- * Pro PHP není mnoho kvalitních vývojových prostředí (IDE) s podporou vlasností běžných pro jiné jazyky (generování a refaktorizace kódu, automatické dokončování, on-line nápověda, automatizované testování a validace, automatické nasazení na server, a další) --&gt; 
-&lt;ul&gt; 
- &lt;li&gt;Nepodporuje paralelní výpočet a synchronizaci (vlákna)&lt;/li&gt; 
- &lt;li&gt;Nepodporuje škálování pomocí prostředí sdíleného na více serverech&lt;/li&gt; 
- &lt;li&gt;Ve standardní sadě nástrojů není nástroj pro tvorbu dokumentace&lt;/li&gt; 
- &lt;li&gt;--Nedostatek– Nemnoho kvalitních frameworků (Pozor! Drupal, Joomla, WordPress a spol. nejsou frameworky, ale publikační systémy /&amp;nbsp;CMS).&lt;/li&gt; 
- &lt;li&gt;Nelze snadno integrovat s&amp;nbsp;jinými technologiemi (znovupoužití knihoven napsaných v&amp;nbsp;PHP v&amp;nbsp;jiném jazyce)&lt;/li&gt; 
- &lt;li&gt;Ve standardní distribuci chybí ladící (debugovací) nástroj&lt;/li&gt; 
- &lt;li&gt;Relativně složitá syntaxe oproti jiným technologiím použitelným na stejný&amp;nbsp;účel&lt;/li&gt; 
- &lt;li&gt;Po zpracování požadavku se „ztrácí“ kontext aplikace a při příštím je vytvářen&amp;nbsp;jiný&lt;/li&gt; 
- &lt;li&gt;Mimo jiné z&amp;nbsp;toho plyne relativně slabý výkon&lt;/li&gt; 
- &lt;li&gt;Velký počet zásadních chyb v&amp;nbsp;počátcích nových verzí&lt;/li&gt; 
- &lt;li&gt;Nepodporuje jmenné prostory (Skutečně, stále ještě mohou existovat obrovské projekty, kde se knihovny rozlišují prefixem.)&lt;/li&gt; 
- &lt;li&gt;Podivné fungování referencí&amp;nbsp;– asi nejzrádnější askept&amp;nbsp;PHP&lt;/li&gt; 
- &lt;li&gt;Donedávna chybělo rozumné jednotné rozhraní pro práci s&amp;nbsp;databázemi, nyní&amp;nbsp;&lt;code&gt;PDO&lt;/code&gt;&lt;/li&gt; 
-&lt;/ul&gt; 
-&lt;div&gt;
- &lt;img alt=&quot;&quot; src=&quot;https://www.zizka.ch/pages/programming/php/elePHPant_RightFront_Tiny_lezi_oci_v_sloup.png&quot; style=&quot;float:right&quot;&gt;
-&lt;/div&gt; 
-&lt;ul&gt; 
- &lt;li&gt;Chybí anotace a aspektově orientované programování&lt;/li&gt; 
- &lt;li&gt;Chybí možnost vynutit deklaraci proměnných, takže se dá omylem zapsat něco do jiné (nové) proměnné. Taková chyba se hledá VELMI&amp;nbsp;těžko.&lt;/li&gt; 
- &lt;li&gt;Nedostatečná sebereflexe&amp;nbsp;– datové typy „Třída“/„Funce“, místo toho se na ně odkazujete přes stringy&lt;/li&gt; 
- &lt;li&gt;Nemožnost odkazovat se na metody objektů jinak než neohrabanou konstrukcí s&amp;nbsp;&lt;code&gt;Array()&lt;/code&gt;&lt;/li&gt; 
- &lt;li&gt;Kvůli slabé typovosti neobratné přetěžování funkcí a metod a jejich překrytí při&amp;nbsp;dědění&lt;/li&gt; 
- &lt;li&gt;Projekty se musí šířit výhradně formou zdrojových kódů&lt;/li&gt; 
- &lt;li&gt;Neexistuje přímá podpora pro webové služby a pro vzdálené volání procedur&amp;nbsp;obecně&lt;/li&gt; 
- &lt;li&gt;Chybí solidní knihovna / nástroj pro logování&lt;/li&gt; 
-&lt;/ul&gt; 
-&lt;!--
-[*  elePHPant_Right_Tiny_jde_pryc.png  &gt;]
---&gt; 
-&lt;p&gt;Jak je vidět, seznam výhod a nevýhod je trochu nevyvážený. Nyní čekám polemiku :-)&amp;nbsp;&lt;a href=&quot;mailto:ondra@dynawest.cz&quot;&gt;ondra@
-  &lt;!-- --&gt;dynawest.cz&lt;/a&gt;&lt;/p&gt; 
-&lt;p&gt;//PS:// Ale pořád ještě to není tak strašné, jako s&amp;nbsp;Caché&amp;nbsp;– kdo zkoušel, ví&amp;nbsp;:-)&lt;/p&gt; 
-&lt;h4 id=&quot;toc-dalsi-clanky-s-podobnou-tematikou&quot;&gt;Další články s&amp;nbsp;podobnou tématikou:&lt;/h4&gt; 
-&lt;ul&gt; 
- &lt;li&gt;&lt;a href=&quot;http://www.abclinuxu.cz/blog/miloslavponkrac/2006/2/3/119608&quot;&gt;Kam kráčíš, PHP?&lt;/a&gt; (2006, doporučuji přečíst i&amp;nbsp;komentáře)&lt;/li&gt; 
- &lt;li&gt;&lt;a href=&quot;http://www.pestujemeweb.cz/clanky-rozhovory/text-27-david-grudl-rozhovor.html&quot;&gt;David Grudl o&amp;nbsp;PHP&lt;/a&gt; 
-  &lt;blockquote&gt; 
-   &lt;p&gt;4.&amp;nbsp;Jaká je perspektiva PHP z&amp;nbsp;Vašeho pohledu?&lt;br&gt; Jsem PHP skeptik. PHP jakožto jazyk ztratil koncepci, rozšiřování se děje chaoticky. PHP jakožto knihovna se nehodí na tvorbu webových aplikací. Frameworky se to snaží suplovat.&lt;/p&gt; 
-  &lt;/blockquote&gt; &lt;/li&gt; 
-&lt;/ul&gt; 
-&lt;p&gt;&lt;em&gt;Obrázky přejaty z &lt;a href=&quot;http://www.nexen.net/elephpant/index.php&quot;&gt;http://www.nexen.net/…nt/index.php&lt;/a&gt; a &lt;a href=&quot;http://shop.yourphppro.com/elePHPant.html&quot;&gt;http://shop.yourphppro.com/elePHPant.html&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt; 
-&lt;p&gt;&lt;em&gt;(PS: Kdyby někoho zajímalo, proč je tento web v&amp;nbsp;PHP, tak je to kvůli Texy! ;-)&lt;/em&gt;&lt;br&gt; &lt;em&gt;PS pro Jana Škráška: Porty Texy? Ruby nemám rád, python neumím, .NET nechci a pro Javu ještě port&amp;nbsp;není.&lt;/em&gt;&lt;/p&gt; 
-            </description>
-        </item>
-        <item>
             <title>Ubytování – Jižní
 Čechy – Třeboňsko</title>
             <link>https://www.zizka.ch/pages/realitni_kancelar/chaty_a_chalupy.html</link>
@@ -4150,72 +4240,6 @@ public void init() {
 &lt;/div&gt; 
 &lt;h3 id=&quot;toc-kontakt&quot;&gt;Kontakt:&lt;/h3&gt; 
 &lt;p&gt;Telefon: &lt;strong&gt;608&amp;nbsp;903&amp;nbsp;585&lt;/strong&gt;, nebo viz stránka &lt;a href=&quot;../osobni/kontakty.html&quot;&gt;kontakty&lt;/a&gt;.&lt;/p&gt; 
-            </description>
-        </item>
-        <item>
-            <title>Ondra Žižka – personal
-website</title>
-            <link>https://www.zizka.ch/pages/index.html</link>
-            <pubDate>Tue, 31 Jul 2018 04:28:11 +0200</pubDate>
-            <guid isPermaLink="false">pages/index.html</guid>
-            <description>
-                 &lt;h2 class=&quot; jbakeExtractedTitle&quot; id=&quot;toc-ondra-zizka-personal-website&quot;&gt;Ondra Žižka&amp;nbsp;– personal website&lt;/h2&gt; 
-&lt;p&gt;Welcome to my web page.&lt;/p&gt; 
-&lt;p&gt;This is not a blog&amp;nbsp;– rather a „private publication“&amp;nbsp;place.&lt;/p&gt; 
-&lt;p&gt;No comments here&amp;nbsp;– I&amp;nbsp;don&apos;t want to spend my time deleting dumb post and spam. If you have anything to say or ask, just send me an&amp;nbsp;email.&lt;/p&gt; 
-&lt;h2 id=&quot;toc-ondra-zizka-osobni-web&quot;&gt;Ondra Žižka&amp;nbsp;– osobní web&lt;/h2&gt; 
-&lt;p&gt;Vítám vás na své webové nástěnce.&lt;/p&gt; 
-&lt;p&gt;Zas jednou jsem už nevydržel dávat věci dokola někam na FTP a rozhodl se pro potřeby zveřejňování lecčehos zřídit&amp;nbsp;web.&lt;/p&gt; 
-&lt;p&gt;Nečekejte blog. Berte to jako moje soukromé „zveřejniště“.&lt;/p&gt; 
-&lt;h3 id=&quot;toc-proc-tu-nejsou-komentare&quot;&gt;Proč tu nejsou komentáře?&lt;/h3&gt; 
-&lt;p&gt;Za krátkou dobu obnovené existence webu už mi přišel pár mailů, kde se autor ptal, proč nemám u&amp;nbsp;článků komentáře. Důvod je jednoduchý:&lt;/p&gt; 
-&lt;ol style=&quot;list-style-type:lower-alpha&quot;&gt; 
- &lt;li&gt;Komentáře bych nečetl.&lt;/li&gt; 
- &lt;li&gt;Spam.&lt;/li&gt; 
- &lt;li&gt;Kvůli časové souslednosti.&lt;/li&gt; 
- &lt;li&gt;Buď na web nikdo chodit nebude, a pak budou komentáře zet prázdnotou, a to je trapné&amp;nbsp;:-)&lt;/li&gt; 
- &lt;li&gt;nebo na něj lidé chodit budou, a pak se tu časem nutně objeví zástupy truhlíků s&amp;nbsp;opravdu dementními komentáři.&lt;/li&gt; 
-&lt;/ol&gt; 
-&lt;h4 id=&quot;toc-ad-a&quot;&gt;ad a)&lt;/h4&gt; 
-&lt;p&gt;Nemám ještě pořádný redakční systém, který by mi je někde pohodlně seštosoval, a možná ani mít nebudu, protože se pravděpodobně od webařiny přesunu k&amp;nbsp;programování.&lt;/p&gt; 
-&lt;h4 id=&quot;toc-ad-c&quot;&gt;ad c)&lt;/h4&gt; 
-&lt;p&gt;Jelikož toto není blog, ale prostor pro publikování, literární útvary se zde čas od času mění. Zakládat nový článek místo úpravy dokumentu podle mě není vhodné. Případné komentáře by tedy komentovaly staré verze, a zatímco dokument by se v&amp;nbsp;čase vyvíjel a odrážel aktuální stav věcí, komentáře by se s&amp;nbsp;ním táhly jako Gott a Vondráčková s&amp;nbsp;hudebním průmyslem (fuj, to bylo ale politicky nekorektní).&lt;/p&gt; 
-&lt;h4 id=&quot;toc-ad-d-e&quot;&gt;ad d), e)&lt;/h4&gt; 
-&lt;p&gt;Zatímco na „blozích“ se to řeší karmami, přihlašováním, hodnocením kvality, banováním a dalšími marnými technikami, já jednoduše komentáře nevedu.&lt;/p&gt; 
-&lt;p&gt;Pokud někdo chcete komentovat, napište mi mail na &lt;a href=&quot;mailto:ondra@dynawest.cz&quot;&gt;ondra@
-  &lt;!-- --&gt;dynawest.cz&lt;/a&gt;. Efekt to bude mít stejný&amp;nbsp;– nadávky mě hluboce urazí a půjdu trucovat do kouta, zajímavé a relevantní tipy do článků přidám. Akorát spam takto vyfiltruju lépe&amp;nbsp;:-)&lt;/p&gt; 
-&lt;h3 id=&quot;toc-co-zrovna-delam&quot;&gt;Co zrovna dělám&lt;/h3&gt; 
-&lt;p&gt;Pokud zrovna nepracuji pro JBoss, zkoumám různé technologie:&lt;/p&gt; 
-&lt;ul&gt; 
- &lt;li&gt;&lt;a href=&quot;stranky/programovani/java/jboss-aop-howto-example-standalone-app.html&quot;&gt;JBoss AOP&lt;/a&gt;&lt;/li&gt; 
- &lt;li&gt;&lt;a href=&quot;stranky/programovani/web_javascript_ajax_canvas/canvas_element_selection_buffer.html&quot;&gt;&lt;code&gt;canvas&lt;/code&gt;&lt;/a&gt;&lt;/li&gt; 
-&lt;/ul&gt; 
-&lt;p&gt;V&amp;nbsp;mezičase se prokousávám webovými Java technologiemi (J2EE).&lt;/p&gt; 
-&lt;!--
-Nedávno jsem dopřekládal IT knihu pro CPress,
-a dodělal CMS a systém správy práv pro &quot;FSI VUT&quot;:www.fme.vutbr.cz,
-a dodělal proof-of-concept vyhledávání spojů v jízdních řádech.
-
-Momentálně pracuji na projektech:
-
- * ISIR překladiště
-
-
-&quot;**Vyhledávání spojů v jízdních řádech s využitím umělé inteligence k optimalizaci**&quot;:/projekty/diplomka/DiplomovaPrace-OndrejZizka.pdf
- - 
-
-Součástí je implementace neuronových sítí v SQL/SP,
-což dává vznik většině obsahu v sekci &quot;Programování / SQL&quot;:stranky/programovani/sql/index.html.
-
---&gt; 
-&lt;h3 id=&quot;toc-na-co-se-chystam&quot;&gt;Na co se chystám&lt;/h3&gt; 
-&lt;ul&gt; 
- &lt;li&gt;&lt;strong&gt;Texy Java implementation&lt;/strong&gt;&lt;/li&gt; 
-&lt;/ul&gt; 
-&lt;!-- * **ISIR WS Relay** - překladiště insolvenčního rejstříku --&gt; 
-&lt;ul&gt; 
- &lt;li&gt;&lt;strong&gt;Gravity Road&lt;/strong&gt;&amp;nbsp;– tajný projekt ;-)&lt;/li&gt; 
-&lt;/ul&gt; 
             </description>
         </item>
         <item>
@@ -19390,30 +19414,6 @@ classes</title>
   @XmlElement(name=&quot;roadCell&quot;, type=RoadCellBean.class)
 })
 public List&amp;lt;CellBean&amp;gt; cells;&lt;/pre&gt; 
-            </description>
-        </item>
-        <item>
-            <title>Feature
-request discussion: Result sets stored in @variables</title>
-            <link>https://www.zizka.ch/pages/programming/sql/mysql_wishlist/forum_post.html</link>
-            <pubDate>Thu, 13 Dec 2012 13:39:20 +0100</pubDate>
-            <guid isPermaLink="false">pages/programming/sql/mysql_wishlist/forum_post.html</guid>
-            <description>
-                 &lt;h2 class=&quot; jbakeExtractedTitle&quot; id=&quot;toc-feature-request-discussion-result-sets-stored-in-variables&quot;&gt;Feature request discussion: Result sets stored in @variables&lt;/h2&gt; 
-&lt;p&gt;Hello,&lt;/p&gt; 
-&lt;p&gt;I&amp;nbsp;got over several weeks of stored routines developement, and the most missed feature was a seamless mechanism for&lt;br&gt; - calling routines with a resultset in a parameter,&lt;br&gt; - retrieving a result set coming stored procedure,&lt;br&gt; - and eventually, for keeping a resultset somewhere without need to create a&amp;nbsp;table.&lt;/p&gt; 
-&lt;p&gt;All of this would be possible if we could store a resultset in a variable. So I&amp;nbsp;have stated a feature request, not yet submitted to a buglist. First I&amp;nbsp;would like to know others&apos; oppinions and suggestions, because I&amp;nbsp;am not much familiar with other&amp;nbsp;DBMS.&lt;/p&gt; 
-&lt;p&gt;I&amp;nbsp;guess that such functionality would not be easy to implement and is not likely to appear soon. But it would be a giant leap for MySQL&apos;s&amp;nbsp;stored procedures programming.&lt;/p&gt; 
-&lt;p&gt;Here is a brief overview:&lt;/p&gt; 
-&lt;h2 id=&quot;toc-create-the-result-set-and-store-it-in-a-variable&quot;&gt;Create the result set and store it in a variable.&lt;/h2&gt; 
-&lt;p&gt;SELECT * FROM table1 INTO @resultset;&lt;br&gt; – or&amp;nbsp;– SET @resultset = (SELECT * FROM table1);&lt;/p&gt; 
-&lt;h2 id=&quot;toc-pass-the-result-set-into-a-stored-procedure&quot;&gt;Pass the result set into a stored procedure.&lt;/h2&gt; 
-&lt;p&gt;CALL StoredProcedure( @resultset );&lt;/p&gt; 
-&lt;h2 id=&quot;toc-retrieving-a-result-set-from-a-stored-procedure&quot;&gt;Retrieving a result set from a stored procedure&lt;/h2&gt; 
-&lt;p&gt;CALL StoredProcedure() INTO @result;&amp;nbsp;– or&amp;nbsp;– SET @result = (CALL StoredProcedure());&lt;/p&gt; 
-&lt;p&gt;More detailed formatted draft is here: &lt;a href=&quot;http://ondra.zizka.cz/stranky/programovani/sql/mysql_wishlist/result_set_in_variable.texy&quot;&gt;http://ondra.zizka.cz/…ariable.texy&lt;/a&gt;&lt;/p&gt; 
-&lt;p&gt;Now&amp;nbsp;– what do you think? Would this ease your SP developement? Is there some better concept?&lt;/p&gt; 
-&lt;p&gt;Thanks for comments.&lt;/p&gt; 
             </description>
         </item>
         <item>
