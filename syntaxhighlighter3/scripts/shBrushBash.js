@@ -7,15 +7,15 @@
  *
  * @author
  * Alex Gorbatchev
- * 
+ *
  * @copyright
  * Copyright (C) 2004-2009 Alex Gorbatchev.
  *
  * Licensed under a GNU Lesser General Public License.
  * http://creativecommons.org/licenses/LGPL/2.1/
  *
- * SyntaxHighlighter is donationware. You are allowed to download, modify and distribute 
- * the source code in accordance with LGPL 2.1 license, however if you want to use 
+ * SyntaxHighlighter is donationware. You are allowed to download, modify and distribute
+ * the source code in accordance with LGPL 2.1 license, however if you want to use
  * SyntaxHighlighter on your site or include it in your product, you must donate.
  * http://alexgorbatchev.com/wiki/SyntaxHighlighter:Donate
  */
@@ -37,7 +37,7 @@ SyntaxHighlighter.brushes.Bash = function()
 					'uname unexpand uniq units unset unshar useradd usermod users uuencode uudecode v vdir ' +
 					'vi watch wc whereis which who whoami Wget xargs yes'
 					;
-    
+
 	this.regexList = [
 		{ regex: SyntaxHighlighter.regexLib.singleLinePerlComments,		css: 'comments' },		// one line comments
 		{ regex: SyntaxHighlighter.regexLib.doubleQuotedString,			css: 'string' },		// double quoted strings
@@ -47,5 +47,5 @@ SyntaxHighlighter.brushes.Bash = function()
 }
 
 SyntaxHighlighter.brushes.Bash.prototype	= new SyntaxHighlighter.Highlighter();
-SyntaxHighlighter.brushes.Bash.aliases		= ['bash', 'shell'];
+SyntaxHighlighter.brushes.Bash.aliases		= ['bash', 'shell', 'regex'];
 

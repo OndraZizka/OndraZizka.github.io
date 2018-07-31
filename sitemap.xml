@@ -21,6 +21,18 @@
         <lastmod>2050-01-01</lastmod>
     </url>
     <url>
+        <loc>https://www.zizka.ch/tests/resourceUrls/imagePathsTexy.html</loc>
+        <lastmod>2050-01-01</lastmod>
+    </url>
+    <url>
+        <loc>https://www.zizka.ch/tests/resourceUrls/subdir/imagePathsTexy.html</loc>
+        <lastmod>2050-01-01</lastmod>
+    </url>
+    <url>
+        <loc>https://www.zizka.ch/pages/programming/java/web/wicket/netbeans-wicket-support-wishlist.html</loc>
+        <lastmod>2018-08-01</lastmod>
+    </url>
+    <url>
         <loc>https://www.zizka.ch/pages/linux/dojmy_z_ubuntu_8.html</loc>
         <lastmod>2018-07-31</lastmod>
     </url>
@@ -205,7 +217,15 @@
         <lastmod>2018-07-26</lastmod>
     </url>
     <url>
-        <loc>https://www.zizka.ch/pages/programming/java/hibernate/Hibernate-MySQL-ErrorCode1005-Cant-create-table-%23sql-4cb_35-errno-150.html</loc>
+        <loc>https://www.zizka.ch/tests/resourceUrls/imagePathsHtml.html</loc>
+        <lastmod>2018-07-26</lastmod>
+    </url>
+    <url>
+        <loc>https://www.zizka.ch/tests/resourceUrls/subdir/imagePathsHtml.html</loc>
+        <lastmod>2018-07-26</lastmod>
+    </url>
+    <url>
+        <loc>https://www.zizka.ch/pages/programming/java/hibernate/Hibernate-MySQL-ErrorCode1005-Cant-create-table-sql-4cb_35-errno-150.html</loc>
         <lastmod>2018-07-25</lastmod>
     </url>
     <url>
@@ -254,10 +274,6 @@
     </url>
     <url>
         <loc>https://www.zizka.ch/pages/programming/java/web/wicket/wicket-cheatsheet.html</loc>
-        <lastmod>2012-12-31</lastmod>
-    </url>
-    <url>
-        <loc>https://www.zizka.ch/pages/programming/java/web/wicket/netbeans-wicket-support-wishlist.html</loc>
         <lastmod>2012-12-31</lastmod>
     </url>
     <url>
