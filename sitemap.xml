@@ -33,10 +33,6 @@
         <lastmod>2018-07-30</lastmod>
     </url>
     <url>
-        <loc>https://www.zizka.ch/pages/programming/java/index.html</loc>
-        <lastmod>2018-07-30</lastmod>
-    </url>
-    <url>
         <loc>https://www.zizka.ch/pages/programming/java/web/wicket/index.html</loc>
         <lastmod>2018-07-30</lastmod>
     </url>
@@ -895,6 +891,10 @@
     <url>
         <loc>https://www.zizka.ch/pages/test.html</loc>
         <lastmod>2012-11-13</lastmod>
+    </url>
+    <url>
+        <loc>https://www.zizka.ch/pages/programming/java/index.html</loc>
+        <lastmod>2012-01-01</lastmod>
     </url>
     <url>
         <loc>https://www.zizka.ch/pages/odkazy/software.html</loc>

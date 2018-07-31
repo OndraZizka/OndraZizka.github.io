@@ -6,8 +6,8 @@
         <atom:link href="https://www.zizka.ch/feed.xml" rel="self" type="application/rss+xml"/>
         <description>JBake Bootstrap Template</description>
         <language>en-gb</language>
-        <pubDate>Tue, 31 Jul 2018 04:09:47 +0200</pubDate>
-        <lastBuildDate>Tue, 31 Jul 2018 04:09:47 +0200</lastBuildDate>
+        <pubDate>Tue, 31 Jul 2018 04:22:02 +0200</pubDate>
+        <lastBuildDate>Tue, 31 Jul 2018 04:22:02 +0200</lastBuildDate>
 
         <item>
             <title>Work on this site in progress</title>
@@ -150,339 +150,6 @@ DEBUG org.jboss.qa.mavenhoe.MavenHoeApp
 &lt;ul&gt; 
  &lt;li&gt;&lt;code&gt;normalizeName()&lt;/code&gt;&amp;nbsp;– split by dashes and &lt;code&gt;_&lt;/code&gt;&apos;s, remove numbers and dots; then compare these parts. Esp. first&amp;nbsp;ones.&lt;/li&gt; 
 &lt;/ul&gt; 
-            </description>
-        </item>
-        <item>
-            <title>Java + J2EE</title>
-            <link>https://www.zizka.ch/pages/programming/java/index.html</link>
-            <pubDate>Mon, 30 Jul 2018 02:49:55 +0200</pubDate>
-            <guid isPermaLink="false">pages/programming/java/index.html</guid>
-            <description>
-                 &lt;h2 class=&quot; jbakeExtractedTitle&quot; id=&quot;toc-java-j2ee&quot;&gt;Java + J2EE&lt;/h2&gt; 
-&lt;p&gt;This page is a mix of czech and english, sorry for non-separated and loosely organized content, but hopefully you will find your subject by using &lt;code&gt;Ctrl+F&lt;/code&gt;&amp;nbsp;:-)&lt;/p&gt; 
-&lt;hr&gt; 
-&lt;ul&gt; 
- &lt;li&gt;&lt;a href=&quot;howto/quartz-howto-intro.texy&quot;&gt;Quartz intro&lt;/a&gt; and &lt;a href=&quot;web/wicket/wicket-quartz-scheduler-example.texy&quot;&gt;how to use Quartz in Wicket&lt;/a&gt;&lt;/li&gt; 
- &lt;li&gt;&lt;a href=&quot;web/wicket/index.texy&quot;&gt;My Wicket notes&lt;/a&gt;&lt;/li&gt; 
- &lt;li&gt;&lt;a href=&quot;jboss/svn-commit-irc-bot-java.texy&quot;&gt;SVNbot&lt;/a&gt;&amp;nbsp;– an IRC bot announcing SVN commits, written in&amp;nbsp;Java&lt;/li&gt; 
- &lt;li&gt;&lt;a href=&quot;http://ondrazizka.googlecode.com/svn/maven/mysql/mysql-connector-java/5.1.12/&quot;&gt;MySQL JDBC driver for Maven&lt;/a&gt;&amp;nbsp;– mavenized Connector/J&lt;/li&gt; 
- &lt;li&gt;&lt;a href=&quot;http://code.google.com/p/ondrazizka/source/browse/#svn/maven/cz/dynawest/third/pircbot/PircBot&quot;&gt;PircBot Mavenized&lt;/a&gt;&amp;nbsp;– PircBot IRC Bot framework library in a provisory Maven repository.&lt;/li&gt; 
- &lt;li&gt;&lt;a href=&quot;jaxb/jaxb-howto-introduction-tutorial.texy&quot;&gt;JAXB example&lt;/a&gt;&amp;nbsp;– keywords: JAXB howto example tutorial&amp;nbsp;intro.&lt;/li&gt; 
- &lt;li&gt;&lt;a href=&quot;sardine-java-webdav-client-library.texy&quot;&gt;Sardine&amp;nbsp;– WebDAV client library for Java&lt;/a&gt;&lt;/li&gt; 
- &lt;li&gt;&lt;a href=&quot;jboss/jboss-as-startup-run-sh-java-system-variables.texy&quot;&gt;JBoss AS Java system variables&lt;/a&gt; (&lt;code&gt;-D&lt;/code&gt; for &lt;code&gt;bin/run.sh&lt;/code&gt;)&lt;/li&gt; 
- &lt;li&gt;&lt;a href=&quot;jboss/Tomcat-JON-Windows-2003-2008.texy&quot;&gt;JBoss Operation Network and Tomcat on Windows 2003:&amp;nbsp;No-go&lt;/a&gt;&lt;/li&gt; 
- &lt;li&gt;&lt;a href=&quot;jetty-how-to-stop.texy&quot;&gt;How to stop Jetty&lt;/a&gt;&lt;/li&gt; 
- &lt;li&gt;&lt;a href=&quot;jboss/web-services.texy&quot;&gt;JBoss WebServices (JBossWS) notes&lt;/a&gt;&lt;/li&gt; 
- &lt;li&gt;&lt;a href=&quot;jboss/clustering-session-replication.texy&quot;&gt;Simple JBoss AS clustering example&lt;/a&gt; (2&amp;nbsp;nodes, JSP session replication).&lt;/li&gt; 
-&lt;/ul&gt; 
-&lt;p&gt;My usual MySQL JDBC params:&lt;/p&gt; 
-&lt;pre class=&quot;brush: lang-plain brush: plain&quot;&gt;jdbc:mysql://localhost/test?characterEncoding=UTF-8&amp;amp;characterSetResults=UTF-8&amp;amp;autoReconnect=true&amp;amp;zeroDateTimeBehavior=convertToNull&lt;/pre&gt; 
-&lt;h3 id=&quot;toc-maven-tips&quot;&gt;Maven Tips&lt;/h3&gt; 
-&lt;ul&gt; 
- &lt;li&gt;&lt;a href=&quot;maven/log4j-missing-jmx-sun-deps.texy&quot;&gt;Maven and Log4j: Missing JMX dependencies&lt;/a&gt;&amp;nbsp;– mavenized jmxri and jmxtools.&lt;/li&gt; 
- &lt;li&gt;&lt;a href=&quot;maven/profile-activation-and-properties.texy&quot;&gt;Profile activation and properties&lt;/a&gt;&lt;/li&gt; 
- &lt;li&gt;&lt;a href=&quot;maven/how-to-add-existing-project-jar-to-maven-repository.texy&quot;&gt;How to add existing Java project&apos;s &lt;code&gt;.jar&lt;/code&gt;s&amp;nbsp;to Maven repository&lt;/a&gt;&lt;/li&gt; 
- &lt;li&gt;&lt;a href=&quot;maven/maven-create-distribution-package.texy&quot;&gt;How to create an application distribution package with&amp;nbsp;Maven&lt;/a&gt;&lt;/li&gt; 
- &lt;li&gt;&lt;a href=&quot;maven/maven-create-jnlp-file.texy&quot;&gt;How to create a JNPL file (for Java WebStart) with&amp;nbsp;Maven&lt;/a&gt;&lt;/li&gt; 
- &lt;li&gt;&lt;a href=&quot;maven/mavenize-quick-and-dirty.texy&quot;&gt;Quick and dirty mavenization&lt;/a&gt;&amp;nbsp;– How to install an existing library with dependencies to Maven repository.&lt;/li&gt; 
- &lt;li&gt;I&apos;ve presented Maven 2&amp;nbsp;for the company I&amp;nbsp;work for. Download here: &lt;a href=&quot;download/Maven2presentation.pdf&quot;&gt;Maven presentation for Red Hat / JBoss&lt;/a&gt;. See &lt;a href=&quot;https://www.jboss.org/community/docs/DOC-13358&quot;&gt;https://www.jboss.org/…cs/DOC-13358&lt;/a&gt;&amp;nbsp;.&lt;/li&gt; 
- &lt;li&gt;A&amp;nbsp;short polemic against &lt;a href=&quot;http://ant.apache.org/ivy/m2comparison.html&quot;&gt;Ivy / Maven2 Comparison&lt;/a&gt;:&lt;/li&gt; 
- &lt;li&gt;Read my own opinion about &lt;a href=&quot;maven/maven-ant-ivy-comparison.texy&quot;&gt;How Maven 2&amp;nbsp;compares to Ivy&lt;/a&gt;.&lt;/li&gt; 
- &lt;li&gt;&lt;a href=&quot;maven/ant-run-plugin-short.texy&quot;&gt;Short code for Antrun Maven plugin&lt;/a&gt;&lt;/li&gt; 
-&lt;/ul&gt; 
-&lt;p&gt;To start maven goals in debug mode:&lt;/p&gt; 
-&lt;pre class=&quot;brush: lang-xml brush: xml&quot;&gt;mvnDebug test ...&lt;/pre&gt; 
-&lt;p&gt;This does not work for me:&lt;/p&gt; 
-&lt;pre class=&quot;brush: lang-xml brush: xml&quot;&gt;mvn test -DargLine=&quot;-Xdebug -Xnoagent -Djava.compiler=NONE -Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=4000&quot;&lt;/pre&gt; 
-&lt;h3 id=&quot;toc-java-alternative-of-php-s-preg-replace-callback&quot;&gt;Java alternative of PHP&apos;s &lt;code&gt;preg_replace_callback&lt;/code&gt;&lt;/h3&gt; 
-&lt;ul&gt; 
- &lt;li&gt;&lt;a href=&quot;php_preg_replace_callback.texy&quot;&gt;Here&lt;/a&gt;.&lt;/li&gt; 
-&lt;/ul&gt; 
-&lt;h3 id=&quot;toc-xslt-transformation-in-java&quot;&gt;XSLT transformation in Java&lt;/h3&gt; 
-&lt;p&gt;My &lt;a href=&quot;xslt-commandline-with-xalan.texy&quot;&gt;XSLT + Java notes&lt;/a&gt; show:&lt;/p&gt; 
-&lt;ul&gt; 
- &lt;li&gt;How to call Xalan from a command line&lt;/li&gt; 
- &lt;li&gt;A&amp;nbsp;simple class for XSLT conversion using JDK&apos;s&amp;nbsp;XSLT&lt;/li&gt; 
- &lt;li&gt;Template which does some change and copies all other&amp;nbsp;data&lt;/li&gt; 
-&lt;/ul&gt; 
-&lt;h3 id=&quot;toc-what-i-would-change-about-java&quot;&gt;What I&amp;nbsp;would change about Java&lt;/h3&gt; 
-&lt;ul&gt; 
- &lt;li&gt;&lt;a href=&quot;java-feature-requests.texy&quot;&gt;My Java feature requests&lt;/a&gt;&lt;/li&gt; 
-&lt;/ul&gt; 
-&lt;h3 id=&quot;toc-enum-with-a-lookup-map&quot;&gt;Enum with a lookup map&lt;/h3&gt; 
-&lt;ul&gt; 
- &lt;li&gt;&lt;a href=&quot;enum-with-lookup-map.texy&quot;&gt;Enum with a lookup map&lt;/a&gt;&lt;/li&gt; 
-&lt;/ul&gt; 
-&lt;h3 id=&quot;toc-jaxb-a-list-with-inherited-classes&quot;&gt;JAXB&amp;nbsp;– a List with inherited classes&lt;/h3&gt; 
-&lt;ul&gt; 
- &lt;li&gt;&lt;a href=&quot;jaxb/jaxb-list-with-inherited-classes.texy&quot;&gt;JAXB&amp;nbsp;– a List with inherited classes&lt;/a&gt;&lt;/li&gt; 
-&lt;/ul&gt; 
-&lt;h3 id=&quot;toc-groovy-bootloader-bug-with-dombuilder&quot;&gt;Groovy bootloader bug with DOMBuilder&lt;/h3&gt; 
-&lt;ul&gt; 
- &lt;li&gt;Is &lt;a href=&quot;groovy-dombuilder-bug.texy&quot;&gt;this&lt;/a&gt; a bug?&lt;/li&gt; 
-&lt;/ul&gt; 
-&lt;h3 id=&quot;toc-jboss&quot;&gt;JBoss&lt;/h3&gt; 
-&lt;ul&gt; 
- &lt;li&gt;Unsign JBoss AS distribution: &lt;code&gt;find . -type f -iname &apos;*.jar&apos; -exec zip -d &apos;{}&apos; META-INF/JBOSSCOD.{SF,RSA} \;&lt;/code&gt;&lt;/li&gt; 
- &lt;li&gt;&lt;a href=&quot;jboss/filesystem-resource-adapter.texy&quot;&gt;Filesystem Resource Adapter&lt;/a&gt;&lt;/li&gt; 
- &lt;li&gt;&lt;a href=&quot;jboss/jboss-embedded-bottstrapping.texy&quot;&gt;Bootstrapping JBoss Embedded server&lt;/a&gt; A&amp;nbsp;very brief how-to&amp;nbsp;– just a maven deps and the bootstraping&amp;nbsp;code.&lt;/li&gt; 
- &lt;li&gt;&lt;a href=&quot;jboss/common-mistakes-and-exceptions.texy&quot;&gt;Common JBoss AS mistakes and exceptions&lt;/a&gt;&lt;/li&gt; 
- &lt;li&gt;&lt;a href=&quot;jboss/jboss-vs-spring.texy&quot;&gt;JBoss vs. Spring&lt;/a&gt; An attempt to answer what to use as a base for an enterprise web application.&lt;/li&gt; 
-&lt;/ul&gt; 
-&lt;h3 id=&quot;toc-how-to-transform-web-xml-with-xstl-and-xpath&quot;&gt;How to transform &lt;code&gt;web.xml&lt;/code&gt; with XSTL and XPath&lt;/h3&gt; 
-&lt;p&gt;In short, the trick is that XPath doesn&apos;t work well with element names containing a minus. So you have to match e.g &lt;code&gt;web-xml&lt;/code&gt; like&amp;nbsp;this:&lt;/p&gt; 
-&lt;pre class=&quot;lang-xpath brush: xpath&quot;&gt;*[name()=&apos;web-xml&apos;]&lt;/pre&gt; 
-&lt;h3 id=&quot;toc-how-to-incrementally-update-a-jaxb-mapped-object&quot;&gt;How to incrementally update a JAXB-mapped object&lt;/h3&gt; 
-&lt;p&gt;Using a factory delegating the setters to the original object. &lt;em&gt;To be eventually written&amp;nbsp;later.&lt;/em&gt;&lt;/p&gt; 
-&lt;h3 id=&quot;toc-json-with-jaxb-jackson&quot;&gt;JSON with JAXB&amp;nbsp;– Jackson&lt;/h3&gt; 
-&lt;ul&gt; 
- &lt;li&gt;How to &lt;a href=&quot;jaxb/jaxb-json-jackson-howto.texy&quot;&gt;create JSON output from POJOs using JAXB annotations&lt;/a&gt;.&lt;/li&gt; 
-&lt;/ul&gt; 
-&lt;h3 id=&quot;toc-jboss-aop-in-a-standalone-application-example-howto&quot;&gt;JBoss AOP in a standalone application&amp;nbsp;– example / howto&lt;/h3&gt; 
-&lt;p&gt;Few articles about JBoss AOP:&lt;/p&gt; 
-&lt;ul&gt; 
- &lt;li&gt;A&amp;nbsp;&lt;a href=&quot;jboss/jboss-aop-howto-example-standalone-app.texy&quot;&gt;brief introduction to usage of JBoss MC with JBoss&amp;nbsp;AOP&lt;/a&gt;&lt;/li&gt; 
- &lt;li&gt;&lt;a href=&quot;java.lang.IllegalArgumentException-Unknown-AOP-tag-bean.texy&quot;&gt;JBoss AOP: &lt;code&gt;java.lang.IllegalArgumentException: Unknown AOP tag: bean&lt;/code&gt;&lt;/a&gt;&lt;/li&gt; 
- &lt;li&gt;&lt;a href=&quot;jboss-aop-could-not-find-class.texy&quot;&gt;JBoss AOP: Could not find class&lt;/a&gt;&lt;/li&gt; 
-&lt;/ul&gt; 
-&lt;h3 id=&quot;toc-jboss-microcontainer-in-a-standalone-application&quot;&gt;JBoss Microcontainer in a standalone application&lt;/h3&gt; 
-&lt;ul&gt; 
- &lt;li&gt;A&amp;nbsp;&lt;a href=&quot;jboss/jboss-microcontainer-howto-example-standalone-app.texy&quot;&gt;brief introduction to usage of JBoss MC in a standalone app&lt;/a&gt;.&lt;/li&gt; 
-&lt;/ul&gt; 
-&lt;h3 id=&quot;toc-java-concurency-threads-and-synchronization&quot;&gt;Java Concurency, Threads and Synchronization&lt;/h3&gt; 
-&lt;ul&gt; 
- &lt;li&gt;Attempt for &lt;a href=&quot;modifier-and-concurent-readers.texy&quot;&gt;one modifier and many concurent readers&lt;/a&gt;&amp;nbsp;– a variant of producers and consumers problem.&lt;/li&gt; 
-&lt;/ul&gt; 
-&lt;h3 id=&quot;toc-maven-order-of-execution-of-plugins-in-profiles&quot;&gt;Maven: Order of execution of plugins in profiles&lt;/h3&gt; 
-&lt;p&gt;I&amp;nbsp;was curious in which order Maven executes the plugins:&lt;br&gt; Whether it uses POM profile appearance order, or uses the ordering from the command line&apos;s &lt;code&gt;-P&lt;/code&gt; param&amp;nbsp;value.&lt;/p&gt; 
-&lt;p&gt;Here is the &lt;a href=&quot;maven/maven-plugin_in_profiles_execution_order.texy&quot;&gt;result of my try-out&lt;/a&gt;.&lt;/p&gt; 
-&lt;h3 id=&quot;toc-spring-aop-common-mistake-cglib2-is-not-available&quot;&gt;Spring AOP common mistake: CGLIB2 is not available&lt;/h3&gt; 
-&lt;p&gt;You&apos;ve added a new bean to Spring. And want to do some AOP over its methods.&lt;br&gt; But you run into&amp;nbsp;this:&lt;/p&gt; 
-&lt;pre class=&quot;brush: lang-text brush: text&quot;&gt;org.springframework.beans.factory.BeanCreationException: Error creating bean with name &apos;udalostiQueueController&apos; defined in class path resource [properties/Actions.xml]: Initialization of bean failed; nested exception is org.springframework.aop.framework.AopConfigException: Cannot proxy target class because CGLIB2 is not available. Add CGLIB to the class path or specify proxy interfaces.
-
-Caused by: org.springframework.aop.framework.AopConfigException: Cannot proxy target class because CGLIB2 is not available. Add CGLIB to the class path or specify proxy interfaces.
-        at org.springframework.aop.framework.DefaultAopProxyFactory.createAopProxy(DefaultAopProxyFactory.java:67)
-        at org.springframework.aop.framework.ProxyCreatorSupport.createAopProxy(ProxyCreatorSupport.java:106)
-        at org.springframework.aop.framework.ProxyFactory.getProxy(ProxyFactory.java:110)
-        etc.&lt;/pre&gt; 
-&lt;p&gt;The reason is simple: To do AOP, Spring needs either CGLIB to do class instrumentation (bytecode magic) at runtime, or you have to use your bean through an interface.&lt;/p&gt; 
-&lt;p&gt;So, put all your public methods into an interface and put all it&apos;s&amp;nbsp;methods into an implementation. Use the implementation in Spring as the bean class, and when obtaining the bean in the code, store it into interface-typed reference.&lt;/p&gt; 
-&lt;pre class=&quot;brush: lang-java brush: java&quot;&gt;public interface MyBean {
-  public void doSomethingInAOP();
-}
-
-public class MyBeanImpl implements MyBean {
-  public void doSomethingInAOP(){ ... }
-}&lt;/pre&gt; 
-&lt;pre class=&quot;brush: lang-xml brush: xml&quot;&gt;&amp;lt;bean id=&quot;myBean&quot; class=&quot;info.insolvencnirejstrik.controllers.MyBeanImpl&quot; /&amp;gt;
-
-&amp;lt;aop:config&amp;gt;
-
-  &amp;lt;aop:pointcut id=&quot;controllerMethods&quot; expression=&quot;execution(* info.insolvencnirejstrik.controllers.*.*(..))&quot;/&amp;gt;
-
-  &amp;lt;aop:advisor advice-ref=&quot;txAdvice&quot; pointcut-ref=&quot;controllerMethods&quot;/&amp;gt;
-
-&amp;lt;/aop:config&amp;gt;&lt;/pre&gt; 
-&lt;pre class=&quot;brush: lang-java brush: java&quot;&gt;MyBean bean = appContext.getBean(&quot;myBean&quot;);&lt;/pre&gt; 
-&lt;h3 id=&quot;toc-ibatis-instantiation-error&quot;&gt;Ibatis instantiation error&lt;/h3&gt; 
-&lt;p&gt;&lt;a href=&quot;ibatis-instantiation-exception.texy&quot;&gt;Ibatis instantiation exception&lt;/a&gt; can arise from the lack of default constructor.&lt;/p&gt; 
-&lt;h3 id=&quot;toc-stackoverflowerror-with-xerces-2-0-2&quot;&gt;StackOverflowError with Xerces 2.0.2&lt;/h3&gt; 
-&lt;p&gt;Beware of DBCP in combination with Spring and iBatis using Maven. DBCP uses Xerces 2.0.2, which is old buggy version and causes stack overflow exception when parsing Spring&apos;s &lt;code&gt;applicationContext.xml&lt;/code&gt;, which uses namespaces (e.g. for&amp;nbsp;AOP).&lt;/p&gt; 
-&lt;pre class=&quot;lang-text brush: text&quot;&gt;Caused by: java.lang.StackOverflowError at org.apache.xerces.util.URI.isConformantSchemeName&lt;/pre&gt; 
-&lt;p&gt;Because Maven uses the „nearest node in dependency graph“ rule for resolving version conflicts, it choses DBCP&apos;s&amp;nbsp;Xerces 2.0.2, because other dependencies have Xerces deeper.&lt;/p&gt; 
-&lt;h3 id=&quot;toc-maven-unzip-plugin&quot;&gt;Maven Unzip Plugin&lt;/h3&gt; 
-&lt;p&gt;I&apos;m going to write unzip plugin for Maven2. Stay tuned.&lt;/p&gt; 
-&lt;p&gt;//Update:// So here it is: &lt;a href=&quot;http://www.pohlidame.cz/insolvencni-rejstrik/maven-unzip-plugin.html&quot;&gt;Maven Unzip Plugin&lt;/a&gt;&lt;/p&gt; 
-&lt;p&gt;Enjoy :-)&lt;/p&gt; 
-&lt;h3 id=&quot;toc-jabber-xmpp-maven-plugin&quot;&gt;Jabber (XMPP) Maven plugin&lt;/h3&gt; 
-&lt;p&gt;I&apos;ve created a simple plugin for Maven2, which can send a message from the Maven build process.&lt;/p&gt; 
-&lt;p&gt;See &lt;a href=&quot;maven/jabber-xmpp-maven-plugin.texy&quot;&gt;Jabber (XMPP) Maven plugin&lt;/a&gt;&lt;/p&gt; 
-&lt;p&gt;Used in the &lt;a href=&quot;http://www.pohlidame.cz/&quot;&gt;Insolvenční rejstřík&lt;/a&gt; project.&lt;/p&gt; 
-&lt;h3 id=&quot;toc-jpa-and-hibernate-mapping-with-mysql-common-errors-and-exceptions&quot;&gt;JPA and Hibernate mapping with MySQL&amp;nbsp;– common errors and exceptions&lt;/h3&gt; 
-&lt;p&gt;Some &lt;a href=&quot;hibernate-common-errors-and-exceptions.texy&quot;&gt;tips for those tampering with Java Persistence API and Hibernate&lt;/a&gt;&amp;nbsp;– how to tame the exceptions comming from Hibernate EntityManager, Hibernate Annotations and&amp;nbsp;JDBC.&lt;/p&gt; 
-&lt;h3 id=&quot;toc-immutableproperties-class&quot;&gt;ImmutableProperties class&lt;/h3&gt; 
-&lt;p&gt;I&apos;ve created an &lt;a href=&quot;immutable_properties.texy&quot;&gt;immutable adapter of the java.util.Pro­perties class&lt;/a&gt;. Not that there aren&apos;t bunches of similar over the&amp;nbsp;net…&lt;/p&gt; 
-&lt;h3 id=&quot;toc-how-to-read-properties-file-in-spring-framework&quot;&gt;How to read properties file in Spring Framework&lt;/h3&gt; 
-&lt;p&gt;A&amp;nbsp;new short tutorial on &lt;a href=&quot;howto-spring-reading_properties_file.texy&quot;&gt;how to provide properties read from a file to a bean&lt;/a&gt;.&lt;/p&gt; 
-&lt;h3 id=&quot;toc-parametrized-spring-configuration&quot;&gt;Parametrized Spring Configuration&lt;/h3&gt; 
-&lt;p&gt;Here&apos;s&amp;nbsp;a short sketch of my idea about &lt;a href=&quot;howto-substitutions_in_spring_configuration-tutorial.texy&quot;&gt;parametrizing Spring configuration&lt;/a&gt;, using placeholders (&lt;code&gt;PropertyPlaceholderConfigurer&lt;/code&gt;) and overrides (&lt;code&gt;PropertyOverrideConfigurer&lt;/code&gt;).&lt;/p&gt; 
-&lt;h3 id=&quot;toc-web-service-client-from-wsdl-using-axis2&quot;&gt;Web service client from WSDL using Axis2&lt;/h3&gt; 
-&lt;p&gt;Here&apos;s&amp;nbsp;&lt;a href=&quot;web_service_client_from_wsdl_using_axis2.texy&quot;&gt;how to create web service client from WSDL using Axis2&lt;/a&gt;.&lt;/p&gt; 
-&lt;h3 id=&quot;toc-logovani-v-jave-log4j-a-java-util-logging&quot;&gt;Logování v&amp;nbsp;Javě ? &lt;code&gt;log4j&lt;/code&gt; a &lt;code&gt;java.util.logging&lt;/code&gt;&lt;/h3&gt; 
-&lt;p&gt;Sepsal jsem si &lt;a href=&quot;navod_logovani_java.util.logging.texy&quot;&gt;stručný úvod do logování v&amp;nbsp;Javě&lt;/a&gt;&lt;br&gt; s&amp;nbsp;ukázkaou konfigurace.&lt;/p&gt; 
-&lt;h3 id=&quot;toc-jpa-with-hibernate-common-mistakes&quot;&gt;JPA with Hibernate common mistakes&lt;/h3&gt; 
-&lt;pre class=&quot;lang-exception brush: exception&quot;&gt;ERROR [org.hibernate.LazyInitializationException] (main:) could not initialize proxy - no Session
-Exception in thread &quot;main&quot; org.hibernate.LazyInitializationException: could not initialize proxy - no Session
-        at org.hibernate.proxy.AbstractLazyInitializer.initialize(AbstractLazyInitializer.java:57)
-org.hibernate.LazyInitializationException: could not initialize proxy - no Session
-        at org.hibernate.proxy.AbstractLazyInitializer.getImplementation(AbstractLazyInitializer.java:111)
-        at org.hibernate.proxy.AbstractLazyInitializer.initialize(AbstractLazyInitializer.java:57)
-        at org.hibernate.proxy.AbstractLazyInitializer.getImplementation(AbstractLazyInitializer.java:111)
-        at org.hibernate.proxy.pojo.cglib.CGLIBLazyInitializer.invoke(CGLIBLazyInitializer.java:150)
-        at cz.dynawest.isir.entities.User$$EnhancerByCGLIB$$f6910a6b.setMail(&amp;lt;generated&amp;gt;)
-        at cz.dynawest.isir.test.Manipulace.main(Manipulace.java:49)
-        at org.hibernate.proxy.pojo.cglib.CGLIBLazyInitializer.invoke(CGLIBLazyInitializer.java:150)
-        at cz.dynawest.isir.entities.User$$EnhancerByCGLIB$$f6910a6b.setMail(&amp;lt;generated&amp;gt;)
-        at cz.dynawest.isir.test.Manipulace.main(Manipulace.java:49)\--
-
-**Two common reasons:**
-
-1) You have loaded an entity containing a collection (List, Set, ...), but by default,
-Hibernate does not load their members; instead, it puts a proxy, which waits for the case
-you access the collection and then loads it.
-
-
-2) You&apos;ve loaded the entity using JPA&apos;s `getReference()` or Hibernate&apos;s `load()`.
-That creates a proxy object, which holds only an ID.
-Try calling JPA&apos;s `find()`, resp. Hibernate&apos;s `get()` //(sure, JPA quite messed the nomenclature...)//
-
-
-So you&apos;re trying to manipulate the entity without having any open transaction (session).
-Hibernate generally needs every database operation to happen in a transaction,
-opened either explicitly (using e.g. `EntityManager.getTransaction()`)
-or implicitly (using e.g. Spring AOP).
-
-
-
-------------------------------------------------&lt;/pre&gt; 
-&lt;pre class=&quot;lang-exception brush: exception&quot;&gt;org.hibernate.PersistentObjectException: detached entity passed to persist&lt;/pre&gt; 
-&lt;p&gt;You load or create an entity in one transaction, which then ends, and then you try to call &lt;code&gt;persist()&lt;/code&gt;. Instead, you must call &lt;code&gt;merge()&lt;/code&gt;, because that&apos;s&amp;nbsp;the method which is meant to re-attach detached entities. Use &lt;code&gt;persist()&lt;/code&gt; to store the entity when you change it inside the same transaction as it was loaded&amp;nbsp;in.&lt;/p&gt; 
-&lt;hr&gt; 
-&lt;p&gt;&lt;strong&gt;Generally speaking:&lt;/strong&gt;&lt;/p&gt; 
-&lt;p&gt;If you load an entity using a DAO, usualy you have a transaction in that DAO&apos;s&amp;nbsp;methods. Thus when changing the entity inside DAO, use &lt;code&gt;persist()&lt;/code&gt;; When you change it outside DAO and then call some DAO method to save it, call &lt;code&gt;merge()&lt;/code&gt;.&lt;/p&gt; 
-&lt;h3 id=&quot;toc-zacatky-se-spring-aop-aspect-oriented-programming&quot;&gt;Začátky se Spring AOP (Aspect Oriented Programming)&lt;/h3&gt; 
-&lt;p&gt;Rozchodil jsem Spring AOP a zde dávám &lt;a href=&quot;navod-spring-aop-zacatky.texy&quot;&gt;stručný návod, jak si Spring AOP&lt;/a&gt; rozchodíte&amp;nbsp;taky.&lt;/p&gt; 
-&lt;h3 id=&quot;toc-freemarker-templates-via-spring-in-non-web-application&quot;&gt;FreeMarker templates via Spring in non-web application&lt;/h3&gt; 
-&lt;p&gt;Note on how to use &lt;a href=&quot;navod-spring_freemarker_in_standalone_application.texy&quot;&gt;FreeMarker configured by Spring Dependency Injection in a standalone (non-web) application&lt;/a&gt;.&lt;/p&gt; 
-&lt;h3 id=&quot;toc-ibatis-inline-map-format-empty-string-in-nullvalue&quot;&gt;iBatis inline map format: empty String in nullValue&lt;/h3&gt; 
-&lt;blockquote&gt; 
- &lt;p&gt;If i&amp;nbsp;want to set a nullValue replacement for an empty String I&amp;nbsp;use this in an explicit parameterMap:&lt;/p&gt; 
- &lt;pre class=&quot;brush: lang-xml brush: xml&quot;&gt;&amp;lt;parameter property=&quot;street&quot; jdbcType=&quot;VARCHAR&quot; nullValue=&quot;&quot;/&amp;gt;&lt;/pre&gt; 
- &lt;p&gt;I&amp;nbsp;want to do the same thing using inline parameters. I&apos;ve tried the following:&lt;/p&gt; 
- &lt;pre class=&quot;lang-ibatis brush: ibatis&quot;&gt;#street:VARCHAR:&quot;&quot;#
-#street:VARCHAR:#
-#street,jdbcType=VARCHAR,nullValue=&quot;&quot;#
-#street,jdbcType=VARCHAR,nullValue=#&lt;/pre&gt; 
- &lt;p&gt;but none works.&lt;/p&gt; 
- &lt;p&gt;How should i&amp;nbsp;write the statement?&lt;/p&gt; 
- &lt;p&gt;Thanks, Ondra&lt;/p&gt; 
-&lt;/blockquote&gt; 
-&lt;blockquote&gt; 
- &lt;p&gt;I&amp;nbsp;recommend not using &lt;code&gt;nullValue&lt;/code&gt; replacement. It&apos;s&amp;nbsp;confusing and doesn&apos;t work the way most people would expect it to, quite the opposite actually. It&apos;s&amp;nbsp;used to map nullable columns to non-nullable class members, like int, long, double, boolean&amp;nbsp;etc…&lt;/p&gt; 
- &lt;p&gt;&lt;strong&gt;It will not be available in iBATIS 3.&lt;/strong&gt;&lt;/p&gt; 
- &lt;p&gt;Clinton Begin&lt;/p&gt; 
-&lt;/blockquote&gt; 
-&lt;blockquote&gt; 
- &lt;p&gt;Quite bad news for me :(&lt;/p&gt; 
- &lt;p&gt;I&amp;nbsp;use &lt;code&gt;nullValue&lt;/code&gt; as a convenient brief instrument to unify both null values OR empty String to &lt;code&gt;NULL&lt;/code&gt; in the database (e.g. when importing from Excel and some cells are empty (that yields &lt;code&gt;null&lt;/code&gt;) and some have empty strings). Handling it in Java or SQL code would clutter it quite&amp;nbsp;much.&lt;/p&gt; 
- &lt;p&gt;Can we expect some substitute for this in iBatis 3?&lt;/p&gt; 
- &lt;p&gt;Ondra&lt;/p&gt; 
-&lt;/blockquote&gt; 
-&lt;p&gt;While waiting for response, I&amp;nbsp;realized this:&lt;/p&gt; 
-&lt;p&gt;In case of MySQL, one can use &lt;code&gt;NULLIF(expr1,expr2)&lt;/code&gt; function in &lt;code&gt;INSERT&lt;/code&gt;, which returns &lt;code&gt;NULL&lt;/code&gt; if &lt;code&gt;expr1&lt;/code&gt; = &lt;code&gt;expr2&lt;/code&gt; is true, otherwise returns &lt;code&gt;expr1&lt;/code&gt;.&lt;/p&gt; 
-&lt;pre class=&quot;brush: lang-sql brush: sql&quot;&gt;INSERT INTO table SET name = NULLIF(#name#,&apos;&apos;);&lt;/pre&gt; 
-&lt;h3 id=&quot;toc-java-lang-instantiationexception-in-ibatis-when-using-java-util-map&quot;&gt;&lt;code&gt;java.lang.InstantiationException&lt;/code&gt; in iBatis when using java.util.Map&lt;/h3&gt; 
-&lt;p&gt;Exception:&lt;/p&gt; 
-&lt;pre class=&quot;lang-text brush: text&quot;&gt;JavaBeansDataExchange could not instantiate result class.  Cause: java.lang.InstantiationException: java.util.Map&lt;/pre&gt; 
-&lt;p&gt;SQL mapping code:&lt;/p&gt; 
-&lt;pre class=&quot;brush: lang-xml brush: xml&quot;&gt;&amp;lt;select id=&quot;getMatchingDluzniciForUser&quot; parameterClass=&quot;long&quot; resultClass=&quot;map&quot;&amp;gt;
-SELECT * FROM table
-&amp;lt;/select&amp;gt;&lt;/pre&gt; 
-&lt;p&gt;&lt;strong&gt;Cause:&lt;/strong&gt; iBatis is trying to instantiate &lt;code&gt;java.util.Map&lt;/code&gt;, which is an interface, thus can&apos;t be instantiated.&lt;/p&gt; 
-&lt;p&gt;&lt;strong&gt;Fix:&lt;/strong&gt; Instead, use &lt;code&gt;java.util.HashMap&lt;/code&gt; or other &lt;code&gt;Map&lt;/code&gt; implementation as the result&amp;nbsp;class.&lt;/p&gt; 
-&lt;h3 id=&quot;toc-compiling-connector-j&quot;&gt;Compiling Connector/J&lt;/h3&gt; 
-&lt;p&gt;If you try to compile MySQL Connector/J from the source, after resolving dependencies, you will probably end up with many compiler errors.&lt;/p&gt; 
-&lt;p&gt;That is because of the special way how Connector/J is compiled. Let &lt;a href=&quot;http://www.jroller.com/mmatthews/&quot;&gt;Mark Matthews&lt;/a&gt; &lt;a href=&quot;http://bugs.mysql.com/bug.php?id=38060#c176729&quot;&gt;say&amp;nbsp;it&lt;/a&gt;&lt;/p&gt; 
-&lt;blockquote&gt;
- The issue is that you can&apos;t compile Connector/J with 
- &lt;em&gt;just&lt;/em&gt; JDK6, as the driver supports JDBC4 and pre-JDBC4 APIs from the same codebase, and there are new classes and methods in JDBC4 that aren&apos;t available pre-JDK6.Therefore, the way it works is that you have to set JAVA_HOME to point to JDK-1.4&amp;nbsp;or 1.5, and then set the Ant properties „com.mysql.jdbc­.java6.javac“ with the full path to your JDK6 java compiler, and „com.mysql.jdbc­.java6.rtjar“ with the full path to your JDK6 runtime class libraries, when invoking Ant.
-&lt;/blockquote&gt; 
-&lt;h3 id=&quot;toc-sqlexception-for-zero-datetime-or-timestamp-column-use-zerodatetimebehavior&quot;&gt;&lt;code&gt;SQLException&lt;/code&gt; for zero &lt;code&gt;DATETIME&lt;/code&gt; or &lt;code&gt;TIMESTAMP&lt;/code&gt; column? Use&amp;nbsp;&lt;code&gt;zeroDateTimeBehavior&lt;/code&gt;&lt;/h3&gt; 
-&lt;p&gt;When working with MySQL over JDBC and the driver encounters a zero &lt;code&gt;DATE&lt;/code&gt;, &lt;code&gt;TIME&lt;/code&gt;, or &lt;code&gt;DATETIME&lt;/code&gt; value (that is, e.g, ‚0000–00–00‘ for &lt;code&gt;DATE&lt;/code&gt;), an exception is thrown:&lt;/p&gt; 
-&lt;pre class=&quot;lang-exception brush: exception&quot;&gt;java.sql.SQLException: Cannot convert value &apos;0000-00-00 00:00:00&apos; from column 4 to TIMESTAMP.&lt;/pre&gt; 
-&lt;p&gt;In this case, using SQL commands like&lt;/p&gt; 
-&lt;pre&gt;SET GLOBAL sql_mode = &apos;NO_ZERO_DATE&apos;;&lt;/pre&gt; 
-&lt;p&gt;does not help much, because that works only in „strict SQL mode“, and needs to be set for every connection, or globally for the whole server.&lt;/p&gt; 
-&lt;p&gt;What helps is setting JDBC driver&apos;s &lt;code&gt;zeroDateTimeBehavior&lt;/code&gt; property to &lt;code&gt;convertToNull&lt;/code&gt;:&lt;/p&gt; 
-&lt;blockquote&gt; 
- &lt;p&gt;What should happen when the driver encounters DATETIME values that are composed entirely of zeroes (used by MySQL to represent invalid dates)? Valid values are &lt;code&gt;&quot;exception&quot;&lt;/code&gt;, &lt;code&gt;&quot;round&quot;&lt;/code&gt; and &lt;code&gt;&quot;convertToNull&quot;&lt;/code&gt;.&lt;/p&gt; 
-&lt;/blockquote&gt; 
-&lt;p&gt;The way to set it depends on the way you configure JDBC driver. The most common case is to use connection URL parameters. In my case it&amp;nbsp;reads:&lt;/p&gt; 
-&lt;pre class=&quot;lang-text brush: text&quot;&gt;jdbc:mysql://localhost/test?zeroDateTimeBehavior=convertToNull&amp;amp;autoReconnect=true&amp;amp;characterEncoding=UTF-8&amp;amp;characterSetResults=UTF-8&lt;/pre&gt; 
-&lt;h3 id=&quot;toc-java-and-javaw-difference&quot;&gt;&lt;code&gt;java&lt;/code&gt; and &lt;code&gt;javaw&lt;/code&gt; difference&lt;/h3&gt; 
-&lt;p&gt;&lt;a href=&quot;java_javaw_difference.texy&quot;&gt;What&apos;s&amp;nbsp;the difference between &lt;code&gt;java&lt;/code&gt; and &lt;code&gt;javaw&lt;/code&gt;?&lt;/a&gt;&lt;/p&gt; 
-&lt;h3 id=&quot;toc-navod-import-projektu-ze-svn-do-netbeans-projektu&quot;&gt;Návod: Import projektu ze SVN do NetBeans projektu&lt;/h3&gt; 
-&lt;p&gt;Chtěl jsem se trochu povrtat v&amp;nbsp;projektu &lt;a href=&quot;http://poi.apache.org/subversion.html&quot;&gt;Apache POI&lt;/a&gt;, ale jak prúvodci v&amp;nbsp;NetBeans, tak instrukce na stránce projektu předpokládají, že se SVN umíte, jak když bičem mrská, což v&amp;nbsp;mém případě bylo přesně naopak&amp;nbsp;:-)&lt;/p&gt; 
-&lt;p&gt;Proto jsem sepsal velmi stručný &lt;a href=&quot;navod-svn_subversion_v_netbeans.texy&quot;&gt;núvod, jak do NetBeans dostat projekt ze Subversion repository&lt;/a&gt;.&lt;/p&gt; 
-&lt;h3 id=&quot;toc-levn-java-jsp-j2ee-hosting&quot;&gt;Levn? Java/JSP/J2EE hosting&lt;/h3&gt; 
-&lt;p&gt;Pokud hledáte levný hosting pro svoji J2EE webovou aplikaci, možná vás zaujme &lt;a href=&quot;nabidka_levny_j2ee_jsp_hosting.texy&quot;&gt;tato nabídka&lt;/a&gt;.&lt;/p&gt; 
-&lt;h3 id=&quot;toc-converting-a-number-to-excel-column-character-name&quot;&gt;Converting a number to Excel column character name&lt;/h3&gt; 
-&lt;p&gt;When working with Excel sheets, you might need to convert the column number to it&apos;s&amp;nbsp;letter name&amp;nbsp;– like &lt;code&gt;1&lt;/code&gt; to &lt;code&gt;A&lt;/code&gt;, &lt;code&gt;2&lt;/code&gt; to &lt;code&gt;B&lt;/code&gt;, &lt;code&gt;43&lt;/code&gt; to &lt;code&gt;AQ&lt;/code&gt;, etc. It&apos;s&amp;nbsp;not as trivial as converting a number between two radixes. Here is &lt;a href=&quot;converting_number_to_excel_column_letters_name.texy&quot;&gt;my solution&lt;/a&gt;.&lt;/p&gt; 
-&lt;h3 id=&quot;toc-uzavery-v-jazyce-java-pres-mistni-vnitrni-tridu&quot;&gt;Uzávěry v&amp;nbsp;jazyce Java&amp;nbsp;– přes místní vnitřní třídu&lt;/h3&gt; 
-&lt;p&gt;Při tvorbě GUI k&amp;nbsp;jednomu systému se mi zastesklo po snadnosti uzávěry v&amp;nbsp;JavaScriptu. Prozkoumal jsem &lt;a href=&quot;uzavery_v_jave_mistni_vnitrni_trida.texy&quot;&gt;možnosti uzávěr v&amp;nbsp;Javě&lt;/a&gt;.&lt;/p&gt; 
-&lt;h3 id=&quot;toc-spring-framework-uvod&quot;&gt;Spring Framework&amp;nbsp;– úvod&lt;/h3&gt; 
-&lt;p&gt;Připravil jsem velmi stručný &lt;a href=&quot;navod-spring-framework-zacatky.texy&quot;&gt;tutoriál na rozběhání jedné části Spring Frameworku, a sice Beans Factory&lt;/a&gt;. V&amp;nbsp;češtině.&lt;/p&gt; 
-&lt;h3 id=&quot;toc-hibernate-super-quick-start-in-netbeans&quot;&gt;Hibernate super-quick start in NetBeans&lt;/h3&gt; 
-&lt;p&gt;Here&apos;s&amp;nbsp;my how-to for &lt;a href=&quot;hibernate_netbeans_howto_tutorial.texy&quot;&gt;starting a Hibernate project using Java Persistence API (JPA)&lt;/a&gt;.&lt;/p&gt; 
-&lt;p&gt;Later, I&apos;ll write something about object-relational mapping.&lt;/p&gt; 
-&lt;h3 id=&quot;toc-hibernate-compatibility-matrix-error&quot;&gt;Hibernate Compatibility Matrix Error&lt;/h3&gt; 
-&lt;p&gt;Beware of the Hibernate Compatibility Matrix at &lt;a href=&quot;http://www.hibernate.org/6.html&quot;&gt;http://www.hibernate.org/6.html&lt;/a&gt;.&lt;/p&gt; 
-&lt;p&gt;&lt;strong&gt;Hibernate EntityManager 3.3.2&amp;nbsp;GA&lt;/strong&gt; is said to be compatible with &lt;strong&gt;Hibernate Annotations 3.3.x&lt;/strong&gt;. But, it is not compatible with Hibernate Annotations 3.3.0&amp;nbsp;– only with Hibernate Annotations 3.3.1.&amp;nbsp;This information could spare you few minutes, as it would do to me if I&amp;nbsp;knew it&amp;nbsp;:)&lt;/p&gt; 
-&lt;pre class=&quot;lang-text brush: text&quot;&gt;java.lang.NoSuchMethodError: org.hibernate.cfg.AnnotationConfiguration.addProperties(Ljava/util/Properties;)Lorg/hibernate/cfg/AnnotationConfiguration;&lt;/pre&gt; 
-&lt;h3 id=&quot;toc-simplest-one-line-formatter-for-java-util-logging&quot;&gt;Simplest One-line Formatter for &lt;code&gt;java.util.logging&lt;/code&gt;&lt;/h3&gt; 
-&lt;p&gt;I&amp;nbsp;didn&apos;t like the two-line output of &lt;code&gt;java.util.logging.SimpleFormatter&lt;/code&gt;. On current widescreen LCDs, whole log record can fit at a single line. So I&apos;ve written &lt;code&gt;cz.dynawest.logging.SimplestFormatter&lt;/code&gt;. Compare:&lt;/p&gt; 
-&lt;pre class=&quot;lang-log brush: log&quot;&gt;13.7.2008 0:47:10 cz.dynawest.isir.Conversion3Controller ZpracujArchiv - INFO:   Test
-13.7.2008 0:47:10 cz.dynawest.isir.Conversion3Controller ZpracujArchiv - INFO:   Test2&lt;/pre&gt; 
-&lt;p&gt;vs.&lt;/p&gt; 
-&lt;pre class=&quot;lang-log brush: log&quot;&gt;13.7.2008 0:47:10 cz.dynawest.isir.Conversion3Controller ZpracujArchiv
-INFO:   Test
-13.7.2008 0:47:10 cz.dynawest.isir.Conversion3Controller ZpracujArchiv
-INFO:   Test2&lt;/pre&gt; 
-&lt;p&gt;If you like it, the source code is available for &lt;a href=&quot;download/cz.dynawest.logging.SimplestFormatter.zip&quot;&gt;download here&lt;/a&gt;.&lt;/p&gt; 
-&lt;h3 id=&quot;toc-java-tipy-a-triky&quot;&gt;Java tipy a triky&lt;/h3&gt; 
-&lt;p&gt;Patříte mezi programátory, kteří prvně hledají řešení na Google jako slovní úlohu a až pak studují jakékoliv API? Pak vám možná pomůže moje &lt;a href=&quot;tipy.texy&quot;&gt;stránka tipů pro Javu&lt;/a&gt;. Zatím není nijak moc rozsáhlá, budu postupně doplňovat.&lt;br&gt; Podobných tipů a triků jsou po webu kvanta, ale ne tolik v&amp;nbsp;češtině.&lt;/p&gt; 
-&lt;p&gt;//Update:// Tak nakonec stejně vše zveřejňuju v&amp;nbsp;angličtině…&lt;/p&gt; 
-&lt;h3 id=&quot;toc-bug-in-mysql-jdbc-implementation-connector-j&quot;&gt;Bug in MySQL JDBC implementation&amp;nbsp;– Connector/J&lt;/h3&gt; 
-&lt;p&gt;I&apos;ve found a bug in &lt;a href=&quot;http://dev.mysql.com/downloads/connector/j/5.1.html&quot;&gt;Connector/J&lt;/a&gt; ver. 5.1.6.&amp;nbsp;It appears upon subsequently called &lt;code&gt;Connection.isValid()&lt;/code&gt;, which uses unsynchronized threads.&lt;/p&gt; 
-&lt;p&gt;Reported at &lt;a href=&quot;http://bugs.mysql.com/bug.php?id=38060&amp;amp;thanks=2&amp;amp;notify=3&quot;&gt;http://bugs.mysql.com/bug.php?…&lt;/a&gt;.&lt;/p&gt; 
-&lt;!-- jdk_jre_64bit_not_found.texy --&gt; 
-&lt;h3 id=&quot;toc-java-runtime-environment-or-java-developement-kit-not-found-on-64-bit-system&quot;&gt;Java Runtime Environment or Java Developement Kit not found on 64-bit&amp;nbsp;system&lt;/h3&gt; 
-&lt;p&gt;I&amp;nbsp;have 64-bit version of Windows XP and 64-bit version of JDK and JRE.&lt;br&gt; During instalation of jEdit, I&amp;nbsp;got this message from the installer:&lt;/p&gt; 
-&lt;blockquote&gt; 
- &lt;p&gt;Setup was unable to find an installed Java Runtime Environment or Java Developement Kit of version 1.4, or higher. You must have installed at least JDK or JRE 1.4&amp;nbsp;to continue&amp;nbsp;setup.&lt;/p&gt; 
-&lt;/blockquote&gt; 
-&lt;p&gt;jEdit installer looks for 32-bit version of JRE. Install it alongside the 64-bit version to fix the problem.&lt;/p&gt; 
-&lt;p&gt;The same problem was with NetBeans installer.&lt;/p&gt; 
-&lt;!-- texy_java_implementation.texy --&gt; 
-&lt;h3 id=&quot;toc-texy-java-implementation&quot;&gt;Texy! Java Implementation&lt;/h3&gt; 
-&lt;p&gt;Anyone knows about any? Please, &lt;a href=&quot;mailto:ondra@dynawest.cz&quot;&gt;let me know via e-mail&lt;/a&gt;.&lt;/p&gt; 
-&lt;p&gt;&lt;a href=&quot;http://download.texy.info/refs.zip&quot;&gt;Texy! syntax use cases here&lt;/a&gt;.&lt;/p&gt; 
-&lt;h3 id=&quot;toc-java-implementace-prekladace-texy&quot;&gt;Java implementace překladače Texy!&lt;/h3&gt; 
-&lt;blockquote&gt;
- Zdravím, 
- &lt;p&gt;nechtěl by někdo čirou náhodou implementovat překladač Texy v&amp;nbsp;Javě?&lt;/p&gt; 
- &lt;p&gt;&lt;a href=&quot;http://www.texy.info&quot;&gt;www.texy.info&lt;/a&gt;&lt;/p&gt; 
- &lt;p&gt;Mohlo by to být dobré téma projektu / bakalářky… Formální specifikace není, jen podle popisu syntaxe a ukázek použití…&lt;/p&gt; 
- &lt;p&gt;Java komunita by vás jistě oslavovala :-)&lt;/p&gt; Ondra
-&lt;/blockquote&gt; 
-&lt;hr&gt; 
-&lt;blockquote&gt; 
- &lt;p&gt;Autor Texy David Grudl sestavil sadu testovacích souborů, na kterých lze ověřit implementaci překladače. K&amp;nbsp;dispozici na&amp;nbsp;&lt;a href=&quot;http://download.texy.info/refs.zip&quot;&gt;http://download.texy.info/refs.zip&lt;/a&gt;&lt;/p&gt; 
- &lt;p&gt;Algou a omegou původní PHP imiplementace jsou PCRE. Knihovna pro Javu, která zvládá PCRE podle Perl 5, je na &lt;a href=&quot;http://jakarta.apache.org/oro/&quot;&gt;http://jakarta.apache.org/oro/&lt;/a&gt;&amp;nbsp;.&lt;/p&gt; 
- &lt;p&gt;Ondra Žižka&lt;/p&gt; 
-&lt;/blockquote&gt; 
-&lt;h3 id=&quot;toc-my-usual-mysql-jdbc-params&quot;&gt;My usual MySQL JDBC params&lt;/h3&gt; 
-&lt;pre class=&quot;brush: lang-plain brush: plain&quot;&gt;jdbc:mysql://localhost/test?characterEncoding=UTF-8&amp;amp;characterSetResults=UTF-8&amp;amp;autoReconnect=true&amp;amp;zeroDateTimeBehavior=convertToNull&lt;/pre&gt; 
-&lt;h3 id=&quot;toc-uplne-zacatky-v-jave&quot;&gt;Úplné začátky v&amp;nbsp;Javě&lt;/h3&gt; 
-&lt;p&gt;Java často začátečníka odradí relativní složitost přípravy kódu a jeho překladu do čehokoliv spustitelného (v&amp;nbsp;roce 1998&amp;nbsp;to byl i&amp;nbsp;můj případ a Javou jsem se prokousal až o&amp;nbsp;další dva roky později :-)&amp;nbsp;.&lt;/p&gt; 
-&lt;p&gt;Pro ten případ jsem připravil velmi polopatický &lt;a href=&quot;navod-java_zacatky.texy&quot;&gt;návod, jak vytvořit zdroják v&amp;nbsp;Javě, jak ho přeložit do souboru &lt;code&gt;.class&lt;/code&gt; a jak jej spustit&lt;/a&gt;.&lt;/p&gt; 
-&lt;h3 id=&quot;toc-j2ee-java-pro-web&quot;&gt;J2EE&amp;nbsp;– Java pro web&lt;/h3&gt; 
-&lt;p&gt;V&amp;nbsp;poslední dobé se prokousávám světem J2EE. Je to svět rozsáhlý a nepřehledný. V&amp;nbsp;této souvislosti uvedu jeden trefný&amp;nbsp;citát:&lt;/p&gt; 
-&lt;blockquote&gt; 
- &lt;p&gt;Entrance to this world is a cultural conversion, not a choice of one simple programming language over another.&lt;/p&gt; 
- &lt;p&gt;-- GBdirect, „Active Web Sites and Comparison of Scripting Languages“&lt;/p&gt; 
-&lt;/blockquote&gt; 
-&lt;p&gt;Pro kamaráda jsem začal psát &lt;a href=&quot;navod-j2ee_uvod.texy&quot;&gt;velmi stručný úvod&lt;/a&gt;, aby se hned zkraje neutopil v&amp;nbsp;záplavě tří až pětipísmenných zkratek.&lt;/p&gt; 
             </description>
         </item>
         <item>
@@ -22714,6 +22381,339 @@ pageParameters.getString(&quot;1&quot;); // &quot;value2&quot;&lt;/pre&gt;
  &lt;li&gt;two&lt;/li&gt; 
 &lt;/ul&gt; 
 &lt;p&gt;That&apos;s&amp;nbsp;all, &lt;a href=&quot;http://google.com&quot;&gt;folks&lt;/a&gt;.&lt;/p&gt; 
+            </description>
+        </item>
+        <item>
+            <title>Java + Java EE</title>
+            <link>https://www.zizka.ch/pages/programming/java/index.html</link>
+            <pubDate>Sun, 1 Jan 2012 00:00:00 +0100</pubDate>
+            <guid isPermaLink="false">pages/programming/java/index.html</guid>
+            <description>
+                 &lt;h2 class=&quot; jbakeExtractedTitle&quot; id=&quot;toc-java-java-ee&quot;&gt;Java + Java EE&lt;/h2&gt; 
+&lt;p&gt;This page is a mix of czech and english, sorry for non-separated and loosely organized content, but hopefully you will find your subject by using &lt;code&gt;Ctrl+F&lt;/code&gt;&amp;nbsp;:-)&lt;/p&gt; 
+&lt;hr&gt; 
+&lt;ul&gt; 
+ &lt;li&gt;&lt;a href=&quot;howto/quartz-howto-intro.html&quot;&gt;Quartz intro&lt;/a&gt; and &lt;a href=&quot;web/wicket/wicket-quartz-scheduler-example.html&quot;&gt;how to use Quartz in Wicket&lt;/a&gt;&lt;/li&gt; 
+ &lt;li&gt;&lt;a href=&quot;web/wicket/index.html&quot;&gt;My Wicket notes&lt;/a&gt;&lt;/li&gt; 
+ &lt;li&gt;&lt;a href=&quot;jboss/svn-commit-irc-bot-java.html&quot;&gt;SVNbot&lt;/a&gt;&amp;nbsp;– an IRC bot announcing SVN commits, written in&amp;nbsp;Java&lt;/li&gt; 
+ &lt;li&gt;&lt;a href=&quot;http://ondrazizka.googlecode.com/svn/maven/mysql/mysql-connector-java/5.1.12/&quot;&gt;MySQL JDBC driver for Maven&lt;/a&gt;&amp;nbsp;– mavenized Connector/J&lt;/li&gt; 
+ &lt;li&gt;&lt;a href=&quot;http://code.google.com/p/ondrazizka/source/browse/#svn/maven/cz/dynawest/third/pircbot/PircBot&quot;&gt;PircBot Mavenized&lt;/a&gt;&amp;nbsp;– PircBot IRC Bot framework library in a provisory Maven repository.&lt;/li&gt; 
+ &lt;li&gt;&lt;a href=&quot;jaxb/jaxb-howto-introduction-tutorial.html&quot;&gt;JAXB example&lt;/a&gt;&amp;nbsp;– keywords: JAXB howto example tutorial&amp;nbsp;intro.&lt;/li&gt; 
+ &lt;li&gt;&lt;a href=&quot;sardine-java-webdav-client-library.html&quot;&gt;Sardine&amp;nbsp;– WebDAV client library for Java&lt;/a&gt;&lt;/li&gt; 
+ &lt;li&gt;&lt;a href=&quot;jboss/jboss-as-startup-run-sh-java-system-variables.html&quot;&gt;JBoss AS Java system variables&lt;/a&gt; (&lt;code&gt;-D&lt;/code&gt; for &lt;code&gt;bin/run.sh&lt;/code&gt;)&lt;/li&gt; 
+ &lt;li&gt;&lt;a href=&quot;jboss/Tomcat-JON-Windows-2003-2008.html&quot;&gt;JBoss Operation Network and Tomcat on Windows 2003:&amp;nbsp;No-go&lt;/a&gt;&lt;/li&gt; 
+ &lt;li&gt;&lt;a href=&quot;jetty-how-to-stop.html&quot;&gt;How to stop Jetty&lt;/a&gt;&lt;/li&gt; 
+ &lt;li&gt;&lt;a href=&quot;jboss/web-services.html&quot;&gt;JBoss WebServices (JBossWS) notes&lt;/a&gt;&lt;/li&gt; 
+ &lt;li&gt;&lt;a href=&quot;jboss/clustering-session-replication.html&quot;&gt;Simple JBoss AS clustering example&lt;/a&gt; (2&amp;nbsp;nodes, JSP session replication).&lt;/li&gt; 
+&lt;/ul&gt; 
+&lt;p&gt;My usual MySQL JDBC params:&lt;/p&gt; 
+&lt;pre class=&quot;brush: lang-plain brush: plain&quot;&gt;jdbc:mysql://localhost/test?characterEncoding=UTF-8&amp;amp;characterSetResults=UTF-8&amp;amp;autoReconnect=true&amp;amp;zeroDateTimeBehavior=convertToNull&lt;/pre&gt; 
+&lt;h3 id=&quot;toc-maven-tips&quot;&gt;Maven Tips&lt;/h3&gt; 
+&lt;ul&gt; 
+ &lt;li&gt;&lt;a href=&quot;maven/log4j-missing-jmx-sun-deps.html&quot;&gt;Maven and Log4j: Missing JMX dependencies&lt;/a&gt;&amp;nbsp;– mavenized jmxri and jmxtools.&lt;/li&gt; 
+ &lt;li&gt;&lt;a href=&quot;maven/profile-activation-and-properties.html&quot;&gt;Profile activation and properties&lt;/a&gt;&lt;/li&gt; 
+ &lt;li&gt;&lt;a href=&quot;maven/how-to-add-existing-project-jar-to-maven-repository.html&quot;&gt;How to add existing Java project&apos;s &lt;code&gt;.jar&lt;/code&gt;s&amp;nbsp;to Maven repository&lt;/a&gt;&lt;/li&gt; 
+ &lt;li&gt;&lt;a href=&quot;maven/maven-create-distribution-package.html&quot;&gt;How to create an application distribution package with&amp;nbsp;Maven&lt;/a&gt;&lt;/li&gt; 
+ &lt;li&gt;&lt;a href=&quot;maven/maven-create-jnlp-file.html&quot;&gt;How to create a JNPL file (for Java WebStart) with&amp;nbsp;Maven&lt;/a&gt;&lt;/li&gt; 
+ &lt;li&gt;&lt;a href=&quot;maven/mavenize-quick-and-dirty.html&quot;&gt;Quick and dirty mavenization&lt;/a&gt;&amp;nbsp;– How to install an existing library with dependencies to Maven repository.&lt;/li&gt; 
+ &lt;li&gt;I&apos;ve presented Maven 2&amp;nbsp;for the company I&amp;nbsp;work for. Download here: &lt;a href=&quot;download/Maven2presentation.pdf&quot;&gt;Maven presentation for Red Hat / JBoss&lt;/a&gt;. See &lt;a href=&quot;https://www.jboss.org/community/docs/DOC-13358&quot;&gt;https://www.jboss.org/…cs/DOC-13358&lt;/a&gt;&amp;nbsp;.&lt;/li&gt; 
+ &lt;li&gt;A&amp;nbsp;short polemic against &lt;a href=&quot;http://ant.apache.org/ivy/m2comparison.html&quot;&gt;Ivy / Maven2 Comparison&lt;/a&gt;:&lt;/li&gt; 
+ &lt;li&gt;Read my own opinion about &lt;a href=&quot;maven/maven-ant-ivy-comparison.html&quot;&gt;How Maven 2&amp;nbsp;compares to Ivy&lt;/a&gt;.&lt;/li&gt; 
+ &lt;li&gt;&lt;a href=&quot;maven/ant-run-plugin-short.html&quot;&gt;Short code for Antrun Maven plugin&lt;/a&gt;&lt;/li&gt; 
+&lt;/ul&gt; 
+&lt;p&gt;To start maven goals in debug mode:&lt;/p&gt; 
+&lt;pre class=&quot;brush: lang-xml brush: xml&quot;&gt;mvnDebug test ...&lt;/pre&gt; 
+&lt;p&gt;This does not work for me:&lt;/p&gt; 
+&lt;pre class=&quot;brush: lang-xml brush: xml&quot;&gt;mvn test -DargLine=&quot;-Xdebug -Xnoagent -Djava.compiler=NONE -Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=4000&quot;&lt;/pre&gt; 
+&lt;h3 id=&quot;toc-java-alternative-of-php-s-preg-replace-callback&quot;&gt;Java alternative of PHP&apos;s &lt;code&gt;preg_replace_callback&lt;/code&gt;&lt;/h3&gt; 
+&lt;ul&gt; 
+ &lt;li&gt;&lt;a href=&quot;php_preg_replace_callback.html&quot;&gt;Here&lt;/a&gt;.&lt;/li&gt; 
+&lt;/ul&gt; 
+&lt;h3 id=&quot;toc-xslt-transformation-in-java&quot;&gt;XSLT transformation in Java&lt;/h3&gt; 
+&lt;p&gt;My &lt;a href=&quot;xslt-commandline-with-xalan.html&quot;&gt;XSLT + Java notes&lt;/a&gt; show:&lt;/p&gt; 
+&lt;ul&gt; 
+ &lt;li&gt;How to call Xalan from a command line&lt;/li&gt; 
+ &lt;li&gt;A&amp;nbsp;simple class for XSLT conversion using JDK&apos;s&amp;nbsp;XSLT&lt;/li&gt; 
+ &lt;li&gt;Template which does some change and copies all other&amp;nbsp;data&lt;/li&gt; 
+&lt;/ul&gt; 
+&lt;h3 id=&quot;toc-what-i-would-change-about-java&quot;&gt;What I&amp;nbsp;would change about Java&lt;/h3&gt; 
+&lt;ul&gt; 
+ &lt;li&gt;&lt;a href=&quot;java-feature-requests.html&quot;&gt;My Java feature requests&lt;/a&gt;&lt;/li&gt; 
+&lt;/ul&gt; 
+&lt;h3 id=&quot;toc-enum-with-a-lookup-map&quot;&gt;Enum with a lookup map&lt;/h3&gt; 
+&lt;ul&gt; 
+ &lt;li&gt;&lt;a href=&quot;enum-with-lookup-map.html&quot;&gt;Enum with a lookup map&lt;/a&gt;&lt;/li&gt; 
+&lt;/ul&gt; 
+&lt;h3 id=&quot;toc-jaxb-a-list-with-inherited-classes&quot;&gt;JAXB&amp;nbsp;– a List with inherited classes&lt;/h3&gt; 
+&lt;ul&gt; 
+ &lt;li&gt;&lt;a href=&quot;jaxb/jaxb-list-with-inherited-classes.html&quot;&gt;JAXB&amp;nbsp;– a List with inherited classes&lt;/a&gt;&lt;/li&gt; 
+&lt;/ul&gt; 
+&lt;h3 id=&quot;toc-groovy-bootloader-bug-with-dombuilder&quot;&gt;Groovy bootloader bug with DOMBuilder&lt;/h3&gt; 
+&lt;ul&gt; 
+ &lt;li&gt;Is &lt;a href=&quot;groovy-dombuilder-bug.html&quot;&gt;this&lt;/a&gt; a bug?&lt;/li&gt; 
+&lt;/ul&gt; 
+&lt;h3 id=&quot;toc-jboss&quot;&gt;JBoss&lt;/h3&gt; 
+&lt;ul&gt; 
+ &lt;li&gt;Unsign JBoss AS distribution: &lt;code&gt;find . -type f -iname &apos;*.jar&apos; -exec zip -d &apos;{}&apos; META-INF/JBOSSCOD.{SF,RSA} \;&lt;/code&gt;&lt;/li&gt; 
+ &lt;li&gt;&lt;a href=&quot;jboss/filesystem-resource-adapter.html&quot;&gt;Filesystem Resource Adapter&lt;/a&gt;&lt;/li&gt; 
+ &lt;li&gt;&lt;a href=&quot;jboss/jboss-embedded-bottstrapping.html&quot;&gt;Bootstrapping JBoss Embedded server&lt;/a&gt; A&amp;nbsp;very brief how-to&amp;nbsp;– just a maven deps and the bootstraping&amp;nbsp;code.&lt;/li&gt; 
+ &lt;li&gt;&lt;a href=&quot;jboss/common-mistakes-and-exceptions.html&quot;&gt;Common JBoss AS mistakes and exceptions&lt;/a&gt;&lt;/li&gt; 
+ &lt;li&gt;&lt;a href=&quot;jboss/jboss-vs-spring.html&quot;&gt;JBoss vs. Spring&lt;/a&gt; An attempt to answer what to use as a base for an enterprise web application.&lt;/li&gt; 
+&lt;/ul&gt; 
+&lt;h3 id=&quot;toc-how-to-transform-web-xml-with-xstl-and-xpath&quot;&gt;How to transform &lt;code&gt;web.xml&lt;/code&gt; with XSTL and XPath&lt;/h3&gt; 
+&lt;p&gt;In short, the trick is that XPath doesn&apos;t work well with element names containing a minus. So you have to match e.g &lt;code&gt;web-xml&lt;/code&gt; like&amp;nbsp;this:&lt;/p&gt; 
+&lt;pre class=&quot;lang-xpath brush: xpath&quot;&gt;*[name()=&apos;web-xml&apos;]&lt;/pre&gt; 
+&lt;h3 id=&quot;toc-how-to-incrementally-update-a-jaxb-mapped-object&quot;&gt;How to incrementally update a JAXB-mapped object&lt;/h3&gt; 
+&lt;p&gt;Using a factory delegating the setters to the original object. &lt;em&gt;To be eventually written&amp;nbsp;later.&lt;/em&gt;&lt;/p&gt; 
+&lt;h3 id=&quot;toc-json-with-jaxb-jackson&quot;&gt;JSON with JAXB&amp;nbsp;– Jackson&lt;/h3&gt; 
+&lt;ul&gt; 
+ &lt;li&gt;How to &lt;a href=&quot;jaxb/jaxb-json-jackson-howto.html&quot;&gt;create JSON output from POJOs using JAXB annotations&lt;/a&gt;.&lt;/li&gt; 
+&lt;/ul&gt; 
+&lt;h3 id=&quot;toc-jboss-aop-in-a-standalone-application-example-howto&quot;&gt;JBoss AOP in a standalone application&amp;nbsp;– example / howto&lt;/h3&gt; 
+&lt;p&gt;Few articles about JBoss AOP:&lt;/p&gt; 
+&lt;ul&gt; 
+ &lt;li&gt;A&amp;nbsp;&lt;a href=&quot;jboss/jboss-aop-howto-example-standalone-app.html&quot;&gt;brief introduction to usage of JBoss MC with JBoss&amp;nbsp;AOP&lt;/a&gt;&lt;/li&gt; 
+ &lt;li&gt;&lt;a href=&quot;java.lang.IllegalArgumentException-Unknown-AOP-tag-bean.html&quot;&gt;JBoss AOP: &lt;code&gt;java.lang.IllegalArgumentException: Unknown AOP tag: bean&lt;/code&gt;&lt;/a&gt;&lt;/li&gt; 
+ &lt;li&gt;&lt;a href=&quot;jboss-aop-could-not-find-class.html&quot;&gt;JBoss AOP: Could not find class&lt;/a&gt;&lt;/li&gt; 
+&lt;/ul&gt; 
+&lt;h3 id=&quot;toc-jboss-microcontainer-in-a-standalone-application&quot;&gt;JBoss Microcontainer in a standalone application&lt;/h3&gt; 
+&lt;ul&gt; 
+ &lt;li&gt;A&amp;nbsp;&lt;a href=&quot;jboss/jboss-microcontainer-howto-example-standalone-app.html&quot;&gt;brief introduction to usage of JBoss MC in a standalone app&lt;/a&gt;.&lt;/li&gt; 
+&lt;/ul&gt; 
+&lt;h3 id=&quot;toc-java-concurency-threads-and-synchronization&quot;&gt;Java Concurency, Threads and Synchronization&lt;/h3&gt; 
+&lt;ul&gt; 
+ &lt;li&gt;Attempt for &lt;a href=&quot;modifier-and-concurent-readers.html&quot;&gt;one modifier and many concurent readers&lt;/a&gt;&amp;nbsp;– a variant of producers and consumers problem.&lt;/li&gt; 
+&lt;/ul&gt; 
+&lt;h3 id=&quot;toc-maven-order-of-execution-of-plugins-in-profiles&quot;&gt;Maven: Order of execution of plugins in profiles&lt;/h3&gt; 
+&lt;p&gt;I&amp;nbsp;was curious in which order Maven executes the plugins:&lt;br&gt; Whether it uses POM profile appearance order, or uses the ordering from the command line&apos;s &lt;code&gt;-P&lt;/code&gt; param&amp;nbsp;value.&lt;/p&gt; 
+&lt;p&gt;Here is the &lt;a href=&quot;maven/maven-plugin_in_profiles_execution_order.html&quot;&gt;result of my try-out&lt;/a&gt;.&lt;/p&gt; 
+&lt;h3 id=&quot;toc-spring-aop-common-mistake-cglib2-is-not-available&quot;&gt;Spring AOP common mistake: CGLIB2 is not available&lt;/h3&gt; 
+&lt;p&gt;You&apos;ve added a new bean to Spring. And want to do some AOP over its methods.&lt;br&gt; But you run into&amp;nbsp;this:&lt;/p&gt; 
+&lt;pre class=&quot;brush: lang-text brush: text&quot;&gt;org.springframework.beans.factory.BeanCreationException: Error creating bean with name &apos;udalostiQueueController&apos; defined in class path resource [properties/Actions.xml]: Initialization of bean failed; nested exception is org.springframework.aop.framework.AopConfigException: Cannot proxy target class because CGLIB2 is not available. Add CGLIB to the class path or specify proxy interfaces.
+
+Caused by: org.springframework.aop.framework.AopConfigException: Cannot proxy target class because CGLIB2 is not available. Add CGLIB to the class path or specify proxy interfaces.
+        at org.springframework.aop.framework.DefaultAopProxyFactory.createAopProxy(DefaultAopProxyFactory.java:67)
+        at org.springframework.aop.framework.ProxyCreatorSupport.createAopProxy(ProxyCreatorSupport.java:106)
+        at org.springframework.aop.framework.ProxyFactory.getProxy(ProxyFactory.java:110)
+        etc.&lt;/pre&gt; 
+&lt;p&gt;The reason is simple: To do AOP, Spring needs either CGLIB to do class instrumentation (bytecode magic) at runtime, or you have to use your bean through an interface.&lt;/p&gt; 
+&lt;p&gt;So, put all your public methods into an interface and put all it&apos;s&amp;nbsp;methods into an implementation. Use the implementation in Spring as the bean class, and when obtaining the bean in the code, store it into interface-typed reference.&lt;/p&gt; 
+&lt;pre class=&quot;brush: lang-java brush: java&quot;&gt;public interface MyBean {
+  public void doSomethingInAOP();
+}
+
+public class MyBeanImpl implements MyBean {
+  public void doSomethingInAOP(){ ... }
+}&lt;/pre&gt; 
+&lt;pre class=&quot;brush: lang-xml brush: xml&quot;&gt;&amp;lt;bean id=&quot;myBean&quot; class=&quot;info.insolvencnirejstrik.controllers.MyBeanImpl&quot; /&amp;gt;
+
+&amp;lt;aop:config&amp;gt;
+
+  &amp;lt;aop:pointcut id=&quot;controllerMethods&quot; expression=&quot;execution(* info.insolvencnirejstrik.controllers.*.*(..))&quot;/&amp;gt;
+
+  &amp;lt;aop:advisor advice-ref=&quot;txAdvice&quot; pointcut-ref=&quot;controllerMethods&quot;/&amp;gt;
+
+&amp;lt;/aop:config&amp;gt;&lt;/pre&gt; 
+&lt;pre class=&quot;brush: lang-java brush: java&quot;&gt;MyBean bean = appContext.getBean(&quot;myBean&quot;);&lt;/pre&gt; 
+&lt;h3 id=&quot;toc-ibatis-instantiation-error&quot;&gt;Ibatis instantiation error&lt;/h3&gt; 
+&lt;p&gt;&lt;a href=&quot;ibatis-instantiation-exception.html&quot;&gt;Ibatis instantiation exception&lt;/a&gt; can arise from the lack of default constructor.&lt;/p&gt; 
+&lt;h3 id=&quot;toc-stackoverflowerror-with-xerces-2-0-2&quot;&gt;StackOverflowError with Xerces 2.0.2&lt;/h3&gt; 
+&lt;p&gt;Beware of DBCP in combination with Spring and iBatis using Maven. DBCP uses Xerces 2.0.2, which is old buggy version and causes stack overflow exception when parsing Spring&apos;s &lt;code&gt;applicationContext.xml&lt;/code&gt;, which uses namespaces (e.g. for&amp;nbsp;AOP).&lt;/p&gt; 
+&lt;pre class=&quot;lang-text brush: text&quot;&gt;Caused by: java.lang.StackOverflowError at org.apache.xerces.util.URI.isConformantSchemeName&lt;/pre&gt; 
+&lt;p&gt;Because Maven uses the „nearest node in dependency graph“ rule for resolving version conflicts, it choses DBCP&apos;s&amp;nbsp;Xerces 2.0.2, because other dependencies have Xerces deeper.&lt;/p&gt; 
+&lt;h3 id=&quot;toc-maven-unzip-plugin&quot;&gt;Maven Unzip Plugin&lt;/h3&gt; 
+&lt;p&gt;I&apos;m going to write unzip plugin for Maven2. Stay tuned.&lt;/p&gt; 
+&lt;p&gt;//Update:// So here it is: &lt;a href=&quot;http://www.pohlidame.cz/insolvencni-rejstrik/maven-unzip-plugin.html&quot;&gt;Maven Unzip Plugin&lt;/a&gt;&lt;/p&gt; 
+&lt;p&gt;Enjoy :-)&lt;/p&gt; 
+&lt;h3 id=&quot;toc-jabber-xmpp-maven-plugin&quot;&gt;Jabber (XMPP) Maven plugin&lt;/h3&gt; 
+&lt;p&gt;I&apos;ve created a simple plugin for Maven2, which can send a message from the Maven build process.&lt;/p&gt; 
+&lt;p&gt;See &lt;a href=&quot;maven/jabber-xmpp-maven-plugin.html&quot;&gt;Jabber (XMPP) Maven plugin&lt;/a&gt;&lt;/p&gt; 
+&lt;p&gt;Used in the &lt;a href=&quot;http://www.pohlidame.cz/&quot;&gt;Insolvenční rejstřík&lt;/a&gt; project.&lt;/p&gt; 
+&lt;h3 id=&quot;toc-jpa-and-hibernate-mapping-with-mysql-common-errors-and-exceptions&quot;&gt;JPA and Hibernate mapping with MySQL&amp;nbsp;– common errors and exceptions&lt;/h3&gt; 
+&lt;p&gt;Some &lt;a href=&quot;hibernate-common-errors-and-exceptions.html&quot;&gt;tips for those tampering with Java Persistence API and Hibernate&lt;/a&gt;&amp;nbsp;– how to tame the exceptions comming from Hibernate EntityManager, Hibernate Annotations and&amp;nbsp;JDBC.&lt;/p&gt; 
+&lt;h3 id=&quot;toc-immutableproperties-class&quot;&gt;ImmutableProperties class&lt;/h3&gt; 
+&lt;p&gt;I&apos;ve created an &lt;a href=&quot;immutable_properties.html&quot;&gt;immutable adapter of the java.util.Pro­perties class&lt;/a&gt;. Not that there aren&apos;t bunches of similar over the&amp;nbsp;net…&lt;/p&gt; 
+&lt;h3 id=&quot;toc-how-to-read-properties-file-in-spring-framework&quot;&gt;How to read properties file in Spring Framework&lt;/h3&gt; 
+&lt;p&gt;A&amp;nbsp;new short tutorial on &lt;a href=&quot;howto-spring-reading_properties_file.html&quot;&gt;how to provide properties read from a file to a bean&lt;/a&gt;.&lt;/p&gt; 
+&lt;h3 id=&quot;toc-parametrized-spring-configuration&quot;&gt;Parametrized Spring Configuration&lt;/h3&gt; 
+&lt;p&gt;Here&apos;s&amp;nbsp;a short sketch of my idea about &lt;a href=&quot;howto-substitutions_in_spring_configuration-tutorial.html&quot;&gt;parametrizing Spring configuration&lt;/a&gt;, using placeholders (&lt;code&gt;PropertyPlaceholderConfigurer&lt;/code&gt;) and overrides (&lt;code&gt;PropertyOverrideConfigurer&lt;/code&gt;).&lt;/p&gt; 
+&lt;h3 id=&quot;toc-web-service-client-from-wsdl-using-axis2&quot;&gt;Web service client from WSDL using Axis2&lt;/h3&gt; 
+&lt;p&gt;Here&apos;s&amp;nbsp;&lt;a href=&quot;web_service_client_from_wsdl_using_axis2.html&quot;&gt;how to create web service client from WSDL using Axis2&lt;/a&gt;.&lt;/p&gt; 
+&lt;h3 id=&quot;toc-logovani-v-jave-log4j-a-java-util-logging&quot;&gt;Logování v&amp;nbsp;Javě ? &lt;code&gt;log4j&lt;/code&gt; a &lt;code&gt;java.util.logging&lt;/code&gt;&lt;/h3&gt; 
+&lt;p&gt;Sepsal jsem si &lt;a href=&quot;navod_logovani_java.util.logging.html&quot;&gt;stručný úvod do logování v&amp;nbsp;Javě&lt;/a&gt;&lt;br&gt; s&amp;nbsp;ukázkaou konfigurace.&lt;/p&gt; 
+&lt;h3 id=&quot;toc-jpa-with-hibernate-common-mistakes&quot;&gt;JPA with Hibernate common mistakes&lt;/h3&gt; 
+&lt;pre class=&quot;lang-exception brush: exception&quot;&gt;ERROR [org.hibernate.LazyInitializationException] (main:) could not initialize proxy - no Session
+Exception in thread &quot;main&quot; org.hibernate.LazyInitializationException: could not initialize proxy - no Session
+        at org.hibernate.proxy.AbstractLazyInitializer.initialize(AbstractLazyInitializer.java:57)
+org.hibernate.LazyInitializationException: could not initialize proxy - no Session
+        at org.hibernate.proxy.AbstractLazyInitializer.getImplementation(AbstractLazyInitializer.java:111)
+        at org.hibernate.proxy.AbstractLazyInitializer.initialize(AbstractLazyInitializer.java:57)
+        at org.hibernate.proxy.AbstractLazyInitializer.getImplementation(AbstractLazyInitializer.java:111)
+        at org.hibernate.proxy.pojo.cglib.CGLIBLazyInitializer.invoke(CGLIBLazyInitializer.java:150)
+        at cz.dynawest.isir.entities.User$$EnhancerByCGLIB$$f6910a6b.setMail(&amp;lt;generated&amp;gt;)
+        at cz.dynawest.isir.test.Manipulace.main(Manipulace.java:49)
+        at org.hibernate.proxy.pojo.cglib.CGLIBLazyInitializer.invoke(CGLIBLazyInitializer.java:150)
+        at cz.dynawest.isir.entities.User$$EnhancerByCGLIB$$f6910a6b.setMail(&amp;lt;generated&amp;gt;)
+        at cz.dynawest.isir.test.Manipulace.main(Manipulace.java:49)\--
+
+**Two common reasons:**
+
+1) You have loaded an entity containing a collection (List, Set, ...), but by default,
+Hibernate does not load their members; instead, it puts a proxy, which waits for the case
+you access the collection and then loads it.
+
+
+2) You&apos;ve loaded the entity using JPA&apos;s `getReference()` or Hibernate&apos;s `load()`.
+That creates a proxy object, which holds only an ID.
+Try calling JPA&apos;s `find()`, resp. Hibernate&apos;s `get()` //(sure, JPA quite messed the nomenclature...)//
+
+
+So you&apos;re trying to manipulate the entity without having any open transaction (session).
+Hibernate generally needs every database operation to happen in a transaction,
+opened either explicitly (using e.g. `EntityManager.getTransaction()`)
+or implicitly (using e.g. Spring AOP).
+
+
+
+------------------------------------------------&lt;/pre&gt; 
+&lt;pre class=&quot;lang-exception brush: exception&quot;&gt;org.hibernate.PersistentObjectException: detached entity passed to persist&lt;/pre&gt; 
+&lt;p&gt;You load or create an entity in one transaction, which then ends, and then you try to call &lt;code&gt;persist()&lt;/code&gt;. Instead, you must call &lt;code&gt;merge()&lt;/code&gt;, because that&apos;s&amp;nbsp;the method which is meant to re-attach detached entities. Use &lt;code&gt;persist()&lt;/code&gt; to store the entity when you change it inside the same transaction as it was loaded&amp;nbsp;in.&lt;/p&gt; 
+&lt;hr&gt; 
+&lt;p&gt;&lt;strong&gt;Generally speaking:&lt;/strong&gt;&lt;/p&gt; 
+&lt;p&gt;If you load an entity using a DAO, usualy you have a transaction in that DAO&apos;s&amp;nbsp;methods. Thus when changing the entity inside DAO, use &lt;code&gt;persist()&lt;/code&gt;; When you change it outside DAO and then call some DAO method to save it, call &lt;code&gt;merge()&lt;/code&gt;.&lt;/p&gt; 
+&lt;h3 id=&quot;toc-zacatky-se-spring-aop-aspect-oriented-programming&quot;&gt;Začátky se Spring AOP (Aspect Oriented Programming)&lt;/h3&gt; 
+&lt;p&gt;Rozchodil jsem Spring AOP a zde dávám &lt;a href=&quot;navod-spring-aop-zacatky.html&quot;&gt;stručný návod, jak si Spring AOP&lt;/a&gt; rozchodíte&amp;nbsp;taky.&lt;/p&gt; 
+&lt;h3 id=&quot;toc-freemarker-templates-via-spring-in-non-web-application&quot;&gt;FreeMarker templates via Spring in non-web application&lt;/h3&gt; 
+&lt;p&gt;Note on how to use &lt;a href=&quot;navod-spring_freemarker_in_standalone_application.html&quot;&gt;FreeMarker configured by Spring Dependency Injection in a standalone (non-web) application&lt;/a&gt;.&lt;/p&gt; 
+&lt;h3 id=&quot;toc-ibatis-inline-map-format-empty-string-in-nullvalue&quot;&gt;iBatis inline map format: empty String in nullValue&lt;/h3&gt; 
+&lt;blockquote&gt; 
+ &lt;p&gt;If i&amp;nbsp;want to set a nullValue replacement for an empty String I&amp;nbsp;use this in an explicit parameterMap:&lt;/p&gt; 
+ &lt;pre class=&quot;brush: lang-xml brush: xml&quot;&gt;&amp;lt;parameter property=&quot;street&quot; jdbcType=&quot;VARCHAR&quot; nullValue=&quot;&quot;/&amp;gt;&lt;/pre&gt; 
+ &lt;p&gt;I&amp;nbsp;want to do the same thing using inline parameters. I&apos;ve tried the following:&lt;/p&gt; 
+ &lt;pre class=&quot;lang-ibatis brush: ibatis&quot;&gt;#street:VARCHAR:&quot;&quot;#
+#street:VARCHAR:#
+#street,jdbcType=VARCHAR,nullValue=&quot;&quot;#
+#street,jdbcType=VARCHAR,nullValue=#&lt;/pre&gt; 
+ &lt;p&gt;but none works.&lt;/p&gt; 
+ &lt;p&gt;How should i&amp;nbsp;write the statement?&lt;/p&gt; 
+ &lt;p&gt;Thanks, Ondra&lt;/p&gt; 
+&lt;/blockquote&gt; 
+&lt;blockquote&gt; 
+ &lt;p&gt;I&amp;nbsp;recommend not using &lt;code&gt;nullValue&lt;/code&gt; replacement. It&apos;s&amp;nbsp;confusing and doesn&apos;t work the way most people would expect it to, quite the opposite actually. It&apos;s&amp;nbsp;used to map nullable columns to non-nullable class members, like int, long, double, boolean&amp;nbsp;etc…&lt;/p&gt; 
+ &lt;p&gt;&lt;strong&gt;It will not be available in iBATIS 3.&lt;/strong&gt;&lt;/p&gt; 
+ &lt;p&gt;Clinton Begin&lt;/p&gt; 
+&lt;/blockquote&gt; 
+&lt;blockquote&gt; 
+ &lt;p&gt;Quite bad news for me :(&lt;/p&gt; 
+ &lt;p&gt;I&amp;nbsp;use &lt;code&gt;nullValue&lt;/code&gt; as a convenient brief instrument to unify both null values OR empty String to &lt;code&gt;NULL&lt;/code&gt; in the database (e.g. when importing from Excel and some cells are empty (that yields &lt;code&gt;null&lt;/code&gt;) and some have empty strings). Handling it in Java or SQL code would clutter it quite&amp;nbsp;much.&lt;/p&gt; 
+ &lt;p&gt;Can we expect some substitute for this in iBatis 3?&lt;/p&gt; 
+ &lt;p&gt;Ondra&lt;/p&gt; 
+&lt;/blockquote&gt; 
+&lt;p&gt;While waiting for response, I&amp;nbsp;realized this:&lt;/p&gt; 
+&lt;p&gt;In case of MySQL, one can use &lt;code&gt;NULLIF(expr1,expr2)&lt;/code&gt; function in &lt;code&gt;INSERT&lt;/code&gt;, which returns &lt;code&gt;NULL&lt;/code&gt; if &lt;code&gt;expr1&lt;/code&gt; = &lt;code&gt;expr2&lt;/code&gt; is true, otherwise returns &lt;code&gt;expr1&lt;/code&gt;.&lt;/p&gt; 
+&lt;pre class=&quot;brush: lang-sql brush: sql&quot;&gt;INSERT INTO table SET name = NULLIF(#name#,&apos;&apos;);&lt;/pre&gt; 
+&lt;h3 id=&quot;toc-java-lang-instantiationexception-in-ibatis-when-using-java-util-map&quot;&gt;&lt;code&gt;java.lang.InstantiationException&lt;/code&gt; in iBatis when using java.util.Map&lt;/h3&gt; 
+&lt;p&gt;Exception:&lt;/p&gt; 
+&lt;pre class=&quot;lang-text brush: text&quot;&gt;JavaBeansDataExchange could not instantiate result class.  Cause: java.lang.InstantiationException: java.util.Map&lt;/pre&gt; 
+&lt;p&gt;SQL mapping code:&lt;/p&gt; 
+&lt;pre class=&quot;brush: lang-xml brush: xml&quot;&gt;&amp;lt;select id=&quot;getMatchingDluzniciForUser&quot; parameterClass=&quot;long&quot; resultClass=&quot;map&quot;&amp;gt;
+SELECT * FROM table
+&amp;lt;/select&amp;gt;&lt;/pre&gt; 
+&lt;p&gt;&lt;strong&gt;Cause:&lt;/strong&gt; iBatis is trying to instantiate &lt;code&gt;java.util.Map&lt;/code&gt;, which is an interface, thus can&apos;t be instantiated.&lt;/p&gt; 
+&lt;p&gt;&lt;strong&gt;Fix:&lt;/strong&gt; Instead, use &lt;code&gt;java.util.HashMap&lt;/code&gt; or other &lt;code&gt;Map&lt;/code&gt; implementation as the result&amp;nbsp;class.&lt;/p&gt; 
+&lt;h3 id=&quot;toc-compiling-connector-j&quot;&gt;Compiling Connector/J&lt;/h3&gt; 
+&lt;p&gt;If you try to compile MySQL Connector/J from the source, after resolving dependencies, you will probably end up with many compiler errors.&lt;/p&gt; 
+&lt;p&gt;That is because of the special way how Connector/J is compiled. Let &lt;a href=&quot;http://www.jroller.com/mmatthews/&quot;&gt;Mark Matthews&lt;/a&gt; &lt;a href=&quot;http://bugs.mysql.com/bug.php?id=38060#c176729&quot;&gt;say&amp;nbsp;it&lt;/a&gt;&lt;/p&gt; 
+&lt;blockquote&gt;
+ The issue is that you can&apos;t compile Connector/J with 
+ &lt;em&gt;just&lt;/em&gt; JDK6, as the driver supports JDBC4 and pre-JDBC4 APIs from the same codebase, and there are new classes and methods in JDBC4 that aren&apos;t available pre-JDK6.Therefore, the way it works is that you have to set JAVA_HOME to point to JDK-1.4&amp;nbsp;or 1.5, and then set the Ant properties „com.mysql.jdbc­.java6.javac“ with the full path to your JDK6 java compiler, and „com.mysql.jdbc­.java6.rtjar“ with the full path to your JDK6 runtime class libraries, when invoking Ant.
+&lt;/blockquote&gt; 
+&lt;h3 id=&quot;toc-sqlexception-for-zero-datetime-or-timestamp-column-use-zerodatetimebehavior&quot;&gt;&lt;code&gt;SQLException&lt;/code&gt; for zero &lt;code&gt;DATETIME&lt;/code&gt; or &lt;code&gt;TIMESTAMP&lt;/code&gt; column? Use&amp;nbsp;&lt;code&gt;zeroDateTimeBehavior&lt;/code&gt;&lt;/h3&gt; 
+&lt;p&gt;When working with MySQL over JDBC and the driver encounters a zero &lt;code&gt;DATE&lt;/code&gt;, &lt;code&gt;TIME&lt;/code&gt;, or &lt;code&gt;DATETIME&lt;/code&gt; value (that is, e.g, ‚0000–00–00‘ for &lt;code&gt;DATE&lt;/code&gt;), an exception is thrown:&lt;/p&gt; 
+&lt;pre class=&quot;lang-exception brush: exception&quot;&gt;java.sql.SQLException: Cannot convert value &apos;0000-00-00 00:00:00&apos; from column 4 to TIMESTAMP.&lt;/pre&gt; 
+&lt;p&gt;In this case, using SQL commands like&lt;/p&gt; 
+&lt;pre&gt;SET GLOBAL sql_mode = &apos;NO_ZERO_DATE&apos;;&lt;/pre&gt; 
+&lt;p&gt;does not help much, because that works only in „strict SQL mode“, and needs to be set for every connection, or globally for the whole server.&lt;/p&gt; 
+&lt;p&gt;What helps is setting JDBC driver&apos;s &lt;code&gt;zeroDateTimeBehavior&lt;/code&gt; property to &lt;code&gt;convertToNull&lt;/code&gt;:&lt;/p&gt; 
+&lt;blockquote&gt; 
+ &lt;p&gt;What should happen when the driver encounters DATETIME values that are composed entirely of zeroes (used by MySQL to represent invalid dates)? Valid values are &lt;code&gt;&quot;exception&quot;&lt;/code&gt;, &lt;code&gt;&quot;round&quot;&lt;/code&gt; and &lt;code&gt;&quot;convertToNull&quot;&lt;/code&gt;.&lt;/p&gt; 
+&lt;/blockquote&gt; 
+&lt;p&gt;The way to set it depends on the way you configure JDBC driver. The most common case is to use connection URL parameters. In my case it&amp;nbsp;reads:&lt;/p&gt; 
+&lt;pre class=&quot;lang-text brush: text&quot;&gt;jdbc:mysql://localhost/test?zeroDateTimeBehavior=convertToNull&amp;amp;autoReconnect=true&amp;amp;characterEncoding=UTF-8&amp;amp;characterSetResults=UTF-8&lt;/pre&gt; 
+&lt;h3 id=&quot;toc-java-and-javaw-difference&quot;&gt;&lt;code&gt;java&lt;/code&gt; and &lt;code&gt;javaw&lt;/code&gt; difference&lt;/h3&gt; 
+&lt;p&gt;&lt;a href=&quot;java_javaw_difference.html&quot;&gt;What&apos;s&amp;nbsp;the difference between &lt;code&gt;java&lt;/code&gt; and &lt;code&gt;javaw&lt;/code&gt;?&lt;/a&gt;&lt;/p&gt; 
+&lt;h3 id=&quot;toc-navod-import-projektu-ze-svn-do-netbeans-projektu&quot;&gt;Návod: Import projektu ze SVN do NetBeans projektu&lt;/h3&gt; 
+&lt;p&gt;Chtěl jsem se trochu povrtat v&amp;nbsp;projektu &lt;a href=&quot;http://poi.apache.org/subversion.html&quot;&gt;Apache POI&lt;/a&gt;, ale jak prúvodci v&amp;nbsp;NetBeans, tak instrukce na stránce projektu předpokládají, že se SVN umíte, jak když bičem mrská, což v&amp;nbsp;mém případě bylo přesně naopak&amp;nbsp;:-)&lt;/p&gt; 
+&lt;p&gt;Proto jsem sepsal velmi stručný &lt;a href=&quot;navod-svn_subversion_v_netbeans.html&quot;&gt;núvod, jak do NetBeans dostat projekt ze Subversion repository&lt;/a&gt;.&lt;/p&gt; 
+&lt;h3 id=&quot;toc-levn-java-jsp-j2ee-hosting&quot;&gt;Levn? Java/JSP/J2EE hosting&lt;/h3&gt; 
+&lt;p&gt;Pokud hledáte levný hosting pro svoji J2EE webovou aplikaci, možná vás zaujme &lt;a href=&quot;nabidka_levny_j2ee_jsp_hosting.html&quot;&gt;tato nabídka&lt;/a&gt;.&lt;/p&gt; 
+&lt;h3 id=&quot;toc-converting-a-number-to-excel-column-character-name&quot;&gt;Converting a number to Excel column character name&lt;/h3&gt; 
+&lt;p&gt;When working with Excel sheets, you might need to convert the column number to it&apos;s&amp;nbsp;letter name&amp;nbsp;– like &lt;code&gt;1&lt;/code&gt; to &lt;code&gt;A&lt;/code&gt;, &lt;code&gt;2&lt;/code&gt; to &lt;code&gt;B&lt;/code&gt;, &lt;code&gt;43&lt;/code&gt; to &lt;code&gt;AQ&lt;/code&gt;, etc. It&apos;s&amp;nbsp;not as trivial as converting a number between two radixes. Here is &lt;a href=&quot;converting_number_to_excel_column_letters_name.html&quot;&gt;my solution&lt;/a&gt;.&lt;/p&gt; 
+&lt;h3 id=&quot;toc-uzavery-v-jazyce-java-pres-mistni-vnitrni-tridu&quot;&gt;Uzávěry v&amp;nbsp;jazyce Java&amp;nbsp;– přes místní vnitřní třídu&lt;/h3&gt; 
+&lt;p&gt;Při tvorbě GUI k&amp;nbsp;jednomu systému se mi zastesklo po snadnosti uzávěry v&amp;nbsp;JavaScriptu. Prozkoumal jsem &lt;a href=&quot;uzavery_v_jave_mistni_vnitrni_trida.html&quot;&gt;možnosti uzávěr v&amp;nbsp;Javě&lt;/a&gt;.&lt;/p&gt; 
+&lt;h3 id=&quot;toc-spring-framework-uvod&quot;&gt;Spring Framework&amp;nbsp;– úvod&lt;/h3&gt; 
+&lt;p&gt;Připravil jsem velmi stručný &lt;a href=&quot;navod-spring-framework-zacatky.html&quot;&gt;tutoriál na rozběhání jedné části Spring Frameworku, a sice Beans Factory&lt;/a&gt;. V&amp;nbsp;češtině.&lt;/p&gt; 
+&lt;h3 id=&quot;toc-hibernate-super-quick-start-in-netbeans&quot;&gt;Hibernate super-quick start in NetBeans&lt;/h3&gt; 
+&lt;p&gt;Here&apos;s&amp;nbsp;my how-to for &lt;a href=&quot;hibernate_netbeans_howto_tutorial.html&quot;&gt;starting a Hibernate project using Java Persistence API (JPA)&lt;/a&gt;.&lt;/p&gt; 
+&lt;p&gt;Later, I&apos;ll write something about object-relational mapping.&lt;/p&gt; 
+&lt;h3 id=&quot;toc-hibernate-compatibility-matrix-error&quot;&gt;Hibernate Compatibility Matrix Error&lt;/h3&gt; 
+&lt;p&gt;Beware of the Hibernate Compatibility Matrix at &lt;a href=&quot;http://www.hibernate.org/6.html&quot;&gt;http://www.hibernate.org/6.html&lt;/a&gt;.&lt;/p&gt; 
+&lt;p&gt;&lt;strong&gt;Hibernate EntityManager 3.3.2&amp;nbsp;GA&lt;/strong&gt; is said to be compatible with &lt;strong&gt;Hibernate Annotations 3.3.x&lt;/strong&gt;. But, it is not compatible with Hibernate Annotations 3.3.0&amp;nbsp;– only with Hibernate Annotations 3.3.1.&amp;nbsp;This information could spare you few minutes, as it would do to me if I&amp;nbsp;knew it&amp;nbsp;:)&lt;/p&gt; 
+&lt;pre class=&quot;lang-text brush: text&quot;&gt;java.lang.NoSuchMethodError: org.hibernate.cfg.AnnotationConfiguration.addProperties(Ljava/util/Properties;)Lorg/hibernate/cfg/AnnotationConfiguration;&lt;/pre&gt; 
+&lt;h3 id=&quot;toc-simplest-one-line-formatter-for-java-util-logging&quot;&gt;Simplest One-line Formatter for &lt;code&gt;java.util.logging&lt;/code&gt;&lt;/h3&gt; 
+&lt;p&gt;I&amp;nbsp;didn&apos;t like the two-line output of &lt;code&gt;java.util.logging.SimpleFormatter&lt;/code&gt;. On current widescreen LCDs, whole log record can fit at a single line. So I&apos;ve written &lt;code&gt;cz.dynawest.logging.SimplestFormatter&lt;/code&gt;. Compare:&lt;/p&gt; 
+&lt;pre class=&quot;lang-log brush: log&quot;&gt;13.7.2008 0:47:10 cz.dynawest.isir.Conversion3Controller ZpracujArchiv - INFO:   Test
+13.7.2008 0:47:10 cz.dynawest.isir.Conversion3Controller ZpracujArchiv - INFO:   Test2&lt;/pre&gt; 
+&lt;p&gt;vs.&lt;/p&gt; 
+&lt;pre class=&quot;lang-log brush: log&quot;&gt;13.7.2008 0:47:10 cz.dynawest.isir.Conversion3Controller ZpracujArchiv
+INFO:   Test
+13.7.2008 0:47:10 cz.dynawest.isir.Conversion3Controller ZpracujArchiv
+INFO:   Test2&lt;/pre&gt; 
+&lt;p&gt;If you like it, the source code is available for &lt;a href=&quot;download/cz.dynawest.logging.SimplestFormatter.zip&quot;&gt;download here&lt;/a&gt;.&lt;/p&gt; 
+&lt;h3 id=&quot;toc-java-tipy-a-triky&quot;&gt;Java tipy a triky&lt;/h3&gt; 
+&lt;p&gt;Patříte mezi programátory, kteří prvně hledají řešení na Google jako slovní úlohu a až pak studují jakékoliv API? Pak vám možná pomůže moje &lt;a href=&quot;tipy.html&quot;&gt;stránka tipů pro Javu&lt;/a&gt;. Zatím není nijak moc rozsáhlá, budu postupně doplňovat.&lt;br&gt; Podobných tipů a triků jsou po webu kvanta, ale ne tolik v&amp;nbsp;češtině.&lt;/p&gt; 
+&lt;p&gt;//Update:// Tak nakonec stejně vše zveřejňuju v&amp;nbsp;angličtině…&lt;/p&gt; 
+&lt;h3 id=&quot;toc-bug-in-mysql-jdbc-implementation-connector-j&quot;&gt;Bug in MySQL JDBC implementation&amp;nbsp;– Connector/J&lt;/h3&gt; 
+&lt;p&gt;I&apos;ve found a bug in &lt;a href=&quot;http://dev.mysql.com/downloads/connector/j/5.1.html&quot;&gt;Connector/J&lt;/a&gt; ver. 5.1.6.&amp;nbsp;It appears upon subsequently called &lt;code&gt;Connection.isValid()&lt;/code&gt;, which uses unsynchronized threads.&lt;/p&gt; 
+&lt;p&gt;Reported at &lt;a href=&quot;http://bugs.mysql.com/bug.php?id=38060&amp;amp;thanks=2&amp;amp;notify=3&quot;&gt;http://bugs.mysql.com/bug.php?…&lt;/a&gt;.&lt;/p&gt; 
+&lt;!-- jdk_jre_64bit_not_found.html --&gt; 
+&lt;h3 id=&quot;toc-java-runtime-environment-or-java-developement-kit-not-found-on-64-bit-system&quot;&gt;Java Runtime Environment or Java Developement Kit not found on 64-bit&amp;nbsp;system&lt;/h3&gt; 
+&lt;p&gt;I&amp;nbsp;have 64-bit version of Windows XP and 64-bit version of JDK and JRE.&lt;br&gt; During instalation of jEdit, I&amp;nbsp;got this message from the installer:&lt;/p&gt; 
+&lt;blockquote&gt; 
+ &lt;p&gt;Setup was unable to find an installed Java Runtime Environment or Java Developement Kit of version 1.4, or higher. You must have installed at least JDK or JRE 1.4&amp;nbsp;to continue&amp;nbsp;setup.&lt;/p&gt; 
+&lt;/blockquote&gt; 
+&lt;p&gt;jEdit installer looks for 32-bit version of JRE. Install it alongside the 64-bit version to fix the problem.&lt;/p&gt; 
+&lt;p&gt;The same problem was with NetBeans installer.&lt;/p&gt; 
+&lt;!-- texy_java_implementation.html --&gt; 
+&lt;h3 id=&quot;toc-texy-java-implementation&quot;&gt;Texy! Java Implementation&lt;/h3&gt; 
+&lt;p&gt;Anyone knows about any? Please, &lt;a href=&quot;mailto:ondra@dynawest.cz&quot;&gt;let me know via e-mail&lt;/a&gt;.&lt;/p&gt; 
+&lt;p&gt;&lt;a href=&quot;http://download.html.info/refs.zip&quot;&gt;Texy! syntax use cases here&lt;/a&gt;.&lt;/p&gt; 
+&lt;h3 id=&quot;toc-java-implementace-prekladace-texy&quot;&gt;Java implementace překladače Texy!&lt;/h3&gt; 
+&lt;blockquote&gt;
+ Zdravím, 
+ &lt;p&gt;nechtěl by někdo čirou náhodou implementovat překladač Texy v&amp;nbsp;Javě?&lt;/p&gt; 
+ &lt;p&gt;&lt;a href=&quot;http://www.html.info&quot;&gt;www.html.info&lt;/a&gt;&lt;/p&gt; 
+ &lt;p&gt;Mohlo by to být dobré téma projektu / bakalářky… Formální specifikace není, jen podle popisu syntaxe a ukázek použití…&lt;/p&gt; 
+ &lt;p&gt;Java komunita by vás jistě oslavovala :-)&lt;/p&gt; Ondra
+&lt;/blockquote&gt; 
+&lt;hr&gt; 
+&lt;blockquote&gt; 
+ &lt;p&gt;Autor Texy David Grudl sestavil sadu testovacích souborů, na kterých lze ověřit implementaci překladače. K&amp;nbsp;dispozici na&amp;nbsp;&lt;a href=&quot;http://download.html.info/refs.zip&quot;&gt;http://download.html.info/refs.zip&lt;/a&gt;&lt;/p&gt; 
+ &lt;p&gt;Algou a omegou původní PHP imiplementace jsou PCRE. Knihovna pro Javu, která zvládá PCRE podle Perl 5, je na &lt;a href=&quot;http://jakarta.apache.org/oro/&quot;&gt;http://jakarta.apache.org/oro/&lt;/a&gt;&amp;nbsp;.&lt;/p&gt; 
+ &lt;p&gt;Ondra Žižka&lt;/p&gt; 
+&lt;/blockquote&gt; 
+&lt;h3 id=&quot;toc-my-usual-mysql-jdbc-params&quot;&gt;My usual MySQL JDBC params&lt;/h3&gt; 
+&lt;pre class=&quot;brush: lang-plain brush: plain&quot;&gt;jdbc:mysql://localhost/test?characterEncoding=UTF-8&amp;amp;characterSetResults=UTF-8&amp;amp;autoReconnect=true&amp;amp;zeroDateTimeBehavior=convertToNull&lt;/pre&gt; 
+&lt;h3 id=&quot;toc-uplne-zacatky-v-jave&quot;&gt;Úplné začátky v&amp;nbsp;Javě&lt;/h3&gt; 
+&lt;p&gt;Java často začátečníka odradí relativní složitost přípravy kódu a jeho překladu do čehokoliv spustitelného (v&amp;nbsp;roce 1998&amp;nbsp;to byl i&amp;nbsp;můj případ a Javou jsem se prokousal až o&amp;nbsp;další dva roky později :-)&amp;nbsp;.&lt;/p&gt; 
+&lt;p&gt;Pro ten případ jsem připravil velmi polopatický &lt;a href=&quot;navod-java_zacatky.html&quot;&gt;návod, jak vytvořit zdroják v&amp;nbsp;Javě, jak ho přeložit do souboru &lt;code&gt;.class&lt;/code&gt; a jak jej spustit&lt;/a&gt;.&lt;/p&gt; 
+&lt;h3 id=&quot;toc-j2ee-java-pro-web&quot;&gt;J2EE&amp;nbsp;– Java pro web&lt;/h3&gt; 
+&lt;p&gt;V&amp;nbsp;poslední dobé se prokousávám světem J2EE. Je to svět rozsáhlý a nepřehledný. V&amp;nbsp;této souvislosti uvedu jeden trefný&amp;nbsp;citát:&lt;/p&gt; 
+&lt;blockquote&gt; 
+ &lt;p&gt;Entrance to this world is a cultural conversion, not a choice of one simple programming language over another.&lt;/p&gt; 
+ &lt;p&gt;-- GBdirect, „Active Web Sites and Comparison of Scripting Languages“&lt;/p&gt; 
+&lt;/blockquote&gt; 
+&lt;p&gt;Pro kamaráda jsem začal psát &lt;a href=&quot;navod-j2ee_uvod.html&quot;&gt;velmi stručný úvod&lt;/a&gt;, aby se hned zkraje neutopil v&amp;nbsp;záplavě tří až pětipísmenných zkratek.&lt;/p&gt; 
             </description>
         </item>
         <item>
